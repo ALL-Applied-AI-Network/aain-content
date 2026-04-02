@@ -1,7 +1,7 @@
 # ALL Applied AI Network — Content
 
 <p align="center">
-  <img src="brand/logos/all-aain-banner.png" alt="ALL Applied AI Network" width="600" />
+  <img src="public/all-logo-transparent.png" alt="ALL Applied AI Network" width="200" />
 </p>
 
 <p align="center">
