@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Robot arm / agent -->
+  <g transform="translate(170,60)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <!-- Agent "head" -->
+    <rect x="-18" y="0" width="36" height="30" rx="6"/>
+    <!-- Eyes -->
+    <circle cx="-6" cy="12" r="3" fill="url(#brand)" opacity="0.5"/>
+    <circle cx="6" cy="12" r="3" fill="url(#brand)" opacity="0.5"/>
+    <!-- Antenna -->
+    <line x1="0" y1="0" x2="0" y2="-12"/>
+    <circle cx="0" cy="-14" r="3" fill="url(#brand)" fill-opacity="0.4"/>
+    <!-- Body/arm extending out -->
+    <line x1="0" y1="30" x2="0" y2="55"/>
+    <!-- Left arm reaching to tool -->
+    <path d="M-18,40 L-55,55 L-65,50"/>
+    <!-- Right arm reaching to tool -->
+    <path d="M18,40 L55,55 L65,50"/>
+  </g>
+  <!-- Tool icons arranged around the agent -->
+  <!-- Search/magnifier tool -->
+  <g transform="translate(90,110)" fill="none" stroke="url(#brand)" stroke-width="1.8" stroke-opacity="0.7">
+    <circle cx="0" cy="0" r="10"/>
+    <line x1="7" y1="7" x2="15" y2="15" stroke-width="2"/>
+  </g>
+  <!-- Database tool -->
+  <g transform="translate(90,160)" fill="none" stroke="url(#brand)" stroke-width="1.8" stroke-opacity="0.6">
+    <ellipse cx="0" cy="0" rx="14" ry="5"/>
+    <path d="M-14,0 L-14,16 C-14,19 0,22 0,22 C0,22 14,19 14,16 L14,0"/>
+    <path d="M-14,8 C-14,11 0,14 0,14 C0,14 14,11 14,8" stroke-opacity="0.4"/>
+  </g>
+  <!-- Calculator tool -->
+  <g transform="translate(310,110)" fill="none" stroke="url(#brand)" stroke-width="1.8" stroke-opacity="0.7">
+    <rect x="-12" y="-15" width="24" height="30" rx="3"/>
+    <rect x="-8" y="-11" width="16" height="8" rx="1" stroke-opacity="0.4"/>
+    <circle cx="-4" cy="4" r="1.5" fill="url(#brand)" opacity="0.5"/>
+    <circle cx="4" cy="4" r="1.5" fill="url(#brand)" opacity="0.5"/>
+    <circle cx="-4" cy="11" r="1.5" fill="url(#brand)" opacity="0.5"/>
+    <circle cx="4" cy="11" r="1.5" fill="url(#brand)" opacity="0.5"/>
+  </g>
+  <!-- Code tool -->
+  <g transform="translate(310,165)" fill="none" stroke="url(#brand)" stroke-width="1.8" stroke-opacity="0.6">
+    <polyline points="-12,-10 -20,0 -12,10"/>
+    <polyline points="12,-10 20,0 12,10"/>
+    <line x1="5" y1="-12" x2="-5" y2="12"/>
+  </g>
+  <!-- Connection lines (dashed) -->
+  <line x1="115" y1="108" x2="148" y2="95" stroke="url(#brand)" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.35"/>
+  <line x1="115" y1="155" x2="148" y2="115" stroke="url(#brand)" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.3"/>
+  <line x1="290" y1="108" x2="200" y2="95" stroke="url(#brand)" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.35"/>
+  <line x1="290" y1="160" x2="200" y2="115" stroke="url(#brand)" stroke-width="1" stroke-dasharray="4,3" stroke-opacity="0.3"/>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Agents &amp; Tool Use</text>
+</svg>

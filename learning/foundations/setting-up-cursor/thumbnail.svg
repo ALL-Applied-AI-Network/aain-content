@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Editor window frame -->
+  <g transform="translate(110,40)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <rect width="180" height="140" rx="8"/>
+    <!-- Title bar -->
+    <line x1="0" y1="20" x2="180" y2="20"/>
+    <!-- Window dots -->
+    <circle cx="14" cy="10" r="3" fill="#ff5f57"/>
+    <circle cx="28" cy="10" r="3" fill="#febc2e"/>
+    <circle cx="42" cy="10" r="3" fill="#28c840"/>
+    <!-- Code lines -->
+    <line x1="15" y1="38" x2="85" y2="38" stroke-width="1.5" stroke-opacity="0.6"/>
+    <line x1="25" y1="55" x2="110" y2="55" stroke-width="1.5" stroke-opacity="0.5"/>
+    <line x1="25" y1="72" x2="95" y2="72" stroke-width="1.5" stroke-opacity="0.4"/>
+    <line x1="15" y1="89" x2="70" y2="89" stroke-width="1.5" stroke-opacity="0.5"/>
+    <line x1="25" y1="106" x2="120" y2="106" stroke-width="1.5" stroke-opacity="0.4"/>
+    <line x1="15" y1="123" x2="50" y2="123" stroke-width="1.5" stroke-opacity="0.6"/>
+  </g>
+  <!-- Cursor icon (text cursor blinking) -->
+  <g transform="translate(230,85)">
+    <line x1="0" y1="0" x2="0" y2="24" stroke="url(#brand)" stroke-width="2.5" stroke-linecap="round">
+      <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  <!-- AI sparkle near cursor -->
+  <g transform="translate(252,70)" fill="url(#brand)">
+    <path d="M0,-8 L2,-2 L8,0 L2,2 L0,8 L-2,2 L-8,0 L-2,-2 Z" opacity="0.8"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Setting Up Cursor</text>
+</svg>

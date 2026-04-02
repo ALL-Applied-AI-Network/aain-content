@@ -1,0 +1,11 @@
+id: "series/python-foundations"
+title: "Python Foundations"
+description: "Build confident Python skills with AI as your coding partner"
+difficulty: beginner
+nodes:
+  - "foundations/what-is-programming"
+  - "foundations/python-through-ai"
+  - "foundations/files-folders-terminal"
+  - "foundations/reading-writing-data"
+  - "foundations/git-basics"
+  - "foundations/build-your-first-script"

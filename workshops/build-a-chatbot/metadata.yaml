@@ -1,0 +1,6 @@
+title: "Build a Chatbot"
+description: "Build a functional AI chatbot from scratch using Python and the OpenAI API, with a web interface you can share"
+difficulty: intermediate
+estimated_minutes: 90
+tags: [chatbot, openai, api, python, gradio, applied-ai]
+author: "ALL Applied AI Network"

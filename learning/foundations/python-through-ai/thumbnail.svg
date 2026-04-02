@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Python snake (stylized S-curve) -->
+  <g transform="translate(175,115)" fill="none" stroke="url(#brand)" stroke-width="3" stroke-linecap="round">
+    <!-- Snake body as elegant S-curve -->
+    <path d="M-30,-55 C-30,-55 -30,-35 0,-35 C30,-35 30,-15 30,-15 C30,5 30,15 0,15 C-30,15 -30,35 -30,35 C-30,55 -30,55 0,55"/>
+    <!-- Snake head -->
+    <circle cx="-30" cy="-55" r="6" fill="url(#brand)" fill-opacity="0.3" stroke="url(#brand)" stroke-width="2"/>
+    <!-- Eye -->
+    <circle cx="-31" cy="-57" r="1.5" fill="url(#brand)"/>
+  </g>
+  <!-- AI sparkles -->
+  <g fill="url(#brand)">
+    <path transform="translate(235,70)" d="M0,-9 L2,-2 L9,0 L2,2 L0,9 L-2,2 L-9,0 L-2,-2 Z" opacity="0.7"/>
+    <path transform="translate(250,130)" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5 Z" opacity="0.5"/>
+    <path transform="translate(140,85)" d="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z" opacity="0.4"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Python Through AI</text>
+</svg>

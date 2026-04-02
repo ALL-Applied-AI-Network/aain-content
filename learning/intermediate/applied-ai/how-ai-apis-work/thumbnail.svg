@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+    <marker id="arrowR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#00d4ff" stroke-width="1.2"/>
+    </marker>
+    <marker id="arrowL" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto-start-reverse">
+      <path d="M8,0 L0,3 L8,6" fill="none" stroke="#d946ef" stroke-width="1.2"/>
+    </marker>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Client box -->
+  <g transform="translate(70,70)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <rect width="80" height="80" rx="8"/>
+    <text x="40" y="35" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="10" opacity="0.7">your</text>
+    <text x="40" y="50" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="10" opacity="0.7">code</text>
+  </g>
+  <!-- API/Server box -->
+  <g transform="translate(250,70)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <rect width="80" height="80" rx="8"/>
+    <text x="40" y="35" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="10" opacity="0.7">AI</text>
+    <text x="40" y="50" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="10" opacity="0.7">API</text>
+    <!-- Sparkle -->
+    <path d="M60,15 L62,11 L64,15 L68,17 L64,19 L62,23 L60,19 L56,17 Z" fill="url(#brand)" opacity="0.5"/>
+  </g>
+  <!-- Request arrow (top) -->
+  <line x1="158" y1="98" x2="242" y2="98" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrowR)"/>
+  <text x="200" y="92" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="8" opacity="0.6">POST /chat</text>
+  <!-- Response arrow (bottom) -->
+  <line x1="242" y1="122" x2="158" y2="122" stroke="#d946ef" stroke-width="2" marker-end="url(#arrowL)"/>
+  <text x="200" y="140" text-anchor="middle" fill="#d946ef" font-family="monospace" font-size="8" opacity="0.6">{ response }</text>
+  <!-- JSON snippet below -->
+  <g transform="translate(140,170)" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.35">
+    <text x="0" y="0">{"model": "claude",</text>
+    <text x="5" y="14">"messages": [...]}</text>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">How AI APIs Work</text>
+</svg>

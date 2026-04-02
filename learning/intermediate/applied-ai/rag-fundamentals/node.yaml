@@ -1,0 +1,20 @@
+id: "intermediate/applied-ai/rag-fundamentals"
+title: "RAG Fundamentals"
+description: "Build retrieval-augmented generation pipelines from scratch — load documents, chunk text, create embeddings, store vectors, and generate grounded answers"
+layer: 2
+difficulty: intermediate
+estimated_minutes: 60
+thumbnail: "thumbnail.svg"
+tags: ["rag", "embeddings", "vector-database", "chromadb", "retrieval", "applied-ai"]
+
+prerequisites:
+  - "intermediate/applied-ai/prompt-engineering"
+  - "intermediate/applied-ai/build-a-chatbot"
+unlocks:
+  - "intermediate/applied-ai/agents-and-tool-use"
+  - "intermediate/applied-ai/evaluation-and-observability"
+
+content_file: "rag-fundamentals.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

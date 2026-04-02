@@ -1,0 +1,19 @@
+id: "tooling/ai-ides/cursor-deep-dive"
+title: "Cursor Deep Dive"
+description: "Go beyond the basics — master Chat, Inline Edit, Composer, Tab completion, Cursor Rules, and advanced AI-assisted workflows"
+layer: 1
+difficulty: beginner
+estimated_minutes: 35
+thumbnail: "thumbnail.svg"
+tags: ["cursor", "ide", "tooling", "ai-coding", "productivity"]
+
+prerequisites:
+  - "foundations/setting-up-cursor"
+  - "foundations/first-conversation-with-ai"
+unlocks:
+  - "tooling/ai-ides/claude-code"
+
+content_file: "cursor-deep-dive.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

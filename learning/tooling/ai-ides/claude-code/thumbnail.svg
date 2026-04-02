@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Terminal window -->
+  <g transform="translate(95,40)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <rect width="210" height="160" rx="8"/>
+    <!-- Title bar -->
+    <line x1="0" y1="20" x2="210" y2="20"/>
+    <circle cx="14" cy="10" r="3" fill="#ff5f57"/>
+    <circle cx="28" cy="10" r="3" fill="#febc2e"/>
+    <circle cx="42" cy="10" r="3" fill="#28c840"/>
+    <!-- Terminal content -->
+    <text x="12" y="40" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.5">$ claude</text>
+    <!-- Claude icon (stylized asterisk/spark) -->
+    <g transform="translate(105,95)" fill="url(#brand)" fill-opacity="0.6">
+      <!-- 6-pointed spark like Claude's icon -->
+      <ellipse rx="3" ry="18" transform="rotate(0)"/>
+      <ellipse rx="3" ry="18" transform="rotate(60)"/>
+      <ellipse rx="3" ry="18" transform="rotate(120)"/>
+      <circle r="5" fill="url(#brand)" fill-opacity="0.3"/>
+    </g>
+    <!-- Output lines below icon -->
+    <text x="12" y="130" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.4">&gt; What would you like to build?</text>
+    <text x="12" y="145" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.6">&gt; _</text>
+  </g>
+  <!-- Subtle sparkles around terminal -->
+  <g fill="url(#brand)">
+    <path transform="translate(80,55)" d="M0,-5 L1.2,-1.2 L5,0 L1.2,1.2 L0,5 L-1.2,1.2 L-5,0 L-1.2,-1.2 Z" opacity="0.3"/>
+    <path transform="translate(320,70)" d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5 Z" opacity="0.25"/>
+    <path transform="translate(325,180)" d="M0,-4 L1,-1 L4,0 L1,1 L0,4 L-1,1 L-4,0 L-1,-1 Z" opacity="0.2"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Claude Code</text>
+</svg>

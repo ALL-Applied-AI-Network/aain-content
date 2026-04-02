@@ -1,0 +1,637 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-04-02T14:04:56.234Z",
+  "nodes": [
+    {
+      "id": "tooling/ai-ides/cursor-deep-dive",
+      "title": "Cursor Deep Dive",
+      "description": "Go beyond the basics — master Chat, Inline Edit, Composer, Tab completion, Cursor Rules, and advanced AI-assisted workflows",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 35,
+      "thumbnail": "learning/tooling/ai-ides/cursor-deep-dive/thumbnail.svg",
+      "tags": [
+        "cursor",
+        "ide",
+        "tooling",
+        "ai-coding",
+        "productivity"
+      ],
+      "prerequisites": [
+        "foundations/setting-up-cursor",
+        "foundations/first-conversation-with-ai"
+      ],
+      "unlocks": [
+        "tooling/ai-ides/claude-code"
+      ],
+      "content_path": "learning/tooling/ai-ides/cursor-deep-dive/cursor-deep-dive.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "tooling/ai-ides/claude-code",
+      "title": "Claude Code",
+      "description": "Introduction to Anthropic's CLI-based AI coding agent — terminal-native, agentic, and built for real engineering workflows",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 30,
+      "thumbnail": "learning/tooling/ai-ides/claude-code/thumbnail.svg",
+      "tags": [
+        "claude-code",
+        "cli",
+        "terminal",
+        "anthropic",
+        "ai-coding",
+        "tooling"
+      ],
+      "prerequisites": [
+        "tooling/ai-ides/cursor-deep-dive"
+      ],
+      "unlocks": [],
+      "content_path": "learning/tooling/ai-ides/claude-code/claude-code.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/rag-fundamentals",
+      "title": "RAG Fundamentals",
+      "description": "Build retrieval-augmented generation pipelines from scratch — load documents, chunk text, create embeddings, store vectors, and generate grounded answers",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 60,
+      "thumbnail": "learning/intermediate/applied-ai/rag-fundamentals/thumbnail.svg",
+      "tags": [
+        "rag",
+        "embeddings",
+        "vector-database",
+        "chromadb",
+        "retrieval",
+        "applied-ai"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/prompt-engineering",
+        "intermediate/applied-ai/build-a-chatbot"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/agents-and-tool-use",
+        "intermediate/applied-ai/evaluation-and-observability"
+      ],
+      "content_path": "learning/intermediate/applied-ai/rag-fundamentals/rag-fundamentals.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/prompt-engineering",
+      "title": "Prompt Engineering",
+      "description": "Go beyond tips and tricks to engineer reliable, testable prompts that produce consistent results across system prompts, few-shot patterns, structured output, and chain-of-thought reasoning",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 50,
+      "thumbnail": "learning/intermediate/applied-ai/prompt-engineering/thumbnail.svg",
+      "tags": [
+        "prompt-engineering",
+        "system-prompts",
+        "few-shot",
+        "chain-of-thought",
+        "structured-output",
+        "applied-ai"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/how-ai-apis-work"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/build-a-chatbot",
+        "intermediate/applied-ai/rag-fundamentals"
+      ],
+      "content_path": "learning/intermediate/applied-ai/prompt-engineering/prompt-engineering.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/how-ai-apis-work",
+      "title": "How AI APIs Work",
+      "description": "Understand the anatomy of AI API calls, make your first requests to Claude and OpenAI, and learn to manage keys, tokens, and costs like a professional",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 45,
+      "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.svg",
+      "tags": [
+        "api",
+        "claude",
+        "openai",
+        "python",
+        "applied-ai",
+        "sdk"
+      ],
+      "prerequisites": [
+        "foundations/git-basics",
+        "foundations/reading-writing-data",
+        "foundations/build-your-first-script"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/prompt-engineering",
+        "intermediate/applied-ai/build-a-chatbot"
+      ],
+      "content_path": "learning/intermediate/applied-ai/how-ai-apis-work/how-ai-apis-work.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/evaluation-and-observability",
+      "title": "Evaluation and Observability",
+      "description": "The article most AI tutorials skip — how to systematically test your AI applications, build eval suites, track costs, and monitor production behavior",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 45,
+      "thumbnail": "learning/intermediate/applied-ai/evaluation-and-observability/thumbnail.svg",
+      "tags": [
+        "evaluation",
+        "evals",
+        "observability",
+        "testing",
+        "monitoring",
+        "applied-ai"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/agents-and-tool-use",
+        "intermediate/applied-ai/build-an-agent",
+        "intermediate/applied-ai/rag-fundamentals"
+      ],
+      "unlocks": [],
+      "content_path": "learning/intermediate/applied-ai/evaluation-and-observability/evaluation-and-observability.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/build-an-agent",
+      "title": "Build an Agent",
+      "description": "Capstone project — build a personal assistant agent from scratch with file I/O, code execution, web search, and proper error handling",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 60,
+      "thumbnail": "learning/intermediate/applied-ai/build-an-agent/thumbnail.svg",
+      "tags": [
+        "agent",
+        "capstone",
+        "project",
+        "tool-use",
+        "applied-ai"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/agents-and-tool-use"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/evaluation-and-observability"
+      ],
+      "content_path": "learning/intermediate/applied-ai/build-an-agent/build-an-agent.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/build-a-chatbot",
+      "title": "Build a Chatbot",
+      "description": "Build a real conversational AI application with multi-turn memory, streaming responses, and a web interface you can share with anyone",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 60,
+      "thumbnail": "learning/intermediate/applied-ai/build-a-chatbot/thumbnail.svg",
+      "tags": [
+        "chatbot",
+        "conversation",
+        "streaming",
+        "gradio",
+        "applied-ai",
+        "project"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/how-ai-apis-work",
+        "intermediate/applied-ai/prompt-engineering"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/rag-fundamentals",
+        "intermediate/applied-ai/agents-and-tool-use"
+      ],
+      "content_path": "learning/intermediate/applied-ai/build-a-chatbot/build-a-chatbot.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/agents-and-tool-use",
+      "title": "Agents and Tool Use",
+      "description": "Understand AI agents that take actions in the world — define tools as JSON schemas, let the model decide when to call them, and build your first agentic loop",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 55,
+      "thumbnail": "learning/intermediate/applied-ai/agents-and-tool-use/thumbnail.svg",
+      "tags": [
+        "agents",
+        "tool-use",
+        "function-calling",
+        "agentic",
+        "applied-ai"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/build-a-chatbot",
+        "intermediate/applied-ai/rag-fundamentals"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/build-an-agent",
+        "intermediate/applied-ai/evaluation-and-observability"
+      ],
+      "content_path": "learning/intermediate/applied-ai/agents-and-tool-use/agents-and-tool-use.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/what-is-programming",
+      "title": "What Is Programming? Code, Languages, and How Computers Think",
+      "description": "Understand what code actually is, why programming languages exist, why Python is the go-to for AI, and what it means to run a program",
+      "layer": 0,
+      "difficulty": "beginner",
+      "estimated_minutes": 20,
+      "thumbnail": "learning/foundations/what-is-programming/thumbnail.svg",
+      "tags": [
+        "programming",
+        "python",
+        "code",
+        "fundamentals",
+        "concepts"
+      ],
+      "prerequisites": [
+        "foundations/navigating-an-ide",
+        "foundations/first-conversation-with-ai"
+      ],
+      "unlocks": [
+        "foundations/python-through-ai",
+        "foundations/files-folders-terminal"
+      ],
+      "content_path": "learning/foundations/what-is-programming/what-is-programming.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/what-is-ai",
+      "title": "What Is AI? The Real Story",
+      "description": "Understand what artificial intelligence actually is, how it's used today, and why applied AI engineering is one of the most exciting career paths you can choose",
+      "layer": 0,
+      "difficulty": "beginner",
+      "estimated_minutes": 20,
+      "thumbnail": "learning/foundations/what-is-ai/thumbnail.svg",
+      "tags": [
+        "ai",
+        "introduction",
+        "getting-started",
+        "career"
+      ],
+      "prerequisites": [],
+      "unlocks": [
+        "foundations/setting-up-cursor"
+      ],
+      "content_path": "learning/foundations/what-is-ai/what-is-ai.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/setting-up-cursor",
+      "title": "Setting Up Cursor: Your AI-Powered Workspace",
+      "description": "Download, install, and configure Cursor — the AI-native code editor that will be your primary tool throughout this curriculum",
+      "layer": 0,
+      "difficulty": "beginner",
+      "estimated_minutes": 30,
+      "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.svg",
+      "tags": [
+        "setup",
+        "cursor",
+        "ide",
+        "getting-started",
+        "tools"
+      ],
+      "prerequisites": [
+        "foundations/what-is-ai"
+      ],
+      "unlocks": [
+        "foundations/navigating-an-ide",
+        "foundations/first-conversation-with-ai",
+        "tooling/ai-ides/cursor-deep-dive"
+      ],
+      "content_path": "learning/foundations/setting-up-cursor/setting-up-cursor.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/reading-writing-data",
+      "title": "Reading and Writing Data",
+      "description": "Work with files, CSV, JSON, and live APIs in Python — the skills you need before connecting to AI services",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 35,
+      "thumbnail": "learning/foundations/reading-writing-data/thumbnail.svg",
+      "tags": [
+        "python",
+        "data",
+        "json",
+        "csv",
+        "apis",
+        "requests"
+      ],
+      "prerequisites": [
+        "foundations/python-through-ai"
+      ],
+      "unlocks": [
+        "foundations/build-your-first-script",
+        "intermediate/applied-ai/how-ai-apis-work"
+      ],
+      "content_path": "learning/foundations/reading-writing-data/reading-writing-data.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/python-through-ai",
+      "title": "Python Through AI: Learn by Reading, Not Memorizing",
+      "description": "Learn Python fundamentals the modern way — give AI a task, read what it writes, understand the patterns, and modify the code yourself",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 45,
+      "thumbnail": "learning/foundations/python-through-ai/thumbnail.svg",
+      "tags": [
+        "python",
+        "ai-assisted-learning",
+        "coding-fundamentals",
+        "cursor"
+      ],
+      "prerequisites": [
+        "foundations/what-is-programming",
+        "foundations/first-conversation-with-ai"
+      ],
+      "unlocks": [
+        "foundations/reading-writing-data",
+        "foundations/build-your-first-script"
+      ],
+      "content_path": "learning/foundations/python-through-ai/python-through-ai.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/navigating-an-ide",
+      "title": "Navigating an IDE: Finding Your Way Around Cursor",
+      "description": "Learn the layout of your code editor — the file explorer, editor area, terminal, and essential keyboard shortcuts that make you fast",
+      "layer": 0,
+      "difficulty": "beginner",
+      "estimated_minutes": 25,
+      "thumbnail": "learning/foundations/navigating-an-ide/thumbnail.svg",
+      "tags": [
+        "ide",
+        "cursor",
+        "navigation",
+        "terminal",
+        "keyboard-shortcuts"
+      ],
+      "prerequisites": [
+        "foundations/setting-up-cursor"
+      ],
+      "unlocks": [
+        "foundations/what-is-programming"
+      ],
+      "content_path": "learning/foundations/navigating-an-ide/navigating-an-ide.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/git-basics",
+      "title": "Git Basics: Saving Snapshots of Your Work",
+      "description": "Learn version control with Git and GitHub — track changes, write meaningful commits, and push your code to the cloud",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 35,
+      "thumbnail": "learning/foundations/git-basics/thumbnail.svg",
+      "tags": [
+        "git",
+        "github",
+        "version-control",
+        "collaboration"
+      ],
+      "prerequisites": [
+        "foundations/files-folders-terminal"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/how-ai-apis-work"
+      ],
+      "content_path": "learning/foundations/git-basics/git-basics.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/first-conversation-with-ai",
+      "title": "Your First Conversation with AI in Cursor",
+      "description": "Learn to use Cursor's AI features — chat, inline editing, and the composer — to write code by having a conversation instead of typing it from memory",
+      "layer": 0,
+      "difficulty": "beginner",
+      "estimated_minutes": 25,
+      "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.svg",
+      "tags": [
+        "ai",
+        "cursor",
+        "prompting",
+        "chat",
+        "pair-programming"
+      ],
+      "prerequisites": [
+        "foundations/setting-up-cursor"
+      ],
+      "unlocks": [
+        "foundations/what-is-programming",
+        "foundations/python-through-ai",
+        "tooling/ai-ides/cursor-deep-dive"
+      ],
+      "content_path": "learning/foundations/first-conversation-with-ai/first-conversation-with-ai.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/files-folders-terminal",
+      "title": "Files, Folders, and the Terminal",
+      "description": "Understand how your computer organizes files, navigate with the command line, and run Python scripts from the terminal",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 30,
+      "thumbnail": "learning/foundations/files-folders-terminal/thumbnail.svg",
+      "tags": [
+        "terminal",
+        "command-line",
+        "filesystem",
+        "environment-variables"
+      ],
+      "prerequisites": [
+        "foundations/what-is-programming"
+      ],
+      "unlocks": [
+        "foundations/git-basics"
+      ],
+      "content_path": "learning/foundations/files-folders-terminal/files-folders-terminal.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/build-your-first-script",
+      "title": "Build Your First Script",
+      "description": "Combine everything you've learned into a real, useful Python project — planned with AI, built step by step, and pushed to GitHub",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 40,
+      "thumbnail": "learning/foundations/build-your-first-script/thumbnail.svg",
+      "tags": [
+        "python",
+        "capstone",
+        "project",
+        "ai-assisted",
+        "github"
+      ],
+      "prerequisites": [
+        "foundations/python-through-ai",
+        "foundations/reading-writing-data"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/how-ai-apis-work"
+      ],
+      "content_path": "learning/foundations/build-your-first-script/build-your-first-script.md",
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-03-30"
+    }
+  ],
+  "edges": [
+    {
+      "from": "foundations/setting-up-cursor",
+      "to": "tooling/ai-ides/cursor-deep-dive"
+    },
+    {
+      "from": "foundations/first-conversation-with-ai",
+      "to": "tooling/ai-ides/cursor-deep-dive"
+    },
+    {
+      "from": "tooling/ai-ides/cursor-deep-dive",
+      "to": "tooling/ai-ides/claude-code"
+    },
+    {
+      "from": "intermediate/applied-ai/prompt-engineering",
+      "to": "intermediate/applied-ai/rag-fundamentals"
+    },
+    {
+      "from": "intermediate/applied-ai/build-a-chatbot",
+      "to": "intermediate/applied-ai/rag-fundamentals"
+    },
+    {
+      "from": "intermediate/applied-ai/how-ai-apis-work",
+      "to": "intermediate/applied-ai/prompt-engineering"
+    },
+    {
+      "from": "foundations/git-basics",
+      "to": "intermediate/applied-ai/how-ai-apis-work"
+    },
+    {
+      "from": "foundations/reading-writing-data",
+      "to": "intermediate/applied-ai/how-ai-apis-work"
+    },
+    {
+      "from": "foundations/build-your-first-script",
+      "to": "intermediate/applied-ai/how-ai-apis-work"
+    },
+    {
+      "from": "intermediate/applied-ai/agents-and-tool-use",
+      "to": "intermediate/applied-ai/evaluation-and-observability"
+    },
+    {
+      "from": "intermediate/applied-ai/build-an-agent",
+      "to": "intermediate/applied-ai/evaluation-and-observability"
+    },
+    {
+      "from": "intermediate/applied-ai/rag-fundamentals",
+      "to": "intermediate/applied-ai/evaluation-and-observability"
+    },
+    {
+      "from": "intermediate/applied-ai/agents-and-tool-use",
+      "to": "intermediate/applied-ai/build-an-agent"
+    },
+    {
+      "from": "intermediate/applied-ai/how-ai-apis-work",
+      "to": "intermediate/applied-ai/build-a-chatbot"
+    },
+    {
+      "from": "intermediate/applied-ai/prompt-engineering",
+      "to": "intermediate/applied-ai/build-a-chatbot"
+    },
+    {
+      "from": "intermediate/applied-ai/build-a-chatbot",
+      "to": "intermediate/applied-ai/agents-and-tool-use"
+    },
+    {
+      "from": "intermediate/applied-ai/rag-fundamentals",
+      "to": "intermediate/applied-ai/agents-and-tool-use"
+    },
+    {
+      "from": "foundations/navigating-an-ide",
+      "to": "foundations/what-is-programming"
+    },
+    {
+      "from": "foundations/first-conversation-with-ai",
+      "to": "foundations/what-is-programming"
+    },
+    {
+      "from": "foundations/what-is-ai",
+      "to": "foundations/setting-up-cursor"
+    },
+    {
+      "from": "foundations/python-through-ai",
+      "to": "foundations/reading-writing-data"
+    },
+    {
+      "from": "foundations/what-is-programming",
+      "to": "foundations/python-through-ai"
+    },
+    {
+      "from": "foundations/first-conversation-with-ai",
+      "to": "foundations/python-through-ai"
+    },
+    {
+      "from": "foundations/setting-up-cursor",
+      "to": "foundations/navigating-an-ide"
+    },
+    {
+      "from": "foundations/files-folders-terminal",
+      "to": "foundations/git-basics"
+    },
+    {
+      "from": "foundations/setting-up-cursor",
+      "to": "foundations/first-conversation-with-ai"
+    },
+    {
+      "from": "foundations/what-is-programming",
+      "to": "foundations/files-folders-terminal"
+    },
+    {
+      "from": "foundations/python-through-ai",
+      "to": "foundations/build-your-first-script"
+    },
+    {
+      "from": "foundations/reading-writing-data",
+      "to": "foundations/build-your-first-script"
+    }
+  ],
+  "series": [],
+  "stats": {
+    "total_nodes": 19,
+    "total_edges": 29,
+    "total_series": 0,
+    "by_layer": {
+      "0": 5,
+      "1": 7,
+      "2": 7,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    "by_difficulty": {
+      "beginner": 12,
+      "intermediate": 7
+    }
+  }
+}

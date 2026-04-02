@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="url(#brand)" stroke-width="1.2"/>
+    </marker>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- File icon (input) -->
+  <g transform="translate(80,80)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <path d="M0,0 L35,0 L45,12 L45,55 L0,55 Z"/>
+    <path d="M35,0 L35,12 L45,12"/>
+    <line x1="8" y1="22" x2="35" y2="22" stroke-width="1.2" stroke-opacity="0.5"/>
+    <line x1="8" y1="32" x2="30" y2="32" stroke-width="1.2" stroke-opacity="0.4"/>
+    <line x1="8" y1="42" x2="33" y2="42" stroke-width="1.2" stroke-opacity="0.4"/>
+  </g>
+  <!-- Arrow: file to code -->
+  <line x1="140" y1="108" x2="170" y2="108" stroke="url(#brand)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- Code block (process) -->
+  <g transform="translate(178,80)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <rect width="55" height="55" rx="6" stroke-opacity="0.8"/>
+    <text x="10" y="22" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.6">{...}</text>
+    <line x1="10" y1="32" x2="42" y2="32" stroke-width="1" stroke-opacity="0.4"/>
+    <line x1="10" y1="42" x2="35" y2="42" stroke-width="1" stroke-opacity="0.4"/>
+  </g>
+  <!-- Arrow: code to output -->
+  <line x1="245" y1="108" x2="275" y2="108" stroke="url(#brand)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- Output (chart/table) -->
+  <g transform="translate(283,80)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <rect width="55" height="55" rx="6"/>
+    <!-- Mini bar chart -->
+    <rect x="10" y="35" width="8" height="15" fill="url(#brand)" fill-opacity="0.3" stroke="none" rx="1"/>
+    <rect x="22" y="25" width="8" height="25" fill="url(#brand)" fill-opacity="0.4" stroke="none" rx="1"/>
+    <rect x="34" y="15" width="8" height="35" fill="url(#brand)" fill-opacity="0.5" stroke="none" rx="1"/>
+  </g>
+  <!-- Labels -->
+  <text x="103" y="155" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.5">read</text>
+  <text x="205" y="155" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.5">process</text>
+  <text x="310" y="155" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.5">output</text>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Reading &amp; Writing Data</text>
+</svg>

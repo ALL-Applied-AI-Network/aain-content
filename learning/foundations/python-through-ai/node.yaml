@@ -1,0 +1,20 @@
+id: "foundations/python-through-ai"
+title: "Python Through AI: Learn by Reading, Not Memorizing"
+description: "Learn Python fundamentals the modern way — give AI a task, read what it writes, understand the patterns, and modify the code yourself"
+layer: 1
+difficulty: beginner
+estimated_minutes: 45
+thumbnail: "thumbnail.svg"
+tags: ["python", "ai-assisted-learning", "coding-fundamentals", "cursor"]
+
+prerequisites:
+  - "foundations/what-is-programming"
+  - "foundations/first-conversation-with-ai"
+unlocks:
+  - "foundations/reading-writing-data"
+  - "foundations/build-your-first-script"
+
+content_file: "python-through-ai.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Brain outline -->
+  <g transform="translate(200,120)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <ellipse rx="55" ry="60"/>
+    <!-- Brain folds -->
+    <path d="M0,-60 Q20,-30 0,0 Q-20,30 0,60"/>
+    <path d="M-20,-50 Q10,-25 -10,5"/>
+    <path d="M20,-50 Q-10,-25 10,5"/>
+    <!-- Circuit nodes -->
+    <circle cx="-35" cy="-20" r="4" fill="url(#brand)"/>
+    <circle cx="30" cy="-30" r="4" fill="url(#brand)"/>
+    <circle cx="-25" cy="25" r="4" fill="url(#brand)"/>
+    <circle cx="25" cy="20" r="4" fill="url(#brand)"/>
+    <circle cx="0" cy="-40" r="4" fill="url(#brand)"/>
+    <!-- Circuit lines -->
+    <line x1="-35" y1="-20" x2="-55" y2="-20" stroke-width="1.5"/>
+    <line x1="30" y1="-30" x2="55" y2="-30" stroke-width="1.5"/>
+    <line x1="-25" y1="25" x2="-55" y2="25" stroke-width="1.5"/>
+    <line x1="25" y1="20" x2="55" y2="20" stroke-width="1.5"/>
+    <!-- Outer connection dots -->
+    <circle cx="-60" cy="-20" r="2.5" fill="url(#brand)"/>
+    <circle cx="60" cy="-30" r="2.5" fill="url(#brand)"/>
+    <circle cx="-60" cy="25" r="2.5" fill="url(#brand)"/>
+    <circle cx="60" cy="20" r="2.5" fill="url(#brand)"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">What Is AI?</text>
+</svg>

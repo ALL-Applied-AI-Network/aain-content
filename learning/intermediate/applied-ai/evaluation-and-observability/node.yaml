@@ -1,0 +1,19 @@
+id: "intermediate/applied-ai/evaluation-and-observability"
+title: "Evaluation and Observability"
+description: "The article most AI tutorials skip — how to systematically test your AI applications, build eval suites, track costs, and monitor production behavior"
+layer: 2
+difficulty: intermediate
+estimated_minutes: 45
+thumbnail: "thumbnail.svg"
+tags: ["evaluation", "evals", "observability", "testing", "monitoring", "applied-ai"]
+
+prerequisites:
+  - "intermediate/applied-ai/agents-and-tool-use"
+  - "intermediate/applied-ai/build-an-agent"
+  - "intermediate/applied-ai/rag-fundamentals"
+unlocks: []
+
+content_file: "evaluation-and-observability.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

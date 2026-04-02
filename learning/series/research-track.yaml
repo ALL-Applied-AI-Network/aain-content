@@ -1,0 +1,11 @@
+id: "series/research-track"
+title: "Research Track: Understanding the Engine"
+description: "Go deep into how AI models work — for students interested in research and model development. These nodes are coming soon."
+difficulty: advanced
+nodes: []
+# Nodes will be added as Layer 4-5 content is written:
+# - "advanced/foundations-of-ml/what-is-a-neural-network"
+# - "advanced/foundations-of-ml/how-models-learn"
+# - "advanced/foundations-of-ml/embeddings-and-vectors"
+# - "advanced/foundations-of-ml/fine-tuning-and-adapters"
+# - "advanced/foundations-of-ml/classical-ml"

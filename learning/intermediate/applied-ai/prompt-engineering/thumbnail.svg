@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Chat bubbles (stacked, refined) -->
+  <g transform="translate(120,50)" fill="none" stroke="url(#brand)" stroke-width="1.8">
+    <!-- First prompt attempt -->
+    <rect x="0" y="0" width="100" height="26" rx="13" stroke-opacity="0.3"/>
+    <line x1="15" y1="13" x2="85" y2="13" stroke-opacity="0.2" stroke-width="1.2"/>
+    <!-- Second prompt (better) -->
+    <rect x="20" y="38" width="120" height="26" rx="13" stroke-opacity="0.5"/>
+    <line x1="35" y1="51" x2="125" y2="51" stroke-opacity="0.35" stroke-width="1.2"/>
+    <!-- Third prompt (best) -->
+    <rect x="10" y="76" width="150" height="30" rx="15" stroke-opacity="0.9"/>
+    <line x1="25" y1="88" x2="80" y2="88" stroke-opacity="0.6" stroke-width="1.2"/>
+    <line x1="25" y1="98" x2="140" y2="98" stroke-opacity="0.5" stroke-width="1.2"/>
+  </g>
+  <!-- Tuning dial -->
+  <g transform="translate(310,100)">
+    <circle r="28" fill="none" stroke="url(#brand)" stroke-width="2"/>
+    <circle r="22" fill="none" stroke="url(#brand)" stroke-width="1" stroke-opacity="0.3"/>
+    <!-- Dial marks -->
+    <line x1="0" y1="-28" x2="0" y2="-23" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4"/>
+    <line x1="28" y1="0" x2="23" y2="0" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4"/>
+    <line x1="0" y1="28" x2="0" y2="23" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4"/>
+    <line x1="-28" y1="0" x2="-23" y2="0" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4"/>
+    <!-- Dial pointer -->
+    <line x1="0" y1="0" x2="14" y2="-14" stroke="url(#brand)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle r="4" fill="url(#brand)" fill-opacity="0.4" stroke="url(#brand)" stroke-width="1.5"/>
+  </g>
+  <!-- Improvement arrow -->
+  <g transform="translate(95,80)" fill="none" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4">
+    <path d="M0,30 C-15,15 -15,-5 0,-15" stroke-dasharray="3,3"/>
+    <path d="M-3,-18 L0,-15 L-5,-14" fill="url(#brand)" fill-opacity="0.4"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Prompt Engineering</text>
+</svg>

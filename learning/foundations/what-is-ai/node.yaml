@@ -1,0 +1,17 @@
+id: "foundations/what-is-ai"
+title: "What Is AI? The Real Story"
+description: "Understand what artificial intelligence actually is, how it's used today, and why applied AI engineering is one of the most exciting career paths you can choose"
+layer: 0
+difficulty: beginner
+estimated_minutes: 20
+thumbnail: "thumbnail.svg"
+tags: ["ai", "introduction", "getting-started", "career"]
+
+prerequisites: []
+unlocks:
+  - "foundations/setting-up-cursor"
+
+content_file: "what-is-ai.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+    <linearGradient id="brandV" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Dashboard frame -->
+  <g transform="translate(80,35)" fill="none" stroke="url(#brand)" stroke-width="1.8">
+    <rect width="240" height="175" rx="8"/>
+    <!-- Top bar -->
+    <line x1="0" y1="22" x2="240" y2="22" stroke-opacity="0.4"/>
+    <!-- Status dots in top bar -->
+    <circle cx="15" cy="11" r="4" fill="#28c840" fill-opacity="0.7" stroke="none"/>
+    <circle cx="30" cy="11" r="4" fill="#febc2e" fill-opacity="0.7" stroke="none"/>
+    <circle cx="45" cy="11" r="4" fill="url(#brand)" fill-opacity="0.5" stroke="none"/>
+    <!-- Left panel: line chart -->
+    <g transform="translate(15,35)">
+      <polyline points="0,55 20,45 40,50 60,30 80,35 100,15" fill="none" stroke="url(#brand)" stroke-width="2"/>
+      <!-- Chart area fill -->
+      <polyline points="0,55 20,45 40,50 60,30 80,35 100,15 100,55 0,55" fill="url(#brand)" fill-opacity="0.06" stroke="none"/>
+      <!-- Grid lines -->
+      <line x1="0" y1="55" x2="100" y2="55" stroke-opacity="0.2" stroke-width="0.8"/>
+      <line x1="0" y1="37" x2="100" y2="37" stroke-opacity="0.1" stroke-width="0.8"/>
+      <line x1="0" y1="19" x2="100" y2="19" stroke-opacity="0.1" stroke-width="0.8"/>
+    </g>
+    <!-- Right panel: bar chart -->
+    <g transform="translate(135,35)">
+      <rect x="0" y="35" width="14" height="20" rx="2" fill="url(#brandV)" fill-opacity="0.35" stroke="none"/>
+      <rect x="20" y="20" width="14" height="35" rx="2" fill="url(#brandV)" fill-opacity="0.45" stroke="none"/>
+      <rect x="40" y="10" width="14" height="45" rx="2" fill="url(#brandV)" fill-opacity="0.55" stroke="none"/>
+      <rect x="60" y="25" width="14" height="30" rx="2" fill="url(#brandV)" fill-opacity="0.4" stroke="none"/>
+      <line x1="0" y1="55" x2="80" y2="55" stroke-opacity="0.2" stroke-width="0.8"/>
+    </g>
+    <!-- Bottom metric boxes -->
+    <g transform="translate(15,105)">
+      <rect width="65" height="50" rx="4" stroke-opacity="0.3"/>
+      <text x="32" y="20" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="16" font-weight="700" opacity="0.7">94%</text>
+      <text x="32" y="38" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="7" opacity="0.4">accuracy</text>
+    </g>
+    <g transform="translate(90,105)">
+      <rect width="65" height="50" rx="4" stroke-opacity="0.3"/>
+      <text x="32" y="20" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="16" font-weight="700" opacity="0.7">1.2s</text>
+      <text x="32" y="38" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="7" opacity="0.4">latency</text>
+    </g>
+    <g transform="translate(165,105)">
+      <rect width="65" height="50" rx="4" stroke-opacity="0.3"/>
+      <text x="32" y="20" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="16" font-weight="700" opacity="0.7">$0.03</text>
+      <text x="32" y="38" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="7" opacity="0.4">per call</text>
+    </g>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Evaluation &amp; Observability</text>
+</svg>

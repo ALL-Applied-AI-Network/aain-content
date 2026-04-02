@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- IDE layout with panels -->
+  <g transform="translate(80,35)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <!-- Main window -->
+    <rect width="240" height="175" rx="8"/>
+    <!-- Title bar -->
+    <line x1="0" y1="18" x2="240" y2="18"/>
+    <circle cx="12" cy="9" r="2.5" fill="#ff5f57"/>
+    <circle cx="24" cy="9" r="2.5" fill="#febc2e"/>
+    <circle cx="36" cy="9" r="2.5" fill="#28c840"/>
+    <!-- Sidebar panel -->
+    <line x1="55" y1="18" x2="55" y2="175"/>
+    <!-- File tree in sidebar -->
+    <line x1="12" y1="35" x2="42" y2="35" stroke-width="1.2" stroke-opacity="0.5"/>
+    <line x1="18" y1="50" x2="45" y2="50" stroke-width="1.2" stroke-opacity="0.4"/>
+    <line x1="18" y1="65" x2="40" y2="65" stroke-width="1.2" stroke-opacity="0.4"/>
+    <line x1="12" y1="80" x2="38" y2="80" stroke-width="1.2" stroke-opacity="0.5"/>
+    <line x1="18" y1="95" x2="48" y2="95" stroke-width="1.2" stroke-opacity="0.4"/>
+    <!-- Bottom panel -->
+    <line x1="55" y1="130" x2="240" y2="130"/>
+    <!-- Terminal text in bottom panel -->
+    <text x="65" y="148" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.6">&gt; _</text>
+    <!-- Editor tabs -->
+    <rect x="55" y="18" width="55" height="16" fill="url(#brand)" fill-opacity="0.15" stroke="none"/>
+    <line x1="110" y1="18" x2="110" y2="34" stroke-opacity="0.3"/>
+    <!-- Code lines in editor -->
+    <line x1="68" y1="48" x2="150" y2="48" stroke-width="1.2" stroke-opacity="0.5"/>
+    <line x1="78" y1="62" x2="175" y2="62" stroke-width="1.2" stroke-opacity="0.4"/>
+    <line x1="78" y1="76" x2="160" y2="76" stroke-width="1.2" stroke-opacity="0.35"/>
+    <line x1="68" y1="90" x2="130" y2="90" stroke-width="1.2" stroke-opacity="0.5"/>
+    <line x1="78" y1="104" x2="190" y2="104" stroke-width="1.2" stroke-opacity="0.4"/>
+    <line x1="68" y1="118" x2="120" y2="118" stroke-width="1.2" stroke-opacity="0.45"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Navigating an IDE</text>
+</svg>

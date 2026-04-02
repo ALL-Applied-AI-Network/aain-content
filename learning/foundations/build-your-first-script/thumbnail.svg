@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#d946ef"/>
+      <stop offset="100%" stop-color="#00d4ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Rocket body -->
+  <g transform="translate(200,110)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <!-- Rocket nose cone -->
+    <path d="M0,-55 C12,-45 15,-25 15,5 L-15,5 C-15,-25 -12,-45 0,-55 Z" fill="url(#brand)" fill-opacity="0.1"/>
+    <!-- Rocket body -->
+    <rect x="-15" y="5" width="30" height="40" rx="2" fill="url(#brand)" fill-opacity="0.08"/>
+    <!-- Window -->
+    <circle cx="0" cy="0" r="6" fill="url(#brand)" fill-opacity="0.2"/>
+    <!-- Fins -->
+    <path d="M-15,30 L-28,48 L-15,45" fill="url(#brand)" fill-opacity="0.15"/>
+    <path d="M15,30 L28,48 L15,45" fill="url(#brand)" fill-opacity="0.15"/>
+    <!-- Flame -->
+    <path d="M-10,45 C-8,65 0,75 0,80 C0,75 8,65 10,45" stroke="url(#flame)" fill="url(#flame)" fill-opacity="0.2"/>
+    <path d="M-5,45 C-3,58 0,65 0,68 C0,65 3,58 5,45" stroke="url(#flame)" fill="url(#flame)" fill-opacity="0.3"/>
+  </g>
+  <!-- Code bracket base the rocket launches from -->
+  <g transform="translate(200,200)" fill="none" stroke="url(#brand)" stroke-width="2" stroke-opacity="0.5">
+    <path d="M-40,0 L-25,-12 M-40,0 L-25,12"/>
+    <line x1="-8" y1="-12" x2="8" y2="12"/>
+    <path d="M40,0 L25,-12 M40,0 L25,12"/>
+  </g>
+  <!-- Sparkle trail -->
+  <circle cx="188" cy="195" r="1.5" fill="url(#brand)" opacity="0.4"/>
+  <circle cx="215" cy="190" r="1" fill="url(#brand)" opacity="0.3"/>
+  <circle cx="195" cy="200" r="1" fill="url(#brand)" opacity="0.25"/>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Build Your First Script</text>
+</svg>

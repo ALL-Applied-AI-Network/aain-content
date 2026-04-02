@@ -1,0 +1,201 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-04-02T14:04:56.507Z",
+  "content": [
+    {
+      "type": "learning",
+      "id": "tooling/ai-ides/cursor-deep-dive",
+      "title": "Cursor Deep Dive",
+      "description": "Go beyond the basics — master Chat, Inline Edit, Composer, Tab completion, Cursor Rules, and advanced AI-assisted workflows",
+      "path": "learning/tooling/ai-ides/cursor-deep-dive/cursor-deep-dive.md",
+      "thumbnail": "learning/tooling/ai-ides/cursor-deep-dive/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "tooling/ai-ides/claude-code",
+      "title": "Claude Code",
+      "description": "Introduction to Anthropic's CLI-based AI coding agent — terminal-native, agentic, and built for real engineering workflows",
+      "path": "learning/tooling/ai-ides/claude-code/claude-code.md",
+      "thumbnail": "learning/tooling/ai-ides/claude-code/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/rag-fundamentals",
+      "title": "RAG Fundamentals",
+      "description": "Build retrieval-augmented generation pipelines from scratch — load documents, chunk text, create embeddings, store vectors, and generate grounded answers",
+      "path": "learning/intermediate/applied-ai/rag-fundamentals/rag-fundamentals.md",
+      "thumbnail": "learning/intermediate/applied-ai/rag-fundamentals/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/prompt-engineering",
+      "title": "Prompt Engineering",
+      "description": "Go beyond tips and tricks to engineer reliable, testable prompts that produce consistent results across system prompts, few-shot patterns, structured output, and chain-of-thought reasoning",
+      "path": "learning/intermediate/applied-ai/prompt-engineering/prompt-engineering.md",
+      "thumbnail": "learning/intermediate/applied-ai/prompt-engineering/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/how-ai-apis-work",
+      "title": "How AI APIs Work",
+      "description": "Understand the anatomy of AI API calls, make your first requests to Claude and OpenAI, and learn to manage keys, tokens, and costs like a professional",
+      "path": "learning/intermediate/applied-ai/how-ai-apis-work/how-ai-apis-work.md",
+      "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/evaluation-and-observability",
+      "title": "Evaluation and Observability",
+      "description": "The article most AI tutorials skip — how to systematically test your AI applications, build eval suites, track costs, and monitor production behavior",
+      "path": "learning/intermediate/applied-ai/evaluation-and-observability/evaluation-and-observability.md",
+      "thumbnail": "learning/intermediate/applied-ai/evaluation-and-observability/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/build-an-agent",
+      "title": "Build an Agent",
+      "description": "Capstone project — build a personal assistant agent from scratch with file I/O, code execution, web search, and proper error handling",
+      "path": "learning/intermediate/applied-ai/build-an-agent/build-an-agent.md",
+      "thumbnail": "learning/intermediate/applied-ai/build-an-agent/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/build-a-chatbot",
+      "title": "Build a Chatbot",
+      "description": "Build a real conversational AI application with multi-turn memory, streaming responses, and a web interface you can share with anyone",
+      "path": "learning/intermediate/applied-ai/build-a-chatbot/build-a-chatbot.md",
+      "thumbnail": "learning/intermediate/applied-ai/build-a-chatbot/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/agents-and-tool-use",
+      "title": "Agents and Tool Use",
+      "description": "Understand AI agents that take actions in the world — define tools as JSON schemas, let the model decide when to call them, and build your first agentic loop",
+      "path": "learning/intermediate/applied-ai/agents-and-tool-use/agents-and-tool-use.md",
+      "thumbnail": "learning/intermediate/applied-ai/agents-and-tool-use/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/what-is-programming",
+      "title": "What Is Programming? Code, Languages, and How Computers Think",
+      "description": "Understand what code actually is, why programming languages exist, why Python is the go-to for AI, and what it means to run a program",
+      "path": "learning/foundations/what-is-programming/what-is-programming.md",
+      "thumbnail": "learning/foundations/what-is-programming/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/what-is-ai",
+      "title": "What Is AI? The Real Story",
+      "description": "Understand what artificial intelligence actually is, how it's used today, and why applied AI engineering is one of the most exciting career paths you can choose",
+      "path": "learning/foundations/what-is-ai/what-is-ai.md",
+      "thumbnail": "learning/foundations/what-is-ai/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/setting-up-cursor",
+      "title": "Setting Up Cursor: Your AI-Powered Workspace",
+      "description": "Download, install, and configure Cursor — the AI-native code editor that will be your primary tool throughout this curriculum",
+      "path": "learning/foundations/setting-up-cursor/setting-up-cursor.md",
+      "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/reading-writing-data",
+      "title": "Reading and Writing Data",
+      "description": "Work with files, CSV, JSON, and live APIs in Python — the skills you need before connecting to AI services",
+      "path": "learning/foundations/reading-writing-data/reading-writing-data.md",
+      "thumbnail": "learning/foundations/reading-writing-data/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/python-through-ai",
+      "title": "Python Through AI: Learn by Reading, Not Memorizing",
+      "description": "Learn Python fundamentals the modern way — give AI a task, read what it writes, understand the patterns, and modify the code yourself",
+      "path": "learning/foundations/python-through-ai/python-through-ai.md",
+      "thumbnail": "learning/foundations/python-through-ai/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/navigating-an-ide",
+      "title": "Navigating an IDE: Finding Your Way Around Cursor",
+      "description": "Learn the layout of your code editor — the file explorer, editor area, terminal, and essential keyboard shortcuts that make you fast",
+      "path": "learning/foundations/navigating-an-ide/navigating-an-ide.md",
+      "thumbnail": "learning/foundations/navigating-an-ide/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/git-basics",
+      "title": "Git Basics: Saving Snapshots of Your Work",
+      "description": "Learn version control with Git and GitHub — track changes, write meaningful commits, and push your code to the cloud",
+      "path": "learning/foundations/git-basics/git-basics.md",
+      "thumbnail": "learning/foundations/git-basics/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/first-conversation-with-ai",
+      "title": "Your First Conversation with AI in Cursor",
+      "description": "Learn to use Cursor's AI features — chat, inline editing, and the composer — to write code by having a conversation instead of typing it from memory",
+      "path": "learning/foundations/first-conversation-with-ai/first-conversation-with-ai.md",
+      "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/files-folders-terminal",
+      "title": "Files, Folders, and the Terminal",
+      "description": "Understand how your computer organizes files, navigate with the command line, and run Python scripts from the terminal",
+      "path": "learning/foundations/files-folders-terminal/files-folders-terminal.md",
+      "thumbnail": "learning/foundations/files-folders-terminal/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/build-your-first-script",
+      "title": "Build Your First Script",
+      "description": "Combine everything you've learned into a real, useful Python project — planned with AI, built step by step, and pushed to GitHub",
+      "path": "learning/foundations/build-your-first-script/build-your-first-script.md",
+      "thumbnail": "learning/foundations/build-your-first-script/thumbnail.svg"
+    },
+    {
+      "type": "playbook",
+      "title": "Speaker Series: Bringing Industry to Campus",
+      "path": "playbooks/speaker-series/index.md"
+    },
+    {
+      "type": "playbook",
+      "title": "Research Groups: From Curiosity to Publication",
+      "path": "playbooks/research-groups/index.md"
+    },
+    {
+      "type": "playbook",
+      "title": "Innovation Labs: Sponsor-Backed AI Competitions",
+      "path": "playbooks/innovation-labs/index.md"
+    },
+    {
+      "type": "playbook",
+      "title": "Hackathons: Plan, Run, and Ship",
+      "path": "playbooks/hackathons/index.md"
+    },
+    {
+      "type": "playbook",
+      "title": "Getting Started: Launch Your AI Hub",
+      "path": "playbooks/getting-started/index.md"
+    },
+    {
+      "type": "workshop",
+      "title": "RAG from Scratch",
+      "description": "Build a retrieval-augmented generation system from the ground up — load documents, embed them, search them, and generate grounded answers",
+      "path": "workshops/rag-from-scratch/workshop.md"
+    },
+    {
+      "type": "workshop",
+      "title": "Prompt Engineering Lab",
+      "description": "A hands-on lab exploring prompt engineering techniques — from basic patterns to advanced strategies for reliable AI outputs",
+      "path": "workshops/prompt-engineering-lab/workshop.md"
+    },
+    {
+      "type": "workshop",
+      "title": "Build a Chatbot",
+      "description": "Build a functional AI chatbot from scratch using Python and the OpenAI API, with a web interface you can share",
+      "path": "workshops/build-a-chatbot/workshop.md"
+    }
+  ]
+}

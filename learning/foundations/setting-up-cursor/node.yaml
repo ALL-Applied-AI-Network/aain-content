@@ -1,0 +1,20 @@
+id: "foundations/setting-up-cursor"
+title: "Setting Up Cursor: Your AI-Powered Workspace"
+description: "Download, install, and configure Cursor — the AI-native code editor that will be your primary tool throughout this curriculum"
+layer: 0
+difficulty: beginner
+estimated_minutes: 30
+thumbnail: "thumbnail.svg"
+tags: ["setup", "cursor", "ide", "getting-started", "tools"]
+
+prerequisites:
+  - "foundations/what-is-ai"
+unlocks:
+  - "foundations/navigating-an-ide"
+  - "foundations/first-conversation-with-ai"
+  - "tooling/ai-ides/cursor-deep-dive"
+
+content_file: "setting-up-cursor.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

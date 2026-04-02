@@ -1,0 +1,20 @@
+id: "foundations/first-conversation-with-ai"
+title: "Your First Conversation with AI in Cursor"
+description: "Learn to use Cursor's AI features — chat, inline editing, and the composer — to write code by having a conversation instead of typing it from memory"
+layer: 0
+difficulty: beginner
+estimated_minutes: 25
+thumbnail: "thumbnail.svg"
+tags: ["ai", "cursor", "prompting", "chat", "pair-programming"]
+
+prerequisites:
+  - "foundations/setting-up-cursor"
+unlocks:
+  - "foundations/what-is-programming"
+  - "foundations/python-through-ai"
+  - "tooling/ai-ides/cursor-deep-dive"
+
+content_file: "first-conversation-with-ai.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

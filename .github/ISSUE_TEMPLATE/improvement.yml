@@ -1,0 +1,36 @@
+name: Improvement
+description: Suggest an improvement to existing content
+title: "[Improvement]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have an idea to make existing content better? We'd love to hear it.
+
+  - type: input
+    id: article-path
+    attributes:
+      label: Article Path
+      description: Path to the article you'd like to improve.
+      placeholder: e.g., "learning/core/embeddings/article.md"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-state
+    attributes:
+      label: Current State
+      description: Describe the current state of the content and what could be better.
+      placeholder: What does it currently say or cover?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-change
+    attributes:
+      label: Suggested Change
+      description: Describe your proposed improvement.
+      placeholder: What would make this content better?
+    validations:
+      required: true

@@ -1,0 +1,10 @@
+id: "series/getting-started"
+title: "Getting Started"
+description: "Your first steps into AI — from zero to your first AI conversation"
+difficulty: beginner
+nodes:
+  - "foundations/what-is-ai"
+  - "foundations/setting-up-cursor"
+  - "foundations/navigating-an-ide"
+  - "foundations/first-conversation-with-ai"
+  - "foundations/what-is-programming"

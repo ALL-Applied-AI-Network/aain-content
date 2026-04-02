@@ -1,0 +1,18 @@
+id: "intermediate/applied-ai/build-an-agent"
+title: "Build an Agent"
+description: "Capstone project — build a personal assistant agent from scratch with file I/O, code execution, web search, and proper error handling"
+layer: 2
+difficulty: intermediate
+estimated_minutes: 60
+thumbnail: "thumbnail.svg"
+tags: ["agent", "capstone", "project", "tool-use", "applied-ai"]
+
+prerequisites:
+  - "intermediate/applied-ai/agents-and-tool-use"
+unlocks:
+  - "intermediate/applied-ai/evaluation-and-observability"
+
+content_file: "build-an-agent.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

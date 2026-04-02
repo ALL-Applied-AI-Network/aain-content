@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Git branch diagram -->
+  <g fill="none" stroke="url(#brand)" stroke-width="2.5">
+    <!-- Main branch line -->
+    <line x1="120" y1="60" x2="120" y2="200" stroke-opacity="0.8"/>
+    <!-- Commit nodes on main -->
+    <circle cx="120" cy="70" r="7" fill="#0d0d1f" stroke-width="2.5"/>
+    <circle cx="120" cy="110" r="7" fill="#0d0d1f" stroke-width="2.5"/>
+    <circle cx="120" cy="160" r="7" fill="#0d0d1f" stroke-width="2.5"/>
+    <circle cx="120" cy="200" r="7" fill="url(#brand)" fill-opacity="0.3" stroke-width="2.5"/>
+    <!-- Feature branch -->
+    <path d="M120,110 C150,110 180,95 200,80" fill="none"/>
+    <line x1="200" y1="80" x2="200" y2="130" stroke-opacity="0.6"/>
+    <path d="M200,130 C200,145 170,160 120,160" fill="none"/>
+    <!-- Branch commit nodes -->
+    <circle cx="200" cy="80" r="6" fill="#0d0d1f" stroke-width="2"/>
+    <circle cx="200" cy="105" r="6" fill="#0d0d1f" stroke-width="2"/>
+    <circle cx="200" cy="130" r="6" fill="#0d0d1f" stroke-width="2"/>
+    <!-- Second branch -->
+    <path d="M120,160 C145,160 260,145 270,125" fill="none" stroke-opacity="0.5"/>
+    <circle cx="270" cy="125" r="5" fill="#0d0d1f" stroke-width="2" stroke-opacity="0.5"/>
+    <circle cx="270" cy="150" r="5" fill="#0d0d1f" stroke-width="2" stroke-opacity="0.5"/>
+    <line x1="270" y1="125" x2="270" y2="150" stroke-opacity="0.5"/>
+  </g>
+  <!-- Branch labels -->
+  <text x="100" y="225" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.6">main</text>
+  <text x="200" y="150" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.5">feature</text>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Git Basics</text>
+</svg>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALL Applied AI Network — Open-Source Applied AI Curriculum</title>
+  <meta name="description" content="Open-source applied AI curriculum — from zero to shipping AI products. Interactive skill tree, hands-on articles, and a community of builders." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="./" class="nav__brand">
+        <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+        <span>ALL Applied AI Network</span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="./" class="active">Home</a></li>
+        <li><a href="./tree.html">Skill Tree</a></li>
+        <li><a href="https://github.com/ALL-AAIN" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero — split layout with real content -->
+  <section class="hero">
+    <div class="hero__grid container">
+      <div class="hero__content">
+        <div class="hero__badge">Open-source curriculum</div>
+        <h1 class="hero__title">
+          Learn AI by building things that actually work.
+        </h1>
+        <p class="hero__subtitle">
+          We built this because most AI courses teach theory you'll never use.
+          This is a free, hands-on curriculum that starts with "open your IDE"
+          and ends with shipping real products. 19 lessons. Zero fluff.
+        </p>
+        <div class="hero__actions">
+          <a href="./tree.html" class="btn btn--primary">Open the skill tree</a>
+          <a href="./article.html?id=foundations/what-is-ai" class="btn btn--outline">Read the first lesson</a>
+        </div>
+        <p class="hero__proof">
+          Built by applied AI engineers at <strong>MSOE</strong> and <strong>Direct Supply</strong>.
+          Licensed CC BY-SA 4.0.
+        </p>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__tree-preview" id="hero-tree-preview">
+          <div id="tree-canvas" class="hero__tree-canvas"></div>
+          <div class="hero__tree-label">
+            <span>Interactive skill tree</span>
+            <a href="./tree.html">Explore full screen &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you'll build — concrete, not abstract -->
+  <section class="outcomes">
+    <div class="container">
+      <div class="outcomes__header">
+        <h2 class="outcomes__title">What you'll actually build</h2>
+        <p class="outcomes__desc">Each section ends with a real project. Not a toy demo&mdash;something you'd put in a portfolio.</p>
+      </div>
+      <div class="outcomes__grid">
+        <div class="outcome-card">
+          <div class="outcome-card__layer" style="--layer-color: var(--layer-0)">Foundations</div>
+          <h3 class="outcome-card__title">Your first AI-assisted script</h3>
+          <p class="outcome-card__desc">Set up an IDE, have your first conversation with an AI, and write a working Python script&mdash;even if you've never coded before.</p>
+          <span class="outcome-card__meta">5 lessons &middot; ~2 hours</span>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-card__layer" style="--layer-color: var(--layer-1)">Fundamentals</div>
+          <h3 class="outcome-card__title">A full dev environment + Git workflow</h3>
+          <p class="outcome-card__desc">Use the terminal, manage files, version control with Git, and build scripts that read and write data from real sources.</p>
+          <span class="outcome-card__meta">7 lessons &middot; ~4 hours</span>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-card__layer" style="--layer-color: var(--layer-2)">Applied AI</div>
+          <h3 class="outcome-card__title">A chatbot, RAG pipeline, and AI agent</h3>
+          <p class="outcome-card__desc">Call AI APIs, engineer prompts, build a chatbot, add retrieval-augmented generation, create an agent, and evaluate its quality.</p>
+          <span class="outcome-card__meta">7 lessons &middot; ~5 hours</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How this is different — not "how it works" -->
+  <section class="diff-section">
+    <div class="container">
+      <div class="diff-grid">
+        <div class="diff-grid__left">
+          <h2 class="diff-grid__title">This isn't another "intro to AI" course.</h2>
+          <p class="diff-grid__body">
+            Most AI curricula start with linear algebra and spend weeks before you touch a real model.
+            We start with the tools you'll actually use at work&mdash;AI-powered IDEs, APIs, prompt engineering&mdash;and
+            build up from there.
+          </p>
+          <p class="diff-grid__body">
+            Every lesson was written by engineers who ship AI products professionally.
+            No filler content. No "here's a Jupyter notebook, figure it out." Just clear explanations and real code.
+          </p>
+        </div>
+        <div class="diff-grid__right">
+          <ul class="diff-list">
+            <li class="diff-list__item">
+              <span class="diff-list__check">&#10003;</span>
+              <div>
+                <strong>Applied first, theory later.</strong>
+                Build a working chatbot before learning what embeddings are.
+              </div>
+            </li>
+            <li class="diff-list__item">
+              <span class="diff-list__check">&#10003;</span>
+              <div>
+                <strong>AI-native tooling from day one.</strong>
+                Cursor, Claude Code, and real AI APIs&mdash;not toy environments.
+              </div>
+            </li>
+            <li class="diff-list__item">
+              <span class="diff-list__check">&#10003;</span>
+              <div>
+                <strong>Actually free. Actually open-source.</strong>
+                CC BY-SA 4.0 content. MIT code. Fork it, remix it, teach with it.
+              </div>
+            </li>
+            <li class="diff-list__item">
+              <span class="diff-list__check">&#10003;</span>
+              <div>
+                <strong>Built by builders.</strong>
+                Written by working AI engineers, not content marketers.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum snapshot — concrete numbers -->
+  <section class="curriculum-snap">
+    <div class="container">
+      <div class="snap-grid">
+        <div class="snap-item">
+          <span class="snap-item__number" id="stat-nodes">19</span>
+          <span class="snap-item__label">lessons across 3 skill layers</span>
+        </div>
+        <div class="snap-item">
+          <span class="snap-item__number" id="stat-hours">~11</span>
+          <span class="snap-item__label">hours from zero to shipping</span>
+        </div>
+        <div class="snap-item">
+          <span class="snap-item__number">100%</span>
+          <span class="snap-item__label">free and open-source</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Series / Tracks (if any exist) -->
+  <section class="section" id="series-section" style="display:none">
+    <div class="container">
+      <h2 class="section__title">Learning Tracks</h2>
+      <p class="section__subtitle">Follow a curated series from start to finish, or mix and match based on your goals.</p>
+      <div class="series-grid" id="series-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA — different from hero -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="final-cta__title">Start with lesson one.</h2>
+      <p class="final-cta__desc">No sign-up. No paywall. Just open the first article and start building.</p>
+      <div class="final-cta__actions">
+        <a href="./article.html?id=foundations/what-is-ai" class="btn btn--primary btn--lg">Read: "What Is AI? The Real Story"</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand-area">
+          <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="footer__brand-logo" />
+          <span class="footer__brand">ALL Applied AI Network</span>
+        </div>
+        <p class="footer__legal">
+          Content licensed under CC BY-SA 4.0. Code licensed under MIT.<br />
+          Built at MSOE. Maintained by the ALL community.
+        </p>
+      </div>
+      <div class="footer__links">
+        <ul class="footer__link-col">
+          <li><a href="./tree.html">Skill Tree</a></li>
+          <li><a href="./article.html?id=foundations/what-is-ai">First Lesson</a></li>
+          <li><a href="https://github.com/ALL-AAIN" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://github.com/ALL-AAIN/aai-hub-template" target="_blank" rel="noopener">Start a Hub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+  </script>
+  <script type="module" src="./ts/home.ts"></script>
+</body>
+</html>

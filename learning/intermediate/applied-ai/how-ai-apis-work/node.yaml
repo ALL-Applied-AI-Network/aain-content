@@ -1,0 +1,21 @@
+id: "intermediate/applied-ai/how-ai-apis-work"
+title: "How AI APIs Work"
+description: "Understand the anatomy of AI API calls, make your first requests to Claude and OpenAI, and learn to manage keys, tokens, and costs like a professional"
+layer: 2
+difficulty: intermediate
+estimated_minutes: 45
+thumbnail: "thumbnail.svg"
+tags: ["api", "claude", "openai", "python", "applied-ai", "sdk"]
+
+prerequisites:
+  - "foundations/git-basics"
+  - "foundations/reading-writing-data"
+  - "foundations/build-your-first-script"
+unlocks:
+  - "intermediate/applied-ai/prompt-engineering"
+  - "intermediate/applied-ai/build-a-chatbot"
+
+content_file: "how-ai-apis-work.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Chat bubble (user) -->
+  <g transform="translate(120,55)">
+    <rect width="130" height="36" rx="18" fill="none" stroke="url(#brand)" stroke-width="2"/>
+    <line x1="30" y1="14" x2="100" y2="14" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.5"/>
+    <line x1="30" y1="24" x2="75" y2="24" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4"/>
+  </g>
+  <!-- Chat bubble (AI response) -->
+  <g transform="translate(150,110)">
+    <rect width="150" height="50" rx="18" fill="url(#brand)" fill-opacity="0.12" stroke="url(#brand)" stroke-width="2"/>
+    <line x1="25" y1="16" x2="125" y2="16" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.5"/>
+    <line x1="25" y1="26" x2="110" y2="26" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4"/>
+    <line x1="25" y1="36" x2="80" y2="36" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.35"/>
+  </g>
+  <!-- Sparkle / AI indicator -->
+  <g transform="translate(168,90)" fill="url(#brand)">
+    <path d="M0,-10 L2.5,-2.5 L10,0 L2.5,2.5 L0,10 L-2.5,2.5 L-10,0 L-2.5,-2.5 Z"/>
+  </g>
+  <!-- Small sparkle -->
+  <g transform="translate(290,105)" fill="url(#brand)" opacity="0.6">
+    <path d="M0,-6 L1.5,-1.5 L6,0 L1.5,1.5 L0,6 L-1.5,1.5 L-6,0 L-1.5,-1.5 Z"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">First Conversation with AI</text>
+</svg>

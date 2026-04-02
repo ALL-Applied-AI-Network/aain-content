@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Large code brackets < / > -->
+  <g transform="translate(200,115)" fill="none" stroke="url(#brand)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left bracket < -->
+    <polyline points="-60,-45 -95,0 -60,45"/>
+    <!-- Right bracket > -->
+    <polyline points="60,-45 95,0 60,45"/>
+    <!-- Forward slash / -->
+    <line x1="18" y1="-40" x2="-18" y2="40"/>
+  </g>
+  <!-- Subtle code particles -->
+  <circle cx="130" cy="60" r="2" fill="url(#brand)" opacity="0.3"/>
+  <circle cx="275" cy="75" r="1.5" fill="url(#brand)" opacity="0.25"/>
+  <circle cx="145" cy="170" r="1.5" fill="url(#brand)" opacity="0.2"/>
+  <circle cx="260" cy="165" r="2" fill="url(#brand)" opacity="0.3"/>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">What Is Programming?</text>
+</svg>

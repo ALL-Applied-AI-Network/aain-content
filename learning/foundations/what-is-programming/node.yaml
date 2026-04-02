@@ -1,0 +1,20 @@
+id: "foundations/what-is-programming"
+title: "What Is Programming? Code, Languages, and How Computers Think"
+description: "Understand what code actually is, why programming languages exist, why Python is the go-to for AI, and what it means to run a program"
+layer: 0
+difficulty: beginner
+estimated_minutes: 20
+thumbnail: "thumbnail.svg"
+tags: ["programming", "python", "code", "fundamentals", "concepts"]
+
+prerequisites:
+  - "foundations/navigating-an-ide"
+  - "foundations/first-conversation-with-ai"
+unlocks:
+  - "foundations/python-through-ai"
+  - "foundations/files-folders-terminal"
+
+content_file: "what-is-programming.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

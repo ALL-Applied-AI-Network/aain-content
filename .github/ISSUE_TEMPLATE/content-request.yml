@@ -1,0 +1,49 @@
+name: Content Request
+description: Request a new article or topic
+title: "[Content Request]: "
+labels: ["content-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting new content! Please fill out the details below.
+
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      description: What topic should the article cover?
+      placeholder: e.g., "Fine-tuning LLMs with LoRA"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Learning Layer
+      description: Which layer of the learning path does this belong to?
+      options:
+        - Foundations
+        - Core
+        - Applied
+        - Advanced
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe what the article should cover and its scope.
+      placeholder: Tell us about the content you'd like to see...
+    validations:
+      required: true
+
+  - type: textarea
+    id: why-it-matters
+    attributes:
+      label: Why It Matters
+      description: Why is this topic important for applied AI engineers?
+      placeholder: Explain the practical relevance of this topic...
+    validations:
+      required: true

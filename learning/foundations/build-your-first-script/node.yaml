@@ -1,0 +1,19 @@
+id: "foundations/build-your-first-script"
+title: "Build Your First Script"
+description: "Combine everything you've learned into a real, useful Python project — planned with AI, built step by step, and pushed to GitHub"
+layer: 1
+difficulty: beginner
+estimated_minutes: 40
+thumbnail: "thumbnail.svg"
+tags: ["python", "capstone", "project", "ai-assisted", "github"]
+
+prerequisites:
+  - "foundations/python-through-ai"
+  - "foundations/reading-writing-data"
+unlocks:
+  - "intermediate/applied-ai/how-ai-apis-work"
+
+content_file: "build-your-first-script.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

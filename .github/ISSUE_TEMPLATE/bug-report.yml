@@ -1,0 +1,36 @@
+name: Bug Report
+description: Report a content error or inaccuracy
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Found an error? Let us know so we can fix it.
+
+  - type: input
+    id: article-path
+    attributes:
+      label: Article Path
+      description: Path to the article with the error.
+      placeholder: e.g., "learning/foundations/intro-to-transformers/article.md"
+    validations:
+      required: true
+
+  - type: textarea
+    id: whats-wrong
+    attributes:
+      label: What's Wrong
+      description: Describe the error or inaccuracy you found.
+      placeholder: Explain the issue...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-fix
+    attributes:
+      label: Suggested Fix
+      description: If you know the correct information, share it here.
+      placeholder: What should it say instead?
+    validations:
+      required: false

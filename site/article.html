@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article — ALL Applied AI Network</title>
+  <meta name="description" content="Learning article from the ALL Applied AI Network curriculum." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="./" class="nav__brand">
+        <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+        <span>ALL Applied AI Network</span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="./tree.html">Skill Tree</a></li>
+        <li><a href="https://github.com/ALL-AAIN" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-track">
+    <div class="reading-progress" id="reading-progress"></div>
+  </div>
+
+  <!-- Content Area -->
+  <main class="article-layout">
+    <div>
+      <!-- Breadcrumb -->
+      <div class="breadcrumb" id="breadcrumb">
+        <a href="./">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <span id="breadcrumb-layer">Loading...</span>
+      </div>
+
+      <!-- Rendered Article -->
+      <article class="article-content" id="article-content">
+        <div class="loading">
+          <div class="loading__spinner"></div>
+          Loading article...
+        </div>
+      </article>
+
+      <!-- Prev / Next Nav -->
+      <div class="article-nav" id="article-nav" style="display:none">
+        <div id="nav-prev"></div>
+        <div id="nav-next"></div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="article-sidebar" id="article-sidebar" style="display:none">
+      <div class="article-sidebar__card">
+        <div class="article-sidebar__section" id="sidebar-meta"></div>
+        <div class="article-sidebar__section" id="sidebar-prereqs"></div>
+        <div class="article-sidebar__section" id="sidebar-unlocks"></div>
+        <div class="article-sidebar__section" id="sidebar-tags"></div>
+      </div>
+      <div class="article-sidebar__toc" id="sidebar-toc" style="display:none"></div>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand-area">
+          <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="footer__brand-logo" />
+          <span class="footer__brand">ALL Applied AI Network</span>
+        </div>
+        <p class="footer__legal">
+          Content licensed under CC BY-SA 4.0. Code licensed under MIT.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+  </script>
+  <script type="module" src="./ts/article-page.ts"></script>
+
+</body>
+</html>

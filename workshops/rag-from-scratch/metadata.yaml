@@ -1,0 +1,6 @@
+title: "RAG from Scratch"
+description: "Build a retrieval-augmented generation system from the ground up — load documents, embed them, search them, and generate grounded answers"
+difficulty: intermediate
+estimated_minutes: 90
+tags: [rag, embeddings, vector-search, openai, python, applied-ai]
+author: "ALL Applied AI Network"

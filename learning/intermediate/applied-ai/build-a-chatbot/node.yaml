@@ -1,0 +1,20 @@
+id: "intermediate/applied-ai/build-a-chatbot"
+title: "Build a Chatbot"
+description: "Build a real conversational AI application with multi-turn memory, streaming responses, and a web interface you can share with anyone"
+layer: 2
+difficulty: intermediate
+estimated_minutes: 60
+thumbnail: "thumbnail.svg"
+tags: ["chatbot", "conversation", "streaming", "gradio", "applied-ai", "project"]
+
+prerequisites:
+  - "intermediate/applied-ai/how-ai-apis-work"
+  - "intermediate/applied-ai/prompt-engineering"
+unlocks:
+  - "intermediate/applied-ai/rag-fundamentals"
+  - "intermediate/applied-ai/agents-and-tool-use"
+
+content_file: "build-a-chatbot.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

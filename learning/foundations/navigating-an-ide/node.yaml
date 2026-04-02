@@ -1,0 +1,18 @@
+id: "foundations/navigating-an-ide"
+title: "Navigating an IDE: Finding Your Way Around Cursor"
+description: "Learn the layout of your code editor — the file explorer, editor area, terminal, and essential keyboard shortcuts that make you fast"
+layer: 0
+difficulty: beginner
+estimated_minutes: 25
+thumbnail: "thumbnail.svg"
+tags: ["ide", "cursor", "navigation", "terminal", "keyboard-shortcuts"]
+
+prerequisites:
+  - "foundations/setting-up-cursor"
+unlocks:
+  - "foundations/what-is-programming"
+
+content_file: "navigating-an-ide.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

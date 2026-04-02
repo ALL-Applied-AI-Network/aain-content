@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skill Tree — ALL Applied AI Network</title>
+  <meta name="description" content="Interactive skill tree visualization for the ALL Applied AI Network curriculum." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="tree-page">
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav__inner">
+        <a href="./" class="nav__brand">
+          <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+          <span>ALL Applied AI Network</span>
+        </a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="./">Home</a></li>
+          <li><a href="./tree.html" class="active">Skill Tree</a></li>
+          <li><a href="https://github.com/ALL-AAIN" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Toolbar -->
+    <div class="tree-toolbar">
+      <div class="tree-toolbar__group">
+        <span class="tree-toolbar__label">Layer</span>
+        <button class="filter-btn" data-layer="all">All</button>
+        <button class="filter-btn" data-layer="0">0 Foundations</button>
+        <button class="filter-btn" data-layer="1">1 Fundamentals</button>
+        <button class="filter-btn" data-layer="2">2 Intermediate</button>
+        <button class="filter-btn" data-layer="3">3 Advanced</button>
+        <button class="filter-btn" data-layer="4">4 Expert</button>
+        <button class="filter-btn" data-layer="5">5 Mastery</button>
+      </div>
+
+      <div class="tree-toolbar__sep"></div>
+
+      <div class="tree-toolbar__group">
+        <span class="tree-toolbar__label">Series</span>
+        <select id="series-select" class="filter-btn" style="min-width:160px;background:transparent;color:var(--text-secondary);border:1px solid var(--border-subtle);padding:0.3rem 0.5rem;font-family:inherit;font-size:0.7rem;border-radius:999px">
+          <option value="">All Series</option>
+        </select>
+      </div>
+
+      <div class="tree-toolbar__sep"></div>
+
+      <div class="tree-toolbar__group">
+        <span class="tree-toolbar__label">Difficulty</span>
+        <button class="filter-btn" data-diff="all">All</button>
+        <button class="filter-btn" data-diff="beginner">Beginner</button>
+        <button class="filter-btn" data-diff="intermediate">Intermediate</button>
+        <button class="filter-btn" data-diff="advanced">Advanced</button>
+        <button class="filter-btn" data-diff="expert">Expert</button>
+      </div>
+
+      <div style="margin-left:auto">
+        <button class="filter-btn" id="btn-fit">Fit View</button>
+      </div>
+    </div>
+
+    <!-- Tree Canvas -->
+    <div class="tree-container" id="tree-container">
+      <div class="loading" id="tree-loading">
+        <div class="loading__spinner"></div>
+        Loading skill tree...
+      </div>
+    </div>
+
+    <!-- Detail Panel (slides in from right) -->
+    <div class="node-panel" id="node-panel"></div>
+
+  </div>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+  </script>
+  <script type="module" src="./ts/tree-page.ts"></script>
+</body>
+</html>

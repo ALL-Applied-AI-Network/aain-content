@@ -1,0 +1,17 @@
+id: "tooling/ai-ides/claude-code"
+title: "Claude Code"
+description: "Introduction to Anthropic's CLI-based AI coding agent — terminal-native, agentic, and built for real engineering workflows"
+layer: 1
+difficulty: beginner
+estimated_minutes: 30
+thumbnail: "thumbnail.svg"
+tags: ["claude-code", "cli", "terminal", "anthropic", "ai-coding", "tooling"]
+
+prerequisites:
+  - "tooling/ai-ides/cursor-deep-dive"
+unlocks: []
+
+content_file: "claude-code.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

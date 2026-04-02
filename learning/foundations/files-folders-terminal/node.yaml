@@ -1,0 +1,18 @@
+id: "foundations/files-folders-terminal"
+title: "Files, Folders, and the Terminal"
+description: "Understand how your computer organizes files, navigate with the command line, and run Python scripts from the terminal"
+layer: 1
+difficulty: beginner
+estimated_minutes: 30
+thumbnail: "thumbnail.svg"
+tags: ["terminal", "command-line", "filesystem", "environment-variables"]
+
+prerequisites:
+  - "foundations/what-is-programming"
+unlocks:
+  - "foundations/git-basics"
+
+content_file: "files-folders-terminal.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"

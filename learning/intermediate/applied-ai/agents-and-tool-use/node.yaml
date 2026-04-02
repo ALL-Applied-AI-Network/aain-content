@@ -1,0 +1,20 @@
+id: "intermediate/applied-ai/agents-and-tool-use"
+title: "Agents and Tool Use"
+description: "Understand AI agents that take actions in the world — define tools as JSON schemas, let the model decide when to call them, and build your first agentic loop"
+layer: 2
+difficulty: intermediate
+estimated_minutes: 55
+thumbnail: "thumbnail.svg"
+tags: ["agents", "tool-use", "function-calling", "agentic", "applied-ai"]
+
+prerequisites:
+  - "intermediate/applied-ai/build-a-chatbot"
+  - "intermediate/applied-ai/rag-fundamentals"
+unlocks:
+  - "intermediate/applied-ai/build-an-agent"
+  - "intermediate/applied-ai/evaluation-and-observability"
+
+content_file: "agents-and-tool-use.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-03-30"
