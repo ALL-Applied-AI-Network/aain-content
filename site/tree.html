@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skill Tree — ALL Applied AI Network</title>
-  <meta name="description" content="Interactive skill tree visualization for the ALL Applied AI Network curriculum." />
+  <title>Learning Content — ALL Applied AI Network</title>
+  <meta name="description" content="Curated AI learning paths — we sorted through the best resources that already exist and mapped them into a skill tree you can follow." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./tree.css" />
 </head>
 <body>
   <div class="tree-page">
@@ -23,60 +25,103 @@
         <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
         <ul class="nav__links" id="nav-links">
           <li><a href="./">Home</a></li>
-          <li><a href="./tree.html" class="active">Skill Tree</a></li>
-          <li><a href="https://github.com/ALL-AAIN" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="./tree.html" class="active">Learning Content</a></li>
+          <li><a href="./toolkit.html">Hub Toolkit</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
     </nav>
 
-    <!-- Toolbar -->
-    <div class="tree-toolbar">
-      <div class="tree-toolbar__group">
-        <span class="tree-toolbar__label">Layer</span>
-        <button class="filter-btn" data-layer="all">All</button>
-        <button class="filter-btn" data-layer="0">0 Foundations</button>
-        <button class="filter-btn" data-layer="1">1 Fundamentals</button>
-        <button class="filter-btn" data-layer="2">2 Intermediate</button>
-        <button class="filter-btn" data-layer="3">3 Advanced</button>
-        <button class="filter-btn" data-layer="4">4 Expert</button>
-        <button class="filter-btn" data-layer="5">5 Mastery</button>
+    <!-- Main layout: sidebar + tree -->
+    <div class="tree-layout">
+
+      <!-- Left Sidebar (Figma-style layers panel) -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar__inner">
+          <!-- Search -->
+          <div class="sidebar__search">
+            <span class="material-icons-outlined sidebar__search-icon">search</span>
+            <input
+              type="text"
+              id="sidebar-search"
+              class="sidebar__search-input"
+              placeholder="Search lessons..."
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <kbd class="sidebar__search-kbd" id="search-kbd">&#8984;K</kbd>
+          </div>
+
+          <!-- Learning Content sections (populated by JS) -->
+          <div class="sidebar__sections" id="sidebar-sections"></div>
+
+          <!-- Divider -->
+          <div class="sidebar__divider"></div>
+
+          <!-- Playbooks -->
+          <div class="sidebar__extra-section">
+            <div class="sidebar__extra-header">
+              <span class="material-icons-outlined sidebar__extra-icon">menu_book</span>
+              <span class="sidebar__extra-title">Playbooks</span>
+            </div>
+            <a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener" class="sidebar__extra-item">
+              <span class="sidebar__extra-item-title">Starting Your AI Club</span>
+              <span class="material-icons-outlined sidebar__extra-link-icon">open_in_new</span>
+            </a>
+          </div>
+
+          <!-- Event Frameworks -->
+          <div class="sidebar__extra-section">
+            <div class="sidebar__extra-header">
+              <span class="material-icons-outlined sidebar__extra-icon">event</span>
+              <span class="sidebar__extra-title">Event Frameworks</span>
+            </div>
+            <a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener" class="sidebar__extra-item">
+              <span class="sidebar__extra-item-title">Hackathon Framework</span>
+              <span class="material-icons-outlined sidebar__extra-link-icon">open_in_new</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Collapse toggle -->
+        <button class="sidebar__collapse-btn" id="sidebar-collapse" aria-label="Collapse sidebar">
+          <span class="material-icons-outlined">chevron_left</span>
+        </button>
+      </aside>
+
+      <!-- Collapsed sidebar strip -->
+      <div class="sidebar-strip" id="sidebar-strip">
+        <button class="sidebar-strip__expand" id="sidebar-expand" aria-label="Expand sidebar">
+          <span class="material-icons-outlined">menu</span>
+        </button>
+        <div class="sidebar-strip__dots" id="sidebar-strip-dots"></div>
       </div>
 
-      <div class="tree-toolbar__sep"></div>
-
-      <div class="tree-toolbar__group">
-        <span class="tree-toolbar__label">Series</span>
-        <select id="series-select" class="filter-btn" style="min-width:160px;background:transparent;color:var(--text-secondary);border:1px solid var(--border-subtle);padding:0.3rem 0.5rem;font-family:inherit;font-size:0.7rem;border-radius:999px">
-          <option value="">All Series</option>
-        </select>
+      <!-- Tree View (always visible) -->
+      <div class="tree-container" id="tree-container">
+        <div class="tree-container__glow" id="tree-glow"></div>
+        <div class="loading" id="tree-loading">
+          <div class="loading__spinner"></div>
+          Loading skill tree&hellip;
+        </div>
       </div>
 
-      <div class="tree-toolbar__sep"></div>
-
-      <div class="tree-toolbar__group">
-        <span class="tree-toolbar__label">Difficulty</span>
-        <button class="filter-btn" data-diff="all">All</button>
-        <button class="filter-btn" data-diff="beginner">Beginner</button>
-        <button class="filter-btn" data-diff="intermediate">Intermediate</button>
-        <button class="filter-btn" data-diff="advanced">Advanced</button>
-        <button class="filter-btn" data-diff="expert">Expert</button>
-      </div>
-
-      <div style="margin-left:auto">
-        <button class="filter-btn" id="btn-fit">Fit View</button>
-      </div>
     </div>
 
-    <!-- Tree Canvas -->
-    <div class="tree-container" id="tree-container">
-      <div class="loading" id="tree-loading">
-        <div class="loading__spinner"></div>
-        Loading skill tree...
-      </div>
-    </div>
-
-    <!-- Detail Panel (slides in from right) -->
+    <!-- Detail Panel (slides in from right — coexists with sidebar) -->
     <div class="node-panel" id="node-panel"></div>
+
+    <!-- Mobile: floating button to open sidebar as bottom sheet -->
+    <button class="mobile-fab" id="mobile-fab" aria-label="Open content list">
+      <span class="material-icons-outlined">list</span>
+    </button>
+
+    <!-- Mobile: bottom sheet overlay -->
+    <div class="bottom-sheet-overlay" id="bottom-sheet-overlay"></div>
+    <div class="bottom-sheet" id="bottom-sheet">
+      <div class="bottom-sheet__handle"></div>
+      <div class="bottom-sheet__content" id="bottom-sheet-content"></div>
+    </div>
 
   </div>
 

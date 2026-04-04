@@ -384,7 +384,7 @@ function showError(msg: string): void {
         <div class="callout__header">Error</div>
         <div class="callout__body"><p>${msg}</p></div>
       </div>
-      <p><a href="./">Return to Home</a> or <a href="./tree.html">browse the Skill Tree</a>.</p>
+      <p><a href="./">Return to Home</a> or <a href="./tree.html">browse Learning Content</a>.</p>
     `;
   }
 }

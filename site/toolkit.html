@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hub Toolkit — ALL Applied AI Network</title>
+  <meta name="description" content="Playbooks, event frameworks, and operational guides for starting and running an AI hub at your university." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="./" class="nav__brand">
+        <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+        <span>ALL Applied AI Network</span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="./tree.html">Learning Content</a></li>
+        <li><a href="./toolkit.html" class="active">Hub Toolkit</a></li>
+        <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section style="padding:8rem 0 4rem;text-align:center">
+    <div class="container container--narrow">
+      <span class="material-icons-outlined" style="font-size:3rem;color:var(--text-muted);margin-bottom:1rem;display:block">construction</span>
+      <h1 style="font-family:var(--font-display);font-size:2rem;margin-bottom:1rem">Hub Toolkit</h1>
+      <p style="color:var(--text-secondary);font-size:1rem;line-height:1.7;margin-bottom:2rem">
+        Playbooks, event frameworks, and operational templates for starting and running an AI hub at your university.
+        This page is under construction &mdash; content is being migrated from the
+        <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" target="_blank" rel="noopener">hub template repo</a>.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" target="_blank" rel="noopener" class="btn btn--primary">
+          <span class="material-icons-outlined" style="font-size:1rem">open_in_new</span>
+          View on GitHub
+        </a>
+        <a href="./" class="btn btn--outline">Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand-area">
+          <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="footer__brand-logo" />
+          <span class="footer__brand">ALL Applied AI Network</span>
+        </div>
+        <p class="footer__legal">
+          Content licensed under CC BY-SA 4.0. Code licensed under MIT.<br />
+          Built at MSOE. Maintained by the ALL community.
+        </p>
+      </div>
+      <div class="footer__links">
+        <ul class="footer__link-col">
+          <li><a href="./tree.html">Learning Content</a></li>
+          <li><a href="./toolkit.html">Hub Toolkit</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+  </script>
+</body>
+</html>

@@ -847,6 +847,45 @@ export class TreeVisualization {
     const transform = d3.zoomIdentity.translate(tx, ty).scale(scale);
     this.svg.transition().duration(750).call(this.zoom.transform, transform);
   }
+
+  /**
+   * Fly/zoom the viewport to center on a specific node by ID.
+   * Smoothly animates to the node with a comfortable zoom level.
+   */
+  flyToNode(nodeId: string): void {
+    const node = this.nodes.find((n) => n.id === nodeId);
+    if (!node) return;
+
+    const containerEl = this.opts.container;
+    const w = containerEl.clientWidth;
+    const h = containerEl.clientHeight;
+
+    const scale = 1.0;
+    const tx = w / 2 - (node.x + NODE_WIDTH / 2) * scale;
+    const ty = h / 2 - (node.y + NODE_HEIGHT / 2) * scale;
+
+    const transform = d3.zoomIdentity.translate(tx, ty).scale(scale);
+    this.svg
+      .transition()
+      .duration(800)
+      .ease(d3.easeCubicInOut)
+      .call(this.zoom.transform, transform);
+  }
+
+  /**
+   * Visually highlight (or un-highlight) a node from the sidebar.
+   * Applies a glow effect and brightened edges without zooming.
+   */
+  highlightNodeVisual(nodeId: string, active: boolean): void {
+    const node = this.nodes.find((n) => n.id === nodeId);
+    if (!node) return;
+
+    if (active) {
+      this.onNodeHover(node, true);
+    } else {
+      this.onNodeHover(node, false);
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -890,6 +929,8 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
     ? `<div class="node-panel__thumb"><img src="./${node.thumbnail}" alt="${node.title}" /></div>`
     : "";
 
+  panel.style.setProperty("--panel-accent", color);
+
   panel.innerHTML = `
     <button class="node-panel__close" aria-label="Close">&times;</button>
     ${thumbHtml}
@@ -925,7 +966,7 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
         ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Unlocks</p><ul class="node-panel__link-list">${unlockLinks}</ul>`
         : ""
     }
-    <a href="${articleUrl(node.id)}" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:12px;background:linear-gradient(135deg,${color},${LAYER_COLORS[Math.min(node.layer + 1, 5)] || color});border:none;color:#fff;font-weight:600;padding:10px 16px;border-radius:8px;text-decoration:none;display:flex;align-items:center;gap:6px">Read Article <span style="font-size:1.1em">&rarr;</span></a>
+    <a href="${articleUrl(node.id)}" class="node-panel__cta" style="background:linear-gradient(135deg,${color},${LAYER_COLORS[Math.min(node.layer + 1, 5)] || color})">Read Article <span style="font-size:1.1em">&rarr;</span></a>
   `;
 
   panel.classList.add("open");

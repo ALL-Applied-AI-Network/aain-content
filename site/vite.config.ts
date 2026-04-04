@@ -35,6 +35,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         tree: resolve(__dirname, "tree.html"),
         article: resolve(__dirname, "article.html"),
+        toolkit: resolve(__dirname, "toolkit.html"),
       },
     },
   },
