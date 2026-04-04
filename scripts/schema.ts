@@ -8,6 +8,34 @@
 import { z } from "zod";
 
 // ---------------------------------------------------------------------------
+// Contributor & Resource schemas
+// ---------------------------------------------------------------------------
+
+/** A contributor to a piece of content (author, curator, reviewer, etc.). */
+export const ContributorSchema = z.object({
+  name: z.string().min(1),
+  role: z.enum(["author", "curator", "reviewer", "editor"]).default("author"),
+  url: z.string().url().optional(),
+  github: z.string().optional(),
+  affiliation: z.string().optional(),
+});
+export type Contributor = z.infer<typeof ContributorSchema>;
+
+/** An external resource curated alongside a learning node. */
+export const ResourceSchema = z.object({
+  title: z.string().min(1),
+  url: z.string().url(),
+  type: z
+    .enum(["article", "video", "course", "tool", "paper", "repo"])
+    .default("article"),
+  /** Editorial note: why this resource was chosen for this point in the path. */
+  note: z.string().optional(),
+  /** Name of the person who curated this link. */
+  contributor: z.string().optional(),
+});
+export type Resource = z.infer<typeof ResourceSchema>;
+
+// ---------------------------------------------------------------------------
 // Enums & primitives
 // ---------------------------------------------------------------------------
 
@@ -66,8 +94,14 @@ export const NodeYamlSchema = z.object({
   /** Optional Jupyter notebook file. */
   notebook_file: z.string().nullable().optional(),
 
-  /** Content author. */
+  /** Content author (legacy — use contributors array instead). */
   author: z.string().optional(),
+
+  /** Structured contributor list with attribution. */
+  contributors: z.array(ContributorSchema).default([]),
+
+  /** Curated external resources with editorial context. */
+  resources: z.array(ResourceSchema).default([]),
 
   /** ISO date string of last update. */
   last_updated: z.string().optional(),
@@ -105,6 +139,9 @@ export const MetadataYamlSchema = z.object({
   difficulty: DifficultyEnum,
   estimated_minutes: z.number().int().positive(),
   tags: z.array(z.string().min(1)).default([]),
+  author: z.string().optional(),
+  contributors: z.array(ContributorSchema).default([]),
+  resources: z.array(ResourceSchema).default([]),
 });
 
 export type MetadataYaml = z.infer<typeof MetadataYamlSchema>;

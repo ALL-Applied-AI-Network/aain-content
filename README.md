@@ -42,8 +42,8 @@
     <td align="center"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://nvidia.com"><img src="brand/sponsors/nvidia.png" alt="NVIDIA" height="48" /></a></td>
-    <td align="center"><a href="https://directsupply.com"><img src="brand/sponsors/direct-supply.png" alt="Direct Supply" height="48" /></a></td>
+    <td align="center"><a href="https://nvidia.com"><img src="public/logos/nvidia_logo.png" alt="NVIDIA" height="48" /></a></td>
+    <td align="center"><a href="https://directsupply.com"><img src="public/logos/direct_supply_logo.png" alt="Direct Supply" height="48" /></a></td>
     <td align="center"><a href="https://all-aain.org/sponsors"><em>Your logo here</em></a></td>
     <td align="center"><a href="https://all-aain.org/sponsors"><em>Your logo here</em></a></td>
   </tr>

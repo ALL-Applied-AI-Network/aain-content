@@ -32,6 +32,22 @@ const OUTPUT_PATH = path.join(CONTENT_ROOT, "tree.json");
 // Types for the output JSON
 // ---------------------------------------------------------------------------
 
+interface TreeContributor {
+  name: string;
+  role: string;
+  url?: string;
+  github?: string;
+  affiliation?: string;
+}
+
+interface TreeResource {
+  title: string;
+  url: string;
+  type: string;
+  note?: string;
+  contributor?: string;
+}
+
 interface TreeNode {
   id: string;
   title: string;
@@ -46,6 +62,8 @@ interface TreeNode {
   content_path: string;
   notebook_path?: string;
   author?: string;
+  contributors: TreeContributor[];
+  resources: TreeResource[];
   last_updated?: string;
 }
 
@@ -140,6 +158,12 @@ function generateTree(): TreeJson {
   // Build tree nodes with paths relative to the content root
   const treeNodes: TreeNode[] = loadedNodes.map(({ parsed, dirPath }) => {
     const relDir = path.relative(CONTENT_ROOT, dirPath);
+    // Normalize contributors: if only legacy `author` is set, convert it
+    let contributors = parsed.contributors || [];
+    if (contributors.length === 0 && parsed.author) {
+      contributors = [{ name: parsed.author, role: "author" as const }];
+    }
+
     const node: TreeNode = {
       id: parsed.id,
       title: parsed.title,
@@ -152,6 +176,8 @@ function generateTree(): TreeJson {
       prerequisites: parsed.prerequisites,
       unlocks: parsed.unlocks,
       content_path: path.join(relDir, parsed.content_file),
+      contributors,
+      resources: parsed.resources || [],
     };
 
     if (parsed.notebook_file) {

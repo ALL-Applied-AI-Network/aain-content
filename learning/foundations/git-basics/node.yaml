@@ -16,3 +16,11 @@ content_file: "git-basics.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+contributors:
+  - name: "Adam Haile"
+    role: author
+    affiliation: "MSOE / MAIC"
+  - name: "Brett Storoe"
+    role: author
+    affiliation: "MSOE / MAIC"

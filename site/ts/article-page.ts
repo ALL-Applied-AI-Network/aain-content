@@ -15,6 +15,8 @@ import {
   DIFFICULTY_COLORS,
   type TreeJson,
   type TreeNode,
+  type TreeContributor,
+  type TreeResource,
 } from "./main";
 import { renderArticle } from "./article-renderer";
 
@@ -67,6 +69,11 @@ async function init(): Promise<void> {
   if (contentEl) {
     await renderArticle(node.content_path, contentEl);
 
+    // Render curated resources section after article content
+    if (node.resources && node.resources.length > 0) {
+      renderResources(node.resources, contentEl);
+    }
+
     // Generate table of contents from rendered headings
     generateTableOfContents(contentEl);
   }
@@ -101,7 +108,6 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
         <span class="article-sidebar__title">Estimated Time</span>
         <div style="font-weight:600;font-size:0.9rem">${formatMinutes(node.estimated_minutes)}</div>
       </div>
-      ${node.author ? `<div style="margin-bottom:0.5rem"><span class="article-sidebar__title">Author</span><div style="font-size:0.85rem;color:var(--text-secondary)">${node.author}</div></div>` : ""}
       ${node.last_updated ? `<div><span class="article-sidebar__title">Updated</span><div style="font-size:0.85rem;color:var(--text-secondary)">${node.last_updated}</div></div>` : ""}
     `;
   }
@@ -140,6 +146,46 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
     `;
   }
 
+  // Contributors
+  const contribEl = document.getElementById("sidebar-contributors");
+  const contributors = node.contributors && node.contributors.length > 0
+    ? node.contributors
+    : node.author
+      ? [{ name: node.author, role: "author" }]
+      : [];
+
+  if (contribEl && contributors.length > 0) {
+    contribEl.innerHTML = `
+      <span class="article-sidebar__title">Contributors</span>
+      <div class="contributor-cards">
+        ${contributors.map((c: TreeContributor) => {
+          const initials = c.name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
+          const roleColors: Record<string, string> = {
+            author: "var(--layer-0)",
+            curator: "var(--layer-2)",
+            reviewer: "var(--layer-1)",
+            editor: "var(--layer-3)",
+          };
+          const roleColor = roleColors[c.role] || "var(--text-secondary)";
+          return `
+            <div class="contributor-card">
+              <div class="contributor-card__avatar" style="background:${roleColor}">${initials}</div>
+              <div class="contributor-card__info">
+                <div class="contributor-card__name">${c.url ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name}</a>` : c.name}</div>
+                <div class="contributor-card__meta">
+                  <span class="contributor-card__role" style="color:${roleColor}">${c.role}</span>
+                  ${c.affiliation ? `<span class="contributor-card__affil">${c.affiliation}</span>` : ""}
+                </div>
+                ${c.github ? `<a href="https://github.com/${c.github}" class="contributor-card__gh" target="_blank" rel="noopener">@${c.github}</a>` : ""}
+              </div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+    contribEl.style.display = "";
+  }
+
   // Tags
   const tagsEl = document.getElementById("sidebar-tags");
   if (tagsEl && node.tags.length > 0) {
@@ -150,6 +196,38 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
       </div>
     `;
   }
+}
+
+function renderResources(resources: TreeResource[], contentEl: HTMLElement): void {
+  const typeIcons: Record<string, string> = {
+    article: "\uD83D\uDCDD",
+    video: "\u25B6\uFE0F",
+    course: "\uD83C\uDF93",
+    tool: "\uD83D\uDD27",
+    paper: "\uD83D\uDCDC",
+    repo: "\uD83D\uDCBB",
+  };
+
+  const section = document.createElement("section");
+  section.className = "resources-section";
+  section.innerHTML = `
+    <h2 class="resources-section__title">Curated Resources</h2>
+    <p class="resources-section__desc">Hand-picked by contributors — each chosen for a reason.</p>
+    <div class="resources-grid">
+      ${resources.map((r) => `
+        <a href="${r.url}" class="resource-card" target="_blank" rel="noopener">
+          <div class="resource-card__header">
+            <span class="resource-card__icon">${typeIcons[r.type] || "\uD83D\uDD17"}</span>
+            <span class="resource-card__type">${r.type}</span>
+          </div>
+          <div class="resource-card__title">${r.title}</div>
+          ${r.note ? `<div class="resource-card__note">${r.note}</div>` : ""}
+          ${r.contributor ? `<div class="resource-card__curator">Curated by ${r.contributor}</div>` : ""}
+        </a>
+      `).join("")}
+    </div>
+  `;
+  contentEl.appendChild(section);
 }
 
 function renderSeriesNav(node: TreeNode, tree: TreeJson): void {

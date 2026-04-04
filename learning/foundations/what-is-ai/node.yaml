@@ -15,3 +15,24 @@ content_file: "what-is-ai.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+contributors:
+  - name: "Ben Paulson"
+    role: author
+    affiliation: "MSOE / ALL Applied AI Network"
+    github: "Benja-Pauls"
+    url: "https://all-ai-network.org"
+
+resources:
+  - title: "State of AI Report 2025"
+    url: "https://www.stateof.ai/"
+    type: article
+    note: "Annual overview of where AI capabilities actually stand — good reality check against the hype cycle."
+  - title: "Andrej Karpathy: Intro to Large Language Models"
+    url: "https://www.youtube.com/watch?v=zjkBMFhNj_g"
+    type: video
+    note: "The best single video for understanding what LLMs actually are, from the former head of AI at Tesla."
+  - title: "Anthropic Research Index"
+    url: "https://www.anthropic.com/research"
+    type: article
+    note: "If you want to see what frontier AI research looks like from a safety-focused lab, start here."

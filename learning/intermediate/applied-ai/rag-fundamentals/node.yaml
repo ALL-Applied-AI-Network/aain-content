@@ -18,3 +18,23 @@ content_file: "rag-fundamentals.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+contributors:
+  - name: "Ben Paulson"
+    role: author
+    affiliation: "MSOE / ALL Applied AI Network"
+    github: "Benja-Pauls"
+
+resources:
+  - title: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
+    url: "https://arxiv.org/abs/2005.11401"
+    type: paper
+    note: "The original RAG paper from Meta — worth skimming the abstract and intro to see where the idea came from."
+  - title: "ChromaDB Getting Started"
+    url: "https://docs.trychroma.com/getting-started"
+    type: tool
+    note: "The vector database used in this lesson. Their quickstart is excellent and mirrors what we build here."
+  - title: "Simon Willison: RAG Is More Than Embeddings"
+    url: "https://simonwillison.net/2023/Oct/23/embeddings/"
+    type: article
+    note: "Practical perspective on when embeddings-based RAG works and when simpler approaches are better."

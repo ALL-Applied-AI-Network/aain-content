@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-02T14:04:56.234Z",
+  "generated_at": "2026-04-03T21:20:31.780Z",
   "nodes": [
     {
       "id": "tooling/ai-ides/cursor-deep-dive",
@@ -25,6 +25,13 @@
         "tooling/ai-ides/claude-code"
       ],
       "content_path": "learning/tooling/ai-ides/cursor-deep-dive/cursor-deep-dive.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -49,6 +56,13 @@
       ],
       "unlocks": [],
       "content_path": "learning/tooling/ai-ides/claude-code/claude-code.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -77,6 +91,34 @@
         "intermediate/applied-ai/evaluation-and-observability"
       ],
       "content_path": "learning/intermediate/applied-ai/rag-fundamentals/rag-fundamentals.md",
+      "contributors": [
+        {
+          "name": "Ben Paulson",
+          "role": "author",
+          "github": "Benja-Pauls",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "type": "paper",
+          "note": "The original RAG paper from Meta — worth skimming the abstract and intro to see where the idea came from."
+        },
+        {
+          "title": "ChromaDB Getting Started",
+          "url": "https://docs.trychroma.com/getting-started",
+          "type": "tool",
+          "note": "The vector database used in this lesson. Their quickstart is excellent and mirrors what we build here."
+        },
+        {
+          "title": "Simon Willison: RAG Is More Than Embeddings",
+          "url": "https://simonwillison.net/2023/Oct/23/embeddings/",
+          "type": "article",
+          "note": "Practical perspective on when embeddings-based RAG works and when simpler approaches are better."
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -104,6 +146,13 @@
         "intermediate/applied-ai/rag-fundamentals"
       ],
       "content_path": "learning/intermediate/applied-ai/prompt-engineering/prompt-engineering.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -133,6 +182,13 @@
         "intermediate/applied-ai/build-a-chatbot"
       ],
       "content_path": "learning/intermediate/applied-ai/how-ai-apis-work/how-ai-apis-work.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -159,6 +215,13 @@
       ],
       "unlocks": [],
       "content_path": "learning/intermediate/applied-ai/evaluation-and-observability/evaluation-and-observability.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -184,6 +247,13 @@
         "intermediate/applied-ai/evaluation-and-observability"
       ],
       "content_path": "learning/intermediate/applied-ai/build-an-agent/build-an-agent.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -212,6 +282,13 @@
         "intermediate/applied-ai/agents-and-tool-use"
       ],
       "content_path": "learning/intermediate/applied-ai/build-a-chatbot/build-a-chatbot.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -239,6 +316,13 @@
         "intermediate/applied-ai/evaluation-and-observability"
       ],
       "content_path": "learning/intermediate/applied-ai/agents-and-tool-use/agents-and-tool-use.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -266,6 +350,13 @@
         "foundations/files-folders-terminal"
       ],
       "content_path": "learning/foundations/what-is-programming/what-is-programming.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -288,6 +379,35 @@
         "foundations/setting-up-cursor"
       ],
       "content_path": "learning/foundations/what-is-ai/what-is-ai.md",
+      "contributors": [
+        {
+          "name": "Ben Paulson",
+          "role": "author",
+          "url": "https://all-ai-network.org",
+          "github": "Benja-Pauls",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [
+        {
+          "title": "State of AI Report 2025",
+          "url": "https://www.stateof.ai/",
+          "type": "article",
+          "note": "Annual overview of where AI capabilities actually stand — good reality check against the hype cycle."
+        },
+        {
+          "title": "Andrej Karpathy: Intro to Large Language Models",
+          "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+          "type": "video",
+          "note": "The best single video for understanding what LLMs actually are, from the former head of AI at Tesla."
+        },
+        {
+          "title": "Anthropic Research Index",
+          "url": "https://www.anthropic.com/research",
+          "type": "article",
+          "note": "If you want to see what frontier AI research looks like from a safety-focused lab, start here."
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -315,6 +435,13 @@
         "tooling/ai-ides/cursor-deep-dive"
       ],
       "content_path": "learning/foundations/setting-up-cursor/setting-up-cursor.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -342,6 +469,13 @@
         "intermediate/applied-ai/how-ai-apis-work"
       ],
       "content_path": "learning/foundations/reading-writing-data/reading-writing-data.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -368,6 +502,14 @@
         "foundations/build-your-first-script"
       ],
       "content_path": "learning/foundations/python-through-ai/python-through-ai.md",
+      "contributors": [
+        {
+          "name": "Adam Haile",
+          "role": "author",
+          "affiliation": "MSOE / MAIC"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -393,6 +535,13 @@
         "foundations/what-is-programming"
       ],
       "content_path": "learning/foundations/navigating-an-ide/navigating-an-ide.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -417,6 +566,19 @@
         "intermediate/applied-ai/how-ai-apis-work"
       ],
       "content_path": "learning/foundations/git-basics/git-basics.md",
+      "contributors": [
+        {
+          "name": "Adam Haile",
+          "role": "author",
+          "affiliation": "MSOE / MAIC"
+        },
+        {
+          "name": "Brett Storoe",
+          "role": "author",
+          "affiliation": "MSOE / MAIC"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -444,6 +606,13 @@
         "tooling/ai-ides/cursor-deep-dive"
       ],
       "content_path": "learning/foundations/first-conversation-with-ai/first-conversation-with-ai.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -468,6 +637,13 @@
         "foundations/git-basics"
       ],
       "content_path": "learning/foundations/files-folders-terminal/files-folders-terminal.md",
+      "contributors": [
+        {
+          "name": "ALL Applied AI Network",
+          "role": "author"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -494,6 +670,14 @@
         "intermediate/applied-ai/how-ai-apis-work"
       ],
       "content_path": "learning/foundations/build-your-first-script/build-your-first-script.md",
+      "contributors": [
+        {
+          "name": "Brett Storoe",
+          "role": "author",
+          "affiliation": "MSOE / MAIC"
+        }
+      ],
+      "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     }

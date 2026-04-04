@@ -17,3 +17,8 @@ content_file: "build-your-first-script.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+contributors:
+  - name: "Brett Storoe"
+    role: author
+    affiliation: "MSOE / MAIC"

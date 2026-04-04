@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ALL Applied AI Network — Open-Source Applied AI Curriculum</title>
-  <meta name="description" content="Open-source applied AI curriculum — from zero to shipping AI products. Interactive skill tree, hands-on articles, and a community of builders." />
+  <title>ALL Applied AI Network — Demystify AI For All</title>
+  <meta name="description" content="Open-source applied AI curriculum, mentorship playbooks, and hub infrastructure — from zero to shipping AI products. Built by students and engineers, for students." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./home.css" />
 </head>
 <body>
 
@@ -23,165 +25,507 @@
       <ul class="nav__links" id="nav-links">
         <li><a href="./" class="active">Home</a></li>
         <li><a href="./tree.html">Skill Tree</a></li>
-        <li><a href="https://github.com/ALL-AAIN" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="#why">Why</a></li>
+        <li><a href="#how">How</a></li>
+        <li><a href="#start-a-hub">Start a Hub</a></li>
+        <li><a href="https://github.com/ALL-Applied-AI-Network/aain-content" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero — split layout with real content -->
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       HERO — real photo background
+       ═══════════════════════════════════════════════════════════════════════ -->
   <section class="hero">
+    <div class="hero__bg">
+      <img src="./public/web/hero-crowd.jpg" alt="" loading="eager" />
+    </div>
+    <canvas id="hero-particles"></canvas>
     <div class="hero__grid container">
       <div class="hero__content">
-        <div class="hero__badge">Open-source curriculum</div>
-        <h1 class="hero__title">
-          Learn AI by building things that actually work.
+        <h1 class="hero__title" id="hero-title">
+          The open-source playbook<br/>for university AI <span class="hero__rotating-word"><span class="hero__rotating-word-text" id="hero-word"></span><span class="hero__rotating-word-cursor"></span></span>
         </h1>
         <p class="hero__subtitle">
-          We built this because most AI courses teach theory you'll never use.
-          This is a free, hands-on curriculum that starts with "open your IDE"
-          and ends with shipping real products. 19 lessons. Zero fluff.
+          Structured curriculum, mentorship playbooks, and hub infrastructure
+          that turns compute access into a thriving student AI community &mdash;
+          and students into the most employable AI talent in their region.
         </p>
         <div class="hero__actions">
-          <a href="./tree.html" class="btn btn--primary">Open the skill tree</a>
-          <a href="./article.html?id=foundations/what-is-ai" class="btn btn--outline">Read the first lesson</a>
+          <a href="./tree.html" class="btn btn--primary">Explore the skill tree</a>
+          <a href="#start-a-hub" class="btn btn--outline">Start a hub</a>
         </div>
         <p class="hero__proof">
-          Built by applied AI engineers at <strong>MSOE</strong> and <strong>Direct Supply</strong>.
-          Licensed CC BY-SA 4.0.
+          500+ members across 5 schools. 10+ direct sponsor hires per cycle.
+          Built at MSOE, expanding nationwide.
         </p>
       </div>
       <div class="hero__visual">
         <div class="hero__tree-preview" id="hero-tree-preview">
           <div id="tree-canvas" class="hero__tree-canvas"></div>
           <div class="hero__tree-label">
-            <span>Interactive skill tree</span>
-            <a href="./tree.html">Explore full screen &rarr;</a>
+            <span>Interactive skill tree &mdash; from "what is an IDE" to deploying agents</span>
+            <a href="./tree.html">Full screen &rarr;</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- What you'll build — concrete, not abstract -->
-  <section class="outcomes">
-    <div class="container">
-      <div class="outcomes__header">
-        <h2 class="outcomes__title">What you'll actually build</h2>
-        <p class="outcomes__desc">Each section ends with a real project. Not a toy demo&mdash;something you'd put in a portfolio.</p>
-      </div>
-      <div class="outcomes__grid">
-        <div class="outcome-card">
-          <div class="outcome-card__layer" style="--layer-color: var(--layer-0)">Foundations</div>
-          <h3 class="outcome-card__title">Your first AI-assisted script</h3>
-          <p class="outcome-card__desc">Set up an IDE, have your first conversation with an AI, and write a working Python script&mdash;even if you've never coded before.</p>
-          <span class="outcome-card__meta">5 lessons &middot; ~2 hours</span>
+      <div class="hero__sponsors">
+        <span class="hero__sponsors-label">Network sponsors</span>
+        <div class="hero__sponsors-logos">
+          <a href="https://nvidia.com" target="_blank" rel="noopener" class="hero__sponsors-logo">
+            <img src="./public/logos/nvidia_logo.png" alt="NVIDIA" />
+          </a>
+          <a href="https://directsupply.com" target="_blank" rel="noopener" class="hero__sponsors-logo">
+            <img src="./public/logos/direct_supply_logo.png" alt="Direct Supply" />
+          </a>
         </div>
-        <div class="outcome-card">
-          <div class="outcome-card__layer" style="--layer-color: var(--layer-1)">Fundamentals</div>
-          <h3 class="outcome-card__title">A full dev environment + Git workflow</h3>
-          <p class="outcome-card__desc">Use the terminal, manage files, version control with Git, and build scripts that read and write data from real sources.</p>
-          <span class="outcome-card__meta">7 lessons &middot; ~4 hours</span>
-        </div>
-        <div class="outcome-card">
-          <div class="outcome-card__layer" style="--layer-color: var(--layer-2)">Applied AI</div>
-          <h3 class="outcome-card__title">A chatbot, RAG pipeline, and AI agent</h3>
-          <p class="outcome-card__desc">Call AI APIs, engineer prompts, build a chatbot, add retrieval-augmented generation, create an agent, and evaluate its quality.</p>
-          <span class="outcome-card__meta">7 lessons &middot; ~5 hours</span>
-        </div>
+        <a href="https://all-aain.org/sponsors" class="hero__sponsors-cta">Become a sponsor &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- How this is different — not "how it works" -->
-  <section class="diff-section">
-    <div class="container">
-      <div class="diff-grid">
-        <div class="diff-grid__left">
-          <h2 class="diff-grid__title">This isn't another "intro to AI" course.</h2>
-          <p class="diff-grid__body">
-            Most AI curricula start with linear algebra and spend weeks before you touch a real model.
-            We start with the tools you'll actually use at work&mdash;AI-powered IDEs, APIs, prompt engineering&mdash;and
-            build up from there.
-          </p>
-          <p class="diff-grid__body">
-            Every lesson was written by engineers who ship AI products professionally.
-            No filler content. No "here's a Jupyter notebook, figure it out." Just clear explanations and real code.
-          </p>
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       PHOTO STRIP — real moments
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <div class="photo-ticker">
+    <div class="photo-ticker__track">
+      <!-- Set 1 -->
+      <div class="photo-ticker__item" data-tooltip="Speaker panel — industry engineers share hiring insights">
+        <img src="./public/web/speaker-event.jpg" alt="Speaker event at MSOE" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="Hackathon — students collaborating on AI projects">
+        <img src="./public/web/students-working.jpg" alt="Students collaborating during hackathon" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="Innovation Lab — presenting solutions to sponsor leadership">
+        <img src="./public/web/innovation-lab.jpg" alt="Innovation Lab presentation" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE">
+        <img src="./public/web/supercomputer-tour.jpg" alt="ROSIE supercomputer tour" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards — NVIDIA-sponsored supercomputer competition">
+        <img src="./public/web/gpu-winners.jpg" alt="RTX 4090 giveaway at ROSIE Awards" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings">
+        <img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="Hiring panel — connecting students with employers">
+        <img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="HacksGiving 2024 — hackathon donating data science work to local non-profits">
+        <img src="./public/web/group-photo.jpg" alt="HacksGiving 2024 group" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff — the first event that started it all">
+        <img src="./public/web/first-event.jpg" alt="MAIC first event crowd" loading="lazy" />
+      </div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="photo-ticker__item" data-tooltip="Speaker panel — industry engineers share hiring insights">
+        <img src="./public/web/speaker-event.jpg" alt="Speaker event at MSOE" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="Hackathon — students collaborating on AI projects">
+        <img src="./public/web/students-working.jpg" alt="Students collaborating during hackathon" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="Innovation Lab — presenting solutions to sponsor leadership">
+        <img src="./public/web/innovation-lab.jpg" alt="Innovation Lab presentation" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE">
+        <img src="./public/web/supercomputer-tour.jpg" alt="ROSIE supercomputer tour" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards — NVIDIA-sponsored supercomputer competition">
+        <img src="./public/web/gpu-winners.jpg" alt="RTX 4090 giveaway at ROSIE Awards" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings">
+        <img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="Hiring panel — connecting students with employers">
+        <img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="HacksGiving 2024 — hackathon donating data science work to local non-profits">
+        <img src="./public/web/group-photo.jpg" alt="HacksGiving 2024 group" loading="lazy" />
+      </div>
+      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff — the first event that started it all">
+        <img src="./public/web/first-event.jpg" alt="MAIC first event crowd" loading="lazy" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 1 — WHY  (story + pipeline + proof)
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="why-section" id="why">
+    <!-- Section label -->
+    <div class="section-label reveal">
+      <span class="section-label__num">01</span>
+      <span class="section-label__text">Why this exists</span>
+      <span class="section-label__line"></span>
+    </div>
+
+    <!-- Story -->
+    <div class="container reveal">
+      <h2 class="why-section__heading">AI moves faster than any curriculum.<br/>Students need a better path.</h2>
+      <p>
+        Students graduate with theory but without the applied skills that get them hired.
+        We started ALL believing the best way to learn AI is to use it on real problems,
+        surrounded by people who already do it professionally.
+      </p>
+      <p>
+        That's what MSOE's AI Club proved over four years &mdash; growing to 500+ members
+        across 5 schools with no playbook, no template, no parent organization.
+        <strong>ALL exists to package that model so any university can deploy it.</strong>
+      </p>
+    </div>
+
+    <!-- Pipeline -->
+    <div class="container reveal">
+      <div class="pipeline reveal-stagger">
+        <div class="pipeline__item">
+          <span class="material-icons-outlined pipeline__icon" style="color: var(--gradient-blue)">memory</span>
+          <strong>Compute access</strong>
+          <span>Universities gain GPU infrastructure that students need a reason to use.</span>
         </div>
-        <div class="diff-grid__right">
-          <ul class="diff-list">
-            <li class="diff-list__item">
-              <span class="diff-list__check">&#10003;</span>
-              <div>
-                <strong>Applied first, theory later.</strong>
-                Build a working chatbot before learning what embeddings are.
-              </div>
-            </li>
-            <li class="diff-list__item">
-              <span class="diff-list__check">&#10003;</span>
-              <div>
-                <strong>AI-native tooling from day one.</strong>
-                Cursor, Claude Code, and real AI APIs&mdash;not toy environments.
-              </div>
-            </li>
-            <li class="diff-list__item">
-              <span class="diff-list__check">&#10003;</span>
-              <div>
-                <strong>Actually free. Actually open-source.</strong>
-                CC BY-SA 4.0 content. MIT code. Fork it, remix it, teach with it.
-              </div>
-            </li>
-            <li class="diff-list__item">
-              <span class="diff-list__check">&#10003;</span>
-              <div>
-                <strong>Built by builders.</strong>
-                Written by working AI engineers, not content marketers.
-              </div>
-            </li>
+        <div class="pipeline__arrow">
+          <span class="material-icons-outlined">arrow_forward</span>
+        </div>
+        <div class="pipeline__item">
+          <span class="material-icons-outlined pipeline__icon" style="color: var(--gradient-cyan)">groups</span>
+          <strong>Mentorship loop</strong>
+          <span>Upperclassmen mentor newcomers who build real portfolio pieces.</span>
+        </div>
+        <div class="pipeline__arrow">
+          <span class="material-icons-outlined">arrow_forward</span>
+        </div>
+        <div class="pipeline__item">
+          <span class="material-icons-outlined pipeline__icon" style="color: var(--gradient-pink)">diversity_3</span>
+          <strong>Year-round community</strong>
+          <span>Competition energy expands into projects, research groups, and speaker series.</span>
+        </div>
+        <div class="pipeline__arrow">
+          <span class="material-icons-outlined">arrow_forward</span>
+        </div>
+        <div class="pipeline__item">
+          <span class="material-icons-outlined pipeline__icon" style="color: var(--gradient-purple)">trending_up</span>
+          <strong>Industry pipeline</strong>
+          <span>Students with real experience become the strongest hires. Sponsors keep coming back.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proof — asymmetric bento with photo backgrounds -->
+    <div class="why-proof">
+      <div class="why-proof__photo">
+        <img src="./public/web/group-photo.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="container reveal">
+        <div class="bento-proof reveal-stagger">
+
+          <!-- Featured hero stat — large, with photo bg -->
+          <div class="bento-proof__featured">
+            <div class="bento-proof__featured-photo">
+              <img src="./public/web/first-event.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="bento-proof__featured-content">
+              <strong>500+</strong>
+              <span>members across 5 schools &mdash; and growing</span>
+            </div>
+          </div>
+
+          <!-- Cluster of 3 smaller stats -->
+          <div class="bento-proof__stat-cluster">
+            <div class="bento-proof__stat">
+              <span class="material-icons-outlined proof__num-icon">rocket_launch</span>
+              <strong>300+</strong>
+              <span>students per project period</span>
+            </div>
+            <div class="bento-proof__stat">
+              <span class="material-icons-outlined proof__num-icon">description</span>
+              <strong>50+</strong>
+              <span>student publications</span>
+            </div>
+            <div class="bento-proof__stat">
+              <span class="material-icons-outlined proof__num-icon">work</span>
+              <strong>10+</strong>
+              <span>direct sponsor hires per cycle</span>
+            </div>
+          </div>
+
+          <!-- Quote with photo accent -->
+          <div class="bento-proof__quote-card">
+            <div class="bento-proof__quote-photo">
+              <img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" />
+            </div>
+            <blockquote>
+              <p>&ldquo;The AI Club completely changed my trajectory. I came in as a CE student with zero
+              coding experience &mdash; within a semester I'd built a computer vision prototype for
+              a Databricks Innovation Lab and had three internship offers.&rdquo;</p>
+              <cite>MSOE student, Class of 2029</cite>
+            </blockquote>
+          </div>
+
+          <!-- Second quote — simpler, wide -->
+          <div class="bento-proof__quote-card bento-proof__quote-card--wide">
+            <blockquote>
+              <p>&ldquo;We've hired more quality candidates through Innovation Labs than any career fair
+              we've attended. The students come in with real project experience, not just coursework.
+              They are now the majority of our 50-person AI team.&rdquo;</p>
+              <cite>Applied AI Director, Direct Supply</cite>
+            </blockquote>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 2 — HOW  (event flywheel)
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="how-section" id="how">
+    <div class="section-label reveal">
+      <span class="section-label__num">02</span>
+      <span class="section-label__text">How it works</span>
+      <span class="section-label__line"></span>
+    </div>
+
+    <div class="container reveal">
+      <h2 class="how-section__heading">Four formats. One flywheel.</h2>
+      <p>
+        New members bring the passion &mdash; what they need is direction.
+        We pair that energy with experienced mentors who point it toward
+        real projects from day one. Each event type feeds the next.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="event-grid reveal-stagger">
+        <div class="event-card">
+          <div class="event-card__img">
+            <img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" />
+          </div>
+          <div class="event-card__body">
+            <h3><span class="material-icons-outlined event-card__icon">mic</span> Speaker Events</h3>
+            <p>Engineers from industry show what they're building. You meet the people doing the work, ask real questions, and walk out with internship leads.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__img">
+            <img src="./public/web/innovation-lab.jpg" alt="Innovation Lab kickoff" loading="lazy" />
+          </div>
+          <div class="event-card__body">
+            <h3><span class="material-icons-outlined event-card__icon">science</span> Innovation Labs</h3>
+            <p>A company brings a real problem and real data. You join a mentor-led team, build a working solution over 2 months, and present to their leadership.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__img">
+            <img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" />
+          </div>
+          <div class="event-card__body">
+            <h3><span class="material-icons-outlined event-card__icon">biotech</span> Research Groups</h3>
+            <p>Pick a topic, go deep for a semester. Small teams produce publications, open-source tools, or technical reports.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__img">
+            <img src="./public/web/students-working.jpg" alt="Students hacking" loading="lazy" />
+          </div>
+          <div class="event-card__body">
+            <h3><span class="material-icons-outlined event-card__icon">code</span> Hackathons</h3>
+            <p>12&ndash;48 hours. Build something, ship it, put it in your portfolio. You learn more in one weekend than most courses teach all year.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="flywheel-note reveal">
+        <strong>Each event feeds the next.</strong>
+        Speaker events motivate you into a mentor-backed project. Project experience
+        lands internships. Proven hiring outcomes bring more sponsors. More sponsors
+        fund bigger events. And upperclassmen come back to lead &mdash; because
+        <em>leading a team as an undergraduate is something most students never get to do.</em>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       SECTION 3 — WHAT  (pillars + content + contributors + hub CTA)
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="what-section" id="start-a-hub">
+    <div class="what-section__bg">
+      <img src="./public/web/first-event.jpg" alt="" loading="lazy" />
+    </div>
+
+    <div class="section-label reveal">
+      <span class="section-label__num">03</span>
+      <span class="section-label__text">What you get</span>
+      <span class="section-label__line"></span>
+    </div>
+
+    <div class="container reveal">
+      <h2 class="what-section__heading">Everything a hub needs to launch and scale.</h2>
+      <p>
+        Every piece of this infrastructure exists for one reason:
+        <strong>to turn students into the most employable AI talent in their region.</strong>
+        You don't start from scratch &mdash; you join a network that's already proven.
+      </p>
+    </div>
+
+    <!-- Hub pillars — three parallel offerings -->
+    <div class="container">
+      <div class="hub-pillars reveal-stagger">
+
+        <div class="hub-pillar" style="--pillar-accent: var(--gradient-blue); --pillar-rgb: 59,130,246">
+          <div class="hub-pillar__icon">
+            <span class="material-icons-outlined">developer_board</span>
+          </div>
+          <h3>GPU Compute</h3>
+          <p>
+            NVIDIA is deploying supercomputers to universities in all 50 states.
+            ALL gives your hub the tracking infrastructure and usage metrics that
+            make the case for compute access at your institution.
+          </p>
+          <a href="https://www.nvidia.com/en-us/on-demand/session/gtc26-s82238/" class="hub-pillar__link" target="_blank" rel="noopener">
+            <span class="material-icons-outlined">play_circle</span> Watch the GTC session
+          </a>
+        </div>
+
+        <div class="hub-pillar" style="--pillar-accent: var(--gradient-cyan); --pillar-rgb: 34,211,238">
+          <div class="hub-pillar__icon">
+            <span class="material-icons-outlined">hub</span>
+          </div>
+          <h3>The Network</h3>
+          <p>
+            Shared sponsors across hubs, playbooks for matching newcomers with mentors,
+            formats for sponsor engagements that keep engineers coming back, and connections
+            to every other hub in the network.
+          </p>
+          <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" class="hub-pillar__link" target="_blank" rel="noopener">
+            <span class="material-icons-outlined">add_circle_outline</span> Start a hub
+          </a>
+        </div>
+
+        <div class="hub-pillar" style="--pillar-accent: var(--gradient-purple); --pillar-rgb: 168,85,247">
+          <div class="hub-pillar__icon">
+            <span class="material-icons-outlined">build</span>
+          </div>
+          <h3>Hub-Building Tools</h3>
+          <p>
+            An open-source learning tree, built-in tracking for participation and events,
+            and a deployable hub site &mdash; complete with leaderboards, project write-ups,
+            and everything leadership needs to prove impact.
+          </p>
+          <a href="#content-library" class="hub-pillar__link">
+            <span class="material-icons-outlined">arrow_downward</span> See the repositories
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Two repos — clearly divided -->
+    <div class="what-content-divider"></div>
+    <div class="container container--narrow reveal" id="content-library">
+      <h3 class="what-sub-heading">Two open-source repositories. One network.</h3>
+      <p class="what-sub-desc">Both repos deploy to this site. Fork either to get started.</p>
+    </div>
+
+    <div class="container">
+      <div class="repo-split reveal-stagger">
+
+        <!-- Content Repo -->
+        <div class="repo-card" style="--repo-accent: #22d3ee; --repo-accent-rgb: 34,211,238">
+          <div class="repo-card__header">
+            <div class="repo-card__icon-wrap">
+              <span class="material-icons-outlined">school</span>
+            </div>
+            <div>
+              <h4 class="repo-card__name">aain-content</h4>
+              <span class="repo-card__label">Curriculum &amp; Playbooks</span>
+            </div>
+          </div>
+          <p class="repo-card__desc">
+            The learning tree, workshop labs, event playbooks, and all educational content.
+            This is what students and mentors interact with day-to-day.
+          </p>
+          <div class="repo-card__contents" id="content-library-grid">
+            <!-- Populated by JS from manifest.json -->
+          </div>
+          <a href="https://github.com/ALL-Applied-AI-Network/aain-content" class="repo-card__link" target="_blank" rel="noopener">
+            <span class="material-icons-outlined">open_in_new</span>
+            Browse repository
+          </a>
+        </div>
+
+        <!-- Hub Template Repo -->
+        <div class="repo-card" style="--repo-accent: #a855f7; --repo-accent-rgb: 168,85,247">
+          <div class="repo-card__header">
+            <div class="repo-card__icon-wrap">
+              <span class="material-icons-outlined">dashboard_customize</span>
+            </div>
+            <div>
+              <h4 class="repo-card__name">aai-hub-template</h4>
+              <span class="repo-card__label">Hub Site Template</span>
+            </div>
+          </div>
+          <p class="repo-card__desc">
+            A deployable website for your campus hub &mdash; complete with event pages,
+            leaderboards, project write-ups, and the embedded skill tree. Fork it, customize it, ship it.
+          </p>
+          <ul class="repo-card__features">
+            <li><span class="material-icons-outlined">web</span> Deployable hub website with GitHub Pages</li>
+            <li><span class="material-icons-outlined">leaderboard</span> Member leaderboards &amp; participation tracking</li>
+            <li><span class="material-icons-outlined">event</span> Event pages, project showcases, sponsor logos</li>
+            <li><span class="material-icons-outlined">tune</span> Fully customizable branding per campus</li>
           </ul>
+          <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" class="repo-card__link" target="_blank" rel="noopener">
+            <span class="material-icons-outlined">rocket_launch</span>
+            Get the template
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contributors -->
+    <div class="container reveal">
+      <div class="what-contributors">
+        <h3 class="what-sub-heading">Built by</h3>
+        <p class="what-sub-desc">Written and curated by working AI engineers, researchers, and educators.</p>
+        <div class="contributors-grid" id="contributors-grid">
+          <!-- Populated by JS from tree.json contributor data -->
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Curriculum snapshot — concrete numbers -->
-  <section class="curriculum-snap">
-    <div class="container">
-      <div class="snap-grid">
-        <div class="snap-item">
-          <span class="snap-item__number" id="stat-nodes">19</span>
-          <span class="snap-item__label">lessons across 3 skill layers</span>
-        </div>
-        <div class="snap-item">
-          <span class="snap-item__number" id="stat-hours">~11</span>
-          <span class="snap-item__label">hours from zero to shipping</span>
-        </div>
-        <div class="snap-item">
-          <span class="snap-item__number">100%</span>
-          <span class="snap-item__label">free and open-source</span>
-        </div>
-      </div>
+    <!-- Hub CTA -->
+    <div class="container container--narrow reveal" style="text-align: center; padding-top: 2rem;">
+      <p class="what-cta-text">
+        We're at <strong>5 campuses today</strong>. NVIDIA's 50-state initiative is bringing
+        supercomputers to hundreds of universities. The hardware creates the opportunity.
+        ALL helps rally people to use it.
+      </p>
     </div>
   </section>
 
-  <!-- Series / Tracks (if any exist) -->
+  <!-- Hidden series section (only shows if series exist in data) -->
   <section class="section" id="series-section" style="display:none">
     <div class="container">
       <h2 class="section__title">Learning Tracks</h2>
       <p class="section__subtitle">Follow a curated series from start to finish, or mix and match based on your goals.</p>
-      <div class="series-grid" id="series-grid">
-        <!-- Populated by JS -->
-      </div>
+      <div class="series-grid" id="series-grid"></div>
     </div>
   </section>
 
-  <!-- Final CTA — different from hero -->
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       FINAL CTA — with group photo background
+       ═══════════════════════════════════════════════════════════════════════ -->
   <section class="final-cta">
-    <div class="container">
-      <h2 class="final-cta__title">Start with lesson one.</h2>
-      <p class="final-cta__desc">No sign-up. No paywall. Just open the first article and start building.</p>
+    <div class="final-cta__bg">
+      <img src="./public/web/group-photo.jpg" alt="" loading="lazy" />
+    </div>
+    <div class="container container--narrow">
+      <h2>Start with lesson one.</h2>
+      <p>No sign-up. No paywall. Just open the first article and start building.</p>
       <div class="final-cta__actions">
         <a href="./article.html?id=foundations/what-is-ai" class="btn btn--primary btn--lg">Read: "What Is AI? The Real Story"</a>
+        <a href="./tree.html" class="btn btn--outline btn--lg">Browse the full skill tree</a>
       </div>
     </div>
   </section>
@@ -203,8 +547,8 @@
         <ul class="footer__link-col">
           <li><a href="./tree.html">Skill Tree</a></li>
           <li><a href="./article.html?id=foundations/what-is-ai">First Lesson</a></li>
-          <li><a href="https://github.com/ALL-AAIN" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://github.com/ALL-AAIN/aai-hub-template" target="_blank" rel="noopener">Start a Hub</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network/aain-content" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" target="_blank" rel="noopener">Start a Hub</a></li>
         </ul>
       </div>
     </div>
@@ -217,6 +561,253 @@
     if (toggle && links) {
       toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
     }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Scroll-reveal observer
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+    // Animated stat counter (works for both old .proof__num and new bento layout)
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const text = el.textContent || '';
+          const match = text.match(/^(\d+)/);
+          if (!match) return;
+          const target = parseInt(match[1], 10);
+          const suffix = text.replace(/^\d+/, '');
+          const duration = 1200;
+          const start = performance.now();
+
+          function tick(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(target * eased) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          countObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.proof__num strong, .bento-proof__stat strong, .bento-proof__featured-content strong').forEach((el) => {
+      countObserver.observe(el);
+    });
+
+    // ─── FEATURE: Rotating typewriter word ───
+    (function() {
+      const el = document.getElementById('hero-word');
+      if (!el) return;
+      const words = ['communities.', 'clubs.', 'learners.', 'labs.', 'supporters.', 'students.', 'builders.'];
+      let wordIdx = 0;
+      let charIdx = 0;
+      let deleting = false;
+      const TYPE_SPEED = 65;
+      const DELETE_SPEED = 40;
+      const PAUSE_AFTER_TYPE = 2200;
+      const PAUSE_AFTER_DELETE = 300;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        el.textContent = words[0];
+        return;
+      }
+
+      function tick() {
+        const current = words[wordIdx];
+        if (!deleting) {
+          charIdx++;
+          el.textContent = current.slice(0, charIdx);
+          if (charIdx === current.length) {
+            // Finished typing — pause then delete
+            setTimeout(() => { deleting = true; tick(); }, PAUSE_AFTER_TYPE);
+            return;
+          }
+          setTimeout(tick, TYPE_SPEED);
+        } else {
+          charIdx--;
+          el.textContent = current.slice(0, charIdx);
+          if (charIdx === 0) {
+            deleting = false;
+            wordIdx = (wordIdx + 1) % words.length;
+            setTimeout(tick, PAUSE_AFTER_DELETE);
+            return;
+          }
+          setTimeout(tick, DELETE_SPEED);
+        }
+      }
+      // Start after a short delay
+      setTimeout(tick, 800);
+    })();
+
+    // ─── FEATURE: Parallax hero background ───
+    (function() {
+      const heroBg = document.querySelector('.hero__bg');
+      if (!heroBg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            // Only apply parallax while hero is visible
+            if (scrollY < window.innerHeight * 1.5) {
+              heroBg.style.transform = `translateY(${scrollY * 0.35}px)`;
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+    // ─── FEATURE: 3D tilt on event cards ───
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.matchMedia('(hover: none)').matches) return; // skip touch devices
+
+      document.querySelectorAll('.event-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -3;
+          const rotateY = ((x - centerX) / centerX) * 3;
+          card.classList.add('tilt-active');
+          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.classList.remove('tilt-active');
+          card.style.transform = '';
+        });
+      });
+    })();
+
+    // ─── FEATURE: Hero particle network canvas ───
+    (function() {
+      const canvas = document.getElementById('hero-particles');
+      if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width, height, particles, animId;
+      const PARTICLE_COUNT = 50;
+      const CONNECTION_DIST = 140;
+      const SPEED = 0.3;
+
+      // Brand colors for particles
+      const colors = [
+        { r: 59, g: 130, b: 246 },   // blue
+        { r: 34, g: 211, b: 238 },   // cyan
+        { r: 236, g: 72, b: 153 },   // pink
+        { r: 168, g: 85, b: 247 },   // purple
+      ];
+
+      function resize() {
+        const hero = canvas.parentElement;
+        width = canvas.width = hero.offsetWidth;
+        height = canvas.height = hero.offsetHeight;
+      }
+
+      function createParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * SPEED,
+            vy: (Math.random() - 0.5) * SPEED,
+            r: Math.random() * 2 + 1,
+            color: color,
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < CONNECTION_DIST) {
+              const alpha = (1 - dist / CONNECTION_DIST) * 0.3;
+              const c = particles[i].color;
+              ctx.strokeStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${alpha})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw + move particles
+        for (const p of particles) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0.6)`;
+          ctx.fill();
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Bounce off edges
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+        }
+
+        animId = requestAnimationFrame(draw);
+      }
+
+      resize();
+      createParticles();
+      draw();
+
+      window.addEventListener('resize', () => {
+        resize();
+        createParticles();
+      });
+
+      // Stop animation when hero is not visible
+      const heroObs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          if (!animId) draw();
+        } else {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      }, { threshold: 0 });
+      heroObs.observe(canvas.parentElement);
+    })();
   </script>
   <script type="module" src="./ts/home.ts"></script>
 </body>

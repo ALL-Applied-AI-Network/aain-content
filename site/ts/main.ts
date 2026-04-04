@@ -7,6 +7,22 @@
 // Types (mirrors tree.json)
 // ---------------------------------------------------------------------------
 
+export interface TreeContributor {
+  name: string;
+  role: string;
+  url?: string;
+  github?: string;
+  affiliation?: string;
+}
+
+export interface TreeResource {
+  title: string;
+  url: string;
+  type: string;
+  note?: string;
+  contributor?: string;
+}
+
 export interface TreeNode {
   id: string;
   title: string;
@@ -21,6 +37,8 @@ export interface TreeNode {
   content_path: string;
   notebook_path?: string;
   author?: string;
+  contributors: TreeContributor[];
+  resources: TreeResource[];
   last_updated?: string;
 }
 
