@@ -98,6 +98,22 @@ const STATE_CENTROIDS: Record<string, [number, number]> = {
 };
 
 // ---------------------------------------------------------------------------
+// City-specific coordinates for states with multiple hubs
+// ---------------------------------------------------------------------------
+
+const CITY_COORDS: Record<string, [number, number]> = {
+  // Wisconsin — 4 hubs
+  "msoe":       [-87.9, 43.04],   // Milwaukee
+  "uwm":        [-87.88, 43.08],  // Milwaukee (slightly offset)
+  "uw-madison": [-89.4, 43.07],   // Madison
+  "marquette":  [-87.92, 43.0],   // Milwaukee (offset south)
+  // New York — 3 hubs
+  "nyu":        [-74.0, 40.73],   // NYC
+  "cornell":    [-76.47, 42.45],  // Ithaca
+  "columbia":   [-73.96, 40.81],  // NYC (Morningside Heights)
+};
+
+// ---------------------------------------------------------------------------
 // Init
 // ---------------------------------------------------------------------------
 
@@ -262,17 +278,36 @@ function renderMap(topo: Topology, hubData: HubData): void {
       }
     });
 
-  // Render hub markers
+  // Render hub markers — use city-specific coordinates when available,
+  // otherwise offset from state centroid to avoid overlap
   const markerGroup = svg.append("g").attr("class", "hub-markers");
 
-  for (const hub of hubData.hubs) {
-    const centroid = STATE_CENTROIDS[hub.stateId];
-    if (!centroid) continue;
+  // Track how many markers per state so we can offset duplicates
+  const stateMarkerCount = new Map<string, number>();
 
-    const projected = projection(centroid);
+  for (const hub of hubData.hubs) {
+    // Use city-specific coords if available, else offset from centroid
+    const cityCoord = CITY_COORDS[hub.id];
+    const centroid = STATE_CENTROIDS[hub.stateId];
+    const coord = cityCoord || centroid;
+    if (!coord) continue;
+
+    const projected = projection(coord);
     if (!projected) continue;
 
-    const [x, y] = projected;
+    let [x, y] = projected;
+
+    // If no city coord and state has multiple hubs, offset the marker
+    if (!cityCoord && centroid) {
+      const count = stateMarkerCount.get(hub.stateId) || 0;
+      if (count > 0) {
+        const angle = (count * 2.1) + 0.5;
+        x += Math.cos(angle) * 12;
+        y += Math.sin(angle) * 12;
+      }
+      stateMarkerCount.set(hub.stateId, count + 1);
+    }
+
     const isActive = hub.status === "active";
     const color = isActive ? "#818cf8" : "#22d3ee";
 
