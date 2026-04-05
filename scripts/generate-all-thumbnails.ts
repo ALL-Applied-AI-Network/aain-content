@@ -1,5 +1,5 @@
 /**
- * Batch-generate isometric 3D thumbnails for all 19 learning tree nodes.
+ * Batch-generate isometric 3D thumbnails for all 32 learning tree nodes.
  * Uses OpenAI gpt-image-1 with topic-specific prompts in a consistent isometric style.
  */
 
@@ -141,6 +141,90 @@ const nodes: NodeThumbnail[] = [
     title: "Evaluation and Observability",
     outputPath: "learning/intermediate/applied-ai/evaluation-and-observability/thumbnail.png",
     prompt: `${BASE_STYLE} An isometric dashboard/monitoring screen showing charts, metrics, and a checklist with green checkmarks. A magnifying glass inspects one of the data points. Green and blue accents. Represents testing, evaluating, and monitoring AI systems.`,
+  },
+
+  // ── Layer 1 new nodes ──────────────────────────────────────────────────
+  {
+    id: "foundations/apis-and-web-basics",
+    title: "APIs and Web Basics",
+    outputPath: "learning/foundations/apis-and-web-basics/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric scene showing two small server/computer boxes connected by glowing HTTP request/response arrows. A floating JSON bracket symbol { } hovers above. Teal and blue accents. Represents web APIs and HTTP communication.`,
+  },
+  {
+    id: "foundations/virtual-environments",
+    title: "Virtual Environments and Dependencies",
+    outputPath: "learning/foundations/virtual-environments/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric scene showing multiple translucent bubble/container domes, each containing a small Python snake icon and package boxes. The bubbles are separate, representing isolation. Green and teal accents. Represents Python virtual environments and package management.`,
+  },
+  {
+    id: "foundations/debugging-with-ai",
+    title: "Debugging with AI",
+    outputPath: "learning/foundations/debugging-with-ai/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric magnifying glass hovering over a code block with a red bug icon, and an AI sparkle nearby pointing to the fix. Orange/red and gold accents. Represents using AI to find and fix bugs in code.`,
+  },
+
+  // ── Layer 2 new nodes ──────────────────────────────────────────────────
+  {
+    id: "intermediate/applied-ai/working-with-databases",
+    title: "Working with Databases",
+    outputPath: "learning/intermediate/applied-ai/working-with-databases/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric database cylinder with glowing data rows visible inside, connected by lines to a small query terminal. A table/grid of structured data floats nearby. Blue and orange accents. Represents SQL databases and data storage.`,
+  },
+  {
+    id: "intermediate/applied-ai/web-scraping",
+    title: "Web Scraping for AI",
+    outputPath: "learning/intermediate/applied-ai/web-scraping/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric web browser window with HTML tags visible, and a small robotic arm or grabber extracting data elements from the page into a structured container. Teal and purple accents. Represents web scraping and data extraction.`,
+  },
+  {
+    id: "intermediate/applied-ai/ai-data-analysis",
+    title: "AI-Powered Data Analysis",
+    outputPath: "learning/intermediate/applied-ai/ai-data-analysis/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric scene with a bar chart and line graph floating above a data table, with an AI brain/sparkle icon generating insights shown as small lightbulb icons. Gold and purple accents. Represents AI-assisted data analysis and visualization.`,
+  },
+
+  // ── Layer 3 new nodes ──────────────────────────────────────────────────
+  {
+    id: "advanced/applied-ai/structured-outputs",
+    title: "Structured Outputs & Data Extraction",
+    outputPath: "learning/advanced/applied-ai/structured-outputs/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric scene showing unstructured text on one side transforming through a glowing funnel/prism into a clean JSON object with a green checkmark on the other side. Purple and teal accents. Represents extracting structured data from LLM outputs.`,
+  },
+  {
+    id: "advanced/applied-ai/advanced-rag",
+    title: "Advanced RAG Patterns",
+    outputPath: "learning/advanced/applied-ai/advanced-rag/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric multi-stage pipeline — documents flowing through chunk splitters, into a vector database cube, through a reranking filter, and into a glowing response. More complex than basic RAG with multiple processing stages. Blue and purple gradient accents. Represents advanced retrieval-augmented generation.`,
+  },
+  {
+    id: "advanced/applied-ai/fine-tuning",
+    title: "Fine-Tuning Fundamentals",
+    outputPath: "learning/advanced/applied-ai/fine-tuning/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric neural network being adjusted — a brain/model icon with small tuning knobs and dials, training data arrows flowing in from one side, and an improved output glowing on the other. Orange and gold accents. Represents fine-tuning language models.`,
+  },
+  {
+    id: "advanced/applied-ai/llm-security",
+    title: "LLM Security & Safety",
+    outputPath: "learning/advanced/applied-ai/llm-security/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric shield icon protecting an AI brain from incoming red threat arrows/darts. A lock symbol and firewall barrier visible. Red and blue accents with the shield in gold. Represents AI security and prompt injection defense.`,
+  },
+  {
+    id: "advanced/applied-ai/ml-systems-design",
+    title: "ML Systems Design",
+    outputPath: "learning/advanced/applied-ai/ml-systems-design/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric architecture diagram — interconnected service boxes (API, model, cache, database, monitoring) arranged in a clean system layout with data flow arrows between them. Blue and green accents. Represents designing production ML system architectures.`,
+  },
+  {
+    id: "advanced/applied-ai/multi-modal-ai",
+    title: "Multi-Modal AI",
+    outputPath: "learning/advanced/applied-ai/multi-modal-ai/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric scene showing three input types — an image/photo, an audio waveform, and a text document — all flowing into a central AI brain that produces a unified glowing output. Purple, teal, and gold accents. Represents multi-modal AI processing vision, audio, and text.`,
+  },
+  {
+    id: "advanced/applied-ai/deploying-ai-apps",
+    title: "Deploying AI Applications",
+    outputPath: "learning/advanced/applied-ai/deploying-ai-apps/thumbnail.png",
+    prompt: `${BASE_STYLE} An isometric Docker container/shipping container with a rocket launching from inside it, heading toward a cloud platform above. Small gear and server icons nearby. Orange and blue accents. Represents deploying AI applications to production.`,
   },
 ];
 
