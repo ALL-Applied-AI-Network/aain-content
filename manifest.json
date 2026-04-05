@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-05T05:36:23.376Z",
+  "generated_at": "2026-04-05T07:19:47.930Z",
   "content": [
     {
       "type": "learning",
@@ -294,6 +294,24 @@
       "title": "Prompt Engineering Lab",
       "description": "A hands-on lab exploring prompt engineering techniques — from basic patterns to advanced strategies for reliable AI outputs",
       "path": "workshops/prompt-engineering-lab/workshop.md"
+    },
+    {
+      "type": "workshop",
+      "title": "Deploy Your First AI App",
+      "description": "Take a chatbot from localhost to a live URL using FastAPI, Docker, and a cloud platform",
+      "path": "workshops/deploy-your-first-ai-app/workshop.md"
+    },
+    {
+      "type": "workshop",
+      "title": "Deep Learning from Scratch",
+      "description": "Build a neural network from scratch in Python -- no PyTorch, no TensorFlow, just NumPy and math",
+      "path": "workshops/deep-learning-from-scratch/workshop.md"
+    },
+    {
+      "type": "workshop",
+      "title": "Build an Agent",
+      "description": "Build an AI agent with tool use -- web search, calculator, and file operations using an LLM API and a simple agent loop",
+      "path": "workshops/build-an-agent/workshop.md"
     },
     {
       "type": "workshop",

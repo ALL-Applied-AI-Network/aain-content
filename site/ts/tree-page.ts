@@ -167,7 +167,7 @@ function renderSidebar(tree: TreeJson, query: string): void {
     html += `
       <div class="sidebar__layer-group" data-layer="${layer}">
         <div class="sidebar__layer-header" data-layer="${layer}">
-          <span class="material-icons-outlined sidebar__layer-chevron">expand_more</span>
+          <svg class="sidebar__layer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           <span class="sidebar__layer-dot" style="background:${color}"></span>
           <span class="sidebar__layer-name">${name}</span>
           <span class="sidebar__layer-count">${nodes.length}</span>
@@ -283,7 +283,7 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
   // Search bar in bottom sheet
   let html = `
     <div class="sidebar__search" style="position:sticky;top:0;z-index:5;background:var(--bg-secondary);border-bottom:1px solid var(--border-subtle);margin:0 -0.75rem;padding:0.75rem;">
-      <span class="material-icons-outlined sidebar__search-icon">search</span>
+      <svg class="sidebar__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
       <input type="text" id="bottom-sheet-search" class="sidebar__search-input" placeholder="Search lessons..." autocomplete="off" spellcheck="false" value="${query}" />
     </div>
   `;
@@ -311,7 +311,7 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
       html += `
         <div class="sidebar__layer-group">
           <div class="sidebar__layer-header">
-            <span class="material-icons-outlined sidebar__layer-chevron">expand_more</span>
+            <svg class="sidebar__layer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             <span class="sidebar__layer-dot" style="background:${color}"></span>
             <span class="sidebar__layer-name">${name}</span>
             <span class="sidebar__layer-count">${nodes.length}</span>

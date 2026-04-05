@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loading — ALL Applied AI Network</title>
+  <meta name="description" content="Playbook or workshop content from the ALL Applied AI Network Hub Toolkit." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="./public/all-logo-transparent.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+  <style>
+    .playbook-layout {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+    .playbook-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .playbook-breadcrumb a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .playbook-breadcrumb a:hover { color: var(--text-primary); }
+    .playbook-breadcrumb__sep { opacity: 0.4; }
+
+    .playbook-content h1:first-child {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-primary), #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .playbook-content h2 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+    .playbook-content h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .playbook-content p {
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+    }
+    .playbook-content a {
+      color: #a78bfa;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .playbook-content a:hover { color: #c4b5fd; }
+    .playbook-content ul, .playbook-content ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      color: var(--text-secondary);
+    }
+    .playbook-content li { margin-bottom: 0.3rem; line-height: 1.6; }
+    .playbook-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .playbook-content th, .playbook-content td {
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+    }
+    .playbook-content th {
+      background: rgba(255,255,255,0.04);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .playbook-content td { color: var(--text-secondary); }
+    .playbook-content blockquote {
+      border-left: 3px solid #a855f7;
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+      background: rgba(168,85,247,0.06);
+      border-radius: 0 8px 8px 0;
+    }
+    .playbook-content blockquote p { color: var(--text-secondary); margin-bottom: 0; }
+    .playbook-content hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 2rem 0;
+    }
+    .playbook-content img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Chapter navigation at bottom */
+    .playbook-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .playbook-nav__link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none;
+      transition: all 0.15s;
+      max-width: 45%;
+    }
+    .playbook-nav__link:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .playbook-nav__label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+    .playbook-nav__title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #a78bfa;
+    }
+    .playbook-nav__link--next { margin-left: auto; text-align: right; }
+
+    .playbook-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 2rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.15s;
+    }
+    .playbook-back:hover {
+      color: var(--text-primary);
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.03);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="./" class="nav__brand">
+        <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+        <span>ALL Applied AI Network</span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="./tree.html">Learning Content</a></li>
+        <li><a href="./toolkit.html" class="active">Hub Toolkit</a></li>
+        <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-track">
+    <div class="reading-progress" id="reading-progress"></div>
+  </div>
+
+  <!-- Content -->
+  <main class="playbook-layout">
+    <div class="playbook-breadcrumb" id="breadcrumb">
+      <a href="./">Home</a>
+      <span class="playbook-breadcrumb__sep">/</span>
+      <a href="./toolkit.html">Hub Toolkit</a>
+      <span class="playbook-breadcrumb__sep">/</span>
+      <span id="breadcrumb-section">Loading...</span>
+    </div>
+
+    <article class="playbook-content" id="playbook-content">
+      <div class="loading">
+        <div class="loading__spinner"></div>
+        Loading content...
+      </div>
+    </article>
+
+    <div id="playbook-nav"></div>
+
+    <a href="./toolkit.html" class="playbook-back">&larr; Back to Hub Toolkit</a>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand-area">
+          <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="footer__brand-logo" />
+          <span class="footer__brand">ALL Applied AI Network</span>
+        </div>
+        <p class="footer__legal">
+          Content licensed under CC BY-SA 4.0. Code licensed under MIT.<br />
+          Built at MSOE. Maintained by the ALL community.
+        </p>
+      </div>
+      <div class="footer__links">
+        <ul class="footer__link-col">
+          <li><a href="./tree.html">Learning Content</a></li>
+          <li><a href="./toolkit.html">Hub Toolkit</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+  </script>
+  <script type="module" src="./ts/playbook-page.ts"></script>
+</body>
+</html>

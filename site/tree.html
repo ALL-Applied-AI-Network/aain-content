@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Content — ALL Applied AI Network</title>
   <meta name="description" content="Curated AI learning paths — we sorted through the best resources that already exist and mapped them into a skill tree you can follow." />
+  <meta property="og:title" content="Learning Tree — ALL Applied AI Network" />
+  <meta property="og:description" content="Interactive learning curriculum from foundations to advanced applied AI." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./public/all-logo-transparent.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./tree.css" />
 </head>
@@ -40,7 +46,7 @@
         <div class="sidebar__inner">
           <!-- Search -->
           <div class="sidebar__search">
-            <span class="material-icons-outlined sidebar__search-icon">search</span>
+            <svg class="sidebar__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
             <input
               type="text"
               id="sidebar-search"
@@ -61,38 +67,38 @@
           <!-- Playbooks -->
           <div class="sidebar__extra-section">
             <div class="sidebar__extra-header">
-              <span class="material-icons-outlined sidebar__extra-icon">menu_book</span>
+              <svg class="sidebar__extra-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z"/></svg>
               <span class="sidebar__extra-title">Playbooks</span>
             </div>
-            <a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener" class="sidebar__extra-item">
+            <a href="./playbook.html?path=playbooks/getting-started/index.md" class="sidebar__extra-item">
               <span class="sidebar__extra-item-title">Starting Your AI Club</span>
-              <span class="material-icons-outlined sidebar__extra-link-icon">open_in_new</span>
+              <svg class="sidebar__extra-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
             </a>
           </div>
 
           <!-- Event Frameworks -->
           <div class="sidebar__extra-section">
             <div class="sidebar__extra-header">
-              <span class="material-icons-outlined sidebar__extra-icon">event</span>
+              <svg class="sidebar__extra-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
               <span class="sidebar__extra-title">Event Frameworks</span>
             </div>
-            <a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener" class="sidebar__extra-item">
+            <a href="./playbook.html?path=playbooks/hackathons/index.md" class="sidebar__extra-item">
               <span class="sidebar__extra-item-title">Hackathon Framework</span>
-              <span class="material-icons-outlined sidebar__extra-link-icon">open_in_new</span>
+              <svg class="sidebar__extra-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
 
         <!-- Collapse toggle -->
         <button class="sidebar__collapse-btn" id="sidebar-collapse" aria-label="Collapse sidebar">
-          <span class="material-icons-outlined">chevron_left</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
       </aside>
 
       <!-- Collapsed sidebar strip -->
       <div class="sidebar-strip" id="sidebar-strip">
         <button class="sidebar-strip__expand" id="sidebar-expand" aria-label="Expand sidebar">
-          <span class="material-icons-outlined">menu</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
         <div class="sidebar-strip__dots" id="sidebar-strip-dots"></div>
       </div>
@@ -113,7 +119,7 @@
 
     <!-- Mobile: floating button to open sidebar as bottom sheet -->
     <button class="mobile-fab" id="mobile-fab" aria-label="Open content list">
-      <span class="material-icons-outlined">list</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
     </button>
 
     <!-- Mobile: bottom sheet overlay -->

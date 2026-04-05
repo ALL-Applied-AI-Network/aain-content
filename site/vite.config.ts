@@ -36,6 +36,7 @@ export default defineConfig({
         tree: resolve(__dirname, "tree.html"),
         article: resolve(__dirname, "article.html"),
         toolkit: resolve(__dirname, "toolkit.html"),
+        playbook: resolve(__dirname, "playbook.html"),
       },
     },
   },
