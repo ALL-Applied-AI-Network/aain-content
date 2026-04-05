@@ -11,11 +11,13 @@ prerequisites:
   - "foundations/git-basics"
   - "foundations/reading-writing-data"
   - "foundations/build-your-first-script"
+  - "foundations/apis-and-web-basics"
 unlocks:
   - "intermediate/applied-ai/prompt-engineering"
   - "intermediate/applied-ai/build-a-chatbot"
   - "advanced/applied-ai/structured-outputs"
   - "advanced/applied-ai/fine-tuning"
+  - "advanced/applied-ai/multi-modal-ai"
 
 content_file: "how-ai-apis-work.md"
 notebook_file: null

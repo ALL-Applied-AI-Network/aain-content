@@ -13,6 +13,7 @@ unlocks:
   - "foundations/what-is-programming"
   - "foundations/python-through-ai"
   - "tooling/ai-ides/cursor-deep-dive"
+  - "foundations/debugging-with-ai"
 
 content_file: "first-conversation-with-ai.md"
 notebook_file: null

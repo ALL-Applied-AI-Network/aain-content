@@ -14,6 +14,8 @@ unlocks:
   - "intermediate/applied-ai/rag-fundamentals"
   - "advanced/applied-ai/structured-outputs"
   - "advanced/applied-ai/llm-security"
+  - "intermediate/applied-ai/ai-data-analysis"
+  - "advanced/applied-ai/multi-modal-ai"
 
 content_file: "prompt-engineering.md"
 notebook_file: null

@@ -12,6 +12,7 @@ prerequisites:
   - "foundations/reading-writing-data"
 unlocks:
   - "intermediate/applied-ai/how-ai-apis-work"
+  - "foundations/debugging-with-ai"
 
 content_file: "build-your-first-script.md"
 notebook_file: null

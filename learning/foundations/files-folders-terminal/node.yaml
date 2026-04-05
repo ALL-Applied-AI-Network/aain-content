@@ -11,6 +11,7 @@ prerequisites:
   - "foundations/what-is-programming"
 unlocks:
   - "foundations/git-basics"
+  - "foundations/virtual-environments"
 
 content_file: "files-folders-terminal.md"
 notebook_file: null

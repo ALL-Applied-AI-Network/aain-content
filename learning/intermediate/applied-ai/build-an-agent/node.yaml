@@ -12,6 +12,7 @@ prerequisites:
 unlocks:
   - "intermediate/applied-ai/evaluation-and-observability"
   - "advanced/applied-ai/ml-systems-design"
+  - "advanced/applied-ai/deploying-ai-apps"
 
 content_file: "build-an-agent.md"
 notebook_file: null

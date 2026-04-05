@@ -13,6 +13,7 @@ prerequisites:
 unlocks:
   - "intermediate/applied-ai/rag-fundamentals"
   - "intermediate/applied-ai/agents-and-tool-use"
+  - "advanced/applied-ai/deploying-ai-apps"
 
 content_file: "build-a-chatbot.md"
 notebook_file: null

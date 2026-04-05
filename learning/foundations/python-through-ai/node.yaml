@@ -13,6 +13,9 @@ prerequisites:
 unlocks:
   - "foundations/reading-writing-data"
   - "foundations/build-your-first-script"
+  - "foundations/virtual-environments"
+  - "intermediate/applied-ai/web-scraping"
+  - "intermediate/applied-ai/working-with-databases"
 
 content_file: "python-through-ai.md"
 notebook_file: null

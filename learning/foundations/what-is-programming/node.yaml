@@ -13,6 +13,7 @@ prerequisites:
 unlocks:
   - "foundations/python-through-ai"
   - "foundations/files-folders-terminal"
+  - "foundations/apis-and-web-basics"
 
 content_file: "what-is-programming.md"
 notebook_file: null
