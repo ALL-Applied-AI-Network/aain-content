@@ -1,13 +1,13 @@
 /**
- * hero-scene-b.ts — Interactive Three.js isometric campus/AI lab hero scene.
- * Renders a stylized low-poly workstation with GPU server, orbiting knowledge
- * symbols, glowing network paths, and rising data particles.
+ * hero-scene-b.ts — Production-quality Three.js isometric hero scene.
+ * Detailed workstation with laptop, monitor, GPU server tower, desk accessories,
+ * floating knowledge symbols, connection paths, and ambient data particles.
  */
 
 import * as THREE from "three";
 
 // ---------------------------------------------------------------------------
-// Brand colors
+// Brand palette
 // ---------------------------------------------------------------------------
 
 const BLUE = 0x3b82f6;
@@ -16,497 +16,898 @@ const PINK = 0xec4899;
 const PURPLE = 0xa855f7;
 const GREEN = 0x10b981;
 const AMBER = 0xf59e0b;
-const BRAND_BLUE = 0x4f8fea;
+
+// Furniture / body neutrals
+const CHARCOAL = 0x2a2a2e;
+const MID_GRAY = 0x3a3a40;
+const DARK_SURFACE = 0x222226;
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Shared materials (reused across builders to keep material count low)
 // ---------------------------------------------------------------------------
 
-function lighten(hex: number, amount: number): number {
-  const r = Math.min(255, ((hex >> 16) & 0xff) + amount);
-  const g = Math.min(255, ((hex >> 8) & 0xff) + amount);
-  const b = Math.min(255, (hex & 0xff) + amount);
-  return (r << 16) | (g << 8) | b;
-}
+const matCharcoal = new THREE.MeshStandardMaterial({
+  color: CHARCOAL,
+  roughness: 0.75,
+  metalness: 0.05,
+});
 
-function darken(hex: number, amount: number): number {
-  const r = Math.max(0, ((hex >> 16) & 0xff) - amount);
-  const g = Math.max(0, ((hex >> 8) & 0xff) - amount);
-  const b = Math.max(0, (hex & 0xff) - amount);
-  return (r << 16) | (g << 8) | b;
-}
+const matMidGray = new THREE.MeshStandardMaterial({
+  color: MID_GRAY,
+  roughness: 0.7,
+  metalness: 0.05,
+});
 
-function phong(
-  color: number,
-  opts?: { emissive?: number; emissiveIntensity?: number; opacity?: number }
-): THREE.MeshPhongMaterial {
-  return new THREE.MeshPhongMaterial({
-    color,
-    flatShading: true,
-    transparent: opts?.opacity !== undefined && opts.opacity < 1,
-    opacity: opts?.opacity ?? 1,
-    emissive: opts?.emissive ?? 0x000000,
-    emissiveIntensity: opts?.emissiveIntensity ?? 1,
-  });
-}
+const matDarkSurface = new THREE.MeshStandardMaterial({
+  color: DARK_SURFACE,
+  roughness: 0.8,
+  metalness: 0.0,
+});
+
+const matServerBody = new THREE.MeshStandardMaterial({
+  color: CHARCOAL,
+  roughness: 0.55,
+  metalness: 0.3,
+});
+
+const matServerPanel = new THREE.MeshStandardMaterial({
+  color: 0x303036,
+  roughness: 0.5,
+  metalness: 0.25,
+});
+
+const matScreenGlass = new THREE.MeshStandardMaterial({
+  color: 0x0a1628,
+  roughness: 0.2,
+  metalness: 0.0,
+  emissive: BLUE,
+  emissiveIntensity: 0.15,
+});
+
+const matWhitePage = new THREE.MeshStandardMaterial({
+  color: 0xe8e8f0,
+  roughness: 0.9,
+  metalness: 0.0,
+});
+
+const matChairSeat = new THREE.MeshStandardMaterial({
+  color: 0x35354a,
+  roughness: 0.8,
+  metalness: 0.0,
+});
 
 // ---------------------------------------------------------------------------
-// Ground grid with glowing connection paths
+// Ground grid — very subtle, just enough to ground the scene
 // ---------------------------------------------------------------------------
 
-function createGroundGrid(scene: THREE.Group): void {
-  // Subtle flat ground disc
-  const groundGeo = new THREE.CircleGeometry(6.5, 64);
-  const groundMat = new THREE.MeshPhongMaterial({
-    color: 0x1a1a2e,
-    flatShading: true,
+function createGroundGrid(parent: THREE.Group): void {
+  // Soft ground disc
+  const groundGeo = new THREE.CircleGeometry(6, 48);
+  const groundMat = new THREE.MeshStandardMaterial({
+    color: 0x18181e,
+    roughness: 1.0,
     transparent: true,
-    opacity: 0.25,
+    opacity: 0.18,
     side: THREE.DoubleSide,
   });
   const ground = new THREE.Mesh(groundGeo, groundMat);
   ground.rotation.x = -Math.PI / 2;
   ground.position.y = -0.01;
-  scene.add(ground);
+  parent.add(ground);
 
   // Grid lines
-  const gridSize = 12;
-  const gridStep = 1.0;
   const gridMat = new THREE.LineBasicMaterial({
-    color: BRAND_BLUE,
+    color: BLUE,
     transparent: true,
-    opacity: 0.06,
+    opacity: 0.04,
   });
-
-  for (let i = -gridSize / 2; i <= gridSize / 2; i += gridStep) {
-    // X lines
-    const xPts = [
-      new THREE.Vector3(i, 0, -gridSize / 2),
-      new THREE.Vector3(i, 0, gridSize / 2),
-    ];
-    const xGeo = new THREE.BufferGeometry().setFromPoints(xPts);
-    scene.add(new THREE.Line(xGeo, gridMat));
-
-    // Z lines
-    const zPts = [
-      new THREE.Vector3(-gridSize / 2, 0, i),
-      new THREE.Vector3(gridSize / 2, 0, i),
-    ];
-    const zGeo = new THREE.BufferGeometry().setFromPoints(zPts);
-    scene.add(new THREE.Line(zGeo, gridMat));
+  const half = 6;
+  const step = 1.0;
+  for (let i = -half; i <= half; i += step) {
+    const xGeo = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(i, 0, -half),
+      new THREE.Vector3(i, 0, half),
+    ]);
+    parent.add(new THREE.Line(xGeo, gridMat));
+    const zGeo = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(-half, 0, i),
+      new THREE.Vector3(half, 0, i),
+    ]);
+    parent.add(new THREE.Line(zGeo, gridMat));
   }
 }
 
 // ---------------------------------------------------------------------------
-// Connection paths (glowing lines between objects on the ground)
+// Connection paths (L-shaped glowing lines on the ground plane)
 // ---------------------------------------------------------------------------
 
 interface PathData {
   line: THREE.Line;
   mat: THREE.LineBasicMaterial;
-  phaseOffset: number;
+  phase: number;
 }
 
-function createConnectionPath(
+function createPath(
   from: THREE.Vector3,
   to: THREE.Vector3,
   color: number,
-  phaseOffset: number
+  phase: number
 ): PathData {
-  // Create an L-shaped path on the ground
   const mid = new THREE.Vector3(to.x, 0.02, from.z);
-  const pts = [
+  const geo = new THREE.BufferGeometry().setFromPoints([
     new THREE.Vector3(from.x, 0.02, from.z),
     mid,
     new THREE.Vector3(to.x, 0.02, to.z),
-  ];
-  const geo = new THREE.BufferGeometry().setFromPoints(pts);
+  ]);
   const mat = new THREE.LineBasicMaterial({
     color,
     transparent: true,
-    opacity: 0.3,
+    opacity: 0.25,
   });
-  const line = new THREE.Line(geo, mat);
-  return { line, mat, phaseOffset };
+  return { line: new THREE.Line(geo, mat), mat, phase };
 }
 
 // ---------------------------------------------------------------------------
-// Desk / Workstation
+// Laptop — wedge base, keyboard grid, hinged screen with code lines
+// ---------------------------------------------------------------------------
+
+interface LaptopRefs {
+  group: THREE.Group;
+  codeLines: THREE.Mesh[];
+}
+
+function createLaptop(): LaptopRefs {
+  const group = new THREE.Group();
+  const codeLines: THREE.Mesh[] = [];
+
+  // --- Base (slightly wedge-shaped using a custom shape) ---
+  // Front thicker (0.045), back thinner (0.025)
+  const baseW = 0.92;
+  const baseD = 0.62;
+  const frontH = 0.045;
+  const backH = 0.025;
+  const baseVerts = new Float32Array([
+    // Front face (z = +baseD/2)
+    -baseW / 2, 0, baseD / 2,
+    baseW / 2, 0, baseD / 2,
+    baseW / 2, frontH, baseD / 2,
+    -baseW / 2, 0, baseD / 2,
+    baseW / 2, frontH, baseD / 2,
+    -baseW / 2, frontH, baseD / 2,
+    // Back face (z = -baseD/2)
+    baseW / 2, 0, -baseD / 2,
+    -baseW / 2, 0, -baseD / 2,
+    -baseW / 2, backH, -baseD / 2,
+    baseW / 2, 0, -baseD / 2,
+    -baseW / 2, backH, -baseD / 2,
+    baseW / 2, backH, -baseD / 2,
+    // Top face
+    -baseW / 2, frontH, baseD / 2,
+    baseW / 2, frontH, baseD / 2,
+    baseW / 2, backH, -baseD / 2,
+    -baseW / 2, frontH, baseD / 2,
+    baseW / 2, backH, -baseD / 2,
+    -baseW / 2, backH, -baseD / 2,
+    // Bottom face
+    -baseW / 2, 0, -baseD / 2,
+    baseW / 2, 0, -baseD / 2,
+    baseW / 2, 0, baseD / 2,
+    -baseW / 2, 0, -baseD / 2,
+    baseW / 2, 0, baseD / 2,
+    -baseW / 2, 0, baseD / 2,
+    // Right face
+    baseW / 2, 0, baseD / 2,
+    baseW / 2, 0, -baseD / 2,
+    baseW / 2, backH, -baseD / 2,
+    baseW / 2, 0, baseD / 2,
+    baseW / 2, backH, -baseD / 2,
+    baseW / 2, frontH, baseD / 2,
+    // Left face
+    -baseW / 2, 0, -baseD / 2,
+    -baseW / 2, 0, baseD / 2,
+    -baseW / 2, frontH, baseD / 2,
+    -baseW / 2, 0, -baseD / 2,
+    -baseW / 2, frontH, baseD / 2,
+    -baseW / 2, backH, -baseD / 2,
+  ]);
+  const baseGeo = new THREE.BufferGeometry();
+  baseGeo.setAttribute("position", new THREE.BufferAttribute(baseVerts, 3));
+  baseGeo.computeVertexNormals();
+  const laptopBase = new THREE.Mesh(baseGeo, matCharcoal);
+  group.add(laptopBase);
+
+  // --- Keyboard grid (6 columns x 3 rows of tiny raised boxes) ---
+  const keyMat = new THREE.MeshStandardMaterial({
+    color: 0x38383e,
+    roughness: 0.9,
+    metalness: 0.0,
+  });
+  const keyGeo = new THREE.BoxGeometry(0.1, 0.008, 0.06);
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 6; col++) {
+      const key = new THREE.Mesh(keyGeo, keyMat);
+      key.position.set(
+        -0.3 + col * 0.12,
+        frontH + 0.004,
+        0.12 - row * 0.1
+      );
+      group.add(key);
+    }
+  }
+
+  // Trackpad
+  const trackpadGeo = new THREE.BoxGeometry(0.24, 0.004, 0.14);
+  const trackpadMat = new THREE.MeshStandardMaterial({
+    color: 0x323238,
+    roughness: 0.6,
+    metalness: 0.05,
+  });
+  const trackpad = new THREE.Mesh(trackpadGeo, trackpadMat);
+  trackpad.position.set(0, frontH + 0.002, 0.22);
+  group.add(trackpad);
+
+  // --- Screen (hinged open at ~110 degrees) ---
+  const screenPivot = new THREE.Group();
+  screenPivot.position.set(0, backH, -baseD / 2);
+  // 110 degrees open from closed = the screen tilts back by ~(180-110)=70 deg from vertical
+  // In terms of rotation around X: -20 degrees past vertical = -(PI/2 - 20deg)
+  // More simply: screen lies along -Z when closed (rotation.x = PI/2), opened to 110 deg means rotation.x = PI/2 - 110*PI/180
+  screenPivot.rotation.x = -(Math.PI / 2) + (110 * Math.PI) / 180; // ~-0.35 rad tilt from vertical
+
+  // Screen panel (bezel + display)
+  const screenH = 0.56;
+  const screenW = 0.88;
+  const bezelThick = 0.022;
+
+  // Bezel frame (back shell)
+  const bezelGeo = new THREE.BoxGeometry(screenW + 0.04, screenH + 0.04, bezelThick);
+  const bezel = new THREE.Mesh(bezelGeo, matCharcoal);
+  bezel.position.y = screenH / 2 + 0.02;
+  screenPivot.add(bezel);
+
+  // Glowing screen surface
+  const displayGeo = new THREE.PlaneGeometry(screenW, screenH);
+  const displayMat = new THREE.MeshStandardMaterial({
+    color: 0x0c1a30,
+    roughness: 0.2,
+    metalness: 0.0,
+    emissive: 0x1a3a6a,
+    emissiveIntensity: 0.4,
+  });
+  const display = new THREE.Mesh(displayGeo, displayMat);
+  display.position.set(0, screenH / 2 + 0.02, bezelThick / 2 + 0.001);
+  screenPivot.add(display);
+
+  // Code lines on screen (4 horizontal emissive strips, different colors/widths)
+  const lineConfigs = [
+    { color: CYAN, width: 0.35, xOff: -0.15 },
+    { color: GREEN, width: 0.25, xOff: -0.2 },
+    { color: PINK, width: 0.42, xOff: -0.08 },
+    { color: AMBER, width: 0.18, xOff: -0.25 },
+  ];
+  for (let i = 0; i < lineConfigs.length; i++) {
+    const cfg = lineConfigs[i];
+    const lineGeo = new THREE.PlaneGeometry(cfg.width, 0.018);
+    const lineMat = new THREE.MeshBasicMaterial({
+      color: cfg.color,
+      transparent: true,
+      opacity: 0.75,
+    });
+    const line = new THREE.Mesh(lineGeo, lineMat);
+    line.position.set(
+      cfg.xOff + cfg.width * 0.15,
+      screenH / 2 + 0.14 - i * 0.065,
+      bezelThick / 2 + 0.002
+    );
+    screenPivot.add(line);
+    codeLines.push(line);
+  }
+
+  group.add(screenPivot);
+
+  return { group, codeLines };
+}
+
+// ---------------------------------------------------------------------------
+// Desk with beveled edges, coffee mug, and mouse
 // ---------------------------------------------------------------------------
 
 function createDesk(): THREE.Group {
   const group = new THREE.Group();
 
-  // Desktop surface
-  const deskGeo = new THREE.BoxGeometry(2.0, 0.08, 1.2);
-  const deskMat = phong(0x2d2d3d);
-  const desk = new THREE.Mesh(deskGeo, deskMat);
-  desk.position.y = 0.7;
-  group.add(desk);
+  // Desktop surface (slightly beveled look via two layers)
+  const deskTopGeo = new THREE.BoxGeometry(2.2, 0.06, 1.3);
+  const deskTop = new THREE.Mesh(deskTopGeo, matDarkSurface);
+  deskTop.position.y = 0.72;
+  group.add(deskTop);
 
-  // Desk legs (4)
-  const legGeo = new THREE.BoxGeometry(0.08, 0.7, 0.08);
-  const legMat = phong(0x3d3d4d);
-  const legPositions = [
-    [-0.85, 0.35, -0.5],
-    [0.85, 0.35, -0.5],
-    [-0.85, 0.35, 0.5],
-    [0.85, 0.35, 0.5],
+  // Thin edge bevel strip (lighter ring around the top)
+  const bevelGeo = new THREE.BoxGeometry(2.24, 0.015, 1.34);
+  const bevelMat = new THREE.MeshStandardMaterial({
+    color: 0x2e2e34,
+    roughness: 0.6,
+    metalness: 0.1,
+  });
+  const bevel = new THREE.Mesh(bevelGeo, bevelMat);
+  bevel.position.y = 0.69;
+  group.add(bevel);
+
+  // Desk legs (4 tapered legs using cylinders)
+  const legGeo = new THREE.CylinderGeometry(0.035, 0.045, 0.69, 6);
+  const legPositions: [number, number, number][] = [
+    [-0.95, 0.345, -0.55],
+    [0.95, 0.345, -0.55],
+    [-0.95, 0.345, 0.55],
+    [0.95, 0.345, 0.55],
   ];
   for (const [lx, ly, lz] of legPositions) {
-    const leg = new THREE.Mesh(legGeo, legMat);
+    const leg = new THREE.Mesh(legGeo, matMidGray);
     leg.position.set(lx, ly, lz);
     group.add(leg);
   }
 
-  // Laptop base
-  const laptopBaseGeo = new THREE.BoxGeometry(0.9, 0.04, 0.6);
-  const laptopBaseMat = phong(0x4a4a5a);
-  const laptopBase = new THREE.Mesh(laptopBaseGeo, laptopBaseMat);
-  laptopBase.position.set(0, 0.76, 0);
-  group.add(laptopBase);
+  // --- Coffee mug (right side of desk) ---
+  const mugGroup = new THREE.Group();
+  mugGroup.position.set(0.75, 0.75, 0.35);
 
-  // Laptop screen (angled back)
-  const screenGroup = new THREE.Group();
-  screenGroup.position.set(0, 0.78, -0.28);
-  screenGroup.rotation.x = -0.25;
-
-  // Screen frame
-  const frameGeo = new THREE.BoxGeometry(0.88, 0.6, 0.03);
-  const frameMat = phong(0x4a4a5a);
-  const frame = new THREE.Mesh(frameGeo, frameMat);
-  frame.position.y = 0.3;
-  screenGroup.add(frame);
-
-  // Glowing screen surface
-  const screenGeo = new THREE.PlaneGeometry(0.78, 0.5);
-  const screenMat = new THREE.MeshBasicMaterial({
-    color: BRAND_BLUE,
-    transparent: true,
-    opacity: 0.9,
+  // Mug body (cylinder)
+  const mugGeo = new THREE.CylinderGeometry(0.065, 0.06, 0.14, 12);
+  const mugMat = new THREE.MeshStandardMaterial({
+    color: 0x3d3d50,
+    roughness: 0.7,
+    metalness: 0.1,
   });
-  const screen = new THREE.Mesh(screenGeo, screenMat);
-  screen.position.set(0, 0.3, 0.02);
-  screenGroup.add(screen);
+  const mugBody = new THREE.Mesh(mugGeo, mugMat);
+  mugBody.position.y = 0.07;
+  mugGroup.add(mugBody);
 
-  // Code lines on screen (simple horizontal bars)
-  const lineColors = [CYAN, GREEN, PINK, BLUE, AMBER];
-  for (let i = 0; i < 5; i++) {
-    const width = 0.2 + Math.random() * 0.35;
-    const lineGeo = new THREE.PlaneGeometry(width, 0.025);
+  // Mug handle (torus segment)
+  const handleGeo = new THREE.TorusGeometry(0.045, 0.012, 6, 8, Math.PI);
+  const handle = new THREE.Mesh(handleGeo, mugMat);
+  handle.rotation.y = Math.PI / 2;
+  handle.rotation.z = -Math.PI / 2;
+  handle.position.set(0.08, 0.07, 0);
+  mugGroup.add(handle);
+
+  // Coffee surface inside mug
+  const coffeeSurface = new THREE.Mesh(
+    new THREE.CircleGeometry(0.055, 12),
+    new THREE.MeshStandardMaterial({
+      color: 0x3a2010,
+      roughness: 1.0,
+    })
+  );
+  coffeeSurface.rotation.x = -Math.PI / 2;
+  coffeeSurface.position.y = 0.13;
+  mugGroup.add(coffeeSurface);
+
+  group.add(mugGroup);
+
+  // --- Mouse (small rounded box) ---
+  const mouseGeo = new THREE.BoxGeometry(0.1, 0.03, 0.16);
+  const mouseMat = new THREE.MeshStandardMaterial({
+    color: 0x404048,
+    roughness: 0.5,
+    metalness: 0.1,
+  });
+  const mouse = new THREE.Mesh(mouseGeo, mouseMat);
+  mouse.position.set(0.65, 0.765, 0.05);
+  group.add(mouse);
+
+  return group;
+}
+
+// ---------------------------------------------------------------------------
+// External monitor on a stand (behind the laptop)
+// ---------------------------------------------------------------------------
+
+interface MonitorRefs {
+  group: THREE.Group;
+  codeLines: THREE.Mesh[];
+}
+
+function createMonitor(): MonitorRefs {
+  const group = new THREE.Group();
+  const codeLines: THREE.Mesh[] = [];
+
+  // Stand base (thin disc)
+  const standBaseGeo = new THREE.CylinderGeometry(0.15, 0.15, 0.015, 12);
+  const standBase = new THREE.Mesh(standBaseGeo, matMidGray);
+  standBase.position.y = 0.008;
+  group.add(standBase);
+
+  // Stand neck
+  const neckGeo = new THREE.BoxGeometry(0.04, 0.4, 0.04);
+  const neck = new THREE.Mesh(neckGeo, matMidGray);
+  neck.position.y = 0.21;
+  group.add(neck);
+
+  // Screen panel
+  const sw = 1.05;
+  const sh = 0.58;
+  const panelGeo = new THREE.BoxGeometry(sw + 0.04, sh + 0.04, 0.025);
+  const panel = new THREE.Mesh(panelGeo, matCharcoal);
+  panel.position.y = 0.41 + sh / 2;
+  group.add(panel);
+
+  // Display surface
+  const displayGeo = new THREE.PlaneGeometry(sw, sh);
+  const displayMat = new THREE.MeshStandardMaterial({
+    color: 0x0e1e38,
+    roughness: 0.2,
+    metalness: 0.0,
+    emissive: 0x1a3a6a,
+    emissiveIntensity: 0.35,
+  });
+  const display = new THREE.Mesh(displayGeo, displayMat);
+  display.position.set(0, 0.41 + sh / 2, 0.014);
+  group.add(display);
+
+  // Content lines (different from laptop to suggest a different tool/window)
+  const monitorLineConfigs = [
+    { color: PURPLE, width: 0.5, xOff: -0.12 },
+    { color: BLUE, width: 0.32, xOff: -0.2 },
+    { color: GREEN, width: 0.4, xOff: -0.15 },
+  ];
+  for (let i = 0; i < monitorLineConfigs.length; i++) {
+    const cfg = monitorLineConfigs[i];
+    const lineGeo = new THREE.PlaneGeometry(cfg.width, 0.016);
     const lineMat = new THREE.MeshBasicMaterial({
-      color: lineColors[i % lineColors.length],
+      color: cfg.color,
       transparent: true,
       opacity: 0.7,
     });
-    const codeLine = new THREE.Mesh(lineGeo, lineMat);
-    codeLine.position.set(
-      -0.15 + (width / 2 - 0.25) * 0.3,
-      0.44 - i * 0.07,
-      0.025
+    const line = new THREE.Mesh(lineGeo, lineMat);
+    line.position.set(
+      cfg.xOff + cfg.width * 0.12,
+      0.41 + sh / 2 + 0.1 - i * 0.07,
+      0.015
     );
-    screenGroup.add(codeLine);
+    group.add(line);
+    codeLines.push(line);
   }
 
-  group.add(screenGroup);
-
-  // Chair (simple geometric)
-  const seatGeo = new THREE.BoxGeometry(0.55, 0.06, 0.5);
-  const seatMat = phong(PURPLE);
-  const seat = new THREE.Mesh(seatGeo, seatMat);
-  seat.position.set(0, 0.45, 0.9);
-  group.add(seat);
-
-  // Chair back
-  const backGeo = new THREE.BoxGeometry(0.55, 0.5, 0.06);
-  const backMat = phong(darken(PURPLE, 20));
-  const back = new THREE.Mesh(backGeo, backMat);
-  back.position.set(0, 0.72, 1.13);
-  group.add(back);
-
-  // Chair legs
-  const chairLegGeo = new THREE.BoxGeometry(0.06, 0.45, 0.06);
-  const chairLegMat = phong(0x3d3d4d);
-  const chairLegs = [
-    [-0.2, 0.22, 0.7],
-    [0.2, 0.22, 0.7],
-    [-0.2, 0.22, 1.1],
-    [0.2, 0.22, 1.1],
-  ];
-  for (const [cx, cy, cz] of chairLegs) {
-    const cl = new THREE.Mesh(chairLegGeo, chairLegMat);
-    cl.position.set(cx, cy, cz);
-    group.add(cl);
-  }
-
-  return group;
+  return { group, codeLines };
 }
 
 // ---------------------------------------------------------------------------
-// GPU Tower / Server rack
+// GPU / Server Tower — detailed with panel lines, scanning LEDs, fan grill
 // ---------------------------------------------------------------------------
 
-function createGPUTower(): THREE.Group {
-  const group = new THREE.Group();
+interface TowerRefs {
+  group: THREE.Group;
+  ledMeshes: THREE.Mesh[];
+}
 
-  // Main tower body
-  const bodyGeo = new THREE.BoxGeometry(0.7, 2.0, 0.6);
-  const bodyMat = phong(0x2a2a3a);
-  const body = new THREE.Mesh(bodyGeo, bodyMat);
-  body.position.y = 1.0;
+function createGPUTower(): TowerRefs {
+  const group = new THREE.Group();
+  const ledMeshes: THREE.Mesh[] = [];
+
+  const towerW = 0.65;
+  const towerH = 1.9;
+  const towerD = 0.55;
+
+  // Main body
+  const bodyGeo = new THREE.BoxGeometry(towerW, towerH, towerD);
+  const body = new THREE.Mesh(bodyGeo, matServerBody);
+  body.position.y = towerH / 2;
   group.add(body);
 
-  // Front panel (slightly lighter)
-  const panelGeo = new THREE.BoxGeometry(0.72, 2.0, 0.02);
-  const panelMat = phong(0x33334a);
-  const panel = new THREE.Mesh(panelGeo, panelMat);
-  panel.position.set(0, 1.0, 0.31);
-  group.add(panel);
+  // Front panel (slightly lighter, inset feel)
+  const fpGeo = new THREE.BoxGeometry(towerW + 0.005, towerH - 0.06, 0.015);
+  const frontPanel = new THREE.Mesh(fpGeo, matServerPanel);
+  frontPanel.position.set(0, towerH / 2, towerD / 2 + 0.008);
+  group.add(frontPanel);
 
-  // LED strips (emissive rectangles on front)
-  const ledColors = [CYAN, GREEN, BLUE, CYAN, GREEN, AMBER];
-  for (let i = 0; i < 6; i++) {
-    const ledGeo = new THREE.PlaneGeometry(0.5, 0.04);
-    const ledMat = new THREE.MeshBasicMaterial({
-      color: ledColors[i],
-      transparent: true,
-      opacity: 0.9,
-    });
-    const led = new THREE.Mesh(ledGeo, ledMat);
-    led.position.set(0, 0.3 + i * 0.28, 0.33);
-    group.add(led);
+  // Panel seam lines on front (horizontal dividers between "bays")
+  const seamMat = new THREE.MeshStandardMaterial({
+    color: 0x1e1e24,
+    roughness: 0.9,
+  });
+  for (let i = 0; i < 5; i++) {
+    const seamGeo = new THREE.BoxGeometry(towerW - 0.06, 0.008, 0.002);
+    const seam = new THREE.Mesh(seamGeo, seamMat);
+    seam.position.set(0, 0.25 + i * 0.35, towerD / 2 + 0.017);
+    group.add(seam);
   }
 
-  // Status light dots
-  const dotGeo = new THREE.CircleGeometry(0.03, 8);
+  // Side panel lines (vertical accent strips)
   for (let i = 0; i < 3; i++) {
-    const dotMat = new THREE.MeshBasicMaterial({
-      color: i === 0 ? GREEN : i === 1 ? CYAN : AMBER,
+    const stripGeo = new THREE.BoxGeometry(0.006, towerH - 0.3, 0.002);
+    const strip = new THREE.Mesh(stripGeo, seamMat);
+    strip.position.set(
+      towerW / 2 + 0.004,
+      towerH / 2,
+      -0.12 + i * 0.12
+    );
+    group.add(strip);
+  }
+
+  // LED rows (8 small indicators that animate in scanning pattern)
+  const ledColors = [CYAN, CYAN, GREEN, CYAN, GREEN, CYAN, BLUE, GREEN];
+  for (let i = 0; i < 8; i++) {
+    const ledGeo = new THREE.PlaneGeometry(0.38, 0.022);
+    const ledMat = new THREE.MeshBasicMaterial({
+      color: ledColors[i % ledColors.length],
+      transparent: true,
+      opacity: 0.8,
     });
+    const led = new THREE.Mesh(ledGeo, ledMat);
+    led.position.set(0, 0.18 + i * 0.22, towerD / 2 + 0.02);
+    group.add(led);
+    ledMeshes.push(led);
+  }
+
+  // Status dots near top
+  const dotGeo = new THREE.CircleGeometry(0.02, 8);
+  const dotColors = [GREEN, CYAN, AMBER];
+  for (let i = 0; i < 3; i++) {
+    const dotMat = new THREE.MeshBasicMaterial({ color: dotColors[i] });
     const dot = new THREE.Mesh(dotGeo, dotMat);
-    dot.position.set(-0.2 + i * 0.15, 1.9, 0.33);
+    dot.position.set(-0.15 + i * 0.12, towerH - 0.06, towerD / 2 + 0.02);
     group.add(dot);
   }
 
-  // Vent lines on top
-  const ventMat = phong(0x222233);
-  for (let i = 0; i < 4; i++) {
-    const ventGeo = new THREE.BoxGeometry(0.5, 0.01, 0.04);
-    const vent = new THREE.Mesh(ventGeo, ventMat);
-    vent.position.set(0, 2.01, -0.15 + i * 0.1);
-    group.add(vent);
+  // Fan grill on top (circle with radial lines)
+  const grillRingGeo = new THREE.RingGeometry(0.08, 0.18, 24);
+  const grillRingMat = new THREE.MeshStandardMaterial({
+    color: 0x28282e,
+    roughness: 0.6,
+    metalness: 0.2,
+    side: THREE.DoubleSide,
+  });
+  const grillRing = new THREE.Mesh(grillRingGeo, grillRingMat);
+  grillRing.rotation.x = -Math.PI / 2;
+  grillRing.position.set(0, towerH + 0.002, 0);
+  group.add(grillRing);
+
+  // Radial spokes
+  const spokeMat = new THREE.LineBasicMaterial({ color: 0x343438 });
+  for (let a = 0; a < 6; a++) {
+    const angle = (a / 6) * Math.PI * 2;
+    const spokeGeo = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(
+        Math.cos(angle) * 0.08,
+        towerH + 0.003,
+        Math.sin(angle) * 0.08
+      ),
+      new THREE.Vector3(
+        Math.cos(angle) * 0.17,
+        towerH + 0.003,
+        Math.sin(angle) * 0.17
+      ),
+    ]);
+    group.add(new THREE.Line(spokeGeo, spokeMat));
+  }
+
+  // Cable from back (simple thin cylinder angling down)
+  const cableGeo = new THREE.CylinderGeometry(0.012, 0.012, 0.6, 6);
+  const cableMat = new THREE.MeshStandardMaterial({
+    color: 0x1a1a1e,
+    roughness: 0.9,
+  });
+  const cable = new THREE.Mesh(cableGeo, cableMat);
+  cable.position.set(0, 0.3, -towerD / 2 - 0.05);
+  cable.rotation.x = 0.3;
+  group.add(cable);
+
+  return { group, ledMeshes };
+}
+
+// ---------------------------------------------------------------------------
+// Chair — seat, backrest, central pedestal with base spokes
+// ---------------------------------------------------------------------------
+
+function createChair(): THREE.Group {
+  const group = new THREE.Group();
+
+  // Seat (slightly rounded box)
+  const seatGeo = new THREE.BoxGeometry(0.52, 0.05, 0.48);
+  const seat = new THREE.Mesh(seatGeo, matChairSeat);
+  seat.position.y = 0.48;
+  group.add(seat);
+
+  // Backrest
+  const backGeo = new THREE.BoxGeometry(0.48, 0.42, 0.04);
+  const backrest = new THREE.Mesh(backGeo, matChairSeat);
+  backrest.position.set(0, 0.72, -0.22);
+  backrest.rotation.x = 0.08; // slight recline
+  group.add(backrest);
+
+  // Central pedestal
+  const pedastalGeo = new THREE.CylinderGeometry(0.03, 0.03, 0.35, 8);
+  const pedestal = new THREE.Mesh(pedastalGeo, matMidGray);
+  pedestal.position.y = 0.28;
+  group.add(pedestal);
+
+  // Base spokes (5 directions like a real office chair)
+  const spokeGeo = new THREE.BoxGeometry(0.3, 0.02, 0.03);
+  for (let i = 0; i < 5; i++) {
+    const angle = (i / 5) * Math.PI * 2;
+    const spoke = new THREE.Mesh(spokeGeo, matMidGray);
+    spoke.position.set(
+      Math.sin(angle) * 0.14,
+      0.08,
+      Math.cos(angle) * 0.14
+    );
+    spoke.rotation.y = -angle;
+    group.add(spoke);
+
+    // Tiny wheel at end
+    const wheelGeo = new THREE.CylinderGeometry(0.025, 0.025, 0.03, 6);
+    const wheel = new THREE.Mesh(wheelGeo, matDarkSurface);
+    wheel.position.set(
+      Math.sin(angle) * 0.28,
+      0.025,
+      Math.cos(angle) * 0.28
+    );
+    wheel.rotation.z = Math.PI / 2;
+    group.add(wheel);
   }
 
   return group;
 }
 
 // ---------------------------------------------------------------------------
-// Orbiting knowledge symbols
+// Floating symbols — open book, terminal window, neural-net wireframe
 // ---------------------------------------------------------------------------
 
 interface OrbitingSymbol {
   group: THREE.Group;
-  orbitRadius: number;
-  orbitSpeed: number;
-  orbitPhase: number;
+  radius: number;
+  speed: number;
+  phase: number;
   floatPhase: number;
-  floatSpeed: number;
+  floatFreq: number;
   baseY: number;
 }
 
-function createBook(): THREE.Group {
+function createOpenBook(): THREE.Group {
   const group = new THREE.Group();
 
-  // Left page
-  const pageGeo = new THREE.BoxGeometry(0.3, 0.4, 0.03);
-  const pageMat = phong(0xf0f0f0);
-  const leftPage = new THREE.Mesh(pageGeo, pageMat);
-  leftPage.rotation.y = 0.2;
-  leftPage.position.x = -0.13;
-  group.add(leftPage);
-
-  // Right page
-  const rightPage = new THREE.Mesh(pageGeo, pageMat);
-  rightPage.rotation.y = -0.2;
-  rightPage.position.x = 0.13;
-  group.add(rightPage);
-
   // Spine
-  const spineGeo = new THREE.BoxGeometry(0.04, 0.4, 0.06);
-  const spineMat = phong(BLUE);
+  const spineGeo = new THREE.BoxGeometry(0.03, 0.35, 0.05);
+  const spineMat = new THREE.MeshStandardMaterial({
+    color: BLUE,
+    roughness: 0.6,
+    emissive: BLUE,
+    emissiveIntensity: 0.1,
+  });
   const spine = new THREE.Mesh(spineGeo, spineMat);
   group.add(spine);
 
-  // Text lines on pages
-  const lineMat = new THREE.MeshBasicMaterial({
-    color: 0xaaaacc,
+  // Left page (angled outward like an open book)
+  // Slightly curved using a custom bend: approximate with two flat segments
+  const pageW = 0.2;
+  const pageH = 0.32;
+
+  // Left inner page
+  const leftInnerGeo = new THREE.BoxGeometry(pageW * 0.6, pageH, 0.008);
+  const leftInner = new THREE.Mesh(leftInnerGeo, matWhitePage);
+  leftInner.position.set(-pageW * 0.3 - 0.015, 0, 0);
+  leftInner.rotation.y = 0.15;
+  group.add(leftInner);
+
+  // Left outer page (slight additional angle for curve effect)
+  const leftOuterGeo = new THREE.BoxGeometry(pageW * 0.45, pageH, 0.006);
+  const leftOuter = new THREE.Mesh(leftOuterGeo, matWhitePage);
+  leftOuter.position.set(-pageW - 0.01, 0, -0.015);
+  leftOuter.rotation.y = 0.3;
+  group.add(leftOuter);
+
+  // Right inner page
+  const rightInner = new THREE.Mesh(leftInnerGeo, matWhitePage);
+  rightInner.position.set(pageW * 0.3 + 0.015, 0, 0);
+  rightInner.rotation.y = -0.15;
+  group.add(rightInner);
+
+  // Right outer page
+  const rightOuter = new THREE.Mesh(leftOuterGeo, matWhitePage);
+  rightOuter.position.set(pageW + 0.01, 0, -0.015);
+  rightOuter.rotation.y = -0.3;
+  group.add(rightOuter);
+
+  // Text lines on right page
+  const textMat = new THREE.MeshBasicMaterial({
+    color: 0x8888aa,
     transparent: true,
-    opacity: 0.5,
+    opacity: 0.4,
   });
-  for (let i = 0; i < 4; i++) {
-    const w = 0.12 + Math.random() * 0.08;
-    const lineGeo = new THREE.PlaneGeometry(w, 0.015);
-    const line = new THREE.Mesh(lineGeo, lineMat);
-    line.position.set(0.13, 0.1 - i * 0.06, 0.02);
-    line.rotation.y = -0.2;
-    group.add(line);
+  for (let i = 0; i < 5; i++) {
+    const w = 0.06 + Math.random() * 0.06;
+    const tGeo = new THREE.PlaneGeometry(w, 0.012);
+    const t = new THREE.Mesh(tGeo, textMat);
+    t.position.set(pageW * 0.35, 0.09 - i * 0.045, 0.006);
+    t.rotation.y = -0.15;
+    group.add(t);
   }
-
-  group.scale.setScalar(0.7);
-  return group;
-}
-
-function createCodeBracket(): THREE.Group {
-  const group = new THREE.Group();
-
-  // Create </> shape from boxes
-  const barMat = phong(CYAN, { emissive: CYAN, emissiveIntensity: 0.3 });
-
-  // Left bracket <
-  const leftDiag1 = new THREE.Mesh(
-    new THREE.BoxGeometry(0.2, 0.04, 0.04),
-    barMat
-  );
-  leftDiag1.rotation.z = 0.5;
-  leftDiag1.position.set(-0.18, 0.06, 0);
-  group.add(leftDiag1);
-
-  const leftDiag2 = new THREE.Mesh(
-    new THREE.BoxGeometry(0.2, 0.04, 0.04),
-    barMat
-  );
-  leftDiag2.rotation.z = -0.5;
-  leftDiag2.position.set(-0.18, -0.06, 0);
-  group.add(leftDiag2);
-
-  // Slash /
-  const slash = new THREE.Mesh(
-    new THREE.BoxGeometry(0.04, 0.3, 0.04),
-    phong(PINK, { emissive: PINK, emissiveIntensity: 0.3 })
-  );
-  slash.rotation.z = 0.3;
-  group.add(slash);
-
-  // Right bracket >
-  const rightDiag1 = new THREE.Mesh(
-    new THREE.BoxGeometry(0.2, 0.04, 0.04),
-    barMat
-  );
-  rightDiag1.rotation.z = -0.5;
-  rightDiag1.position.set(0.18, 0.06, 0);
-  group.add(rightDiag1);
-
-  const rightDiag2 = new THREE.Mesh(
-    new THREE.BoxGeometry(0.2, 0.04, 0.04),
-    barMat
-  );
-  rightDiag2.rotation.z = 0.5;
-  rightDiag2.position.set(0.18, -0.06, 0);
-  group.add(rightDiag2);
-
-  group.scale.setScalar(0.9);
-  return group;
-}
-
-function createGraduationCap(): THREE.Group {
-  const group = new THREE.Group();
-
-  // Mortarboard top (flat diamond shape via rotated box)
-  const topGeo = new THREE.BoxGeometry(0.5, 0.03, 0.5);
-  const topMat = phong(AMBER, { emissive: AMBER, emissiveIntensity: 0.15 });
-  const top = new THREE.Mesh(topGeo, topMat);
-  top.rotation.y = Math.PI / 4;
-  top.position.y = 0.1;
-  group.add(top);
-
-  // Cap base (short cylinder)
-  const baseGeo = new THREE.CylinderGeometry(0.15, 0.15, 0.12, 6);
-  const baseMat = phong(darken(AMBER, 30));
-  const base = new THREE.Mesh(baseGeo, baseMat);
-  group.add(base);
-
-  // Tassel (small drooping line represented by thin boxes)
-  const tasselMat = phong(PINK);
-  const tasselTop = new THREE.Mesh(
-    new THREE.BoxGeometry(0.03, 0.15, 0.03),
-    tasselMat
-  );
-  tasselTop.position.set(0.2, 0.02, 0.2);
-  group.add(tasselTop);
-
-  const tasselBall = new THREE.Mesh(
-    new THREE.SphereGeometry(0.035, 6, 6),
-    tasselMat
-  );
-  tasselBall.position.set(0.2, -0.06, 0.2);
-  group.add(tasselBall);
 
   group.scale.setScalar(0.65);
   return group;
 }
 
-function createOrbitingSymbols(): OrbitingSymbol[] {
-  const symbols: OrbitingSymbol[] = [];
+function createTerminalWindow(): THREE.Group {
+  const group = new THREE.Group();
 
+  // Window frame (thin dark box)
+  const frameW = 0.45;
+  const frameH = 0.32;
+  const frameGeo = new THREE.BoxGeometry(frameW, frameH, 0.02);
+  const frameMat = new THREE.MeshStandardMaterial({
+    color: 0x1a1a24,
+    roughness: 0.6,
+    metalness: 0.1,
+    emissive: 0x0a0a18,
+    emissiveIntensity: 0.3,
+  });
+  const frame = new THREE.Mesh(frameGeo, frameMat);
+  group.add(frame);
+
+  // Title bar (top strip)
+  const titleGeo = new THREE.PlaneGeometry(frameW - 0.02, 0.035);
+  const titleMat = new THREE.MeshBasicMaterial({
+    color: 0x2a2a3a,
+    transparent: true,
+    opacity: 0.9,
+  });
+  const title = new THREE.Mesh(titleGeo, titleMat);
+  title.position.set(0, frameH / 2 - 0.03, 0.011);
+  group.add(title);
+
+  // Three window dots (close/minimize/maximize)
+  const dotGeo = new THREE.CircleGeometry(0.008, 6);
+  const dotColors = [0xe05555, AMBER, GREEN];
+  for (let i = 0; i < 3; i++) {
+    const d = new THREE.Mesh(
+      dotGeo,
+      new THREE.MeshBasicMaterial({ color: dotColors[i] })
+    );
+    d.position.set(-frameW / 2 + 0.04 + i * 0.025, frameH / 2 - 0.03, 0.012);
+    group.add(d);
+  }
+
+  // Command lines (colored strips)
+  const cmdConfigs = [
+    { color: GREEN, w: 0.22 },
+    { color: CYAN, w: 0.3 },
+    { color: PINK, w: 0.16 },
+  ];
+  for (let i = 0; i < cmdConfigs.length; i++) {
+    const cfg = cmdConfigs[i];
+    const lGeo = new THREE.PlaneGeometry(cfg.w, 0.015);
+    const lMat = new THREE.MeshBasicMaterial({
+      color: cfg.color,
+      transparent: true,
+      opacity: 0.7,
+    });
+    const l = new THREE.Mesh(lGeo, lMat);
+    l.position.set(
+      -frameW / 2 + 0.04 + cfg.w / 2,
+      frameH / 2 - 0.08 - i * 0.05,
+      0.011
+    );
+    group.add(l);
+  }
+
+  // Blinking cursor (tiny square)
+  const cursorGeo = new THREE.PlaneGeometry(0.012, 0.02);
+  const cursorMat = new THREE.MeshBasicMaterial({
+    color: GREEN,
+    transparent: true,
+    opacity: 0.8,
+  });
+  const cursor = new THREE.Mesh(cursorGeo, cursorMat);
+  cursor.position.set(-frameW / 2 + 0.04, frameH / 2 - 0.08 - 3 * 0.05, 0.011);
+  group.add(cursor);
+
+  group.scale.setScalar(0.7);
+  return group;
+}
+
+function createNeuralNet(): THREE.Group {
+  const group = new THREE.Group();
+
+  // Icosahedron wireframe to suggest a brain/neural network
+  const icoGeo = new THREE.IcosahedronGeometry(0.22, 1);
+  const icoWire = new THREE.LineSegments(
+    new THREE.WireframeGeometry(icoGeo),
+    new THREE.LineBasicMaterial({
+      color: PURPLE,
+      transparent: true,
+      opacity: 0.55,
+    })
+  );
+  group.add(icoWire);
+
+  // Small glowing nodes at some vertices
+  const nodeGeo = new THREE.SphereGeometry(0.02, 6, 6);
+  const nodeMat = new THREE.MeshBasicMaterial({
+    color: PURPLE,
+    transparent: true,
+    opacity: 0.8,
+  });
+  const posArr = icoGeo.getAttribute("position");
+  // Place nodes at every 3rd unique position to keep it sparse
+  const placed = new Set<string>();
+  for (let i = 0; i < posArr.count; i++) {
+    const x = Math.round(posArr.getX(i) * 100);
+    const y = Math.round(posArr.getY(i) * 100);
+    const z = Math.round(posArr.getZ(i) * 100);
+    const key = `${x},${y},${z}`;
+    if (!placed.has(key)) {
+      placed.add(key);
+      if (placed.size % 3 === 0) {
+        const node = new THREE.Mesh(nodeGeo, nodeMat);
+        node.position.set(
+          posArr.getX(i),
+          posArr.getY(i),
+          posArr.getZ(i)
+        );
+        group.add(node);
+      }
+    }
+  }
+
+  group.scale.setScalar(0.85);
+  return group;
+}
+
+function createOrbitingSymbols(): OrbitingSymbol[] {
   const configs = [
-    { create: createBook, radius: 3.2, speed: 0.25, phase: 0, y: 2.5 },
+    { create: createOpenBook, radius: 2.8, speed: 0.18, phase: 0, y: 2.4 },
     {
-      create: createCodeBracket,
-      radius: 3.6,
-      speed: 0.3,
+      create: createTerminalWindow,
+      radius: 3.2,
+      speed: 0.22,
       phase: (Math.PI * 2) / 3,
-      y: 2.8,
+      y: 2.9,
     },
     {
-      create: createGraduationCap,
-      radius: 3.0,
-      speed: 0.2,
+      create: createNeuralNet,
+      radius: 2.5,
+      speed: 0.14,
       phase: ((Math.PI * 2) / 3) * 2,
-      y: 2.2,
+      y: 2.1,
     },
   ];
 
-  for (const cfg of configs) {
-    const mesh = cfg.create();
-    symbols.push({
-      group: mesh,
-      orbitRadius: cfg.radius,
-      orbitSpeed: cfg.speed,
-      orbitPhase: cfg.phase,
-      floatPhase: Math.random() * Math.PI * 2,
-      floatSpeed: 0.8 + Math.random() * 0.4,
-      baseY: cfg.y,
-    });
-  }
-
-  return symbols;
+  return configs.map((cfg) => ({
+    group: cfg.create(),
+    radius: cfg.radius,
+    speed: cfg.speed,
+    phase: cfg.phase,
+    floatPhase: Math.random() * Math.PI * 2,
+    floatFreq: 0.6 + Math.random() * 0.3,
+    baseY: cfg.y,
+  }));
 }
 
 // ---------------------------------------------------------------------------
-// Rising data particles
+// Rising data particles — organic drift using combined sine waves
 // ---------------------------------------------------------------------------
 
-interface RisingParticles {
+interface ParticleSystem {
   points: THREE.Points;
   positions: Float32Array;
-  velocities: Float32Array;
+  seeds: Float32Array; // per-particle random seed for noise-like drift
   count: number;
 }
 
-function createRisingParticles(count: number): RisingParticles {
+function createParticles(count: number): ParticleSystem {
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
-  const velocities = new Float32Array(count);
-
+  const seeds = new Float32Array(count);
   const palette = [CYAN, BLUE, PINK, GREEN, PURPLE, AMBER];
 
   for (let i = 0; i < count; i++) {
     positions[i * 3] = (Math.random() - 0.5) * 8;
     positions[i * 3 + 1] = Math.random() * 5;
     positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
-    velocities[i] = 0.003 + Math.random() * 0.008;
+    seeds[i] = Math.random() * 100;
 
-    const c = new THREE.Color(palette[Math.floor(Math.random() * palette.length)]);
+    const c = new THREE.Color(
+      palette[Math.floor(Math.random() * palette.length)]
+    );
     colors[i * 3] = c.r;
     colors[i * 3 + 1] = c.g;
     colors[i * 3 + 2] = c.b;
@@ -517,60 +918,66 @@ function createRisingParticles(count: number): RisingParticles {
   geo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
   const mat = new THREE.PointsMaterial({
-    size: 0.05,
+    size: 0.04,
     vertexColors: true,
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.5,
     blending: THREE.AdditiveBlending,
     depthWrite: false,
   });
 
-  return { points: new THREE.Points(geo, mat), positions, velocities, count };
+  return { points: new THREE.Points(geo, mat), positions, seeds, count };
 }
 
-function updateRisingParticles(ps: RisingParticles): void {
-  const posAttr = ps.points.geometry.getAttribute(
-    "position"
-  ) as THREE.BufferAttribute;
-  const positions = posAttr.array as Float32Array;
-
+function updateParticles(ps: ParticleSystem, time: number): void {
+  const pos = ps.positions;
   for (let i = 0; i < ps.count; i++) {
-    positions[i * 3 + 1] += ps.velocities[i];
+    const ix = i * 3;
+    const iy = ix + 1;
+    const iz = ix + 2;
+    const s = ps.seeds[i];
 
-    // Gentle horizontal drift
-    positions[i * 3] += Math.sin(positions[i * 3 + 1] * 2 + i) * 0.001;
-    positions[i * 3 + 2] += Math.cos(positions[i * 3 + 1] * 2 + i) * 0.001;
+    // Rise speed (varies per particle)
+    pos[iy] += 0.003 + (s % 1) * 0.005;
+
+    // Organic horizontal drift (combined sine waves for noise-like motion)
+    pos[ix] +=
+      Math.sin(time * 0.7 + s * 1.3) * 0.0015 +
+      Math.sin(time * 1.8 + s * 0.7) * 0.0008;
+    pos[iz] +=
+      Math.cos(time * 0.9 + s * 1.1) * 0.0012 +
+      Math.cos(time * 2.1 + s * 0.5) * 0.0007;
 
     // Reset when too high
-    if (positions[i * 3 + 1] > 6) {
-      positions[i * 3] = (Math.random() - 0.5) * 8;
-      positions[i * 3 + 1] = -0.5;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+    if (pos[iy] > 6) {
+      pos[ix] = (Math.random() - 0.5) * 8;
+      pos[iy] = -0.5;
+      pos[iz] = (Math.random() - 0.5) * 8;
     }
   }
-
-  posAttr.needsUpdate = true;
+  (
+    ps.points.geometry.getAttribute("position") as THREE.BufferAttribute
+  ).needsUpdate = true;
 }
 
 // ---------------------------------------------------------------------------
-// Main init
+// Main entry
 // ---------------------------------------------------------------------------
 
 export function initHeroScene(container: HTMLElement): void {
   // --- Renderer ---
-  const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true,
-  });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor(0x000000, 0);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.1;
   container.appendChild(renderer.domElement);
   renderer.domElement.style.pointerEvents = "none";
 
   // --- Scene ---
   const scene = new THREE.Scene();
 
-  // --- Camera (isometric orthographic) ---
+  // --- Camera (true isometric orthographic) ---
   const frustumSize = 8;
   let aspect = container.clientWidth / container.clientHeight;
   const camera = new THREE.OrthographicCamera(
@@ -582,28 +989,35 @@ export function initHeroScene(container: HTMLElement): void {
     50
   );
 
-  // True isometric angle
   const isoAngle = Math.atan(Math.sin(Math.PI / 4)); // ~35.264 deg
-  const distance = 20;
+  const dist = 20;
   camera.position.set(
-    distance * Math.cos(isoAngle) * Math.sin(Math.PI / 4),
-    distance * Math.sin(isoAngle),
-    distance * Math.cos(isoAngle) * Math.cos(Math.PI / 4)
+    dist * Math.cos(isoAngle) * Math.sin(Math.PI / 4),
+    dist * Math.sin(isoAngle),
+    dist * Math.cos(isoAngle) * Math.cos(Math.PI / 4)
   );
   camera.lookAt(0, 1.0, 0);
 
-  // --- Lighting ---
-  const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-  scene.add(ambient);
+  // --- Lighting (professional three-point setup) ---
 
-  const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
-  dirLight.position.set(5, 10, 7);
-  scene.add(dirLight);
+  // Hemisphere fill — cool sky, warm ground
+  const hemiLight = new THREE.HemisphereLight(0x4488cc, 0x222244, 0.4);
+  scene.add(hemiLight);
 
-  // Subtle colored fill light from below/side
-  const fillLight = new THREE.DirectionalLight(BRAND_BLUE, 0.15);
-  fillLight.position.set(-3, -2, 4);
-  scene.add(fillLight);
+  // Key light — upper-left directional
+  const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  keyLight.position.set(-6, 10, 5);
+  scene.add(keyLight);
+
+  // Screen glow — blue-tinted point light near laptop area
+  const screenGlow = new THREE.PointLight(0x3366cc, 0.3, 4.0);
+  screenGlow.position.set(0, 1.6, 0.3);
+  scene.add(screenGlow);
+
+  // Server glow — subtle cyan point light near the tower
+  const serverGlow = new THREE.PointLight(CYAN, 0.2, 3.5);
+  serverGlow.position.set(2.2, 1.2, -0.5);
+  scene.add(serverGlow);
 
   // --- Root group for parallax ---
   const rootGroup = new THREE.Group();
@@ -614,112 +1028,74 @@ export function initHeroScene(container: HTMLElement): void {
 
   // --- Desk ---
   const desk = createDesk();
-  desk.position.set(-0.3, 0, 0.2);
+  desk.position.set(0.2, 0, 0.3);
   rootGroup.add(desk);
 
-  // --- GPU Tower ---
+  // --- Laptop on desk ---
+  const laptop = createLaptop();
+  laptop.group.position.set(-0.1, 0.75, 0.3);
+  rootGroup.add(laptop.group);
+
+  // --- Monitor behind laptop ---
+  const monitor = createMonitor();
+  monitor.group.position.set(-0.1, 0.75, -0.25);
+  rootGroup.add(monitor.group);
+
+  // --- Chair in front of desk ---
+  const chair = createChair();
+  chair.position.set(0.1, 0, 1.1);
+  rootGroup.add(chair);
+
+  // --- GPU Tower (slightly behind and to the right) ---
   const tower = createGPUTower();
-  tower.position.set(2.2, 0, -0.8);
-  rootGroup.add(tower);
+  tower.group.position.set(2.0, 0, -0.6);
+  rootGroup.add(tower.group);
 
   // --- Connection paths ---
-  const deskPos = new THREE.Vector3(-0.3, 0, 0.2);
-  const towerPos = new THREE.Vector3(2.2, 0, -0.8);
-
+  const deskPos = new THREE.Vector3(0.2, 0, 0.3);
+  const towerPos = new THREE.Vector3(2.0, 0, -0.6);
   const paths: PathData[] = [];
 
-  // Desk to tower
-  const p1 = createConnectionPath(deskPos, towerPos, CYAN, 0);
+  const p1 = createPath(deskPos, towerPos, CYAN, 0);
   rootGroup.add(p1.line);
   paths.push(p1);
 
-  // Desk to left area (representing network)
-  const p2 = createConnectionPath(
-    deskPos,
-    new THREE.Vector3(-3.5, 0, -1.5),
-    PURPLE,
-    1.5
-  );
+  const p2 = createPath(deskPos, new THREE.Vector3(-3.0, 0, -1.5), PURPLE, 1.5);
   rootGroup.add(p2.line);
   paths.push(p2);
 
-  // Tower to back area
-  const p3 = createConnectionPath(
-    towerPos,
-    new THREE.Vector3(1.0, 0, -3.5),
-    GREEN,
-    3.0
-  );
+  const p3 = createPath(towerPos, new THREE.Vector3(1.0, 0, -3.0), GREEN, 3.0);
   rootGroup.add(p3.line);
   paths.push(p3);
 
-  // Extra path
-  const p4 = createConnectionPath(
-    deskPos,
-    new THREE.Vector3(-2.0, 0, 2.5),
-    PINK,
-    4.5
-  );
-  rootGroup.add(p4.line);
-  paths.push(p4);
-
-  // Small node markers at path endpoints
-  const nodeMat = new THREE.MeshBasicMaterial({
-    color: BRAND_BLUE,
+  // Small endpoint markers
+  const endpointGeo = new THREE.SphereGeometry(0.06, 8, 8);
+  const endpointMat = new THREE.MeshBasicMaterial({
+    color: BLUE,
     transparent: true,
-    opacity: 0.5,
+    opacity: 0.4,
   });
-  const nodeGeo = new THREE.SphereGeometry(0.08, 8, 8);
-  const nodePositions = [
-    new THREE.Vector3(-3.5, 0.08, -1.5),
-    new THREE.Vector3(1.0, 0.08, -3.5),
-    new THREE.Vector3(-2.0, 0.08, 2.5),
+  const endpoints = [
+    new THREE.Vector3(-3.0, 0.06, -1.5),
+    new THREE.Vector3(1.0, 0.06, -3.0),
   ];
-  for (const np of nodePositions) {
-    const node = new THREE.Mesh(nodeGeo, nodeMat.clone());
-    node.position.copy(np);
-    rootGroup.add(node);
+  for (const ep of endpoints) {
+    const m = new THREE.Mesh(endpointGeo, endpointMat);
+    m.position.copy(ep);
+    rootGroup.add(m);
   }
 
   // --- Orbiting symbols ---
   const symbols = createOrbitingSymbols();
-  for (const sym of symbols) {
-    rootGroup.add(sym.group);
-  }
+  for (const sym of symbols) rootGroup.add(sym.group);
 
   // --- Rising particles ---
-  const risingParticles = createRisingParticles(40);
-  rootGroup.add(risingParticles.points);
-
-  // --- Glow halos around key objects ---
-  const haloGeo = new THREE.RingGeometry(0.6, 0.9, 32);
-  const haloMat = new THREE.MeshBasicMaterial({
-    color: BRAND_BLUE,
-    transparent: true,
-    opacity: 0.06,
-    side: THREE.DoubleSide,
-  });
-  const deskHalo = new THREE.Mesh(haloGeo, haloMat);
-  deskHalo.rotation.x = -Math.PI / 2;
-  deskHalo.position.set(-0.3, 0.01, 0.2);
-  rootGroup.add(deskHalo);
-
-  const towerHaloGeo = new THREE.RingGeometry(0.4, 0.65, 32);
-  const towerHaloMat = new THREE.MeshBasicMaterial({
-    color: CYAN,
-    transparent: true,
-    opacity: 0.06,
-    side: THREE.DoubleSide,
-  });
-  const towerHalo = new THREE.Mesh(towerHaloGeo, towerHaloMat);
-  towerHalo.rotation.x = -Math.PI / 2;
-  towerHalo.position.set(2.2, 0.01, -0.8);
-  rootGroup.add(towerHalo);
+  const particles = createParticles(35);
+  rootGroup.add(particles.points);
 
   // --- Mouse tracking ---
   let mouseX = 0;
   let mouseY = 0;
-  let isHovering = false;
 
   function onMouseMove(e: MouseEvent): void {
     const rect = container.getBoundingClientRect();
@@ -727,25 +1103,14 @@ export function initHeroScene(container: HTMLElement): void {
     mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
   }
 
-  function onMouseEnter(): void {
-    isHovering = true;
-  }
-
-  function onMouseLeave(): void {
-    isHovering = false;
-  }
-
   const parentEl = container.parentElement || container;
   parentEl.addEventListener("mousemove", onMouseMove);
-  parentEl.addEventListener("mouseenter", onMouseEnter);
-  parentEl.addEventListener("mouseleave", onMouseLeave);
 
   // --- Resize handler ---
   function handleResize(): void {
     const w = container.clientWidth;
     const h = container.clientHeight;
     if (w === 0 || h === 0) return;
-
     aspect = w / h;
     camera.left = (-frustumSize * aspect) / 2;
     camera.right = (frustumSize * aspect) / 2;
@@ -759,27 +1124,12 @@ export function initHeroScene(container: HTMLElement): void {
   resizeObserver.observe(container);
   handleResize();
 
-  // --- LED references for animation ---
-  const ledMeshes: THREE.Mesh[] = [];
-  tower.traverse((child) => {
-    if (
-      child instanceof THREE.Mesh &&
-      child.geometry instanceof THREE.PlaneGeometry
-    ) {
-      const params = child.geometry.parameters;
-      if (params && params.width === 0.5 && params.height === 0.04) {
-        ledMeshes.push(child);
-      }
-    }
-  });
+  // --- Collect all animated code lines ---
+  const allCodeLines = [...laptop.codeLines, ...monitor.codeLines];
 
-  // --- Animation loop ---
-  let targetParallaxX = 0;
-  let targetParallaxY = 0;
-  let currentParallaxX = 0;
-  let currentParallaxY = 0;
-  let targetBrightness = 0.6;
-  let currentBrightness = 0.6;
+  // --- Animation state ---
+  let curPX = 0;
+  let curPY = 0;
   let firstFrame = true;
 
   function animate(): void {
@@ -787,62 +1137,70 @@ export function initHeroScene(container: HTMLElement): void {
 
     const time = performance.now() * 0.001;
 
-    // Mouse parallax
-    targetParallaxX = mouseX * 0.08;
-    targetParallaxY = mouseY * 0.04;
-    currentParallaxX += (targetParallaxX - currentParallaxX) * 0.03;
-    currentParallaxY += (targetParallaxY - currentParallaxY) * 0.03;
+    // ---- Mouse parallax (smooth lerp) ----
+    const tPX = mouseX * 0.07;
+    const tPY = mouseY * 0.035;
+    curPX += (tPX - curPX) * 0.03;
+    curPY += (tPY - curPY) * 0.03;
 
-    rootGroup.rotation.y = currentParallaxX;
-    rootGroup.rotation.x = currentParallaxY;
+    // Subtle idle sway (breathing effect) layered on top of parallax
+    const breathX = Math.sin(time * 0.15) * 0.008;
+    const breathY = Math.cos(time * 0.12) * 0.005;
 
-    // Hover brightness
-    targetBrightness = isHovering ? 0.75 : 0.6;
-    currentBrightness += (targetBrightness - currentBrightness) * 0.05;
-    ambient.intensity = currentBrightness;
+    rootGroup.rotation.y = curPX + breathX;
+    rootGroup.rotation.x = curPY + breathY;
 
-    // Pulse connection paths
-    for (const path of paths) {
-      const pulse = 0.2 + Math.sin(time * 1.2 + path.phaseOffset) * 0.15;
-      path.mat.opacity = pulse;
+    // ---- Pulse connection paths ----
+    for (const p of paths) {
+      p.mat.opacity = 0.15 + Math.sin(time * 1.0 + p.phase) * 0.12;
     }
 
-    // Pulse LED strips
-    for (let i = 0; i < ledMeshes.length; i++) {
-      const mat = ledMeshes[i].material as THREE.MeshBasicMaterial;
-      mat.opacity = 0.6 + Math.sin(time * 2.0 + i * 1.5) * 0.35;
+    // ---- Server LED scanning pattern ----
+    // A bright "scan line" sweeps up and down the rows
+    const scanPos = (Math.sin(time * 1.5) * 0.5 + 0.5) * (tower.ledMeshes.length - 1);
+    for (let i = 0; i < tower.ledMeshes.length; i++) {
+      const dist = Math.abs(i - scanPos);
+      const brightness = Math.max(0.15, 1.0 - dist * 0.25);
+      (tower.ledMeshes[i].material as THREE.MeshBasicMaterial).opacity = brightness;
     }
 
-    // Pulse node markers
-    for (const np of nodePositions) {
-      // Nodes just pulse via the shared material — handled by path pulse timing
+    // ---- Code lines slow scroll (tiny Y oscillation) ----
+    for (let i = 0; i < allCodeLines.length; i++) {
+      const line = allCodeLines[i];
+      if (line.userData.baseY === undefined) {
+        line.userData.baseY = line.position.y;
+      }
+      // Very slow vertical oscillation to suggest scrolling code
+      const drift = Math.sin(time * 0.2 + i * 0.8) * 0.012;
+      line.position.y = line.userData.baseY + drift;
     }
 
-    // Orbit knowledge symbols
+    // ---- Orbit knowledge symbols at different speeds/heights ----
     for (const sym of symbols) {
-      const angle = time * sym.orbitSpeed + sym.orbitPhase;
-      sym.group.position.x = Math.cos(angle) * sym.orbitRadius;
-      sym.group.position.z = Math.sin(angle) * sym.orbitRadius;
-      sym.group.position.y =
-        sym.baseY + Math.sin(time * sym.floatSpeed + sym.floatPhase) * 0.2;
+      const angle = time * sym.speed + sym.phase;
+      sym.group.position.x = Math.cos(angle) * sym.radius;
+      sym.group.position.z = Math.sin(angle) * sym.radius;
 
-      // Gentle self-rotation
-      sym.group.rotation.y = time * 0.5;
-      sym.group.rotation.x = Math.sin(time * 0.3 + sym.orbitPhase) * 0.15;
+      // Multi-frequency float for organic bobbing
+      sym.group.position.y =
+        sym.baseY +
+        Math.sin(time * sym.floatFreq + sym.floatPhase) * 0.18 +
+        Math.sin(time * sym.floatFreq * 1.7 + sym.floatPhase * 2.3) * 0.06;
+
+      // Gentle tumble
+      sym.group.rotation.y = time * 0.35 + sym.phase;
+      sym.group.rotation.x =
+        Math.sin(time * 0.25 + sym.phase) * 0.12;
     }
 
-    // Screen glow pulse
-    // (the laptop screen emits a subtle brightness variation)
+    // ---- Rising particles (organic drift) ----
+    updateParticles(particles, time);
 
-    // Rising particles
-    updateRisingParticles(risingParticles);
+    // ---- Screen glow subtle pulse ----
+    screenGlow.intensity = 0.25 + Math.sin(time * 0.6) * 0.05;
+    serverGlow.intensity = 0.15 + Math.sin(time * 0.8 + 1.0) * 0.05;
 
-    // Halo pulse
-    (deskHalo.material as THREE.MeshBasicMaterial).opacity =
-      0.04 + Math.sin(time * 0.8) * 0.03;
-    (towerHalo.material as THREE.MeshBasicMaterial).opacity =
-      0.04 + Math.sin(time * 0.8 + 1.5) * 0.03;
-
+    // ---- Render ----
     renderer.render(scene, camera);
 
     if (firstFrame) {
@@ -858,8 +1216,6 @@ export function initHeroScene(container: HTMLElement): void {
   (container as any).__heroSceneCleanup = () => {
     resizeObserver.disconnect();
     parentEl.removeEventListener("mousemove", onMouseMove);
-    parentEl.removeEventListener("mouseenter", onMouseEnter);
-    parentEl.removeEventListener("mouseleave", onMouseLeave);
     renderer.dispose();
   };
 }
