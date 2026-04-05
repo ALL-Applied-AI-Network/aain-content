@@ -1,0 +1,7 @@
+title: "Deep Learning from Scratch"
+description: "Build a neural network from scratch in Python -- no PyTorch, no TensorFlow, just NumPy and math"
+difficulty: advanced
+estimated_minutes: 180
+tags: [deep-learning, neural-networks, numpy, backpropagation, mnist, math]
+prerequisites: ["Python proficiency", "Basic linear algebra"]
+author: "ALL Applied AI Network"

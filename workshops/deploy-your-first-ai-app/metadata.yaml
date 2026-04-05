@@ -1,0 +1,7 @@
+title: "Deploy Your First AI App"
+description: "Take a chatbot from localhost to a live URL using FastAPI, Docker, and a cloud platform"
+difficulty: intermediate
+estimated_minutes: 120
+tags: [deployment, fastapi, docker, cloud, python, applied-ai]
+prerequisites: ["Build a Chatbot"]
+author: "ALL Applied AI Network"

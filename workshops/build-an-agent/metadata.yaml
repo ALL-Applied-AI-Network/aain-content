@@ -1,0 +1,7 @@
+title: "Build an Agent"
+description: "Build an AI agent with tool use -- web search, calculator, and file operations using an LLM API and a simple agent loop"
+difficulty: intermediate
+estimated_minutes: 150
+tags: [agents, tool-use, function-calling, openai, python, applied-ai]
+prerequisites: ["Build a Chatbot"]
+author: "ALL Applied AI Network"
