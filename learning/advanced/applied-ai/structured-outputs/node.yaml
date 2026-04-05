@@ -4,7 +4,7 @@ description: "Learn to extract structured, validated data from LLMs using tools 
 layer: 3
 difficulty: advanced
 estimated_minutes: 50
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["structured-outputs", "data-extraction", "pydantic", "instructor", "json"]
 
 prerequisites:

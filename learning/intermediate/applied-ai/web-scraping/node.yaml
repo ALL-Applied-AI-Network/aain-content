@@ -4,7 +4,7 @@ description: "Collect training data and build knowledge bases by scraping the we
 layer: 2
 difficulty: intermediate
 estimated_minutes: 45
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["scraping", "beautifulsoup", "data-collection", "web", "ethics"]
 
 prerequisites:

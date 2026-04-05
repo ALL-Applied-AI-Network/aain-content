@@ -4,7 +4,7 @@ description: "Learn to isolate Python projects with virtual environments and man
 layer: 1
 difficulty: beginner
 estimated_minutes: 25
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["python", "venv", "pip", "dependencies", "packaging"]
 
 prerequisites:

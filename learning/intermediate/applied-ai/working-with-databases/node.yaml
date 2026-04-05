@@ -4,7 +4,7 @@ description: "Store and query structured data with SQL and SQLite — the founda
 layer: 2
 difficulty: intermediate
 estimated_minutes: 50
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["databases", "sql", "sqlite", "data", "storage"]
 
 prerequisites:

@@ -4,7 +4,7 @@ description: "Understand how applications talk to each other over the web — HT
 layer: 1
 difficulty: beginner
 estimated_minutes: 35
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["apis", "http", "web", "requests", "json"]
 
 prerequisites:

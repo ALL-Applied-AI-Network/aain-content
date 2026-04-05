@@ -4,7 +4,7 @@ description: "Go beyond basic RAG with hybrid search, intelligent chunking strat
 layer: 3
 difficulty: advanced
 estimated_minutes: 55
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["rag", "hybrid-search", "reranking", "chunking", "evaluation"]
 
 prerequisites:

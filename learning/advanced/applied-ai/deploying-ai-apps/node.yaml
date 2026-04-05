@@ -4,7 +4,7 @@ description: "Ship your AI projects to the world — from FastAPI backends to Do
 layer: 3
 difficulty: advanced
 estimated_minutes: 55
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["deployment", "hosting", "docker", "fastapi", "production"]
 
 prerequisites:

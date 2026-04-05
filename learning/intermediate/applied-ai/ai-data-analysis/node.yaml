@@ -4,7 +4,7 @@ description: "Combine pandas, visualization libraries, and AI to analyze dataset
 layer: 2
 difficulty: intermediate
 estimated_minutes: 55
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["data-analysis", "pandas", "visualization", "ai-assisted", "insights"]
 
 prerequisites:

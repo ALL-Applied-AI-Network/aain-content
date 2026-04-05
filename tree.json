@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-05T05:04:09.217Z",
+  "generated_at": "2026-04-05T05:36:23.080Z",
   "nodes": [
     {
       "id": "tooling/ai-ides/cursor-deep-dive",
@@ -73,7 +73,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 50,
-      "thumbnail": "learning/intermediate/applied-ai/working-with-databases/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/working-with-databases/thumbnail.png",
       "tags": [
         "databases",
         "sql",
@@ -118,7 +118,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 45,
-      "thumbnail": "learning/intermediate/applied-ai/web-scraping/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/web-scraping/thumbnail.png",
       "tags": [
         "scraping",
         "beautifulsoup",
@@ -473,7 +473,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 55,
-      "thumbnail": "learning/intermediate/applied-ai/ai-data-analysis/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/ai-data-analysis/thumbnail.png",
       "tags": [
         "data-analysis",
         "pandas",
@@ -669,7 +669,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 25,
-      "thumbnail": "learning/foundations/virtual-environments/thumbnail.svg",
+      "thumbnail": "learning/foundations/virtual-environments/thumbnail.png",
       "tags": [
         "python",
         "venv",
@@ -974,7 +974,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 30,
-      "thumbnail": "learning/foundations/debugging-with-ai/thumbnail.svg",
+      "thumbnail": "learning/foundations/debugging-with-ai/thumbnail.png",
       "tags": [
         "debugging",
         "errors",
@@ -1047,7 +1047,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
-      "thumbnail": "learning/foundations/apis-and-web-basics/thumbnail.svg",
+      "thumbnail": "learning/foundations/apis-and-web-basics/thumbnail.png",
       "tags": [
         "apis",
         "http",
@@ -1088,7 +1088,7 @@
       "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 50,
-      "thumbnail": "learning/advanced/applied-ai/structured-outputs/thumbnail.svg",
+      "thumbnail": "learning/advanced/applied-ai/structured-outputs/thumbnail.png",
       "tags": [
         "structured-outputs",
         "data-extraction",
@@ -1142,7 +1142,7 @@
       "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 50,
-      "thumbnail": "learning/advanced/applied-ai/multi-modal-ai/thumbnail.svg",
+      "thumbnail": "learning/advanced/applied-ai/multi-modal-ai/thumbnail.png",
       "tags": [
         "multi-modal",
         "vision",
@@ -1187,7 +1187,7 @@
       "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 50,
-      "thumbnail": "learning/advanced/applied-ai/ml-systems-design/thumbnail.svg",
+      "thumbnail": "learning/advanced/applied-ai/ml-systems-design/thumbnail.png",
       "tags": [
         "systems-design",
         "production",
@@ -1241,7 +1241,7 @@
       "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 45,
-      "thumbnail": "learning/advanced/applied-ai/llm-security/thumbnail.svg",
+      "thumbnail": "learning/advanced/applied-ai/llm-security/thumbnail.png",
       "tags": [
         "security",
         "prompt-injection",
@@ -1288,7 +1288,7 @@
       "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 60,
-      "thumbnail": "learning/advanced/applied-ai/fine-tuning/thumbnail.svg",
+      "thumbnail": "learning/advanced/applied-ai/fine-tuning/thumbnail.png",
       "tags": [
         "fine-tuning",
         "training",
@@ -1342,7 +1342,7 @@
       "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 55,
-      "thumbnail": "learning/advanced/applied-ai/deploying-ai-apps/thumbnail.svg",
+      "thumbnail": "learning/advanced/applied-ai/deploying-ai-apps/thumbnail.png",
       "tags": [
         "deployment",
         "hosting",
@@ -1393,7 +1393,7 @@
       "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 55,
-      "thumbnail": "learning/advanced/applied-ai/advanced-rag/thumbnail.svg",
+      "thumbnail": "learning/advanced/applied-ai/advanced-rag/thumbnail.png",
       "tags": [
         "rag",
         "hybrid-search",

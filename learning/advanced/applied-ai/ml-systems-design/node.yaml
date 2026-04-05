@@ -4,7 +4,7 @@ description: "Design reliable AI systems for production — covering architectur
 layer: 3
 difficulty: advanced
 estimated_minutes: 50
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["systems-design", "production", "monitoring", "deployment", "mlops"]
 
 prerequisites:

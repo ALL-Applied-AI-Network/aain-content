@@ -4,7 +4,7 @@ description: "Turn cryptic error messages into learning opportunities — use AI
 layer: 1
 difficulty: beginner
 estimated_minutes: 30
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["debugging", "errors", "troubleshooting", "ai-assisted"]
 
 prerequisites:

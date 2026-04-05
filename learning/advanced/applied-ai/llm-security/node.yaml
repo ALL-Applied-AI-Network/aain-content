@@ -4,7 +4,7 @@ description: "Learn to identify and defend against prompt injection, jailbreaks,
 layer: 3
 difficulty: advanced
 estimated_minutes: 45
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["security", "prompt-injection", "safety", "guardrails", "red-teaming"]
 
 prerequisites:
