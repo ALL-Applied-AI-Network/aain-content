@@ -1,0 +1,26 @@
+id: "intermediate/applied-ai/web-scraping"
+title: "Web Scraping for AI"
+description: "Collect training data and build knowledge bases by scraping the web responsibly — with BeautifulSoup, ethical guidelines, and practical patterns."
+layer: 2
+difficulty: intermediate
+estimated_minutes: 45
+thumbnail: "thumbnail.svg"
+tags: ["scraping", "beautifulsoup", "data-collection", "web", "ethics"]
+
+prerequisites:
+  - "foundations/apis-and-web-basics"
+  - "foundations/python-through-ai"
+unlocks: []
+
+content_file: "web-scraping.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Brett Storoe"
+    role: author
+    github: "storoeb"
+    affiliation: "MSOE / ALL Applied AI Network"
+
+resources: []

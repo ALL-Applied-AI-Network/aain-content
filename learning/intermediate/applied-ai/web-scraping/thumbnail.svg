@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Web page with extraction arrows -->
+  <g transform="translate(200,115)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <!-- Browser window -->
+    <rect x="-70" y="-55" width="90" height="100" rx="6"/>
+    <!-- Browser title bar -->
+    <line x1="-70" y1="-40" x2="20" y2="-40" stroke-width="1" opacity="0.5"/>
+    <circle cx="-60" cy="-48" r="3" fill="#d946ef" opacity="0.5"/>
+    <circle cx="-50" cy="-48" r="3" fill="#a855f7" opacity="0.5"/>
+    <circle cx="-40" cy="-48" r="3" fill="#00d4ff" opacity="0.5"/>
+    <!-- Content lines in browser -->
+    <line x1="-58" y1="-28" x2="8" y2="-28" stroke-width="2" opacity="0.3"/>
+    <line x1="-58" y1="-16" x2="-10" y2="-16" stroke-width="2" opacity="0.3"/>
+    <line x1="-58" y1="-4" x2="0" y2="-4" stroke-width="2" opacity="0.3"/>
+    <line x1="-58" y1="8" x2="-15" y2="8" stroke-width="2" opacity="0.3"/>
+    <line x1="-58" y1="20" x2="5" y2="20" stroke-width="2" opacity="0.3"/>
+    <line x1="-58" y1="32" x2="-8" y2="32" stroke-width="2" opacity="0.3"/>
+    <!-- Extraction arrows -->
+    <path d="M25,-20 C40,-20 40,-10 55,-10" stroke-width="2"/>
+    <path d="M25,0 C40,0 40,5 55,5" stroke-width="2"/>
+    <path d="M25,20 C40,20 40,20 55,20" stroke-width="2"/>
+    <polygon points="55,-10 50,-14 50,-6" fill="url(#brand)"/>
+    <polygon points="55,5 50,1 50,9" fill="url(#brand)"/>
+    <polygon points="55,20 50,16 50,24" fill="url(#brand)"/>
+    <!-- Data output -->
+    <rect x="58" y="-22" width="30" height="10" rx="2" fill="url(#brand)" opacity="0.2"/>
+    <rect x="58" y="-7" width="30" height="10" rx="2" fill="url(#brand)" opacity="0.2"/>
+    <rect x="58" y="8" width="30" height="10" rx="2" fill="url(#brand)" opacity="0.2"/>
+    <!-- HTML tag hint -->
+    <text x="-25" y="60" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="10" opacity="0.5">&lt;html&gt;</text>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Web Scraping for AI</text>
+</svg>
