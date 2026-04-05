@@ -239,6 +239,9 @@ body {
 .hero__grid {
   display: block;
   max-width: 50%;
+  margin-left: 0;
+  margin-right: auto;
+  padding-left: max(1.5rem, calc((100vw - var(--max-width)) / 2 + 1.5rem));
 }
 
 .hero__content {

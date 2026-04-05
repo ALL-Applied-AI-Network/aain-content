@@ -489,7 +489,9 @@ export function initHeroScene(container: HTMLElement): void {
 
     if (firstFrame) {
       firstFrame = false;
-      container.classList.add("loaded");
+      // Force reflow so the browser registers opacity:0 before transitioning
+      void container.offsetHeight;
+      requestAnimationFrame(() => container.classList.add("loaded"));
     }
   }
 
