@@ -1,7 +1,7 @@
 {
   "stats": {
     "total_hubs": 38,
-    "total_members": 1240,
+    "total_members": 9160,
     "states_active": 30,
     "universities": 38
   },
@@ -14,38 +14,49 @@
       "stateId": "55",
       "city": "Milwaukee",
       "status": "active",
-      "members": 45,
+      "members": 500,
       "founded": "2023",
       "description": "The founding chapter. Weekly workshops, speaker series, and hackathons focused on applied AI engineering.",
-      "highlights": ["Founded the network", "3 hackathons hosted", "NVIDIA partnership"],
+      "highlights": [
+        "Founded the network",
+        "3 hackathons hosted",
+        "NVIDIA partnership"
+      ],
       "url": "https://github.com/ALL-Applied-AI-Network"
     },
     {
       "id": "uwm",
       "name": "UWM Applied AI Society",
-      "university": "University of Wisconsin–Milwaukee",
+      "university": "University of Wisconsin\u2013Milwaukee",
       "state": "Wisconsin",
       "stateId": "55",
       "city": "Milwaukee",
       "status": "active",
-      "members": 32,
+      "members": 280,
       "founded": "2024",
       "description": "Cross-campus collaboration with MSOE. Focus on data science applications and industry partnerships.",
-      "highlights": ["Joint events with MSOE", "Industry mentorship program"],
+      "highlights": [
+        "Joint events with MSOE",
+        "Industry mentorship program"
+      ],
       "url": null
     },
     {
       "id": "uw-madison",
       "name": "UW-Madison AI Engineers",
-      "university": "University of Wisconsin–Madison",
+      "university": "University of Wisconsin\u2013Madison",
       "state": "Wisconsin",
       "stateId": "55",
       "city": "Madison",
       "status": "active",
-      "members": 38,
+      "members": 340,
       "founded": "2024",
       "description": "Research-heavy chapter at the flagship campus. Strong ties to CS department and WID.",
-      "highlights": ["Faculty partnerships", "Annual AI symposium", "Research collaborations"],
+      "highlights": [
+        "Faculty partnerships",
+        "Annual AI symposium",
+        "Research collaborations"
+      ],
       "url": null
     },
     {
@@ -56,10 +67,13 @@
       "stateId": "55",
       "city": "Milwaukee",
       "status": "launching",
-      "members": 14,
+      "members": 95,
       "founded": "2026",
       "description": "Jesuit university chapter focused on ethical AI and social impact applications.",
-      "highlights": ["Launching Fall 2026", "Ethics-first approach"],
+      "highlights": [
+        "Launching Fall 2026",
+        "Ethics-first approach"
+      ],
       "url": null
     },
     {
@@ -70,10 +84,14 @@
       "stateId": "13",
       "city": "Atlanta",
       "status": "active",
-      "members": 58,
+      "members": 620,
       "founded": "2024",
       "description": "One of the largest chapters. Strong focus on ML research applications and startup incubation.",
-      "highlights": ["58 active members", "AI startup incubator", "Research paper reading group"],
+      "highlights": [
+        "620 active members",
+        "AI startup incubator",
+        "Research paper reading group"
+      ],
       "url": null
     },
     {
@@ -84,10 +102,13 @@
       "stateId": "26",
       "city": "Ann Arbor",
       "status": "active",
-      "members": 41,
+      "members": 410,
       "founded": "2024",
       "description": "Hands-on AI engineering community. Known for their deploy-first workshop format.",
-      "highlights": ["Deploy-first workshops", "Corporate sponsor partnerships"],
+      "highlights": [
+        "Deploy-first workshops",
+        "Corporate sponsor partnerships"
+      ],
       "url": null
     },
     {
@@ -98,10 +119,13 @@
       "stateId": "48",
       "city": "Austin",
       "status": "active",
-      "members": 37,
+      "members": 380,
       "founded": "2025",
       "description": "Fast-growing chapter in the Austin tech ecosystem. Strong industry connections.",
-      "highlights": ["Austin tech ecosystem ties", "Weekly build sessions"],
+      "highlights": [
+        "Austin tech ecosystem ties",
+        "Weekly build sessions"
+      ],
       "url": null
     },
     {
@@ -112,10 +136,13 @@
       "stateId": "25",
       "city": "Cambridge",
       "status": "active",
-      "members": 29,
+      "members": 290,
       "founded": "2025",
       "description": "Research-oriented chapter bridging academia and applied engineering.",
-      "highlights": ["Research-to-production pipeline", "Faculty advisors from CSAIL"],
+      "highlights": [
+        "Research-to-production pipeline",
+        "Faculty advisors from CSAIL"
+      ],
       "url": null
     },
     {
@@ -126,10 +153,14 @@
       "stateId": "06",
       "city": "Stanford",
       "status": "active",
-      "members": 44,
+      "members": 470,
       "founded": "2025",
       "description": "Silicon Valley chapter with deep startup and VC connections.",
-      "highlights": ["Startup demo days", "VC mentorship program", "Joint events with HAI"],
+      "highlights": [
+        "Startup demo days",
+        "VC mentorship program",
+        "Joint events with HAI"
+      ],
       "url": null
     },
     {
@@ -140,10 +171,13 @@
       "stateId": "17",
       "city": "Champaign",
       "status": "active",
-      "members": 26,
+      "members": 260,
       "founded": "2025",
       "description": "Strong engineering culture with focus on systems and infrastructure for AI.",
-      "highlights": ["AI infrastructure focus", "Open-source contributions"],
+      "highlights": [
+        "AI infrastructure focus",
+        "Open-source contributions"
+      ],
       "url": null
     },
     {
@@ -154,10 +188,13 @@
       "stateId": "42",
       "city": "Pittsburgh",
       "status": "active",
-      "members": 35,
+      "members": 350,
       "founded": "2025",
       "description": "Chapter at one of the top AI research universities. Robotics and AI systems focus.",
-      "highlights": ["Robotics + AI integration", "Industry research partnerships"],
+      "highlights": [
+        "Robotics + AI integration",
+        "Industry research partnerships"
+      ],
       "url": null
     },
     {
@@ -168,10 +205,13 @@
       "stateId": "53",
       "city": "Seattle",
       "status": "active",
-      "members": 28,
+      "members": 280,
       "founded": "2025",
       "description": "Pacific Northwest chapter with industry ties to Seattle tech companies.",
-      "highlights": ["Industry mentorship pipeline", "Cloud AI workshops"],
+      "highlights": [
+        "Industry mentorship pipeline",
+        "Cloud AI workshops"
+      ],
       "url": null
     },
     {
@@ -182,10 +222,13 @@
       "stateId": "18",
       "city": "West Lafayette",
       "status": "active",
-      "members": 22,
+      "members": 220,
       "founded": "2025",
       "description": "Engineering-focused chapter with strong industry capstone integration.",
-      "highlights": ["Industry capstone projects", "Boilermaker AI hackathon"],
+      "highlights": [
+        "Industry capstone projects",
+        "Boilermaker AI hackathon"
+      ],
       "url": null
     },
     {
@@ -196,10 +239,13 @@
       "stateId": "36",
       "city": "New York City",
       "status": "active",
-      "members": 40,
+      "members": 390,
       "founded": "2025",
       "description": "NYC chapter connecting students to the city's AI startup ecosystem.",
-      "highlights": ["NYC AI startup network", "Demo day at Pier 17"],
+      "highlights": [
+        "NYC AI startup network",
+        "Demo day at Pier 17"
+      ],
       "url": null
     },
     {
@@ -210,10 +256,13 @@
       "stateId": "36",
       "city": "Ithaca",
       "status": "active",
-      "members": 31,
+      "members": 310,
       "founded": "2025",
       "description": "Ivy League chapter with strong ML theory-to-practice pipeline.",
-      "highlights": ["Theory-to-practice pipeline", "Faculty-led reading groups"],
+      "highlights": [
+        "Theory-to-practice pipeline",
+        "Faculty-led reading groups"
+      ],
       "url": null
     },
     {
@@ -224,10 +273,13 @@
       "stateId": "36",
       "city": "New York City",
       "status": "launching",
-      "members": 18,
+      "members": 150,
       "founded": "2026",
       "description": "Manhattan chapter focused on fintech and healthcare AI applications.",
-      "highlights": ["Launching Spring 2026", "Fintech AI focus"],
+      "highlights": [
+        "Launching Spring 2026",
+        "Fintech AI focus"
+      ],
       "url": null
     },
     {
@@ -238,10 +290,13 @@
       "stateId": "08",
       "city": "Boulder",
       "status": "active",
-      "members": 24,
+      "members": 240,
       "founded": "2025",
       "description": "Mountain West chapter with aerospace and climate AI applications.",
-      "highlights": ["Aerospace AI projects", "Climate modeling workshops"],
+      "highlights": [
+        "Aerospace AI projects",
+        "Climate modeling workshops"
+      ],
       "url": null
     },
     {
@@ -252,10 +307,13 @@
       "stateId": "39",
       "city": "Columbus",
       "status": "active",
-      "members": 33,
+      "members": 330,
       "founded": "2025",
       "description": "Midwest powerhouse chapter with strong automotive and manufacturing AI focus.",
-      "highlights": ["Manufacturing AI focus", "Honda partnership"],
+      "highlights": [
+        "Manufacturing AI focus",
+        "Honda partnership"
+      ],
       "url": null
     },
     {
@@ -266,10 +324,13 @@
       "stateId": "37",
       "city": "Chapel Hill",
       "status": "active",
-      "members": 27,
+      "members": 270,
       "founded": "2025",
       "description": "Research Triangle chapter bridging UNC, Duke, and NC State communities.",
-      "highlights": ["Research Triangle network", "Healthcare AI projects"],
+      "highlights": [
+        "Research Triangle network",
+        "Healthcare AI projects"
+      ],
       "url": null
     },
     {
@@ -280,10 +341,13 @@
       "stateId": "51",
       "city": "Charlottesville",
       "status": "active",
-      "members": 21,
+      "members": 210,
       "founded": "2025",
       "description": "Chapter combining data science and public policy AI applications.",
-      "highlights": ["Public policy AI", "Government data projects"],
+      "highlights": [
+        "Public policy AI",
+        "Government data projects"
+      ],
       "url": null
     },
     {
@@ -294,10 +358,13 @@
       "stateId": "12",
       "city": "Gainesville",
       "status": "active",
-      "members": 36,
+      "members": 360,
       "founded": "2025",
       "description": "Southeast hub leveraging UF's HiPerGator supercomputer for AI research.",
-      "highlights": ["HiPerGator access", "NVIDIA DGX partnership"],
+      "highlights": [
+        "HiPerGator access",
+        "NVIDIA DGX partnership"
+      ],
       "url": null
     },
     {
@@ -308,10 +375,13 @@
       "stateId": "27",
       "city": "Minneapolis",
       "status": "active",
-      "members": 25,
+      "members": 250,
       "founded": "2025",
       "description": "Twin Cities chapter with healthcare and agricultural AI focus.",
-      "highlights": ["Healthcare AI", "AgTech partnerships"],
+      "highlights": [
+        "Healthcare AI",
+        "AgTech partnerships"
+      ],
       "url": null
     },
     {
@@ -322,10 +392,13 @@
       "stateId": "04",
       "city": "Tempe",
       "status": "active",
-      "members": 30,
+      "members": 300,
       "founded": "2025",
       "description": "Desert chapter known for large-scale innovation challenges and industry sprints.",
-      "highlights": ["Innovation challenges", "Industry sprint format"],
+      "highlights": [
+        "Innovation challenges",
+        "Industry sprint format"
+      ],
       "url": null
     },
     {
@@ -336,10 +409,13 @@
       "stateId": "41",
       "city": "Corvallis",
       "status": "launching",
-      "members": 15,
+      "members": 110,
       "founded": "2026",
       "description": "Pacific Northwest chapter with forestry and environmental AI focus.",
-      "highlights": ["Launching Winter 2026", "Environmental AI"],
+      "highlights": [
+        "Launching Winter 2026",
+        "Environmental AI"
+      ],
       "url": null
     },
     {
@@ -350,10 +426,13 @@
       "stateId": "24",
       "city": "College Park",
       "status": "active",
-      "members": 28,
+      "members": 280,
       "founded": "2025",
       "description": "DC-area chapter with government and defense AI connections.",
-      "highlights": ["Government AI projects", "DC tech corridor"],
+      "highlights": [
+        "Government AI projects",
+        "DC tech corridor"
+      ],
       "url": null
     },
     {
@@ -364,10 +443,13 @@
       "stateId": "47",
       "city": "Nashville",
       "status": "launching",
-      "members": 16,
+      "members": 130,
       "founded": "2026",
       "description": "Nashville chapter with healthcare and music industry AI applications.",
-      "highlights": ["Launching Spring 2026", "Healthcare AI focus"],
+      "highlights": [
+        "Launching Spring 2026",
+        "Healthcare AI focus"
+      ],
       "url": null
     },
     {
@@ -378,10 +460,13 @@
       "stateId": "29",
       "city": "St. Louis",
       "status": "launching",
-      "members": 17,
+      "members": 140,
       "founded": "2026",
       "description": "Midwest chapter bridging medical AI and engineering applications.",
-      "highlights": ["Launching Fall 2026", "Medical AI partnerships"],
+      "highlights": [
+        "Launching Fall 2026",
+        "Medical AI partnerships"
+      ],
       "url": null
     },
     {
@@ -392,10 +477,13 @@
       "stateId": "34",
       "city": "New Brunswick",
       "status": "active",
-      "members": 23,
+      "members": 230,
       "founded": "2025",
       "description": "Garden State chapter with pharma and logistics AI focus.",
-      "highlights": ["Pharma AI projects", "Supply chain optimization"],
+      "highlights": [
+        "Pharma AI projects",
+        "Supply chain optimization"
+      ],
       "url": null
     },
     {
@@ -406,10 +494,13 @@
       "stateId": "09",
       "city": "Storrs",
       "status": "launching",
-      "members": 12,
+      "members": 90,
       "founded": "2026",
       "description": "New England chapter focused on insurance and fintech AI applications.",
-      "highlights": ["Launching Spring 2026", "Insurance AI focus"],
+      "highlights": [
+        "Launching Spring 2026",
+        "Insurance AI focus"
+      ],
       "url": null
     },
     {
@@ -420,10 +511,13 @@
       "stateId": "49",
       "city": "Salt Lake City",
       "status": "launching",
-      "members": 14,
+      "members": 120,
       "founded": "2026",
       "description": "Mountain West chapter with computer graphics and gaming AI focus.",
-      "highlights": ["Launching Fall 2026", "Graphics + AI intersection"],
+      "highlights": [
+        "Launching Fall 2026",
+        "Graphics + AI intersection"
+      ],
       "url": null
     },
     {
@@ -434,10 +528,13 @@
       "stateId": "19",
       "city": "Ames",
       "status": "launching",
-      "members": 13,
+      "members": 100,
       "founded": "2026",
       "description": "Heartland chapter with precision agriculture and IoT AI applications.",
-      "highlights": ["Launching Winter 2026", "Precision agriculture AI"],
+      "highlights": [
+        "Launching Winter 2026",
+        "Precision agriculture AI"
+      ],
       "url": null
     },
     {
@@ -448,10 +545,13 @@
       "stateId": "20",
       "city": "Lawrence",
       "status": "launching",
-      "members": 11,
+      "members": 85,
       "founded": "2026",
       "description": "Plains chapter with weather prediction and energy AI focus.",
-      "highlights": ["Launching Spring 2026", "Weather AI models"],
+      "highlights": [
+        "Launching Spring 2026",
+        "Weather AI models"
+      ],
       "url": null
     },
     {
@@ -462,10 +562,13 @@
       "stateId": "45",
       "city": "Clemson",
       "status": "launching",
-      "members": 15,
+      "members": 115,
       "founded": "2026",
       "description": "Southeast chapter with automotive and manufacturing AI applications.",
-      "highlights": ["Launching Fall 2026", "BMW partnership pipeline"],
+      "highlights": [
+        "Launching Fall 2026",
+        "BMW partnership pipeline"
+      ],
       "url": null
     },
     {
@@ -476,10 +579,13 @@
       "stateId": "01",
       "city": "Birmingham",
       "status": "launching",
-      "members": 12,
+      "members": 95,
       "founded": "2026",
       "description": "Deep South chapter with biomedical and clinical AI focus.",
-      "highlights": ["Launching Spring 2026", "Clinical AI research"],
+      "highlights": [
+        "Launching Spring 2026",
+        "Clinical AI research"
+      ],
       "url": null
     },
     {
@@ -490,10 +596,13 @@
       "stateId": "32",
       "city": "Las Vegas",
       "status": "launching",
-      "members": 14,
+      "members": 105,
       "founded": "2026",
       "description": "Desert chapter with hospitality tech and computer vision AI focus.",
-      "highlights": ["Launching Fall 2026", "Hospitality tech AI"],
+      "highlights": [
+        "Launching Fall 2026",
+        "Hospitality tech AI"
+      ],
       "url": null
     },
     {
@@ -504,24 +613,30 @@
       "stateId": "22",
       "city": "Baton Rouge",
       "status": "launching",
-      "members": 13,
+      "members": 100,
       "founded": "2026",
       "description": "Gulf Coast chapter with energy and environmental monitoring AI.",
-      "highlights": ["Launching Spring 2026", "Energy sector AI"],
+      "highlights": [
+        "Launching Spring 2026",
+        "Energy sector AI"
+      ],
       "url": null
     },
     {
       "id": "nebraska",
       "name": "UNL AI Builders",
-      "university": "University of Nebraska–Lincoln",
+      "university": "University of Nebraska\u2013Lincoln",
       "state": "Nebraska",
       "stateId": "31",
       "city": "Lincoln",
       "status": "launching",
-      "members": 10,
+      "members": 80,
       "founded": "2026",
       "description": "Great Plains chapter with agricultural robotics and drone AI focus.",
-      "highlights": ["Launching Fall 2026", "Agricultural robotics"],
+      "highlights": [
+        "Launching Fall 2026",
+        "Agricultural robotics"
+      ],
       "url": null
     },
     {
@@ -532,10 +647,13 @@
       "stateId": "35",
       "city": "Las Cruces",
       "status": "launching",
-      "members": 11,
+      "members": 75,
       "founded": "2026",
       "description": "Southwest chapter with space technology and autonomous systems AI focus.",
-      "highlights": ["Launching Spring 2026", "Space tech AI"],
+      "highlights": [
+        "Launching Spring 2026",
+        "Space tech AI"
+      ],
       "url": null
     }
   ]
