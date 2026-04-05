@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./home.css" />
 </head>
@@ -39,7 +39,7 @@
       <img src="./public/web/hero-crowd.jpg" alt="" loading="eager" />
     </div>
     <canvas id="hero-particles"></canvas>
-    <div id="hero-3d" style="position:absolute;right:0;top:0;bottom:0;width:60%;pointer-events:none;z-index:1;"></div>
+    <div id="hero-3d" style="position:absolute;right:0;top:0;bottom:0;width:60%;pointer-events:auto;z-index:1;"></div>
     <div class="hero__grid container">
       <div class="hero__content">
         <h1 class="hero__title" id="hero-title">
@@ -169,33 +169,31 @@
       <div class="pipeline reveal-stagger">
         <div class="pipeline__item">
           <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- GPU Server — 3-tier rack with LEDs and vent -->
-            <!-- Bottom unit -->
-            <polygon points="24,32 37,39 24,46 11,39" fill="#3b82f6" opacity="0.92"/>
-            <polygon points="11,39 24,46 24,40 11,33" fill="#3b82f6" opacity="0.58"/>
-            <polygon points="24,46 37,39 37,33 24,40" fill="#3b82f6" opacity="0.38"/>
-            <!-- Middle unit -->
-            <polygon points="24,24 37,31 24,38 11,31" fill="#3b82f6" opacity="0.92"/>
-            <polygon points="11,31 24,38 24,32 11,25" fill="#3b82f6" opacity="0.58"/>
-            <polygon points="24,38 37,31 37,25 24,32" fill="#3b82f6" opacity="0.38"/>
-            <!-- Top unit -->
-            <polygon points="24,16 37,23 24,30 11,23" fill="#3b82f6" opacity="0.92"/>
-            <polygon points="11,23 24,30 24,24 11,17" fill="#3b82f6" opacity="0.58"/>
-            <polygon points="24,30 37,23 37,17 24,24" fill="#3b82f6" opacity="0.38"/>
-            <!-- LED rows on left face -->
-            <circle cx="14.5" cy="19.5" r="1.1" fill="#60a5fa"/>
-            <circle cx="14.5" cy="27.5" r="1.1" fill="#60a5fa"/>
-            <circle cx="14.5" cy="35.5" r="1.1" fill="#60a5fa"/>
-            <circle cx="17" cy="21" r="0.7" fill="#93c5fd" opacity="0.6"/>
-            <circle cx="17" cy="29" r="0.7" fill="#93c5fd" opacity="0.6"/>
-            <circle cx="17" cy="37" r="0.7" fill="#93c5fd" opacity="0.6"/>
-            <!-- Top vent grille -->
-            <line x1="17" y1="18" x2="24" y2="14.5" stroke="#60a5fa" stroke-width="0.6" opacity="0.35"/>
-            <line x1="19" y1="19" x2="26" y2="15.5" stroke="#60a5fa" stroke-width="0.6" opacity="0.35"/>
-            <line x1="21" y1="20" x2="28" y2="16.5" stroke="#60a5fa" stroke-width="0.6" opacity="0.35"/>
-            <!-- Antenna nub -->
-            <rect x="23" y="10" width="2" height="6" rx="1" fill="#3b82f6" opacity="0.7"/>
-            <circle cx="24" cy="9.5" r="1.5" fill="#60a5fa" opacity="0.5"/>
+            <!-- GPU Card — isometric graphics card with fan and heatsink -->
+            <!-- PCB board — top face -->
+            <polygon points="10,20 30,10 42,16 22,26" fill="#3b82f6" opacity="0.88"/>
+            <!-- PCB board — front face -->
+            <polygon points="22,26 42,16 42,20 22,30" fill="#3b82f6" opacity="0.35"/>
+            <!-- PCB board — left face -->
+            <polygon points="10,20 22,26 22,30 10,24" fill="#3b82f6" opacity="0.55"/>
+            <!-- Heatsink fins on top -->
+            <line x1="14" y1="19" x2="26" y2="13" stroke="#60a5fa" stroke-width="1.2" opacity="0.35"/>
+            <line x1="16" y1="20" x2="28" y2="14" stroke="#60a5fa" stroke-width="1.2" opacity="0.3"/>
+            <line x1="18" y1="21" x2="30" y2="15" stroke="#60a5fa" stroke-width="1.2" opacity="0.25"/>
+            <!-- Fan shroud -->
+            <ellipse cx="27" cy="17.5" rx="5.5" ry="3.2" fill="#1e293b" opacity="0.65"/>
+            <ellipse cx="27" cy="17.5" rx="4" ry="2.3" fill="none" stroke="#60a5fa" stroke-width="0.8" opacity="0.45"/>
+            <ellipse cx="27" cy="17.5" rx="1.5" ry="0.9" fill="#60a5fa" opacity="0.55"/>
+            <!-- Fan blades -->
+            <line x1="24" y1="16.5" x2="30" y2="18.5" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
+            <line x1="25" y1="19" x2="29" y2="16" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
+            <!-- Power connector pins -->
+            <rect x="35" y="12" width="1.2" height="2.2" rx="0.3" fill="#93c5fd" opacity="0.45"/>
+            <rect x="37" y="11.3" width="1.2" height="2.2" rx="0.3" fill="#93c5fd" opacity="0.45"/>
+            <!-- PCIe gold connector -->
+            <polygon points="13,24 20,28 20,30 13,26" fill="#fbbf24" opacity="0.45"/>
+            <!-- NVIDIA green LED -->
+            <circle cx="39" cy="15" r="1" fill="#76b900" opacity="0.8"/>
           </svg>
           <strong>Compute access</strong>
           <span>Universities gain GPU infrastructure that students need a reason to use.</span>
@@ -205,26 +203,22 @@
         </div>
         <div class="pipeline__item">
           <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Mentorship — mentor (taller, left) and mentee (right) with arrow -->
-            <!-- Mentor figure (larger) -->
-            <circle cx="16" cy="12" r="4" fill="#22d3ee" opacity="0.85"/>
-            <polygon points="16,17 23,22 16,27 9,22" fill="#22d3ee" opacity="0.75"/>
-            <polygon points="9,22 16,27 16,36 9,31" fill="#22d3ee" opacity="0.55"/>
-            <polygon points="16,27 23,22 23,31 16,36" fill="#22d3ee" opacity="0.38"/>
-            <!-- Mentee figure (smaller) -->
-            <circle cx="34" cy="16" r="3.5" fill="#22d3ee" opacity="0.75"/>
-            <polygon points="34,20 40,24 34,28 28,24" fill="#22d3ee" opacity="0.65"/>
-            <polygon points="28,24 34,28 34,36 28,30" fill="#22d3ee" opacity="0.48"/>
-            <polygon points="34,28 40,24 40,30 34,36" fill="#22d3ee" opacity="0.32"/>
-            <!-- Curved mentorship arrow from mentor to mentee -->
-            <path d="M22,20 C27,15 29,17 31,19" stroke="#22d3ee" stroke-width="1.5" fill="none" opacity="0.6" stroke-linecap="round"/>
-            <polygon points="31,17 33,20 30,20" fill="#22d3ee" opacity="0.7"/>
-            <!-- Knowledge spark above arrow -->
-            <circle cx="26" cy="14" r="1.2" fill="#67e8f9" opacity="0.5"/>
-            <circle cx="28" cy="12" r="0.8" fill="#67e8f9" opacity="0.35"/>
-            <!-- Ground shadow -->
-            <ellipse cx="16" cy="38" rx="7" ry="2.5" fill="#22d3ee" opacity="0.08"/>
-            <ellipse cx="34" cy="38" rx="6" ry="2" fill="#22d3ee" opacity="0.06"/>
+            <!-- Mentorship — two people with knowledge-sharing arrow -->
+            <!-- Mentor (left, taller) — head -->
+            <circle cx="15" cy="13" r="4" fill="#22d3ee" opacity="0.85"/>
+            <!-- Mentor body — isometric box -->
+            <polygon points="15,18 22,22 15,26 8,22" fill="#22d3ee" opacity="0.75"/>
+            <polygon points="8,22 15,26 15,35 8,29" fill="#22d3ee" opacity="0.55"/>
+            <polygon points="15,26 22,22 22,29 15,35" fill="#22d3ee" opacity="0.35"/>
+            <!-- Mentee (right, shorter) — head -->
+            <circle cx="34" cy="17" r="3.5" fill="#22d3ee" opacity="0.75"/>
+            <!-- Mentee body -->
+            <polygon points="34,21 40,24.5 34,28 28,24.5" fill="#22d3ee" opacity="0.65"/>
+            <polygon points="28,24.5 34,28 34,35 28,29" fill="#22d3ee" opacity="0.48"/>
+            <polygon points="34,28 40,24.5 40,29 34,35" fill="#22d3ee" opacity="0.3"/>
+            <!-- Arrow from mentor to mentee -->
+            <path d="M22,18 C27,13 30,15 32,17" stroke="#67e8f9" stroke-width="1.8" fill="none" opacity="0.55" stroke-linecap="round"/>
+            <polygon points="32,15 34,18 31,18" fill="#67e8f9" opacity="0.65"/>
           </svg>
           <strong>Mentorship loop</strong>
           <span>Upperclassmen mentor newcomers who build real portfolio pieces.</span>
@@ -234,31 +228,27 @@
         </div>
         <div class="pipeline__item">
           <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Community Network — isometric hub with connected nodes -->
-            <!-- Central hub platform -->
-            <polygon points="24,20 32,24 24,28 16,24" fill="#ec4899" opacity="0.92"/>
-            <polygon points="16,24 24,28 24,30 16,26" fill="#ec4899" opacity="0.55"/>
-            <polygon points="24,28 32,24 32,26 24,30" fill="#ec4899" opacity="0.38"/>
-            <!-- Center node -->
-            <circle cx="24" cy="20" r="3" fill="#f472b6" opacity="0.9"/>
-            <!-- Connections from center to outer nodes -->
-            <line x1="21" y1="19" x2="10" y2="12" stroke="#ec4899" stroke-width="1.4" opacity="0.5" stroke-linecap="round"/>
-            <line x1="27" y1="19" x2="38" y2="12" stroke="#ec4899" stroke-width="1.4" opacity="0.5" stroke-linecap="round"/>
-            <line x1="21" y1="23" x2="8" y2="32" stroke="#ec4899" stroke-width="1.4" opacity="0.45" stroke-linecap="round"/>
-            <line x1="27" y1="23" x2="40" y2="32" stroke="#ec4899" stroke-width="1.4" opacity="0.45" stroke-linecap="round"/>
-            <line x1="24" y1="28" x2="24" y2="40" stroke="#ec4899" stroke-width="1.2" opacity="0.4" stroke-linecap="round"/>
-            <!-- Outer nodes -->
-            <circle cx="10" cy="11" r="3" fill="#ec4899" opacity="0.7"/>
-            <circle cx="38" cy="11" r="3" fill="#ec4899" opacity="0.7"/>
-            <circle cx="8" cy="33" r="2.8" fill="#ec4899" opacity="0.6"/>
-            <circle cx="40" cy="33" r="2.8" fill="#ec4899" opacity="0.6"/>
-            <circle cx="24" cy="41" r="2.5" fill="#ec4899" opacity="0.5"/>
-            <!-- Peer connections (outer ring) -->
-            <line x1="13" y1="11" x2="35" y2="11" stroke="#ec4899" stroke-width="0.8" opacity="0.2" stroke-dasharray="2 2"/>
-            <line x1="10" y1="14" x2="8" y2="30" stroke="#ec4899" stroke-width="0.8" opacity="0.18"/>
-            <line x1="38" y1="14" x2="40" y2="30" stroke="#ec4899" stroke-width="0.8" opacity="0.18"/>
-            <!-- Pulse ring on center -->
-            <circle cx="24" cy="20" r="5.5" fill="none" stroke="#f472b6" stroke-width="0.6" opacity="0.25"/>
+            <!-- Community — calendar/event board with people dots -->
+            <!-- Board — top face -->
+            <polygon points="24,12 40,20 24,28 8,20" fill="#ec4899" opacity="0.88"/>
+            <!-- Board — left face -->
+            <polygon points="8,20 24,28 24,32 8,24" fill="#ec4899" opacity="0.55"/>
+            <!-- Board — right face -->
+            <polygon points="24,28 40,20 40,24 24,32" fill="#ec4899" opacity="0.35"/>
+            <!-- Grid lines on top face (calendar grid) -->
+            <line x1="16" y1="16" x2="32" y2="24" stroke="#f9a8d4" stroke-width="0.6" opacity="0.3"/>
+            <line x1="12" y1="20" x2="36" y2="20" stroke="#f9a8d4" stroke-width="0.6" opacity="0.25"/>
+            <line x1="20" y1="14" x2="28" y2="26" stroke="#f9a8d4" stroke-width="0.6" opacity="0.25"/>
+            <!-- People dots (clustered on the board) -->
+            <circle cx="18" cy="17" r="1.8" fill="#f472b6" opacity="0.75"/>
+            <circle cx="24" cy="18" r="1.8" fill="#f472b6" opacity="0.85"/>
+            <circle cx="30" cy="19" r="1.8" fill="#f472b6" opacity="0.7"/>
+            <circle cx="21" cy="21" r="1.5" fill="#f472b6" opacity="0.6"/>
+            <circle cx="27" cy="22" r="1.5" fill="#f472b6" opacity="0.55"/>
+            <!-- Connection lines between dots -->
+            <line x1="19.5" y1="17.5" x2="22.5" y2="18" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4"/>
+            <line x1="25.5" y1="18.5" x2="28.5" y2="19.5" stroke="#f9a8d4" stroke-width="0.8" opacity="0.35"/>
+            <line x1="22" y1="20" x2="26" y2="21" stroke="#f9a8d4" stroke-width="0.8" opacity="0.3"/>
           </svg>
           <strong>Year-round community</strong>
           <span>Competition energy expands into projects, research groups, and speaker series.</span>
@@ -268,28 +258,28 @@
         </div>
         <div class="pipeline__item">
           <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Industry Pipeline — ascending isometric bar chart -->
-            <!-- Base platform -->
-            <polygon points="6,40 42,40 42,44 6,44" fill="#a855f7" opacity="0.15"/>
-            <!-- Bar 1 (shortest) -->
-            <polygon points="8,34 14,31 14,40 8,40" fill="#a855f7" opacity="0.58"/>
-            <polygon points="14,31 18,33 18,40 14,40" fill="#a855f7" opacity="0.38"/>
-            <polygon points="8,34 14,31 18,33 12,36" fill="#a855f7" opacity="0.88"/>
+            <!-- Industry Pipeline — clean isometric bar chart -->
+            <!-- Bar 1 (shortest) — left face -->
+            <polygon points="9,32 15,29 15,40 9,40" fill="#a855f7" opacity="0.55"/>
+            <!-- Bar 1 — right face -->
+            <polygon points="15,29 19,31 19,40 15,40" fill="#a855f7" opacity="0.35"/>
+            <!-- Bar 1 — top face -->
+            <polygon points="9,32 15,29 19,31 13,34" fill="#a855f7" opacity="0.85"/>
             <!-- Bar 2 -->
-            <polygon points="15,27 21,24 21,40 15,40" fill="#a855f7" opacity="0.58"/>
-            <polygon points="21,24 25,26 25,40 21,40" fill="#a855f7" opacity="0.38"/>
-            <polygon points="15,27 21,24 25,26 19,29" fill="#a855f7" opacity="0.88"/>
+            <polygon points="16,25 22,22 22,40 16,40" fill="#a855f7" opacity="0.55"/>
+            <polygon points="22,22 26,24 26,40 22,40" fill="#a855f7" opacity="0.35"/>
+            <polygon points="16,25 22,22 26,24 20,27" fill="#a855f7" opacity="0.85"/>
             <!-- Bar 3 -->
-            <polygon points="22,19 28,16 28,40 22,40" fill="#a855f7" opacity="0.58"/>
-            <polygon points="28,16 32,18 32,40 28,40" fill="#a855f7" opacity="0.38"/>
-            <polygon points="22,19 28,16 32,18 26,21" fill="#a855f7" opacity="0.88"/>
-            <!-- Bar 4 (tallest) -->
-            <polygon points="29,10 35,7 35,40 29,40" fill="#c084fc" opacity="0.58"/>
-            <polygon points="35,7 39,9 39,40 35,40" fill="#c084fc" opacity="0.38"/>
-            <polygon points="29,10 35,7 39,9 33,12" fill="#c084fc" opacity="0.92"/>
-            <!-- Upward trend arrow -->
-            <path d="M10,33 L18,26 L25,19 L33,11" stroke="#e9d5ff" stroke-width="1.2" fill="none" opacity="0.5" stroke-linecap="round" stroke-dasharray="2 1.5"/>
-            <polygon points="34,8 36,12 31,11" fill="#e9d5ff" opacity="0.6"/>
+            <polygon points="23,17 29,14 29,40 23,40" fill="#a855f7" opacity="0.55"/>
+            <polygon points="29,14 33,16 33,40 29,40" fill="#a855f7" opacity="0.35"/>
+            <polygon points="23,17 29,14 33,16 27,19" fill="#a855f7" opacity="0.88"/>
+            <!-- Bar 4 (tallest, accent) -->
+            <polygon points="30,9 36,6 36,40 30,40" fill="#c084fc" opacity="0.55"/>
+            <polygon points="36,6 40,8 40,40 36,40" fill="#c084fc" opacity="0.35"/>
+            <polygon points="30,9 36,6 40,8 34,11" fill="#c084fc" opacity="0.92"/>
+            <!-- Trend line -->
+            <path d="M11,31 L19,24 L26,16 L34,8" stroke="#e9d5ff" stroke-width="1.5" fill="none" opacity="0.45" stroke-linecap="round"/>
+            <polygon points="35,6 37,10 32,10" fill="#e9d5ff" opacity="0.5"/>
           </svg>
           <strong>Industry pipeline</strong>
           <span>Students with real experience become the strongest hires. Sponsors keep coming back.</span>
@@ -320,62 +310,59 @@
           <div class="bento-proof__stat-cluster">
             <div class="bento-proof__stat">
               <svg class="proof__num-icon-svg" viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Isometric rocket — clean 3-face technique -->
-                <!-- Nose cone -->
-                <polygon points="14,3 17,8 14,9.5 11,8" fill="#22d3ee" opacity="0.92"/>
-                <!-- Body left -->
-                <polygon points="11,8 14,9.5 14,19 11,17" fill="#22d3ee" opacity="0.58"/>
-                <!-- Body right -->
-                <polygon points="14,9.5 17,8 17,17 14,19" fill="#22d3ee" opacity="0.38"/>
-                <!-- Fins -->
-                <polygon points="11,15 8.5,19 11,17.5" fill="#22d3ee" opacity="0.5"/>
-                <polygon points="17,15 19.5,19 17,17.5" fill="#22d3ee" opacity="0.35"/>
-                <!-- Window -->
-                <circle cx="14" cy="12.5" r="1.5" fill="#67e8f9" opacity="0.5"/>
-                <!-- Exhaust glow -->
-                <ellipse cx="14" cy="21" rx="2" ry="1.5" fill="#22d3ee" opacity="0.25"/>
-                <ellipse cx="14" cy="22.5" rx="1.2" ry="1" fill="#67e8f9" opacity="0.15"/>
+                <!-- Isometric upward arrow / growth -->
+                <!-- Shaft -->
+                <polygon points="12,12 16,10 16,22 12,24" fill="#22d3ee" opacity="0.55"/>
+                <polygon points="12,12 14,11 14,23 12,24" fill="#22d3ee" opacity="0.7"/>
+                <!-- Arrowhead — top face -->
+                <polygon points="14,3 21,8 14,13 7,8" fill="#22d3ee" opacity="0.9"/>
+                <!-- Arrowhead — left face -->
+                <polygon points="7,8 14,13 12,12 7,8" fill="#22d3ee" opacity="0.6"/>
+                <!-- Arrowhead — right face -->
+                <polygon points="14,13 21,8 16,10 14,13" fill="#22d3ee" opacity="0.4"/>
+                <!-- Spark dots -->
+                <circle cx="8" cy="14" r="1" fill="#67e8f9" opacity="0.4"/>
+                <circle cx="20" cy="12" r="0.8" fill="#67e8f9" opacity="0.3"/>
               </svg>
               <strong>300+</strong>
               <span>students per project period</span>
             </div>
             <div class="bento-proof__stat">
               <svg class="proof__num-icon-svg" viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Isometric document stack — proper 3-face -->
-                <!-- Back page (offset) -->
-                <polygon points="9,4 21,3 23,4 11,5" fill="#ec4899" opacity="0.4"/>
-                <polygon points="9,4 11,5 11,22 9,21" fill="#ec4899" opacity="0.25"/>
-                <!-- Front page — top face -->
-                <polygon points="7,6 19,4.5 21,5.5 9,7" fill="#ec4899" opacity="0.88"/>
-                <!-- Front page — left face -->
-                <polygon points="7,6 9,7 9,24 7,23" fill="#ec4899" opacity="0.55"/>
-                <!-- Front page — right face -->
-                <polygon points="9,7 21,5.5 21,22.5 9,24" fill="#ec4899" opacity="0.38"/>
-                <!-- Text lines on right face -->
-                <line x1="11.5" y1="9" x2="18.5" y2="8" stroke="#f9a8d4" stroke-width="0.9" opacity="0.5" stroke-linecap="round"/>
-                <line x1="11.5" y1="12" x2="18.5" y2="11" stroke="#f9a8d4" stroke-width="0.9" opacity="0.4" stroke-linecap="round"/>
-                <line x1="11.5" y1="15" x2="17" y2="14.2" stroke="#f9a8d4" stroke-width="0.9" opacity="0.35" stroke-linecap="round"/>
-                <line x1="11.5" y1="18" x2="16" y2="17.3" stroke="#f9a8d4" stroke-width="0.9" opacity="0.3" stroke-linecap="round"/>
+                <!-- Isometric open book -->
+                <!-- Left page — top face -->
+                <polygon points="14,8 14,22 4,18 4,4" fill="#ec4899" opacity="0.65"/>
+                <!-- Right page — top face -->
+                <polygon points="14,8 14,22 24,18 24,4" fill="#ec4899" opacity="0.4"/>
+                <!-- Spine highlight -->
+                <line x1="14" y1="8" x2="14" y2="22" stroke="#f472b6" stroke-width="1.2" opacity="0.7"/>
+                <!-- Text lines left page -->
+                <line x1="6" y1="8" x2="12" y2="10" stroke="#f9a8d4" stroke-width="0.8" opacity="0.5" stroke-linecap="round"/>
+                <line x1="6" y1="11" x2="12" y2="13" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/>
+                <line x1="6" y1="14" x2="11" y2="16" stroke="#f9a8d4" stroke-width="0.8" opacity="0.35" stroke-linecap="round"/>
+                <!-- Text lines right page -->
+                <line x1="16" y1="10" x2="22" y2="8" stroke="#f9a8d4" stroke-width="0.8" opacity="0.35" stroke-linecap="round"/>
+                <line x1="16" y1="13" x2="22" y2="11" stroke="#f9a8d4" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
               </svg>
               <strong>50+</strong>
               <span>student publications</span>
             </div>
             <div class="bento-proof__stat">
               <svg class="proof__num-icon-svg" viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Isometric briefcase — proper 3-face with handle -->
-                <!-- Handle arch -->
-                <rect x="11.5" y="5" width="5" height="4" rx="1.5" fill="none" stroke="#a855f7" stroke-width="1.2" opacity="0.6"/>
-                <!-- Top face -->
-                <polygon points="14,9 24,14 14,19 4,14" fill="#a855f7" opacity="0.88"/>
-                <!-- Left face -->
-                <polygon points="4,14 14,19 14,24 4,19" fill="#a855f7" opacity="0.55"/>
-                <!-- Right face -->
-                <polygon points="14,19 24,14 24,19 14,24" fill="#a855f7" opacity="0.38"/>
-                <!-- Clasp detail on top face -->
-                <rect x="12.5" y="13" width="3" height="1.5" rx="0.5" fill="#c084fc" opacity="0.5"/>
-                <!-- Belt line across front -->
-                <line x1="4" y1="16.5" x2="14" y2="21.5" stroke="#c084fc" stroke-width="0.7" opacity="0.3"/>
-                <line x1="14" y1="21.5" x2="24" y2="16.5" stroke="#c084fc" stroke-width="0.7" opacity="0.25"/>
+                <!-- Isometric handshake / deal -->
+                <!-- Base platform -->
+                <polygon points="14,16 24,21 14,26 4,21" fill="#a855f7" opacity="0.3"/>
+                <!-- Left hand -->
+                <polygon points="5,11 11,8 14,12 8,15" fill="#a855f7" opacity="0.7"/>
+                <polygon points="5,11 8,15 8,17 5,13" fill="#a855f7" opacity="0.55"/>
+                <!-- Right hand -->
+                <polygon points="14,12 17,8 23,11 20,15" fill="#c084fc" opacity="0.65"/>
+                <polygon points="20,15 23,11 23,13 20,17" fill="#c084fc" opacity="0.4"/>
+                <!-- Clasp (where hands meet) -->
+                <polygon points="11,13 17,10 17,12 11,15" fill="#e9d5ff" opacity="0.5"/>
+                <!-- Star above -->
+                <circle cx="14" cy="5" r="1.5" fill="#c084fc" opacity="0.5"/>
+                <circle cx="14" cy="5" r="0.6" fill="#e9d5ff" opacity="0.7"/>
               </svg>
               <strong>10+</strong>
               <span>direct sponsor hires per cycle</span>
@@ -436,7 +423,7 @@
             <img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" />
           </div>
           <div class="event-card__body">
-            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="10,3 13,5 10,7 7,5" fill="#3b82f6" opacity="0.9"/><polygon points="7,5 10,7 10,11 7,9" fill="#3b82f6" opacity="0.6"/><polygon points="10,7 13,5 13,9 10,11" fill="#3b82f6" opacity="0.38"/><rect x="9.2" y="11" width="1.6" height="3" rx="0.5" fill="#3b82f6" opacity="0.5"/><ellipse cx="10" cy="15.5" rx="3" ry="1" fill="#3b82f6" opacity="0.3"/></svg> Speaker Events</h3>
+            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="10" cy="5" r="3" fill="#3b82f6" opacity="0.85"/><polygon points="10,8.5 14,11 10,13.5 6,11" fill="#3b82f6" opacity="0.75"/><polygon points="6,11 10,13.5 10,17 6,14.5" fill="#3b82f6" opacity="0.55"/><polygon points="10,13.5 14,11 14,14.5 10,17" fill="#3b82f6" opacity="0.35"/><rect x="3" y="9" width="2" height="4" rx="0.5" fill="#60a5fa" opacity="0.5"/></svg> Speaker Events</h3>
             <p>Engineers from industry show what they're building. You meet the people doing the work, ask real questions, and walk out with internship leads.</p>
           </div>
         </div>
@@ -445,7 +432,7 @@
             <img src="./public/web/innovation-lab.jpg" alt="Innovation Lab kickoff" loading="lazy" />
           </div>
           <div class="event-card__body">
-            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="8.5" y="2" width="3" height="5" rx="0.8" fill="#22d3ee" opacity="0.35"/><polygon points="7,7 10,9 13,7 15,13 10,16 5,13" fill="#22d3ee" opacity="0.6"/><polygon points="5,13 10,16 10,18 5,15" fill="#22d3ee" opacity="0.5"/><polygon points="10,16 15,13 15,15 10,18" fill="#22d3ee" opacity="0.35"/><circle cx="9" cy="12" r="0.7" fill="#67e8f9" opacity="0.6"/><circle cx="11.5" cy="13.5" r="0.5" fill="#67e8f9" opacity="0.4"/></svg> Innovation Labs</h3>
+            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="10,2 15,5 10,8 5,5" fill="#22d3ee" opacity="0.88"/><polygon points="5,5 10,8 10,13 5,10" fill="#22d3ee" opacity="0.55"/><polygon points="10,8 15,5 15,10 10,13" fill="#22d3ee" opacity="0.35"/><circle cx="8" cy="7" r="0.8" fill="#67e8f9" opacity="0.7"/><circle cx="10" cy="15" r="2" fill="#22d3ee" opacity="0.3"/><line x1="10" y1="13" x2="10" y2="15" stroke="#22d3ee" stroke-width="1" opacity="0.4"/></svg> Innovation Labs</h3>
             <p>A company brings a real problem and real data. You join a mentor-led team, build a working solution over 2 months, and present to their leadership.</p>
           </div>
         </div>
@@ -454,7 +441,7 @@
             <img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" />
           </div>
           <div class="event-card__body">
-            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="10" cy="5" r="2.5" fill="#ec4899" opacity="0.25" stroke="#ec4899" stroke-width="0.8" opacity="0.6"/><circle cx="10" cy="5" r="1" fill="#f472b6" opacity="0.8"/><line x1="10" y1="7.5" x2="6" y2="12" stroke="#ec4899" stroke-width="1" opacity="0.5"/><line x1="10" y1="7.5" x2="14" y2="12" stroke="#ec4899" stroke-width="1" opacity="0.5"/><circle cx="6" cy="13" r="1.8" fill="#ec4899" opacity="0.55"/><circle cx="14" cy="13" r="1.8" fill="#ec4899" opacity="0.55"/><line x1="6" y1="15" x2="10" y2="17" stroke="#ec4899" stroke-width="0.8" opacity="0.35"/><line x1="14" y1="15" x2="10" y2="17" stroke="#ec4899" stroke-width="0.8" opacity="0.35"/><circle cx="10" cy="17.5" r="1.3" fill="#ec4899" opacity="0.4"/></svg> Research Groups</h3>
+            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="10,2 16,5.5 10,9 4,5.5" fill="#ec4899" opacity="0.85"/><polygon points="4,5.5 10,9 10,12 4,8.5" fill="#ec4899" opacity="0.55"/><polygon points="10,9 16,5.5 16,8.5 10,12" fill="#ec4899" opacity="0.35"/><line x1="7" y1="7" x2="10" y2="5" stroke="#f9a8d4" stroke-width="0.8" opacity="0.5" stroke-linecap="round"/><line x1="7" y1="8.5" x2="9" y2="7.5" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/><circle cx="6" cy="15" r="1.5" fill="#ec4899" opacity="0.5"/><circle cx="10" cy="16" r="1.5" fill="#ec4899" opacity="0.6"/><circle cx="14" cy="15" r="1.5" fill="#ec4899" opacity="0.5"/></svg> Research Groups</h3>
             <p>Pick a topic, go deep for a semester. Small teams produce publications, open-source tools, or technical reports.</p>
           </div>
         </div>
@@ -463,7 +450,7 @@
             <img src="./public/web/students-working.jpg" alt="Students hacking" loading="lazy" />
           </div>
           <div class="event-card__body">
-            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="10,3 17,7 10,11 3,7" fill="#a855f7" opacity="0.88"/><polygon points="3,7 10,11 10,16 3,12" fill="#a855f7" opacity="0.55"/><polygon points="10,11 17,7 17,12 10,16" fill="#a855f7" opacity="0.38"/><line x1="6" y1="8.5" x2="8" y2="10" stroke="#e9d5ff" stroke-width="1" opacity="0.6" stroke-linecap="round"/><line x1="6" y1="10" x2="8" y2="8.5" stroke="#e9d5ff" stroke-width="1" opacity="0.6" stroke-linecap="round"/><line x1="12" y1="8" x2="14" y2="9.5" stroke="#e9d5ff" stroke-width="1" opacity="0.5" stroke-linecap="round"/><line x1="12" y1="9.5" x2="14" y2="8" stroke="#e9d5ff" stroke-width="1" opacity="0.5" stroke-linecap="round"/></svg> Hackathons</h3>
+            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="10,2 17,6 10,10 3,6" fill="#a855f7" opacity="0.88"/><polygon points="3,6 10,10 10,14 3,10" fill="#a855f7" opacity="0.55"/><polygon points="10,10 17,6 17,10 10,14" fill="#a855f7" opacity="0.35"/><line x1="6" y1="7.5" x2="9" y2="6" stroke="#e9d5ff" stroke-width="1" opacity="0.55" stroke-linecap="round"/><line x1="6" y1="9" x2="8" y2="8" stroke="#e9d5ff" stroke-width="1" opacity="0.4" stroke-linecap="round"/><line x1="12" y1="6.5" x2="14" y2="8" stroke="#e9d5ff" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/><rect x="8.5" y="15" width="3" height="2" rx="0.5" fill="#a855f7" opacity="0.45"/></svg> Hackathons</h3>
             <p>12&ndash;48 hours. Build something, ship it, put it in your portfolio. You learn more in one weekend than most courses teach all year.</p>
           </div>
         </div>
@@ -509,33 +496,31 @@
         <div class="hub-pillar" style="--pillar-accent: var(--gradient-blue); --pillar-rgb: 59,130,246">
           <div class="hub-pillar__icon">
             <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- GPU Server — polished 3-tier rack -->
-              <!-- Bottom unit -->
-              <polygon points="24,32 38,39 24,46 10,39" fill="#3b82f6" opacity="0.92"/>
-              <polygon points="10,39 24,46 24,40 10,33" fill="#3b82f6" opacity="0.58"/>
-              <polygon points="24,46 38,39 38,33 24,40" fill="#3b82f6" opacity="0.38"/>
-              <!-- Middle unit -->
-              <polygon points="24,22 38,29 24,36 10,29" fill="#3b82f6" opacity="0.92"/>
-              <polygon points="10,29 24,36 24,30 10,23" fill="#3b82f6" opacity="0.58"/>
-              <polygon points="24,36 38,29 38,23 24,30" fill="#3b82f6" opacity="0.38"/>
-              <!-- Top unit -->
-              <polygon points="24,12 38,19 24,26 10,19" fill="#3b82f6" opacity="0.92"/>
-              <polygon points="10,19 24,26 24,20 10,13" fill="#3b82f6" opacity="0.58"/>
-              <polygon points="24,26 38,19 38,13 24,20" fill="#3b82f6" opacity="0.38"/>
-              <!-- LEDs on left face -->
-              <circle cx="14" cy="16" r="1.2" fill="#60a5fa"/>
-              <circle cx="14" cy="26" r="1.2" fill="#60a5fa"/>
-              <circle cx="14" cy="36" r="1.2" fill="#60a5fa"/>
-              <circle cx="17" cy="17.5" r="0.7" fill="#93c5fd" opacity="0.5"/>
-              <circle cx="17" cy="27.5" r="0.7" fill="#93c5fd" opacity="0.5"/>
-              <circle cx="17" cy="37.5" r="0.7" fill="#93c5fd" opacity="0.5"/>
-              <!-- Top vent lines -->
-              <line x1="16" y1="15" x2="24" y2="11" stroke="#60a5fa" stroke-width="0.5" opacity="0.3"/>
-              <line x1="18" y1="16" x2="26" y2="12" stroke="#60a5fa" stroke-width="0.5" opacity="0.3"/>
-              <line x1="20" y1="17" x2="28" y2="13" stroke="#60a5fa" stroke-width="0.5" opacity="0.3"/>
-              <!-- Antenna -->
-              <rect x="23" y="6" width="2" height="6" rx="1" fill="#3b82f6" opacity="0.65"/>
-              <circle cx="24" cy="5.5" r="1.5" fill="#60a5fa" opacity="0.45"/>
+              <!-- GPU Card — isometric graphics card with fan and heatsink -->
+              <!-- PCB board — top face -->
+              <polygon points="10,20 30,10 42,16 22,26" fill="#3b82f6" opacity="0.88"/>
+              <!-- PCB board — front face -->
+              <polygon points="22,26 42,16 42,20 22,30" fill="#3b82f6" opacity="0.35"/>
+              <!-- PCB board — left face -->
+              <polygon points="10,20 22,26 22,30 10,24" fill="#3b82f6" opacity="0.55"/>
+              <!-- Heatsink fins -->
+              <line x1="14" y1="19" x2="26" y2="13" stroke="#60a5fa" stroke-width="1.2" opacity="0.35"/>
+              <line x1="16" y1="20" x2="28" y2="14" stroke="#60a5fa" stroke-width="1.2" opacity="0.3"/>
+              <line x1="18" y1="21" x2="30" y2="15" stroke="#60a5fa" stroke-width="1.2" opacity="0.25"/>
+              <!-- Fan shroud -->
+              <ellipse cx="27" cy="17.5" rx="5.5" ry="3.2" fill="#1e293b" opacity="0.65"/>
+              <ellipse cx="27" cy="17.5" rx="4" ry="2.3" fill="none" stroke="#60a5fa" stroke-width="0.8" opacity="0.45"/>
+              <ellipse cx="27" cy="17.5" rx="1.5" ry="0.9" fill="#60a5fa" opacity="0.55"/>
+              <!-- Fan blades -->
+              <line x1="24" y1="16.5" x2="30" y2="18.5" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
+              <line x1="25" y1="19" x2="29" y2="16" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
+              <!-- Power connector -->
+              <rect x="35" y="12" width="1.2" height="2.2" rx="0.3" fill="#93c5fd" opacity="0.45"/>
+              <rect x="37" y="11.3" width="1.2" height="2.2" rx="0.3" fill="#93c5fd" opacity="0.45"/>
+              <!-- PCIe gold connector -->
+              <polygon points="13,24 20,28 20,30 13,26" fill="#fbbf24" opacity="0.45"/>
+              <!-- NVIDIA green LED -->
+              <circle cx="39" cy="15" r="1" fill="#76b900" opacity="0.8"/>
             </svg>
           </div>
           <h3>GPU Compute</h3>
@@ -545,33 +530,33 @@
             make the case for compute access at your institution.
           </p>
           <a href="https://www.nvidia.com/en-us/on-demand/session/gtc26-s82238/" class="hub-pillar__link" target="_blank" rel="noopener">
-            <span class="material-icons-outlined">play_circle</span> Watch the GTC session
+            <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,2 14,8 8,14" fill="currentColor" opacity="0.7"/><rect x="2" y="6" width="4" height="4" rx="0.5" fill="currentColor" opacity="0.4"/></svg> Watch the GTC session
           </a>
         </div>
 
         <div class="hub-pillar" style="--pillar-accent: var(--gradient-cyan); --pillar-rgb: 34,211,238">
           <div class="hub-pillar__icon">
             <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Center globe/sphere base -->
-              <ellipse cx="24" cy="24" rx="12" ry="8" fill="none" stroke="#22d3ee" stroke-width="1.2" opacity="0.5"/>
-              <ellipse cx="24" cy="24" rx="5" ry="8" fill="none" stroke="#22d3ee" stroke-width="1.2" opacity="0.4"/>
-              <circle cx="24" cy="24" r="8" fill="#22d3ee" opacity="0.15" stroke="#22d3ee" stroke-width="1.2"/>
-              <!-- Horizontal ring -->
-              <line x1="12" y1="24" x2="36" y2="24" stroke="#22d3ee" stroke-width="0.8" opacity="0.3"/>
-              <!-- Orbiting nodes -->
-              <circle cx="24" cy="8" r="3" fill="#22d3ee" opacity="0.8"/>
-              <circle cx="8" cy="32" r="3" fill="#22d3ee" opacity="0.7"/>
-              <circle cx="40" cy="32" r="3" fill="#22d3ee" opacity="0.7"/>
-              <circle cx="38" cy="12" r="2" fill="#22d3ee" opacity="0.5"/>
-              <circle cx="10" cy="12" r="2" fill="#22d3ee" opacity="0.5"/>
-              <circle cx="24" cy="42" r="2" fill="#22d3ee" opacity="0.5"/>
-              <!-- Connection lines -->
-              <line x1="24" y1="11" x2="24" y2="16" stroke="#22d3ee" stroke-width="1.2" opacity="0.5"/>
-              <line x1="10" y1="31" x2="16" y2="28" stroke="#22d3ee" stroke-width="1.2" opacity="0.5"/>
-              <line x1="38" y1="31" x2="32" y2="28" stroke="#22d3ee" stroke-width="1.2" opacity="0.5"/>
-              <line x1="36" y1="13" x2="32" y2="18" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
-              <line x1="12" y1="13" x2="16" y2="18" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
-              <line x1="24" y1="40" x2="24" y2="32" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
+              <!-- Network — isometric nodes connected by lines -->
+              <!-- Central node platform -->
+              <polygon points="24,18 32,22 24,26 16,22" fill="#22d3ee" opacity="0.85"/>
+              <polygon points="16,22 24,26 24,28 16,24" fill="#22d3ee" opacity="0.5"/>
+              <polygon points="24,26 32,22 32,24 24,28" fill="#22d3ee" opacity="0.33"/>
+              <!-- Central node dot -->
+              <circle cx="24" cy="18" r="3" fill="#67e8f9" opacity="0.9"/>
+              <!-- Connection lines to outer nodes -->
+              <line x1="21" y1="17" x2="10" y2="10" stroke="#22d3ee" stroke-width="1.5" opacity="0.45" stroke-linecap="round"/>
+              <line x1="27" y1="17" x2="38" y2="10" stroke="#22d3ee" stroke-width="1.5" opacity="0.45" stroke-linecap="round"/>
+              <line x1="21" y1="23" x2="10" y2="34" stroke="#22d3ee" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+              <line x1="27" y1="23" x2="38" y2="34" stroke="#22d3ee" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
+              <!-- Outer nodes -->
+              <circle cx="10" cy="9" r="3" fill="#22d3ee" opacity="0.7"/>
+              <circle cx="38" cy="9" r="3" fill="#22d3ee" opacity="0.7"/>
+              <circle cx="10" cy="35" r="2.5" fill="#22d3ee" opacity="0.55"/>
+              <circle cx="38" cy="35" r="2.5" fill="#22d3ee" opacity="0.55"/>
+              <!-- Peer connections -->
+              <line x1="13" y1="9" x2="35" y2="9" stroke="#22d3ee" stroke-width="0.8" opacity="0.2"/>
+              <line x1="12" y1="34" x2="36" y2="34" stroke="#22d3ee" stroke-width="0.8" opacity="0.15"/>
             </svg>
           </div>
           <h3>The Network</h3>
@@ -581,35 +566,36 @@
             to every other hub in the network.
           </p>
           <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" class="hub-pillar__link" target="_blank" rel="noopener">
-            <span class="material-icons-outlined">add_circle_outline</span> Start a hub
+            <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><line x1="8" y1="5" x2="8" y2="11" stroke="currentColor" stroke-width="1.5" opacity="0.7"/><line x1="5" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.5" opacity="0.7"/></svg> Start a hub
           </a>
         </div>
 
         <div class="hub-pillar" style="--pillar-accent: var(--gradient-purple); --pillar-rgb: 168,85,247">
           <div class="hub-pillar__icon">
             <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Isometric Toolbox — open with tools visible -->
-              <!-- Box body — top face -->
-              <polygon points="24,18 40,26 24,34 8,26" fill="#a855f7" opacity="0.92"/>
-              <!-- Box body — left face -->
-              <polygon points="8,26 24,34 24,42 8,34" fill="#a855f7" opacity="0.58"/>
-              <!-- Box body — right face -->
-              <polygon points="24,34 40,26 40,34 24,42" fill="#a855f7" opacity="0.38"/>
-              <!-- Open lid (tilted back) -->
-              <polygon points="8,26 24,18 24,14 8,22" fill="#c084fc" opacity="0.5"/>
-              <polygon points="8,22 24,14 24,18 8,26" fill="#c084fc" opacity="0.55"/>
-              <!-- Handle -->
-              <rect x="22" y="10" width="4" height="4" rx="1" fill="#a855f7" opacity="0.7"/>
-              <!-- Tools sticking out of box -->
-              <!-- Wrench -->
-              <rect x="14" y="20" width="1.5" height="8" rx="0.5" fill="#e9d5ff" opacity="0.6" transform="rotate(-15 15 24)"/>
-              <!-- Screwdriver -->
-              <rect x="19" y="18" width="1.2" height="9" rx="0.4" fill="#e9d5ff" opacity="0.5" transform="rotate(5 19.5 22)"/>
-              <!-- Gear inside box -->
-              <circle cx="30" cy="28" r="3" fill="#c084fc" opacity="0.35" stroke="#c084fc" stroke-width="0.8" opacity="0.5"/>
-              <circle cx="30" cy="28" r="1.2" fill="#c084fc" opacity="0.5"/>
-              <!-- Compartment line -->
-              <line x1="16" y1="30" x2="24" y2="34" stroke="#c084fc" stroke-width="0.6" opacity="0.25"/>
+              <!-- Code editor / terminal — isometric laptop-like screen -->
+              <!-- Screen — top face (bezel) -->
+              <polygon points="24,8 42,17 24,26 6,17" fill="#a855f7" opacity="0.88"/>
+              <!-- Screen — left face -->
+              <polygon points="6,17 24,26 24,30 6,21" fill="#a855f7" opacity="0.55"/>
+              <!-- Screen — right face -->
+              <polygon points="24,26 42,17 42,21 24,30" fill="#a855f7" opacity="0.35"/>
+              <!-- Screen content area (darker inner) -->
+              <polygon points="24,11 38,18.5 24,24 10,18.5" fill="#1e1b2e" opacity="0.8"/>
+              <!-- Code lines on screen -->
+              <line x1="14" y1="16" x2="22" y2="12.5" stroke="#c084fc" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
+              <line x1="14" y1="18" x2="20" y2="15.5" stroke="#e9d5ff" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
+              <line x1="14" y1="20" x2="24" y2="16" stroke="#c084fc" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
+              <line x1="27" y1="16" x2="34" y2="19.5" stroke="#e9d5ff" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
+              <line x1="27" y1="18" x2="32" y2="20.5" stroke="#c084fc" stroke-width="1" opacity="0.35" stroke-linecap="round"/>
+              <!-- Keyboard base — top -->
+              <polygon points="24,28 38,34 24,40 10,34" fill="#a855f7" opacity="0.5"/>
+              <!-- Keyboard base — left -->
+              <polygon points="10,34 24,40 24,42 10,36" fill="#a855f7" opacity="0.35"/>
+              <!-- Keyboard base — right -->
+              <polygon points="24,40 38,34 38,36 24,42" fill="#a855f7" opacity="0.22"/>
+              <!-- Cursor blink on screen -->
+              <rect x="24" y="14.5" width="1" height="2.5" fill="#e9d5ff" opacity="0.6"/>
             </svg>
           </div>
           <h3>Hub-Building Tools</h3>
@@ -619,7 +605,7 @@
             and everything leadership needs to prove impact.
           </p>
           <a href="#content-library" class="hub-pillar__link">
-            <span class="material-icons-outlined">arrow_downward</span> See the repositories
+            <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="8" y1="2" x2="8" y2="11" stroke="currentColor" stroke-width="1.5" opacity="0.6"/><polygon points="4,9 8,14 12,9" fill="currentColor" opacity="0.5"/></svg> See the repositories
           </a>
         </div>
 
@@ -641,13 +627,19 @@
           <div class="repo-card__header">
             <div class="repo-card__icon-wrap">
               <svg viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Isometric graduation cap -->
-                <polygon points="14,6 26,12 14,18 2,12" fill="#22d3ee" opacity="0.85"/>
-                <polygon points="2,12 14,18 14,20 2,14" fill="#22d3ee" opacity="0.5"/>
-                <polygon points="14,18 26,12 26,14 14,20" fill="#22d3ee" opacity="0.35"/>
-                <rect x="13" y="6" width="2" height="2" fill="#22d3ee" opacity="0.9"/>
-                <line x1="22" y1="13" x2="22" y2="20" stroke="#22d3ee" stroke-width="1" opacity="0.5"/>
-                <circle cx="22" cy="20" r="1" fill="#22d3ee" opacity="0.5"/>
+                <!-- Isometric folder with content -->
+                <!-- Folder tab -->
+                <polygon points="4,8 10,5 14,7 8,10" fill="#67e8f9" opacity="0.8"/>
+                <!-- Folder body — top face -->
+                <polygon points="4,10 24,10 24,6 8,10" fill="#22d3ee" opacity="0.15"/>
+                <polygon points="4,10 22,6 24,7 14,12" fill="#22d3ee" opacity="0.85"/>
+                <!-- Folder body — left face -->
+                <polygon points="4,10 14,12 14,22 4,20" fill="#22d3ee" opacity="0.55"/>
+                <!-- Folder body — right face -->
+                <polygon points="14,12 24,7 24,17 14,22" fill="#22d3ee" opacity="0.35"/>
+                <!-- Content lines peeking out -->
+                <line x1="7" y1="14" x2="12" y2="16" stroke="#67e8f9" stroke-width="0.8" opacity="0.5" stroke-linecap="round"/>
+                <line x1="7" y1="16" x2="11" y2="18" stroke="#67e8f9" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/>
               </svg>
             </div>
             <div>
@@ -663,7 +655,7 @@
             <!-- Populated by JS from manifest.json -->
           </div>
           <a href="https://github.com/ALL-Applied-AI-Network/aain-content" class="repo-card__link" target="_blank" rel="noopener">
-            <span class="material-icons-outlined">open_in_new</span>
+            <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="4,3 12,3 12,4.5 6.5,4.5 13,11 11.5,12.5 5,6 5,11 3,11 3,3" fill="currentColor" opacity="0.6"/></svg>
             Browse repository
           </a>
         </div>
@@ -673,14 +665,20 @@
           <div class="repo-card__header">
             <div class="repo-card__icon-wrap">
               <svg viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Isometric dashboard/grid -->
-                <polygon points="14,6 24,11 14,16 4,11" fill="#a855f7" opacity="0.85"/>
-                <polygon points="4,11 14,16 14,22 4,17" fill="#a855f7" opacity="0.55"/>
-                <polygon points="14,16 24,11 24,17 14,22" fill="#a855f7" opacity="0.35"/>
-                <!-- Grid lines -->
-                <line x1="9" y1="8.5" x2="9" y2="14.5" stroke="#a855f7" stroke-width="0.8" opacity="0.4"/>
-                <line x1="19" y1="8.5" x2="19" y2="14.5" stroke="#a855f7" stroke-width="0.8" opacity="0.3"/>
-                <line x1="6.5" y1="13" x2="14" y2="9" stroke="#a855f7" stroke-width="0.8" opacity="0.3"/>
+                <!-- Isometric browser window / site template -->
+                <!-- Window — top face -->
+                <polygon points="14,4 25,9.5 14,15 3,9.5" fill="#a855f7" opacity="0.88"/>
+                <!-- Window — left face -->
+                <polygon points="3,9.5 14,15 14,22 3,16.5" fill="#a855f7" opacity="0.55"/>
+                <!-- Window — right face -->
+                <polygon points="14,15 25,9.5 25,16.5 14,22" fill="#a855f7" opacity="0.35"/>
+                <!-- Title bar dots -->
+                <circle cx="7" cy="8.5" r="0.7" fill="#e9d5ff" opacity="0.6"/>
+                <circle cx="9" cy="7.5" r="0.7" fill="#e9d5ff" opacity="0.5"/>
+                <circle cx="11" cy="6.5" r="0.7" fill="#e9d5ff" opacity="0.4"/>
+                <!-- Content blocks on left face -->
+                <rect x="5" y="12" width="3.5" height="2" rx="0.3" fill="#c084fc" opacity="0.4" transform="skewY(27)"/>
+                <rect x="5" y="15" width="5" height="1.5" rx="0.3" fill="#c084fc" opacity="0.3" transform="skewY(27)"/>
               </svg>
             </div>
             <div>
@@ -693,13 +691,13 @@
             leaderboards, project write-ups, and the embedded skill tree. Fork it, customize it, ship it.
           </p>
           <ul class="repo-card__features">
-            <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,2 14,5 8,8 2,5" fill="#a855f7" opacity="0.8"/><polygon points="2,5 8,8 8,12 2,9" fill="#a855f7" opacity="0.5"/><polygon points="8,8 14,5 14,9 8,12" fill="#a855f7" opacity="0.35"/></svg> Deployable hub website with GitHub Pages</li>
-            <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,10 6,8.5 6,14 3,14" fill="#a855f7" opacity="0.6"/><polygon points="6.5,7 9.5,5.5 9.5,14 6.5,14" fill="#a855f7" opacity="0.7"/><polygon points="10,4 13,2.5 13,14 10,14" fill="#a855f7" opacity="0.8"/></svg> Member leaderboards &amp; participation tracking</li>
-            <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,2 14,5 8,8 2,5" fill="#a855f7" opacity="0.8"/><polygon points="2,5 8,8 8,14 2,11" fill="#a855f7" opacity="0.5"/><polygon points="8,8 14,5 14,11 8,14" fill="#a855f7" opacity="0.35"/><line x1="5" y1="9" x2="11" y2="6" stroke="#a855f7" stroke-width="0.6" opacity="0.4"/></svg> Event pages, project showcases, sponsor logos</li>
-            <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="4" y="4" width="2" height="8" rx="1" fill="#a855f7" opacity="0.6"/><rect x="7" y="6" width="2" height="6" rx="1" fill="#a855f7" opacity="0.7"/><rect x="10" y="3" width="2" height="9" rx="1" fill="#a855f7" opacity="0.8"/><circle cx="5" cy="6" r="1.2" fill="#a855f7" opacity="0.9"/><circle cx="8" cy="9" r="1.2" fill="#a855f7" opacity="0.9"/><circle cx="11" cy="5" r="1.2" fill="#a855f7" opacity="0.9"/></svg> Fully customizable branding per campus</li>
+            <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8" cy="8" r="5" fill="none" stroke="#a855f7" stroke-width="1.5" opacity="0.6"/><polygon points="6,6 11,8 6,10" fill="#c084fc" opacity="0.8"/></svg> Deployable hub website with GitHub Pages</li>
+            <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="3,12 6,10.5 6,14 3,14" fill="#a855f7" opacity="0.65"/><polygon points="7,9 10,7.5 10,14 7,14" fill="#a855f7" opacity="0.75"/><polygon points="11,5 14,3.5 14,14 11,14" fill="#c084fc" opacity="0.85"/></svg> Member leaderboards &amp; participation tracking</li>
+            <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,2 13,4.5 8,7 3,4.5" fill="#a855f7" opacity="0.85"/><polygon points="3,4.5 8,7 8,11 3,8.5" fill="#a855f7" opacity="0.5"/><polygon points="8,7 13,4.5 13,8.5 8,11" fill="#a855f7" opacity="0.35"/><circle cx="5" cy="12.5" r="1.2" fill="#c084fc" opacity="0.5"/><circle cx="8" cy="13.5" r="1.2" fill="#c084fc" opacity="0.5"/><circle cx="11" cy="12.5" r="1.2" fill="#c084fc" opacity="0.5"/></svg> Event pages, project showcases, sponsor logos</li>
+            <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,3 14,6 8,9 2,6" fill="#a855f7" opacity="0.85"/><polygon points="2,6 8,9 8,12 2,9" fill="#a855f7" opacity="0.5"/><polygon points="8,9 14,6 14,9 8,12" fill="#a855f7" opacity="0.35"/><circle cx="5.5" cy="7.5" r="0.8" fill="#e9d5ff" opacity="0.5"/><circle cx="10" cy="7.5" r="0.8" fill="#e9d5ff" opacity="0.4"/></svg> Fully customizable branding per campus</li>
           </ul>
           <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" class="repo-card__link" target="_blank" rel="noopener">
-            <span class="material-icons-outlined">rocket_launch</span>
+            <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,1 11,6 8,7.5 5,6" fill="currentColor" opacity="0.7"/><polygon points="5,6 8,7.5 8,13 5,11" fill="currentColor" opacity="0.5"/><polygon points="8,7.5 11,6 11,11 8,13" fill="currentColor" opacity="0.35"/></svg>
             Get the template
           </a>
         </div>

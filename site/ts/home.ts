@@ -65,10 +65,12 @@ async function init(): Promise<void> {
   if (statHours) statHours.textContent = `~${totalEstimatedHours(tree.nodes)}`;
 
   // --- 3D Hero Scene (Three.js — dynamically imported) ---
-  // Switch between hero scene variants: "hero-scene" | "hero-scene-b" | "hero-scene-c"
+  // Switch between hero scene variants:
+  //   "hero-scene-b" = desk/GPU workstation
+  //   "hero-scene-node-graph" = interactive skill tree node graph
   const hero3d = document.getElementById("hero-3d");
   if (hero3d) {
-    import("./hero-scene-b").then((m) => m.initHeroScene(hero3d));
+    import("./hero-scene-node-graph").then((m) => m.initHeroScene(hero3d));
   }
 
   // --- Content Library ---
@@ -143,7 +145,17 @@ function renderContentLibrary(tree: TreeJson, manifest: ManifestJson | null): vo
   // Render compact content items inside the repo card
   grid.innerHTML = `
     <div class="repo-content-row">
-      <span class="material-icons-outlined" style="color:var(--gradient-cyan)">account_tree</span>
+      <svg class="repo-content-row__icon" viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="12,3 20,7 12,11 4,7" fill="#22d3ee" opacity="0.88"/>
+        <polygon points="4,7 12,11 12,14 4,10" fill="#22d3ee" opacity="0.55"/>
+        <polygon points="12,11 20,7 20,10 12,14" fill="#22d3ee" opacity="0.35"/>
+        <line x1="12" y1="14" x2="7" y2="18" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
+        <line x1="12" y1="14" x2="17" y2="18" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
+        <line x1="12" y1="14" x2="12" y2="20" stroke="#22d3ee" stroke-width="1" opacity="0.4"/>
+        <circle cx="7" cy="18.5" r="1.8" fill="#22d3ee" opacity="0.45"/>
+        <circle cx="17" cy="18.5" r="1.8" fill="#22d3ee" opacity="0.45"/>
+        <circle cx="12" cy="20.5" r="1.5" fill="#22d3ee" opacity="0.35"/>
+      </svg>
       <div>
         <strong>Learning Tree</strong>
         <span>${learningCount} lessons &middot; ~${totalHours} hours</span>
@@ -151,14 +163,29 @@ function renderContentLibrary(tree: TreeJson, manifest: ManifestJson | null): vo
       <a href="./tree.html" class="repo-content-row__link">Explore &rarr;</a>
     </div>
     <div class="repo-content-row">
-      <span class="material-icons-outlined" style="color:var(--gradient-pink)">menu_book</span>
+      <svg class="repo-content-row__icon" viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="12,3 20,7 12,11 4,7" fill="#ec4899" opacity="0.85"/>
+        <polygon points="4,7 12,11 12,20 4,16" fill="#ec4899" opacity="0.55"/>
+        <polygon points="12,11 20,7 20,16 12,20" fill="#ec4899" opacity="0.35"/>
+        <line x1="7" y1="10" x2="10" y2="12" stroke="#f9a8d4" stroke-width="0.8" opacity="0.5" stroke-linecap="round"/>
+        <line x1="7" y1="12.5" x2="10" y2="14.5" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/>
+        <line x1="7" y1="15" x2="9" y2="16.5" stroke="#f9a8d4" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
+      </svg>
       <div>
         <strong>Playbooks</strong>
         <span>${playbooks.length} operational guides for hub leaders</span>
       </div>
     </div>
     <div class="repo-content-row">
-      <span class="material-icons-outlined" style="color:var(--gradient-purple)">build_circle</span>
+      <svg class="repo-content-row__icon" viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="12,3 20,7 12,11 4,7" fill="#a855f7" opacity="0.88"/>
+        <polygon points="4,7 12,11 12,17 4,13" fill="#a855f7" opacity="0.55"/>
+        <polygon points="12,11 20,7 20,13 12,17" fill="#a855f7" opacity="0.35"/>
+        <line x1="7" y1="9" x2="9.5" y2="10.5" stroke="#e9d5ff" stroke-width="0.9" opacity="0.5" stroke-linecap="round"/>
+        <line x1="7" y1="11" x2="9.5" y2="12.5" stroke="#e9d5ff" stroke-width="0.9" opacity="0.4" stroke-linecap="round"/>
+        <circle cx="12" cy="20" r="2" fill="#a855f7" opacity="0.3"/>
+        <line x1="12" y1="17" x2="12" y2="20" stroke="#a855f7" stroke-width="1" opacity="0.35"/>
+      </svg>
       <div>
         <strong>Workshops</strong>
         <span>${workshops.length} hands-on labs with code &amp; slides</span>
@@ -240,10 +267,15 @@ function renderContributors(tree: TreeJson): void {
     { name: "Rose-Hulman", detail: "Terre Haute, IN \u00b7 Est. Sept 2025", icon: "school" },
   ];
 
+  const hubIconSvgs: Record<string, string> = {
+    groups: `<svg viewBox="0 0 20 20" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="2.5" fill="currentColor" opacity="0.7"/><circle cx="13" cy="7" r="2.5" fill="currentColor" opacity="0.7"/><ellipse cx="7" cy="14" rx="3.5" ry="2.5" fill="currentColor" opacity="0.4"/><ellipse cx="13" cy="14" rx="3.5" ry="2.5" fill="currentColor" opacity="0.4"/></svg>`,
+    school: `<svg viewBox="0 0 20 20" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><polygon points="10,3 18,8 10,13 2,8" fill="currentColor" opacity="0.7"/><polygon points="2,8 10,13 10,15 2,10" fill="currentColor" opacity="0.4"/><polygon points="10,13 18,8 18,10 10,15" fill="currentColor" opacity="0.3"/></svg>`,
+  };
+
   const hubCards = hubs.map(h => `
     <div class="contributor-card contributor-card--org">
       <div class="contributor-card__avatar contributor-card__avatar--org">
-        <span class="material-icons-outlined">${h.icon}</span>
+        ${hubIconSvgs[h.icon] || hubIconSvgs.school}
       </div>
       <div class="contributor-card__info">
         <span class="contributor-card__name">${h.name}</span>
