@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hub Toolkit — ALL Applied AI Network</title>
-  <meta name="description" content="Playbooks, event frameworks, and operational guides for starting and running an AI hub at your university." />
+  <meta name="description" content="Playbooks, workshops, and operational guides for starting and running an AI hub at your university." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./toolkit.css" />
 </head>
 <body>
 
@@ -30,25 +30,354 @@
     </div>
   </nav>
 
-  <section style="padding:8rem 0 4rem;text-align:center">
-    <div class="container container--narrow">
-      <span class="material-icons-outlined" style="font-size:3rem;color:var(--text-muted);margin-bottom:1rem;display:block">construction</span>
-      <h1 style="font-family:var(--font-display);font-size:2rem;margin-bottom:1rem">Hub Toolkit</h1>
-      <p style="color:var(--text-secondary);font-size:1rem;line-height:1.7;margin-bottom:2rem">
-        Playbooks, event frameworks, and operational templates for starting and running an AI hub at your university.
-        This page is under construction &mdash; content is being migrated from the
-        <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" target="_blank" rel="noopener">hub template repo</a>.
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="toolkit-hero">
+    <div class="container toolkit-hero__inner">
+      <span class="toolkit-hero__badge">Hub Operations</span>
+      <h1 class="toolkit-hero__title">Hub Toolkit</h1>
+      <p class="toolkit-hero__subtitle">
+        Everything you need to start and run a thriving university AI chapter &mdash;
+        from day-one playbooks to event-ready workshops.
       </p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" target="_blank" rel="noopener" class="btn btn--primary">
-          <span class="material-icons-outlined" style="font-size:1rem">open_in_new</span>
-          View on GitHub
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       PLAYBOOKS
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="toolkit-section" id="playbooks">
+    <div class="container">
+      <div class="toolkit-section__header">
+        <span class="toolkit-section__num">01 &mdash; Playbooks</span>
+        <h2 class="toolkit-section__title">Playbooks</h2>
+        <p class="toolkit-section__subtitle">Step-by-step operational guides for student leaders</p>
+      </div>
+
+      <div class="toolkit-grid">
+
+        <!-- Getting Started -->
+        <a href="./playbooks/getting-started/index.html" class="toolkit-card">
+          <svg class="toolkit-card__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Rocket — isometric launch -->
+            <polygon points="24,4 30,18 24,22 18,18" fill="#3b82f6" opacity="0.88"/>
+            <polygon points="18,18 24,22 24,28 18,24" fill="#3b82f6" opacity="0.55"/>
+            <polygon points="24,22 30,18 30,24 24,28" fill="#3b82f6" opacity="0.35"/>
+            <!-- Fins -->
+            <polygon points="18,18 14,22 18,24" fill="#60a5fa" opacity="0.55"/>
+            <polygon points="30,18 34,22 30,24" fill="#60a5fa" opacity="0.35"/>
+            <!-- Exhaust flame -->
+            <polygon points="21,28 24,36 27,28" fill="#f59e0b" opacity="0.7"/>
+            <polygon points="22,30 24,38 26,30" fill="#ef4444" opacity="0.5"/>
+            <!-- Window -->
+            <circle cx="24" cy="14" r="2.5" fill="#93c5fd" opacity="0.65"/>
+          </svg>
+          <h3 class="toolkit-card__title">Getting Started</h3>
+          <p class="toolkit-card__desc">Launch your AI club from scratch &mdash; validation, team building, campus registration, and your first events.</p>
+          <span class="toolkit-card__link">Read playbook <span aria-hidden="true">&rarr;</span></span>
         </a>
-        <a href="./" class="btn btn--outline">Back to Home</a>
+
+        <!-- Hackathons -->
+        <a href="./playbooks/hackathons/index.html" class="toolkit-card">
+          <svg class="toolkit-card__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Trophy — isometric cup -->
+            <polygon points="24,8 34,14 24,20 14,14" fill="#f59e0b" opacity="0.88"/>
+            <polygon points="14,14 24,20 24,26 14,20" fill="#f59e0b" opacity="0.55"/>
+            <polygon points="24,20 34,14 34,20 24,26" fill="#f59e0b" opacity="0.35"/>
+            <!-- Handles -->
+            <path d="M14,15 C10,15 9,18 12,20" stroke="#fbbf24" stroke-width="1.5" fill="none" opacity="0.55"/>
+            <path d="M34,15 C38,15 39,18 36,20" stroke="#fbbf24" stroke-width="1.5" fill="none" opacity="0.35"/>
+            <!-- Stem -->
+            <rect x="22" y="26" width="4" height="6" rx="1" fill="#fbbf24" opacity="0.5"/>
+            <!-- Base -->
+            <polygon points="18,32 30,32 28,36 20,36" fill="#f59e0b" opacity="0.65"/>
+            <!-- Star -->
+            <polygon points="24,12 25.2,14.5 28,14.5 25.8,16.2 26.6,19 24,17.2 21.4,19 22.2,16.2 20,14.5 22.8,14.5" fill="#fef3c7" opacity="0.7"/>
+          </svg>
+          <h3 class="toolkit-card__title">Hackathons</h3>
+          <p class="toolkit-card__desc">Plan and execute AI hackathons that attract sponsors, engage students, and produce real projects.</p>
+          <span class="toolkit-card__link">Read playbook <span aria-hidden="true">&rarr;</span></span>
+        </a>
+
+        <!-- Speaker Series -->
+        <a href="./playbooks/speaker-series/index.html" class="toolkit-card">
+          <svg class="toolkit-card__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Podium / microphone — isometric -->
+            <!-- Podium body -->
+            <polygon points="24,18 36,24 24,30 12,24" fill="#22d3ee" opacity="0.88"/>
+            <polygon points="12,24 24,30 24,38 12,32" fill="#22d3ee" opacity="0.55"/>
+            <polygon points="24,30 36,24 36,32 24,38" fill="#22d3ee" opacity="0.35"/>
+            <!-- Microphone stand -->
+            <line x1="24" y1="8" x2="24" y2="18" stroke="#67e8f9" stroke-width="2" opacity="0.7" stroke-linecap="round"/>
+            <!-- Mic head -->
+            <circle cx="24" cy="7" r="3" fill="#22d3ee" opacity="0.85"/>
+            <circle cx="24" cy="7" r="1.5" fill="#67e8f9" opacity="0.5"/>
+            <!-- Sound waves -->
+            <path d="M29,5 C31,7 31,9 29,11" stroke="#67e8f9" stroke-width="1" fill="none" opacity="0.4" stroke-linecap="round"/>
+            <path d="M32,3 C35,7 35,11 32,15" stroke="#67e8f9" stroke-width="0.8" fill="none" opacity="0.25" stroke-linecap="round"/>
+          </svg>
+          <h3 class="toolkit-card__title">Speaker Series</h3>
+          <p class="toolkit-card__desc">Bring industry experts to campus with a repeatable speaker event framework.</p>
+          <span class="toolkit-card__link">Read playbook <span aria-hidden="true">&rarr;</span></span>
+        </a>
+
+        <!-- Innovation Labs -->
+        <a href="./playbooks/innovation-labs/index.html" class="toolkit-card">
+          <svg class="toolkit-card__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Lab flask — isometric beaker -->
+            <!-- Flask body -->
+            <polygon points="24,20 34,26 24,32 14,26" fill="#a855f7" opacity="0.88"/>
+            <polygon points="14,26 24,32 24,40 14,34" fill="#a855f7" opacity="0.55"/>
+            <polygon points="24,32 34,26 34,34 24,40" fill="#a855f7" opacity="0.35"/>
+            <!-- Neck -->
+            <rect x="21" y="10" width="6" height="10" rx="1" fill="#c084fc" opacity="0.65"/>
+            <!-- Rim -->
+            <polygon points="19,10 29,10 27,12 21,12" fill="#e9d5ff" opacity="0.5"/>
+            <!-- Bubbles -->
+            <circle cx="20" cy="30" r="1.5" fill="#e9d5ff" opacity="0.45"/>
+            <circle cx="26" cy="28" r="1" fill="#e9d5ff" opacity="0.35"/>
+            <circle cx="22" cy="34" r="1.2" fill="#e9d5ff" opacity="0.3"/>
+            <!-- Liquid line -->
+            <line x1="16" y1="30" x2="32" y2="30" stroke="#c084fc" stroke-width="0.8" opacity="0.4"/>
+          </svg>
+          <h3 class="toolkit-card__title">Innovation Labs</h3>
+          <p class="toolkit-card__desc">Run semester-long applied AI projects that solve real problems for local organizations.</p>
+          <span class="toolkit-card__link">Read playbook <span aria-hidden="true">&rarr;</span></span>
+        </a>
+
+        <!-- Research Groups -->
+        <a href="./playbooks/research-groups/index.html" class="toolkit-card">
+          <svg class="toolkit-card__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Book / paper stack — isometric -->
+            <!-- Bottom book -->
+            <polygon points="8,28 24,22 40,28 24,34" fill="#ec4899" opacity="0.4"/>
+            <polygon points="8,28 24,34 24,37 8,31" fill="#ec4899" opacity="0.25"/>
+            <polygon points="24,34 40,28 40,31 24,37" fill="#ec4899" opacity="0.15"/>
+            <!-- Middle book -->
+            <polygon points="10,24 26,18 42,24 26,30" fill="#ec4899" opacity="0.6"/>
+            <polygon points="10,24 26,30 26,33 10,27" fill="#ec4899" opacity="0.4"/>
+            <polygon points="26,30 42,24 42,27 26,33" fill="#ec4899" opacity="0.25"/>
+            <!-- Top book (open) -->
+            <polygon points="6,20 24,14 24,18 6,24" fill="#f9a8d4" opacity="0.85"/>
+            <polygon points="24,14 42,20 42,24 24,18" fill="#ec4899" opacity="0.75"/>
+            <!-- Page lines -->
+            <line x1="10" y1="19" x2="20" y2="16" stroke="#fce7f3" stroke-width="0.6" opacity="0.4"/>
+            <line x1="10" y1="21" x2="20" y2="18" stroke="#fce7f3" stroke-width="0.6" opacity="0.3"/>
+            <line x1="28" y1="16" x2="38" y2="19" stroke="#fce7f3" stroke-width="0.6" opacity="0.3"/>
+            <line x1="28" y1="18" x2="38" y2="21" stroke="#fce7f3" stroke-width="0.6" opacity="0.25"/>
+          </svg>
+          <h3 class="toolkit-card__title">Research Groups</h3>
+          <p class="toolkit-card__desc">Organize undergraduate research reading groups and collaborative paper discussions.</p>
+          <span class="toolkit-card__link">Read playbook <span aria-hidden="true">&rarr;</span></span>
+        </a>
+
       </div>
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       WORKSHOPS
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="toolkit-section toolkit-section--alt" id="workshops">
+    <div class="container">
+      <div class="toolkit-section__header">
+        <span class="toolkit-section__num">02 &mdash; Workshops</span>
+        <h2 class="toolkit-section__title">Workshops</h2>
+        <p class="toolkit-section__subtitle">Hands-on, event-ready sessions your chapter can run today</p>
+      </div>
+
+      <div class="toolkit-grid toolkit-grid--3">
+
+        <!-- Build a Chatbot -->
+        <a href="./workshops/build-a-chatbot/workshop.html" class="toolkit-card">
+          <svg class="toolkit-card__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Chat bubble — isometric -->
+            <polygon points="24,10 40,18 24,26 8,18" fill="#3b82f6" opacity="0.88"/>
+            <polygon points="8,18 24,26 24,32 8,24" fill="#3b82f6" opacity="0.55"/>
+            <polygon points="24,26 40,18 40,24 24,32" fill="#3b82f6" opacity="0.35"/>
+            <!-- Tail -->
+            <polygon points="12,26 8,32 16,28" fill="#3b82f6" opacity="0.5"/>
+            <!-- Dots (typing indicator) -->
+            <circle cx="19" cy="18" r="1.5" fill="#93c5fd" opacity="0.7"/>
+            <circle cx="24" cy="18" r="1.5" fill="#93c5fd" opacity="0.8"/>
+            <circle cx="29" cy="18" r="1.5" fill="#93c5fd" opacity="0.7"/>
+          </svg>
+          <h3 class="toolkit-card__title">Build a Chatbot</h3>
+          <p class="toolkit-card__desc">2-hour workshop: build a conversational AI from scratch using Python and the Claude API.</p>
+          <div class="toolkit-card__meta">
+            <span class="toolkit-card__duration">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5V8L10.5 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              2 hours
+            </span>
+            <span class="badge badge--beginner">Beginner</span>
+          </div>
+          <span class="toolkit-card__link">View workshop <span aria-hidden="true">&rarr;</span></span>
+        </a>
+
+        <!-- Prompt Engineering Lab -->
+        <a href="./workshops/prompt-engineering-lab/workshop.html" class="toolkit-card">
+          <svg class="toolkit-card__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Terminal / prompt — isometric screen -->
+            <polygon points="24,12 40,20 24,28 8,20" fill="#10b981" opacity="0.88"/>
+            <polygon points="8,20 24,28 24,34 8,26" fill="#10b981" opacity="0.55"/>
+            <polygon points="24,28 40,20 40,26 24,34" fill="#10b981" opacity="0.35"/>
+            <!-- Prompt cursor -->
+            <line x1="15" y1="20" x2="18" y2="18.5" stroke="#6ee7b7" stroke-width="1.8" opacity="0.8" stroke-linecap="round"/>
+            <line x1="18" y1="18.5" x2="21" y2="20" stroke="#6ee7b7" stroke-width="1.8" opacity="0.8" stroke-linecap="round"/>
+            <!-- Text lines -->
+            <line x1="23" y1="19.5" x2="33" y2="24" stroke="#a7f3d0" stroke-width="1" opacity="0.45"/>
+            <line x1="17" y1="22.5" x2="29" y2="28" stroke="#a7f3d0" stroke-width="1" opacity="0.35"/>
+            <!-- Blinking cursor -->
+            <rect x="30" y="26.5" width="1.5" height="3" fill="#6ee7b7" opacity="0.7"/>
+          </svg>
+          <h3 class="toolkit-card__title">Prompt Engineering Lab</h3>
+          <p class="toolkit-card__desc">90-minute hands-on lab exploring prompt techniques, chain-of-thought, and few-shot learning.</p>
+          <div class="toolkit-card__meta">
+            <span class="toolkit-card__duration">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5V8L10.5 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              90 min
+            </span>
+            <span class="badge badge--intermediate">Intermediate</span>
+          </div>
+          <span class="toolkit-card__link">View workshop <span aria-hidden="true">&rarr;</span></span>
+        </a>
+
+        <!-- RAG from Scratch -->
+        <a href="./workshops/rag-from-scratch/workshop.html" class="toolkit-card">
+          <svg class="toolkit-card__icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Database + search — isometric cylinder with magnifier -->
+            <!-- Cylinder top -->
+            <ellipse cx="22" cy="14" rx="12" ry="5" fill="#f59e0b" opacity="0.88"/>
+            <!-- Cylinder body -->
+            <path d="M10,14 L10,28 C10,31 16,33 22,33 C28,33 34,31 34,28 L34,14" fill="none" stroke="#f59e0b" stroke-width="1.5" opacity="0.5"/>
+            <ellipse cx="22" cy="28" rx="12" ry="5" fill="#f59e0b" opacity="0.35"/>
+            <!-- Data rows -->
+            <ellipse cx="22" cy="19" rx="10" ry="3.5" fill="none" stroke="#fbbf24" stroke-width="0.8" opacity="0.35"/>
+            <ellipse cx="22" cy="24" rx="10" ry="3.5" fill="none" stroke="#fbbf24" stroke-width="0.8" opacity="0.25"/>
+            <!-- Magnifying glass -->
+            <circle cx="36" cy="22" r="5" fill="none" stroke="#fef3c7" stroke-width="1.8" opacity="0.7"/>
+            <line x1="40" y1="26" x2="44" y2="30" stroke="#fef3c7" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+          </svg>
+          <h3 class="toolkit-card__title">RAG from Scratch</h3>
+          <p class="toolkit-card__desc">2.5-hour deep dive: build a retrieval-augmented generation system with real documents.</p>
+          <div class="toolkit-card__meta">
+            <span class="toolkit-card__duration">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5V8L10.5 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              2.5 hours
+            </span>
+            <span class="badge badge--advanced">Advanced</span>
+          </div>
+          <span class="toolkit-card__link">View workshop <span aria-hidden="true">&rarr;</span></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       HUB TEMPLATE
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="toolkit-section" id="hub-template">
+    <div class="container">
+      <div class="toolkit-section__header">
+        <span class="toolkit-section__num">03 &mdash; Infrastructure</span>
+        <h2 class="toolkit-section__title">Hub Website Template</h2>
+        <p class="toolkit-section__subtitle">Spin up a chapter website in minutes with the official hub template</p>
+      </div>
+
+      <div class="hub-template">
+        <div class="hub-template__content">
+          <h3 class="hub-template__title">Everything your chapter needs, pre-built and ready to deploy</h3>
+          <p class="hub-template__desc">
+            The hub template gives every chapter a polished web presence out of the box &mdash;
+            complete with curriculum integration, member tracking, and sponsor showcases.
+            Fork it, customize it, deploy it.
+          </p>
+
+          <ul class="hub-template__features">
+            <li class="hub-template__feature">
+              <span class="hub-template__check">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div><strong>Deployable site</strong> &mdash; static HTML/CSS/JS, works on GitHub Pages or any host</div>
+            </li>
+            <li class="hub-template__feature">
+              <span class="hub-template__check">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div><strong>Learning tree integration</strong> &mdash; embed the full curriculum with progress tracking</div>
+            </li>
+            <li class="hub-template__feature">
+              <span class="hub-template__check">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div><strong>Member leaderboards</strong> &mdash; gamified progress and contribution tracking</div>
+            </li>
+            <li class="hub-template__feature">
+              <span class="hub-template__check">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div><strong>Sponsor showcase</strong> &mdash; highlight industry partners and attract new sponsors</div>
+            </li>
+          </ul>
+
+          <div class="hub-template__actions">
+            <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" target="_blank" rel="noopener" class="btn btn--primary">
+              View on GitHub <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a href="./playbooks/getting-started/index.html" class="btn btn--outline">Getting started guide</a>
+          </div>
+        </div>
+
+        <div class="hub-template__code">
+          <div class="hub-template__code-header">
+            <div class="hub-template__code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="hub-template__code-title">Terminal</span>
+          </div>
+          <div class="hub-template__code-body">
+<pre><span class="code-comment"># Clone the hub template</span>
+<span class="code-cmd">git clone</span> <span class="code-string">https://github.com/ALL-Applied-AI-Network/aai-hub-template</span> <span class="code-arg">my-chapter</span>
+
+<span class="code-comment"># Move into the project</span>
+<span class="code-cmd">cd</span> <span class="code-arg">my-chapter</span>
+
+<span class="code-comment"># Install dependencies</span>
+<span class="code-cmd">npm install</span>
+
+<span class="code-comment"># Start development server</span>
+<span class="code-cmd">npm run</span> <span class="code-arg">dev</span>
+<span class="code-output">  Server running at http://localhost:3000</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       CTA
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="toolkit-cta">
+    <div class="container">
+      <h2 class="toolkit-cta__title">Ready to start your chapter?</h2>
+      <p class="toolkit-cta__desc">
+        The Getting Started playbook walks you through everything &mdash;
+        from gauging interest to running your first event.
+      </p>
+      <div class="toolkit-cta__actions">
+        <a href="./playbooks/getting-started/index.html" class="btn btn--primary btn--lg">
+          Read the Getting Started playbook <span aria-hidden="true">&rarr;</span>
+        </a>
+        <a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener" class="btn btn--outline btn--lg">
+          Browse on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
       <div>
