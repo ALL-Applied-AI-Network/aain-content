@@ -781,91 +781,51 @@ body {
   height: 100%;
 }
 
-/* ---------- D3 Tree Nodes (Game Skill Tree Cards) ---------- */
+/* ---------- D3 Tree Nodes — Rectangular Cards ---------- */
 .tree-node {
   cursor: pointer;
 }
 
 .tree-node rect,
 .tree-node image {
-  transition: filter 0.25s ease, fill 0.25s ease, opacity 0.25s ease, stroke-opacity 0.25s ease;
+  transition: opacity 0.2s ease, stroke-opacity 0.2s ease;
 }
 
 .tree-node text {
   font-family: var(--font-display);
-  transition: fill 0.25s ease;
+  transition: fill 0.2s ease, opacity 0.2s ease;
 }
 
 .tree-node .node-title {
-  font-size: 12px;
-  font-weight: 700;
-  fill: #e8e8f0;
+  font-size: 11px;
+  font-weight: 600;
 }
 
-.tree-node .node-meta {
-  font-size: 10px;
-  fill: #64748b;
+.tree-node:hover .node-title {
+  fill: #fff !important;
 }
 
-.tree-node .tree-node__thumb {
-  opacity: 0.8;
-  transition: opacity 0.25s ease;
-}
-
-.tree-node:hover .tree-node__thumb {
-  opacity: 1;
-}
-
-.tree-node:hover .tree-node__bg {
-  stroke-opacity: 1 !important;
-}
-
-.tree-node .tree-node__glow {
-  transition: stroke-opacity 0.3s ease;
-}
-
-.tree-node:hover .tree-node__glow {
-  stroke-opacity: 0.35 !important;
-}
-
-.tree-edge {
-  transition: stroke-opacity 0.25s ease, stroke-width 0.25s ease;
-}
-
-.tree-edge-glow {
-  transition: stroke-opacity 0.25s ease, stroke-width 0.25s ease;
-}
-
-.tree-edge-arrow {
-  fill: var(--border-subtle);
-  opacity: 0.4;
-}
-
-/* Connected nodes brighten on hover */
-.tree-node--connected .tree-node__bg {
-  fill: #141430;
+.tree-node:hover .tree-node__card {
   stroke-opacity: 0.8 !important;
 }
 
-.tree-node--connected .tree-node__thumb {
-  opacity: 1;
+.tree-edge {
+  transition: stroke-opacity 0.2s ease, stroke-width 0.2s ease;
 }
 
-.tree-node--connected .tree-node__glow {
-  stroke-opacity: 0.25 !important;
+/* Connected nodes on hover */
+.tree-node--connected .tree-node__card {
+  stroke-opacity: 0.7 !important;
 }
 
-/* Highlighted/dimmed states for series filtering */
+/* Dimmed/highlight states */
 .tree-node--dimmed rect { opacity: 0.1; }
-.tree-node--dimmed text { opacity: 0.12; }
-.tree-node--dimmed image { opacity: 0.06; }
-.tree-node--dimmed circle { opacity: 0.1; }
-.tree-node--dimmed line { opacity: 0.1; }
+.tree-node--dimmed image { opacity: 0.05; }
+.tree-node--dimmed text { opacity: 0.08; }
 .tree-edge--dimmed { opacity: 0.04; stroke-opacity: 0.04 !important; }
 
-.tree-node--highlight .tree-node__bg { filter: drop-shadow(0 0 12px currentColor); }
-.tree-node--highlight .tree-node__glow { stroke-opacity: 0.4 !important; }
-.tree-edge--highlight { stroke-opacity: 1 !important; stroke-width: 2.5; }
+.tree-node--highlight .tree-node__card { stroke-opacity: 1 !important; }
+.tree-edge--highlight { stroke-opacity: 0.8 !important; stroke-width: 3.5; }
 
 /* Node panel thumbnail preview */
 .node-panel__thumb {
@@ -885,10 +845,11 @@ body {
 .node-tooltip {
   position: absolute;
   z-index: 200;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
-  padding: 1rem;
+  background: #1a1a20;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
   max-width: 300px;
   pointer-events: none;
   opacity: 0;
@@ -900,53 +861,81 @@ body {
   opacity: 1;
 }
 
+.node-tooltip__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.node-tooltip__accent {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.node-tooltip__layer {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.node-tooltip__time {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-left: auto;
+}
+
 .node-tooltip__title {
-  font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #f2f2f4;
+  margin-bottom: 0.3rem;
 }
 
 .node-tooltip__desc {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-secondary);
-  margin-bottom: 0.6rem;
   line-height: 1.5;
+  margin-bottom: 0.4rem;
 }
 
-.node-tooltip__meta {
+.node-tooltip__footer {
   display: flex;
-  gap: 0.75rem;
-  font-size: 0.7rem;
-  color: var(--text-muted);
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.25rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.node-tooltip__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin-top: 0.5rem;
-}
-
-.node-tooltip__tag {
-  background: rgba(0, 212, 255, 0.1);
-  color: var(--accent-cyan);
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-  font-size: 0.6rem;
+.node-tooltip__diff {
+  font-size: 0.65rem;
   font-weight: 600;
+  text-transform: capitalize;
+}
+
+.node-tooltip__click-hint {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  opacity: 0.6;
 }
 
 /* ---------- Node Detail Panel ---------- */
 .node-panel {
   position: fixed;
   right: 0;
-  top: 0;
+  top: var(--nav-height);
   bottom: 0;
   width: 380px;
   max-width: 90vw;
   background: var(--bg-secondary);
   border-left: 1px solid var(--border-subtle);
-  z-index: 150;
+  z-index: 90;
   transform: translateX(100%);
   transition: transform 0.3s ease;
   overflow-y: auto;

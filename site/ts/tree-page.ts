@@ -433,6 +433,9 @@ function collapseSidebar(): void {
   sidebarCollapsed = true;
   sidebar.classList.add("collapsed");
   strip.classList.add("visible");
+
+  // Re-fit tree after sidebar animation completes
+  setTimeout(() => viz?.fitView(), 350);
 }
 
 function expandSidebar(): void {
@@ -443,6 +446,9 @@ function expandSidebar(): void {
   sidebarCollapsed = false;
   sidebar.classList.remove("collapsed");
   strip.classList.remove("visible");
+
+  // Re-fit tree after sidebar animation completes
+  setTimeout(() => viz?.fitView(), 350);
 }
 
 // ---------------------------------------------------------------------------

@@ -1,13 +1,12 @@
 /**
  * tree-visualization.ts — D3-based interactive skill tree renderer.
  *
- * Renders tree.json as a top-to-bottom DAG with:
- *  - Game-style skill tree nodes with SVG thumbnail images
- *  - Nodes colored by layer with glow effects
- *  - Edges as smooth Bezier curves with arrowheads
- *  - Hover tooltips, click-to-open panel
- *  - Zoom + pan
- *  - Series highlighting & filtering
+ * True root-system / pine-tree DAG layout:
+ *  - Single root at top, branches only go downward
+ *  - Node Y position = longest path from root (depth)
+ *  - Deterministic, identical every load
+ *  - Wide rectangular cards with thumbnail + title
+ *  - Smooth bezier edge routing
  */
 
 import * as d3 from "d3";
@@ -28,161 +27,201 @@ import {
 // Constants
 // ---------------------------------------------------------------------------
 
-const NODE_WIDTH = 190;
-const NODE_HEIGHT = 220;
-const THUMB_HEIGHT = 140; // height of the thumbnail area within the card
-const NODE_PAD_X = 260;
-const LAYER_Y_SPACING = 500;
-const NODE_BORDER_RADIUS = 14;
-const NODE_BG = "#0e0e24";
-const NODE_BG_HOVER = "#1a1a3e";
-const STAGGER_Y = 55; // vertical stagger within layers for organic feel
+const CARD_W = 240;              // card width
+const CARD_H = 120;              // card height
+const CARD_R = 10;               // border radius
+const CARD_THUMB = 100;          // thumbnail size (square, left side)
+const CARD_BORDER = 2;           // border thickness
+const EDGE_WIDTH = 2;            // path thickness
+const EDGE_GLOW_WIDTH = 8;       // glow behind paths
+
+// Layout spacing
+const DEPTH_GAP_Y = 170;         // vertical gap between depth levels
+const NODE_GAP_X = 280;          // horizontal gap between nodes at same depth
 
 // ---------------------------------------------------------------------------
-// Layout — assign (x, y) positions to each node via layered approach
+// Depth computation — longest path from root
+// ---------------------------------------------------------------------------
+
+function computeDepths(nodes: TreeNode[], edges: TreeEdge[]): Map<string, number> {
+  const children = new Map<string, string[]>();
+  const parentsList = new Map<string, string[]>();
+  for (const n of nodes) {
+    children.set(n.id, []);
+    parentsList.set(n.id, []);
+  }
+  for (const e of edges) {
+    children.get(e.from)?.push(e.to);
+    parentsList.get(e.to)?.push(e.from);
+  }
+
+  // Longest path via topological order (Kahn's algorithm)
+  const depth = new Map<string, number>();
+  const inDegree = new Map<string, number>();
+  for (const n of nodes) {
+    depth.set(n.id, -1);
+    inDegree.set(n.id, parentsList.get(n.id)?.length ?? 0);
+  }
+
+  // Roots = nodes with no incoming edges
+  const queue: string[] = [];
+  for (const n of nodes) {
+    if ((inDegree.get(n.id) ?? 0) === 0) {
+      depth.set(n.id, 0);
+      queue.push(n.id);
+    }
+  }
+
+  while (queue.length > 0) {
+    const id = queue.shift()!;
+    const d = depth.get(id)!;
+    for (const child of children.get(id) ?? []) {
+      depth.set(child, Math.max(depth.get(child)!, d + 1));
+      const remaining = (inDegree.get(child) ?? 1) - 1;
+      inDegree.set(child, remaining);
+      if (remaining === 0) queue.push(child);
+    }
+  }
+
+  return depth;
+}
+
+// ---------------------------------------------------------------------------
+// Deterministic layout
 // ---------------------------------------------------------------------------
 
 interface LayoutNode extends TreeNode {
   x: number;
   y: number;
+  depth: number;
+}
+
+function isRootNode(node: TreeNode): boolean {
+  return node.prerequisites.length === 0;
 }
 
 /**
- * Layered layout with barycenter heuristic to minimize edge crossings.
- * Nodes sharing prerequisites are positioned near each other.
+ * Root-system layout: position by DAG depth, order by barycenter.
  */
 function computeLayout(nodes: TreeNode[], edges: TreeEdge[]): LayoutNode[] {
-  // Group nodes by layer
-  const layers = new Map<number, TreeNode[]>();
-  for (const node of nodes) {
-    const arr = layers.get(node.layer) || [];
-    arr.push(node);
-    layers.set(node.layer, arr);
+  const depthMap = computeDepths(nodes, edges);
+
+  // Build adjacency for barycenter
+  const children = new Map<string, string[]>();
+  const parents = new Map<string, string[]>();
+  for (const n of nodes) {
+    children.set(n.id, []);
+    parents.set(n.id, []);
+  }
+  for (const e of edges) {
+    children.get(e.from)?.push(e.to);
+    parents.get(e.to)?.push(e.from);
   }
 
-  // Sort layers by key
-  const sortedLayers = Array.from(layers.entries()).sort(
-    ([a], [b]) => a - b
-  );
-
-  // Build adjacency maps for barycenter computation
-  const parentOf = new Map<string, string[]>(); // node -> its prerequisites (parents)
-  const childOf = new Map<string, string[]>();  // node -> nodes it unlocks (children)
-  for (const node of nodes) {
-    parentOf.set(node.id, []);
-    childOf.set(node.id, []);
+  // Group by depth
+  const depthGroups = new Map<number, TreeNode[]>();
+  for (const n of nodes) {
+    const d = depthMap.get(n.id) ?? 0;
+    const arr = depthGroups.get(d) || [];
+    arr.push(n);
+    depthGroups.set(d, arr);
   }
-  for (const edge of edges) {
-    parentOf.get(edge.to)?.push(edge.from);
-    childOf.get(edge.from)?.push(edge.to);
+  const depthKeys = Array.from(depthGroups.keys()).sort((a, b) => a - b);
+
+  // --- Barycenter ordering ---
+  const order = new Map<string, number>();
+
+  // Seed depth 0
+  const depth0 = depthGroups.get(0) || [];
+  depth0.forEach((n, i) => order.set(n.id, i));
+
+  // Top-down pass
+  for (let di = 1; di < depthKeys.length; di++) {
+    const dk = depthKeys[di];
+    const depthNodes = depthGroups.get(dk) || [];
+    const barycenters: { node: TreeNode; bc: number }[] = [];
+
+    for (const n of depthNodes) {
+      const pars = parents.get(n.id) || [];
+      if (pars.length === 0) {
+        barycenters.push({ node: n, bc: 0 });
+      } else {
+        const avg = pars.reduce((sum, pid) => sum + (order.get(pid) ?? 0), 0) / pars.length;
+        barycenters.push({ node: n, bc: avg });
+      }
+    }
+    barycenters.sort((a, b) => a.bc - b.bc);
+    barycenters.forEach((item, i) => order.set(item.node.id, i));
   }
 
-  // First pass: assign initial x positions per layer (centered)
-  const positionMap = new Map<string, { x: number; y: number }>();
+  // Bottom-up refinement
+  for (let di = depthKeys.length - 2; di >= 0; di--) {
+    const dk = depthKeys[di];
+    const depthNodes = depthGroups.get(dk) || [];
+    const barycenters: { node: TreeNode; bc: number }[] = [];
 
-  for (const [layerIdx, [, layerNodes]] of sortedLayers.entries()) {
-    // Initial sort: alphabetical for the first layer
-    const sorted = [...layerNodes].sort((a, b) =>
-      a.title.localeCompare(b.title)
+    for (const n of depthNodes) {
+      const kids = children.get(n.id) || [];
+      if (kids.length === 0) {
+        barycenters.push({ node: n, bc: order.get(n.id) ?? 0 });
+      } else {
+        const avg = kids.reduce((sum, cid) => sum + (order.get(cid) ?? 0), 0) / kids.length;
+        barycenters.push({ node: n, bc: avg });
+      }
+    }
+    barycenters.sort((a, b) => a.bc - b.bc);
+    barycenters.forEach((item, i) => order.set(item.node.id, i));
+  }
+
+  // Final top-down pass
+  for (let di = 1; di < depthKeys.length; di++) {
+    const dk = depthKeys[di];
+    const depthNodes = depthGroups.get(dk) || [];
+    const barycenters: { node: TreeNode; bc: number }[] = [];
+
+    for (const n of depthNodes) {
+      const pars = parents.get(n.id) || [];
+      if (pars.length === 0) {
+        barycenters.push({ node: n, bc: order.get(n.id) ?? 0 });
+      } else {
+        const avg = pars.reduce((sum, pid) => sum + (order.get(pid) ?? 0), 0) / pars.length;
+        barycenters.push({ node: n, bc: avg });
+      }
+    }
+    barycenters.sort((a, b) => a.bc - b.bc);
+    barycenters.forEach((item, i) => order.set(item.node.id, i));
+  }
+
+  // --- Coordinate assignment ---
+  const pos = new Map<string, { x: number; y: number }>();
+
+  for (const dk of depthKeys) {
+    const depthNodes = depthGroups.get(dk) || [];
+    const ordered = [...depthNodes].sort(
+      (a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0)
     );
-    const count = sorted.length;
-    const totalWidth = count * (NODE_WIDTH + NODE_PAD_X) - NODE_PAD_X;
+    const count = ordered.length;
+    const totalWidth = (count - 1) * NODE_GAP_X;
     const startX = -totalWidth / 2;
 
-    for (const [i, node] of sorted.entries()) {
-      positionMap.set(node.id, {
-        x: startX + i * (NODE_WIDTH + NODE_PAD_X),
-        y: layerIdx * LAYER_Y_SPACING,
+    for (const [i, node] of ordered.entries()) {
+      pos.set(node.id, {
+        x: startX + i * NODE_GAP_X,
+        y: dk * DEPTH_GAP_Y,
       });
     }
   }
 
-  // Barycenter passes: sweep down then up to reduce crossings
-  for (let pass = 0; pass < 4; pass++) {
-    // Down sweep: order each layer by barycenter of parents
-    for (const [layerIdx, [, layerNodes]] of sortedLayers.entries()) {
-      if (layerIdx === 0) continue; // skip root layer
+  // Center vertically
+  let sumY = 0;
+  for (const p of pos.values()) sumY += p.y;
+  const cy = sumY / pos.size;
+  for (const p of pos.values()) p.y -= cy;
 
-      const barycenters: { node: TreeNode; bc: number }[] = [];
-      for (const node of layerNodes) {
-        const parents = parentOf.get(node.id) || [];
-        if (parents.length > 0) {
-          const avgX =
-            parents.reduce((sum, pid) => {
-              const pos = positionMap.get(pid);
-              return sum + (pos ? pos.x + NODE_WIDTH / 2 : 0);
-            }, 0) / parents.length;
-          barycenters.push({ node, bc: avgX });
-        } else {
-          // Keep existing position as barycenter
-          const pos = positionMap.get(node.id);
-          barycenters.push({ node, bc: pos ? pos.x + NODE_WIDTH / 2 : 0 });
-        }
-      }
-
-      // Sort by barycenter
-      barycenters.sort((a, b) => a.bc - b.bc);
-
-      // Re-assign x positions, centered
-      const count = barycenters.length;
-      const totalWidth = count * (NODE_WIDTH + NODE_PAD_X) - NODE_PAD_X;
-      const startX = -totalWidth / 2;
-      for (const [i, entry] of barycenters.entries()) {
-        const pos = positionMap.get(entry.node.id)!;
-        pos.x = startX + i * (NODE_WIDTH + NODE_PAD_X);
-      }
-    }
-
-    // Up sweep: order each layer by barycenter of children
-    for (let li = sortedLayers.length - 2; li >= 0; li--) {
-      const [, layerNodes] = sortedLayers[li];
-
-      const barycenters: { node: TreeNode; bc: number }[] = [];
-      for (const node of layerNodes) {
-        const children = childOf.get(node.id) || [];
-        if (children.length > 0) {
-          const avgX =
-            children.reduce((sum, cid) => {
-              const pos = positionMap.get(cid);
-              return sum + (pos ? pos.x + NODE_WIDTH / 2 : 0);
-            }, 0) / children.length;
-          barycenters.push({ node, bc: avgX });
-        } else {
-          const pos = positionMap.get(node.id);
-          barycenters.push({ node, bc: pos ? pos.x + NODE_WIDTH / 2 : 0 });
-        }
-      }
-
-      barycenters.sort((a, b) => a.bc - b.bc);
-
-      const count = barycenters.length;
-      const totalWidth = count * (NODE_WIDTH + NODE_PAD_X) - NODE_PAD_X;
-      const startX = -totalWidth / 2;
-      for (const [i, entry] of barycenters.entries()) {
-        const pos = positionMap.get(entry.node.id)!;
-        pos.x = startX + i * (NODE_WIDTH + NODE_PAD_X);
-      }
-    }
-  }
-
-  // Build final layout nodes with Y-staggering for organic feel
-  const layoutNodes: LayoutNode[] = [];
-  for (const [, [, layerNodes]] of sortedLayers.entries()) {
-    // Sort by assigned X so stagger alternation is consistent
-    const sorted = [...layerNodes].sort((a, b) => {
-      const pa = positionMap.get(a.id)!;
-      const pb = positionMap.get(b.id)!;
-      return pa.x - pb.x;
-    });
-    for (const [i, node] of sorted.entries()) {
-      const pos = positionMap.get(node.id)!;
-      // Alternate stagger: even nodes shift up, odd nodes shift down
-      const stagger = (i % 2 === 0 ? -1 : 1) * STAGGER_Y;
-      layoutNodes.push({ ...node, x: pos.x, y: pos.y + stagger });
-    }
-  }
-
-  return layoutNodes;
+  return nodes.map((node) => {
+    const p = pos.get(node.id)!;
+    return { ...node, x: Math.round(p.x), y: Math.round(p.y), depth: depthMap.get(node.id) ?? 0 };
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -205,10 +244,14 @@ export class TreeVisualization {
   private tooltip: HTMLElement | null = null;
   private opts: TreeVizOptions;
 
-  // Filter state
   private activeLayer: number | null = null;
   private activeSeries: string | null = null;
   private activeDifficulty: string | null = null;
+
+  // Cached element references for O(1) hover/filter lookups
+  private nodeElements = new Map<string, SVGGElement>();
+  private edgeElements: { el: SVGPathElement; from: string; to: string }[] = [];
+  private edgeGlowElements: { el: SVGPathElement; from: string; to: string }[] = [];
 
   constructor(opts: TreeVizOptions) {
     this.opts = opts;
@@ -240,116 +283,23 @@ export class TreeVisualization {
       .attr("width", "100%")
       .attr("height", "100%");
 
-    // Defs for arrowheads, glow filters, and clip paths
     const defs = this.svg.append("defs");
 
-    // Per-layer arrowhead markers
-    for (const [layer, color] of Object.entries(LAYER_COLORS)) {
-      defs
-        .append("marker")
-        .attr("id", `arrowhead-${layer}`)
-        .attr("viewBox", "0 0 10 7")
-        .attr("refX", 10)
-        .attr("refY", 3.5)
-        .attr("markerWidth", 8)
-        .attr("markerHeight", 6)
-        .attr("orient", "auto")
-        .append("polygon")
-        .attr("points", "0 0, 10 3.5, 0 7")
-        .attr("fill", color)
-        .attr("opacity", "0.4");
-    }
-
-    // Default arrowhead (for highlighted state)
-    defs
-      .append("marker")
-      .attr("id", "arrowhead")
-      .attr("viewBox", "0 0 10 7")
-      .attr("refX", 10)
-      .attr("refY", 3.5)
-      .attr("markerWidth", 8)
-      .attr("markerHeight", 6)
-      .attr("orient", "auto")
-      .append("polygon")
-      .attr("points", "0 0, 10 3.5, 0 7")
-      .attr("class", "tree-edge-arrow");
-
-    // Per-layer glow filters
-    for (const [layer, color] of Object.entries(LAYER_COLORS)) {
-      const filter = defs
-        .append("filter")
-        .attr("id", `glow-${layer}`)
-        .attr("x", "-50%")
-        .attr("y", "-50%")
-        .attr("width", "200%")
-        .attr("height", "200%");
-      filter
-        .append("feGaussianBlur")
-        .attr("stdDeviation", "6")
-        .attr("result", "blur");
-      filter
-        .append("feFlood")
-        .attr("flood-color", color)
-        .attr("flood-opacity", "0.7");
-      filter
-        .append("feComposite")
-        .attr("in2", "blur")
-        .attr("operator", "in");
-      const merge = filter.append("feMerge");
-      merge.append("feMergeNode");
-      merge.append("feMergeNode").attr("in", "SourceGraphic");
-    }
-
-    // Generic glow filter (fallback)
-    const glowFilter = defs
+    // Single lightweight hover glow filter (only applied to hovered node)
+    const hoverGlow = defs
       .append("filter")
-      .attr("id", "glow")
-      .attr("x", "-50%")
-      .attr("y", "-50%")
-      .attr("width", "200%")
-      .attr("height", "200%");
-    glowFilter
-      .append("feGaussianBlur")
+      .attr("id", "node-hover-glow")
+      .attr("x", "-15%")
+      .attr("y", "-15%")
+      .attr("width", "130%")
+      .attr("height", "130%");
+    hoverGlow
+      .append("feDropShadow")
+      .attr("dx", "0")
+      .attr("dy", "0")
       .attr("stdDeviation", "6")
-      .attr("result", "blur");
-    const merge = glowFilter.append("feMerge");
-    merge.append("feMergeNode").attr("in", "blur");
-    merge.append("feMergeNode").attr("in", "SourceGraphic");
-
-    // Thumbnail clip path (rounded top corners for thumbnail area)
-    defs
-      .append("clipPath")
-      .attr("id", "thumb-clip")
-      .append("rect")
-      .attr("x", 2)
-      .attr("y", 2)
-      .attr("width", NODE_WIDTH - 4)
-      .attr("height", THUMB_HEIGHT - 2)
-      .attr("rx", NODE_BORDER_RADIUS - 2)
-      .attr("ry", NODE_BORDER_RADIUS - 2);
-
-    // Subtle dot grid pattern for game-map feel
-    const gridPattern = defs
-      .append("pattern")
-      .attr("id", "grid-dots")
-      .attr("width", 40)
-      .attr("height", 40)
-      .attr("patternUnits", "userSpaceOnUse");
-    gridPattern
-      .append("circle")
-      .attr("cx", 20)
-      .attr("cy", 20)
-      .attr("r", 0.8)
-      .attr("fill", "#ffffff")
-      .attr("opacity", "0.04");
-
-    // Background rect with dot pattern
-    this.svg
-      .append("rect")
-      .attr("width", "100%")
-      .attr("height", "100%")
-      .attr("fill", "url(#grid-dots)")
-      .style("pointer-events", "none");
+      .attr("flood-color", "#ffffff")
+      .attr("flood-opacity", "0.12");
 
     this.g = this.svg.append("g").attr("class", "tree-root");
 
@@ -374,189 +324,199 @@ export class TreeVisualization {
   private render(): void {
     this.g.selectAll("*").remove();
 
-    // Build lookup for source node layer per edge
     const nodeMap = new Map<string, LayoutNode>();
     for (const n of this.nodes) nodeMap.set(n.id, n);
+    const defs = this.svg.select("defs");
 
-    // Edges (rendered first, below nodes)
+    // --- Edges (smooth bezier curves for organic tree feel) ---
+    // Single path per edge (no duplicate glow paths — halves DOM count)
     const edgeGroup = this.g.append("g").attr("class", "edges");
+    this.edgeElements = [];
 
     for (const edge of this.edges) {
       const from = nodeMap.get(edge.from);
       const to = nodeMap.get(edge.to);
       if (!from || !to) continue;
 
-      const x1 = from.x + NODE_WIDTH / 2;
-      const y1 = from.y + NODE_HEIGHT;
-      const x2 = to.x + NODE_WIDTH / 2;
-      const y2 = to.y;
+      const x1 = from.x;
+      const y1 = from.y + CARD_H / 2;
+      const x2 = to.x;
+      const y2 = to.y - CARD_H / 2;
 
-      // Smooth cubic Bezier: control points offset for natural curves
-      const dy = (y2 - y1) * 0.55;
+      const fromColor = LAYER_COLORS[from.layer] || "#6b7280";
 
-      const color = LAYER_COLORS[from.layer] || "#6366f1";
-      const pathD = `M${x1},${y1} C${x1},${y1 + dy} ${x2},${y2 - dy} ${x2},${y2}`;
+      // Smooth cubic bezier — organic tree-branch feel
+      const dy = y2 - y1;
+      const cy1 = y1 + dy * 0.45;
+      const cy2 = y2 - dy * 0.45;
+      const pathD = Math.abs(x1 - x2) < 2
+        ? `M${x1},${y1} L${x2},${y2}`
+        : `M${x1},${y1} C${x1},${cy1} ${x2},${cy2} ${x2},${y2}`;
 
-      // Glow path (wider, more transparent — rendered behind the main path)
-      edgeGroup
-        .append("path")
-        .attr("d", pathD)
-        .attr("class", "tree-edge-glow")
-        .attr("stroke", color)
-        .attr("stroke-opacity", "0.08")
-        .attr("fill", "none")
-        .attr("stroke-width", "8")
-        .attr("data-from", edge.from)
-        .attr("data-to", edge.to);
-
-      // Main visible path
-      edgeGroup
+      const pathEl = edgeGroup
         .append("path")
         .attr("d", pathD)
         .attr("class", "tree-edge")
-        .attr("stroke", color)
-        .attr("stroke-opacity", "0.3")
+        .attr("stroke", fromColor)
+        .attr("stroke-opacity", "0.18")
         .attr("fill", "none")
-        .attr("stroke-width", "2")
-        .attr("marker-end", `url(#arrowhead-${from.layer})`)
+        .attr("stroke-width", String(EDGE_WIDTH))
+        .attr("stroke-linecap", "round")
         .attr("data-from", edge.from)
         .attr("data-to", edge.to)
         .attr("data-layer", String(from.layer));
+
+      this.edgeElements.push({ el: pathEl.node()!, from: edge.from, to: edge.to });
     }
 
-    // Nodes
+    // --- Nodes (wide rectangular cards) ---
     const nodeGroup = this.g.append("g").attr("class", "nodes");
+    this.nodeElements.clear();
 
     for (const node of this.nodes) {
-      const color = LAYER_COLORS[node.layer] || "#6366f1";
-      const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6366f1";
+      const color = LAYER_COLORS[node.layer] || "#6b7280";
+      const root = isRootNode(node);
+      const clipId = `clip-${node.id.replace(/[^a-zA-Z0-9]/g, "-")}`;
+
+      // Clip path for thumbnail
+      const thumbPad = (CARD_H - CARD_THUMB) / 2;
+      defs
+        .append("clipPath")
+        .attr("id", clipId)
+        .append("rect")
+        .attr("x", -CARD_W / 2 + thumbPad)
+        .attr("y", -CARD_H / 2 + thumbPad)
+        .attr("width", CARD_THUMB)
+        .attr("height", CARD_THUMB)
+        .attr("rx", 6)
+        .attr("ry", 6);
 
       const g = nodeGroup
         .append("g")
-        .attr("class", "tree-node")
+        .attr("class", `tree-node${root ? " tree-node--root" : ""}`)
         .attr("data-id", node.id)
         .attr("data-layer", String(node.layer))
         .attr("transform", `translate(${node.x}, ${node.y})`)
         .style("cursor", "pointer");
 
-      // Outer glow ring (game-style highlight behind the card)
+      // Cache element reference for O(1) lookups
+      this.nodeElements.set(node.id, g.node()!);
+
+      // Card background
       g.append("rect")
-        .attr("class", "tree-node__glow")
-        .attr("x", -4)
-        .attr("y", -4)
-        .attr("width", NODE_WIDTH + 8)
-        .attr("height", NODE_HEIGHT + 8)
-        .attr("rx", NODE_BORDER_RADIUS + 4)
-        .attr("ry", NODE_BORDER_RADIUS + 4)
-        .attr("fill", "none")
+        .attr("class", "tree-node__card")
+        .attr("x", -CARD_W / 2)
+        .attr("y", -CARD_H / 2)
+        .attr("width", CARD_W)
+        .attr("height", CARD_H)
+        .attr("rx", CARD_R)
+        .attr("ry", CARD_R)
+        .attr("fill", "#12121e")
         .attr("stroke", color)
-        .attr("stroke-width", "1")
-        .attr("stroke-opacity", "0.15")
-        .attr("filter", `url(#glow-${node.layer})`);
+        .attr("stroke-width", String(root ? CARD_BORDER + 1 : CARD_BORDER))
+        .attr("stroke-opacity", root ? "0.65" : "0.25")
+;
 
-      // Card background rect
-      g.append("rect")
-        .attr("class", "tree-node__bg")
-        .attr("width", NODE_WIDTH)
-        .attr("height", NODE_HEIGHT)
-        .attr("rx", NODE_BORDER_RADIUS)
-        .attr("ry", NODE_BORDER_RADIUS)
-        .attr("fill", NODE_BG)
-        .attr("stroke", color)
-        .attr("stroke-width", "1.5")
-        .attr("stroke-opacity", "0.6");
-
-      // Thumbnail area background (slightly darker)
-      g.append("rect")
-        .attr("class", "tree-node__thumb-bg")
-        .attr("x", 2)
-        .attr("y", 2)
-        .attr("width", NODE_WIDTH - 4)
-        .attr("height", THUMB_HEIGHT - 2)
-        .attr("rx", NODE_BORDER_RADIUS - 2)
-        .attr("ry", NODE_BORDER_RADIUS - 2)
-        .attr("fill", "#08081a");
-
-      // SVG thumbnail image
+      // Thumbnail (left side)
       if (node.thumbnail) {
         g.append("image")
           .attr("class", "tree-node__thumb")
           .attr("href", `./${node.thumbnail}`)
-          .attr("x", 2)
-          .attr("y", 2)
-          .attr("width", NODE_WIDTH - 4)
-          .attr("height", THUMB_HEIGHT - 2)
-          .attr("clip-path", "url(#thumb-clip)")
-          .attr("preserveAspectRatio", "xMidYMid slice");
+          .attr("x", -CARD_W / 2 + thumbPad)
+          .attr("y", -CARD_H / 2 + thumbPad)
+          .attr("width", CARD_THUMB)
+          .attr("height", CARD_THUMB)
+          .attr("clip-path", `url(#${clipId})`)
+          .attr("preserveAspectRatio", "xMidYMid slice")
+          .attr("opacity", "0.9");
+      } else {
+        g.append("rect")
+          .attr("x", -CARD_W / 2 + thumbPad)
+          .attr("y", -CARD_H / 2 + thumbPad)
+          .attr("width", CARD_THUMB)
+          .attr("height", CARD_THUMB)
+          .attr("rx", 6)
+          .attr("ry", 6)
+          .attr("fill", color)
+          .attr("opacity", "0.08");
       }
 
-      // Gradient separator line between thumbnail and title area
-      g.append("line")
-        .attr("x1", 12)
-        .attr("y1", THUMB_HEIGHT)
-        .attr("x2", NODE_WIDTH - 12)
-        .attr("y2", THUMB_HEIGHT)
-        .attr("stroke", color)
-        .attr("stroke-opacity", "0.3")
-        .attr("stroke-width", "1");
+      // Title text (right side, word-wrapped)
+      const titleX = -CARD_W / 2 + thumbPad + CARD_THUMB + 12;
+      const titleMaxW = CARD_W - thumbPad - CARD_THUMB - 12 - thumbPad;
 
-      // Title text (below thumbnail, centered)
-      const titleText =
-        node.title.length > 24
-          ? node.title.slice(0, 22) + "\u2026"
-          : node.title;
+      const titleWords = node.title.split(" ");
+      const lines: string[] = [];
+      let currentLine = "";
+      for (const word of titleWords) {
+        const test = currentLine ? `${currentLine} ${word}` : word;
+        if (test.length > Math.floor(titleMaxW / 6) && currentLine) {
+          lines.push(currentLine);
+          currentLine = word;
+        } else {
+          currentLine = test;
+        }
+      }
+      if (currentLine) lines.push(currentLine);
 
+      const displayLines = lines.slice(0, 4);
+      if (lines.length > 4) {
+        displayLines[3] = displayLines[3].slice(0, -1) + "\u2026";
+      }
+
+      const lineHeight = 15;
+      const totalTextH = displayLines.length * lineHeight;
+      const textStartY = -totalTextH / 2 + lineHeight / 2 - 4;
+
+      for (const [i, line] of displayLines.entries()) {
+        g.append("text")
+          .attr("class", "node-title")
+          .attr("x", titleX)
+          .attr("y", textStartY + i * lineHeight)
+          .attr("text-anchor", "start")
+          .attr("dominant-baseline", "central")
+          .attr("font-size", "11.5px")
+          .attr("font-weight", root ? "700" : "600")
+          .attr("fill", "#c8ccd4")
+          .attr("font-family", "var(--font-display)")
+          .text(line);
+      }
+
+      // Time estimate
       g.append("text")
-        .attr("class", "node-title")
-        .attr("x", NODE_WIDTH / 2)
-        .attr("y", THUMB_HEIGHT + 26)
-        .attr("text-anchor", "middle")
-        .attr("font-size", "12px")
-        .attr("font-weight", "700")
-        .attr("fill", "#e8e8f0")
-        .text(titleText);
+        .attr("class", "node-time")
+        .attr("x", titleX)
+        .attr("y", textStartY + displayLines.length * lineHeight + 4)
+        .attr("text-anchor", "start")
+        .attr("dominant-baseline", "central")
+        .attr("font-size", "9.5px")
+        .attr("font-weight", "500")
+        .attr("fill", "rgba(148, 163, 184, 0.4)")
+        .attr("font-family", "var(--font-mono)")
+        .text(formatMinutes(node.estimated_minutes));
 
-      // Difficulty + time subtitle (centered)
-      g.append("text")
-        .attr("class", "node-meta")
-        .attr("x", NODE_WIDTH / 2)
-        .attr("y", THUMB_HEIGHT + 44)
-        .attr("text-anchor", "middle")
-        .attr("font-size", "10px")
-        .attr("fill", "#64748b")
-        .text(
-          `${node.difficulty} \u00B7 ${formatMinutes(node.estimated_minutes)}`
-        );
+      // Root indicator — accent bar on top
+      if (root) {
+        g.append("rect")
+          .attr("x", -CARD_W / 2 + CARD_R)
+          .attr("y", -CARD_H / 2 - 3)
+          .attr("width", CARD_W - CARD_R * 2)
+          .attr("height", 3)
+          .attr("rx", 1.5)
+          .attr("fill", color)
+          .attr("opacity", "0.6");
+      }
 
-      // Difficulty indicator dot
-      g.append("circle")
-        .attr("cx", 16)
-        .attr("cy", THUMB_HEIGHT + 35)
-        .attr("r", 3.5)
-        .attr("fill", diffColor)
-        .attr("opacity", 0.85);
-
-      // Layer-colored accent line at the top of the card
+      // Hit area
       g.append("rect")
-        .attr("x", 6)
-        .attr("y", 1)
-        .attr("width", NODE_WIDTH - 12)
-        .attr("height", 2.5)
-        .attr("rx", 1.25)
-        .attr("fill", color)
-        .attr("opacity", "0.7");
+        .attr("x", -CARD_W / 2 - 4)
+        .attr("y", -CARD_H / 2 - 4)
+        .attr("width", CARD_W + 8)
+        .attr("height", CARD_H + 8)
+        .attr("fill", "transparent")
+        .attr("class", "tree-node__hit");
 
-      // Layer-colored accent line at the bottom of the card
-      g.append("rect")
-        .attr("x", NODE_WIDTH * 0.25)
-        .attr("y", NODE_HEIGHT - 3)
-        .attr("width", NODE_WIDTH * 0.5)
-        .attr("height", 2)
-        .attr("rx", 1)
-        .attr("fill", color)
-        .attr("opacity", "0.3");
-
-      // Event handlers
+      // Events
       g.on("mouseenter", (event: MouseEvent) => {
         this.onNodeHover(node, true);
         this.showTooltip(node, event);
@@ -582,21 +542,21 @@ export class TreeVisualization {
 
   private showTooltip(node: TreeNode, event: MouseEvent): void {
     if (!this.tooltip) return;
-    const color = LAYER_COLORS[node.layer] || "#6366f1";
+    const color = LAYER_COLORS[node.layer] || "#6b7280";
+    const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6b7280";
 
     this.tooltip.innerHTML = `
-      <div class="node-tooltip__title" style="color:${color}">${node.title}</div>
-      <div class="node-tooltip__desc">${node.description}</div>
-      <div class="node-tooltip__meta">
-        <span>Layer ${node.layer} - ${LAYER_NAMES[node.layer] || ""}</span>
-        <span>${node.difficulty}</span>
-        <span>${formatMinutes(node.estimated_minutes)}</span>
+      <div class="node-tooltip__header">
+        <span class="node-tooltip__accent" style="background:${color}"></span>
+        <span class="node-tooltip__layer">${LAYER_NAMES[node.layer] || ""}</span>
+        <span class="node-tooltip__time">${formatMinutes(node.estimated_minutes)}</span>
       </div>
-      ${
-        node.tags.length
-          ? `<div class="node-tooltip__tags">${node.tags.map((t) => `<span class="node-tooltip__tag">${t}</span>`).join("")}</div>`
-          : ""
-      }
+      <div class="node-tooltip__title">${node.title}</div>
+      <div class="node-tooltip__desc">${node.description}</div>
+      <div class="node-tooltip__footer">
+        <span class="node-tooltip__diff" style="color:${diffColor}">${node.difficulty}</span>
+        <span class="node-tooltip__click-hint">Click to view →</span>
+      </div>
     `;
 
     this.tooltip.classList.add("visible");
@@ -616,86 +576,71 @@ export class TreeVisualization {
     if (this.tooltip) this.tooltip.classList.remove("visible");
   }
 
-  // --- Edge hover highlighting ---
+  // --- Hover highlighting ---
 
   private onNodeHover(node: LayoutNode, entering: boolean): void {
+    const nodeId = node.id;
+
     if (!entering) {
-      // Reset all edges
-      this.g.selectAll<SVGPathElement, unknown>(".tree-edge")
-        .attr("stroke-opacity", "0.3")
-        .attr("stroke-width", "2")
-        .attr("filter", null);
-      this.g.selectAll<SVGPathElement, unknown>(".tree-edge-glow")
-        .attr("stroke-opacity", "0.08")
-        .attr("stroke-width", "8");
-      // Reset all nodes: remove connected class, clear glow, restore fill
-      this.g.selectAll<SVGGElement, unknown>(".tree-node")
-        .classed("tree-node--connected", false)
-        .select(".tree-node__bg")
-        .attr("filter", null)
-        .attr("fill", NODE_BG);
+      // Reset all edges via cached references
+      for (const e of this.edgeElements) {
+        e.el.setAttribute("stroke-opacity", "0.18");
+        e.el.setAttribute("stroke-width", String(EDGE_WIDTH));
+      }
+      // Reset all nodes via cached references
+      for (const [id, el] of this.nodeElements) {
+        const group = d3.select(el);
+        const isRoot = group.classed("tree-node--root");
+        group.classed("tree-node--connected", false);
+        group.select(".tree-node__card")
+          .attr("filter", null)
+          .attr("stroke-opacity", isRoot ? "0.65" : "0.25")
+          .attr("fill", "#12121e");
+        group.select(".tree-node__thumb").attr("opacity", "0.9");
+        group.selectAll(".node-title").attr("fill", "#c8ccd4");
+      }
       return;
     }
 
-    const nodeId = node.id;
-
-    // Find all connected edge from/to IDs
+    // Find connected nodes from cached edge list
     const connectedNodeIds = new Set<string>([nodeId]);
-    this.g.selectAll<SVGPathElement, unknown>(".tree-edge").each(function () {
-      const from = this.getAttribute("data-from") || "";
-      const to = this.getAttribute("data-to") || "";
-      if (from === nodeId || to === nodeId) {
-        connectedNodeIds.add(from);
-        connectedNodeIds.add(to);
+    for (const e of this.edgeElements) {
+      if (e.from === nodeId || e.to === nodeId) {
+        connectedNodeIds.add(e.from);
+        connectedNodeIds.add(e.to);
       }
-    });
+    }
 
-    // Highlight connected edges, dim others
-    this.g.selectAll<SVGPathElement, unknown>(".tree-edge").each(function () {
-      const from = this.getAttribute("data-from") || "";
-      const to = this.getAttribute("data-to") || "";
-      const sel = d3.select(this);
-      if (from === nodeId || to === nodeId) {
-        sel
-          .attr("stroke-opacity", "1")
-          .attr("stroke-width", "3");
+    // Update edges
+    for (const e of this.edgeElements) {
+      if (e.from === nodeId || e.to === nodeId) {
+        e.el.setAttribute("stroke-opacity", "0.8");
+        e.el.setAttribute("stroke-width", "3");
       } else {
-        sel
-          .attr("stroke-opacity", "0.04")
-          .attr("stroke-width", "1.5");
+        e.el.setAttribute("stroke-opacity", "0.04");
+        e.el.setAttribute("stroke-width", "1.5");
       }
-    });
+    }
 
-    // Also brighten glow paths for connected edges
-    this.g.selectAll<SVGPathElement, unknown>(".tree-edge-glow").each(function () {
-      const from = this.getAttribute("data-from") || "";
-      const to = this.getAttribute("data-to") || "";
-      const sel = d3.select(this);
-      if (from === nodeId || to === nodeId) {
-        sel.attr("stroke-opacity", "0.25").attr("stroke-width", "12");
-      } else {
-        sel.attr("stroke-opacity", "0.02").attr("stroke-width", "6");
-      }
-    });
-
-    // Brighten connected nodes
-    this.g.selectAll<SVGGElement, unknown>(".tree-node").each(function () {
-      const id = this.getAttribute("data-id") || "";
-      if (connectedNodeIds.has(id) && id !== nodeId) {
-        d3.select(this).classed("tree-node--connected", true);
-      }
-    });
-
-    // Apply glow to hovered node
-    const layerStr = String(node.layer);
-    this.g.selectAll<SVGGElement, unknown>(".tree-node").each(function () {
-      const id = this.getAttribute("data-id") || "";
+    // Update nodes
+    for (const [id, el] of this.nodeElements) {
+      const group = d3.select(el);
       if (id === nodeId) {
-        d3.select(this).select(".tree-node__bg")
-          .attr("filter", `url(#glow-${layerStr})`)
-          .attr("fill", NODE_BG_HOVER);
+        group.select(".tree-node__card")
+          .attr("filter", "url(#node-hover-glow)")
+          .attr("stroke-opacity", "0.9");
+        group.select(".tree-node__thumb").attr("opacity", "1");
+        group.selectAll(".node-title").attr("fill", "#ffffff");
+      } else if (connectedNodeIds.has(id)) {
+        group.classed("tree-node--connected", true);
+        group.select(".tree-node__thumb").attr("opacity", "1");
+        group.select(".tree-node__card").attr("stroke-opacity", "0.55");
+      } else {
+        group.select(".tree-node__thumb").attr("opacity", "0.2");
+        group.select(".tree-node__card").attr("stroke-opacity", "0.08").attr("fill", "#0e0e18");
+        group.selectAll(".node-title").attr("fill", "rgba(200,204,212,0.15)");
       }
-    });
+    }
   }
 
   // --- Filtering ---
@@ -726,7 +671,6 @@ export class TreeVisualization {
         )
       : null;
 
-    // Determine which node IDs pass the filter
     const passIds = new Set<string>();
     for (const node of this.nodes) {
       let pass = true;
@@ -743,41 +687,27 @@ export class TreeVisualization {
       this.activeSeries !== null ||
       this.activeDifficulty !== null;
 
-    // Apply classes
-    this.g.selectAll<SVGGElement, unknown>(".tree-node").each(function () {
-      const id = this.getAttribute("data-id") || "";
+    for (const [id, el] of this.nodeElements) {
+      const sel = d3.select(el);
       if (!hasFilter) {
-        d3.select(this)
-          .classed("tree-node--dimmed", false)
-          .classed("tree-node--highlight", false);
+        sel.classed("tree-node--dimmed", false).classed("tree-node--highlight", false);
       } else if (passIds.has(id)) {
-        d3.select(this)
-          .classed("tree-node--dimmed", false)
-          .classed("tree-node--highlight", true);
+        sel.classed("tree-node--dimmed", false).classed("tree-node--highlight", true);
       } else {
-        d3.select(this)
-          .classed("tree-node--dimmed", true)
-          .classed("tree-node--highlight", false);
+        sel.classed("tree-node--dimmed", true).classed("tree-node--highlight", false);
       }
-    });
+    }
 
-    this.g.selectAll<SVGPathElement, unknown>(".tree-edge").each(function () {
-      const from = this.getAttribute("data-from") || "";
-      const to = this.getAttribute("data-to") || "";
+    for (const e of this.edgeElements) {
+      const sel = d3.select(e.el);
       if (!hasFilter) {
-        d3.select(this)
-          .classed("tree-edge--dimmed", false)
-          .classed("tree-edge--highlight", false);
-      } else if (passIds.has(from) && passIds.has(to)) {
-        d3.select(this)
-          .classed("tree-edge--dimmed", false)
-          .classed("tree-edge--highlight", true);
+        sel.classed("tree-edge--dimmed", false).classed("tree-edge--highlight", false);
+      } else if (passIds.has(e.from) && passIds.has(e.to)) {
+        sel.classed("tree-edge--dimmed", false).classed("tree-edge--highlight", true);
       } else {
-        d3.select(this)
-          .classed("tree-edge--dimmed", true)
-          .classed("tree-edge--highlight", false);
+        sel.classed("tree-edge--dimmed", true).classed("tree-edge--highlight", false);
       }
-    });
+    }
   }
 
   // --- View ---
@@ -789,44 +719,39 @@ export class TreeVisualization {
     const w = containerEl.clientWidth;
     const h = containerEl.clientHeight;
 
-    // Compute bounding box of all nodes
-    let minX = Infinity;
-    let minY = Infinity;
-    let maxX = -Infinity;
-    let maxY = -Infinity;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
 
     for (const n of this.nodes) {
-      if (n.x < minX) minX = n.x;
-      if (n.y < minY) minY = n.y;
-      if (n.x + NODE_WIDTH > maxX) maxX = n.x + NODE_WIDTH;
-      if (n.y + NODE_HEIGHT > maxY) maxY = n.y + NODE_HEIGHT;
+      if (n.x - CARD_W / 2 < minX) minX = n.x - CARD_W / 2;
+      if (n.y - CARD_H / 2 - 10 < minY) minY = n.y - CARD_H / 2 - 10;
+      if (n.x + CARD_W / 2 > maxX) maxX = n.x + CARD_W / 2;
+      if (n.y + CARD_H / 2 + 10 > maxY) maxY = n.y + CARD_H / 2 + 10;
     }
+
+    minX -= 30;
+    maxX += 30;
+    minY -= 15;
+    maxY += 15;
 
     const treeW = maxX - minX;
     const treeH = maxY - minY;
-    const padding = 60;
+    const padding = 20;
 
-    // Clamp scale: min 0.2 so tree fits even at large sizes, max 0.85 so it feels like a map
     const scale = Math.max(
-      0.2,
-      Math.min(
-        (w - padding * 2) / treeW,
-        (h - padding * 2) / treeH,
-        0.85
-      )
+      0.15,
+      Math.min((w - padding * 2) / treeW, (h - padding * 2) / treeH, 0.85)
     );
 
-    // Center both horizontally and vertically
-    const tx = (w - treeW * scale) / 2 - minX * scale;
-    const ty = (h - treeH * scale) / 2 - minY * scale;
+    // Center on bounding box center (tree is symmetric now)
+    const cx = (minX + maxX) / 2;
+    const cy = (minY + maxY) / 2;
+    const tx = w / 2 - cx * scale;
+    const ty = h / 2 - cy * scale;
 
     const transform = d3.zoomIdentity.translate(tx, ty).scale(scale);
 
     if (animate) {
-      this.svg
-        .transition()
-        .duration(750)
-        .call(this.zoom.transform, transform);
+      this.svg.transition().duration(750).call(this.zoom.transform, transform);
     } else {
       this.svg.call(this.zoom.transform, transform);
     }
@@ -835,69 +760,42 @@ export class TreeVisualization {
   highlightNode(nodeId: string): void {
     const node = this.nodes.find((n) => n.id === nodeId);
     if (!node) return;
-
-    const containerEl = this.opts.container;
-    const w = containerEl.clientWidth;
-    const h = containerEl.clientHeight;
-
+    const w = this.opts.container.clientWidth;
+    const h = this.opts.container.clientHeight;
     const scale = 1.2;
-    const tx = w / 2 - (node.x + NODE_WIDTH / 2) * scale;
-    const ty = h / 2 - (node.y + NODE_HEIGHT / 2) * scale;
-
-    const transform = d3.zoomIdentity.translate(tx, ty).scale(scale);
-    this.svg.transition().duration(750).call(this.zoom.transform, transform);
+    const tx = w / 2 - node.x * scale;
+    const ty = h / 2 - node.y * scale;
+    this.svg.transition().duration(750).call(this.zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
   }
 
-  /**
-   * Fly/zoom the viewport to center on a specific node by ID.
-   * Smoothly animates to the node with a comfortable zoom level.
-   */
   flyToNode(nodeId: string): void {
     const node = this.nodes.find((n) => n.id === nodeId);
     if (!node) return;
-
-    const containerEl = this.opts.container;
-    const w = containerEl.clientWidth;
-    const h = containerEl.clientHeight;
-
-    const scale = 1.0;
-    const tx = w / 2 - (node.x + NODE_WIDTH / 2) * scale;
-    const ty = h / 2 - (node.y + NODE_HEIGHT / 2) * scale;
-
-    const transform = d3.zoomIdentity.translate(tx, ty).scale(scale);
-    this.svg
-      .transition()
-      .duration(800)
-      .ease(d3.easeCubicInOut)
-      .call(this.zoom.transform, transform);
+    const w = this.opts.container.clientWidth;
+    const h = this.opts.container.clientHeight;
+    const scale = 1.1;
+    const tx = w / 2 - node.x * scale;
+    const ty = h / 2 - node.y * scale;
+    this.svg.transition().duration(800).ease(d3.easeCubicInOut).call(this.zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
   }
 
-  /**
-   * Visually highlight (or un-highlight) a node from the sidebar.
-   * Applies a glow effect and brightened edges without zooming.
-   */
   highlightNodeVisual(nodeId: string, active: boolean): void {
     const node = this.nodes.find((n) => n.id === nodeId);
     if (!node) return;
-
-    if (active) {
-      this.onNodeHover(node, true);
-    } else {
-      this.onNodeHover(node, false);
-    }
+    this.onNodeHover(node, active);
   }
 }
 
 // ---------------------------------------------------------------------------
-// Node detail panel (for tree.html)
+// Node detail panel
 // ---------------------------------------------------------------------------
 
 export function openNodePanel(node: TreeNode, tree: TreeJson): void {
   const panel = $(".node-panel") as HTMLElement | null;
   if (!panel) return;
 
-  const color = LAYER_COLORS[node.layer] || "#6366f1";
-  const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6366f1";
+  const color = LAYER_COLORS[node.layer] || "#6b7280";
+  const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6b7280";
 
   const prereqLinks = node.prerequisites
     .map((pid) => {
@@ -924,7 +822,6 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
     )
     .join("");
 
-  // Thumbnail preview in panel
   const thumbHtml = node.thumbnail
     ? `<div class="node-panel__thumb"><img src="./${node.thumbnail}" alt="${node.title}" /></div>`
     : "";
@@ -956,27 +853,17 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
       </div>
     </div>
     ${tagsHtml ? `<div style="margin:8px 0">${tagsHtml}</div>` : ""}
-    ${
-      prereqLinks
-        ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Prerequisites</p><ul class="node-panel__link-list">${prereqLinks}</ul>`
-        : ""
-    }
-    ${
-      unlockLinks
-        ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Unlocks</p><ul class="node-panel__link-list">${unlockLinks}</ul>`
-        : ""
-    }
+    ${prereqLinks ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Prerequisites</p><ul class="node-panel__link-list">${prereqLinks}</ul>` : ""}
+    ${unlockLinks ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Unlocks</p><ul class="node-panel__link-list">${unlockLinks}</ul>` : ""}
     <a href="${articleUrl(node.id)}" class="node-panel__cta" style="background:linear-gradient(135deg,${color},${LAYER_COLORS[Math.min(node.layer + 1, 5)] || color})">Read Article <span style="font-size:1.1em">&rarr;</span></a>
   `;
 
   panel.classList.add("open");
 
-  // Close on button click
   panel.querySelector(".node-panel__close")?.addEventListener("click", () => {
     panel.classList.remove("open");
   });
 
-  // Close on Escape
   const escHandler = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
       panel.classList.remove("open");
@@ -985,13 +872,11 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
   };
   document.addEventListener("keydown", escHandler);
 
-  // Close on click outside panel
   const outsideHandler = (e: MouseEvent) => {
     if (!panel.contains(e.target as Node)) {
       panel.classList.remove("open");
       document.removeEventListener("click", outsideHandler);
     }
   };
-  // Delay to avoid closing immediately from the node click that opened it
   setTimeout(() => document.addEventListener("click", outsideHandler), 100);
 }

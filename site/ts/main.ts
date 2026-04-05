@@ -77,12 +77,12 @@ export interface TreeJson {
 // ---------------------------------------------------------------------------
 
 export const LAYER_COLORS: Record<number, string> = {
-  0: "#00d4ff",
-  1: "#38bdf8",
-  2: "#a855f7",
-  3: "#d946ef",
-  4: "#f43f5e",
-  5: "#f59e0b",
+  0: "#e0a83a",      // warm gold — welcoming entry
+  1: "#3dadcf",      // teal — building skills
+  2: "#9b6dd7",      // purple — applied complexity
+  3: "#d946ef",      // magenta — advanced
+  4: "#e85d5d",      // red — expert
+  5: "#f5a623",      // amber — mastery
 };
 
 export const LAYER_NAMES: Record<number, string> = {
@@ -95,9 +95,9 @@ export const LAYER_NAMES: Record<number, string> = {
 };
 
 export const DIFFICULTY_COLORS: Record<string, string> = {
-  beginner: "#22c55e",
-  intermediate: "#3b82f6",
-  advanced: "#f97316",
+  beginner: "#4ade80",
+  intermediate: "#60a5fa",
+  advanced: "#f59e0b",
   expert: "#ef4444",
 };
 
