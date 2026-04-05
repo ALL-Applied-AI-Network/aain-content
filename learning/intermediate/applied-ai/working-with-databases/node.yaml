@@ -1,0 +1,33 @@
+id: "intermediate/applied-ai/working-with-databases"
+title: "Working with Databases"
+description: "Store and query structured data with SQL and SQLite — the foundation for building data-driven AI applications."
+layer: 2
+difficulty: intermediate
+estimated_minutes: 50
+thumbnail: "thumbnail.svg"
+tags: ["databases", "sql", "sqlite", "data", "storage"]
+
+prerequisites:
+  - "foundations/reading-writing-data"
+  - "foundations/python-through-ai"
+unlocks: []
+
+content_file: "working-with-databases.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Adam Haile"
+    role: author
+    github: "devartech"
+    affiliation: "MSOE / ALL Applied AI Network"
+
+resources:
+  - title: "Simon Willison: sqlite-utils"
+    url: "https://github.com/simonw/sqlite-utils"
+    type: repo
+    contributor: "Simon Willison"
+  - title: "SQLite Tutorial"
+    url: "https://www.sqlitetutorial.net/"
+    type: course

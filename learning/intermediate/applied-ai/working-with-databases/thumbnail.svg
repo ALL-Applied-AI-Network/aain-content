@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Database cylinder -->
+  <g transform="translate(200,110)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <!-- Cylinder top ellipse -->
+    <ellipse cx="0" cy="-40" rx="55" ry="18"/>
+    <!-- Cylinder body -->
+    <line x1="-55" y1="-40" x2="-55" y2="30"/>
+    <line x1="55" y1="-40" x2="55" y2="30"/>
+    <!-- Cylinder bottom ellipse -->
+    <ellipse cx="0" cy="30" rx="55" ry="18"/>
+    <!-- Middle divider ellipses -->
+    <ellipse cx="0" cy="-10" rx="55" ry="18" stroke-dasharray="4,3" opacity="0.4"/>
+    <ellipse cx="0" cy="10" rx="55" ry="18" stroke-dasharray="4,3" opacity="0.3"/>
+    <!-- Data rows inside -->
+    <line x1="-35" y1="-30" x2="35" y2="-30" stroke-width="1" opacity="0.5"/>
+    <line x1="-35" y1="-22" x2="35" y2="-22" stroke-width="1" opacity="0.5"/>
+    <!-- Glow dots representing data -->
+    <circle cx="-25" cy="-26" r="2" fill="url(#brand)" opacity="0.6"/>
+    <circle cx="-5" cy="-26" r="2" fill="url(#brand)" opacity="0.6"/>
+    <circle cx="15" cy="-26" r="2" fill="url(#brand)" opacity="0.6"/>
+    <circle cx="-25" cy="-18" r="2" fill="#00d4ff" opacity="0.4"/>
+    <circle cx="-5" cy="-18" r="2" fill="#00d4ff" opacity="0.4"/>
+    <circle cx="15" cy="-18" r="2" fill="#00d4ff" opacity="0.4"/>
+    <!-- SQL hint -->
+    <text x="0" y="60" text-anchor="middle" fill="#a855f7" font-family="monospace" font-size="10" opacity="0.5">SELECT * FROM</text>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Working with Databases</text>
+</svg>
