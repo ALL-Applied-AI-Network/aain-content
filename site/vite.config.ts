@@ -37,6 +37,7 @@ export default defineConfig({
         article: resolve(__dirname, "article.html"),
         toolkit: resolve(__dirname, "toolkit.html"),
         playbook: resolve(__dirname, "playbook.html"),
+        impact: resolve(__dirname, "impact.html"),
       },
     },
   },

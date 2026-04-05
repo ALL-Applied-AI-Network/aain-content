@@ -1,0 +1,504 @@
+/* ========================================================================
+   Impact Page — US Map + Chapter Directory
+   ======================================================================== */
+
+/* ---------- Hero ---------- */
+.impact-hero {
+  padding: 7rem 0 3rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 100%),
+    var(--bg-primary);
+}
+
+.impact-hero__inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.impact-hero__badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a78bfa;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-mono);
+}
+
+.impact-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #fff 30%, #a78bfa 70%, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.impact-hero__subtitle {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ---------- Stats Bar ---------- */
+.impact-stats {
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.impact-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+
+.impact-stat {
+  padding: 1.25rem 0.5rem;
+}
+
+.impact-stat__value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #22d3ee, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.impact-stat__label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+/* ---------- Map Section ---------- */
+.impact-map-section {
+  padding: 3rem 0 2rem;
+}
+
+.impact-map__wrapper {
+  position: relative;
+}
+
+.impact-map {
+  width: 100%;
+  aspect-ratio: 975 / 610;
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 100%);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.impact-map svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* State styling */
+.impact-map .state {
+  fill: rgba(255, 255, 255, 0.03);
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 0.5;
+  transition: fill 0.2s, stroke 0.2s, filter 0.2s;
+  cursor: default;
+}
+
+.impact-map .state--active {
+  fill: rgba(99, 102, 241, 0.25);
+  stroke: rgba(129, 140, 248, 0.5);
+  stroke-width: 1;
+  cursor: pointer;
+  filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.2));
+}
+
+.impact-map .state--active:hover {
+  fill: rgba(99, 102, 241, 0.4);
+  stroke: rgba(167, 139, 250, 0.7);
+  filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.35));
+}
+
+.impact-map .state--launching {
+  fill: rgba(34, 211, 238, 0.12);
+  stroke: rgba(34, 211, 238, 0.3);
+  stroke-width: 0.8;
+  cursor: pointer;
+}
+
+.impact-map .state--launching:hover {
+  fill: rgba(34, 211, 238, 0.25);
+  stroke: rgba(34, 211, 238, 0.5);
+  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.2));
+}
+
+/* Hub markers */
+.impact-map .hub-marker {
+  pointer-events: none;
+}
+
+.impact-map .hub-marker__pulse {
+  animation: hub-pulse 2.5s ease-in-out infinite;
+}
+
+.impact-map .hub-marker__dot {
+  transition: r 0.15s;
+}
+
+@keyframes hub-pulse {
+  0%, 100% { opacity: 0.3; r: 8; }
+  50% { opacity: 0; r: 16; }
+}
+
+/* Map tooltip */
+.impact-tooltip {
+  position: fixed;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 15, 25, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  backdrop-filter: blur(8px);
+  max-width: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.impact-tooltip--visible {
+  opacity: 1;
+}
+
+.impact-tooltip__state {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.impact-tooltip__name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.impact-tooltip__university {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.impact-tooltip__meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+}
+
+.impact-tooltip__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--text-muted);
+}
+
+.impact-tooltip__meta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.impact-tooltip__meta-dot--active { background: #818cf8; }
+.impact-tooltip__meta-dot--launching { background: #22d3ee; }
+
+/* Legend */
+.impact-map__legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.25rem;
+  padding: 0.75rem 0;
+}
+
+.impact-map__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.impact-map__legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.impact-map__legend-dot--active {
+  background: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 6px rgba(99, 102, 241, 0.4);
+}
+
+.impact-map__legend-dot--launching {
+  background: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 6px rgba(34, 211, 238, 0.3);
+}
+
+.impact-map__legend-dot--empty {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Directory ---------- */
+.impact-directory {
+  padding: 3rem 0 4rem;
+}
+
+.impact-directory__title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+
+.impact-directory__subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.impact-directory__filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.impact-filter {
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.impact-filter:hover {
+  color: var(--text-secondary);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.impact-filter--active {
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.4);
+  background: rgba(167, 139, 250, 0.08);
+}
+
+.impact-directory__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+
+/* Hub cards */
+.hub-card {
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.hub-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.hub-card--highlight {
+  border-color: rgba(99, 102, 241, 0.2);
+  background: rgba(99, 102, 241, 0.04);
+}
+
+.hub-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.hub-card__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.hub-card__status {
+  flex-shrink: 0;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.hub-card__status--active {
+  color: #818cf8;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.hub-card__status--launching {
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+.hub-card__university {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.hub-card__location {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.hub-card__desc {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.hub-card__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.hub-card__tag {
+  padding: 0.15rem 0.55rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+}
+
+.hub-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.hub-card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ---------- CTA ---------- */
+.impact-cta {
+  padding: 4rem 0;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.impact-cta__title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.impact-cta__desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.impact-cta__actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .impact-stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .impact-map__legend {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .impact-directory__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-stat__value {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-hero {
+    padding: 6rem 0 2rem;
+  }
+
+  .impact-cta__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
