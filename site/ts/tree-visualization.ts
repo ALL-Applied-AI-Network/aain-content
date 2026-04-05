@@ -301,6 +301,14 @@ export class TreeVisualization {
       .attr("flood-color", "#ffffff")
       .attr("flood-opacity", "0.12");
 
+    // Card background gradient (subtle depth)
+    const cardGrad = defs.append("linearGradient")
+      .attr("id", "card-bg-grad")
+      .attr("x1", "0").attr("y1", "0")
+      .attr("x2", "0").attr("y2", "1");
+    cardGrad.append("stop").attr("offset", "0%").attr("stop-color", "#1a1a28");
+    cardGrad.append("stop").attr("offset", "100%").attr("stop-color", "#0f0f1a");
+
     this.g = this.svg.append("g").attr("class", "tree-root");
 
     this.zoom = d3
@@ -353,12 +361,23 @@ export class TreeVisualization {
         ? `M${x1},${y1} L${x2},${y2}`
         : `M${x1},${y1} C${x1},${cy1} ${x2},${cy2} ${x2},${y2}`;
 
+      // Subtle glow path behind each edge
+      edgeGroup
+        .append("path")
+        .attr("d", pathD)
+        .attr("class", "tree-edge-glow")
+        .attr("stroke", fromColor)
+        .attr("stroke-opacity", "0.06")
+        .attr("fill", "none")
+        .attr("stroke-width", String(EDGE_GLOW_WIDTH))
+        .attr("stroke-linecap", "round");
+
       const pathEl = edgeGroup
         .append("path")
         .attr("d", pathD)
         .attr("class", "tree-edge")
         .attr("stroke", fromColor)
-        .attr("stroke-opacity", "0.18")
+        .attr("stroke-opacity", "0.32")
         .attr("fill", "none")
         .attr("stroke-width", String(EDGE_WIDTH))
         .attr("stroke-linecap", "round")
@@ -402,7 +421,7 @@ export class TreeVisualization {
       // Cache element reference for O(1) lookups
       this.nodeElements.set(node.id, g.node()!);
 
-      // Card background
+      // Card background with gradient
       g.append("rect")
         .attr("class", "tree-node__card")
         .attr("x", -CARD_W / 2)
@@ -411,11 +430,22 @@ export class TreeVisualization {
         .attr("height", CARD_H)
         .attr("rx", CARD_R)
         .attr("ry", CARD_R)
-        .attr("fill", "#12121e")
+        .attr("fill", "url(#card-bg-grad)")
         .attr("stroke", color)
         .attr("stroke-width", String(root ? CARD_BORDER + 1 : CARD_BORDER))
-        .attr("stroke-opacity", root ? "0.65" : "0.25")
-;
+        .attr("stroke-opacity", root ? "0.80" : "0.40");
+
+      // Subtle top-edge highlight for all cards
+      if (!root) {
+        g.append("line")
+          .attr("x1", -CARD_W / 2 + CARD_R)
+          .attr("y1", -CARD_H / 2 + 1)
+          .attr("x2", CARD_W / 2 - CARD_R)
+          .attr("y2", -CARD_H / 2 + 1)
+          .attr("stroke", color)
+          .attr("stroke-opacity", "0.18")
+          .attr("stroke-width", "1");
+      }
 
       // Thumbnail (left side)
       if (node.thumbnail) {
@@ -428,7 +458,7 @@ export class TreeVisualization {
           .attr("height", CARD_THUMB)
           .attr("clip-path", `url(#${clipId})`)
           .attr("preserveAspectRatio", "xMidYMid slice")
-          .attr("opacity", "0.9");
+          .attr("opacity", "1");
       } else {
         g.append("rect")
           .attr("x", -CARD_W / 2 + thumbPad)
@@ -438,7 +468,7 @@ export class TreeVisualization {
           .attr("rx", 6)
           .attr("ry", 6)
           .attr("fill", color)
-          .attr("opacity", "0.08");
+          .attr("opacity", "0.15");
       }
 
       // Title text (right side, word-wrapped)
@@ -475,9 +505,9 @@ export class TreeVisualization {
           .attr("y", textStartY + i * lineHeight)
           .attr("text-anchor", "start")
           .attr("dominant-baseline", "central")
-          .attr("font-size", "11.5px")
+          .attr("font-size", "12.5px")
           .attr("font-weight", root ? "700" : "600")
-          .attr("fill", "#c8ccd4")
+          .attr("fill", "#e8eaf0")
           .attr("font-family", "var(--font-display)")
           .text(line);
       }
@@ -491,7 +521,7 @@ export class TreeVisualization {
         .attr("dominant-baseline", "central")
         .attr("font-size", "9.5px")
         .attr("font-weight", "500")
-        .attr("fill", "rgba(148, 163, 184, 0.4)")
+        .attr("fill", "rgba(148, 163, 184, 0.65)")
         .attr("font-family", "var(--font-mono)")
         .text(formatMinutes(node.estimated_minutes));
 
@@ -559,6 +589,7 @@ export class TreeVisualization {
       </div>
     `;
 
+    this.tooltip.style.borderLeftColor = color;
     this.tooltip.classList.add("visible");
     this.moveTooltip(event);
   }
@@ -584,7 +615,7 @@ export class TreeVisualization {
     if (!entering) {
       // Reset all edges via cached references
       for (const e of this.edgeElements) {
-        e.el.setAttribute("stroke-opacity", "0.18");
+        e.el.setAttribute("stroke-opacity", "0.32");
         e.el.setAttribute("stroke-width", String(EDGE_WIDTH));
       }
       // Reset all nodes via cached references
@@ -594,10 +625,10 @@ export class TreeVisualization {
         group.classed("tree-node--connected", false);
         group.select(".tree-node__card")
           .attr("filter", null)
-          .attr("stroke-opacity", isRoot ? "0.65" : "0.25")
-          .attr("fill", "#12121e");
-        group.select(".tree-node__thumb").attr("opacity", "0.9");
-        group.selectAll(".node-title").attr("fill", "#c8ccd4");
+          .attr("stroke-opacity", isRoot ? "0.80" : "0.40")
+          .attr("fill", "url(#card-bg-grad)");
+        group.select(".tree-node__thumb").attr("opacity", "1");
+        group.selectAll(".node-title").attr("fill", "#e8eaf0");
       }
       return;
     }
@@ -628,13 +659,15 @@ export class TreeVisualization {
       if (id === nodeId) {
         group.select(".tree-node__card")
           .attr("filter", "url(#node-hover-glow)")
-          .attr("stroke-opacity", "0.9");
+          .attr("stroke-opacity", "0.9")
+          .attr("fill", "#1e1e2e");
         group.select(".tree-node__thumb").attr("opacity", "1");
         group.selectAll(".node-title").attr("fill", "#ffffff");
       } else if (connectedNodeIds.has(id)) {
         group.classed("tree-node--connected", true);
         group.select(".tree-node__thumb").attr("opacity", "1");
-        group.select(".tree-node__card").attr("stroke-opacity", "0.55");
+        group.select(".tree-node__card").attr("stroke-opacity", "0.60");
+        group.selectAll(".node-title").attr("fill", "#dfe1e8");
       } else {
         group.select(".tree-node__thumb").attr("opacity", "0.2");
         group.select(".tree-node__card").attr("stroke-opacity", "0.08").attr("fill", "#0e0e18");
