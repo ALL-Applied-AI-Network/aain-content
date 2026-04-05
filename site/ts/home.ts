@@ -65,9 +65,10 @@ async function init(): Promise<void> {
   if (statHours) statHours.textContent = `~${totalEstimatedHours(tree.nodes)}`;
 
   // --- 3D Hero Scene (Three.js — dynamically imported) ---
+  // Switch between hero scene variants: "hero-scene" | "hero-scene-b" | "hero-scene-c"
   const hero3d = document.getElementById("hero-3d");
   if (hero3d) {
-    import("./hero-scene").then((m) => m.initHeroScene(hero3d));
+    import("./hero-scene-b").then((m) => m.initHeroScene(hero3d));
   }
 
   // --- Content Library ---

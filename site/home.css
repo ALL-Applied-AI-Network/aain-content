@@ -480,6 +480,15 @@
   color: var(--gradient-cyan);
 }
 
+.event-card__icon-svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: -4px;
+  margin-right: 0.35rem;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 .event-card__img {
   height: 200px;
   overflow: hidden;
@@ -850,6 +859,13 @@
   margin-bottom: 0.3rem;
 }
 
+.proof__num-icon-svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 0.3rem;
+  flex-shrink: 0;
+}
+
 .proof__num:nth-child(1) .proof__num-icon { color: var(--gradient-blue); }
 .proof__num:nth-child(2) .proof__num-icon { color: var(--gradient-cyan); }
 .proof__num:nth-child(3) .proof__num-icon { color: var(--gradient-pink); }
@@ -985,6 +1001,11 @@
   color: var(--repo-accent, var(--accent-primary));
 }
 
+.repo-card__icon-wrap svg {
+  width: 28px;
+  height: 28px;
+}
+
 .repo-card__name {
   font-family: var(--font-mono);
   font-size: 0.88rem;
@@ -1037,6 +1058,12 @@
 .repo-card__features li .material-icons-outlined {
   font-size: 1rem;
   color: var(--repo-accent, var(--text-muted));
+  flex-shrink: 0;
+}
+
+.repo-feature-icon {
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
