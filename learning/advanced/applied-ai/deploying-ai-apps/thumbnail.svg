@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Rocket / deployment icon -->
+  <g transform="translate(200,110)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <!-- Rocket body -->
+    <path d="M0,-55 Q15,-40 15,-10 L8,10 L-8,10 L-15,-10 Q-15,-40 0,-55 Z"/>
+    <!-- Rocket window -->
+    <circle cx="0" cy="-25" r="7" fill="url(#brand)" opacity="0.3"/>
+    <circle cx="0" cy="-25" r="3.5" fill="url(#brand)" opacity="0.5"/>
+    <!-- Rocket fins -->
+    <path d="M-15,-5 L-25,15 L-8,10"/>
+    <path d="M15,-5 L25,15 L8,10"/>
+    <!-- Exhaust flames -->
+    <path d="M-5,10 Q-8,25 0,35 Q8,25 5,10" stroke="#d946ef" fill="#d946ef" opacity="0.3"/>
+    <path d="M-3,10 Q-5,20 0,28 Q5,20 3,10" stroke="#a855f7" fill="#a855f7" opacity="0.4"/>
+    <!-- Cloud platform -->
+    <path d="M-60,45 Q-60,35 -50,35 Q-45,25 -30,30 Q-25,20 -10,25 Q0,20 10,25 Q25,20 30,30 Q45,25 50,35 Q60,35 60,45 Z" stroke-width="1.5" opacity="0.5"/>
+    <!-- Server dots in cloud -->
+    <circle cx="-25" cy="40" r="3" fill="url(#brand)" opacity="0.4"/>
+    <circle cx="0" cy="40" r="3" fill="url(#brand)" opacity="0.4"/>
+    <circle cx="25" cy="40" r="3" fill="url(#brand)" opacity="0.4"/>
+    <!-- Docker hint -->
+    <text x="0" y="65" text-anchor="middle" fill="#00d4ff" font-family="monospace" font-size="9" opacity="0.4">docker deploy</text>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Deploying AI Apps</text>
+</svg>

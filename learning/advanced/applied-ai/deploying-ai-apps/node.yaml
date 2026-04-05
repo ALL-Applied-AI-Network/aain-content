@@ -1,0 +1,37 @@
+id: "advanced/applied-ai/deploying-ai-apps"
+title: "Deploying AI Applications"
+description: "Ship your AI projects to the world — from FastAPI backends to Docker containers to cloud deployment, with cost management and scaling strategies."
+layer: 3
+difficulty: advanced
+estimated_minutes: 55
+thumbnail: "thumbnail.svg"
+tags: ["deployment", "hosting", "docker", "fastapi", "production"]
+
+prerequisites:
+  - "intermediate/applied-ai/build-a-chatbot"
+  - "intermediate/applied-ai/build-an-agent"
+unlocks: []
+
+content_file: "deploying-ai-apps.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Brett Storoe"
+    role: author
+    github: "storoeb"
+    affiliation: "MSOE / ALL Applied AI Network"
+  - name: "Ben Paulson"
+    role: reviewer
+    github: "Benja-Pauls"
+    affiliation: "MSOE / ALL Applied AI Network"
+
+resources:
+  - title: "FastAPI Documentation"
+    url: "https://fastapi.tiangolo.com/"
+    type: tool
+  - title: "Chip Huyen: ML Systems Design"
+    url: "https://github.com/chiphuyen/machine-learning-systems-design"
+    type: repo
+    contributor: "Chip Huyen"
