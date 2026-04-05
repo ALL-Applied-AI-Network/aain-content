@@ -1,0 +1,35 @@
+id: "advanced/applied-ai/llm-security"
+title: "LLM Security & Safety"
+description: "Learn to identify and defend against prompt injection, jailbreaks, and data exfiltration attacks — essential knowledge for deploying LLMs in production."
+layer: 3
+difficulty: advanced
+estimated_minutes: 45
+thumbnail: "thumbnail.svg"
+tags: ["security", "prompt-injection", "safety", "guardrails", "red-teaming"]
+
+prerequisites:
+  - "intermediate/applied-ai/prompt-engineering"
+  - "intermediate/applied-ai/agents-and-tool-use"
+unlocks: []
+
+content_file: "llm-security.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Simon Willison"
+    role: curator
+    github: "simonw"
+
+resources:
+  - title: "Simon Willison: Prompt Injection Series"
+    url: "https://simonwillison.net/series/prompt-injection/"
+    type: article
+    note: "The definitive collection of writing on prompt injection — Simon has been tracking and documenting this class of vulnerability since the beginning."
+    contributor: "Simon Willison"
+  - title: "Adversarial Attacks on LLMs"
+    url: "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/"
+    type: article
+    note: "Lilian Weng's thorough survey of adversarial attack techniques and defenses for large language models."
+    contributor: "Lilian Weng"

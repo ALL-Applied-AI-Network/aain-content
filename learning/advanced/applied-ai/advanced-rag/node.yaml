@@ -1,0 +1,34 @@
+id: "advanced/applied-ai/advanced-rag"
+title: "Advanced RAG Patterns"
+description: "Go beyond basic RAG with hybrid search, intelligent chunking strategies, reranking, and evaluation-driven iteration to build production-quality retrieval systems."
+layer: 3
+difficulty: advanced
+estimated_minutes: 55
+thumbnail: "thumbnail.svg"
+tags: ["rag", "hybrid-search", "reranking", "chunking", "evaluation"]
+
+prerequisites:
+  - "intermediate/applied-ai/rag-fundamentals"
+unlocks: []
+
+content_file: "advanced-rag.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Simon Willison"
+    role: curator
+    github: "simonw"
+
+resources:
+  - title: "Simon Willison: RAG Is More Than Embeddings"
+    url: "https://simonwillison.net/2023/Oct/23/embeddings/"
+    type: article
+    note: "Practical perspective on when embeddings-based RAG works, when it doesn't, and what alternatives exist."
+    contributor: "Simon Willison"
+  - title: "Systematically Improving Your RAG"
+    url: "https://jxnl.co/writing/2024/05/22/systematically-improving-your-rag/"
+    type: article
+    note: "Jason Liu's structured approach to diagnosing and improving RAG pipelines — goes well beyond 'add more chunks.'"
+    contributor: "Jason Liu"

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-03T01:11:10.975Z",
+  "generated_at": "2026-04-05T04:25:03.203Z",
   "content": [
     {
       "type": "learning",
@@ -153,6 +153,46 @@
       "description": "Combine everything you've learned into a real, useful Python project — planned with AI, built step by step, and pushed to GitHub",
       "path": "learning/foundations/build-your-first-script/build-your-first-script.md",
       "thumbnail": "learning/foundations/build-your-first-script/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "advanced/applied-ai/structured-outputs",
+      "title": "Structured Outputs & Data Extraction",
+      "description": "Learn to extract structured, validated data from LLMs using tools like Instructor and Pydantic — the backbone of reliable AI-powered data pipelines.",
+      "path": "learning/advanced/applied-ai/structured-outputs/structured-outputs.md",
+      "thumbnail": "learning/advanced/applied-ai/structured-outputs/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "advanced/applied-ai/ml-systems-design",
+      "title": "ML Systems Design",
+      "description": "Design reliable AI systems for production — covering architecture patterns, monitoring, deployment strategies, and the operational practices that separate prototypes from products.",
+      "path": "learning/advanced/applied-ai/ml-systems-design/ml-systems-design.md",
+      "thumbnail": "learning/advanced/applied-ai/ml-systems-design/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "advanced/applied-ai/llm-security",
+      "title": "LLM Security & Safety",
+      "description": "Learn to identify and defend against prompt injection, jailbreaks, and data exfiltration attacks — essential knowledge for deploying LLMs in production.",
+      "path": "learning/advanced/applied-ai/llm-security/llm-security.md",
+      "thumbnail": "learning/advanced/applied-ai/llm-security/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "advanced/applied-ai/fine-tuning",
+      "title": "Fine-Tuning Fundamentals",
+      "description": "Understand when and how to fine-tune language models — from dataset preparation to LoRA adapters to evaluation — and when simpler approaches are better.",
+      "path": "learning/advanced/applied-ai/fine-tuning/fine-tuning.md",
+      "thumbnail": "learning/advanced/applied-ai/fine-tuning/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "advanced/applied-ai/advanced-rag",
+      "title": "Advanced RAG Patterns",
+      "description": "Go beyond basic RAG with hybrid search, intelligent chunking strategies, reranking, and evaluation-driven iteration to build production-quality retrieval systems.",
+      "path": "learning/advanced/applied-ai/advanced-rag/advanced-rag.md",
+      "thumbnail": "learning/advanced/applied-ai/advanced-rag/thumbnail.svg"
     },
     {
       "type": "playbook",

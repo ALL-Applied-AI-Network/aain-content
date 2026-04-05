@@ -23,3 +23,15 @@ contributors:
   - name: "Adam Haile"
     role: author
     affiliation: "MSOE / MAIC"
+
+resources:
+  - title: "Practical Deep Learning for Coders"
+    url: "https://course.fast.ai/"
+    type: course
+    note: "Jeremy Howard's famous course teaches deep learning by doing — the same learn-by-building philosophy we use here, scaled up to neural networks."
+    contributor: "Jeremy Howard"
+  - title: "NumPy: The Absolute Beginner's Guide"
+    url: "https://numpy.org/doc/stable/user/absolute_beginners.html"
+    type: tool
+    note: "NumPy is the foundation of Python's entire data ecosystem. Understanding arrays here pays off in every AI library you'll touch."
+    contributor: "Travis Oliphant"

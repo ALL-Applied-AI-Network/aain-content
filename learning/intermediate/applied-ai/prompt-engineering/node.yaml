@@ -12,8 +12,22 @@ prerequisites:
 unlocks:
   - "intermediate/applied-ai/build-a-chatbot"
   - "intermediate/applied-ai/rag-fundamentals"
+  - "advanced/applied-ai/structured-outputs"
+  - "advanced/applied-ai/llm-security"
 
 content_file: "prompt-engineering.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+resources:
+  - title: "Prompt Engineering"
+    url: "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+    type: article
+    note: "Lilian Weng's comprehensive taxonomy of prompting techniques — covers zero-shot, few-shot, CoT, and more with clear examples and paper references."
+    contributor: "Lilian Weng"
+  - title: "Prompt Injection"
+    url: "https://simonwillison.net/series/prompt-injection/"
+    type: article
+    note: "Simon Willison's ongoing series on prompt injection attacks — essential reading on the security implications of deploying LLM-powered applications."
+    contributor: "Simon Willison"

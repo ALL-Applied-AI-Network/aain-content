@@ -1,0 +1,40 @@
+id: "advanced/applied-ai/fine-tuning"
+title: "Fine-Tuning Fundamentals"
+description: "Understand when and how to fine-tune language models — from dataset preparation to LoRA adapters to evaluation — and when simpler approaches are better."
+layer: 3
+difficulty: advanced
+estimated_minutes: 60
+thumbnail: "thumbnail.svg"
+tags: ["fine-tuning", "training", "lora", "datasets", "transfer-learning"]
+
+prerequisites:
+  - "intermediate/applied-ai/how-ai-apis-work"
+  - "intermediate/applied-ai/evaluation-and-observability"
+unlocks: []
+
+content_file: "fine-tuning.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Jeremy Howard"
+    role: curator
+    github: "jph00"
+
+resources:
+  - title: "Practical Deep Learning for Coders"
+    url: "https://course.fast.ai/"
+    type: course
+    note: "Jeremy Howard's legendary course — the fine-tuning sections are especially relevant and remarkably accessible."
+    contributor: "Jeremy Howard"
+  - title: "Hamel Husain's Blog"
+    url: "https://hamel.dev/"
+    type: article
+    note: "Hamel writes extensively about practical fine-tuning workflows, dataset curation, and evaluation — essential reading."
+    contributor: "Hamel Husain"
+  - title: "Designing Machine Learning Systems"
+    url: "https://huyenchip.com/"
+    type: article
+    note: "Chip Huyen's work on ML systems design provides crucial context for when fine-tuning fits into the broader system."
+    contributor: "Chip Huyen"

@@ -13,6 +13,7 @@ prerequisites:
 unlocks:
   - "intermediate/applied-ai/agents-and-tool-use"
   - "intermediate/applied-ai/evaluation-and-observability"
+  - "advanced/applied-ai/advanced-rag"
 
 content_file: "rag-fundamentals.md"
 notebook_file: null
@@ -38,3 +39,13 @@ resources:
     url: "https://simonwillison.net/2023/Oct/23/embeddings/"
     type: article
     note: "Practical perspective on when embeddings-based RAG works and when simpler approaches are better."
+  - title: "Systematically Improving Your RAG"
+    url: "https://jxnl.co/writing/2024/05/22/systematically-improving-your-rag/"
+    type: article
+    note: "Jason Liu's structured approach to RAG improvement — goes beyond 'add more chunks' to systematic diagnosis and iteration."
+    contributor: "Jason Liu"
+  - title: "Building LLM Applications for Production"
+    url: "https://huyenchip.com/2023/04/11/llm-engineering.html"
+    type: article
+    note: "Chip Huyen covers production considerations for LLM apps including RAG — latency, cost, evaluation, and the messy realities of shipping."
+    contributor: "Chip Huyen"

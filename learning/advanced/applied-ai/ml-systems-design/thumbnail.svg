@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="none" stroke="url(#brand)" stroke-width="1"/>
+    </marker>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- System architecture boxes -->
+  <!-- API Gateway -->
+  <g transform="translate(50,40)">
+    <rect width="65" height="30" rx="4" fill="url(#brand)" fill-opacity="0.08" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.5"/>
+    <text x="32" y="20" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.6">API</text>
+  </g>
+  <!-- LLM Service -->
+  <g transform="translate(168,40)">
+    <rect width="65" height="30" rx="4" fill="url(#brand)" fill-opacity="0.1" stroke="url(#brand)" stroke-width="1.8" stroke-opacity="0.6"/>
+    <text x="32" y="20" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.7">LLM</text>
+  </g>
+  <!-- Cache -->
+  <g transform="translate(285,40)">
+    <rect width="65" height="30" rx="4" fill="url(#brand)" fill-opacity="0.06" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4"/>
+    <text x="32" y="20" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.5">Cache</text>
+  </g>
+  <!-- Arrows connecting top row -->
+  <line x1="120" y1="55" x2="163" y2="55" stroke="url(#brand)" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.4"/>
+  <line x1="238" y1="55" x2="280" y2="55" stroke="url(#brand)" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.4"/>
+  <!-- Monitor / Metrics row -->
+  <g transform="translate(110,100)">
+    <rect width="180" height="35" rx="4" fill="url(#brand)" fill-opacity="0.05" stroke="url(#brand)" stroke-width="1.2" stroke-opacity="0.3" stroke-dasharray="4,3"/>
+    <!-- Mini chart -->
+    <polyline points="15,25 35,15 55,20 75,8 95,12 115,6 135,18 155,10 165,14" fill="none" stroke="url(#brand)" stroke-width="1.2" stroke-opacity="0.5"/>
+    <text x="90" y="32" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="7" opacity="0.35">monitoring</text>
+  </g>
+  <!-- Arrows from services down to monitor -->
+  <line x1="82" y1="75" x2="150" y2="100" stroke="url(#brand)" stroke-width="0.8" stroke-opacity="0.25"/>
+  <line x1="200" y1="75" x2="200" y2="100" stroke="url(#brand)" stroke-width="0.8" stroke-opacity="0.25"/>
+  <line x1="317" y1="75" x2="250" y2="100" stroke="url(#brand)" stroke-width="0.8" stroke-opacity="0.25"/>
+  <!-- Labels -->
+  <text x="200" y="160" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">production architecture</text>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">ML Systems Design</text>
+</svg>

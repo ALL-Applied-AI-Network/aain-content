@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Shield -->
+  <g transform="translate(200,85)">
+    <path d="M0,-45 L40,-30 L40,10 Q40,45 0,55 Q-40,45 -40,10 L-40,-30 Z" fill="url(#brand)" fill-opacity="0.08" stroke="url(#brand)" stroke-width="2" stroke-opacity="0.6"/>
+    <!-- Lock icon inside shield -->
+    <rect x="-12" y="-5" width="24" height="18" rx="3" fill="none" stroke="url(#brand)" stroke-width="1.8" stroke-opacity="0.7"/>
+    <path d="M-7,-5 L-7,-12 Q-7,-20 0,-20 Q7,-20 7,-12 L7,-5" fill="none" stroke="url(#brand)" stroke-width="1.8" stroke-opacity="0.5"/>
+    <circle cx="0" cy="5" r="3" fill="url(#brand)" opacity="0.5"/>
+  </g>
+  <!-- Attack arrows (blocked) -->
+  <g stroke="url(#brand)" stroke-width="1.2" stroke-opacity="0.3">
+    <line x1="60" y1="50" x2="145" y2="72"/>
+    <line x1="55" y1="110" x2="145" y2="95"/>
+    <line x1="340" y1="55" x2="255" y2="75"/>
+    <line x1="345" y1="115" x2="255" y2="95"/>
+  </g>
+  <!-- X marks on blocked attacks -->
+  <g fill="none" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.4">
+    <g transform="translate(100,60)">
+      <line x1="-4" y1="-4" x2="4" y2="4"/>
+      <line x1="4" y1="-4" x2="-4" y2="4"/>
+    </g>
+    <g transform="translate(98,102)">
+      <line x1="-4" y1="-4" x2="4" y2="4"/>
+      <line x1="4" y1="-4" x2="-4" y2="4"/>
+    </g>
+    <g transform="translate(300,64)">
+      <line x1="-4" y1="-4" x2="4" y2="4"/>
+      <line x1="4" y1="-4" x2="-4" y2="4"/>
+    </g>
+    <g transform="translate(302,106)">
+      <line x1="-4" y1="-4" x2="4" y2="4"/>
+      <line x1="4" y1="-4" x2="-4" y2="4"/>
+    </g>
+  </g>
+  <!-- Labels -->
+  <text x="70" y="155" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">threats</text>
+  <text x="200" y="160" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">defenses</text>
+  <text x="330" y="155" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">threats</text>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">LLM Security &amp; Safety</text>
+</svg>

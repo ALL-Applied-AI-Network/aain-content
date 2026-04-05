@@ -1,0 +1,40 @@
+id: "advanced/applied-ai/ml-systems-design"
+title: "ML Systems Design"
+description: "Design reliable AI systems for production — covering architecture patterns, monitoring, deployment strategies, and the operational practices that separate prototypes from products."
+layer: 3
+difficulty: advanced
+estimated_minutes: 50
+thumbnail: "thumbnail.svg"
+tags: ["systems-design", "production", "monitoring", "deployment", "mlops"]
+
+prerequisites:
+  - "intermediate/applied-ai/evaluation-and-observability"
+  - "intermediate/applied-ai/build-an-agent"
+unlocks: []
+
+content_file: "ml-systems-design.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Chip Huyen"
+    role: curator
+    github: "chiphuyen"
+
+resources:
+  - title: "Designing Machine Learning Systems"
+    url: "https://huyenchip.com/"
+    type: article
+    note: "Chip Huyen's book and blog cover the full lifecycle of ML systems — from data pipelines to deployment to monitoring."
+    contributor: "Chip Huyen"
+  - title: "Machine Learning Systems Design"
+    url: "https://github.com/chiphuyen/machine-learning-systems-design"
+    type: repo
+    note: "Chip's open-source repo with frameworks for thinking about ML systems design problems — great interview prep too."
+    contributor: "Chip Huyen"
+  - title: "Hamel Husain's Blog"
+    url: "https://hamel.dev/"
+    type: article
+    note: "Practical ML engineering perspectives from someone who has shipped production ML systems at scale."
+    contributor: "Hamel Husain"

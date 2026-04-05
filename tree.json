@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-03T21:20:31.780Z",
+  "generated_at": "2026-04-05T04:25:02.922Z",
   "nodes": [
     {
       "id": "tooling/ai-ides/cursor-deep-dive",
@@ -9,7 +9,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
-      "thumbnail": "learning/tooling/ai-ides/cursor-deep-dive/thumbnail.png",
+      "thumbnail": "learning/tooling/ai-ides/cursor-deep-dive/thumbnail.svg",
       "tags": [
         "cursor",
         "ide",
@@ -42,7 +42,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 30,
-      "thumbnail": "learning/tooling/ai-ides/claude-code/thumbnail.png",
+      "thumbnail": "learning/tooling/ai-ides/claude-code/thumbnail.svg",
       "tags": [
         "claude-code",
         "cli",
@@ -73,7 +73,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
-      "thumbnail": "learning/intermediate/applied-ai/rag-fundamentals/thumbnail.png",
+      "thumbnail": "learning/intermediate/applied-ai/rag-fundamentals/thumbnail.svg",
       "tags": [
         "rag",
         "embeddings",
@@ -88,7 +88,8 @@
       ],
       "unlocks": [
         "intermediate/applied-ai/agents-and-tool-use",
-        "intermediate/applied-ai/evaluation-and-observability"
+        "intermediate/applied-ai/evaluation-and-observability",
+        "advanced/applied-ai/advanced-rag"
       ],
       "content_path": "learning/intermediate/applied-ai/rag-fundamentals/rag-fundamentals.md",
       "contributors": [
@@ -117,6 +118,20 @@
           "url": "https://simonwillison.net/2023/Oct/23/embeddings/",
           "type": "article",
           "note": "Practical perspective on when embeddings-based RAG works and when simpler approaches are better."
+        },
+        {
+          "title": "Systematically Improving Your RAG",
+          "url": "https://jxnl.co/writing/2024/05/22/systematically-improving-your-rag/",
+          "type": "article",
+          "note": "Jason Liu's structured approach to RAG improvement — goes beyond 'add more chunks' to systematic diagnosis and iteration.",
+          "contributor": "Jason Liu"
+        },
+        {
+          "title": "Building LLM Applications for Production",
+          "url": "https://huyenchip.com/2023/04/11/llm-engineering.html",
+          "type": "article",
+          "note": "Chip Huyen covers production considerations for LLM apps including RAG — latency, cost, evaluation, and the messy realities of shipping.",
+          "contributor": "Chip Huyen"
         }
       ],
       "author": "ALL Applied AI Network",
@@ -129,7 +144,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 50,
-      "thumbnail": "learning/intermediate/applied-ai/prompt-engineering/thumbnail.png",
+      "thumbnail": "learning/intermediate/applied-ai/prompt-engineering/thumbnail.svg",
       "tags": [
         "prompt-engineering",
         "system-prompts",
@@ -143,7 +158,9 @@
       ],
       "unlocks": [
         "intermediate/applied-ai/build-a-chatbot",
-        "intermediate/applied-ai/rag-fundamentals"
+        "intermediate/applied-ai/rag-fundamentals",
+        "advanced/applied-ai/structured-outputs",
+        "advanced/applied-ai/llm-security"
       ],
       "content_path": "learning/intermediate/applied-ai/prompt-engineering/prompt-engineering.md",
       "contributors": [
@@ -152,7 +169,22 @@
           "role": "author"
         }
       ],
-      "resources": [],
+      "resources": [
+        {
+          "title": "Prompt Engineering",
+          "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+          "type": "article",
+          "note": "Lilian Weng's comprehensive taxonomy of prompting techniques — covers zero-shot, few-shot, CoT, and more with clear examples and paper references.",
+          "contributor": "Lilian Weng"
+        },
+        {
+          "title": "Prompt Injection",
+          "url": "https://simonwillison.net/series/prompt-injection/",
+          "type": "article",
+          "note": "Simon Willison's ongoing series on prompt injection attacks — essential reading on the security implications of deploying LLM-powered applications.",
+          "contributor": "Simon Willison"
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -163,7 +195,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 45,
-      "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.png",
+      "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.svg",
       "tags": [
         "api",
         "claude",
@@ -179,7 +211,9 @@
       ],
       "unlocks": [
         "intermediate/applied-ai/prompt-engineering",
-        "intermediate/applied-ai/build-a-chatbot"
+        "intermediate/applied-ai/build-a-chatbot",
+        "advanced/applied-ai/structured-outputs",
+        "advanced/applied-ai/fine-tuning"
       ],
       "content_path": "learning/intermediate/applied-ai/how-ai-apis-work/how-ai-apis-work.md",
       "contributors": [
@@ -188,7 +222,22 @@
           "role": "author"
         }
       ],
-      "resources": [],
+      "resources": [
+        {
+          "title": "llm: A CLI utility for interacting with Large Language Models",
+          "url": "https://github.com/simonw/llm",
+          "type": "repo",
+          "note": "Simon Willison's CLI tool for experimenting with multiple AI APIs from the terminal — great for quickly testing prompts across providers.",
+          "contributor": "Simon Willison"
+        },
+        {
+          "title": "Let's build GPT: from scratch, in code",
+          "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
+          "type": "video",
+          "note": "Andrej Karpathy builds a transformer from scratch — understanding what's behind the API makes you a far better consumer of it.",
+          "contributor": "Andrej Karpathy"
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -199,7 +248,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 45,
-      "thumbnail": "learning/intermediate/applied-ai/evaluation-and-observability/thumbnail.png",
+      "thumbnail": "learning/intermediate/applied-ai/evaluation-and-observability/thumbnail.svg",
       "tags": [
         "evaluation",
         "evals",
@@ -213,7 +262,10 @@
         "intermediate/applied-ai/build-an-agent",
         "intermediate/applied-ai/rag-fundamentals"
       ],
-      "unlocks": [],
+      "unlocks": [
+        "advanced/applied-ai/ml-systems-design",
+        "advanced/applied-ai/fine-tuning"
+      ],
       "content_path": "learning/intermediate/applied-ai/evaluation-and-observability/evaluation-and-observability.md",
       "contributors": [
         {
@@ -221,7 +273,29 @@
           "role": "author"
         }
       ],
-      "resources": [],
+      "resources": [
+        {
+          "title": "Your AI Product Needs Evals",
+          "url": "https://hamel.dev/blog/posts/evals/",
+          "type": "article",
+          "note": "Hamel Husain's practical eval framework — the single best starting point for teams that know they need evals but don't know where to begin.",
+          "contributor": "Hamel Husain"
+        },
+        {
+          "title": "Building LLM Applications for Production",
+          "url": "https://huyenchip.com/2023/04/11/llm-engineering.html",
+          "type": "article",
+          "note": "Chip Huyen's systematic approach to LLM evaluation — covers metrics, failure modes, and the evaluation pipeline from prototype to production.",
+          "contributor": "Chip Huyen"
+        },
+        {
+          "title": "Instructor: Structured Outputs for LLMs",
+          "url": "https://python.useinstructor.com/",
+          "type": "tool",
+          "note": "Jason Liu's library for structured LLM outputs with Pydantic validation — invaluable for building reliable, type-safe evaluation pipelines.",
+          "contributor": "Jason Liu"
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -232,7 +306,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
-      "thumbnail": "learning/intermediate/applied-ai/build-an-agent/thumbnail.png",
+      "thumbnail": "learning/intermediate/applied-ai/build-an-agent/thumbnail.svg",
       "tags": [
         "agent",
         "capstone",
@@ -244,7 +318,8 @@
         "intermediate/applied-ai/agents-and-tool-use"
       ],
       "unlocks": [
-        "intermediate/applied-ai/evaluation-and-observability"
+        "intermediate/applied-ai/evaluation-and-observability",
+        "advanced/applied-ai/ml-systems-design"
       ],
       "content_path": "learning/intermediate/applied-ai/build-an-agent/build-an-agent.md",
       "contributors": [
@@ -253,7 +328,22 @@
           "role": "author"
         }
       ],
-      "resources": [],
+      "resources": [
+        {
+          "title": "Build an Agent",
+          "url": "https://python.langchain.com/docs/tutorials/agents/",
+          "type": "course",
+          "note": "LangChain's official agent tutorial — useful to compare a framework-based approach against the from-scratch approach in this lesson.",
+          "contributor": "Harrison Chase"
+        },
+        {
+          "title": "Creating a LLM-as-Judge That Drives Real Improvements",
+          "url": "https://hamel.dev/blog/posts/llm-judge/",
+          "type": "article",
+          "note": "Hamel Husain on evaluating agent outputs with LLM judges — critical for knowing whether your agent is actually getting better.",
+          "contributor": "Hamel Husain"
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -264,7 +354,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
-      "thumbnail": "learning/intermediate/applied-ai/build-a-chatbot/thumbnail.png",
+      "thumbnail": "learning/intermediate/applied-ai/build-a-chatbot/thumbnail.svg",
       "tags": [
         "chatbot",
         "conversation",
@@ -299,7 +389,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 55,
-      "thumbnail": "learning/intermediate/applied-ai/agents-and-tool-use/thumbnail.png",
+      "thumbnail": "learning/intermediate/applied-ai/agents-and-tool-use/thumbnail.svg",
       "tags": [
         "agents",
         "tool-use",
@@ -313,7 +403,8 @@
       ],
       "unlocks": [
         "intermediate/applied-ai/build-an-agent",
-        "intermediate/applied-ai/evaluation-and-observability"
+        "intermediate/applied-ai/evaluation-and-observability",
+        "advanced/applied-ai/llm-security"
       ],
       "content_path": "learning/intermediate/applied-ai/agents-and-tool-use/agents-and-tool-use.md",
       "contributors": [
@@ -322,7 +413,29 @@
           "role": "author"
         }
       ],
-      "resources": [],
+      "resources": [
+        {
+          "title": "LLM Powered Autonomous Agents",
+          "url": "https://lilianweng.github.io/posts/2023-06-23-agent/",
+          "type": "article",
+          "note": "The definitive survey of agent architectures — covers planning, memory, and tool use with clear diagrams and references to key papers.",
+          "contributor": "Lilian Weng"
+        },
+        {
+          "title": "LangGraph Documentation",
+          "url": "https://langchain-ai.github.io/langgraph/",
+          "type": "tool",
+          "note": "Framework for building stateful, multi-step agent workflows as graphs — useful reference even if you build your own agent loop.",
+          "contributor": "Harrison Chase / LangChain"
+        },
+        {
+          "title": "State of GPT",
+          "url": "https://www.youtube.com/watch?v=bZQun8Y4L2A",
+          "type": "video",
+          "note": "Andrej Karpathy explains how LLMs work under the hood — understanding the training pipeline helps you build better agents.",
+          "contributor": "Andrej Karpathy"
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -333,7 +446,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 20,
-      "thumbnail": "learning/foundations/what-is-programming/thumbnail.png",
+      "thumbnail": "learning/foundations/what-is-programming/thumbnail.svg",
       "tags": [
         "programming",
         "python",
@@ -367,7 +480,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 20,
-      "thumbnail": "learning/foundations/what-is-ai/thumbnail.png",
+      "thumbnail": "learning/foundations/what-is-ai/thumbnail.svg",
       "tags": [
         "ai",
         "introduction",
@@ -406,6 +519,13 @@
           "url": "https://www.anthropic.com/research",
           "type": "article",
           "note": "If you want to see what frontier AI research looks like from a safety-focused lab, start here."
+        },
+        {
+          "title": "Why 2026 Belongs to the 'Applied AI Engineer'",
+          "url": "https://appliedaisociety.substack.com/p/introducing-the-applied-ai-society",
+          "type": "article",
+          "note": "Gary Sheng and Travis Oliphant make the case for 'applied AI engineer' as a distinct role — the framing that inspired this entire learning tree.",
+          "contributor": "Gary Sheng & Travis Oliphant"
         }
       ],
       "author": "ALL Applied AI Network",
@@ -418,7 +538,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 30,
-      "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.png",
+      "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.svg",
       "tags": [
         "setup",
         "cursor",
@@ -452,7 +572,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
-      "thumbnail": "learning/foundations/reading-writing-data/thumbnail.png",
+      "thumbnail": "learning/foundations/reading-writing-data/thumbnail.svg",
       "tags": [
         "python",
         "data",
@@ -486,7 +606,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 45,
-      "thumbnail": "learning/foundations/python-through-ai/thumbnail.png",
+      "thumbnail": "learning/foundations/python-through-ai/thumbnail.svg",
       "tags": [
         "python",
         "ai-assisted-learning",
@@ -509,7 +629,22 @@
           "affiliation": "MSOE / MAIC"
         }
       ],
-      "resources": [],
+      "resources": [
+        {
+          "title": "Practical Deep Learning for Coders",
+          "url": "https://course.fast.ai/",
+          "type": "course",
+          "note": "Jeremy Howard's famous course teaches deep learning by doing — the same learn-by-building philosophy we use here, scaled up to neural networks.",
+          "contributor": "Jeremy Howard"
+        },
+        {
+          "title": "NumPy: The Absolute Beginner's Guide",
+          "url": "https://numpy.org/doc/stable/user/absolute_beginners.html",
+          "type": "tool",
+          "note": "NumPy is the foundation of Python's entire data ecosystem. Understanding arrays here pays off in every AI library you'll touch.",
+          "contributor": "Travis Oliphant"
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -520,7 +655,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 25,
-      "thumbnail": "learning/foundations/navigating-an-ide/thumbnail.png",
+      "thumbnail": "learning/foundations/navigating-an-ide/thumbnail.svg",
       "tags": [
         "ide",
         "cursor",
@@ -552,7 +687,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
-      "thumbnail": "learning/foundations/git-basics/thumbnail.png",
+      "thumbnail": "learning/foundations/git-basics/thumbnail.svg",
       "tags": [
         "git",
         "github",
@@ -578,7 +713,15 @@
           "affiliation": "MSOE / MAIC"
         }
       ],
-      "resources": [],
+      "resources": [
+        {
+          "title": "CodeSearchNet",
+          "url": "https://github.com/github/CodeSearchNet",
+          "type": "repo",
+          "note": "GitHub's ML project for understanding code at scale — a concrete example of how git-hosted code collaboration fuels AI research.",
+          "contributor": "Hamel Husain"
+        }
+      ],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -589,7 +732,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 25,
-      "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.png",
+      "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.svg",
       "tags": [
         "ai",
         "cursor",
@@ -623,7 +766,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 30,
-      "thumbnail": "learning/foundations/files-folders-terminal/thumbnail.png",
+      "thumbnail": "learning/foundations/files-folders-terminal/thumbnail.svg",
       "tags": [
         "terminal",
         "command-line",
@@ -654,7 +797,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 40,
-      "thumbnail": "learning/foundations/build-your-first-script/thumbnail.png",
+      "thumbnail": "learning/foundations/build-your-first-script/thumbnail.svg",
       "tags": [
         "python",
         "capstone",
@@ -680,6 +823,261 @@
       "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
+    },
+    {
+      "id": "advanced/applied-ai/structured-outputs",
+      "title": "Structured Outputs & Data Extraction",
+      "description": "Learn to extract structured, validated data from LLMs using tools like Instructor and Pydantic — the backbone of reliable AI-powered data pipelines.",
+      "layer": 3,
+      "difficulty": "advanced",
+      "estimated_minutes": 50,
+      "thumbnail": "learning/advanced/applied-ai/structured-outputs/thumbnail.svg",
+      "tags": [
+        "structured-outputs",
+        "data-extraction",
+        "pydantic",
+        "instructor",
+        "json"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/prompt-engineering",
+        "intermediate/applied-ai/how-ai-apis-work"
+      ],
+      "unlocks": [],
+      "content_path": "learning/advanced/applied-ai/structured-outputs/structured-outputs.md",
+      "contributors": [
+        {
+          "name": "Jason Liu",
+          "role": "curator",
+          "github": "jxnl"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Instructor Documentation",
+          "url": "https://python.useinstructor.com/",
+          "type": "tool",
+          "note": "Jason Liu's Instructor library — the go-to tool for extracting structured data from LLMs with Pydantic validation.",
+          "contributor": "Jason Liu"
+        },
+        {
+          "title": "Systematically Improving Your RAG",
+          "url": "https://jxnl.co/writing/2024/05/22/systematically-improving-your-rag/",
+          "type": "article",
+          "note": "Jason Liu's structured approach to RAG improvement, with heavy use of structured outputs for evaluation and extraction.",
+          "contributor": "Jason Liu"
+        },
+        {
+          "title": "Building LLM Applications for Production",
+          "url": "https://huyenchip.com/2023/04/11/llm-engineering.html",
+          "type": "article",
+          "note": "Chip Huyen covers production considerations for LLM apps — structured outputs are a recurring theme for reliability.",
+          "contributor": "Chip Huyen"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
+    },
+    {
+      "id": "advanced/applied-ai/ml-systems-design",
+      "title": "ML Systems Design",
+      "description": "Design reliable AI systems for production — covering architecture patterns, monitoring, deployment strategies, and the operational practices that separate prototypes from products.",
+      "layer": 3,
+      "difficulty": "advanced",
+      "estimated_minutes": 50,
+      "thumbnail": "learning/advanced/applied-ai/ml-systems-design/thumbnail.svg",
+      "tags": [
+        "systems-design",
+        "production",
+        "monitoring",
+        "deployment",
+        "mlops"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/evaluation-and-observability",
+        "intermediate/applied-ai/build-an-agent"
+      ],
+      "unlocks": [],
+      "content_path": "learning/advanced/applied-ai/ml-systems-design/ml-systems-design.md",
+      "contributors": [
+        {
+          "name": "Chip Huyen",
+          "role": "curator",
+          "github": "chiphuyen"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Designing Machine Learning Systems",
+          "url": "https://huyenchip.com/",
+          "type": "article",
+          "note": "Chip Huyen's book and blog cover the full lifecycle of ML systems — from data pipelines to deployment to monitoring.",
+          "contributor": "Chip Huyen"
+        },
+        {
+          "title": "Machine Learning Systems Design",
+          "url": "https://github.com/chiphuyen/machine-learning-systems-design",
+          "type": "repo",
+          "note": "Chip's open-source repo with frameworks for thinking about ML systems design problems — great interview prep too.",
+          "contributor": "Chip Huyen"
+        },
+        {
+          "title": "Hamel Husain's Blog",
+          "url": "https://hamel.dev/",
+          "type": "article",
+          "note": "Practical ML engineering perspectives from someone who has shipped production ML systems at scale.",
+          "contributor": "Hamel Husain"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
+    },
+    {
+      "id": "advanced/applied-ai/llm-security",
+      "title": "LLM Security & Safety",
+      "description": "Learn to identify and defend against prompt injection, jailbreaks, and data exfiltration attacks — essential knowledge for deploying LLMs in production.",
+      "layer": 3,
+      "difficulty": "advanced",
+      "estimated_minutes": 45,
+      "thumbnail": "learning/advanced/applied-ai/llm-security/thumbnail.svg",
+      "tags": [
+        "security",
+        "prompt-injection",
+        "safety",
+        "guardrails",
+        "red-teaming"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/prompt-engineering",
+        "intermediate/applied-ai/agents-and-tool-use"
+      ],
+      "unlocks": [],
+      "content_path": "learning/advanced/applied-ai/llm-security/llm-security.md",
+      "contributors": [
+        {
+          "name": "Simon Willison",
+          "role": "curator",
+          "github": "simonw"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Simon Willison: Prompt Injection Series",
+          "url": "https://simonwillison.net/series/prompt-injection/",
+          "type": "article",
+          "note": "The definitive collection of writing on prompt injection — Simon has been tracking and documenting this class of vulnerability since the beginning.",
+          "contributor": "Simon Willison"
+        },
+        {
+          "title": "Adversarial Attacks on LLMs",
+          "url": "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
+          "type": "article",
+          "note": "Lilian Weng's thorough survey of adversarial attack techniques and defenses for large language models.",
+          "contributor": "Lilian Weng"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
+    },
+    {
+      "id": "advanced/applied-ai/fine-tuning",
+      "title": "Fine-Tuning Fundamentals",
+      "description": "Understand when and how to fine-tune language models — from dataset preparation to LoRA adapters to evaluation — and when simpler approaches are better.",
+      "layer": 3,
+      "difficulty": "advanced",
+      "estimated_minutes": 60,
+      "thumbnail": "learning/advanced/applied-ai/fine-tuning/thumbnail.svg",
+      "tags": [
+        "fine-tuning",
+        "training",
+        "lora",
+        "datasets",
+        "transfer-learning"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/how-ai-apis-work",
+        "intermediate/applied-ai/evaluation-and-observability"
+      ],
+      "unlocks": [],
+      "content_path": "learning/advanced/applied-ai/fine-tuning/fine-tuning.md",
+      "contributors": [
+        {
+          "name": "Jeremy Howard",
+          "role": "curator",
+          "github": "jph00"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Practical Deep Learning for Coders",
+          "url": "https://course.fast.ai/",
+          "type": "course",
+          "note": "Jeremy Howard's legendary course — the fine-tuning sections are especially relevant and remarkably accessible.",
+          "contributor": "Jeremy Howard"
+        },
+        {
+          "title": "Hamel Husain's Blog",
+          "url": "https://hamel.dev/",
+          "type": "article",
+          "note": "Hamel writes extensively about practical fine-tuning workflows, dataset curation, and evaluation — essential reading.",
+          "contributor": "Hamel Husain"
+        },
+        {
+          "title": "Designing Machine Learning Systems",
+          "url": "https://huyenchip.com/",
+          "type": "article",
+          "note": "Chip Huyen's work on ML systems design provides crucial context for when fine-tuning fits into the broader system.",
+          "contributor": "Chip Huyen"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
+    },
+    {
+      "id": "advanced/applied-ai/advanced-rag",
+      "title": "Advanced RAG Patterns",
+      "description": "Go beyond basic RAG with hybrid search, intelligent chunking strategies, reranking, and evaluation-driven iteration to build production-quality retrieval systems.",
+      "layer": 3,
+      "difficulty": "advanced",
+      "estimated_minutes": 55,
+      "thumbnail": "learning/advanced/applied-ai/advanced-rag/thumbnail.svg",
+      "tags": [
+        "rag",
+        "hybrid-search",
+        "reranking",
+        "chunking",
+        "evaluation"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/rag-fundamentals"
+      ],
+      "unlocks": [],
+      "content_path": "learning/advanced/applied-ai/advanced-rag/advanced-rag.md",
+      "contributors": [
+        {
+          "name": "Simon Willison",
+          "role": "curator",
+          "github": "simonw"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Simon Willison: RAG Is More Than Embeddings",
+          "url": "https://simonwillison.net/2023/Oct/23/embeddings/",
+          "type": "article",
+          "note": "Practical perspective on when embeddings-based RAG works, when it doesn't, and what alternatives exist.",
+          "contributor": "Simon Willison"
+        },
+        {
+          "title": "Systematically Improving Your RAG",
+          "url": "https://jxnl.co/writing/2024/05/22/systematically-improving-your-rag/",
+          "type": "article",
+          "note": "Jason Liu's structured approach to diagnosing and improving RAG pipelines — goes well beyond 'add more chunks.'",
+          "contributor": "Jason Liu"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
     }
   ],
   "edges": [
@@ -798,24 +1196,61 @@
     {
       "from": "foundations/reading-writing-data",
       "to": "foundations/build-your-first-script"
+    },
+    {
+      "from": "intermediate/applied-ai/prompt-engineering",
+      "to": "advanced/applied-ai/structured-outputs"
+    },
+    {
+      "from": "intermediate/applied-ai/how-ai-apis-work",
+      "to": "advanced/applied-ai/structured-outputs"
+    },
+    {
+      "from": "intermediate/applied-ai/evaluation-and-observability",
+      "to": "advanced/applied-ai/ml-systems-design"
+    },
+    {
+      "from": "intermediate/applied-ai/build-an-agent",
+      "to": "advanced/applied-ai/ml-systems-design"
+    },
+    {
+      "from": "intermediate/applied-ai/prompt-engineering",
+      "to": "advanced/applied-ai/llm-security"
+    },
+    {
+      "from": "intermediate/applied-ai/agents-and-tool-use",
+      "to": "advanced/applied-ai/llm-security"
+    },
+    {
+      "from": "intermediate/applied-ai/how-ai-apis-work",
+      "to": "advanced/applied-ai/fine-tuning"
+    },
+    {
+      "from": "intermediate/applied-ai/evaluation-and-observability",
+      "to": "advanced/applied-ai/fine-tuning"
+    },
+    {
+      "from": "intermediate/applied-ai/rag-fundamentals",
+      "to": "advanced/applied-ai/advanced-rag"
     }
   ],
   "series": [],
   "stats": {
-    "total_nodes": 19,
-    "total_edges": 29,
+    "total_nodes": 24,
+    "total_edges": 38,
     "total_series": 0,
     "by_layer": {
       "0": 5,
       "1": 7,
       "2": 7,
-      "3": 0,
+      "3": 5,
       "4": 0,
       "5": 0
     },
     "by_difficulty": {
       "beginner": 12,
-      "intermediate": 7
+      "intermediate": 7,
+      "advanced": 5
     }
   }
 }

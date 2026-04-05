@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Base model (large circle) -->
+  <g transform="translate(120,90)">
+    <circle r="45" fill="none" stroke="url(#brand)" stroke-width="1.8" stroke-opacity="0.3"/>
+    <circle r="35" fill="none" stroke="url(#brand)" stroke-width="1.2" stroke-opacity="0.2" stroke-dasharray="4,3"/>
+    <!-- Neural network nodes -->
+    <circle cx="-15" cy="-15" r="4" fill="url(#brand)" opacity="0.3"/>
+    <circle cx="15" cy="-15" r="4" fill="url(#brand)" opacity="0.3"/>
+    <circle cx="0" cy="10" r="4" fill="url(#brand)" opacity="0.3"/>
+    <circle cx="-20" cy="10" r="4" fill="url(#brand)" opacity="0.3"/>
+    <circle cx="20" cy="10" r="4" fill="url(#brand)" opacity="0.3"/>
+    <line x1="-15" y1="-15" x2="0" y2="10" stroke="url(#brand)" stroke-width="0.8" stroke-opacity="0.2"/>
+    <line x1="15" y1="-15" x2="0" y2="10" stroke="url(#brand)" stroke-width="0.8" stroke-opacity="0.2"/>
+    <line x1="-15" y1="-15" x2="-20" y2="10" stroke="url(#brand)" stroke-width="0.8" stroke-opacity="0.2"/>
+    <line x1="15" y1="-15" x2="20" y2="10" stroke="url(#brand)" stroke-width="0.8" stroke-opacity="0.2"/>
+  </g>
+  <!-- LoRA adapter (small highlighted patch) -->
+  <g transform="translate(120,90)">
+    <circle cx="15" cy="-15" r="5" fill="url(#brand)" fill-opacity="0.25" stroke="url(#brand)" stroke-width="1.5"/>
+    <circle cx="20" cy="10" r="5" fill="url(#brand)" fill-opacity="0.25" stroke="url(#brand)" stroke-width="1.5"/>
+    <line x1="15" y1="-15" x2="20" y2="10" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.6"/>
+  </g>
+  <!-- Dataset (right side) -->
+  <g transform="translate(240,55)" fill="none" stroke="url(#brand)" stroke-width="1.5">
+    <!-- Data rows -->
+    <rect width="100" height="70" rx="5" stroke-opacity="0.4" fill="url(#brand)" fill-opacity="0.05"/>
+    <line x1="10" y1="16" x2="90" y2="16" stroke-width="1" stroke-opacity="0.3"/>
+    <line x1="10" y1="28" x2="90" y2="28" stroke-width="1" stroke-opacity="0.25"/>
+    <line x1="10" y1="40" x2="90" y2="40" stroke-width="1" stroke-opacity="0.2"/>
+    <line x1="10" y1="52" x2="90" y2="52" stroke-width="1" stroke-opacity="0.15"/>
+    <!-- Arrow indicator -->
+    <text x="50" y="66" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="7" opacity="0.4">JSONL</text>
+  </g>
+  <!-- Arrow from dataset to model -->
+  <path d="M240,90 Q200,110 170,95" fill="none" stroke="url(#brand)" stroke-width="1.2" stroke-opacity="0.4" stroke-dasharray="4,3"/>
+  <!-- Labels -->
+  <text x="120" y="155" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">model + adapter</text>
+  <text x="290" y="145" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">training data</text>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Fine-Tuning Fundamentals</text>
+</svg>

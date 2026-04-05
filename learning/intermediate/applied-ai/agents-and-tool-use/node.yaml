@@ -13,8 +13,26 @@ prerequisites:
 unlocks:
   - "intermediate/applied-ai/build-an-agent"
   - "intermediate/applied-ai/evaluation-and-observability"
+  - "advanced/applied-ai/llm-security"
 
 content_file: "agents-and-tool-use.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+resources:
+  - title: "LLM Powered Autonomous Agents"
+    url: "https://lilianweng.github.io/posts/2023-06-23-agent/"
+    type: article
+    note: "The definitive survey of agent architectures — covers planning, memory, and tool use with clear diagrams and references to key papers."
+    contributor: "Lilian Weng"
+  - title: "LangGraph Documentation"
+    url: "https://langchain-ai.github.io/langgraph/"
+    type: tool
+    note: "Framework for building stateful, multi-step agent workflows as graphs — useful reference even if you build your own agent loop."
+    contributor: "Harrison Chase / LangChain"
+  - title: "State of GPT"
+    url: "https://www.youtube.com/watch?v=bZQun8Y4L2A"
+    type: video
+    note: "Andrej Karpathy explains how LLMs work under the hood — understanding the training pipeline helps you build better agents."
+    contributor: "Andrej Karpathy"

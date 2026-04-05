@@ -14,8 +14,22 @@ prerequisites:
 unlocks:
   - "intermediate/applied-ai/prompt-engineering"
   - "intermediate/applied-ai/build-a-chatbot"
+  - "advanced/applied-ai/structured-outputs"
+  - "advanced/applied-ai/fine-tuning"
 
 content_file: "how-ai-apis-work.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+resources:
+  - title: "llm: A CLI utility for interacting with Large Language Models"
+    url: "https://github.com/simonw/llm"
+    type: repo
+    note: "Simon Willison's CLI tool for experimenting with multiple AI APIs from the terminal — great for quickly testing prompts across providers."
+    contributor: "Simon Willison"
+  - title: "Let's build GPT: from scratch, in code"
+    url: "https://www.youtube.com/watch?v=kCc8FmEb1nY"
+    type: video
+    note: "Andrej Karpathy builds a transformer from scratch — understanding what's behind the API makes you a far better consumer of it."
+    contributor: "Andrej Karpathy"

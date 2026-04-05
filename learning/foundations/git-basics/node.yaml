@@ -24,3 +24,10 @@ contributors:
   - name: "Brett Storoe"
     role: author
     affiliation: "MSOE / MAIC"
+
+resources:
+  - title: "CodeSearchNet"
+    url: "https://github.com/github/CodeSearchNet"
+    type: repo
+    note: "GitHub's ML project for understanding code at scale — a concrete example of how git-hosted code collaboration fuels AI research."
+    contributor: "Hamel Husain"

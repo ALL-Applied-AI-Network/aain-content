@@ -36,3 +36,8 @@ resources:
     url: "https://www.anthropic.com/research"
     type: article
     note: "If you want to see what frontier AI research looks like from a safety-focused lab, start here."
+  - title: "Why 2026 Belongs to the 'Applied AI Engineer'"
+    url: "https://appliedaisociety.substack.com/p/introducing-the-applied-ai-society"
+    type: article
+    note: "Gary Sheng and Travis Oliphant make the case for 'applied AI engineer' as a distinct role — the framing that inspired this entire learning tree."
+    contributor: "Gary Sheng & Travis Oliphant"

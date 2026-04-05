@@ -11,9 +11,28 @@ prerequisites:
   - "intermediate/applied-ai/agents-and-tool-use"
   - "intermediate/applied-ai/build-an-agent"
   - "intermediate/applied-ai/rag-fundamentals"
-unlocks: []
+unlocks:
+  - "advanced/applied-ai/ml-systems-design"
+  - "advanced/applied-ai/fine-tuning"
 
 content_file: "evaluation-and-observability.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+resources:
+  - title: "Your AI Product Needs Evals"
+    url: "https://hamel.dev/blog/posts/evals/"
+    type: article
+    note: "Hamel Husain's practical eval framework — the single best starting point for teams that know they need evals but don't know where to begin."
+    contributor: "Hamel Husain"
+  - title: "Building LLM Applications for Production"
+    url: "https://huyenchip.com/2023/04/11/llm-engineering.html"
+    type: article
+    note: "Chip Huyen's systematic approach to LLM evaluation — covers metrics, failure modes, and the evaluation pipeline from prototype to production."
+    contributor: "Chip Huyen"
+  - title: "Instructor: Structured Outputs for LLMs"
+    url: "https://python.useinstructor.com/"
+    type: tool
+    note: "Jason Liu's library for structured LLM outputs with Pydantic validation — invaluable for building reliable, type-safe evaluation pipelines."
+    contributor: "Jason Liu"

@@ -11,8 +11,21 @@ prerequisites:
   - "intermediate/applied-ai/agents-and-tool-use"
 unlocks:
   - "intermediate/applied-ai/evaluation-and-observability"
+  - "advanced/applied-ai/ml-systems-design"
 
 content_file: "build-an-agent.md"
 notebook_file: null
 author: "ALL Applied AI Network"
 last_updated: "2026-03-30"
+
+resources:
+  - title: "Build an Agent"
+    url: "https://python.langchain.com/docs/tutorials/agents/"
+    type: course
+    note: "LangChain's official agent tutorial — useful to compare a framework-based approach against the from-scratch approach in this lesson."
+    contributor: "Harrison Chase"
+  - title: "Creating a LLM-as-Judge That Drives Real Improvements"
+    url: "https://hamel.dev/blog/posts/llm-judge/"
+    type: article
+    note: "Hamel Husain on evaluating agent outputs with LLM judges — critical for knowing whether your agent is actually getting better."
+    contributor: "Hamel Husain"

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="none" stroke="url(#brand)" stroke-width="1"/>
+    </marker>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Multiple search paths converging -->
+  <!-- BM25 path -->
+  <g transform="translate(50,40)">
+    <rect width="70" height="35" rx="4" fill="none" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.5"/>
+    <text x="35" y="22" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.6">BM25</text>
+  </g>
+  <!-- Embeddings path -->
+  <g transform="translate(50,95)">
+    <rect width="70" height="35" rx="4" fill="none" stroke="url(#brand)" stroke-width="1.5" stroke-opacity="0.5"/>
+    <text x="35" y="22" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="9" opacity="0.6">Vectors</text>
+  </g>
+  <!-- Arrows to fusion -->
+  <line x1="125" y1="57" x2="165" y2="80" stroke="url(#brand)" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.5"/>
+  <line x1="125" y1="112" x2="165" y2="90" stroke="url(#brand)" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.5"/>
+  <!-- Fusion node -->
+  <g transform="translate(170,65)">
+    <rect width="60" height="35" rx="6" fill="url(#brand)" fill-opacity="0.1" stroke="url(#brand)" stroke-width="1.5"/>
+    <text x="30" y="22" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.6">Hybrid</text>
+  </g>
+  <!-- Arrow to reranker -->
+  <line x1="235" y1="82" x2="265" y2="82" stroke="url(#brand)" stroke-width="1.2" marker-end="url(#arr)" stroke-opacity="0.5"/>
+  <!-- Reranker -->
+  <g transform="translate(270,60)">
+    <rect width="75" height="45" rx="6" fill="url(#brand)" fill-opacity="0.08" stroke="url(#brand)" stroke-width="1.8"/>
+    <!-- Ranked bars -->
+    <rect x="10" y="10" width="55" height="5" rx="2" fill="url(#brand)" fill-opacity="0.5"/>
+    <rect x="10" y="18" width="42" height="5" rx="2" fill="url(#brand)" fill-opacity="0.35"/>
+    <rect x="10" y="26" width="30" height="5" rx="2" fill="url(#brand)" fill-opacity="0.2"/>
+    <rect x="10" y="34" width="20" height="5" rx="2" fill="url(#brand)" fill-opacity="0.1"/>
+  </g>
+  <!-- Labels -->
+  <text x="85" y="155" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">retrieval</text>
+  <text x="200" y="155" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">fusion</text>
+  <text x="307" y="125" text-anchor="middle" fill="url(#brand)" font-family="monospace" font-size="8" opacity="0.45">rerank</text>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Advanced RAG Patterns</text>
+</svg>
