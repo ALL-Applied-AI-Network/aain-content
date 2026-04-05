@@ -1,0 +1,30 @@
+id: "foundations/apis-and-web-basics"
+title: "APIs and Web Basics"
+description: "Understand how applications talk to each other over the web — HTTP requests, JSON data, and the basics of APIs that power modern software."
+layer: 1
+difficulty: beginner
+estimated_minutes: 35
+thumbnail: "thumbnail.svg"
+tags: ["apis", "http", "web", "requests", "json"]
+
+prerequisites:
+  - "foundations/what-is-programming"
+unlocks:
+  - "intermediate/applied-ai/how-ai-apis-work"
+  - "intermediate/applied-ai/web-scraping"
+
+content_file: "apis-and-web-basics.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Brett Storoe"
+    role: author
+    github: "storoeb"
+    affiliation: "MSOE / ALL Applied AI Network"
+
+resources:
+  - title: "MDN Web Docs: HTTP Overview"
+    url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
+    type: article
