@@ -1,0 +1,33 @@
+id: "advanced/applied-ai/multi-modal-ai"
+title: "Multi-Modal AI"
+description: "Go beyond text — work with images, audio, and video through multi-modal AI APIs to build applications that see, hear, and understand."
+layer: 3
+difficulty: advanced
+estimated_minutes: 50
+thumbnail: "thumbnail.svg"
+tags: ["multi-modal", "vision", "audio", "images", "gpt-4v"]
+
+prerequisites:
+  - "intermediate/applied-ai/how-ai-apis-work"
+  - "intermediate/applied-ai/prompt-engineering"
+unlocks: []
+
+content_file: "multi-modal-ai.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Ben Paulson"
+    role: author
+    github: "Benja-Pauls"
+    affiliation: "MSOE / ALL Applied AI Network"
+
+resources:
+  - title: "Andrej Karpathy: Let's build the GPT Tokenizer"
+    url: "https://www.youtube.com/watch?v=zduSFxRajkE"
+    type: video
+    contributor: "Andrej Karpathy"
+  - title: "OpenAI Vision Guide"
+    url: "https://platform.openai.com/docs/guides/vision"
+    type: article

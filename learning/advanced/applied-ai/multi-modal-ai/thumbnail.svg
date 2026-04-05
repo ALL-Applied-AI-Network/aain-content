@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Multi-modal: eye, speaker, text converging -->
+  <g transform="translate(200,115)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <!-- Central AI node -->
+    <circle cx="0" cy="0" r="20" stroke-width="2"/>
+    <path d="M0,-8 L3,-2 L9,0 L3,2 L0,8 L-3,2 L-9,0 L-3,-2 Z" fill="url(#brand)" opacity="0.7"/>
+    <!-- Eye icon (vision) - top left -->
+    <g transform="translate(-60,-40)">
+      <ellipse cx="0" cy="0" rx="18" ry="12"/>
+      <circle cx="0" cy="0" r="6"/>
+      <circle cx="0" cy="0" r="2.5" fill="url(#brand)"/>
+    </g>
+    <line x1="-42" y1="-30" x2="-20" y2="-12" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <!-- Audio icon (speaker) - top right -->
+    <g transform="translate(60,-40)">
+      <rect x="-8" y="-8" width="10" height="16" rx="2"/>
+      <path d="M5,-12 Q18,-12 18,0 Q18,12 5,12" stroke-width="1.5"/>
+      <path d="M5,-6 Q12,-6 12,0 Q12,6 5,6" stroke-width="1.5"/>
+    </g>
+    <line x1="42" y1="-30" x2="20" y2="-12" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <!-- Text icon - bottom -->
+    <g transform="translate(0,50)">
+      <line x1="-20" y1="-5" x2="20" y2="-5" stroke-width="2" opacity="0.7"/>
+      <line x1="-20" y1="0" x2="15" y2="0" stroke-width="2" opacity="0.5"/>
+      <line x1="-20" y1="5" x2="10" y2="5" stroke-width="2" opacity="0.3"/>
+    </g>
+    <line x1="0" y1="20" x2="0" y2="38" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <!-- Connection dots -->
+    <circle cx="-42" cy="-30" r="2.5" fill="url(#brand)"/>
+    <circle cx="42" cy="-30" r="2.5" fill="url(#brand)"/>
+    <circle cx="0" cy="38" r="2.5" fill="url(#brand)"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">Multi-Modal AI</text>
+</svg>
