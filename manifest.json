@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-05T04:25:03.203Z",
+  "generated_at": "2026-04-05T04:44:22.409Z",
   "content": [
     {
       "type": "learning",
@@ -17,6 +17,22 @@
       "description": "Introduction to Anthropic's CLI-based AI coding agent — terminal-native, agentic, and built for real engineering workflows",
       "path": "learning/tooling/ai-ides/claude-code/claude-code.md",
       "thumbnail": "learning/tooling/ai-ides/claude-code/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/working-with-databases",
+      "title": "Working with Databases",
+      "description": "Store and query structured data with SQL and SQLite — the foundation for building data-driven AI applications.",
+      "path": "learning/intermediate/applied-ai/working-with-databases/working-with-databases.md",
+      "thumbnail": "learning/intermediate/applied-ai/working-with-databases/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/web-scraping",
+      "title": "Web Scraping for AI",
+      "description": "Collect training data and build knowledge bases by scraping the web responsibly — with BeautifulSoup, ethical guidelines, and practical patterns.",
+      "path": "learning/intermediate/applied-ai/web-scraping/web-scraping.md",
+      "thumbnail": "learning/intermediate/applied-ai/web-scraping/thumbnail.svg"
     },
     {
       "type": "learning",
@@ -68,6 +84,14 @@
     },
     {
       "type": "learning",
+      "id": "intermediate/applied-ai/ai-data-analysis",
+      "title": "AI-Powered Data Analysis",
+      "description": "Combine pandas, visualization libraries, and AI to analyze datasets faster — from exploratory analysis to automated insight generation.",
+      "path": "learning/intermediate/applied-ai/ai-data-analysis/ai-data-analysis.md",
+      "thumbnail": "learning/intermediate/applied-ai/ai-data-analysis/thumbnail.svg"
+    },
+    {
+      "type": "learning",
       "id": "intermediate/applied-ai/agents-and-tool-use",
       "title": "Agents and Tool Use",
       "description": "Understand AI agents that take actions in the world — define tools as JSON schemas, let the model decide when to call them, and build your first agentic loop",
@@ -89,6 +113,14 @@
       "description": "Understand what artificial intelligence actually is, how it's used today, and why applied AI engineering is one of the most exciting career paths you can choose",
       "path": "learning/foundations/what-is-ai/what-is-ai.md",
       "thumbnail": "learning/foundations/what-is-ai/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "foundations/virtual-environments",
+      "title": "Virtual Environments and Dependencies",
+      "description": "Learn to isolate Python projects with virtual environments and manage packages — essential skills before building anything real.",
+      "path": "learning/foundations/virtual-environments/virtual-environments.md",
+      "thumbnail": "learning/foundations/virtual-environments/thumbnail.svg"
     },
     {
       "type": "learning",
@@ -148,6 +180,14 @@
     },
     {
       "type": "learning",
+      "id": "foundations/debugging-with-ai",
+      "title": "Debugging with AI",
+      "description": "Turn cryptic error messages into learning opportunities — use AI to understand, diagnose, and fix bugs in your code.",
+      "path": "learning/foundations/debugging-with-ai/debugging-with-ai.md",
+      "thumbnail": "learning/foundations/debugging-with-ai/thumbnail.svg"
+    },
+    {
+      "type": "learning",
       "id": "foundations/build-your-first-script",
       "title": "Build Your First Script",
       "description": "Combine everything you've learned into a real, useful Python project — planned with AI, built step by step, and pushed to GitHub",
@@ -156,11 +196,27 @@
     },
     {
       "type": "learning",
+      "id": "foundations/apis-and-web-basics",
+      "title": "APIs and Web Basics",
+      "description": "Understand how applications talk to each other over the web — HTTP requests, JSON data, and the basics of APIs that power modern software.",
+      "path": "learning/foundations/apis-and-web-basics/apis-and-web-basics.md",
+      "thumbnail": "learning/foundations/apis-and-web-basics/thumbnail.svg"
+    },
+    {
+      "type": "learning",
       "id": "advanced/applied-ai/structured-outputs",
       "title": "Structured Outputs & Data Extraction",
       "description": "Learn to extract structured, validated data from LLMs using tools like Instructor and Pydantic — the backbone of reliable AI-powered data pipelines.",
       "path": "learning/advanced/applied-ai/structured-outputs/structured-outputs.md",
       "thumbnail": "learning/advanced/applied-ai/structured-outputs/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "advanced/applied-ai/multi-modal-ai",
+      "title": "Multi-Modal AI",
+      "description": "Go beyond text — work with images, audio, and video through multi-modal AI APIs to build applications that see, hear, and understand.",
+      "path": "learning/advanced/applied-ai/multi-modal-ai/multi-modal-ai.md",
+      "thumbnail": "learning/advanced/applied-ai/multi-modal-ai/thumbnail.svg"
     },
     {
       "type": "learning",
@@ -185,6 +241,14 @@
       "description": "Understand when and how to fine-tune language models — from dataset preparation to LoRA adapters to evaluation — and when simpler approaches are better.",
       "path": "learning/advanced/applied-ai/fine-tuning/fine-tuning.md",
       "thumbnail": "learning/advanced/applied-ai/fine-tuning/thumbnail.svg"
+    },
+    {
+      "type": "learning",
+      "id": "advanced/applied-ai/deploying-ai-apps",
+      "title": "Deploying AI Applications",
+      "description": "Ship your AI projects to the world — from FastAPI backends to Docker containers to cloud deployment, with cost management and scaling strategies.",
+      "path": "learning/advanced/applied-ai/deploying-ai-apps/deploying-ai-apps.md",
+      "thumbnail": "learning/advanced/applied-ai/deploying-ai-apps/thumbnail.svg"
     },
     {
       "type": "learning",

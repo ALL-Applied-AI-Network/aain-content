@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-05T04:25:02.922Z",
+  "generated_at": "2026-04-05T04:44:22.144Z",
   "nodes": [
     {
       "id": "tooling/ai-ides/cursor-deep-dive",
@@ -65,6 +65,84 @@
       "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/working-with-databases",
+      "title": "Working with Databases",
+      "description": "Store and query structured data with SQL and SQLite — the foundation for building data-driven AI applications.",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 50,
+      "thumbnail": "learning/intermediate/applied-ai/working-with-databases/thumbnail.svg",
+      "tags": [
+        "databases",
+        "sql",
+        "sqlite",
+        "data",
+        "storage"
+      ],
+      "prerequisites": [
+        "foundations/reading-writing-data",
+        "foundations/python-through-ai"
+      ],
+      "unlocks": [],
+      "content_path": "learning/intermediate/applied-ai/working-with-databases/working-with-databases.md",
+      "contributors": [
+        {
+          "name": "Adam Haile",
+          "role": "author",
+          "github": "devartech",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Simon Willison: sqlite-utils",
+          "url": "https://github.com/simonw/sqlite-utils",
+          "type": "repo",
+          "contributor": "Simon Willison"
+        },
+        {
+          "title": "SQLite Tutorial",
+          "url": "https://www.sqlitetutorial.net/",
+          "type": "course"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
+    },
+    {
+      "id": "intermediate/applied-ai/web-scraping",
+      "title": "Web Scraping for AI",
+      "description": "Collect training data and build knowledge bases by scraping the web responsibly — with BeautifulSoup, ethical guidelines, and practical patterns.",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 45,
+      "thumbnail": "learning/intermediate/applied-ai/web-scraping/thumbnail.svg",
+      "tags": [
+        "scraping",
+        "beautifulsoup",
+        "data-collection",
+        "web",
+        "ethics"
+      ],
+      "prerequisites": [
+        "foundations/apis-and-web-basics",
+        "foundations/python-through-ai"
+      ],
+      "unlocks": [],
+      "content_path": "learning/intermediate/applied-ai/web-scraping/web-scraping.md",
+      "contributors": [
+        {
+          "name": "Brett Storoe",
+          "role": "author",
+          "github": "storoeb",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
     },
     {
       "id": "intermediate/applied-ai/rag-fundamentals",
@@ -160,7 +238,9 @@
         "intermediate/applied-ai/build-a-chatbot",
         "intermediate/applied-ai/rag-fundamentals",
         "advanced/applied-ai/structured-outputs",
-        "advanced/applied-ai/llm-security"
+        "advanced/applied-ai/llm-security",
+        "intermediate/applied-ai/ai-data-analysis",
+        "advanced/applied-ai/multi-modal-ai"
       ],
       "content_path": "learning/intermediate/applied-ai/prompt-engineering/prompt-engineering.md",
       "contributors": [
@@ -207,13 +287,15 @@
       "prerequisites": [
         "foundations/git-basics",
         "foundations/reading-writing-data",
-        "foundations/build-your-first-script"
+        "foundations/build-your-first-script",
+        "foundations/apis-and-web-basics"
       ],
       "unlocks": [
         "intermediate/applied-ai/prompt-engineering",
         "intermediate/applied-ai/build-a-chatbot",
         "advanced/applied-ai/structured-outputs",
-        "advanced/applied-ai/fine-tuning"
+        "advanced/applied-ai/fine-tuning",
+        "advanced/applied-ai/multi-modal-ai"
       ],
       "content_path": "learning/intermediate/applied-ai/how-ai-apis-work/how-ai-apis-work.md",
       "contributors": [
@@ -319,7 +401,8 @@
       ],
       "unlocks": [
         "intermediate/applied-ai/evaluation-and-observability",
-        "advanced/applied-ai/ml-systems-design"
+        "advanced/applied-ai/ml-systems-design",
+        "advanced/applied-ai/deploying-ai-apps"
       ],
       "content_path": "learning/intermediate/applied-ai/build-an-agent/build-an-agent.md",
       "contributors": [
@@ -369,7 +452,8 @@
       ],
       "unlocks": [
         "intermediate/applied-ai/rag-fundamentals",
-        "intermediate/applied-ai/agents-and-tool-use"
+        "intermediate/applied-ai/agents-and-tool-use",
+        "advanced/applied-ai/deploying-ai-apps"
       ],
       "content_path": "learning/intermediate/applied-ai/build-a-chatbot/build-a-chatbot.md",
       "contributors": [
@@ -381,6 +465,52 @@
       "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
+    },
+    {
+      "id": "intermediate/applied-ai/ai-data-analysis",
+      "title": "AI-Powered Data Analysis",
+      "description": "Combine pandas, visualization libraries, and AI to analyze datasets faster — from exploratory analysis to automated insight generation.",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 55,
+      "thumbnail": "learning/intermediate/applied-ai/ai-data-analysis/thumbnail.svg",
+      "tags": [
+        "data-analysis",
+        "pandas",
+        "visualization",
+        "ai-assisted",
+        "insights"
+      ],
+      "prerequisites": [
+        "foundations/reading-writing-data",
+        "intermediate/applied-ai/prompt-engineering"
+      ],
+      "unlocks": [],
+      "content_path": "learning/intermediate/applied-ai/ai-data-analysis/ai-data-analysis.md",
+      "contributors": [
+        {
+          "name": "Adam Haile",
+          "role": "author",
+          "github": "devartech",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        },
+        {
+          "name": "Ben Paulson",
+          "role": "reviewer",
+          "github": "Benja-Pauls",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Wes McKinney: Python for Data Analysis",
+          "url": "https://wesmckinney.com/book/",
+          "type": "course",
+          "contributor": "Wes McKinney"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
     },
     {
       "id": "intermediate/applied-ai/agents-and-tool-use",
@@ -460,7 +590,8 @@
       ],
       "unlocks": [
         "foundations/python-through-ai",
-        "foundations/files-folders-terminal"
+        "foundations/files-folders-terminal",
+        "foundations/apis-and-web-basics"
       ],
       "content_path": "learning/foundations/what-is-programming/what-is-programming.md",
       "contributors": [
@@ -532,6 +663,45 @@
       "last_updated": "2026-03-30"
     },
     {
+      "id": "foundations/virtual-environments",
+      "title": "Virtual Environments and Dependencies",
+      "description": "Learn to isolate Python projects with virtual environments and manage packages — essential skills before building anything real.",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 25,
+      "thumbnail": "learning/foundations/virtual-environments/thumbnail.svg",
+      "tags": [
+        "python",
+        "venv",
+        "pip",
+        "dependencies",
+        "packaging"
+      ],
+      "prerequisites": [
+        "foundations/python-through-ai",
+        "foundations/files-folders-terminal"
+      ],
+      "unlocks": [],
+      "content_path": "learning/foundations/virtual-environments/virtual-environments.md",
+      "contributors": [
+        {
+          "name": "Adam Haile",
+          "role": "author",
+          "github": "devartech",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Python Packaging User Guide",
+          "url": "https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/",
+          "type": "article"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
+    },
+    {
       "id": "foundations/setting-up-cursor",
       "title": "Setting Up Cursor: Your AI-Powered Workspace",
       "description": "Download, install, and configure Cursor — the AI-native code editor that will be your primary tool throughout this curriculum",
@@ -586,7 +756,9 @@
       ],
       "unlocks": [
         "foundations/build-your-first-script",
-        "intermediate/applied-ai/how-ai-apis-work"
+        "intermediate/applied-ai/how-ai-apis-work",
+        "intermediate/applied-ai/working-with-databases",
+        "intermediate/applied-ai/ai-data-analysis"
       ],
       "content_path": "learning/foundations/reading-writing-data/reading-writing-data.md",
       "contributors": [
@@ -619,7 +791,10 @@
       ],
       "unlocks": [
         "foundations/reading-writing-data",
-        "foundations/build-your-first-script"
+        "foundations/build-your-first-script",
+        "foundations/virtual-environments",
+        "intermediate/applied-ai/web-scraping",
+        "intermediate/applied-ai/working-with-databases"
       ],
       "content_path": "learning/foundations/python-through-ai/python-through-ai.md",
       "contributors": [
@@ -746,7 +921,8 @@
       "unlocks": [
         "foundations/what-is-programming",
         "foundations/python-through-ai",
-        "tooling/ai-ides/cursor-deep-dive"
+        "tooling/ai-ides/cursor-deep-dive",
+        "foundations/debugging-with-ai"
       ],
       "content_path": "learning/foundations/first-conversation-with-ai/first-conversation-with-ai.md",
       "contributors": [
@@ -777,7 +953,8 @@
         "foundations/what-is-programming"
       ],
       "unlocks": [
-        "foundations/git-basics"
+        "foundations/git-basics",
+        "foundations/virtual-environments"
       ],
       "content_path": "learning/foundations/files-folders-terminal/files-folders-terminal.md",
       "contributors": [
@@ -789,6 +966,44 @@
       "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/debugging-with-ai",
+      "title": "Debugging with AI",
+      "description": "Turn cryptic error messages into learning opportunities — use AI to understand, diagnose, and fix bugs in your code.",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 30,
+      "thumbnail": "learning/foundations/debugging-with-ai/thumbnail.svg",
+      "tags": [
+        "debugging",
+        "errors",
+        "troubleshooting",
+        "ai-assisted"
+      ],
+      "prerequisites": [
+        "foundations/first-conversation-with-ai",
+        "foundations/build-your-first-script"
+      ],
+      "unlocks": [],
+      "content_path": "learning/foundations/debugging-with-ai/debugging-with-ai.md",
+      "contributors": [
+        {
+          "name": "Brett Storoe",
+          "role": "author",
+          "github": "storoeb",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        },
+        {
+          "name": "Adam Haile",
+          "role": "reviewer",
+          "github": "devartech",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
     },
     {
       "id": "foundations/build-your-first-script",
@@ -810,7 +1025,8 @@
         "foundations/reading-writing-data"
       ],
       "unlocks": [
-        "intermediate/applied-ai/how-ai-apis-work"
+        "intermediate/applied-ai/how-ai-apis-work",
+        "foundations/debugging-with-ai"
       ],
       "content_path": "learning/foundations/build-your-first-script/build-your-first-script.md",
       "contributors": [
@@ -823,6 +1039,47 @@
       "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
+    },
+    {
+      "id": "foundations/apis-and-web-basics",
+      "title": "APIs and Web Basics",
+      "description": "Understand how applications talk to each other over the web — HTTP requests, JSON data, and the basics of APIs that power modern software.",
+      "layer": 1,
+      "difficulty": "beginner",
+      "estimated_minutes": 35,
+      "thumbnail": "learning/foundations/apis-and-web-basics/thumbnail.svg",
+      "tags": [
+        "apis",
+        "http",
+        "web",
+        "requests",
+        "json"
+      ],
+      "prerequisites": [
+        "foundations/what-is-programming"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/how-ai-apis-work",
+        "intermediate/applied-ai/web-scraping"
+      ],
+      "content_path": "learning/foundations/apis-and-web-basics/apis-and-web-basics.md",
+      "contributors": [
+        {
+          "name": "Brett Storoe",
+          "role": "author",
+          "github": "storoeb",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [
+        {
+          "title": "MDN Web Docs: HTTP Overview",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview",
+          "type": "article"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
     },
     {
       "id": "advanced/applied-ai/structured-outputs",
@@ -873,6 +1130,51 @@
           "type": "article",
           "note": "Chip Huyen covers production considerations for LLM apps — structured outputs are a recurring theme for reliability.",
           "contributor": "Chip Huyen"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
+    },
+    {
+      "id": "advanced/applied-ai/multi-modal-ai",
+      "title": "Multi-Modal AI",
+      "description": "Go beyond text — work with images, audio, and video through multi-modal AI APIs to build applications that see, hear, and understand.",
+      "layer": 3,
+      "difficulty": "advanced",
+      "estimated_minutes": 50,
+      "thumbnail": "learning/advanced/applied-ai/multi-modal-ai/thumbnail.svg",
+      "tags": [
+        "multi-modal",
+        "vision",
+        "audio",
+        "images",
+        "gpt-4v"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/how-ai-apis-work",
+        "intermediate/applied-ai/prompt-engineering"
+      ],
+      "unlocks": [],
+      "content_path": "learning/advanced/applied-ai/multi-modal-ai/multi-modal-ai.md",
+      "contributors": [
+        {
+          "name": "Ben Paulson",
+          "role": "author",
+          "github": "Benja-Pauls",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Andrej Karpathy: Let's build the GPT Tokenizer",
+          "url": "https://www.youtube.com/watch?v=zduSFxRajkE",
+          "type": "video",
+          "contributor": "Andrej Karpathy"
+        },
+        {
+          "title": "OpenAI Vision Guide",
+          "url": "https://platform.openai.com/docs/guides/vision",
+          "type": "article"
         }
       ],
       "author": "ALL Applied AI Network",
@@ -1034,6 +1336,57 @@
       "last_updated": "2026-04-04"
     },
     {
+      "id": "advanced/applied-ai/deploying-ai-apps",
+      "title": "Deploying AI Applications",
+      "description": "Ship your AI projects to the world — from FastAPI backends to Docker containers to cloud deployment, with cost management and scaling strategies.",
+      "layer": 3,
+      "difficulty": "advanced",
+      "estimated_minutes": 55,
+      "thumbnail": "learning/advanced/applied-ai/deploying-ai-apps/thumbnail.svg",
+      "tags": [
+        "deployment",
+        "hosting",
+        "docker",
+        "fastapi",
+        "production"
+      ],
+      "prerequisites": [
+        "intermediate/applied-ai/build-a-chatbot",
+        "intermediate/applied-ai/build-an-agent"
+      ],
+      "unlocks": [],
+      "content_path": "learning/advanced/applied-ai/deploying-ai-apps/deploying-ai-apps.md",
+      "contributors": [
+        {
+          "name": "Brett Storoe",
+          "role": "author",
+          "github": "storoeb",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        },
+        {
+          "name": "Ben Paulson",
+          "role": "reviewer",
+          "github": "Benja-Pauls",
+          "affiliation": "MSOE / ALL Applied AI Network"
+        }
+      ],
+      "resources": [
+        {
+          "title": "FastAPI Documentation",
+          "url": "https://fastapi.tiangolo.com/",
+          "type": "tool"
+        },
+        {
+          "title": "Chip Huyen: ML Systems Design",
+          "url": "https://github.com/chiphuyen/machine-learning-systems-design",
+          "type": "repo",
+          "contributor": "Chip Huyen"
+        }
+      ],
+      "author": "ALL Applied AI Network",
+      "last_updated": "2026-04-04"
+    },
+    {
       "id": "advanced/applied-ai/advanced-rag",
       "title": "Advanced RAG Patterns",
       "description": "Go beyond basic RAG with hybrid search, intelligent chunking strategies, reranking, and evaluation-driven iteration to build production-quality retrieval systems.",
@@ -1094,6 +1447,22 @@
       "to": "tooling/ai-ides/claude-code"
     },
     {
+      "from": "foundations/reading-writing-data",
+      "to": "intermediate/applied-ai/working-with-databases"
+    },
+    {
+      "from": "foundations/python-through-ai",
+      "to": "intermediate/applied-ai/working-with-databases"
+    },
+    {
+      "from": "foundations/apis-and-web-basics",
+      "to": "intermediate/applied-ai/web-scraping"
+    },
+    {
+      "from": "foundations/python-through-ai",
+      "to": "intermediate/applied-ai/web-scraping"
+    },
+    {
       "from": "intermediate/applied-ai/prompt-engineering",
       "to": "intermediate/applied-ai/rag-fundamentals"
     },
@@ -1115,6 +1484,10 @@
     },
     {
       "from": "foundations/build-your-first-script",
+      "to": "intermediate/applied-ai/how-ai-apis-work"
+    },
+    {
+      "from": "foundations/apis-and-web-basics",
       "to": "intermediate/applied-ai/how-ai-apis-work"
     },
     {
@@ -1142,6 +1515,14 @@
       "to": "intermediate/applied-ai/build-a-chatbot"
     },
     {
+      "from": "foundations/reading-writing-data",
+      "to": "intermediate/applied-ai/ai-data-analysis"
+    },
+    {
+      "from": "intermediate/applied-ai/prompt-engineering",
+      "to": "intermediate/applied-ai/ai-data-analysis"
+    },
+    {
       "from": "intermediate/applied-ai/build-a-chatbot",
       "to": "intermediate/applied-ai/agents-and-tool-use"
     },
@@ -1156,6 +1537,14 @@
     {
       "from": "foundations/first-conversation-with-ai",
       "to": "foundations/what-is-programming"
+    },
+    {
+      "from": "foundations/python-through-ai",
+      "to": "foundations/virtual-environments"
+    },
+    {
+      "from": "foundations/files-folders-terminal",
+      "to": "foundations/virtual-environments"
     },
     {
       "from": "foundations/what-is-ai",
@@ -1190,6 +1579,14 @@
       "to": "foundations/files-folders-terminal"
     },
     {
+      "from": "foundations/first-conversation-with-ai",
+      "to": "foundations/debugging-with-ai"
+    },
+    {
+      "from": "foundations/build-your-first-script",
+      "to": "foundations/debugging-with-ai"
+    },
+    {
       "from": "foundations/python-through-ai",
       "to": "foundations/build-your-first-script"
     },
@@ -1198,12 +1595,24 @@
       "to": "foundations/build-your-first-script"
     },
     {
+      "from": "foundations/what-is-programming",
+      "to": "foundations/apis-and-web-basics"
+    },
+    {
       "from": "intermediate/applied-ai/prompt-engineering",
       "to": "advanced/applied-ai/structured-outputs"
     },
     {
       "from": "intermediate/applied-ai/how-ai-apis-work",
       "to": "advanced/applied-ai/structured-outputs"
+    },
+    {
+      "from": "intermediate/applied-ai/how-ai-apis-work",
+      "to": "advanced/applied-ai/multi-modal-ai"
+    },
+    {
+      "from": "intermediate/applied-ai/prompt-engineering",
+      "to": "advanced/applied-ai/multi-modal-ai"
     },
     {
       "from": "intermediate/applied-ai/evaluation-and-observability",
@@ -1230,27 +1639,35 @@
       "to": "advanced/applied-ai/fine-tuning"
     },
     {
+      "from": "intermediate/applied-ai/build-a-chatbot",
+      "to": "advanced/applied-ai/deploying-ai-apps"
+    },
+    {
+      "from": "intermediate/applied-ai/build-an-agent",
+      "to": "advanced/applied-ai/deploying-ai-apps"
+    },
+    {
       "from": "intermediate/applied-ai/rag-fundamentals",
       "to": "advanced/applied-ai/advanced-rag"
     }
   ],
   "series": [],
   "stats": {
-    "total_nodes": 24,
-    "total_edges": 38,
+    "total_nodes": 32,
+    "total_edges": 54,
     "total_series": 0,
     "by_layer": {
       "0": 5,
-      "1": 7,
-      "2": 7,
-      "3": 5,
+      "1": 10,
+      "2": 10,
+      "3": 7,
       "4": 0,
       "5": 0
     },
     "by_difficulty": {
-      "beginner": 12,
-      "intermediate": 7,
-      "advanced": 5
+      "beginner": 15,
+      "intermediate": 10,
+      "advanced": 7
     }
   }
 }
