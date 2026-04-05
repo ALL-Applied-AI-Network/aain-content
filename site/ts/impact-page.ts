@@ -124,56 +124,7 @@ async function init(): Promise<void> {
     fetch("./public/us-states-10m.json").then((r) => r.json()) as Promise<Topology>,
   ]);
 
-  renderStats(hubData);
   renderMap(topoData, hubData);
-  renderDirectory(hubData);
-  initFilters(hubData);
-}
-
-// ---------------------------------------------------------------------------
-// Stats
-// ---------------------------------------------------------------------------
-
-function renderStats(data: HubData): void {
-  const grid = document.getElementById("stats-grid");
-  if (!grid) return;
-
-  const stats = [
-    { value: data.stats.total_hubs, label: "Chapters" },
-    { value: data.stats.total_members, label: "Members" },
-    { value: data.stats.states_active, label: "States" },
-    { value: data.stats.universities, label: "Universities" },
-  ];
-
-  grid.innerHTML = stats
-    .map(
-      (s) => `
-    <div class="impact-stat">
-      <div class="impact-stat__value">${s.value}</div>
-      <div class="impact-stat__label">${s.label}</div>
-    </div>
-  `
-    )
-    .join("");
-
-  // Animate count-up
-  grid.querySelectorAll<HTMLElement>(".impact-stat__value").forEach((el, i) => {
-    const target = stats[i].value;
-    animateCount(el, target, 1200);
-  });
-}
-
-function animateCount(el: HTMLElement, target: number, duration: number): void {
-  const start = performance.now();
-  const update = (now: number) => {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    // Ease out cubic
-    const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.round(eased * target).toString();
-    if (progress < 1) requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
 }
 
 // ---------------------------------------------------------------------------
@@ -264,19 +215,7 @@ function renderMap(topo: Topology, hubData: HubData): void {
     .on("mouseleave", () => {
       hideTooltip(tooltip);
     })
-    .on("click", (_event: MouseEvent, d: any) => {
-      const id = d.id?.toString().padStart(2, "0");
-      const hubs = stateHubs.get(id);
-      if (hubs && hubs.length > 0) {
-        // Scroll to directory and highlight
-        const card = document.querySelector(`[data-hub="${hubs[0].id}"]`);
-        if (card) {
-          card.scrollIntoView({ behavior: "smooth", block: "center" });
-          card.classList.add("hub-card--highlight");
-          setTimeout(() => card.classList.remove("hub-card--highlight"), 2000);
-        }
-      }
-    });
+;
 
   // Render hub markers — use city-specific coordinates when available,
   // otherwise offset from state centroid to avoid overlap
@@ -349,24 +288,20 @@ function createTooltip(): HTMLElement {
 
 function showTooltip(el: HTMLElement, event: MouseEvent, hubs: Hub[]): void {
   const hub = hubs[0]; // Primary hub for this state
-  const statusColor = hub.status === "active" ? "#818cf8" : "#22d3ee";
+  const hasActive = hubs.some((h) => h.status === "active");
+  const statusColor = hasActive ? "#818cf8" : "#22d3ee";
+  const statusLabel = hasActive ? "Active" : "Expanding";
 
-  let html = `
+  const html = `
     <div class="impact-tooltip__state">${hub.state}</div>
-    <div class="impact-tooltip__name">${hub.name}</div>
-    <div class="impact-tooltip__university">${hub.university}</div>
+    <div class="impact-tooltip__name">Chapter activity in this state</div>
     <div class="impact-tooltip__meta">
       <span class="impact-tooltip__meta-item">
-        <span class="impact-tooltip__meta-dot impact-tooltip__meta-dot--${hub.status}"></span>
-        ${hub.status === "active" ? "Active" : "Launching"}
+        <span class="impact-tooltip__meta-dot impact-tooltip__meta-dot--${hasActive ? "active" : "launching"}"></span>
+        ${statusLabel}
       </span>
-      <span class="impact-tooltip__meta-item">${hub.members} members</span>
     </div>
   `;
-
-  if (hubs.length > 1) {
-    html += `<div style="margin-top:0.4rem;font-size:0.7rem;color:var(--text-muted)">+${hubs.length - 1} more chapter${hubs.length > 2 ? "s" : ""} in this state</div>`;
-  }
 
   el.innerHTML = html;
   el.style.borderLeft = `3px solid ${statusColor}`;
@@ -383,81 +318,6 @@ function moveTooltip(el: HTMLElement, event: MouseEvent): void {
 
 function hideTooltip(el: HTMLElement): void {
   el.classList.remove("impact-tooltip--visible");
-}
-
-// ---------------------------------------------------------------------------
-// Directory
-// ---------------------------------------------------------------------------
-
-function renderDirectory(data: HubData, filter = "all"): void {
-  const grid = document.getElementById("directory-grid");
-  if (!grid) return;
-
-  const filtered =
-    filter === "all"
-      ? data.hubs
-      : data.hubs.filter((h) => h.status === filter);
-
-  // Sort: active first, then by member count
-  filtered.sort((a, b) => {
-    if (a.status !== b.status) return a.status === "active" ? -1 : 1;
-    return b.members - a.members;
-  });
-
-  grid.innerHTML = filtered
-    .map(
-      (hub) => `
-    <div class="hub-card" data-hub="${hub.id}" data-status="${hub.status}">
-      <div class="hub-card__header">
-        <div class="hub-card__name">${hub.name}</div>
-        <span class="hub-card__status hub-card__status--${hub.status}">
-          ${hub.status === "active" ? "Active" : "Launching"}
-        </span>
-      </div>
-      <div class="hub-card__university">${hub.university}</div>
-      <div class="hub-card__location">${hub.city}, ${hub.state}</div>
-      <div class="hub-card__desc">${hub.description}</div>
-      <div class="hub-card__highlights">
-        ${hub.highlights.map((h) => `<span class="hub-card__tag">${h}</span>`).join("")}
-      </div>
-      <div class="hub-card__meta">
-        <span class="hub-card__meta-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          ${hub.members} members
-        </span>
-        <span class="hub-card__meta-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          Founded ${hub.founded}
-        </span>
-      </div>
-    </div>
-  `
-    )
-    .join("");
-}
-
-// ---------------------------------------------------------------------------
-// Filters
-// ---------------------------------------------------------------------------
-
-function initFilters(data: HubData): void {
-  const container = document.getElementById("directory-filters");
-  if (!container) return;
-
-  container.addEventListener("click", (e) => {
-    const btn = (e.target as HTMLElement).closest<HTMLElement>(".impact-filter");
-    if (!btn) return;
-
-    // Update active state
-    container
-      .querySelectorAll(".impact-filter")
-      .forEach((b) => b.classList.remove("impact-filter--active"));
-    btn.classList.add("impact-filter--active");
-
-    // Re-render
-    const filter = btn.dataset.filter || "all";
-    renderDirectory(data, filter);
-  });
 }
 
 // ---------------------------------------------------------------------------

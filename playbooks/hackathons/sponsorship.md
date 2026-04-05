@@ -110,4 +110,4 @@ No sponsors yet? You can still run a great event:
 - If your club is part of a university student org, funds may need to go through your school's finance office.
 - Keep all receipts. Your treasurer will thank you.
 - Sponsor invoices should come from your university or fiscal sponsor, not personal accounts.
-- If your hub is under the ALL Applied AI Network's 501(c)(3) umbrella, donations may be tax-deductible -- confirm with network leadership.
+- The ALL Applied AI Network's 501(c)(3) filing is currently pending. Until approved, tax-deductible donation status is not yet confirmed -- check with network leadership for the latest status.

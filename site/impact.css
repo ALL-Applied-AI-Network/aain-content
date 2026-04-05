@@ -290,176 +290,40 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* ---------- Directory ---------- */
-.impact-directory {
-  padding: 3rem 0 4rem;
-}
-
-.impact-directory__title {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+/* ---------- Coming Soon ---------- */
+.impact-coming-soon {
+  padding: 4rem 0;
   text-align: center;
-  margin-bottom: 0.4rem;
 }
 
-.impact-directory__subtitle {
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-}
-
-.impact-directory__filters {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.impact-filter {
-  padding: 0.4rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 100px;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-family: inherit;
-}
-
-.impact-filter:hover {
-  color: var(--text-secondary);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-.impact-filter--active {
-  color: #a78bfa;
-  border-color: rgba(167, 139, 250, 0.4);
-  background: rgba(167, 139, 250, 0.08);
-}
-
-.impact-directory__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1rem;
-}
-
-/* Hub cards */
-.hub-card {
-  padding: 1.5rem;
-  background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  transition: all 0.2s;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.hub-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.hub-card--highlight {
-  border-color: rgba(99, 102, 241, 0.2);
-  background: rgba(99, 102, 241, 0.04);
-}
-
-.hub-card__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.hub-card__name {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1.3;
-}
-
-.hub-card__status {
-  flex-shrink: 0;
-  padding: 0.2rem 0.6rem;
-  font-size: 0.65rem;
+.impact-coming-soon__badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-radius: 100px;
-  white-space: nowrap;
-}
-
-.hub-card__status--active {
-  color: #818cf8;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-}
-
-.hub-card__status--launching {
+  letter-spacing: 0.12em;
   color: #22d3ee;
-  background: rgba(34, 211, 238, 0.1);
-  border: 1px solid rgba(34, 211, 238, 0.2);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-mono);
 }
 
-.hub-card__university {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
-}
-
-.hub-card__location {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+.impact-coming-soon__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
 }
 
-.hub-card__desc {
-  font-size: 0.85rem;
-  line-height: 1.55;
+.impact-coming-soon__desc {
   color: var(--text-secondary);
-  margin-bottom: 0.75rem;
-}
-
-.hub-card__highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.hub-card__tag {
-  padding: 0.15rem 0.55rem;
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 4px;
-}
-
-.hub-card__meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.hub-card__meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
+  font-size: 1rem;
+  max-width: 520px;
+  margin: 0 auto 1.75rem;
+  line-height: 1.7;
 }
 
 /* ---------- CTA ---------- */
@@ -512,10 +376,6 @@
 
   .impact-map__legend {
     justify-content: center;
-  }
-
-  .impact-directory__grid {
-    grid-template-columns: 1fr;
   }
 
   .impact-stat__value {
