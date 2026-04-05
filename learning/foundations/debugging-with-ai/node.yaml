@@ -1,0 +1,30 @@
+id: "foundations/debugging-with-ai"
+title: "Debugging with AI"
+description: "Turn cryptic error messages into learning opportunities — use AI to understand, diagnose, and fix bugs in your code."
+layer: 1
+difficulty: beginner
+estimated_minutes: 30
+thumbnail: "thumbnail.svg"
+tags: ["debugging", "errors", "troubleshooting", "ai-assisted"]
+
+prerequisites:
+  - "foundations/first-conversation-with-ai"
+  - "foundations/build-your-first-script"
+unlocks: []
+
+content_file: "debugging-with-ai.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Brett Storoe"
+    role: author
+    github: "storoeb"
+    affiliation: "MSOE / ALL Applied AI Network"
+  - name: "Adam Haile"
+    role: reviewer
+    github: "devartech"
+    affiliation: "MSOE / ALL Applied AI Network"
+
+resources: []
