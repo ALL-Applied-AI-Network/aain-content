@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#d946ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#0d0d1f" rx="12"/>
+  <!-- Bar chart with AI sparkle -->
+  <g transform="translate(200,120)" fill="none" stroke="url(#brand)" stroke-width="2">
+    <!-- Chart axes -->
+    <line x1="-65" y1="40" x2="55" y2="40" stroke-width="1.5"/>
+    <line x1="-65" y1="40" x2="-65" y2="-50" stroke-width="1.5"/>
+    <!-- Bars -->
+    <rect x="-55" y="5" width="18" height="35" rx="2" fill="url(#brand)" opacity="0.5"/>
+    <rect x="-30" y="-15" width="18" height="55" rx="2" fill="url(#brand)" opacity="0.6"/>
+    <rect x="-5" y="-35" width="18" height="75" rx="2" fill="url(#brand)" opacity="0.7"/>
+    <rect x="20" y="-20" width="18" height="60" rx="2" fill="url(#brand)" opacity="0.55"/>
+    <!-- Trend line -->
+    <polyline points="-46,-5 -21,-25 4,-45 29,-30" stroke-width="2" stroke="#d946ef" fill="none"/>
+    <circle cx="-46" cy="-5" r="3" fill="#d946ef"/>
+    <circle cx="-21" cy="-25" r="3" fill="#d946ef"/>
+    <circle cx="4" cy="-45" r="3" fill="#d946ef"/>
+    <circle cx="29" cy="-30" r="3" fill="#d946ef"/>
+    <!-- AI sparkle -->
+    <path d="M60,-35 L63,-25 L73,-22 L63,-19 L60,-9 L57,-19 L47,-22 L57,-25 Z" fill="url(#brand)" opacity="0.6"/>
+    <path d="M70,-45 L71,-41 L75,-40 L71,-39 L70,-35 L69,-39 L65,-40 L69,-41 Z" fill="#00d4ff" opacity="0.4"/>
+  </g>
+  <text x="200" y="275" text-anchor="middle" fill="#e8e8f0" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600">AI-Powered Data Analysis</text>
+</svg>

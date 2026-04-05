@@ -1,0 +1,34 @@
+id: "intermediate/applied-ai/ai-data-analysis"
+title: "AI-Powered Data Analysis"
+description: "Combine pandas, visualization libraries, and AI to analyze datasets faster — from exploratory analysis to automated insight generation."
+layer: 2
+difficulty: intermediate
+estimated_minutes: 55
+thumbnail: "thumbnail.svg"
+tags: ["data-analysis", "pandas", "visualization", "ai-assisted", "insights"]
+
+prerequisites:
+  - "foundations/reading-writing-data"
+  - "intermediate/applied-ai/prompt-engineering"
+unlocks: []
+
+content_file: "ai-data-analysis.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Adam Haile"
+    role: author
+    github: "devartech"
+    affiliation: "MSOE / ALL Applied AI Network"
+  - name: "Ben Paulson"
+    role: reviewer
+    github: "Benja-Pauls"
+    affiliation: "MSOE / ALL Applied AI Network"
+
+resources:
+  - title: "Wes McKinney: Python for Data Analysis"
+    url: "https://wesmckinney.com/book/"
+    type: course
+    contributor: "Wes McKinney"
