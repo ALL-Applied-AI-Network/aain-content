@@ -1,0 +1,29 @@
+id: "foundations/virtual-environments"
+title: "Virtual Environments and Dependencies"
+description: "Learn to isolate Python projects with virtual environments and manage packages — essential skills before building anything real."
+layer: 1
+difficulty: beginner
+estimated_minutes: 25
+thumbnail: "thumbnail.svg"
+tags: ["python", "venv", "pip", "dependencies", "packaging"]
+
+prerequisites:
+  - "foundations/python-through-ai"
+  - "foundations/files-folders-terminal"
+unlocks: []
+
+content_file: "virtual-environments.md"
+notebook_file: null
+author: "ALL Applied AI Network"
+last_updated: "2026-04-04"
+
+contributors:
+  - name: "Adam Haile"
+    role: author
+    github: "devartech"
+    affiliation: "MSOE / ALL Applied AI Network"
+
+resources:
+  - title: "Python Packaging User Guide"
+    url: "https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/"
+    type: article
