@@ -237,10 +237,8 @@ body {
 }
 
 .hero__grid {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 3rem;
-  align-items: center;
+  display: block;
+  max-width: 50%;
 }
 
 .hero__content {
@@ -294,44 +292,6 @@ body {
   color: var(--text-secondary);
 }
 
-/* Hero visual — embedded skill tree preview */
-.hero__visual {
-  position: relative;
-}
-
-.hero__tree-preview {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-}
-
-.hero__tree-canvas {
-  width: 100%;
-  height: 420px;
-  cursor: grab;
-}
-
-.hero__tree-canvas:active {
-  cursor: grabbing;
-}
-
-.hero__tree-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem 1rem;
-  border-top: 1px solid var(--border-subtle);
-  background: var(--bg-card);
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.hero__tree-label a {
-  font-size: 0.75rem;
-  font-weight: 500;
-}
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -1742,12 +1702,7 @@ body {
   }
 
   .hero__grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .hero__tree-canvas {
-    height: 300px;
+    max-width: 100%;
   }
 
   .outcomes__grid {

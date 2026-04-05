@@ -39,6 +39,7 @@
       <img src="./public/web/hero-crowd.jpg" alt="" loading="eager" />
     </div>
     <canvas id="hero-particles"></canvas>
+    <div id="hero-3d" style="position:absolute;right:0;top:0;bottom:0;width:60%;pointer-events:none;z-index:1;"></div>
     <div class="hero__grid container">
       <div class="hero__content">
         <h1 class="hero__title" id="hero-title">
@@ -57,15 +58,6 @@
           500+ members across 5 schools. 10+ direct sponsor hires per cycle.
           Built at MSOE, expanding nationwide.
         </p>
-      </div>
-      <div class="hero__visual">
-        <div class="hero__tree-preview" id="hero-tree-preview">
-          <div id="tree-canvas" class="hero__tree-canvas"></div>
-          <div class="hero__tree-label">
-            <span>Interactive skill tree &mdash; from "what is an IDE" to deploying agents</span>
-            <a href="./tree.html">Full screen &rarr;</a>
-          </div>
-        </div>
       </div>
       <div class="hero__sponsors">
         <span class="hero__sponsors-label">Network sponsors</span>
@@ -176,7 +168,26 @@
     <div class="container reveal">
       <div class="pipeline reveal-stagger">
         <div class="pipeline__item">
-          <span class="material-icons-outlined pipeline__icon" style="color: var(--gradient-blue)">memory</span>
+          <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Bottom server unit -->
+            <polygon points="24,30 38,37 24,44 10,37" fill="#3b82f6" opacity="0.9"/>
+            <polygon points="10,37 24,44 24,38 10,31" fill="#3b82f6" opacity="0.55"/>
+            <polygon points="24,44 38,37 38,31 24,38" fill="#3b82f6" opacity="0.35"/>
+            <!-- Middle server unit -->
+            <polygon points="24,22 38,29 24,36 10,29" fill="#3b82f6" opacity="0.9"/>
+            <polygon points="10,29 24,36 24,30 10,23" fill="#3b82f6" opacity="0.55"/>
+            <polygon points="24,36 38,29 38,23 24,30" fill="#3b82f6" opacity="0.35"/>
+            <!-- Top server unit -->
+            <polygon points="24,14 38,21 24,28 10,21" fill="#3b82f6" opacity="0.9"/>
+            <polygon points="10,21 24,28 24,22 10,15" fill="#3b82f6" opacity="0.55"/>
+            <polygon points="24,28 38,21 38,15 24,22" fill="#3b82f6" opacity="0.35"/>
+            <!-- LED indicators on left faces -->
+            <circle cx="14" cy="25" r="1" fill="#3b82f6"/>
+            <circle cx="14" cy="33" r="1" fill="#3b82f6"/>
+            <circle cx="14" cy="17" r="1" fill="#3b82f6"/>
+            <!-- Top heatsink fin -->
+            <polygon points="20,8 24,6 28,8 24,10" fill="#3b82f6" opacity="0.8"/>
+          </svg>
           <strong>Compute access</strong>
           <span>Universities gain GPU infrastructure that students need a reason to use.</span>
         </div>
@@ -184,7 +195,27 @@
           <span class="material-icons-outlined">arrow_forward</span>
         </div>
         <div class="pipeline__item">
-          <span class="material-icons-outlined pipeline__icon" style="color: var(--gradient-cyan)">groups</span>
+          <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Back person (smaller, behind) -->
+            <circle cx="24" cy="10" r="3.5" fill="#22d3ee" opacity="0.5"/>
+            <polygon points="24,14 30,22 24,26 18,22" fill="#22d3ee" opacity="0.4"/>
+            <polygon points="18,22 24,26 24,30 18,26" fill="#22d3ee" opacity="0.3"/>
+            <polygon points="24,26 30,22 30,26 24,30" fill="#22d3ee" opacity="0.2"/>
+            <!-- Left person -->
+            <circle cx="14" cy="18" r="3.5" fill="#22d3ee" opacity="0.8"/>
+            <polygon points="14,22 21,27 14,32 7,27" fill="#22d3ee" opacity="0.7"/>
+            <polygon points="7,27 14,32 14,38 7,33" fill="#22d3ee" opacity="0.5"/>
+            <polygon points="14,32 21,27 21,33 14,38" fill="#22d3ee" opacity="0.35"/>
+            <!-- Right person -->
+            <circle cx="34" cy="18" r="3.5" fill="#22d3ee" opacity="0.8"/>
+            <polygon points="34,22 41,27 34,32 27,27" fill="#22d3ee" opacity="0.7"/>
+            <polygon points="27,27 34,32 34,38 27,33" fill="#22d3ee" opacity="0.5"/>
+            <polygon points="34,32 41,27 41,33 34,38" fill="#22d3ee" opacity="0.35"/>
+            <!-- Connection lines between people -->
+            <line x1="17" y1="26" x2="24" y2="22" stroke="#22d3ee" stroke-width="1" opacity="0.4"/>
+            <line x1="31" y1="26" x2="24" y2="22" stroke="#22d3ee" stroke-width="1" opacity="0.4"/>
+            <line x1="17" y1="30" x2="31" y2="30" stroke="#22d3ee" stroke-width="1" opacity="0.3"/>
+          </svg>
           <strong>Mentorship loop</strong>
           <span>Upperclassmen mentor newcomers who build real portfolio pieces.</span>
         </div>
@@ -192,7 +223,34 @@
           <span class="material-icons-outlined">arrow_forward</span>
         </div>
         <div class="pipeline__item">
-          <span class="material-icons-outlined pipeline__icon" style="color: var(--gradient-pink)">diversity_3</span>
+          <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Center node -->
+            <circle cx="24" cy="24" r="4" fill="#ec4899" opacity="0.9"/>
+            <!-- Top node -->
+            <circle cx="24" cy="8" r="3" fill="#ec4899" opacity="0.7"/>
+            <!-- Bottom-left node -->
+            <circle cx="10" cy="36" r="3" fill="#ec4899" opacity="0.7"/>
+            <!-- Bottom-right node -->
+            <circle cx="38" cy="36" r="3" fill="#ec4899" opacity="0.7"/>
+            <!-- Top-left node -->
+            <circle cx="8" cy="18" r="2.5" fill="#ec4899" opacity="0.5"/>
+            <!-- Top-right node -->
+            <circle cx="40" cy="18" r="2.5" fill="#ec4899" opacity="0.5"/>
+            <!-- Bottom node -->
+            <circle cx="24" cy="44" r="2" fill="#ec4899" opacity="0.45"/>
+            <!-- Connection lines from center -->
+            <line x1="24" y1="20" x2="24" y2="11" stroke="#ec4899" stroke-width="1.5" opacity="0.5"/>
+            <line x1="21" y1="27" x2="12" y2="34" stroke="#ec4899" stroke-width="1.5" opacity="0.5"/>
+            <line x1="27" y1="27" x2="36" y2="34" stroke="#ec4899" stroke-width="1.5" opacity="0.5"/>
+            <line x1="20" y1="22" x2="10" y2="18" stroke="#ec4899" stroke-width="1" opacity="0.35"/>
+            <line x1="28" y1="22" x2="40" y2="18" stroke="#ec4899" stroke-width="1" opacity="0.35"/>
+            <line x1="24" y1="28" x2="24" y2="42" stroke="#ec4899" stroke-width="1" opacity="0.3"/>
+            <!-- Outer connections -->
+            <line x1="10" y1="20" x2="10" y2="33" stroke="#ec4899" stroke-width="1" opacity="0.25"/>
+            <line x1="40" y1="20" x2="38" y2="33" stroke="#ec4899" stroke-width="1" opacity="0.25"/>
+            <line x1="13" y1="37" x2="22" y2="43" stroke="#ec4899" stroke-width="1" opacity="0.2"/>
+            <line x1="35" y1="37" x2="26" y2="43" stroke="#ec4899" stroke-width="1" opacity="0.2"/>
+          </svg>
           <strong>Year-round community</strong>
           <span>Competition energy expands into projects, research groups, and speaker series.</span>
         </div>
@@ -200,7 +258,26 @@
           <span class="material-icons-outlined">arrow_forward</span>
         </div>
         <div class="pipeline__item">
-          <span class="material-icons-outlined pipeline__icon" style="color: var(--gradient-purple)">trending_up</span>
+          <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Bar 1 (shortest, left) -->
+            <polygon points="10,36 18,32 18,44 10,44" fill="#a855f7" opacity="0.55"/>
+            <polygon points="18,32 22,34 22,44 18,44" fill="#a855f7" opacity="0.35"/>
+            <polygon points="10,36 18,32 22,34 14,38" fill="#a855f7" opacity="0.85"/>
+            <!-- Bar 2 -->
+            <polygon points="16,28 24,24 24,44 16,44" fill="#a855f7" opacity="0.55"/>
+            <polygon points="24,24 28,26 28,44 24,44" fill="#a855f7" opacity="0.35"/>
+            <polygon points="16,28 24,24 28,26 20,30" fill="#a855f7" opacity="0.85"/>
+            <!-- Bar 3 -->
+            <polygon points="22,20 30,16 30,44 22,44" fill="#a855f7" opacity="0.55"/>
+            <polygon points="30,16 34,18 34,44 30,44" fill="#a855f7" opacity="0.35"/>
+            <polygon points="22,20 30,16 34,18 26,22" fill="#a855f7" opacity="0.85"/>
+            <!-- Bar 4 (tallest, right) -->
+            <polygon points="28,10 36,6 36,44 28,44" fill="#a855f7" opacity="0.55"/>
+            <polygon points="36,6 40,8 40,44 36,44" fill="#a855f7" opacity="0.35"/>
+            <polygon points="28,10 36,6 40,8 32,12" fill="#a855f7" opacity="0.85"/>
+            <!-- Arrow pointing up -->
+            <polygon points="38,4 40,8 36,6" fill="#a855f7" opacity="0.9"/>
+          </svg>
           <strong>Industry pipeline</strong>
           <span>Students with real experience become the strongest hires. Sponsors keep coming back.</span>
         </div>
@@ -371,7 +448,19 @@
 
         <div class="hub-pillar" style="--pillar-accent: var(--gradient-blue); --pillar-rgb: 59,130,246">
           <div class="hub-pillar__icon">
-            <span class="material-icons-outlined">developer_board</span>
+            <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="24,28 40,36 24,44 8,36" fill="#3b82f6" opacity="0.9"/>
+              <polygon points="8,36 24,44 24,38 8,30" fill="#3b82f6" opacity="0.55"/>
+              <polygon points="24,44 40,36 40,30 24,38" fill="#3b82f6" opacity="0.35"/>
+              <polygon points="24,16 40,24 24,32 8,24" fill="#3b82f6" opacity="0.9"/>
+              <polygon points="8,24 24,32 24,26 8,18" fill="#3b82f6" opacity="0.55"/>
+              <polygon points="24,32 40,24 40,18 24,26" fill="#3b82f6" opacity="0.35"/>
+              <polygon points="24,4 40,12 24,20 8,12" fill="#3b82f6" opacity="0.9"/>
+              <polygon points="8,12 24,20 24,16 8,8" fill="#3b82f6" opacity="0.55"/>
+              <polygon points="24,20 40,12 40,8 24,16" fill="#3b82f6" opacity="0.35"/>
+              <rect x="12" y="21" width="2" height="1" fill="#3b82f6" rx="0.5"/>
+              <rect x="12" y="33" width="2" height="1" fill="#3b82f6" rx="0.5"/>
+            </svg>
           </div>
           <h3>GPU Compute</h3>
           <p>
@@ -386,7 +475,28 @@
 
         <div class="hub-pillar" style="--pillar-accent: var(--gradient-cyan); --pillar-rgb: 34,211,238">
           <div class="hub-pillar__icon">
-            <span class="material-icons-outlined">hub</span>
+            <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Center globe/sphere base -->
+              <ellipse cx="24" cy="24" rx="12" ry="8" fill="none" stroke="#22d3ee" stroke-width="1.2" opacity="0.5"/>
+              <ellipse cx="24" cy="24" rx="5" ry="8" fill="none" stroke="#22d3ee" stroke-width="1.2" opacity="0.4"/>
+              <circle cx="24" cy="24" r="8" fill="#22d3ee" opacity="0.15" stroke="#22d3ee" stroke-width="1.2"/>
+              <!-- Horizontal ring -->
+              <line x1="12" y1="24" x2="36" y2="24" stroke="#22d3ee" stroke-width="0.8" opacity="0.3"/>
+              <!-- Orbiting nodes -->
+              <circle cx="24" cy="8" r="3" fill="#22d3ee" opacity="0.8"/>
+              <circle cx="8" cy="32" r="3" fill="#22d3ee" opacity="0.7"/>
+              <circle cx="40" cy="32" r="3" fill="#22d3ee" opacity="0.7"/>
+              <circle cx="38" cy="12" r="2" fill="#22d3ee" opacity="0.5"/>
+              <circle cx="10" cy="12" r="2" fill="#22d3ee" opacity="0.5"/>
+              <circle cx="24" cy="42" r="2" fill="#22d3ee" opacity="0.5"/>
+              <!-- Connection lines -->
+              <line x1="24" y1="11" x2="24" y2="16" stroke="#22d3ee" stroke-width="1.2" opacity="0.5"/>
+              <line x1="10" y1="31" x2="16" y2="28" stroke="#22d3ee" stroke-width="1.2" opacity="0.5"/>
+              <line x1="38" y1="31" x2="32" y2="28" stroke="#22d3ee" stroke-width="1.2" opacity="0.5"/>
+              <line x1="36" y1="13" x2="32" y2="18" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
+              <line x1="12" y1="13" x2="16" y2="18" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
+              <line x1="24" y1="40" x2="24" y2="32" stroke="#22d3ee" stroke-width="1" opacity="0.35"/>
+            </svg>
           </div>
           <h3>The Network</h3>
           <p>
@@ -401,7 +511,24 @@
 
         <div class="hub-pillar" style="--pillar-accent: var(--gradient-purple); --pillar-rgb: 168,85,247">
           <div class="hub-pillar__icon">
-            <span class="material-icons-outlined">build</span>
+            <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Gear body (isometric hexagon) -->
+              <polygon points="24,6 36,13 36,27 24,34 12,27 12,13" fill="#a855f7" opacity="0.15" stroke="#a855f7" stroke-width="1"/>
+              <!-- Gear teeth -->
+              <polygon points="24,4 27,5 27,8 24,7 21,8 21,5" fill="#a855f7" opacity="0.7"/>
+              <polygon points="36,12 37,15 35,17 33,14" fill="#a855f7" opacity="0.6"/>
+              <polygon points="36,28 37,25 35,23 33,26" fill="#a855f7" opacity="0.5"/>
+              <polygon points="24,36 27,35 27,32 24,33 21,32 21,35" fill="#a855f7" opacity="0.5"/>
+              <polygon points="12,28 11,25 13,23 15,26" fill="#a855f7" opacity="0.6"/>
+              <polygon points="12,12 11,15 13,17 15,14" fill="#a855f7" opacity="0.7"/>
+              <!-- Inner circle -->
+              <circle cx="24" cy="20" r="5" fill="#a855f7" opacity="0.3"/>
+              <circle cx="24" cy="20" r="2.5" fill="#a855f7" opacity="0.6"/>
+              <!-- Wrench handle extending down-right -->
+              <rect x="28" y="26" width="3" height="12" rx="1.5" fill="#a855f7" opacity="0.7" transform="rotate(-30 29.5 32)"/>
+              <circle cx="34" cy="38" r="3" fill="#a855f7" opacity="0.5"/>
+              <circle cx="34" cy="38" r="1.5" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.8"/>
+            </svg>
           </div>
           <h3>Hub-Building Tools</h3>
           <p>

@@ -1,19 +1,17 @@
 /**
  * home.ts — Landing page initialization.
- * Loads tree data + manifest, renders embedded skill tree, stats,
+ * Loads tree data + manifest, renders 3D hero scene, stats,
  * content library, contributors, and series cards.
  */
 
 import {
   loadTreeData,
   totalEstimatedHours,
-  articleUrl,
   formatMinutes,
   $,
   type TreeJson,
   type TreeContributor,
 } from "./main";
-import { TreeVisualization } from "./tree-visualization";
 
 // ---------------------------------------------------------------------------
 // Manifest types (mirrors manifest.json)
@@ -66,17 +64,10 @@ async function init(): Promise<void> {
   if (statNodes) statNodes.textContent = String(tree.stats.total_nodes);
   if (statHours) statHours.textContent = `~${totalEstimatedHours(tree.nodes)}`;
 
-  // --- Embedded Skill Tree in Hero ---
-  const canvas = document.getElementById("tree-canvas");
-  if (canvas) {
-    const viz = new TreeVisualization({
-      container: canvas,
-      embedded: true,
-      onNodeClick: (node) => {
-        window.location.href = articleUrl(node.id);
-      },
-    });
-    await viz.init();
+  // --- 3D Hero Scene (Three.js — dynamically imported) ---
+  const hero3d = document.getElementById("hero-3d");
+  if (hero3d) {
+    import("./hero-scene").then((m) => m.initHeroScene(hero3d));
   }
 
   // --- Content Library ---
