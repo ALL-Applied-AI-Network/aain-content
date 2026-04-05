@@ -4,7 +4,7 @@ description: "Understand how your computer organizes files, navigate with the co
 layer: 1
 difficulty: beginner
 estimated_minutes: 30
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["terminal", "command-line", "filesystem", "environment-variables"]
 
 prerequisites:

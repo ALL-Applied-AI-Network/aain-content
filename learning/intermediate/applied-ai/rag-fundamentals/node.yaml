@@ -4,7 +4,7 @@ description: "Build retrieval-augmented generation pipelines from scratch — lo
 layer: 2
 difficulty: intermediate
 estimated_minutes: 60
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["rag", "embeddings", "vector-database", "chromadb", "retrieval", "applied-ai"]
 
 prerequisites:

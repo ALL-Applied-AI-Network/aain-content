@@ -4,7 +4,7 @@ description: "The article most AI tutorials skip — how to systematically test 
 layer: 2
 difficulty: intermediate
 estimated_minutes: 45
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["evaluation", "evals", "observability", "testing", "monitoring", "applied-ai"]
 
 prerequisites:

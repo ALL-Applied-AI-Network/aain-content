@@ -4,7 +4,7 @@ description: "Understand what code actually is, why programming languages exist,
 layer: 0
 difficulty: beginner
 estimated_minutes: 20
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["programming", "python", "code", "fundamentals", "concepts"]
 
 prerequisites:

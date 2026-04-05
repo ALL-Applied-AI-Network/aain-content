@@ -4,7 +4,7 @@ description: "Introduction to Anthropic's CLI-based AI coding agent — terminal
 layer: 1
 difficulty: beginner
 estimated_minutes: 30
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["claude-code", "cli", "terminal", "anthropic", "ai-coding", "tooling"]
 
 prerequisites:

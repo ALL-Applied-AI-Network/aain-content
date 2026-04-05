@@ -4,7 +4,7 @@ description: "Download, install, and configure Cursor — the AI-native code edi
 layer: 0
 difficulty: beginner
 estimated_minutes: 30
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["setup", "cursor", "ide", "getting-started", "tools"]
 
 prerequisites:

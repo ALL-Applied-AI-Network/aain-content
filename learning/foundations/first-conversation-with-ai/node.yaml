@@ -4,7 +4,7 @@ description: "Learn to use Cursor's AI features — chat, inline editing, and th
 layer: 0
 difficulty: beginner
 estimated_minutes: 25
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["ai", "cursor", "prompting", "chat", "pair-programming"]
 
 prerequisites:

@@ -4,7 +4,7 @@ description: "Go beyond the basics — master Chat, Inline Edit, Composer, Tab c
 layer: 1
 difficulty: beginner
 estimated_minutes: 35
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["cursor", "ide", "tooling", "ai-coding", "productivity"]
 
 prerequisites:

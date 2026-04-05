@@ -4,7 +4,7 @@ description: "Combine everything you've learned into a real, useful Python proje
 layer: 1
 difficulty: beginner
 estimated_minutes: 40
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["python", "capstone", "project", "ai-assisted", "github"]
 
 prerequisites:

@@ -4,7 +4,7 @@ description: "Work with files, CSV, JSON, and live APIs in Python — the skills
 layer: 1
 difficulty: beginner
 estimated_minutes: 35
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["python", "data", "json", "csv", "apis", "requests"]
 
 prerequisites:

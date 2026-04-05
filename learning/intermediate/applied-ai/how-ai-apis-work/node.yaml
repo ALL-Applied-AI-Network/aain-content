@@ -4,7 +4,7 @@ description: "Understand the anatomy of AI API calls, make your first requests t
 layer: 2
 difficulty: intermediate
 estimated_minutes: 45
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["api", "claude", "openai", "python", "applied-ai", "sdk"]
 
 prerequisites:

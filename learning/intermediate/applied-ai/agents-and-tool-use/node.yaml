@@ -4,7 +4,7 @@ description: "Understand AI agents that take actions in the world — define too
 layer: 2
 difficulty: intermediate
 estimated_minutes: 55
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["agents", "tool-use", "function-calling", "agentic", "applied-ai"]
 
 prerequisites:

@@ -4,7 +4,7 @@ description: "Learn the layout of your code editor — the file explorer, editor
 layer: 0
 difficulty: beginner
 estimated_minutes: 25
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["ide", "cursor", "navigation", "terminal", "keyboard-shortcuts"]
 
 prerequisites:

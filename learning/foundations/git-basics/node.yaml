@@ -4,7 +4,7 @@ description: "Learn version control with Git and GitHub — track changes, write
 layer: 1
 difficulty: beginner
 estimated_minutes: 35
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["git", "github", "version-control", "collaboration"]
 
 prerequisites:

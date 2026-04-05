@@ -4,7 +4,7 @@ description: "Go beyond tips and tricks to engineer reliable, testable prompts t
 layer: 2
 difficulty: intermediate
 estimated_minutes: 50
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["prompt-engineering", "system-prompts", "few-shot", "chain-of-thought", "structured-output", "applied-ai"]
 
 prerequisites:

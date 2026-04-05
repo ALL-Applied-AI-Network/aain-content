@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-05T04:44:22.144Z",
+  "generated_at": "2026-04-05T05:04:09.217Z",
   "nodes": [
     {
       "id": "tooling/ai-ides/cursor-deep-dive",
@@ -9,7 +9,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
-      "thumbnail": "learning/tooling/ai-ides/cursor-deep-dive/thumbnail.svg",
+      "thumbnail": "learning/tooling/ai-ides/cursor-deep-dive/thumbnail.png",
       "tags": [
         "cursor",
         "ide",
@@ -42,7 +42,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 30,
-      "thumbnail": "learning/tooling/ai-ides/claude-code/thumbnail.svg",
+      "thumbnail": "learning/tooling/ai-ides/claude-code/thumbnail.png",
       "tags": [
         "claude-code",
         "cli",
@@ -151,7 +151,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
-      "thumbnail": "learning/intermediate/applied-ai/rag-fundamentals/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/rag-fundamentals/thumbnail.png",
       "tags": [
         "rag",
         "embeddings",
@@ -222,7 +222,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 50,
-      "thumbnail": "learning/intermediate/applied-ai/prompt-engineering/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/prompt-engineering/thumbnail.png",
       "tags": [
         "prompt-engineering",
         "system-prompts",
@@ -275,7 +275,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 45,
-      "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.png",
       "tags": [
         "api",
         "claude",
@@ -330,7 +330,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 45,
-      "thumbnail": "learning/intermediate/applied-ai/evaluation-and-observability/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/evaluation-and-observability/thumbnail.png",
       "tags": [
         "evaluation",
         "evals",
@@ -388,7 +388,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
-      "thumbnail": "learning/intermediate/applied-ai/build-an-agent/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/build-an-agent/thumbnail.png",
       "tags": [
         "agent",
         "capstone",
@@ -437,7 +437,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
-      "thumbnail": "learning/intermediate/applied-ai/build-a-chatbot/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/build-a-chatbot/thumbnail.png",
       "tags": [
         "chatbot",
         "conversation",
@@ -519,7 +519,7 @@
       "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 55,
-      "thumbnail": "learning/intermediate/applied-ai/agents-and-tool-use/thumbnail.svg",
+      "thumbnail": "learning/intermediate/applied-ai/agents-and-tool-use/thumbnail.png",
       "tags": [
         "agents",
         "tool-use",
@@ -576,7 +576,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 20,
-      "thumbnail": "learning/foundations/what-is-programming/thumbnail.svg",
+      "thumbnail": "learning/foundations/what-is-programming/thumbnail.png",
       "tags": [
         "programming",
         "python",
@@ -611,7 +611,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 20,
-      "thumbnail": "learning/foundations/what-is-ai/thumbnail.svg",
+      "thumbnail": "learning/foundations/what-is-ai/thumbnail.png",
       "tags": [
         "ai",
         "introduction",
@@ -708,7 +708,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 30,
-      "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.svg",
+      "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.png",
       "tags": [
         "setup",
         "cursor",
@@ -742,7 +742,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
-      "thumbnail": "learning/foundations/reading-writing-data/thumbnail.svg",
+      "thumbnail": "learning/foundations/reading-writing-data/thumbnail.png",
       "tags": [
         "python",
         "data",
@@ -778,7 +778,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 45,
-      "thumbnail": "learning/foundations/python-through-ai/thumbnail.svg",
+      "thumbnail": "learning/foundations/python-through-ai/thumbnail.png",
       "tags": [
         "python",
         "ai-assisted-learning",
@@ -830,7 +830,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 25,
-      "thumbnail": "learning/foundations/navigating-an-ide/thumbnail.svg",
+      "thumbnail": "learning/foundations/navigating-an-ide/thumbnail.png",
       "tags": [
         "ide",
         "cursor",
@@ -862,7 +862,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
-      "thumbnail": "learning/foundations/git-basics/thumbnail.svg",
+      "thumbnail": "learning/foundations/git-basics/thumbnail.png",
       "tags": [
         "git",
         "github",
@@ -907,7 +907,7 @@
       "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 25,
-      "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.svg",
+      "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.png",
       "tags": [
         "ai",
         "cursor",
@@ -942,7 +942,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 30,
-      "thumbnail": "learning/foundations/files-folders-terminal/thumbnail.svg",
+      "thumbnail": "learning/foundations/files-folders-terminal/thumbnail.png",
       "tags": [
         "terminal",
         "command-line",
@@ -1012,7 +1012,7 @@
       "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 40,
-      "thumbnail": "learning/foundations/build-your-first-script/thumbnail.svg",
+      "thumbnail": "learning/foundations/build-your-first-script/thumbnail.png",
       "tags": [
         "python",
         "capstone",

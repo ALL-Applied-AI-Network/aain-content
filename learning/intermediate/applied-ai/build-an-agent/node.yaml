@@ -4,7 +4,7 @@ description: "Capstone project — build a personal assistant agent from scratch
 layer: 2
 difficulty: intermediate
 estimated_minutes: 60
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["agent", "capstone", "project", "tool-use", "applied-ai"]
 
 prerequisites:

@@ -4,7 +4,7 @@ description: "Learn Python fundamentals the modern way — give AI a task, read 
 layer: 1
 difficulty: beginner
 estimated_minutes: 45
-thumbnail: "thumbnail.svg"
+thumbnail: "thumbnail.png"
 tags: ["python", "ai-assisted-learning", "coding-fundamentals", "cursor"]
 
 prerequisites:
