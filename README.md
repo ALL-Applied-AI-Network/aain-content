@@ -9,21 +9,18 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/all-aain/content/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/all-aain/content/validate.yml?label=content%20validation&style=flat-square" alt="Validation" /></a>
-  <a href="https://github.com/all-aain/content/actions/workflows/deploy.yml"><img src="https://img.shields.io/github/actions/workflow/status/all-aain/content/deploy.yml?label=cdn%20deploy&style=flat-square" alt="Deploy" /></a>
+  <a href="https://github.com/ALL-Applied-AI-Network/aain-content/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/ALL-Applied-AI-Network/aain-content/validate.yml?label=content%20validation&style=flat-square" alt="Validation" /></a>
+  <a href="https://github.com/ALL-Applied-AI-Network/aain-content/actions/workflows/pages.yml"><img src="https://img.shields.io/github/actions/workflow/status/ALL-Applied-AI-Network/aain-content/pages.yml?label=pages%20deploy&style=flat-square" alt="Deploy" /></a>
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/content-CC%20BY--NC--SA%204.0-blue?style=flat-square" alt="Content License" /></a>
   <a href="LICENSE-CODE.md"><img src="https://img.shields.io/badge/code-MIT-green?style=flat-square" alt="Code License" /></a>
-  <a href="https://cdn.all-aain.org"><img src="https://img.shields.io/badge/CDN-cdn.all--aain.org-purple?style=flat-square" alt="CDN" /></a>
 </p>
 
 <p align="center">
-  <a href="https://all-aain.org">Website</a> ·
-  <a href="https://all-aain.org/docs">Docs</a> ·
   <a href="#the-learning-tree">Learning Tree</a> ·
   <a href="#playbooks">Playbooks</a> ·
   <a href="#workshops">Workshops</a> ·
   <a href="STYLE_GUIDE.md">Style Guide</a> ·
-  <a href="https://discord.gg/all-aain">Discord</a>
+  <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
 ---
@@ -44,28 +41,28 @@
   <tr>
     <td align="center"><a href="https://nvidia.com"><img src="public/logos/nvidia_logo.png" alt="NVIDIA" height="48" /></a></td>
     <td align="center"><a href="https://directsupply.com"><img src="public/logos/direct_supply_logo.png" alt="Direct Supply" height="48" /></a></td>
-    <td align="center"><a href="https://all-aain.org/sponsors"><em>Your logo here</em></a></td>
-    <td align="center"><a href="https://all-aain.org/sponsors"><em>Your logo here</em></a></td>
+    <td align="center"><a href="https://github.com/ALL-Applied-AI-Network"><em>Your logo here</em></a></td>
+    <td align="center"><a href="https://github.com/ALL-Applied-AI-Network"><em>Your logo here</em></a></td>
   </tr>
 </table>
 
 <p align="center">
-  <a href="https://all-aain.org/sponsors"><strong>Become a sponsor &rarr;</strong></a>
+  <a href="https://github.com/ALL-Applied-AI-Network"><strong>Become a sponsor &rarr;</strong></a>
 </p>
 
 ---
 
-This is the shared content backbone for the **[ALL Applied AI Network](https://all-aain.org)** — a chapter-based organization connecting universities, student hubs, and industry sponsors into one ecosystem.
+This is the shared content library for the **ALL Applied AI Network** — a chapter-based organization connecting universities, student hubs, and industry sponsors into one ecosystem.
 
-Every article, tutorial, playbook, and workshop here is deployed to a CDN. When we update content, **every hub website across the network serves the new version instantly** — zero action from hub maintainers.
+Content is served via **GitHub Pages**. Hub websites fetch learning resources, playbooks, and workshops directly from this repo's published URL. When content is updated on `main`, every hub across the network gets the new version automatically.
 
-The curriculum is designed for the applied AI engineer, not the academic researcher. It starts at absolute zero — someone who has never written a line of code — and builds a path to shipping real AI products. Theory and research are there for students who want to go deep, but they're a branch, not the starting point.
+The curriculum is designed for the **applied AI engineer**, not the academic researcher. It starts at absolute zero — someone who has never written a line of code — and builds a path to shipping real AI products. Theory and research are branches for students who want to go deep, not the starting point.
 
-> **Looking to start a hub?** This repo is the content. Head to [`all-aain/hub`](https://github.com/all-aain/hub) for the website template, CLI, and SDK.
+> **Looking to start a hub?** This repo is the content library. Head to [`aain-hub-template`](https://github.com/ALL-Applied-AI-Network/aain-hub-template) for the website template — fork it, edit your config, and you're live.
 
 ## The Learning Tree
 
-The learning tree is an interactive, interconnected graph of learning resources — not a flat list of tutorials. Each node has prerequisites, unlocks new topics, and tracks student progress. Hubs can extend it with their own local content.
+The learning tree is an interactive, interconnected graph of learning resources — not a flat list of tutorials. Each node has prerequisites, unlocks new topics, and tracks student progress.
 
 ### Curriculum Overview
 
@@ -90,8 +87,8 @@ What is programming    Build: first script     Build: AI agent          Build: p
                     Classical ML                     MLOps & infrastructure
 ```
 
-**Layers 0–3** are the main trunk: the applied AI engineer path.
-**Layers 4–5** are branches for research-oriented students who want to understand how models work under the hood.
+**Layers 0-3** are the main trunk: the applied AI engineer path.
+**Layers 4-5** are branches for research-oriented students who want to understand how models work under the hood.
 **Tooling** is a parallel track (AI IDEs, Git, Jupyter, cloud compute) that students enter anytime.
 
 ### How it works
@@ -115,7 +112,14 @@ unlocks:
 content_file: "setting-up-cursor.md"
 ```
 
-On every push, GitHub Actions validates the graph (no orphans, no cycles, all references resolve) and generates `tree.json` — the full graph structure that hub websites fetch and render as an interactive skill tree.
+On every push to `main`, GitHub Actions validates the entire graph (no orphans, no cycles, all references resolve) and generates `tree.json` — the full graph structure that hub websites fetch and render as an interactive skill tree.
+
+### CI/CD
+
+| Workflow | Trigger | What it does |
+|---|---|---|
+| **[Validate](/.github/workflows/validate.yml)** | Pull requests | Validates node schemas, graph integrity, content structure, and broken references. Posts results as PR comments. |
+| **[Pages](/.github/workflows/pages.yml)** | Push to `main` | Generates `tree.json` + `manifest.json`, builds the site, and deploys to GitHub Pages. |
 
 ## Playbooks
 
@@ -133,7 +137,7 @@ Battle-tested operational guides for running a hub. Written from the experience 
 
 Hands-on, session-ready workshop content. Each includes a facilitator guide, student materials, and optional Jupyter notebooks.
 
-**Applied AI workshops** — the new core:
+**Applied AI workshops** — the core:
 - Build a Chatbot · RAG from Scratch · Build an Agent · Deploy Your First AI App · Prompt Engineering Lab
 
 **Deep dives** — adapted from MAIC's proven curriculum:
@@ -143,38 +147,30 @@ Hands-on, session-ready workshop content. Each includes a facilitator guide, stu
 
 ### For hub websites (automatic)
 
-Hub websites built with [`all-aain/hub`](https://github.com/all-aain/hub) fetch content from the CDN automatically. No configuration needed.
+Hub websites built from the [`aain-hub-template`](https://github.com/ALL-Applied-AI-Network/aain-hub-template) fetch content from this repo's GitHub Pages deployment automatically. No configuration needed.
 
 ```
-https://cdn.all-aain.org/tree.json
-https://cdn.all-aain.org/manifest.json
-https://cdn.all-aain.org/learning/foundations/setting-up-cursor/setting-up-cursor.md
+https://ALL-Applied-AI-Network.github.io/aain-content/tree.json
+https://ALL-Applied-AI-Network.github.io/aain-content/manifest.json
+https://ALL-Applied-AI-Network.github.io/aain-content/learning/foundations/setting-up-cursor/setting-up-cursor.md
 ```
 
-### For custom integrations
+### For existing websites
 
-Fetch directly from the CDN:
+If your chapter already has a website, fetch directly:
 
 ```typescript
-const tree = await fetch('https://cdn.all-aain.org/tree.json').then(r => r.json());
-const article = await fetch('https://cdn.all-aain.org/learning/intermediate/applied-ai/rag-fundamentals/rag-fundamentals.md').then(r => r.text());
-```
+const CONTENT_URL = 'https://ALL-Applied-AI-Network.github.io/aain-content';
 
-Or use the [`@all-aain/hub`](https://github.com/all-aain/hub) SDK for a typed client:
-
-```typescript
-import { ContentClient } from '@all-aain/hub';
-
-const content = new ContentClient();
-const tree = await content.getTree();
-const article = await content.getArticle('intermediate/applied-ai/rag-fundamentals');
+const tree = await fetch(`${CONTENT_URL}/tree.json`).then(r => r.json());
+const article = await fetch(`${CONTENT_URL}/learning/intermediate/applied-ai/rag-fundamentals/rag-fundamentals.md`).then(r => r.text());
 ```
 
 ## Repository Structure
 
 ```
 learning/
-├── foundations/            Layer 0–1: beginner → coding with AI
+├── foundations/            Layer 0-1: beginner -> coding with AI
 ├── intermediate/
 │   ├── applied-ai/        Layer 2: AI APIs, prompting, RAG, agents (the core)
 │   ├── production/        Layer 3: web apps, deployment, monitoring
@@ -191,10 +187,19 @@ learning/
 
 playbooks/                 Operational guides for hub leaders
 workshops/                 Session-ready hands-on content
-templates/                 Sponsor proposals, university proposals, reports
-brand/                     Logos, colors, co-branding guide
 scripts/                   Build tools (generate-tree, validate, manifest)
+site/                      GitHub Pages site (learning tree viewer, toolkit, impact)
+
+.github/workflows/
+├── validate.yml           PR content validation + PR comment
+└── pages.yml              Build & deploy to GitHub Pages
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and [STYLE_GUIDE.md](STYLE_GUIDE.md) for content formatting standards.
+
+This project is built for AI-native development. Content and code are structured for AI coding tools (Cursor, Claude Code) to understand and contribute to confidently.
 
 ---
 
