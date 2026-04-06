@@ -6,7 +6,7 @@ Thank you for helping build the open-source curriculum that powers the ALL Appli
 
 - Read the **[Style Guide](STYLE_GUIDE.md)** for formatting standards, markdown components, and tone guidelines
 - Browse existing content to get a feel for structure and quality expectations
-- Check [open issues](https://github.com/all-aain/content/issues) for content that's been requested
+- Check [open issues](https://github.com/ALL-Applied-AI-Network/aain-content/issues) for content that's been requested
 
 ## What You Can Contribute
 
@@ -60,8 +60,8 @@ last_updated: "2026-01-01"
 ### 1. Fork and branch
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/content.git
-cd content
+git clone https://github.com/YOUR-USERNAME/aain-content.git
+cd aain-content
 git checkout -b add/my-new-topic
 ```
 
@@ -109,9 +109,9 @@ Be respectful, constructive, and inclusive. We're building this for students of 
 
 ## Questions?
 
-- Open a [discussion](https://github.com/all-aain/content/discussions)
-- Join our [Discord](https://discord.gg/all-aain)
-- Email: contribute@all-aain.org
+- Open a [discussion](https://github.com/ALL-Applied-AI-Network/aain-content/discussions)
+- Join our [Discord](https://discord.gg/all-applied-ai)
+- Email: contribute@all-ai-network.org
 
 ---
 

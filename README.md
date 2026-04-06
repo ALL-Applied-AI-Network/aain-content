@@ -150,9 +150,9 @@ Hands-on, session-ready workshop content. Each includes a facilitator guide, stu
 Hub websites built from the [`aain-hub-template`](https://github.com/ALL-Applied-AI-Network/aain-hub-template) fetch content from this repo's GitHub Pages deployment automatically. No configuration needed.
 
 ```
-https://ALL-Applied-AI-Network.github.io/aain-content/tree.json
-https://ALL-Applied-AI-Network.github.io/aain-content/manifest.json
-https://ALL-Applied-AI-Network.github.io/aain-content/learning/foundations/setting-up-cursor/setting-up-cursor.md
+https://all-ai-network.org/tree.json
+https://all-ai-network.org/manifest.json
+https://all-ai-network.org/learning/foundations/setting-up-cursor/setting-up-cursor.md
 ```
 
 ### For existing websites
@@ -160,7 +160,7 @@ https://ALL-Applied-AI-Network.github.io/aain-content/learning/foundations/setti
 If your chapter already has a website, fetch directly:
 
 ```typescript
-const CONTENT_URL = 'https://ALL-Applied-AI-Network.github.io/aain-content';
+const CONTENT_URL = 'https://all-ai-network.org';
 
 const tree = await fetch(`${CONTENT_URL}/tree.json`).then(r => r.json());
 const article = await fetch(`${CONTENT_URL}/learning/intermediate/applied-ai/rag-fundamentals/rag-fundamentals.md`).then(r => r.text());
