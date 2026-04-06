@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ALL-Applied-AI-Network/aain-content/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/ALL-Applied-AI-Network/aain-content/validate.yml?label=content%20validation&style=flat-square" alt="Validation" /></a>
   <a href="https://github.com/ALL-Applied-AI-Network/aain-content/actions/workflows/pages.yml"><img src="https://img.shields.io/github/actions/workflow/status/ALL-Applied-AI-Network/aain-content/pages.yml?label=pages%20deploy&style=flat-square" alt="Deploy" /></a>
+  <a href="https://github.com/ALL-Applied-AI-Network/aain-content/actions/workflows/validate.yml"><img src="https://img.shields.io/github/actions/workflow/status/ALL-Applied-AI-Network/aain-content/validate.yml?event=pull_request&label=content%20validation&style=flat-square" alt="Validation" /></a>
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/content-CC%20BY--NC--SA%204.0-blue?style=flat-square" alt="Content License" /></a>
   <a href="LICENSE-CODE.md"><img src="https://img.shields.io/badge/code-MIT-green?style=flat-square" alt="Code License" /></a>
 </p>
