@@ -1214,6 +1214,83 @@
   gap: 0.4rem;
 }
 
+/* ---------- Start a Chapter Form ---------- */
+.chapter-form-section {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+
+.chapter-form {
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.chapter-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chapter-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-form__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.chapter-form__input,
+.chapter-form__textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.65rem 0.85rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.chapter-form__input::placeholder,
+.chapter-form__textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.chapter-form__input:focus,
+.chapter-form__textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(79, 143, 234, 0.15);
+}
+
+.chapter-form__textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.chapter-form__submit {
+  margin-top: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .chapter-form__row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Hero sponsors strip ---------- */
 .hero__sponsors {
   grid-column: 1 / -1;

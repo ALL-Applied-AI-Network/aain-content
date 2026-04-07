@@ -35,6 +35,7 @@
         <li><a href="./tree.html">Learning Content</a></li>
         <li><a href="./toolkit.html">Hub Toolkit</a></li>
         <li><a href="./impact.html">Impact</a></li>
+        <li><a href="./#start-a-chapter">Start a Hub</a></li>
         <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </div>
@@ -574,7 +575,7 @@
             formats for sponsor engagements that keep engineers coming back, and connections
             to every other hub in the network.
           </p>
-          <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" class="hub-pillar__link" target="_blank" rel="noopener">
+          <a href="#start-a-chapter" class="hub-pillar__link">
             <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><line x1="8" y1="5" x2="8" y2="11" stroke="currentColor" stroke-width="1.5" opacity="0.7"/><line x1="5" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.5" opacity="0.7"/></svg> Start a hub
           </a>
         </div>
@@ -705,7 +706,7 @@
             <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,2 13,4.5 8,7 3,4.5" fill="#a855f7" opacity="0.85"/><polygon points="3,4.5 8,7 8,11 3,8.5" fill="#a855f7" opacity="0.5"/><polygon points="8,7 13,4.5 13,8.5 8,11" fill="#a855f7" opacity="0.35"/><circle cx="5" cy="12.5" r="1.2" fill="#c084fc" opacity="0.5"/><circle cx="8" cy="13.5" r="1.2" fill="#c084fc" opacity="0.5"/><circle cx="11" cy="12.5" r="1.2" fill="#c084fc" opacity="0.5"/></svg> Event pages, project showcases, sponsor logos</li>
             <li><svg class="repo-feature-icon" viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,3 14,6 8,9 2,6" fill="#a855f7" opacity="0.85"/><polygon points="2,6 8,9 8,12 2,9" fill="#a855f7" opacity="0.5"/><polygon points="8,9 14,6 14,9 8,12" fill="#a855f7" opacity="0.35"/><circle cx="5.5" cy="7.5" r="0.8" fill="#e9d5ff" opacity="0.5"/><circle cx="10" cy="7.5" r="0.8" fill="#e9d5ff" opacity="0.4"/></svg> Fully customizable branding per campus</li>
           </ul>
-          <a href="https://github.com/ALL-Applied-AI-Network/aai-hub-template" class="repo-card__link" target="_blank" rel="noopener">
+          <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" class="repo-card__link" target="_blank" rel="noopener">
             <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,1 11,6 8,7.5 5,6" fill="currentColor" opacity="0.7"/><polygon points="5,6 8,7.5 8,13 5,11" fill="currentColor" opacity="0.5"/><polygon points="8,7.5 11,6 11,11 8,13" fill="currentColor" opacity="0.35"/></svg>
             Get the template
           </a>
@@ -725,13 +726,46 @@
       </div>
     </div>
 
-    <!-- Hub CTA -->
-    <div class="container container--narrow reveal" style="text-align: center; padding-top: 2rem;">
-      <p class="what-cta-text">
-        We're at <strong>5 campuses today</strong>. NVIDIA's 50-state initiative is bringing
-        supercomputers to hundreds of universities. The hardware creates the opportunity.
-        ALL helps rally people to use it.
-      </p>
+    <!-- Start a Chapter Form -->
+    <div class="what-content-divider"></div>
+    <div class="container container--narrow reveal" id="start-a-chapter">
+      <div class="chapter-form-section">
+        <h3 class="what-sub-heading">Start a chapter at your university.</h3>
+        <p class="what-sub-desc">
+          We're at <strong>5 campuses today</strong>. NVIDIA's 50-state initiative is bringing
+          supercomputers to hundreds of universities. Fill out this form and we'll help you launch.
+        </p>
+        <!-- TODO: Replace YOUR_FORM_ID with your Formspree form ID.
+             Create one at https://formspree.io → New Form → set recipient to benpaulson715@gmail.com -->
+        <form class="chapter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="hidden" name="_subject" value="New Chapter Interest — ALL Applied AI Network" />
+          <div class="chapter-form__row">
+            <div class="chapter-form__field">
+              <label for="chapter-name" class="chapter-form__label">Your name</label>
+              <input type="text" id="chapter-name" name="name" required class="chapter-form__input" placeholder="Alex Johnson" />
+            </div>
+            <div class="chapter-form__field">
+              <label for="chapter-email" class="chapter-form__label">Email</label>
+              <input type="email" id="chapter-email" name="email" required class="chapter-form__input" placeholder="alex@university.edu" />
+            </div>
+          </div>
+          <div class="chapter-form__row">
+            <div class="chapter-form__field">
+              <label for="chapter-university" class="chapter-form__label">University</label>
+              <input type="text" id="chapter-university" name="university" required class="chapter-form__input" placeholder="Milwaukee School of Engineering" />
+            </div>
+            <div class="chapter-form__field">
+              <label for="chapter-club" class="chapter-form__label">Club name (if you have one)</label>
+              <input type="text" id="chapter-club" name="club_name" class="chapter-form__input" placeholder="MSOE AI Club" />
+            </div>
+          </div>
+          <div class="chapter-form__field">
+            <label for="chapter-message" class="chapter-form__label">Tell us about your situation</label>
+            <textarea id="chapter-message" name="message" rows="3" class="chapter-form__textarea" placeholder="Are you starting from scratch? Do you already have a club? What kind of help are you looking for?"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg chapter-form__submit">Get started</button>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -779,6 +813,7 @@
           <li><a href="./tree.html">Learning Content</a></li>
           <li><a href="./toolkit.html">Hub Toolkit</a></li>
           <li><a href="./impact.html">Impact</a></li>
+          <li><a href="./#start-a-chapter">Start a Hub</a></li>
           <li><a href="./article.html?id=foundations/what-is-ai">First Lesson</a></li>
           <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
