@@ -92,6 +92,23 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
   const color = LAYER_COLORS[node.layer] || "#6366f1";
   const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6366f1";
 
+  // View in tree button
+  const actionsEl = document.getElementById("sidebar-actions");
+  if (actionsEl) {
+    actionsEl.innerHTML = `
+      <a href="./tree.html?node=${encodeURIComponent(node.id)}" class="sidebar-action-btn">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="8" cy="3" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="4" cy="12" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <line x1="8" y1="5" x2="4" y2="10" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="8" y1="5" x2="12" y2="10" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        View in learning tree
+      </a>
+    `;
+  }
+
   // Meta
   const metaEl = document.getElementById("sidebar-meta");
   if (metaEl) {

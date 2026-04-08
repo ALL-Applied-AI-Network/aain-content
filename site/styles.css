@@ -1051,11 +1051,43 @@ body {
   }
 }
 
+.article-sidebar__actions {
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  width: 100%;
+  justify-content: center;
+}
+
+.sidebar-action-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(34, 211, 238, 0.04);
+}
+
+.sidebar-action-btn svg {
+  flex-shrink: 0;
+}
+
 .article-sidebar__card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
-  padding: 1.25rem;
+  padding: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -1795,9 +1827,9 @@ body {
 
 .contributor-card {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.75rem;
   align-items: flex-start;
-  padding: 0.5rem;
+  padding: 0.65rem 0.75rem;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
@@ -1809,13 +1841,13 @@ body {
 }
 
 .contributor-card__avatar {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-weight: 700;
   color: #fff;
   flex-shrink: 0;
@@ -1824,13 +1856,14 @@ body {
 
 .contributor-card__info {
   min-width: 0;
+  flex: 1;
 }
 
 .contributor-card__name {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .contributor-card__name a {
@@ -1844,9 +1877,10 @@ body {
 
 .contributor-card__meta {
   display: flex;
-  gap: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.4rem;
   align-items: center;
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
 }
 
 .contributor-card__role {
@@ -1859,6 +1893,7 @@ body {
 .contributor-card__affil {
   font-size: 0.6rem;
   color: var(--text-muted);
+  line-height: 1.3;
 }
 
 .contributor-card__affil::before {
@@ -1866,10 +1901,12 @@ body {
 }
 
 .contributor-card__gh {
+  display: block;
   font-size: 0.65rem;
   color: var(--text-muted);
   text-decoration: none;
   font-family: var(--font-mono);
+  margin-top: 0.15rem;
 }
 
 .contributor-card__gh:hover {
