@@ -326,6 +326,47 @@
   line-height: 1.7;
 }
 
+.impact-coming-soon__partners {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+  padding: 1rem 0;
+}
+
+.impact-coming-soon__partners-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.impact-coming-soon__partners-logos {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.impact-coming-soon__partner-logo {
+  display: block;
+  opacity: 0.35;
+  transition: opacity 0.3s, filter 0.3s;
+  filter: grayscale(1) brightness(1.8);
+}
+
+.impact-coming-soon__partner-logo:hover {
+  opacity: 0.75;
+  filter: grayscale(0) brightness(1);
+}
+
+.impact-coming-soon__partner-logo img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
 /* ---------- CTA ---------- */
 .impact-cta {
   padding: 4rem 0;
