@@ -1,7 +1,55 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-05T07:19:47.604Z",
+  "generated_at": "2026-04-08T03:23:48.417Z",
   "nodes": [
+    {
+      "id": "tooling/ai-workflows/personal-ai-system",
+      "title": "Building a Personal AI System",
+      "description": "Move beyond chatbot interactions — build a persistent, file-based AI system that compounds in value over time using markdown, Git, and context management",
+      "layer": 2,
+      "difficulty": "intermediate",
+      "estimated_minutes": 30,
+      "thumbnail": "learning/tooling/ai-workflows/personal-ai-system/thumbnail.png",
+      "tags": [
+        "agentic",
+        "productivity",
+        "workflows",
+        "context-management",
+        "personal-ai",
+        "tooling"
+      ],
+      "prerequisites": [
+        "foundations/git-basics",
+        "tooling/ai-ides/claude-code"
+      ],
+      "unlocks": [],
+      "content_path": "learning/tooling/ai-workflows/personal-ai-system/personal-ai-system.md",
+      "contributors": [
+        {
+          "name": "Gary Sheng",
+          "role": "curator",
+          "github": "garysheng",
+          "affiliation": "Applied AI Society"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Personal Agentic OS — Applied AI Society",
+          "url": "https://docs.appliedaisociety.org/docs/concepts/personal-agentic-os",
+          "type": "article",
+          "note": "The full conceptual framework for building a file-based personal AI operating system that grows with you.",
+          "contributor": "Gary Sheng"
+        },
+        {
+          "title": "Minimum Viable Jarvis Workshop",
+          "url": "https://docs.appliedaisociety.org/docs/playbooks/practitioner/minimum-viable-jarvis",
+          "type": "article",
+          "note": "Hands-on workshop for building your own personal AI assistant — from the Applied AI Society's practitioner playbook.",
+          "contributor": "Gary Sheng"
+        }
+      ],
+      "last_updated": "2026-04-07"
+    },
     {
       "id": "tooling/ai-ides/cursor-deep-dive",
       "title": "Cursor Deep Dive",
@@ -143,6 +191,68 @@
       "resources": [],
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
+    },
+    {
+      "id": "intermediate/applied-ai/the-applied-ai-engineer",
+      "title": "The Applied AI Engineer",
+      "description": "Understand the applied AI engineer role — why implementation skills matter as much as model-building, and how to position yourself for the career opportunity",
+      "layer": 2,
+      "difficulty": "beginner",
+      "estimated_minutes": 25,
+      "thumbnail": "learning/intermediate/applied-ai/the-applied-ai-engineer/thumbnail.png",
+      "tags": [
+        "career",
+        "applied-ai",
+        "strategy",
+        "industry",
+        "jobs"
+      ],
+      "prerequisites": [
+        "foundations/first-conversation-with-ai"
+      ],
+      "unlocks": [
+        "intermediate/applied-ai/how-ai-apis-work",
+        "intermediate/applied-ai/prompt-engineering"
+      ],
+      "content_path": "learning/intermediate/applied-ai/the-applied-ai-engineer/the-applied-ai-engineer.md",
+      "contributors": [
+        {
+          "name": "Gary Sheng",
+          "role": "curator",
+          "github": "garysheng",
+          "affiliation": "Applied AI Society"
+        },
+        {
+          "name": "Travis Oliphant",
+          "role": "curator",
+          "github": "teoliphant",
+          "affiliation": "Applied AI Society / NumPy"
+        }
+      ],
+      "resources": [
+        {
+          "title": "Why 2026 Belongs to the Applied AI Engineer",
+          "url": "https://appliedaisociety.substack.com/p/introducing-the-applied-ai-society",
+          "type": "article",
+          "note": "The founding manifesto of the Applied AI Society — makes the case for why implementation skills are the career opportunity, not just model training.",
+          "contributor": "Gary Sheng"
+        },
+        {
+          "title": "Applied AI Society Documentation",
+          "url": "https://docs.appliedaisociety.org",
+          "type": "article",
+          "note": "Practitioner guides, philosophy, and playbooks for building an applied AI career.",
+          "contributor": "Gary Sheng"
+        },
+        {
+          "title": "Starting a Chapter — Applied AI Society",
+          "url": "https://docs.appliedaisociety.org/docs/playbooks/chapter-leader/starting-a-chapter",
+          "type": "article",
+          "note": "A reference playbook for how the Applied AI Society approaches chapter creation.",
+          "contributor": "Gary Sheng"
+        }
+      ],
+      "last_updated": "2026-04-07"
     },
     {
       "id": "intermediate/applied-ai/rag-fundamentals",
@@ -499,6 +609,12 @@
           "role": "reviewer",
           "github": "Benja-Pauls",
           "affiliation": "MSOE / ALL Applied AI Network"
+        },
+        {
+          "name": "Travis Oliphant",
+          "role": "curator",
+          "github": "teoliphant",
+          "affiliation": "Applied AI Society / NumPy"
         }
       ],
       "resources": [
@@ -507,6 +623,20 @@
           "url": "https://wesmckinney.com/book/",
           "type": "course",
           "contributor": "Wes McKinney"
+        },
+        {
+          "title": "NumPy Learning Resources",
+          "url": "https://numpy.org/learn/",
+          "type": "course",
+          "note": "The authoritative NumPy learning resources — NumPy underpins pandas and every major Python data science library. Curated by Travis Oliphant, creator of NumPy.",
+          "contributor": "Travis Oliphant"
+        },
+        {
+          "title": "SciPy — Scientific Computing in Python",
+          "url": "https://scipy.org",
+          "type": "tool",
+          "note": "The scientific computing library built on top of NumPy — essential for optimization, statistics, signal processing, and linear algebra.",
+          "contributor": "Travis Oliphant"
         }
       ],
       "author": "ALL Applied AI Network",
@@ -763,13 +893,23 @@
       "content_path": "learning/foundations/reading-writing-data/reading-writing-data.md",
       "contributors": [
         {
-          "name": "ALL Applied AI Network",
-          "role": "author"
+          "name": "Travis Oliphant",
+          "role": "curator",
+          "github": "teoliphant",
+          "affiliation": "Applied AI Society / NumPy"
         }
       ],
-      "resources": [],
+      "resources": [
+        {
+          "title": "NumPy Learning Resources",
+          "url": "https://numpy.org/learn/",
+          "type": "course",
+          "note": "NumPy is the foundation of Python's data ecosystem. Start here once you're comfortable reading files — arrays are the next step before pandas.",
+          "contributor": "Travis Oliphant"
+        }
+      ],
       "author": "ALL Applied AI Network",
-      "last_updated": "2026-03-30"
+      "last_updated": "2026-04-07"
     },
     {
       "id": "foundations/python-through-ai",
@@ -1435,6 +1575,14 @@
   ],
   "edges": [
     {
+      "from": "foundations/git-basics",
+      "to": "tooling/ai-workflows/personal-ai-system"
+    },
+    {
+      "from": "tooling/ai-ides/claude-code",
+      "to": "tooling/ai-workflows/personal-ai-system"
+    },
+    {
       "from": "foundations/setting-up-cursor",
       "to": "tooling/ai-ides/cursor-deep-dive"
     },
@@ -1461,6 +1609,10 @@
     {
       "from": "foundations/python-through-ai",
       "to": "intermediate/applied-ai/web-scraping"
+    },
+    {
+      "from": "foundations/first-conversation-with-ai",
+      "to": "intermediate/applied-ai/the-applied-ai-engineer"
     },
     {
       "from": "intermediate/applied-ai/prompt-engineering",
@@ -1653,20 +1805,20 @@
   ],
   "series": [],
   "stats": {
-    "total_nodes": 32,
-    "total_edges": 54,
+    "total_nodes": 34,
+    "total_edges": 57,
     "total_series": 0,
     "by_layer": {
       "0": 5,
       "1": 10,
-      "2": 10,
+      "2": 12,
       "3": 7,
       "4": 0,
       "5": 0
     },
     "by_difficulty": {
-      "beginner": 15,
-      "intermediate": 10,
+      "intermediate": 11,
+      "beginner": 16,
       "advanced": 7
     }
   }
