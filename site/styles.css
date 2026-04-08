@@ -1089,10 +1089,12 @@ body {
   border-radius: var(--radius);
   padding: 1.5rem;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 .article-sidebar__section {
   margin-bottom: 1.25rem;
+  min-width: 0;
 }
 
 .article-sidebar__section:last-child {
@@ -1823,6 +1825,8 @@ body {
   flex-direction: column;
   gap: 0.6rem;
   margin-top: 0.4rem;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .contributor-card {
@@ -1834,6 +1838,7 @@ body {
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
   transition: border-color 0.15s;
+  min-width: 0;
 }
 
 .contributor-card:hover {
