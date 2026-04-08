@@ -26,9 +26,23 @@ contributors:
     role: reviewer
     github: "Benja-Pauls"
     affiliation: "MSOE / ALL Applied AI Network"
+  - name: "Travis Oliphant"
+    role: curator
+    github: "teoliphant"
+    affiliation: "Applied AI Society / NumPy"
 
 resources:
   - title: "Wes McKinney: Python for Data Analysis"
     url: "https://wesmckinney.com/book/"
     type: course
     contributor: "Wes McKinney"
+  - title: "NumPy Learning Resources"
+    url: "https://numpy.org/learn/"
+    type: course
+    note: "The authoritative NumPy learning resources — NumPy underpins pandas and every major Python data science library. Curated by Travis Oliphant, creator of NumPy."
+    contributor: "Travis Oliphant"
+  - title: "SciPy — Scientific Computing in Python"
+    url: "https://scipy.org"
+    type: tool
+    note: "The scientific computing library built on top of NumPy — essential for optimization, statistics, signal processing, and linear algebra."
+    contributor: "Travis Oliphant"

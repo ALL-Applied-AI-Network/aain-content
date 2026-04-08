@@ -18,4 +18,17 @@ unlocks:
 content_file: "reading-writing-data.md"
 notebook_file: null
 author: "ALL Applied AI Network"
-last_updated: "2026-03-30"
+last_updated: "2026-04-07"
+
+contributors:
+  - name: "Travis Oliphant"
+    role: curator
+    github: "teoliphant"
+    affiliation: "Applied AI Society / NumPy"
+
+resources:
+  - title: "NumPy Learning Resources"
+    url: "https://numpy.org/learn/"
+    type: course
+    note: "NumPy is the foundation of Python's data ecosystem. Start here once you're comfortable reading files — arrays are the next step before pandas."
+    contributor: "Travis Oliphant"
