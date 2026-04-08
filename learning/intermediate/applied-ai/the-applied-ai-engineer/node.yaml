@@ -1,0 +1,46 @@
+id: "intermediate/applied-ai/the-applied-ai-engineer"
+title: "The Applied AI Engineer"
+description: "Understand the applied AI engineer role — why implementation skills matter as much as model-building, and how to position yourself for the career opportunity"
+layer: 2
+difficulty: beginner
+estimated_minutes: 25
+thumbnail: "thumbnail.png"
+tags: ["career", "applied-ai", "strategy", "industry", "jobs"]
+
+prerequisites:
+  - "foundations/first-conversation-with-ai"
+unlocks:
+  - "intermediate/applied-ai/how-ai-apis-work"
+  - "intermediate/applied-ai/prompt-engineering"
+
+content_file: "the-applied-ai-engineer.md"
+notebook_file: null
+
+contributors:
+  - name: "Gary Sheng"
+    role: curator
+    github: "garysheng"
+    affiliation: "Applied AI Society"
+  - name: "Travis Oliphant"
+    role: curator
+    github: "teoliphant"
+    affiliation: "Applied AI Society / NumPy"
+
+resources:
+  - title: "Why 2026 Belongs to the Applied AI Engineer"
+    url: "https://appliedaisociety.substack.com/p/introducing-the-applied-ai-society"
+    type: article
+    note: "The founding manifesto of the Applied AI Society — makes the case for why implementation skills are the career opportunity, not just model training."
+    contributor: "Gary Sheng"
+  - title: "Applied AI Society Documentation"
+    url: "https://docs.appliedaisociety.org"
+    type: article
+    note: "Practitioner guides, philosophy, and playbooks for building an applied AI career."
+    contributor: "Gary Sheng"
+  - title: "Starting a Chapter — Applied AI Society"
+    url: "https://docs.appliedaisociety.org/docs/playbooks/chapter-leader/starting-a-chapter"
+    type: article
+    note: "A reference playbook for how the Applied AI Society approaches chapter creation."
+    contributor: "Gary Sheng"
+
+last_updated: "2026-04-07"

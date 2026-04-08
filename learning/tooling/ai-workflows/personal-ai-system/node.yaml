@@ -1,0 +1,36 @@
+id: "tooling/ai-workflows/personal-ai-system"
+title: "Building a Personal AI System"
+description: "Move beyond chatbot interactions — build a persistent, file-based AI system that compounds in value over time using markdown, Git, and context management"
+layer: 2
+difficulty: intermediate
+estimated_minutes: 30
+thumbnail: "thumbnail.png"
+tags: ["agentic", "productivity", "workflows", "context-management", "personal-ai", "tooling"]
+
+prerequisites:
+  - "foundations/git-basics"
+  - "tooling/ai-ides/claude-code"
+unlocks: []
+
+content_file: "personal-ai-system.md"
+notebook_file: null
+
+contributors:
+  - name: "Gary Sheng"
+    role: curator
+    github: "garysheng"
+    affiliation: "Applied AI Society"
+
+resources:
+  - title: "Personal Agentic OS — Applied AI Society"
+    url: "https://docs.appliedaisociety.org/docs/concepts/personal-agentic-os"
+    type: article
+    note: "The full conceptual framework for building a file-based personal AI operating system that grows with you."
+    contributor: "Gary Sheng"
+  - title: "Minimum Viable Jarvis Workshop"
+    url: "https://docs.appliedaisociety.org/docs/playbooks/practitioner/minimum-viable-jarvis"
+    type: article
+    note: "Hands-on workshop for building your own personal AI assistant — from the Applied AI Society's practitioner playbook."
+    contributor: "Gary Sheng"
+
+last_updated: "2026-04-07"
