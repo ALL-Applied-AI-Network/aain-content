@@ -399,66 +399,160 @@
   flex-wrap: wrap;
 }
 
-/* ---------- Why Compute ---------- */
-.impact-compute {
+/* ========================================================================
+   NVIDIA-branded GPU Compute Section
+   ======================================================================== */
+
+.nvidia-section {
   padding: 5rem 0 4rem;
-  text-align: center;
   background:
-    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(118, 185, 0, 0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(118, 185, 0, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 80%, rgba(118, 185, 0, 0.03) 0%, transparent 100%),
     var(--bg-primary);
+  border-top: 1px solid rgba(118, 185, 0, 0.1);
 }
 
-.impact-compute__badge {
-  display: inline-block;
-  padding: 0.35rem 1rem;
+/* ── NVIDIA Hero Banner ── */
+.nvidia-hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(118, 185, 0, 0.15);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  margin-bottom: 2.5rem;
+  background:
+    linear-gradient(135deg, rgba(118, 185, 0, 0.06) 0%, transparent 50%),
+    linear-gradient(315deg, rgba(118, 185, 0, 0.04) 0%, transparent 50%),
+    var(--bg-secondary);
+}
+
+.nvidia-hero__logo-grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding-right: 3rem;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nvidia-hero__logo-bg {
+  height: 100px;
+  opacity: 0.03;
+  filter: brightness(2);
+}
+
+.nvidia-hero__logo-bg:nth-child(2) {
+  height: 140px;
+  opacity: 0.04;
+}
+
+.nvidia-hero__logo-bg:nth-child(3) {
+  height: 80px;
+  opacity: 0.025;
+}
+
+.nvidia-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+}
+
+.nvidia-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem 0.35rem 0.5rem;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: #76b900;
   border: 1px solid rgba(118, 185, 0, 0.3);
   border-radius: 100px;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   font-family: var(--font-mono);
+  background: rgba(118, 185, 0, 0.06);
 }
 
-.impact-compute__title {
+.nvidia-hero__badge-logo {
+  height: 18px;
+  width: auto;
+}
+
+.nvidia-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 40%, #76b900);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.impact-compute__desc {
+.nvidia-hero__desc {
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--text-secondary);
-  max-width: 640px;
-  margin: 0 auto 3rem;
+  margin: 0;
 }
 
-.compute-grid {
+/* ── NVIDIA Value Prop Cards ── */
+.nvidia-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
-  text-align: left;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
-.compute-card {
+.nvidia-card {
+  position: relative;
   background: var(--bg-secondary);
   border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  text-align: left;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+}
+
+.nvidia-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #76b900, transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.nvidia-card:hover {
+  border-color: rgba(118, 185, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.nvidia-card:hover::before {
+  opacity: 1;
+}
+
+.nvidia-card__icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
-  padding: 1.5rem;
-  transition: border-color 0.2s ease;
+  background: rgba(118, 185, 0, 0.08);
+  margin-bottom: 1rem;
 }
 
-.compute-card:hover {
-  border-color: rgba(118, 185, 0, 0.2);
-}
-
-.compute-card__number {
+.nvidia-card__number {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: #76b900;
@@ -466,28 +560,91 @@
   letter-spacing: 0.04em;
 }
 
-.compute-card h3 {
+.nvidia-card h3 {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.compute-card p {
+.nvidia-card p {
   font-size: 0.875rem;
   line-height: 1.6;
   color: var(--text-secondary);
   margin: 0;
 }
 
-/* ---------- Sponsors ---------- */
-.impact-sponsors {
+/* ── GTC Talk Banner ── */
+.nvidia-gtc-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.75rem;
+  margin-bottom: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(118, 185, 0, 0.2);
+  background:
+    linear-gradient(90deg, rgba(118, 185, 0, 0.05) 0%, transparent 60%),
+    var(--bg-secondary);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.nvidia-gtc-banner:hover {
+  border-color: rgba(118, 185, 0, 0.4);
+  background:
+    linear-gradient(90deg, rgba(118, 185, 0, 0.08) 0%, transparent 60%),
+    var(--bg-secondary);
+  transform: translateY(-1px);
+}
+
+.nvidia-gtc-banner__logo {
+  height: 32px;
+  width: auto;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.nvidia-gtc-banner__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.nvidia-gtc-banner__text strong {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #76b900;
+}
+
+.nvidia-gtc-banner__text span {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.nvidia-gtc-banner__arrow {
+  font-size: 1.5rem;
+  color: #76b900;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.nvidia-gtc-banner:hover .nvidia-gtc-banner__arrow {
+  transform: translateX(4px);
+}
+
+/* ── Sponsors Bar ── */
+.nvidia-sponsors {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding-top: 2.5rem;
   text-align: center;
 }
 
-.impact-sponsors__label {
+.nvidia-sponsors__label {
   display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -497,7 +654,7 @@
   margin-bottom: 1.25rem;
 }
 
-.impact-sponsors__logos {
+.nvidia-sponsors__logos {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -505,20 +662,41 @@
   margin-bottom: 1.5rem;
 }
 
-.impact-sponsors__logo img {
+.nvidia-sponsors__logo img {
   height: 36px;
-  opacity: 0.75;
-  filter: grayscale(0.2);
-  transition: opacity 0.2s ease;
+  opacity: 0.7;
+  filter: grayscale(0.3);
+  transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
-.impact-sponsors__logo:hover img {
+.nvidia-sponsors__logo:hover img {
   opacity: 1;
+  filter: grayscale(0);
 }
 
-.impact-sponsors__cta-text {
+.nvidia-sponsors__logo--nvidia img {
+  opacity: 0.9;
+  filter: none;
+}
+
+.nvidia-sponsors__logo--nvidia:hover img {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(118, 185, 0, 0.3));
+}
+
+.nvidia-sponsors__cta {
   font-size: 0.9rem;
   color: var(--text-secondary);
+}
+
+.nvidia-sponsors__cta a {
+  color: #76b900;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nvidia-sponsors__cta a:hover {
+  text-decoration: underline;
 }
 
 /* ---------- Responsive ---------- */
@@ -532,17 +710,39 @@
     align-items: center;
   }
 
-  .impact-map__note {
-    text-align: center;
-    max-width: 100%;
-  }
-
   .impact-map__legend {
     justify-content: center;
   }
 
   .impact-stat__value {
     font-size: 1.6rem;
+  }
+
+  .nvidia-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nvidia-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .nvidia-hero__logo-grid {
+    display: none;
+  }
+
+  .nvidia-gtc-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .nvidia-gtc-banner__arrow {
+    display: none;
+  }
+
+  .nvidia-sponsors__logos {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }
 
@@ -554,5 +754,9 @@
   .impact-cta__actions {
     flex-direction: column;
     align-items: center;
+  }
+
+  .nvidia-hero__title {
+    font-size: 1.4rem;
   }
 }

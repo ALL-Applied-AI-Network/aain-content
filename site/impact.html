@@ -65,7 +65,7 @@
           </div>
         </div>
 
-        <!-- Legend + Note -->
+        <!-- Legend -->
         <div class="impact-map__footer">
           <div class="impact-map__legend">
             <div class="impact-map__legend-item">
@@ -81,60 +81,103 @@
               <span>Open for chapters</span>
             </div>
           </div>
-          <p class="impact-map__note">
-            The ALL Applied AI Network (501(c)(3) pending) is tracking an estimated <strong>$1B+</strong> in donor-funded AI infrastructure spend across US universities. Unofficial estimate &mdash; details coming soon.
-          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════
-       WHY COMPUTE
+       NVIDIA GPU COMPUTE
        ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="impact-compute" id="sponsors">
+  <section class="nvidia-section" id="sponsors">
     <div class="container">
-      <span class="impact-compute__badge">Infrastructure</span>
-      <h2 class="impact-compute__title">Why your campus needs GPU compute</h2>
-      <p class="impact-compute__desc">
-        AI engineering requires hands-on access to real hardware. NVIDIA is deploying
-        supercomputers to universities in all 50 states &mdash; and ALL gives your hub
-        the community, curriculum, and tracking infrastructure to make that investment count.
-      </p>
 
-      <div class="compute-grid">
-        <div class="compute-card">
-          <div class="compute-card__number">01</div>
-          <h3>Students need a reason to use it</h3>
-          <p>A supercomputer sitting idle doesn't create engineers. ALL provides workshops, projects, and hackathons that put compute hours to work on real problems.</p>
+      <!-- NVIDIA hero banner -->
+      <div class="nvidia-hero">
+        <div class="nvidia-hero__logo-grid" aria-hidden="true">
+          <img src="./public/logos/nvidia_logo.png" alt="" class="nvidia-hero__logo-bg" />
+          <img src="./public/logos/nvidia_logo.png" alt="" class="nvidia-hero__logo-bg" />
+          <img src="./public/logos/nvidia_logo.png" alt="" class="nvidia-hero__logo-bg" />
         </div>
-        <div class="compute-card">
-          <div class="compute-card__number">02</div>
-          <h3>Sponsors want measurable ROI</h3>
-          <p>The chapter dashboard tracks attendance, project output, and hiring outcomes &mdash; proof that compute access translates directly into industry-ready talent.</p>
-        </div>
-        <div class="compute-card">
-          <div class="compute-card__number">03</div>
-          <h3>The network multiplies impact</h3>
-          <p>Workshops and content are shared across all hubs. When one chapter builds a RAG workshop that works, every campus can run it the next week.</p>
+        <div class="nvidia-hero__content">
+          <div class="nvidia-hero__badge">
+            <img src="./public/logos/nvidia_logo.png" alt="NVIDIA" class="nvidia-hero__badge-logo" />
+            <span>Partnership</span>
+          </div>
+          <h2 class="nvidia-hero__title">Why your campus needs GPU compute</h2>
+          <p class="nvidia-hero__desc">
+            NVIDIA is deploying supercomputers to universities in all 50 states.
+            ALL gives your hub the community, curriculum, and tracking infrastructure
+            to make that investment count.
+          </p>
         </div>
       </div>
 
-      <div class="impact-sponsors" id="sponsor-logos">
-        <span class="impact-sponsors__label">Network sponsors</span>
-        <div class="impact-sponsors__logos">
-          <a href="https://www.nvidia.com/en-us/on-demand/session/gtc26-s82238/" target="_blank" rel="noopener" class="impact-sponsors__logo">
+      <!-- Value prop cards -->
+      <div class="nvidia-grid">
+        <div class="nvidia-card">
+          <div class="nvidia-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#76b900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="nvidia-card__number">01</div>
+          <h3>Students need a reason to use it</h3>
+          <p>A supercomputer sitting idle doesn't create engineers. ALL provides workshops,
+            projects, and hackathons that put compute hours to work on real problems.</p>
+        </div>
+        <div class="nvidia-card">
+          <div class="nvidia-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#76b900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <div class="nvidia-card__number">02</div>
+          <h3>Sponsors want measurable ROI</h3>
+          <p>The chapter dashboard tracks attendance, project output, and hiring outcomes &mdash;
+            proof that compute access translates directly into industry-ready talent.</p>
+        </div>
+        <div class="nvidia-card">
+          <div class="nvidia-card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#76b900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="nvidia-card__number">03</div>
+          <h3>The network multiplies impact</h3>
+          <p>Workshops and content are shared across all hubs. When one chapter builds a
+            RAG workshop that works, every campus can run it the next week.</p>
+        </div>
+      </div>
+
+      <!-- GTC talk callout -->
+      <a href="https://www.nvidia.com/en-us/on-demand/session/gtc26-s82238/" target="_blank" rel="noopener" class="nvidia-gtc-banner">
+        <img src="./public/logos/nvidia_logo.png" alt="NVIDIA" class="nvidia-gtc-banner__logo" />
+        <div class="nvidia-gtc-banner__text">
+          <strong>Watch our GTC 2026 talk</strong>
+          <span>How student-run AI clubs are turning campus supercomputers into talent pipelines</span>
+        </div>
+        <span class="nvidia-gtc-banner__arrow">&rarr;</span>
+      </a>
+
+      <!-- Sponsors bar -->
+      <div class="nvidia-sponsors">
+        <span class="nvidia-sponsors__label">Network sponsors</span>
+        <div class="nvidia-sponsors__logos">
+          <a href="https://www.nvidia.com/en-us/on-demand/session/gtc26-s82238/" target="_blank" rel="noopener" class="nvidia-sponsors__logo nvidia-sponsors__logo--nvidia">
             <img src="./public/logos/nvidia_logo.png" alt="NVIDIA" />
           </a>
-          <a href="https://directsupply.com" target="_blank" rel="noopener" class="impact-sponsors__logo">
+          <a href="https://directsupply.com" target="_blank" rel="noopener" class="nvidia-sponsors__logo">
             <img src="./public/logos/direct_supply_logo.png" alt="Direct Supply" />
           </a>
         </div>
-        <p class="impact-sponsors__cta-text">
+        <p class="nvidia-sponsors__cta">
           Interested in sponsoring hubs? Reach out at
-          <a href="mailto:ben@all-ai-network.org" style="color: var(--accent-primary);">ben@all-ai-network.org</a>
+          <a href="mailto:ben@all-ai-network.org">ben@all-ai-network.org</a>
         </p>
       </div>
+
     </div>
   </section>
 
