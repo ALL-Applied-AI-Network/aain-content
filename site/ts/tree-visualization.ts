@@ -546,19 +546,50 @@ export class TreeVisualization {
         .attr("fill", "transparent")
         .attr("class", "tree-node__hit");
 
-      // Events
-      g.on("mouseenter", (event: MouseEvent) => {
-        this.onNodeHover(node, true);
-        this.showTooltip(node, event);
+      // Events — use pointer events for unified mouse + touch support
+      g.on("pointerenter", (event: PointerEvent) => {
+        // Only show hover effects for mouse (not touch)
+        if (event.pointerType === "mouse") {
+          this.onNodeHover(node, true);
+          this.showTooltip(node, event);
+        }
       })
-        .on("mousemove", (event: MouseEvent) => {
-          this.moveTooltip(event);
+        .on("pointermove", (event: PointerEvent) => {
+          if (event.pointerType === "mouse") {
+            this.moveTooltip(event);
+          }
         })
-        .on("mouseleave", () => {
-          this.onNodeHover(node, false);
-          this.hideTooltip();
+        .on("pointerleave", (event: PointerEvent) => {
+          if (event.pointerType === "mouse") {
+            this.onNodeHover(node, false);
+            this.hideTooltip();
+          }
         })
-        .on("click", () => {
+        .on("pointerdown", (event: PointerEvent) => {
+          // Record touch start position for tap detection
+          if (event.pointerType === "touch") {
+            (g.node() as any).__tapStart = { x: event.clientX, y: event.clientY, time: Date.now() };
+          }
+        })
+        .on("pointerup", (event: PointerEvent) => {
+          if (event.pointerType === "touch") {
+            const start = (g.node() as any).__tapStart;
+            if (start) {
+              const dx = event.clientX - start.x;
+              const dy = event.clientY - start.y;
+              const dt = Date.now() - start.time;
+              // Treat as tap if finger moved < 10px and held < 500ms
+              if (Math.sqrt(dx * dx + dy * dy) < 10 && dt < 500) {
+                event.stopPropagation();
+                if (this.opts.onNodeClick) {
+                  this.opts.onNodeClick(node);
+                }
+              }
+            }
+          }
+        })
+        .on("click", (event: MouseEvent) => {
+          // Mouse click (desktop)
           if (this.opts.onNodeClick) {
             this.opts.onNodeClick(node);
           }
@@ -570,7 +601,7 @@ export class TreeVisualization {
 
   // --- Tooltip ---
 
-  private showTooltip(node: TreeNode, event: MouseEvent): void {
+  private showTooltip(node: TreeNode, event: MouseEvent | PointerEvent): void {
     if (!this.tooltip) return;
     const color = LAYER_COLORS[node.layer] || "#6b7280";
     const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6b7280";
@@ -594,7 +625,7 @@ export class TreeVisualization {
     this.moveTooltip(event);
   }
 
-  private moveTooltip(event: MouseEvent): void {
+  private moveTooltip(event: MouseEvent | PointerEvent): void {
     if (!this.tooltip) return;
     const rect = this.opts.container.getBoundingClientRect();
     const x = event.clientX - rect.left + 16;
@@ -905,11 +936,18 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
   };
   document.addEventListener("keydown", escHandler);
 
-  const outsideHandler = (e: MouseEvent) => {
-    if (!panel.contains(e.target as Node)) {
+  const outsideHandler = (e: MouseEvent | TouchEvent) => {
+    const target = (e as TouchEvent).changedTouches
+      ? (e as TouchEvent).changedTouches[0]?.target as Node
+      : (e as MouseEvent).target as Node;
+    if (target && !panel.contains(target)) {
       panel.classList.remove("open");
       document.removeEventListener("click", outsideHandler);
+      document.removeEventListener("touchend", outsideHandler);
     }
   };
-  setTimeout(() => document.addEventListener("click", outsideHandler), 100);
+  setTimeout(() => {
+    document.addEventListener("click", outsideHandler);
+    document.addEventListener("touchend", outsideHandler);
+  }, 300);
 }

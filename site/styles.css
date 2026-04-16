@@ -1770,7 +1770,23 @@ body {
   }
 
   .node-panel {
+    /* Bottom sheet on mobile instead of side panel */
     width: 100%;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 75vh;
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    transform: translateY(100%);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .node-panel.open {
+    transform: translateY(0);
   }
 
   .tree-toolbar {

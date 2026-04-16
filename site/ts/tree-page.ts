@@ -93,14 +93,20 @@ async function init(): Promise<void> {
     }
   });
 
-  // --- Close panel on outside click ---
-  container.addEventListener("click", (e) => {
-    const target = e.target as Element;
-    if (!target.closest(".tree-node")) {
+  // --- Close panel on outside click/tap ---
+  function handleContainerDismiss(e: Event) {
+    const target = (e as TouchEvent).changedTouches
+      ? document.elementFromPoint(
+          (e as TouchEvent).changedTouches[0].clientX,
+          (e as TouchEvent).changedTouches[0].clientY
+        )
+      : e.target as Element;
+    if (target && !target.closest(".tree-node") && !target.closest(".node-panel")) {
       const panel = $(".node-panel");
       if (panel) panel.classList.remove("open");
     }
-  });
+  }
+  container.addEventListener("click", handleContainerDismiss);
 
   // --- Mouse-follow ambient glow ---
   const glow = document.getElementById("tree-glow");

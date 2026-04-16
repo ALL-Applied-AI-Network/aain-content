@@ -463,6 +463,13 @@
   contain: layout style;
 }
 
+/* Allow D3 zoom to own all touch gestures inside the SVG */
+.tree-container svg {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 /* Subtle dot grid — game map feel */
 .tree-container::before {
   content: "";
