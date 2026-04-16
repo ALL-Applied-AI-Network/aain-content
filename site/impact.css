@@ -399,6 +399,128 @@
   flex-wrap: wrap;
 }
 
+/* ---------- Why Compute ---------- */
+.impact-compute {
+  padding: 5rem 0 4rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(118, 185, 0, 0.06) 0%, transparent 100%),
+    var(--bg-primary);
+}
+
+.impact-compute__badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #76b900;
+  border: 1px solid rgba(118, 185, 0, 0.3);
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-mono);
+}
+
+.impact-compute__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.impact-compute__desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+
+.compute-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.compute-card {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.compute-card:hover {
+  border-color: rgba(118, 185, 0, 0.2);
+}
+
+.compute-card__number {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #76b900;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.compute-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.compute-card p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ---------- Sponsors ---------- */
+.impact-sponsors {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 2.5rem;
+  text-align: center;
+}
+
+.impact-sponsors__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 1.25rem;
+}
+
+.impact-sponsors__logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.impact-sponsors__logo img {
+  height: 36px;
+  opacity: 0.75;
+  filter: grayscale(0.2);
+  transition: opacity 0.2s ease;
+}
+
+.impact-sponsors__logo:hover img {
+  opacity: 1;
+}
+
+.impact-sponsors__cta-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   .impact-stats__grid {

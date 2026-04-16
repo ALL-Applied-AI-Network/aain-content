@@ -1222,6 +1222,38 @@
   padding-top: 1rem;
 }
 
+.chapter-form-toggle {
+  margin-top: 0;
+}
+
+.chapter-form-toggle__trigger {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding: 0.75rem 0;
+  list-style: none;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.chapter-form-toggle__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.chapter-form-toggle__trigger::before {
+  content: "+ ";
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+.chapter-form-toggle[open] .chapter-form-toggle__trigger::before {
+  content: "- ";
+}
+
+.chapter-form-toggle__trigger:hover {
+  color: var(--text-primary);
+}
+
 .chapter-form {
   text-align: left;
   margin-top: 2rem;
