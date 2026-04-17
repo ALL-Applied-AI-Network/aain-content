@@ -32,7 +32,7 @@
         <li><a href="./tree.html">Learning Content</a></li>
         <li><a href="./toolkit.html" class="active">Hub Toolkit</a></li>
         <li><a href="./impact.html">Impact</a></li>
-        <li><a href="https://network-api-bice.vercel.app" target="_blank" rel="noopener">Start a Hub</a></li>
+        <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Start a Hub</a></li>
         <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
       </ul>
     </div>
@@ -50,10 +50,10 @@
         from day-one playbooks to a full management dashboard.
       </p>
       <div class="toolkit-hero__actions">
-        <a href="https://network-api-bice.vercel.app" class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+        <a href="https://dashboard.all-ai-network.org" class="btn btn--primary btn--lg" target="_blank" rel="noopener">
           Start from scratch <span aria-hidden="true">&rarr;</span>
         </a>
-        <a href="https://network-api-bice.vercel.app" class="btn btn--outline btn--lg" target="_blank" rel="noopener">
+        <a href="https://dashboard.all-ai-network.org" class="btn btn--outline btn--lg" target="_blank" rel="noopener">
           Connect an existing org <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
@@ -443,16 +443,41 @@
       <div class="toolkit-section__header">
         <span class="toolkit-section__num">03 &mdash; Infrastructure</span>
         <h2 class="toolkit-section__title">Hub Website Template</h2>
-        <p class="toolkit-section__subtitle">Spin up a chapter website in minutes with the official hub template</p>
+        <p class="toolkit-section__subtitle">Go from fork to live site in under 10 minutes. One config file. Zero backend.</p>
       </div>
 
+      <!-- 3-step flow -->
+      <div class="hub-steps">
+        <div class="hub-step">
+          <div class="hub-step__number">1</div>
+          <h3 class="hub-step__title">Fork the template</h3>
+          <p class="hub-step__desc">Click "Use this template" on GitHub. You get a full website repo with dark theme, event pages, leaderboards, and sponsor showcase.</p>
+        </div>
+        <div class="hub-step__arrow" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="hub-step">
+          <div class="hub-step__number">2</div>
+          <h3 class="hub-step__title">Edit hub.config.json</h3>
+          <p class="hub-step__desc">Set your chapter name, university, colors, officers, and social links. Everything on the site updates automatically from this one file.</p>
+        </div>
+        <div class="hub-step__arrow" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+        <div class="hub-step">
+          <div class="hub-step__number">3</div>
+          <h3 class="hub-step__title">Push &amp; deploy</h3>
+          <p class="hub-step__desc">Push to main and GitHub Actions auto-deploys to GitHub Pages. Your chapter has a live website with zero DevOps work.</p>
+        </div>
+      </div>
+
+      <!-- Two-column: features + config preview -->
       <div class="hub-template">
         <div class="hub-template__content">
           <h3 class="hub-template__title">Everything your chapter needs, pre-built and ready to deploy</h3>
           <p class="hub-template__desc">
             The hub template gives every chapter a polished web presence out of the box &mdash;
             complete with curriculum integration, member tracking, and sponsor showcases.
-            Fork it, customize it, deploy it.
           </p>
 
           <ul class="hub-template__features">
@@ -460,58 +485,120 @@
               <span class="hub-template__check">
                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <div><strong>Deployable site</strong> &mdash; static HTML/CSS/JS, works on GitHub Pages or any host</div>
+              <div><strong>Static site</strong> &mdash; HTML/CSS/JS, deployable to GitHub Pages, Vercel, or any host</div>
             </li>
             <li class="hub-template__feature">
               <span class="hub-template__check">
                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <div><strong>Learning tree integration</strong> &mdash; embed the full curriculum with progress tracking</div>
+              <div><strong>Dashboard API integration</strong> &mdash; connect an API key and your events, members, and leaderboard sync live</div>
             </li>
             <li class="hub-template__feature">
               <span class="hub-template__check">
                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <div><strong>Member leaderboards</strong> &mdash; gamified progress and contribution tracking</div>
+              <div><strong>Learning tree embed</strong> &mdash; the full curriculum with progress tracking, right on your site</div>
             </li>
             <li class="hub-template__feature">
               <span class="hub-template__check">
                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
-              <div><strong>Sponsor showcase</strong> &mdash; highlight industry partners and attract new sponsors</div>
+              <div><strong>Embeddable leaderboard</strong> &mdash; gamified progress and contribution tracking via iframe or API</div>
+            </li>
+            <li class="hub-template__feature">
+              <span class="hub-template__check">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8.5L6.5 11.5L12.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div><strong>CI/CD included</strong> &mdash; GitHub Actions workflow auto-builds and deploys on every push to main</div>
             </li>
           </ul>
 
           <div class="hub-template__actions">
-            <a href="https://network-api-bice.vercel.app/resources" target="_blank" rel="noopener" class="btn btn--primary">
-              Open the Dashboard <span aria-hidden="true">&rarr;</span>
+            <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener" class="btn btn--primary">
+              Use this template <span aria-hidden="true">&rarr;</span>
             </a>
-            <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener" class="btn btn--outline">
-              View on GitHub <span aria-hidden="true">&rarr;</span>
+            <a href="https://dashboard.all-ai-network.org/resources" target="_blank" rel="noopener" class="btn btn--outline">
+              Full setup guide <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </div>
 
+        <!-- hub.config.json preview -->
         <div class="hub-template__code">
           <div class="hub-template__code-header">
             <div class="hub-template__code-dots">
               <span></span><span></span><span></span>
             </div>
-            <span class="hub-template__code-title">Terminal</span>
+            <span class="hub-template__code-title">hub.config.json</span>
           </div>
           <div class="hub-template__code-body">
-<pre><span class="code-comment"># Clone the hub template</span>
-<span class="code-cmd">git clone</span> <span class="code-string">https://github.com/ALL-Applied-AI-Network/aain-hub-template</span> <span class="code-arg">my-chapter</span>
+<pre><span class="code-comment">// This is all you edit</span>
+{
+  <span class="code-string">"name"</span>: <span class="code-arg">"MSOE AI Club"</span>,
+  <span class="code-string">"university"</span>: <span class="code-arg">"Milwaukee School of Engineering"</span>,
+  <span class="code-string">"slug"</span>: <span class="code-arg">"msoe"</span>,
+  <span class="code-string">"colors"</span>: {
+    <span class="code-string">"primary"</span>: <span class="code-arg">"#cc0000"</span>,
+    <span class="code-string">"accent"</span>: <span class="code-arg">"#4f8fea"</span>
+  },
+  <span class="code-string">"officers"</span>: [
+    { <span class="code-string">"name"</span>: <span class="code-arg">"Jane Doe"</span>, <span class="code-string">"role"</span>: <span class="code-arg">"President"</span> }
+  ],
+  <span class="code-string">"socialLinks"</span>: {
+    <span class="code-string">"github"</span>: <span class="code-arg">"https://github.com/..."</span>,
+    <span class="code-string">"discord"</span>: <span class="code-arg">"https://discord.gg/..."</span>
+  },
+  <span class="code-string">"apiKey"</span>: <span class="code-arg">"your-dashboard-api-key"</span>
+}</pre>
+          </div>
+        </div>
+      </div>
 
-<span class="code-comment"># Move into the project</span>
-<span class="code-cmd">cd</span> <span class="code-arg">my-chapter</span>
-
-<span class="code-comment"># Install dependencies</span>
-<span class="code-cmd">npm install</span>
-
-<span class="code-comment"># Start development server</span>
-<span class="code-cmd">npm run</span> <span class="code-arg">dev</span>
-<span class="code-output">  Server running at http://localhost:3000</span></pre>
+      <!-- What the template includes -->
+      <div class="hub-template__pages">
+        <h3 class="hub-template__pages-title">Pages included out of the box</h3>
+        <div class="hub-template__pages-grid">
+          <div class="hub-template__page-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <div>
+              <strong>Home</strong>
+              <span>Hero, upcoming events, leaderboard widget</span>
+            </div>
+          </div>
+          <div class="hub-template__page-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <div>
+              <strong>Events</strong>
+              <span>Auto-synced from dashboard API</span>
+            </div>
+          </div>
+          <div class="hub-template__page-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+            <div>
+              <strong>Leaderboard</strong>
+              <span>Gamified member ranking with XP</span>
+            </div>
+          </div>
+          <div class="hub-template__page-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <div>
+              <strong>Learning</strong>
+              <span>Embedded curriculum tree</span>
+            </div>
+          </div>
+          <div class="hub-template__page-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div>
+              <strong>Team</strong>
+              <span>Officers and sponsor logos</span>
+            </div>
+          </div>
+          <div class="hub-template__page-item">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <div>
+              <strong>Resources</strong>
+              <span>Curated links and materials</span>
+            </div>
           </div>
         </div>
       </div>
@@ -529,7 +616,7 @@
         running before your first meeting.
       </p>
       <div class="toolkit-cta__actions">
-        <a href="https://network-api-bice.vercel.app" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+        <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
           Open the Chapter Dashboard <span aria-hidden="true">&rarr;</span>
         </a>
         <a href="./playbook.html?path=playbooks/getting-started/index.md" class="btn btn--outline btn--lg">
