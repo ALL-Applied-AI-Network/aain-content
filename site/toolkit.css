@@ -85,11 +85,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2rem 1.75rem 1.75rem;
+  padding: 1.9rem 1.85rem 1.85rem;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  text-decoration: none;
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   overflow: hidden;
 }
@@ -107,22 +106,46 @@
 .path-tile--connect { --tile-accent: #a855f7; }
 
 .path-tile:hover {
-  border-color: color-mix(in srgb, var(--tile-accent) 45%, var(--border-subtle));
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px color-mix(in srgb, var(--tile-accent) 15%, transparent);
+  border-color: color-mix(in srgb, var(--tile-accent) 35%, var(--border-subtle));
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px color-mix(in srgb, var(--tile-accent) 12%, transparent);
 }
 
 .path-tile__top {
   display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 0.85rem;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.path-tile__emoji {
-  font-size: 2rem;
-  line-height: 1;
-  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--tile-accent) 40%, transparent));
+/* Icon — circular badge with accent tint, matches dashboard sidebar icon style */
+.path-tile__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--tile-accent) 15%, transparent);
+  color: var(--tile-accent);
+  border: 1px solid color-mix(in srgb, var(--tile-accent) 25%, transparent);
+}
+
+.path-tile__heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.path-tile__kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tile-accent);
+  margin-bottom: 0.25rem;
 }
 
 .path-tile__title {
@@ -132,6 +155,7 @@
   color: var(--text-primary);
   letter-spacing: -0.015em;
   margin: 0;
+  line-height: 1.2;
 }
 
 .path-tile__desc {
@@ -144,46 +168,77 @@
 .path-tile__list {
   list-style: none;
   padding: 0;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.55rem;
 }
 
 .path-tile__list li {
   position: relative;
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
   font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.5;
 }
 
 .path-tile__list li::before {
-  content: "✓";
+  content: "";
   position: absolute;
   left: 0;
-  top: 0;
-  color: var(--tile-accent);
-  font-weight: 700;
-  font-size: 0.85rem;
+  top: 0.35rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--tile-accent) 18%, transparent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3 7.5l2.5 2.5 5-5' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px 12px;
 }
 
-.path-tile__cta {
+.path-tile--connect .path-tile__list li::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3 7.5l2.5 2.5 5-5' stroke='%23a855f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Prominent pill button — unambiguously clickable */
+.path-tile__button {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 0.5rem;
   margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--border-subtle);
+  padding: 0.85rem 1.25rem;
+  background: var(--tile-accent);
+  border: 1px solid var(--tile-accent);
+  border-radius: 8px;
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: var(--tile-accent);
-  transition: gap 0.15s;
+  color: #0a0a0b;
+  text-decoration: none;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.15s, color 0.15s;
+  cursor: pointer;
+  align-self: stretch;
 }
 
-.path-tile:hover .path-tile__cta {
-  gap: 0.65rem;
+.path-tile__button svg {
+  transition: transform 0.15s;
+}
+
+.path-tile__button:hover {
+  color: #0a0a0b;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--tile-accent) 35%, transparent);
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--tile-accent) 92%, white);
+}
+
+.path-tile__button:hover svg {
+  transform: translateX(3px);
+}
+
+.path-tile__button:active {
+  transform: translateY(0);
 }
 
 /* ---------- Playbooks pointer — slim strip linking to /playbooks.html ---------- */
