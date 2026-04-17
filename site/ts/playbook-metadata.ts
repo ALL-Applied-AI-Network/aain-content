@@ -14,8 +14,8 @@ export interface PlaybookAction {
   label: string;
   /** One-line sub-copy under the label — e.g. "Validate the idea". */
   sub: string;
-  /** Relative path to the sub-page inside playbooks/<slug>/. */
-  file: string;
+  /** In-page anchor the action scrolls to (e.g. "#week-1"). Must match a heading id in the playbook. */
+  anchor: string;
 }
 
 export interface PlaybookStat {
@@ -49,9 +49,9 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "$50K+", label: "in prizes" },
     ],
     actions: [
-      { label: "Week 1", sub: "Validate the idea", file: "validating-the-idea.md" },
-      { label: "First semester", sub: "Run the arc", file: "first-semester.md" },
-      { label: "Year two", sub: "Build for longevity", file: "building-for-longevity.md" },
+      { label: "Week 1", sub: "Validate and launch", anchor: "#week-1" },
+      { label: "First semester", sub: "Run the arc", anchor: "#first-semester" },
+      { label: "Year two", sub: "Build for longevity", anchor: "#year-two" },
     ],
   },
   {
@@ -67,9 +67,9 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "3 nonprofits", label: "partnered with" },
     ],
     actions: [
-      { label: "Plan it (10wk)", sub: "Build the timeline", file: "timeline.md" },
-      { label: "Run it (48hr)", sub: "Day-of operations", file: "day-of.md" },
-      { label: "Wrap it", sub: "Post-hackathon", file: "post-hackathon.md" },
+      { label: "Plan it", sub: "10-week countdown", anchor: "#plan-it" },
+      { label: "Run it", sub: "48 hours on the clock", anchor: "#run-it" },
+      { label: "Wrap it", sub: "Handoff and retro", anchor: "#wrap-it" },
     ],
   },
   {
@@ -85,9 +85,9 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "40–50", label: "typical attendance" },
     ],
     actions: [
-      { label: "Find a speaker", sub: "Outreach playbook", file: "finding-speakers.md" },
-      { label: "Run the event", sub: "Day-of script", file: "running-the-event.md" },
-      { label: "Build the series", sub: "Make it recurring", file: "recurring-series.md" },
+      { label: "Find a speaker", sub: "Sourcing and outreach", anchor: "#find-a-speaker" },
+      { label: "Run the event", sub: "Day-of script", anchor: "#run-the-event" },
+      { label: "Build the series", sub: "Make it recurring", anchor: "#build-the-series" },
     ],
   },
   {
@@ -103,9 +103,9 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "2 schools", label: "MSOE + UWM" },
     ],
     actions: [
-      { label: "Pitch a sponsor", sub: "Sponsor outreach", file: "finding-sponsors.md" },
-      { label: "Run the lab", sub: "8-week competition", file: "running-the-competition.md" },
-      { label: "Showcase + handoff", sub: "Judge + deliver", file: "judging-and-showcase.md" },
+      { label: "Pitch a sponsor", sub: "Sourcing and scoping", anchor: "#pitch-a-sponsor" },
+      { label: "Run the lab", sub: "8-week competition", anchor: "#run-the-lab" },
+      { label: "Showcase + handoff", sub: "Judge and deliver", anchor: "#showcase-and-handoff" },
     ],
   },
   {
@@ -121,9 +121,9 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "20+ papers", label: "published" },
     ],
     actions: [
-      { label: "Form the group", sub: "Recruit + scope", file: "forming-the-group.md" },
-      { label: "Run experiments", sub: "Read, design, test", file: "experiments.md" },
-      { label: "Publish", sub: "MICS, arXiv, or blog", file: "publication-pipeline.md" },
+      { label: "Form the group", sub: "Recruit and scope", anchor: "#form-the-group" },
+      { label: "Run experiments", sub: "Read, design, test", anchor: "#run-experiments" },
+      { label: "Publish", sub: "MICS, arXiv, or blog", anchor: "#publish" },
     ],
   },
 ];

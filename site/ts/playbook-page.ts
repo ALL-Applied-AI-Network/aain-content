@@ -48,7 +48,7 @@ function renderActionHeader(meta: PlaybookMeta, slug: string): string {
   const actions = meta.actions
     .map(
       (a) => `
-        <a class="pb-header__action" href="./playbook.html?path=playbooks/${slug}/${a.file}">
+        <a class="pb-header__action" href="${a.anchor}">
           <span class="pb-header__action-label">${a.label}</span>
           <span class="pb-header__action-sub">${a.sub}</span>
           <span class="pb-header__action-arrow" aria-hidden="true">&rarr;</span>
@@ -146,11 +146,29 @@ async function init(): Promise<void> {
     if (articleH1) articleH1.style.display = "none";
   }
 
+  // Auto-assign id attributes to H2/H3 headings so in-page anchor links work.
+  // (marked v12 no longer does this by default.)
+  addHeadingIds(contentEl);
+
   // Rewrite relative .md links to playbook.html?path= links
   rewriteLinks(contentEl, contentPath);
 
   // Init reading progress
   initProgressBar();
+
+  // If the URL has a #anchor, scroll to it now that markdown has rendered.
+  if (window.location.hash) {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    const target = document.getElementById(id);
+    if (target) {
+      // Defer one frame so layout is stable, then smooth-scroll with nav offset.
+      requestAnimationFrame(() => {
+        const navHeight = 72;
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top, behavior: "smooth" });
+      });
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -193,6 +211,23 @@ function rewriteLinks(container: HTMLElement, currentPath: string): void {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
+function addHeadingIds(container: HTMLElement): void {
+  container.querySelectorAll<HTMLElement>("h2, h3").forEach((h) => {
+    if (!h.id && h.textContent) {
+      h.id = slugify(h.textContent);
+    }
+  });
+}
 
 function formatFileName(file: string): string {
   return file

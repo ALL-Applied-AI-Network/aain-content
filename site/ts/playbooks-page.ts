@@ -22,7 +22,7 @@ function renderCard(p: PlaybookMeta): string {
   const actions = p.actions
     .map(
       (a) => `
-        <a class="pb-card__action" href="./playbook.html?path=playbooks/${p.slug}/${a.file}">
+        <a class="pb-card__action" href="./playbook.html?path=playbooks/${p.slug}/index.md${a.anchor}">
           <span class="pb-card__action-label">${a.label}</span>
           <span class="pb-card__action-sub">${a.sub}</span>
         </a>
