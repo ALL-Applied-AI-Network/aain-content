@@ -1,126 +1,99 @@
 # Validating the Idea
 
-Before you file a single form or book a single room, answer one question honestly: does your campus actually need this? Enthusiasm is not the same as demand. This section helps you figure out whether there is a real audience for an applied AI club, what gap you fill that existing organizations do not, and how to articulate your value proposition clearly enough to recruit others.
+**Before you file a single form or book a single room, prove your campus actually needs this. Enthusiasm isn't demand.**
 
-## Why Validation Matters
+## How we did it at MAIC
 
-Student organizations fail for two main reasons: the founders lose interest, or nobody else was interested in the first place. You can control for the second one by doing real validation before you invest dozens of hours into logistics.
+MAIC was founded in 2020 by Xander Neuwirth with a workshops-plus-research-groups model. It filled a real gap at MSOE at the time — nobody else was running hands-on AI content on campus. Three years later, when Ben Paulson took over as president, the gap had shifted. The club existed, but it wasn't filling the gap anymore. So Ben did the validation work in reverse: instead of asking "is there demand for an AI club?" (yes, obviously), he asked "is MAIC meeting that demand the way it's currently structured?" (no, it wasn't).
 
-Validation does not mean you need a hundred people lined up. It means you need evidence that at least 10-15 students would show up consistently, and that what you are offering is distinct from what already exists on campus.
+He ran what we now call a **perception audit** — literally one document listing what each audience thought of MAIC in mid-2023:
 
-## Map the Existing Landscape
+- **Upperclassmen:** thought the club was for getting lowerclassmen up to speed
+- **Lowerclassmen:** felt like it was another class, without the context to know where to start
+- **EECS Faculty:** glad the club existed, didn't know how to plug in
+- **MSOE Corporate (Dr. Riley):** wanted MAIC more visible in front-facing marketing
+- **Dr. Dwight Diercks (NVIDIA):** wanted MAIC connected to other student networks
+- **Industry:** didn't know how to engage
+- **Other Universities:** didn't know we existed
 
-Start by understanding what is already on your campus. You are not looking for reasons not to start -- you are looking for the gap your club fills.
+That one-page audit drove everything that came next — the workshop redesign, the Innovation Lab track, the NVIDIA Student Network pilot, the sponsor outreach. Without it, we would have been reshuffling deck chairs.
 
-### Audit existing organizations
+If you're starting a club from scratch at a new campus, the work is inverted but the principle is identical: **figure out the gap before you fill it.**
 
-- [ ] List every CS, engineering, data science, or tech-related student org at your school
-- [ ] Attend at least one meeting of each (or talk to a current member)
-- [ ] For each org, note: What topics do they cover? How often do they meet? How many people attend? What is the format (lectures, workshops, social)?
-- [ ] Identify what is missing -- this is your opening
+## The repeatable version
 
-### Common gaps an applied AI club fills
+### If you're starting from zero (no existing club)
 
-| What exists | What is missing | Your opportunity |
+Do three things before you file your first piece of paperwork:
+
+**1. Audit existing student orgs.**
+List every CS, data science, engineering, or tech-related org on your campus. Attend one meeting of each, or talk to a current member. For each, note:
+- What topics do they cover?
+- How often do they meet? How many attend?
+- What format (lectures, workshops, hacks, social)?
+
+Identify what's missing. That's your opening.
+
+| What exists on your campus | What's missing | Your opportunity |
 |---|---|---|
-| CS club focused on competitive programming | No coverage of AI/ML tools and workflows | Applied AI workshops |
-| Data science club with academic focus | No hands-on building, mostly paper discussions | Build-focused sessions |
-| General engineering society | Too broad, no depth in any topic | Deep, focused AI community |
-| Nothing AI-related at all | Everything | Wide-open field |
+| CS club focused on competitive programming | No AI/ML content | Applied AI workshops |
+| Data science club, academic/paper focus | No hands-on building | Build-focused sessions |
+| General engineering society | Too broad, no depth | Focused AI community |
+| Nothing AI-related at all | Everything | Wide open |
 
-:::callout[tip]
-The key differentiator for an ALL Applied AI Network hub is the word "applied." You are not a study group. You are not a lecture series. Members build real things with AI tools, starting from their first meeting.
-:::
+**2. The hallway test.**
+Talk to 20 students individually — not just your friend group. Two questions:
 
-## Gauge Real Demand
-
-Gut feelings are not data. Here are three concrete ways to measure interest before committing.
-
-### 1. The hallway test
-
-Talk to 20 students individually -- not just your friend group. Ask two questions:
-
-1. "Have you used any AI tools like ChatGPT, Copilot, or Cursor for coursework or projects?"
+1. "Have you used AI tools like ChatGPT, Copilot, or Cursor for coursework?"
 2. "If there were a club where you built real AI projects every week, would you come?"
 
-Track the responses. If fewer than half say yes to the second question, you need to refine your pitch or reconsider your approach.
+Track responses. Fewer than half saying yes to #2 means your pitch needs sharpening before you launch.
 
-### 2. The interest form
+**3. The pilot event.**
+The strongest validation is a single event. Book a room, pick one concrete project (build a chatbot with the Claude API, fine-tune a small model on Hugging Face, do a data-viz notebook on ROSIE if you have compute). Invite your 20 hallway-test contacts plus their friends. If 10+ people show up and stay engaged for an hour, you have your answer.
 
-Create a short Google Form (5 questions maximum) and distribute it through:
+### If you're reinventing an existing club (our 2023 situation)
 
-- Class GroupMe or Discord channels
-- Department email lists (ask a professor to forward it)
-- Instagram or other social platforms your campus actually uses
+Run the **perception audit** instead. Write out every audience segment that matters — current members, lapsed members, faculty, corporate/alumni, sponsors, peer orgs — and write in one line what each group actually thinks of your club today. Not what you wish they thought. What they actually think.
 
-**Sample questions:**
-
-1. What is your major and year?
-2. How would you rate your programming experience? (None / Beginner / Intermediate / Advanced)
-3. Have you built anything with AI tools? (Yes / No / What is that?)
-4. What would make you attend a weekly AI club meeting? (Learn to build AI apps / Network with industry / Work on cool projects / Put something on my resume)
-5. Drop your email if you want to hear when we launch.
-
-:::callout[info]
-Aim for 30+ email signups before moving forward. This gives you a buffer -- roughly half of signups convert to first-meeting attendees, and about half of those become regulars. 30 signups means approximately 8-10 consistent members, which is a viable starting core.
-:::
-
-### 3. The pilot event
-
-The strongest validation is a single event. Host an informal "AI Build Night" -- no club registration needed, no formal structure. Book a room, pick a simple project (like building a chatbot with an API), and invite everyone from your interest form.
-
-If 10+ people show up and stay engaged for at least an hour, you have your answer.
-
-## Define Your Positioning
-
-Once you know there is demand, get specific about what your club is and is not. This clarity saves you from scope creep later and gives you a sharp pitch for recruiting.
+Then ask: does that perception match our mission? Ours didn't. That's all the justification you need to reinvent.
 
 ### Write your one-liner
 
-Distill your club into a single sentence. Here is a template:
+Distill your club into one sentence. Our template:
 
 > **[Club name] is a community of students who [what you do] so they can [why it matters].**
 
-Examples:
+Ours:
 
-- "MSOE AI Club is a community of students who build real AI applications every week so they can graduate with portfolios that get them hired."
-- "Badger AI is a community of students who learn applied AI skills hands-on so they can work on projects that matter to them."
+> MSOE AI Club is a student organization dedicated to demystifying AI for everyone — we do it through speaker events, workshops, and research groups.
 
-### Clarify what you are NOT
+Good one-liners fit on a T-shirt. If yours doesn't, it's not sharp enough.
 
-This is just as important as defining what you are. Write it down and share it with your co-founders:
+### Clarify what you're NOT
+
+Just as important. Write it down with your co-founders:
 
 - [ ] We are **not** a study group for AI theory or math
 - [ ] We are **not** a competitive programming team
 - [ ] We are **not** exclusive to CS or engineering majors
-- [ ] We are **not** a club where one person lectures and everyone else watches
+- [ ] We are **not** a club where one person lectures and everyone watches
 
-:::callout[warning]
-Resist the temptation to be everything to everyone. "We do AI stuff" is not a positioning. "We build applied AI projects that you can put on your resume" is. The more specific your value proposition, the easier it is to attract the right people.
-:::
+Resist the temptation to be everything. "We do AI stuff" isn't positioning. "We build applied AI projects you can put on your resume" is.
 
-## Assess Your Own Capacity
+## What we'd do differently
 
-Be honest about what you can commit. Starting a club takes 5-10 hours per week in the first semester, on top of your coursework. If you are taking 18 credits and working 20 hours a week, the math might not work -- unless you have co-founders who share the load.
+Ben wrote the 2023 perception audit as a private doc for eboard eyes only. We'd now share a sanitized version with faculty and sponsors — the exercise itself builds credibility ("we know how we're perceived and here's what we're doing about it"). You don't need to wait until you have results to earn trust. Doing the validation work honestly is itself a signal.
 
-Questions to ask yourself:
+## Validation checklist
 
-- [ ] Can I commit at least 5 hours per week to this for the next semester?
-- [ ] Am I willing to run events even when attendance is low?
-- [ ] Do I have at least one other person who is equally committed?
-- [ ] Am I doing this because I genuinely want to build a community, or because it would look good on a resume?
+Before moving on to building your team, confirm:
 
-That last question matters. Resume-motivated founders tend to quit after the first hard month. Community-motivated founders push through the low points.
+- [ ] You've audited every related student org on campus
+- [ ] You've identified a concrete gap your club fills
+- [ ] You've talked to 20+ students directly, or run a pilot event with 10+ attendees
+- [ ] You've written a one-line positioning statement
+- [ ] You've written out what you're NOT
+- [ ] You have at least one other person equally committed
 
-## Validation Checklist
-
-Before moving to the next section, confirm you have completed the following:
-
-- [ ] Audited existing student organizations on campus
-- [ ] Identified a clear gap your club fills
-- [ ] Collected interest from at least 20-30 students (form, conversations, or pilot event)
-- [ ] Written a one-line positioning statement
-- [ ] Confirmed you have the personal bandwidth to lead this for at least one semester
-- [ ] Found at least one other person who shares your commitment
-
-If you have checked every box, you have validated the idea. Move on to building your core team.
+All six checked? Move to [Forming Your Core Team](./forming-your-core-team.md).

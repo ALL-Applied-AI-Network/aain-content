@@ -1,50 +1,49 @@
 # Getting Started: Launch Your AI Hub
 
-You want to start an AI club at your university. Maybe you have a handful of interested friends, maybe you have a faculty advisor lined up, or maybe you just have the conviction that your campus needs this. Whatever your starting point, this playbook walks you through every step from first idea to a thriving hub with regular events and engaged members.
+**Most student orgs die in their second year. This playbook is the one we wish we'd had to avoid that.**
 
-This guide is built from hard-won experience launching and growing AI communities at universities like MSOE. It covers the practical reality of student organizations: navigating campus bureaucracy, finding your first members, running events that people actually come back to, and building something that outlasts your graduation.
+## How we did it at MAIC
 
-## Who This Is For
+MSOE AI Club (MAIC) launched in 2020 under founder Xander Neuwirth with a simple model: after-hours workshops plus a few research groups on the side. It worked at first — but by 2023 the model was showing its age. Upperclassmen thought workshops were for freshmen. Freshmen thought workshops felt like another class. Faculty wanted to plug in but didn't know how. Industry barely knew we existed.
 
-A student (or small group of students) who wants to build an applied AI community on their campus. No prior leadership experience required. No budget required to start.
+When Ben Paulson took over as president in fall 2023, he and Xander had a hard conversation about what to keep and what to replace. We kept the mission — *demystify AI for everyone* — and scrapped almost everything else. We redesigned workshops around "current AI news" instead of repeat lectures. We stood up Innovation Labs as a new sponsor-backed track. We moved Research Groups to a fall-to-spring cadence with industry mentors and ROSIE supercomputer access. We grew from ~60 active members to 200+ in year one of the reinvention, then to 500+ by 2025 — the largest undergraduate AI student org in the US and a pilot member of the NVIDIA Student Network (1 of 4 schools globally).
 
-## What You Will Walk Away With
-
-- A registered student organization with a leadership team
-- A repeatable event format for your first semester
-- A recruitment pipeline that fills the room
-- A relationship with at least one faculty advisor and one industry sponsor
+This playbook is what we'd tell ourselves if we had to do it again from zero. It assumes nothing: no budget, no advisor lined up, no co-founders yet.
 
 ---
 
-## Table of Contents
+## The playbook
 
 ### [1. Validating the Idea](./validating-the-idea.md)
-Before you file paperwork, make sure there is real demand. This section covers how to gauge interest, identify your target audience, and articulate what makes an applied AI club different from a general CS club.
+Prove real demand before you file a single form. The landscape audit we ran at MSOE and the perception audit Ben used in 2023 to justify scrapping the old model.
 
 ### [2. Forming Your Core Team](./forming-your-core-team.md)
-You cannot do this alone. Learn how to recruit 2-4 co-founders with complementary skills, define roles without creating bureaucracy, and establish a working rhythm before you go public.
+The 2023 eboard that made the reinvention work. Who we recruited, how we split roles, and the one role we wish we'd added a year earlier.
 
 ### [3. Campus Registration and Logistics](./campus-registration.md)
-Every university has a different process for registering student organizations. This section provides a general framework and checklist so you can navigate yours efficiently: constitutions, advisor requirements, room booking, and funding applications.
+The constitution, advisor requirements, and room booking process Dr. Riley walked us through at MSOE. Includes MAIC's actual constitution structure.
 
 ### [4. Designing Your First Event](./first-event.md)
-Your first event sets the tone. We cover event formats that work well for brand-new clubs (hint: hands-on workshops beat lecture-style talks), how to scope the content so beginners feel welcome, and how to make sure people leave wanting to come back.
+Our four-week intro arc — **Intro to MAIC → Intro to ROSIE → NVIDIA DLI Workshop → Hands-On Projects Reveal** — is the single highest-leverage thing we do each semester.
 
 ### [5. Recruiting Members](./recruiting-members.md)
-Flyers in the CS building are not enough. This section covers multi-channel recruitment: class announcements, social media strategy, word-of-mouth tactics, and how to make your club visible to students outside of engineering.
+How we went 60 → 200 → 500+. The First Year Student Seminar slot, the Teams auto-invite, class announcement scripts, and why "bring a friend" outperforms every flyer we've ever printed.
 
 ### [6. Running Your First Semester](./first-semester.md)
-A week-by-week framework for your first 12-15 weeks. Covers cadence, content planning, how to handle low-attendance weeks, and when to start delegating.
+A bi-weekly Thursday cadence, 6:30–7:30pm, ITC Great Hall. Free food every time (chicken in fall, pizza in spring). The week-by-week template we've now run for three years.
 
 ### [7. Finding Sponsors and Advisors](./sponsors-and-advisors.md)
-Industry partners and faculty advisors are force multipliers. Learn how to pitch your club to companies, what sponsors actually want, and how to build a faculty relationship that goes beyond a signature on a form.
+How Direct Supply became our primary sponsor, how NVIDIA came through Dwight Diercks, and how we landed Brady Corp for a $5K Innovation Lab. Includes the actual pitch.
 
 ### [8. Building for Longevity](./building-for-longevity.md)
-The hardest problem in student orgs is surviving leadership transitions. This section covers documentation practices, succession planning, and how to create a culture that self-perpetuates.
+The Ben-to-Brett handoff in 2024. Documenting board responsibilities, ITC reservation flow, ROSIE access chain, and the sponsor contact list so the next eboard doesn't hunt for tribal knowledge.
 
 ---
 
-## How to Use This Playbook
+## What we'd do differently
 
-Read sections 1-4 before you start. They are sequential and each builds on the last. Sections 5-8 can be referenced as needed throughout your first year. Every section includes checklists, templates, and real examples you can adapt.
+We waited too long to formalize the eboard handoff. By the time Ben wrote the Board Responsibilities guide (March 2024), he'd already been president for seven months and had to reverse-engineer his own process. If you're starting now, write the playbook as you do the work — not after.
+
+## How to use this playbook
+
+Sections 1–4 are sequential; don't skip. Sections 5–8 get referenced throughout your first year. Plan for 12–15 weeks of setup before your club *feels* real — that's how long it took us, even with an existing MAIC shell to reinvent.
