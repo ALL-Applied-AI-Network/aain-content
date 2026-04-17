@@ -9,6 +9,7 @@
  */
 
 import { renderArticle } from "./article-renderer";
+import { getPlaybook, type PlaybookMeta } from "./playbook-metadata";
 
 // ---------------------------------------------------------------------------
 // Pretty names for sections
@@ -27,6 +28,52 @@ const SECTION_NAMES: Record<string, string> = {
   "deploy-your-first-ai-app": "Deploy Your First AI App",
   "deep-learning-from-scratch": "Deep Learning from Scratch",
 };
+
+// ---------------------------------------------------------------------------
+// Action-header renderer — injected at the top of a playbook's index.md page
+// ---------------------------------------------------------------------------
+
+function renderActionHeader(meta: PlaybookMeta, slug: string): string {
+  const stats = meta.stats
+    .map(
+      (s) => `
+        <div class="pb-header__stat">
+          <span class="pb-header__stat-value">${s.value}</span>
+          <span class="pb-header__stat-label">${s.label}</span>
+        </div>
+      `,
+    )
+    .join("");
+
+  const actions = meta.actions
+    .map(
+      (a) => `
+        <a class="pb-header__action" href="./playbook.html?path=playbooks/${slug}/${a.file}">
+          <span class="pb-header__action-label">${a.label}</span>
+          <span class="pb-header__action-sub">${a.sub}</span>
+          <span class="pb-header__action-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      `,
+    )
+    .join("");
+
+  return `
+    <section class="pb-header" style="--pb-accent: ${meta.accent};">
+      <div class="pb-header__accent-bar"></div>
+      <div class="pb-header__top">
+        <span class="pb-header__emoji" aria-hidden="true">${meta.emoji}</span>
+        <div class="pb-header__titles">
+          <span class="pb-header__kicker">Playbook</span>
+          <h1 class="pb-header__title">${meta.title}</h1>
+          <p class="pb-header__tagline">${meta.tagline}</p>
+        </div>
+      </div>
+      <div class="pb-header__stats">${stats}</div>
+      <div class="pb-header__actions-label">Jump to a stage:</div>
+      <div class="pb-header__actions">${actions}</div>
+    </section>
+  `;
+}
 
 // ---------------------------------------------------------------------------
 // Init
@@ -59,7 +106,7 @@ async function init(): Promise<void> {
         ? `${type}/${section}/workshop.md`
         : `${type}/${section}/index.md`;
       breadcrumbSection.innerHTML = `
-        <a href="./toolkit.html#${type}">${typeName}</a>
+        <a href="${type === 'workshops' ? './toolkit.html#workshops' : './playbooks.html'}">${typeName}</a>
         <span class="playbook-breadcrumb__sep">/</span>
         <a href="./playbook.html?path=${indexPath}">${sectionName}</a>
         <span class="playbook-breadcrumb__sep">/</span>
@@ -67,7 +114,7 @@ async function init(): Promise<void> {
       `;
     } else {
       breadcrumbSection.innerHTML = `
-        <a href="./toolkit.html#${type}">${typeName}</a>
+        <a href="${type === 'workshops' ? './toolkit.html#workshops' : './playbooks.html'}">${typeName}</a>
         <span class="playbook-breadcrumb__sep">/</span>
         <span>${sectionName}</span>
       `;
@@ -81,7 +128,23 @@ async function init(): Promise<void> {
   const contentEl = document.getElementById("playbook-content");
   if (!contentEl) return;
 
+  // If we're on a playbook's index.md, inject the action header BEFORE the article
+  // so users instantly see what the playbook does and the top actions available.
+  const meta = type === "playbooks" && file === "index.md" ? getPlaybook(section) : undefined;
+  if (meta) {
+    const header = document.createElement("div");
+    header.innerHTML = renderActionHeader(meta, section);
+    contentEl.parentElement?.insertBefore(header.firstElementChild!, contentEl);
+  }
+
   await renderArticle(contentPath, contentEl);
+
+  // On an index page, the rendered markdown also contains an H1 — hide it since
+  // the action header already shows the title prominently.
+  if (meta) {
+    const articleH1 = contentEl.querySelector("h1");
+    if (articleH1) articleH1.style.display = "none";
+  }
 
   // Rewrite relative .md links to playbook.html?path= links
   rewriteLinks(contentEl, contentPath);
@@ -162,7 +225,7 @@ function showError(msg: string): void {
         <div class="callout__header">Error</div>
         <div class="callout__body"><p>${msg}</p></div>
       </div>
-      <p><a href="./toolkit.html">Return to Hub Toolkit</a></p>
+      <p><a href="./playbooks.html">Return to Playbooks</a></p>
     `;
   }
 }

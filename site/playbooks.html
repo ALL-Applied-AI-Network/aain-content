@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playbooks — ALL Applied AI Network</title>
+  <meta name="description" content="Open-source playbooks for running a university AI hub. Written by the team that built MSOE AI Club from 60 to 500+ members." />
+  <meta property="og:title" content="Playbooks — ALL Applied AI Network" />
+  <meta property="og:description" content="The open-source playbooks we used to build MAIC — the largest undergrad AI club in the US." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./public/all-logo-transparent.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./playbooks.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="./" class="nav__brand">
+        <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+        <span>ALL Applied AI Network</span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="./tree.html">Learning Tree</a></li>
+        <li><a href="./playbooks.html" class="active">Playbooks</a></li>
+        <li><a href="./toolkit.html">Hub Toolkit</a></li>
+        <li><a href="./impact.html">Impact</a></li>
+        <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pb-hero">
+    <div class="container pb-hero__inner">
+      <span class="pb-hero__badge">Five playbooks · Battle-tested at MAIC</span>
+      <h1 class="pb-hero__title">Playbooks</h1>
+      <p class="pb-hero__subtitle">
+        The open-source playbooks we used to build MSOE AI Club &mdash; the largest
+        undergraduate AI student org in the US. Every page is grounded in five years
+        of actually running these events, with real names, real numbers, and candid
+        retrospectives on what didn't work.
+      </p>
+      <div class="pb-hero__stats">
+        <div class="pb-hero__stat">
+          <span class="pb-hero__stat-value">500+</span>
+          <span class="pb-hero__stat-label">members</span>
+        </div>
+        <div class="pb-hero__stat">
+          <span class="pb-hero__stat-value">$50K+</span>
+          <span class="pb-hero__stat-label">in prize pools</span>
+        </div>
+        <div class="pb-hero__stat">
+          <span class="pb-hero__stat-value">5 years</span>
+          <span class="pb-hero__stat-label">of iteration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Playbook grid -->
+  <section class="pb-grid-section">
+    <div class="container">
+      <div class="pb-grid" id="pb-grid">
+        <!-- cards rendered by playbooks-page.ts -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contributor CTA -->
+  <section class="pb-contrib">
+    <div class="container pb-contrib__inner">
+      <div>
+        <h2 class="pb-contrib__title">Want to contribute?</h2>
+        <p class="pb-contrib__desc">
+          Every playbook follows the same four-part structure: a hook, how we did it
+          at MAIC, the repeatable version, and what we'd do differently. The style
+          guide keeps the voice consistent across contributors.
+        </p>
+      </div>
+      <div class="pb-contrib__actions">
+        <a href="./playbook.html?path=playbooks/PLAYBOOK-STYLE.md" class="btn btn--outline">Read the style guide</a>
+        <a href="https://github.com/ALL-Applied-AI-Network/aain-content" target="_blank" rel="noopener" class="btn btn--primary">Open on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand-area">
+          <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="footer__brand-logo" />
+          <span class="footer__brand">ALL Applied AI Network</span>
+        </div>
+        <p class="footer__legal">
+          Content licensed under CC BY-SA 4.0. Code licensed under MIT.<br />
+          Built at MSOE. Maintained by the ALL community.
+        </p>
+      </div>
+      <div class="footer__links">
+        <ul class="footer__link-col">
+          <li><a href="./tree.html">Learning Tree</a></li>
+          <li><a href="./playbooks.html">Playbooks</a></li>
+          <li><a href="./toolkit.html">Hub Toolkit</a></li>
+          <li><a href="./impact.html">Impact</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+  </script>
+  <script type="module" src="./ts/playbooks-page.ts"></script>
+</body>
+</html>
