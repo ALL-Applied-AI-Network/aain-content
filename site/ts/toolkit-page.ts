@@ -94,17 +94,18 @@ function renderUpdated(data: HubTemplateData): string {
 }
 
 async function init(): Promise<void> {
-    // 3D hero scene + particles overlay. The toolkit page is about
-    // operating a chapter — hero-scene-b (isometric workstation:
-    // desk, laptop, monitor, GPU tower) signals "this is your chapter
-    // operations setup" rather than "abstract network." The home page
-    // gets the network graph; this page gets the workstation.
+    // Toolkit hero: animated mesh-gradient backdrop + the brand-colored
+    // particle network overlaid on top. Pure CSS for the gradient (in
+    // toolkit.css), pure 2D canvas for the particles. Light, distinct
+    // from the home page's 3D node-graph, gets out of the way of the
+    // founder-timeline copy.
+    //
+    // The 3D scene mount point still exists for backwards-compat but
+    // we no longer attach a Three.js renderer to it — the gradient
+    // does the heavy lifting visually.
     const hero3d = document.getElementById("hero-3d");
-    if (hero3d && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        import("./hero-scene-b").then((m) => {
-            m.initHeroScene(hero3d);
-            hero3d.classList.add("loaded");
-        });
+    if (hero3d) {
+        hero3d.classList.add("loaded");
     }
     const particlesCanvas = document.getElementById("hero-particles");
     if (particlesCanvas instanceof HTMLCanvasElement) {

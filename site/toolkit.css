@@ -1483,3 +1483,163 @@
     padding: 3.5rem 0;
   }
 }
+
+/* ==========================================================================
+   Sub-steps inside a single timeline step — used to group Day 1's
+   Dashboard + Hub Site under one "Day 1" marker without losing
+   structure.
+   ========================================================================== */
+
+.toolkit-substep {
+  margin: 2.5rem 0 1.5rem;
+  padding-left: 0;
+  border-left: 0;
+}
+
+.toolkit-substep__title {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.005em;
+  margin: 0 0 0.4rem;
+}
+
+.toolkit-substep__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(129, 140, 248, 0.2);
+  color: #c7d2fe;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.toolkit-substep__desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  max-width: 720px;
+}
+
+.toolkit-substep__desc code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+/* Step-end CTA block (replaces the old `.dashboard-cta` block) */
+.toolkit-step__cta {
+  margin-top: 2.5rem;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.12), rgba(34, 211, 238, 0.07));
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  border-radius: 1rem;
+}
+
+.toolkit-step__cta-why {
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 760px;
+}
+
+.toolkit-step__cta-why strong {
+  color: #fff;
+}
+
+.toolkit-step__cta-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Toolkit hero — animated mesh gradient backdrop
+   Replaces the static isometric workstation scene with a slowly-drifting
+   colored aurora that doesn't compete with the founder-timeline copy.
+   The brand-colored particle network (canvas) sits on top.
+   ========================================================================== */
+
+.toolkit-hero {
+  background-color: #0a0a0c;
+  background-image:
+    radial-gradient(900px 600px at 15% 25%, rgba(129, 140, 248, 0.32), transparent 65%),
+    radial-gradient(900px 600px at 85% 30%, rgba(34, 211, 238, 0.22), transparent 65%),
+    radial-gradient(900px 600px at 50% 110%, rgba(236, 72, 153, 0.18), transparent 65%),
+    radial-gradient(900px 700px at 30% 80%, rgba(168, 85, 247, 0.20), transparent 65%);
+  background-attachment: fixed, fixed, fixed, fixed;
+  background-blend-mode: screen, screen, screen, screen;
+}
+
+/* The shared .hero-3d--page overlay (vignette + bottom fade) is still
+   in effect — but on the toolkit hero, the gradient drifts visibly.
+   We use the existing `#hero-3d` element (now an empty <div>) as the
+   animated layer so the rest of the global CSS keeps working. */
+.toolkit-hero #hero-3d.hero-3d--page {
+  pointer-events: none;
+  background:
+    radial-gradient(60% 50% at 20% 30%, rgba(129, 140, 248, 0.55), transparent 65%),
+    radial-gradient(55% 50% at 80% 25%, rgba(34, 211, 238, 0.40), transparent 65%),
+    radial-gradient(70% 60% at 50% 100%, rgba(236, 72, 153, 0.35), transparent 70%),
+    radial-gradient(55% 55% at 30% 90%, rgba(168, 85, 247, 0.38), transparent 70%);
+  background-size: 200% 200%, 220% 220%, 240% 240%, 200% 200%;
+  filter: blur(40px) saturate(1.1);
+  animation: toolkit-hero-aurora 24s ease-in-out infinite alternate;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.toolkit-hero #hero-3d.hero-3d--page.loaded {
+  opacity: 1;
+}
+
+@keyframes toolkit-hero-aurora {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      50% 100%,
+      30% 90%;
+  }
+  50% {
+    background-position:
+      40% 60%,
+      60% 30%,
+      30% 60%,
+      80% 40%;
+  }
+  100% {
+    background-position:
+      100% 100%,
+      0% 100%,
+      80% 0%,
+      0% 0%;
+  }
+}
+
+/* Soften the global `.hero-3d--page::after` vignette on toolkit so the
+   aurora isn't crushed under it. */
+.toolkit-hero #hero-3d.hero-3d--page::after {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 50%, rgba(17, 17, 19, 0.25) 0%, rgba(17, 17, 19, 0.75) 100%),
+    linear-gradient(180deg, transparent 65%, rgba(17, 17, 19, 1) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toolkit-hero #hero-3d.hero-3d--page {
+    animation: none;
+  }
+}

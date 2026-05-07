@@ -127,21 +127,16 @@
         <li class="timeline-track__marker">
           <span class="timeline-track__dot"></span>
           <span class="timeline-track__when">Day 1</span>
-          <span class="timeline-track__what">Dashboard</span>
+          <span class="timeline-track__what">Dashboard + hub site</span>
         </li>
         <li class="timeline-track__marker">
           <span class="timeline-track__dot"></span>
-          <span class="timeline-track__when">Week 1</span>
-          <span class="timeline-track__what">Hub site</span>
-        </li>
-        <li class="timeline-track__marker">
-          <span class="timeline-track__dot"></span>
-          <span class="timeline-track__when">First semester</span>
+          <span class="timeline-track__when">First event</span>
           <span class="timeline-track__what">Playbooks</span>
         </li>
         <li class="timeline-track__marker">
           <span class="timeline-track__dot"></span>
-          <span class="timeline-track__when">By year one</span>
+          <span class="timeline-track__when">First semester</span>
           <span class="timeline-track__what">Sponsorship</span>
         </li>
       </ol>
@@ -149,6 +144,7 @@
 
     <!-- ═════════════════════════════════════════════════════════════════
          STEP 01 · Day 1 — Stand up your chapter
+         (Dashboard AND hub site both live on the same day — fork is fast)
          ═════════════════════════════════════════════════════════════ -->
     <section class="toolkit-step toolkit-step--dashboard" id="dashboard">
       <div class="container">
@@ -161,11 +157,25 @@
             Stand up your chapter.
           </h2>
           <p class="toolkit-step__lede">
-            Sign up for the dashboard at
-            <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener"><code>dashboard.all-ai-network.org</code></a>.
-            Your chapter has a live URL the moment you submit the form,
-            and the dashboard becomes your operational core for everything
-            that happens next.
+            One afternoon: sign up for the dashboard, fork the hub-site
+            template, push to deploy. Your chapter has a live operations
+            backend AND a public website on the same day &mdash; that&rsquo;s
+            the headline difference between joining the network and
+            starting from scratch.
+          </p>
+        </div>
+
+        <!-- Sub-section A: The dashboard -->
+        <div class="toolkit-substep">
+          <h3 class="toolkit-substep__title">
+            <span class="toolkit-substep__num">A</span>
+            The chapter dashboard
+          </h3>
+          <p class="toolkit-substep__desc">
+            <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener"><code>dashboard.all-ai-network.org</code></a>
+            is the operational core. Events, members, projects,
+            sponsors, leaderboards &mdash; one login, everything
+            connected.
           </p>
         </div>
 
@@ -268,47 +278,20 @@
         </div>
       </div>
 
-      <div class="dashboard-cta">
-        <p class="dashboard-cta__why">
-          <strong>You inherit four years of operational tooling on
-          day one.</strong> No spreadsheets, no hand-rolled QR
-          check-in, no DIY Stripe wiring. And every improvement we
-          ship next quarter rolls out to your chapter automatically.
+      <!-- Sub-section B: Hub site template (folded into Day 1) -->
+      <div class="toolkit-substep" id="hub-template">
+        <h3 class="toolkit-substep__title">
+          <span class="toolkit-substep__num">B</span>
+          Your chapter website
+        </h3>
+        <p class="toolkit-substep__desc">
+          Fork
+          <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener"><code>aain-hub-template</code></a>,
+          edit one config file, push to deploy. Auto-pulls curriculum,
+          playbooks, and workshops from the shared content library; the
+          &ldquo;What you get&rdquo; list reads live from the template
+          repo&rsquo;s README.
         </p>
-        <div class="dashboard-cta__actions">
-          <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
-            Sign up &mdash; create your chapter <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener" class="btn btn--outline btn--lg">
-            Open dashboard
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <!-- ═════════════════════════════════════════════════════════════════
-         STEP 02 · Week 1 — Ship your chapter's website
-         ═════════════════════════════════════════════════════════════ -->
-    <section class="toolkit-step" id="hub-template">
-      <div class="container">
-        <div class="toolkit-step__header">
-          <div class="toolkit-step__chip">
-            <span class="toolkit-step__chip-num">02</span>
-            <span class="toolkit-step__chip-when">Week 1</span>
-          </div>
-          <h2 class="toolkit-step__title">
-            Ship your chapter&rsquo;s website.
-          </h2>
-          <p class="toolkit-step__lede">
-            Fork the hub-site template, edit one config file, push to
-            deploy. Your chapter has a polished public website that
-            auto-pulls curriculum, playbooks, and workshops from the
-            shared content library &mdash; the &ldquo;What you get&rdquo;
-            list below is read live from
-            <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener"><code>aain-hub-template</code></a>.
-          </p>
-        </div>
 
       <div class="hub-steps">
         <div class="hub-step">
@@ -380,26 +363,45 @@
           </p>
         </div>
       </div>
-    </div>
+
+      <div class="toolkit-step__cta">
+        <p class="toolkit-step__cta-why">
+          <strong>By the end of day one</strong> your chapter has a
+          live operations backend AND a public website &mdash; no
+          spreadsheets, no DIY Stripe wiring, no static-site config.
+          Every improvement we ship next quarter rolls out to your
+          chapter automatically.
+        </p>
+        <div class="toolkit-step__cta-actions">
+          <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+            Sign up &mdash; create your chapter <span aria-hidden="true">&rarr;</span>
+          </a>
+          <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener" class="btn btn--outline btn--lg">
+            Use the hub template
+          </a>
+        </div>
+      </div>
+    </div><!-- /.toolkit-substep (B) -->
   </section>
 
     <!-- ═════════════════════════════════════════════════════════════════
-         STEP 03 · First semester — Run events that matter
+         STEP 02 · First event — Run events that matter
          ═════════════════════════════════════════════════════════════ -->
     <section class="toolkit-step toolkit-step--alt" id="playbooks">
       <div class="container">
         <div class="toolkit-step__header">
           <div class="toolkit-step__chip">
-            <span class="toolkit-step__chip-num">03</span>
-            <span class="toolkit-step__chip-when">First semester</span>
+            <span class="toolkit-step__chip-num">02</span>
+            <span class="toolkit-step__chip-when">First event</span>
           </div>
           <h2 class="toolkit-step__title">Run events that matter.</h2>
           <p class="toolkit-step__lede">
-            Five operational playbooks battle-tested at MAIC. Each one
-            is a complete blueprint &mdash; not a checklist, a
-            play-by-play. Real numbers, candid retrospectives, what
-            we&rsquo;d do differently. Skip the &ldquo;how do we
-            organize this&rdquo; debate.
+            Five operational playbooks battle-tested at MAIC &mdash;
+            speaker series, hackathons, innovation labs, research
+            groups, and the &ldquo;getting started&rdquo; arc. Each
+            one is a complete blueprint, not a checklist: real numbers,
+            candid retrospectives, what we&rsquo;d do differently. Pick
+            the format that fits this week and ship it.
           </p>
         </div>
 
@@ -418,22 +420,22 @@
   </section>
 
     <!-- ═════════════════════════════════════════════════════════════════
-         STEP 04 · By year one — Get sponsored
+         STEP 03 · First semester — Get sponsored
          ═════════════════════════════════════════════════════════════ -->
     <section class="toolkit-step" id="sponsorship">
       <div class="container">
         <div class="toolkit-step__header">
           <div class="toolkit-step__chip">
-            <span class="toolkit-step__chip-num">04</span>
-            <span class="toolkit-step__chip-when">By year one</span>
+            <span class="toolkit-step__chip-num">03</span>
+            <span class="toolkit-step__chip-when">First semester</span>
           </div>
           <h2 class="toolkit-step__title">Get sponsored.</h2>
           <p class="toolkit-step__lede">
-            The hardest part of running a chapter is the financial
-            side. The network handles the front of the funnel
-            &mdash; companies sign up, browse chapters, find you
-            automatically &mdash; while your eboard owns the
-            relationship.
+            Companies are already on the network looking for chapters
+            to back &mdash; this isn&rsquo;t a year-one project. The
+            sponsor portal does the front of the funnel: companies
+            sign up, browse chapters, find you automatically. Your
+            eboard owns the relationship.
           </p>
         </div>
 

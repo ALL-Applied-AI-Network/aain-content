@@ -653,12 +653,19 @@ body {
   font-size: 0.6rem;
 }
 
-/* ---------- Full-Page Tree ---------- */
+/* ---------- Full-Page Tree ----------
+   The tree page hosts its own toolbar + sidebar layout and the nav
+   sits inline at the top (not fixed). Zero out body's `padding-top`
+   spacer so the nav actually starts at viewport top instead of after
+   var(--nav-height) of empty space. */
+body:has(.tree-page) {
+  padding-top: 0;
+}
+
 .tree-page {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding-top: 0; /* override body padding-top since tree-page is full viewport */
 }
 
 .tree-page .nav {
