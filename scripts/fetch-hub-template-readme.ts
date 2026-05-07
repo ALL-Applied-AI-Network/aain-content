@@ -19,9 +19,14 @@ const RAW_BASE =
 const README_URL = `${RAW_BASE}/README.md`;
 const CONFIG_URL = `${RAW_BASE}/hub.config.json`;
 
+// Vite's publicDir is `site/public/`, so files in there land at the
+// site root (e.g. `/hub-template-data.json`). The impact page's
+// `us-states-10m.json` lives at `site/public/public/...` instead so it
+// can be fetched as `./public/us-states-10m.json` — matching that
+// convention keeps both pages consistent.
 const OUT_PATH = path.resolve(
     import.meta.dirname,
-    "../site/public/hub-template-data.json",
+    "../site/public/public/hub-template-data.json",
 );
 
 interface HubTemplateData {
