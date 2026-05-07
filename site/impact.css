@@ -2,34 +2,92 @@
    Impact Page — US Map + Chapter Directory
    ======================================================================== */
 
-/* ---------- Hero — unified with .toolkit-hero pattern ---------- */
+/* ---------- Hero with the map AS the hero ----------
+   The map fills the hero behind the centered text + stats. A vertical
+   gradient (`__veil`) keeps the text readable; map saturation increases
+   on hover/scroll because the viewer's attention has shifted to it. */
 .impact-hero {
   position: relative;
-  padding: 5rem 0 4rem;
+  min-height: 92vh;
+  padding: 6rem 0 4rem;
   text-align: center;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-.impact-hero::before {
-  content: "";
+.impact-hero--map .impact-hero__map {
   position: absolute;
-  width: 700px;
-  height: 700px;
-  top: -15%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, rgba(168, 85, 247, 0.04) 40%, transparent 70%);
-  border-radius: 50%;
+  inset: 0;
   z-index: 0;
+  pointer-events: auto;
+  filter: saturate(0.85);
+  transition: filter 0.4s ease;
+}
+
+.impact-hero--map:hover .impact-hero__map {
+  filter: saturate(1);
+}
+
+/* The veil fades the map under the title for legibility. The bottom
+   edge fades to bg-primary so the next section blends in. */
+.impact-hero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   pointer-events: none;
-  filter: blur(80px);
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 35%, rgba(17, 17, 19, 0.85) 0%, rgba(17, 17, 19, 0.55) 40%, transparent 70%),
+    linear-gradient(180deg, rgba(17, 17, 19, 0.7) 0%, transparent 30%, transparent 70%, var(--bg-primary, #111113) 100%);
 }
 
 .impact-hero__inner {
   position: relative;
-  z-index: 1;
-  max-width: 640px;
+  z-index: 2;
+  max-width: 720px;
   margin: 0 auto;
+  width: 100%;
+}
+
+.impact-hero__legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.impact-hero__legend a {
+  color: rgba(199, 210, 254, 0.95);
+}
+
+.impact-hero__scroll-cue {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.55);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  animation: impact-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes impact-bob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 6px); }
+}
+
+.impact-hero__scroll-cue:hover {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .impact-hero__badge {
@@ -103,22 +161,39 @@
   font-weight: 500;
 }
 
-/* ---------- Map Section ---------- */
-.impact-map-section {
-  padding: 3rem 0 2rem;
-}
-
-.impact-map__wrapper {
-  position: relative;
-}
-
-.impact-map {
+/* ---------- Map (rendered inside the hero now) ----------
+   The map fills its container; the hero sets the height. */
+.impact-hero__map {
   width: 100%;
-  aspect-ratio: 975 / 610;
+  height: 100%;
   position: relative;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99, 102, 241, 0.04) 0%, transparent 100%);
-  border-radius: 12px;
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
+  overflow: hidden;
+}
+
+.impact-hero__map .loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Selectors below still target `.impact-map` rules — keep them aliased so
+   the D3 module's class assignments (state / hub-marker / etc.) work
+   without modification. The .impact-hero__map element is the new host. */
+.impact-hero__map svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Legacy aliases — kept so any rule referencing `.impact-map` (which
+   D3's class strings still produce) continues to match. */
+.impact-map {
+  width: 100%;
+  height: 100%;
+  position: relative;
   overflow: hidden;
 }
 

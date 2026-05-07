@@ -1264,3 +1264,222 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* ==========================================================================
+   Founder timeline — Day 1 -> Year 1
+   The four "Step" sections sit in a `.toolkit-timeline` container.
+   On wide screens, a sticky vertical track on the left shows progress as
+   the user scrolls; on narrow screens the track collapses to inline chips.
+   ========================================================================== */
+
+.toolkit-timeline {
+  position: relative;
+  /* Reserve space on the left for the sticky track at desktop sizes */
+}
+
+.timeline-track {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 200px;
+  float: left;
+  margin-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.timeline-track__line {
+  position: absolute;
+  top: 18%;
+  bottom: 18%;
+  left: 14px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.timeline-track__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #818cf8 0%, #22d3ee 100%);
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timeline-track__markers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 64%;
+  margin-top: 18%;
+}
+
+.timeline-track__marker {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  position: relative;
+  padding-left: 32px;
+  transition: opacity 0.3s ease;
+  opacity: 0.55;
+}
+
+.timeline-track__marker--active {
+  opacity: 1;
+}
+
+.timeline-track__dot {
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #111113;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-track__marker--active .timeline-track__dot {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.18), 0 0 16px rgba(129, 140, 248, 0.5);
+}
+
+.timeline-track__when {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, rgba(255, 255, 255, 0.55));
+}
+
+.timeline-track__marker--active .timeline-track__when {
+  color: #c7d2fe;
+}
+
+.timeline-track__what {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+/* Hide the sticky track on narrow screens — chips on each step header
+   tell the same story inline. */
+@media (max-width: 1100px) {
+  .timeline-track {
+    display: none;
+  }
+}
+
+/* Step sections — same outer shell as `.toolkit-section` but with a
+   distinctive timeline-aware header. */
+.toolkit-step {
+  position: relative;
+  padding: 6rem 0 5rem;
+  scroll-margin-top: 80px;
+}
+
+.toolkit-step--alt {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.toolkit-step--dashboard {
+  background: linear-gradient(180deg, rgba(129, 140, 248, 0.05), rgba(34, 211, 238, 0.025));
+}
+
+/* Add the LEFT GUTTER so step content clears the sticky timeline track
+   on wide screens. */
+@media (min-width: 1101px) {
+  .toolkit-step .container {
+    padding-left: 240px;
+  }
+}
+
+.toolkit-step__header {
+  margin-bottom: 2.25rem;
+  max-width: 760px;
+}
+
+.toolkit-step__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.85rem;
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.18), rgba(34, 211, 238, 0.1));
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.toolkit-step__chip-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #c7d2fe;
+}
+
+.toolkit-step__chip-when {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.toolkit-step__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+
+.toolkit-step__lede {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  max-width: 720px;
+}
+
+.toolkit-step__lede a {
+  color: #c7d2fe;
+}
+
+.toolkit-step__lede code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+/* The dashboard-grid, hub-steps, hub-template-features, pb-grid,
+   sponsorship-flow blocks below the headers were styled relative to
+   `.toolkit-section`; they don't depend on the section class itself
+   (just the inner block classes), so they continue to work unchanged
+   inside `.toolkit-step`. */
+
+@media (max-width: 720px) {
+  .toolkit-step {
+    padding: 3.5rem 0;
+  }
+}

@@ -39,60 +39,54 @@
   <!-- ═══════════════════════════════════════════════════════════════════════
        HERO + LIVE STATS
        ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="impact-hero">
-    <canvas id="hero-particles"></canvas>
-    <div id="hero-3d" class="hero-3d--page"></div>
+  <section class="impact-hero impact-hero--map">
+    <!-- The map IS the hero — full-bleed, interactive, lit underneath the
+         text. As the user scrolls, the gradient fades so the map becomes
+         the page's primary surface. -->
+    <div class="impact-hero__map" id="us-map" aria-label="ALL Applied AI Network chapters across the U.S.">
+      <div class="loading">
+        <div class="loading__spinner"></div>
+        Loading map&hellip;
+      </div>
+    </div>
+    <div class="impact-hero__veil" aria-hidden="true"></div>
     <div class="container impact-hero__inner">
       <span class="impact-hero__badge">Live snapshot</span>
       <h1 class="impact-hero__title">The network, by the numbers.</h1>
       <p class="impact-hero__subtitle">
-        Numbers below are pulled from the chapter dashboard in real time &mdash;
-        no aspirational rounding, no &ldquo;coming soon&rdquo; padding.
-        We&rsquo;re early. We&rsquo;d rather show that honestly than inflate.
+        Pulled from the chapter dashboard in real time &mdash; no
+        aspirational rounding, no &ldquo;coming soon&rdquo; padding.
+        Hover any state to see who&rsquo;s live there.
       </p>
       <div class="impact-stats" id="impact-stats-strip">
-        <!-- Populated client-side from /api/public/network-stats -->
         <div class="impact-stats__item impact-stats__item--loading">
           <div class="impact-stats__value">&middot;&middot;&middot;</div>
           <div class="impact-stats__label">Loading</div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       MAP
-       ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="impact-map-section">
-    <div class="container">
-      <div class="impact-map__wrapper">
-        <div class="impact-map" id="us-map">
-          <div class="loading">
-            <div class="loading__spinner"></div>
-            Loading map&hellip;
-          </div>
+      <div class="impact-hero__legend">
+        <div class="impact-map__legend-item">
+          <span class="impact-map__legend-dot impact-map__legend-dot--active"></span>
+          <span>Active chapter</span>
         </div>
-
-        <div class="impact-map__footer">
-          <div class="impact-map__legend">
-            <div class="impact-map__legend-item">
-              <span class="impact-map__legend-dot impact-map__legend-dot--active"></span>
-              <span>Active chapter</span>
-            </div>
-            <div class="impact-map__legend-item">
-              <span class="impact-map__legend-dot impact-map__legend-dot--empty"></span>
-              <span>Open for chapters &mdash; <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">start one</a></span>
-            </div>
-          </div>
+        <div class="impact-map__legend-item">
+          <span class="impact-map__legend-dot impact-map__legend-dot--empty"></span>
+          <span>Open for chapters &mdash; <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">start one</a></span>
         </div>
       </div>
     </div>
+    <a href="#chapters" class="impact-hero__scroll-cue" aria-label="See chapters">
+      <span>Scroll</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </a>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════
        CHAPTERS (cards)
        ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="impact-chapters-section">
+  <section class="impact-chapters-section" id="chapters">
     <div class="container">
       <div class="section-label">
         <span class="section-label__num">01</span>

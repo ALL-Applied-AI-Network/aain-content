@@ -94,11 +94,14 @@ function renderUpdated(data: HubTemplateData): string {
 }
 
 async function init(): Promise<void> {
-    // 3D hero scene + particles overlay (lazy — same scene the home page
-    // uses so the network's pages feel cohesive).
+    // 3D hero scene + particles overlay. The toolkit page is about
+    // operating a chapter — hero-scene-b (isometric workstation:
+    // desk, laptop, monitor, GPU tower) signals "this is your chapter
+    // operations setup" rather than "abstract network." The home page
+    // gets the network graph; this page gets the workstation.
     const hero3d = document.getElementById("hero-3d");
     if (hero3d && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        import("./hero-scene-node-graph").then((m) => {
+        import("./hero-scene-b").then((m) => {
             m.initHeroScene(hero3d);
             hero3d.classList.add("loaded");
         });
@@ -109,6 +112,10 @@ async function init(): Promise<void> {
             m.initHeroParticles(particlesCanvas),
         );
     }
+
+    // Timeline progress indicator: light up the active step's marker
+    // in the sticky timeline track as the user scrolls.
+    initTimelineProgress();
 
     const list = document.getElementById("hub-template-list");
     const updated = document.getElementById("hub-template-updated");
@@ -129,6 +136,47 @@ async function init(): Promise<void> {
     }
     if (demo) demo.href = data.demoUrl;
     if (repo) repo.href = data.repoUrl;
+}
+
+/**
+ * Timeline progress: while the user scrolls through the four founder
+ * steps, the corresponding timeline marker gets `--active` and the
+ * vertical line "fills in" up to that point. Pure intersection
+ * observer — no scroll listener thrash.
+ */
+function initTimelineProgress(): void {
+    const steps = Array.from(
+        document.querySelectorAll<HTMLElement>(".toolkit-step"),
+    );
+    const markers = Array.from(
+        document.querySelectorAll<HTMLElement>(".timeline-track__marker"),
+    );
+    const fill = document.querySelector<HTMLElement>(".timeline-track__fill");
+    if (steps.length === 0) return;
+
+    const obs = new IntersectionObserver(
+        (entries) => {
+            for (const e of entries) {
+                const idx = steps.indexOf(e.target as HTMLElement);
+                if (idx < 0) continue;
+                if (e.isIntersecting) {
+                    // Activate this and all earlier markers; deactivate later
+                    for (let i = 0; i < markers.length; i++) {
+                        markers[i].classList.toggle(
+                            "timeline-track__marker--active",
+                            i <= idx,
+                        );
+                    }
+                    if (fill) {
+                        const pct = ((idx + 1) / steps.length) * 100;
+                        fill.style.height = `${pct}%`;
+                    }
+                }
+            }
+        },
+        { rootMargin: "-40% 0px -40% 0px", threshold: 0 },
+    );
+    for (const s of steps) obs.observe(s);
 }
 
 init();
