@@ -1977,3 +1977,118 @@ body::before {
   .repo-card { animation: none; }
   #hero-particles { display: none; }
 }
+
+/* ==========================================================================
+   Audience grid (home hero)
+   ========================================================================== */
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  margin: 2rem 0 1.25rem;
+  max-width: 720px;
+}
+
+.audience-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+}
+
+.audience-card:hover {
+  border-color: rgba(129, 140, 248, 0.55);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.audience-card--accent {
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.14), rgba(34, 211, 238, 0.07));
+  border-color: rgba(129, 140, 248, 0.4);
+}
+
+.audience-card--accent:hover {
+  border-color: rgba(129, 140, 248, 0.75);
+}
+
+.audience-card__icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 0.55rem;
+  background: rgba(129, 140, 248, 0.18);
+  color: #c7d2fe;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.audience-card--accent .audience-card__icon {
+  background: rgba(129, 140, 248, 0.3);
+  color: #fff;
+}
+
+.audience-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.audience-card__kicker {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.audience-card__title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-top: 0.1rem;
+}
+
+.audience-card__desc {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+.audience-card__arrow {
+  flex-shrink: 0;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.45);
+  align-self: center;
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.audience-card:hover .audience-card__arrow {
+  color: #c7d2fe;
+  transform: translateX(3px);
+}
+
+@media (max-width: 720px) {
+  .audience-grid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+  .audience-card__desc {
+    font-size: 0.78rem;
+  }
+}

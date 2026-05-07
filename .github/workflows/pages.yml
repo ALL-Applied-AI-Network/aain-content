@@ -37,6 +37,11 @@ jobs:
           npm run generate:tree
           npm run generate:manifest
 
+      - name: Fetch latest hub-template README
+        # Toolkit page reads site/public/hub-template-data.json so the
+        # docs always reflect the current state of aain-hub-template.
+        run: npm run fetch:hub-template
+
       - name: Build site
         run: npm run site:build
 

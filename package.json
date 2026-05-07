@@ -4,9 +4,10 @@
   "type": "module",
   "scripts": {
     "validate": "tsx scripts/validate-tree.ts && tsx scripts/validate-content.ts",
-    "build": "tsx scripts/validate-tree.ts && tsx scripts/validate-content.ts && tsx scripts/generate-tree.ts && tsx scripts/generate-manifest.ts",
+    "build": "tsx scripts/validate-tree.ts && tsx scripts/validate-content.ts && tsx scripts/generate-tree.ts && tsx scripts/generate-manifest.ts && tsx scripts/fetch-hub-template-readme.ts",
     "generate:tree": "tsx scripts/generate-tree.ts",
     "generate:manifest": "tsx scripts/generate-manifest.ts",
+    "fetch:hub-template": "tsx scripts/fetch-hub-template-readme.ts",
     "validate:tree": "tsx scripts/validate-tree.ts",
     "validate:content": "tsx scripts/validate-content.ts",
     "site:dev": "vite --config site/vite.config.ts",
