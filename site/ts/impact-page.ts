@@ -128,6 +128,22 @@ const CITY_COORDS: Record<string, [number, number]> = {
 // ---------------------------------------------------------------------------
 
 async function init(): Promise<void> {
+  // 3D hero scene + particles overlay (lazy — same scene home + toolkit use
+  // so the network's pages feel cohesive).
+  const hero3d = document.getElementById("hero-3d");
+  if (hero3d && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    import("./hero-scene-node-graph").then((m) => {
+      m.initHeroScene(hero3d);
+      hero3d.classList.add("loaded");
+    });
+  }
+  const particlesCanvas = document.getElementById("hero-particles");
+  if (particlesCanvas instanceof HTMLCanvasElement) {
+    import("./hero-particles").then((m) =>
+      m.initHeroParticles(particlesCanvas),
+    );
+  }
+
   // Topology is heavy and stable — load it from local public/ alongside live
   // stats from the API. If the API errors, we still render with FALLBACK.
   const [statsResult, topoResult] = await Promise.allSettled([

@@ -2890,3 +2890,65 @@ body {
 .hub__footer strong {
   color: var(--text-primary);
 }
+
+/* ==========================================================================
+   Page-hero 3D scene (toolkit + impact)
+   - Node-graph rendered as a full-bleed background behind the centered text.
+   - Strong gradient overlay (`::after` on the hero) keeps text readable.
+   ========================================================================== */
+
+.toolkit-hero,
+.impact-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.toolkit-hero #hero-particles,
+.impact-hero #hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.hero-3d--page {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hero-3d--page.loaded {
+  opacity: 1;
+}
+
+.hero-3d--page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* Vignette + bottom fade so text + content below stay readable */
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(17, 17, 19, 0.45) 0%, rgba(17, 17, 19, 0.85) 100%),
+    linear-gradient(180deg, transparent 60%, rgba(17, 17, 19, 1) 100%);
+}
+
+/* Make sure the inner content sits above the 3D scene */
+.toolkit-hero__inner,
+.impact-hero__inner {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toolkit-hero #hero-particles,
+  .impact-hero #hero-particles,
+  .hero-3d--page {
+    display: none;
+  }
+}

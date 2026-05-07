@@ -94,6 +94,22 @@ function renderUpdated(data: HubTemplateData): string {
 }
 
 async function init(): Promise<void> {
+    // 3D hero scene + particles overlay (lazy — same scene the home page
+    // uses so the network's pages feel cohesive).
+    const hero3d = document.getElementById("hero-3d");
+    if (hero3d && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        import("./hero-scene-node-graph").then((m) => {
+            m.initHeroScene(hero3d);
+            hero3d.classList.add("loaded");
+        });
+    }
+    const particlesCanvas = document.getElementById("hero-particles");
+    if (particlesCanvas instanceof HTMLCanvasElement) {
+        import("./hero-particles").then((m) =>
+            m.initHeroParticles(particlesCanvas),
+        );
+    }
+
     const list = document.getElementById("hub-template-list");
     const updated = document.getElementById("hub-template-updated");
     const demo = document.getElementById(
