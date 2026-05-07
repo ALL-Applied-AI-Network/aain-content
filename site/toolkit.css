@@ -1567,75 +1567,81 @@
 }
 
 /* ==========================================================================
-   Toolkit hero — animated mesh gradient backdrop
-   Replaces the static isometric workstation scene with a slowly-drifting
-   colored aurora that doesn't compete with the founder-timeline copy.
-   The brand-colored particle network (canvas) sits on top.
+   Toolkit hero — STATIC mesh gradient + GPU-only motion
+   --------------------------------------------------------------------------
+   Earlier we animated `background-position` on layered radial gradients
+   with `background-attachment: fixed` and `filter: blur(40px)`. That
+   triggered a fullscreen paint every frame; on retina/high-DPI displays
+   it tanked frame rate badly. The fix:
+
+     - Static multi-layer gradient on the hero element (no animation,
+       no `background-attachment: fixed`, no `filter: blur()`).
+     - A single rotating pseudo-element with conic + radial gradients,
+       animated via `transform: rotate()` (GPU-composited; no paint).
+     - The rotating layer already looks "drifty" at the slow speed, so
+       no per-pixel motion needed.
+     - `will-change: transform` hints the compositor to keep it on its
+       own layer.
+
+   The particle canvas continues to provide the live "neuron" motion;
+   it's a 60-particle 2D canvas that's already cheap and pauses when
+   off-screen via IntersectionObserver.
    ========================================================================== */
 
 .toolkit-hero {
   background-color: #0a0a0c;
   background-image:
-    radial-gradient(900px 600px at 15% 25%, rgba(129, 140, 248, 0.32), transparent 65%),
+    radial-gradient(900px 600px at 15% 25%, rgba(129, 140, 248, 0.30), transparent 65%),
     radial-gradient(900px 600px at 85% 30%, rgba(34, 211, 238, 0.22), transparent 65%),
     radial-gradient(900px 600px at 50% 110%, rgba(236, 72, 153, 0.18), transparent 65%),
     radial-gradient(900px 700px at 30% 80%, rgba(168, 85, 247, 0.20), transparent 65%);
-  background-attachment: fixed, fixed, fixed, fixed;
-  background-blend-mode: screen, screen, screen, screen;
 }
 
-/* The shared .hero-3d--page overlay (vignette + bottom fade) is still
-   in effect — but on the toolkit hero, the gradient drifts visibly.
-   We use the existing `#hero-3d` element (now an empty <div>) as the
-   animated layer so the rest of the global CSS keeps working. */
+/* Slow rotating hue-wash layer — GPU only. transform-rotate is
+   composited; no paint, no layout. */
 .toolkit-hero #hero-3d.hero-3d--page {
   pointer-events: none;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
   background:
-    radial-gradient(60% 50% at 20% 30%, rgba(129, 140, 248, 0.55), transparent 65%),
-    radial-gradient(55% 50% at 80% 25%, rgba(34, 211, 238, 0.40), transparent 65%),
-    radial-gradient(70% 60% at 50% 100%, rgba(236, 72, 153, 0.35), transparent 70%),
-    radial-gradient(55% 55% at 30% 90%, rgba(168, 85, 247, 0.38), transparent 70%);
-  background-size: 200% 200%, 220% 220%, 240% 240%, 200% 200%;
-  filter: blur(40px) saturate(1.1);
-  animation: toolkit-hero-aurora 24s ease-in-out infinite alternate;
+    conic-gradient(
+      from 0deg,
+      rgba(129, 140, 248, 0.18) 0deg,
+      transparent 60deg,
+      rgba(34, 211, 238, 0.16) 120deg,
+      transparent 180deg,
+      rgba(236, 72, 153, 0.14) 240deg,
+      transparent 300deg,
+      rgba(129, 140, 248, 0.18) 360deg
+    );
   opacity: 0;
   transition: opacity 0.6s ease;
+  will-change: transform;
+  transform: translateZ(0) rotate(0deg);
+  animation: toolkit-hero-rotate 60s linear infinite;
 }
 
 .toolkit-hero #hero-3d.hero-3d--page.loaded {
   opacity: 1;
 }
 
-@keyframes toolkit-hero-aurora {
-  0% {
-    background-position:
-      0% 0%,
-      100% 0%,
-      50% 100%,
-      30% 90%;
-  }
-  50% {
-    background-position:
-      40% 60%,
-      60% 30%,
-      30% 60%,
-      80% 40%;
-  }
-  100% {
-    background-position:
-      100% 100%,
-      0% 100%,
-      80% 0%,
-      0% 0%;
-  }
+@keyframes toolkit-hero-rotate {
+  from { transform: translateZ(0) rotate(0deg); }
+  to   { transform: translateZ(0) rotate(360deg); }
 }
 
-/* Soften the global `.hero-3d--page::after` vignette on toolkit so the
-   aurora isn't crushed under it. */
+/* Soft top vignette so the conic seams don't bleed onto the hero text;
+   no blur, no large radial — cheap. */
 .toolkit-hero #hero-3d.hero-3d--page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 70% at 50% 50%, rgba(17, 17, 19, 0.25) 0%, rgba(17, 17, 19, 0.75) 100%),
-    linear-gradient(180deg, transparent 65%, rgba(17, 17, 19, 1) 100%);
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(17, 17, 19, 0.5) 0%, rgba(17, 17, 19, 0) 60%);
 }
 
 @media (prefers-reduced-motion: reduce) {
