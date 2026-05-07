@@ -34,7 +34,7 @@ function renderCard(p: PlaybookMeta): string {
     <article class="pb-card" style="--pb-accent: ${p.accent};">
       <div class="pb-card__accent-bar"></div>
       <div class="pb-card__header">
-        <span class="pb-card__emoji" aria-hidden="true">${p.emoji}</span>
+        <span class="pb-card__icon" aria-hidden="true">${p.icon}</span>
         <h2 class="pb-card__title">${p.title}</h2>
       </div>
       <p class="pb-card__tagline">${p.tagline}</p>

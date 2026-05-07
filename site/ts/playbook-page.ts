@@ -61,7 +61,7 @@ function renderActionHeader(meta: PlaybookMeta, slug: string): string {
     <section class="pb-header" style="--pb-accent: ${meta.accent};">
       <div class="pb-header__accent-bar"></div>
       <div class="pb-header__top">
-        <span class="pb-header__emoji" aria-hidden="true">${meta.emoji}</span>
+        <span class="pb-header__icon" aria-hidden="true">${meta.icon}</span>
         <div class="pb-header__titles">
           <span class="pb-header__kicker">Playbook</span>
           <h1 class="pb-header__title">${meta.title}</h1>

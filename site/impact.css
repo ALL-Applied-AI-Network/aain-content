@@ -2,51 +2,66 @@
    Impact Page — US Map + Chapter Directory
    ======================================================================== */
 
-/* ---------- Hero ---------- */
+/* ---------- Hero — unified with .toolkit-hero pattern ---------- */
 .impact-hero {
-  padding: 7rem 0 3rem;
+  position: relative;
+  padding: 5rem 0 4rem;
   text-align: center;
-  background:
-    radial-gradient(ellipse 60% 50% at 50% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 100%),
-    var(--bg-primary);
+  overflow: hidden;
+}
+
+.impact-hero::before {
+  content: "";
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, rgba(168, 85, 247, 0.04) 40%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(80px);
 }
 
 .impact-hero__inner {
+  position: relative;
+  z-index: 1;
   max-width: 640px;
   margin: 0 auto;
 }
 
 .impact-hero__badge {
   display: inline-block;
-  padding: 0.35rem 1rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #a78bfa;
-  border: 1px solid rgba(167, 139, 250, 0.3);
-  border-radius: 100px;
-  margin-bottom: 1.25rem;
   font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent-primary);
+  border: 1px solid rgba(79, 143, 234, 0.25);
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  margin-bottom: 1.25rem;
 }
 
 .impact-hero__title {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, #fff 30%, #a78bfa 70%, #22d3ee);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 1rem;
 }
 
 .impact-hero__subtitle {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  max-width: 520px;
+  line-height: 1.75;
+  max-width: 600px;
   margin: 0 auto;
 }
 

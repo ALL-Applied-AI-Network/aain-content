@@ -2092,3 +2092,159 @@ body::before {
     font-size: 0.78rem;
   }
 }
+
+/* ==========================================================================
+   Audience-card polish (hero) — backdrop blur + better elevation
+   ========================================================================== */
+
+.audience-card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(15, 16, 25, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.audience-card:hover {
+  background: rgba(20, 22, 32, 0.7);
+  border-color: rgba(129, 140, 248, 0.55);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 12px 32px rgba(99, 102, 241, 0.15);
+}
+
+.audience-card--accent {
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.22), rgba(34, 211, 238, 0.12));
+  border-color: rgba(129, 140, 248, 0.5);
+}
+
+.audience-card--accent:hover {
+  border-color: rgba(129, 140, 248, 0.85);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 14px 36px rgba(99, 102, 241, 0.25);
+}
+
+/* ==========================================================================
+   Audience sections (in-page anchors from hero CTAs)
+   ========================================================================== */
+
+.audience-sections {
+  background: var(--bg-primary);
+}
+
+.audience-section {
+  padding: 4.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  scroll-margin-top: 80px; /* leave room for sticky/back-to-anchor offset */
+}
+
+.audience-section--alt {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.audience-section__inner {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 880px;
+}
+
+.audience-section__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.audience-section__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  border: 1px solid rgba(79, 143, 234, 0.25);
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  width: fit-content;
+}
+
+.audience-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0;
+}
+
+.audience-section__lede {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 720px;
+}
+
+.audience-section__lede strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.audience-section__points {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0.5rem 0 0.5rem;
+}
+
+.audience-section__point {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.audience-section__point strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.audience-section__point-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-primary);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  padding: 0.05rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(79, 143, 234, 0.12);
+  height: fit-content;
+}
+
+.audience-section__point code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  color: rgba(199, 210, 254, 0.95);
+}
+
+.audience-section__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 720px) {
+  .audience-section {
+    padding: 3rem 0;
+  }
+  .audience-section__title {
+    font-size: 1.5rem;
+  }
+}

@@ -1236,3 +1236,31 @@
   color: #c7d2fe;
   font-weight: 500;
 }
+
+/* Sponsorship section: simple footnote replacing the 2-card callout */
+.sponsorship-footnote {
+  margin: 2rem 0 0;
+  padding: 1.2rem 1.4rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(129, 140, 248, 0.3);
+  border-radius: 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sponsorship-footnote a {
+  color: #c7d2fe;
+}
+
+/* Playbook section: replace bottom workshops link */
+.toolkit-grid__more {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
