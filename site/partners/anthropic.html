@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner pitch &mdash; Anthropic &times; ALL Applied AI Network</title>
+  <meta name="description" content="Why Anthropic should be the default AI tooling partner for ALL Applied AI Network — and how Claude becomes the working AI tool for thousands of students across the country." />
+  <meta property="og:title" content="Anthropic × ALL Applied AI Network" />
+  <meta property="og:description" content="The infrastructure layer for student AI clubs across the U.S. — and why Claude should be the default tool inside it." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../public/all-logo-transparent.png" />
+  <link rel="icon" type="image/svg+xml" href="../public/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../impact.css" />
+  <style>
+    /* === Partner page-local styles === */
+    .partner-hero {
+      padding: 8rem 0 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .partner-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(217, 119, 87, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 30%, rgba(129, 140, 248, 0.10) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .partner-hero__content {
+      position: relative;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .partner-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0.85rem;
+      background: rgba(217, 119, 87, 0.12);
+      border: 1px solid rgba(217, 119, 87, 0.35);
+      color: #f4a380;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .partner-hero__title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+      margin: 0 0 1.5rem;
+      color: #fff;
+    }
+
+    .partner-hero__title .accent {
+      background: linear-gradient(135deg, #d97757, #e89876);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .partner-hero__sub {
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 0 2rem;
+    }
+
+    .partner-hero__author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+
+    .partner-hero__author strong {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .partner-tldr {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .partner-tldr__card {
+      padding: 2rem 2rem 1.75rem;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, rgba(217, 119, 87, 0.08), rgba(129, 140, 248, 0.05));
+      border: 1px solid rgba(217, 119, 87, 0.25);
+    }
+
+    .partner-tldr__label {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #f4a380;
+      margin-bottom: 0.5rem;
+    }
+
+    .partner-tldr__text {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      line-height: 1.5;
+      color: #fff;
+      margin: 0;
+    }
+
+    .partner-section {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .partner-section__head {
+      margin-bottom: 1.75rem;
+    }
+
+    .partner-section__num {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      color: #f4a380;
+      letter-spacing: 0.07em;
+      font-weight: 600;
+    }
+
+    .partner-section__title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: #fff;
+      margin: 0.4rem 0 0;
+    }
+
+    .partner-section p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin: 0 0 1.1rem;
+    }
+
+    .partner-section p strong {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .partner-grid__cell {
+      padding: 1.4rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 0.85rem;
+    }
+
+    .partner-grid__cell h4 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1rem;
+      color: #fff;
+      margin: 0 0 0.4rem;
+      font-weight: 600;
+    }
+
+    .partner-grid__cell p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.5;
+    }
+
+    .partner-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .partner-stat {
+      padding: 1.1rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 0.75rem;
+    }
+
+    .partner-stat__value {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .partner-stat__label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 0.25rem;
+    }
+
+    .partner-cta {
+      max-width: 880px;
+      margin: 2rem auto 6rem;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(217, 119, 87, 0.12), rgba(129, 140, 248, 0.06));
+      border: 1px solid rgba(217, 119, 87, 0.3);
+      border-radius: 1rem;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+    }
+
+    .partner-cta h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+      color: #fff;
+      margin: 0 0 0.75rem;
+      font-weight: 600;
+    }
+
+    .partner-cta p {
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 560px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.55;
+    }
+
+    .partner-cta__actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .partner-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+    }
+
+    .partner-checklist li {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      padding: 0.6rem 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .partner-checklist li::before {
+      content: "→";
+      color: #f4a380;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .partner-byline {
+      max-width: 880px;
+      margin: 1rem auto 0;
+      padding: 0 1.5rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../" class="nav__brand">
+        <img src="../public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+        <span>ALL Applied AI Network</span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="../">Home</a></li>
+        <li><a href="../tree.html">Learning Tree</a></li>
+        <li><a href="../playbooks.html">Playbooks</a></li>
+        <li><a href="../toolkit.html">Hub Toolkit</a></li>
+        <li><a href="../impact.html">Impact</a></li>
+        <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
+        <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       HERO
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="partner-hero">
+    <div class="partner-hero__bg"></div>
+    <div class="partner-hero__content">
+      <div class="partner-hero__eyebrow">
+        <span style="display:inline-block;width:6px;height:6px;border-radius:999px;background:#d97757;"></span>
+        Partner pitch &middot; Anthropic
+      </div>
+      <h1 class="partner-hero__title">
+        Make Claude the default<br />
+        AI tool for the next <span class="accent">10,000 student builders</span>.
+      </h1>
+      <p class="partner-hero__sub">
+        Anthropic already has Claude for Education, Campus Ambassadors, and
+        Builder Clubs &mdash; school-by-school. We&rsquo;re the unified
+        chapter network that ties those programs together with shared
+        playbooks, a single dashboard, real engagement metrics, and a
+        sponsor pipeline. Plug Claude in once, reach every chapter that
+        joins.
+      </p>
+      <div class="partner-hero__author">
+        <strong>Ben Paulson</strong>
+        <span>&middot; Founder, ALL Applied AI Network &middot; Built MSOE AI Club (500+ members)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       TL;DR
+       ═════════════════════════════════════════════════════════════════════ -->
+  <div class="partner-tldr">
+    <div class="partner-tldr__card">
+      <div class="partner-tldr__label">In one paragraph</div>
+      <p class="partner-tldr__text">
+        We have the chapter infrastructure (dashboard, sponsor portal,
+        playbooks, a 500+ member founding chapter at MSOE, NVIDIA + Oliphant
+        partnerships, open-source playbook). What we don&rsquo;t have:
+        a default AI tool baked into how chapters operate. Claude fits
+        there cleanly &mdash; and unlike a school-by-school deal, partnering
+        with us means every chapter that joins next inherits Claude on day
+        one.
+      </p>
+    </div>
+  </div>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       SECTION 1 — What we have today
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="partner-section">
+    <div class="partner-section__head">
+      <div class="partner-section__num">01</div>
+      <h2 class="partner-section__title">What we have today</h2>
+    </div>
+    <p>
+      ALL Applied AI Network is a real product with a real founding
+      chapter and real partners. Numbers are live at
+      <a href="../impact.html">all-ai-network.org/impact</a>; nothing is
+      rounded up here.
+    </p>
+    <div class="partner-stats">
+      <div class="partner-stat">
+        <div class="partner-stat__value">1</div>
+        <div class="partner-stat__label">Chapter live (MSOE)</div>
+      </div>
+      <div class="partner-stat">
+        <div class="partner-stat__value">500+</div>
+        <div class="partner-stat__label">Members at MSOE</div>
+      </div>
+      <div class="partner-stat">
+        <div class="partner-stat__value">2</div>
+        <div class="partner-stat__label">Active partners (NVIDIA, Oliphant)</div>
+      </div>
+      <div class="partner-stat">
+        <div class="partner-stat__value">3</div>
+        <div class="partner-stat__label">Connected products shipped</div>
+      </div>
+    </div>
+    <div class="partner-grid">
+      <div class="partner-grid__cell">
+        <h4>Chapter dashboard</h4>
+        <p>
+          Live at dashboard.all-ai-network.org. Eboards run events, track
+          attendance, manage projects, accept sponsorship proposals, and
+          process inbound talent inquiries.
+        </p>
+      </div>
+      <div class="partner-grid__cell">
+        <h4>Sponsor portal</h4>
+        <p>
+          Live at sponsors.all-ai-network.org. Companies sign up, browse
+          chapters, propose sponsorships, send outreach to opted-in
+          students &mdash; all gated by member approval. Stripe-billed.
+        </p>
+      </div>
+      <div class="partner-grid__cell">
+        <h4>Open-source content</h4>
+        <p>
+          Learning Tree, playbooks, hub-site template &mdash; all published
+          under CC BY-SA / MIT. New chapters fork the playbook and ship
+          the same Friday.
+        </p>
+      </div>
+      <div class="partner-grid__cell">
+        <h4>Honest metrics</h4>
+        <p>
+          Public network-stats endpoint pulls live data from the dashboard
+          DB. The map updates as chapters onboard. We&rsquo;d rather show
+          a real 1 than a fake 30.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       SECTION 2 — Why Anthropic specifically
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="partner-section">
+    <div class="partner-section__head">
+      <div class="partner-section__num">02</div>
+      <h2 class="partner-section__title">Why Anthropic, specifically</h2>
+    </div>
+    <p>
+      The student AI org space is consolidating. OpenAI just announced its
+      <strong>ChatGPT Futures program for Fall 2026</strong> &mdash; a top-
+      down, school-by-school student leader program. We respect the move,
+      and we think there&rsquo;s a better answer: a network owned by the
+      students themselves, with Claude as the working AI tool inside it.
+    </p>
+    <p>
+      Anthropic already operates several education programs in parallel:
+      Claude for Education campus deals (Northeastern, LSE, Champlain),
+      Campus Ambassadors, Claude Builder Clubs, the CodePath partnership,
+      the Teach For All partnership. <strong>What you don&rsquo;t have is
+      a single chapter network that ties all of those together &mdash;
+      shared playbooks, a unified dashboard, engagement metrics across
+      schools, and an industry sponsor pipeline.</strong> That&rsquo;s
+      what we are.
+    </p>
+    <p>The deal we&rsquo;re proposing is small for you and large for us:</p>
+    <ul class="partner-checklist">
+      <li>
+        <span><strong>You provide:</strong> Claude API credits and Claude Code access for chapter eboards and members &mdash; the same package Campus Ambassadors already get, just routed through one network instead of N negotiations.</span>
+      </li>
+      <li>
+        <span><strong>We provide:</strong> default Claude integration in chapter onboarding, the dashboard, and the curriculum. New chapters inherit it. Engagement metrics ship back to you so the partnership is measurable.</span>
+      </li>
+      <li>
+        <span><strong>We co-build:</strong> a Claude-specific learning path in the open-source Learning Tree (&ldquo;Build your first MCP server,&rdquo; &ldquo;Ship a Claude-powered chapter project,&rdquo; etc.). Free curriculum for any university to adopt.</span>
+      </li>
+      <li>
+        <span><strong>You get:</strong> a public, dated metric you can point at. &ldquo;X% of network chapters using Claude. Y projects shipped this quarter. Z hires from chapters where Claude was the working tool.&rdquo;</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       SECTION 3 — Click around
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="partner-section">
+    <div class="partner-section__head">
+      <div class="partner-section__num">03</div>
+      <h2 class="partner-section__title">Click around &mdash; everything below is real</h2>
+    </div>
+    <p>
+      The fastest way to get a feel for what this is: poke at the live
+      products. None of these are mockups.
+    </p>
+    <div class="partner-grid">
+      <div class="partner-grid__cell">
+        <h4><a href="../impact.html" style="color:inherit;">Impact map</a></h4>
+        <p>
+          Live network state &mdash; chapters, members, partners. Numbers
+          pulled from the dashboard DB at request time, edge-cached 5 min.
+        </p>
+      </div>
+      <div class="partner-grid__cell">
+        <h4><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener" style="color:inherit;">Sponsor portal</a></h4>
+        <p>
+          The flow a recruiter takes from sign-up to outreach to checkout.
+          End-to-end working: Clerk auth, Stripe checkout, Resend email,
+          member-approval reveal-on-consent.
+        </p>
+      </div>
+      <div class="partner-grid__cell">
+        <h4><a href="../tree.html" style="color:inherit;">Learning Tree</a></h4>
+        <p>
+          The open-source curriculum. Today: foundational AI; Q3 2026:
+          Claude-specific learning path co-built with you (offer on the
+          table).
+        </p>
+      </div>
+      <div class="partner-grid__cell">
+        <h4><a href="../toolkit.html" style="color:inherit;">Hub Toolkit</a></h4>
+        <p>
+          What a founding chapter receives on day one: dashboard,
+          hub-site template, playbooks, sponsorship templates,
+          curriculum.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       SECTION 4 — Honest weaknesses
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="partner-section">
+    <div class="partner-section__head">
+      <div class="partner-section__num">04</div>
+      <h2 class="partner-section__title">What we&rsquo;re NOT going to claim</h2>
+    </div>
+    <p>
+      We&rsquo;re a few months in on the new platform. The MAIC chapter
+      that seeded ALL has been running for four years and has 500+ members,
+      but we haven&rsquo;t yet onboarded the next 10. Other student-AI orgs
+      we&rsquo;ve been in conversation with are at varying stages of
+      commitment. Anyone who quotes &ldquo;30 chapters across the country&rdquo;
+      to you is rounding up &mdash; we won&rsquo;t.
+    </p>
+    <p>
+      What we have is the playbook (proven over four years at MSOE), the
+      software (chapter dashboard + sponsor portal + open-source content),
+      the partner pipeline (NVIDIA active, Oliphant active, Anthropic in
+      conversation, others queued), and a founder who has done this once
+      and is doing it again at scale. We&rsquo;d rather be honest about
+      that than pitch you on a number we can&rsquo;t back up.
+    </p>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       CTA
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="partner-cta">
+    <h2>Want to talk?</h2>
+    <p>
+      A 30-minute conversation should be enough to figure out if this
+      partnership makes sense. Drew &mdash; if you&rsquo;re reading this,
+      thanks for the time.
+    </p>
+    <div class="partner-cta__actions">
+      <a href="mailto:ben@all-ai-network.org?subject=Anthropic%20%C3%97%20ALL%20Applied%20AI%20Network" class="btn btn--primary btn--lg">
+        Email Ben directly &rarr;
+      </a>
+      <a href="../impact.html" class="btn btn--outline btn--lg">
+        See live network state
+      </a>
+    </div>
+  </section>
+
+  <p class="partner-byline">
+    Last updated 2026-05-07. Numbers above are static; live data on the
+    <a href="../impact.html">impact page</a>.
+  </p>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand-area">
+          <img src="../public/all-logo-transparent.png" alt="ALL Logo" class="footer__brand-logo" />
+          <span class="footer__brand">ALL Applied AI Network</span>
+        </div>
+        <p class="footer__legal">
+          Content licensed under CC BY-SA 4.0. Code licensed under MIT.<br />
+          Built at MSOE. Maintained by the ALL community.
+        </p>
+      </div>
+      <div class="footer__links">
+        <ul class="footer__link-col">
+          <li><a href="../tree.html">Learning Tree</a></li>
+          <li><a href="../playbooks.html">Playbooks</a></li>
+          <li><a href="../toolkit.html">Hub Toolkit</a></li>
+          <li><a href="../impact.html">Impact</a></li>
+          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
+          <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+  </script>
+</body>
+</html>

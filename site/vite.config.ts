@@ -39,6 +39,7 @@ export default defineConfig({
         playbooks: resolve(__dirname, "playbooks.html"),
         playbook: resolve(__dirname, "playbook.html"),
         impact: resolve(__dirname, "impact.html"),
+        anthropic: resolve(__dirname, "partners/anthropic.html"),
       },
     },
   },

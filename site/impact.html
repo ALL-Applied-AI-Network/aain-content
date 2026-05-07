@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impact — ALL Applied AI Network</title>
-  <meta name="description" content="See the ALL Applied AI Network's growing footprint across US universities — active chapters, launching hubs, and community impact." />
+  <title>Impact &mdash; ALL Applied AI Network</title>
+  <meta name="description" content="Live snapshot of the ALL Applied AI Network — chapters, members, events, partnerships. Real numbers, no aspirational fluff." />
   <meta property="og:title" content="Impact — ALL Applied AI Network" />
-  <meta property="og:description" content="See our growing footprint across US universities — active chapters, launching hubs, and community impact." />
+  <meta property="og:description" content="Live snapshot of the network — chapters, members, events, partnerships. Real numbers, no aspirational fluff." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./public/all-logo-transparent.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -33,23 +33,31 @@
         <li><a href="./playbooks.html">Playbooks</a></li>
         <li><a href="./toolkit.html">Hub Toolkit</a></li>
         <li><a href="./impact.html" class="active">Impact</a></li>
-        <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Start a Hub</a></li>
-        <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
+        <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- ═══════════════════════════════════════════════════════════════════════
-       HERO
+       HERO + LIVE STATS
        ═══════════════════════════════════════════════════════════════════════ -->
   <section class="impact-hero">
     <div class="container impact-hero__inner">
-      <span class="impact-hero__badge">Network</span>
-      <h1 class="impact-hero__title">Our Impact</h1>
+      <span class="impact-hero__badge">Live snapshot</span>
+      <h1 class="impact-hero__title">The network, by the numbers.</h1>
       <p class="impact-hero__subtitle">
-        Expanding across the United States &mdash; our chapter model is still being
-        developed, with partnerships forming at 30+ universities.
+        Numbers below are pulled from the chapter dashboard in real time &mdash;
+        no aspirational rounding, no &ldquo;coming soon&rdquo; padding.
+        We&rsquo;re early. We&rsquo;d rather show that honestly than inflate.
       </p>
+      <div class="impact-stats" id="impact-stats-strip">
+        <!-- Populated client-side from /api/public/network-stats -->
+        <div class="impact-stats__item impact-stats__item--loading">
+          <div class="impact-stats__value">&middot;&middot;&middot;</div>
+          <div class="impact-stats__label">Loading</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -62,11 +70,10 @@
         <div class="impact-map" id="us-map">
           <div class="loading">
             <div class="loading__spinner"></div>
-            Loading map...
+            Loading map&hellip;
           </div>
         </div>
 
-        <!-- Legend -->
         <div class="impact-map__footer">
           <div class="impact-map__legend">
             <div class="impact-map__legend-item">
@@ -74,12 +81,8 @@
               <span>Active chapter</span>
             </div>
             <div class="impact-map__legend-item">
-              <span class="impact-map__legend-dot impact-map__legend-dot--launching"></span>
-              <span>Launching soon</span>
-            </div>
-            <div class="impact-map__legend-item">
               <span class="impact-map__legend-dot impact-map__legend-dot--empty"></span>
-              <span>Open for chapters</span>
+              <span>Open for chapters &mdash; <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">start one</a></span>
             </div>
           </div>
         </div>
@@ -88,97 +91,83 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════
-       NVIDIA GPU COMPUTE
+       CHAPTERS (cards)
        ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="nvidia-section" id="sponsors">
+  <section class="impact-chapters-section">
     <div class="container">
-
-      <!-- NVIDIA hero banner -->
-      <div class="nvidia-hero">
-        <div class="nvidia-hero__logo-grid" aria-hidden="true">
-          <img src="./public/logos/nvidia_logo.png" alt="" class="nvidia-hero__logo-bg" />
-          <img src="./public/logos/nvidia_logo.png" alt="" class="nvidia-hero__logo-bg" />
-          <img src="./public/logos/nvidia_logo.png" alt="" class="nvidia-hero__logo-bg" />
-        </div>
-        <div class="nvidia-hero__content">
-          <div class="nvidia-hero__badge">
-            <img src="./public/logos/nvidia_logo.png" alt="NVIDIA" class="nvidia-hero__badge-logo" />
-            <span>Partnership</span>
-          </div>
-          <h2 class="nvidia-hero__title">Why your campus needs GPU compute</h2>
-          <p class="nvidia-hero__desc">
-            NVIDIA is deploying supercomputers to universities in all 50 states.
-            ALL gives your hub the community, curriculum, and tracking infrastructure
-            to make that investment count.
-          </p>
-        </div>
+      <div class="section-label">
+        <span class="section-label__num">01</span>
+        <span class="section-label__text">Chapters</span>
+        <span class="section-label__line"></span>
+      </div>
+      <h2 class="section__heading">Active chapters</h2>
+      <p class="section__lede">
+        Every chapter listed here has a live dashboard, real members, and
+        runs events on the platform. When more orgs come online, they show
+        up here automatically.
+      </p>
+      <div class="impact-chapters" id="impact-chapters">
+        <!-- Populated client-side -->
       </div>
 
-      <!-- Value prop cards -->
-      <div class="nvidia-grid">
-        <div class="nvidia-card">
-          <div class="nvidia-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#76b900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
-          </div>
-          <div class="nvidia-card__number">01</div>
-          <h3>Students need a reason to use it</h3>
-          <p>A supercomputer sitting idle doesn't create engineers. ALL provides workshops,
-            projects, and hackathons that put compute hours to work on real problems.</p>
-        </div>
-        <div class="nvidia-card">
-          <div class="nvidia-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#76b900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-            </svg>
-          </div>
-          <div class="nvidia-card__number">02</div>
-          <h3>Sponsors want measurable ROI</h3>
-          <p>The chapter dashboard tracks attendance, project output, and hiring outcomes &mdash;
-            proof that compute access translates directly into industry-ready talent.</p>
-        </div>
-        <div class="nvidia-card">
-          <div class="nvidia-card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#76b900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
-          <div class="nvidia-card__number">03</div>
-          <h3>The network multiplies impact</h3>
-          <p>Workshops and content are shared across all hubs. When one chapter builds a
-            RAG workshop that works, every campus can run it the next week.</p>
-        </div>
-      </div>
-
-      <!-- GTC talk callout -->
-      <a href="https://www.nvidia.com/en-us/on-demand/session/gtc26-s82238/" target="_blank" rel="noopener" class="nvidia-gtc-banner">
-        <img src="./public/logos/nvidia_logo.png" alt="NVIDIA" class="nvidia-gtc-banner__logo" />
-        <div class="nvidia-gtc-banner__text">
-          <strong>Watch our GTC 2026 talk</strong>
-          <span>How student-run AI clubs are turning campus supercomputers into talent pipelines</span>
-        </div>
-        <span class="nvidia-gtc-banner__arrow">&rarr;</span>
-      </a>
-
-      <!-- Sponsors bar -->
-      <div class="nvidia-sponsors">
-        <span class="nvidia-sponsors__label">Network sponsors</span>
-        <div class="nvidia-sponsors__logos">
-          <a href="https://www.nvidia.com/en-us/on-demand/session/gtc26-s82238/" target="_blank" rel="noopener" class="nvidia-sponsors__logo nvidia-sponsors__logo--nvidia">
-            <img src="./public/logos/nvidia_logo.png" alt="NVIDIA" />
-          </a>
-          <a href="https://directsupply.com" target="_blank" rel="noopener" class="nvidia-sponsors__logo">
-            <img src="./public/logos/direct_supply_logo.png" alt="Direct Supply" />
-          </a>
-        </div>
-        <p class="nvidia-sponsors__cta">
-          Interested in sponsoring hubs? Reach out at
-          <a href="mailto:ben@all-ai-network.org">ben@all-ai-network.org</a>
+      <div class="impact-roadmap">
+        <h3 class="impact-roadmap__title">Network roadmap</h3>
+        <p class="impact-roadmap__desc">
+          We&rsquo;re recruiting chapter eboards across the country. The
+          playbook is open-source &mdash; the
+          <a href="./toolkit.html">Hub Toolkit</a> ships everything a
+          founding team needs (website template, dashboard, sponsor portal,
+          curriculum). New chapters join through the
+          <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">chapter dashboard</a>;
+          when their org goes live, this map updates automatically.
         </p>
       </div>
+    </div>
+  </section>
 
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       TOOLS USED ACROSS THE NETWORK
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="impact-tools-section">
+    <div class="container">
+      <div class="impact-tools" id="impact-tools">
+        <!-- Populated client-side -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       PARTNERSHIPS
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="impact-partners-section" id="sponsors">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-label__num">02</span>
+        <span class="section-label__text">Network partnerships</span>
+        <span class="section-label__line"></span>
+      </div>
+      <h2 class="section__heading">Active partners</h2>
+      <p class="section__lede">
+        Compute, mentorship, and tooling that every chapter in the network
+        can plug into. 100% of any chapter sponsorship dollars go directly
+        to the chapter &mdash; partners pay a network subscription instead.
+      </p>
+      <div class="impact-partners" id="impact-partnerships">
+        <!-- Populated client-side -->
+      </div>
+      <div class="impact-partners__cta">
+        <p>
+          Interested in sponsoring chapters or becoming a network partner?
+        </p>
+        <div class="impact-partners__cta-actions">
+          <a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener" class="btn btn--primary">
+            Visit the sponsor portal &rarr;
+          </a>
+          <a href="mailto:ben@all-ai-network.org" class="btn btn--outline">
+            Email Ben directly
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -187,17 +176,18 @@
        ═══════════════════════════════════════════════════════════════════════ -->
   <section class="impact-cta">
     <div class="container">
-      <h2 class="impact-cta__title">Start a chapter at your university</h2>
+      <h2 class="impact-cta__title">Start a chapter at your university.</h2>
       <p class="impact-cta__desc">
-        Everything you need is open-source and ready to go &mdash; sign up for the dashboard and
-        launch your first event this week.
+        The whole stack is open-source &mdash; chapter dashboard, hub site
+        template, learning tree, sponsor portal. Sign up for the dashboard
+        and your first event ships this week.
       </p>
       <div class="impact-cta__actions">
         <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
-          Open the Chapter Dashboard <span aria-hidden="true">&rarr;</span>
+          Open the dashboard <span aria-hidden="true">&rarr;</span>
         </a>
         <a href="./toolkit.html" class="btn btn--outline btn--lg">
-          Explore the Hub Toolkit
+          Browse the Hub Toolkit
         </a>
       </div>
     </div>
@@ -218,9 +208,12 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./tree.html">Learning Content</a></li>
+          <li><a href="./tree.html">Learning Tree</a></li>
+          <li><a href="./playbooks.html">Playbooks</a></li>
           <li><a href="./toolkit.html">Hub Toolkit</a></li>
           <li><a href="./impact.html">Impact</a></li>
+          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
+          <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
           <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
         </ul>
       </div>
