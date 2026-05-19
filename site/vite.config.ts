@@ -39,7 +39,9 @@ export default defineConfig({
         playbooks: resolve(__dirname, "playbooks.html"),
         playbook: resolve(__dirname, "playbook.html"),
         impact: resolve(__dirname, "impact.html"),
-        product: resolve(__dirname, "product.html"),
+        // /product.html was consolidated into the home page (May 2026).
+        // The product.css stylesheet stays — it carries the feature-row
+        // visual-mock styles now used inline on index.html.
       },
     },
   },

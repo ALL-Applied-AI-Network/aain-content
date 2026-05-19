@@ -2270,6 +2270,155 @@ body::before {
   margin: 0 auto 3rem;
 }
 
+/* ── Hero +38% stat block (above the audience cards) ──────────────
+   The headline outcome turned into a visual hook. Photo backdrop
+   carries the energy from the photo ticker into the data section;
+   the gradient number is the focal point. */
+.differentiator__hero-stat {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 2.75rem;
+  padding: 3rem clamp(1.5rem, 4vw, 3rem);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  border: 1px solid rgba(129, 140, 248, 0.25);
+}
+
+.differentiator__hero-stat-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.differentiator__hero-stat-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) brightness(0.5);
+}
+.differentiator__hero-stat-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(10, 10, 12, 0.45), rgba(10, 10, 12, 0.85)),
+    linear-gradient(135deg, rgba(129, 140, 248, 0.18), rgba(236, 72, 153, 0.12));
+}
+
+.differentiator__hero-stat-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.differentiator__hero-stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 14vw, 8.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  background: linear-gradient(135deg, #c7d2fe 0%, #67e8f9 45%, #f9a8d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 8px 40px rgba(129, 140, 248, 0.3);
+}
+
+.differentiator__hero-stat-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.35;
+  color: #fff;
+  letter-spacing: -0.01em;
+  max-width: 540px;
+}
+.differentiator__hero-stat-label sup a {
+  color: #c7d2fe;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 0.1em;
+}
+.differentiator__hero-stat-label sup a:hover { color: #fff; }
+
+.differentiator__hero-stat-meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.62);
+  margin-top: 0.5rem;
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+/* ── Photo accent on audience cards ────────────────────────────── */
+.differentiator__card {
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+}
+.differentiator__card-photo {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+}
+.differentiator__card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) brightness(0.7);
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+.differentiator__card-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(17, 17, 19, 0) 0%,
+    rgba(17, 17, 19, 0.55) 75%,
+    rgba(17, 17, 19, 0.95) 100%
+  );
+  pointer-events: none;
+}
+.differentiator__card:hover .differentiator__card-photo img {
+  transform: scale(1.04);
+  filter: saturate(1) brightness(0.85);
+}
+
+/* Restore inner padding now that the card is .padding-0 with a
+   photo header on top. The icon overlaps the photo's bottom edge. */
+.differentiator__card > :not(.differentiator__card-photo) {
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+}
+.differentiator__card-icon {
+  margin: -22px 0 0 1.4rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(31, 31, 38, 0.95);
+  border: 1px solid rgba(129, 140, 248, 0.25);
+}
+.differentiator__card > h3 {
+  padding-top: 0.8rem;
+}
+.differentiator__card > p {
+  padding-bottom: 1.5rem;
+}
+
+@media (max-width: 800px) {
+  .differentiator__hero-stat {
+    padding: 2rem 1.25rem;
+  }
+  .differentiator__hero-stat-number {
+    font-size: clamp(4rem, 18vw, 6rem);
+  }
+}
+
 .differentiator__badge {
   display: inline-block;
   font-family: var(--font-mono);

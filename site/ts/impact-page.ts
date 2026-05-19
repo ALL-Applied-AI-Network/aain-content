@@ -134,9 +134,12 @@ async function init(): Promise<void> {
 
   // Topology is heavy and stable — load it from local public/ alongside live
   // stats from the API. If the API errors, we still render with FALLBACK.
+  // world-110m.json is the world-atlas v2 countries-110m fetched at build
+  // time from cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json so the
+  // static site has no runtime CDN dependency. ISO numeric country IDs.
   const [statsResult, topoResult] = await Promise.allSettled([
     loadStats(),
-    fetch("./public/us-states-10m.json").then((r) => r.json()) as Promise<Topology>,
+    fetch("./public/world-110m.json").then((r) => r.json()) as Promise<Topology>,
   ]);
 
   const stats: NetworkStats =
@@ -212,22 +215,56 @@ function showMapError(): void {
   `;
 }
 
+/**
+ * ISO numeric country codes for countries that currently host an active
+ * ALL chapter. Updated as chapters expand. Today: USA only.
+ *
+ * TODO: when chapters go international, derive this from a per-chapter
+ * `country` field on the public network-stats response instead of
+ * hardcoding here. Adding a chapter outside the US should automatically
+ * light up its country on the globe.
+ */
+const ACTIVE_COUNTRY_ISO = new Set<string>(["840"]); // 840 = United States
+const ISO_TO_NAME: Record<string, string> = {
+  "840": "United States",
+};
+const STATE_TO_COUNTRY_ISO: Record<string, string> = {
+  // Every US state FIPS code maps to the US country. Kept explicit so we
+  // can add WI → "276" Germany etc. when chapters go international.
+};
+for (const fips of Object.keys(STATE_CENTROIDS)) {
+  STATE_TO_COUNTRY_ISO[fips] = "840";
+}
+
 function renderMap(topo: Topology, chapters: NetworkChapter[]): void {
+  // The element ID stays `us-map` for backwards compat with /impact.html
+  // and impact.css, but the contents are now an orthographic globe of
+  // the whole world. Auto-rotates slowly; respects prefers-reduced-motion.
   const container = document.getElementById("us-map");
   if (!container) return;
   container.innerHTML = "";
 
-  const stateActive = new Set<string>();
-  for (const c of chapters) if (c.stateId) stateActive.add(c.stateId);
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  let rotating = !prefersReducedMotion;
 
-  const width = 975;
-  const height = 610;
+  const activeCountries = new Set<string>();
+  for (const c of chapters) {
+    if (c.stateId && STATE_TO_COUNTRY_ISO[c.stateId]) {
+      activeCountries.add(STATE_TO_COUNTRY_ISO[c.stateId]);
+    }
+  }
+
+  const width = 700;
+  const height = 700;
   const svg = d3
     .select(container)
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("preserveAspectRatio", "xMidYMid meet");
 
+  // Glow filter for chapter pins.
   const defs = svg.append("defs");
   const glow = defs.append("filter").attr("id", "glow-active");
   glow.append("feGaussianBlur").attr("stdDeviation", "3").attr("result", "blur");
@@ -238,70 +275,171 @@ function renderMap(topo: Topology, chapters: NetworkChapter[]): void {
     .join("feMergeNode")
     .attr("in", (d) => d);
 
-  const projection = d3.geoAlbersUsa().scale(1300).translate([width / 2, height / 2]);
+  // Radial gradient for the sphere — gives the globe a subtle inner
+  // luminescence that reads as "lit from within" rather than flat.
+  const sphereGrad = defs
+    .append("radialGradient")
+    .attr("id", "sphere-grad")
+    .attr("cx", "50%")
+    .attr("cy", "42%")
+    .attr("r", "55%");
+  sphereGrad.append("stop").attr("offset", "0%").attr("stop-color", "#1a1b2e");
+  sphereGrad.append("stop").attr("offset", "80%").attr("stop-color", "#0a0a13");
+  sphereGrad.append("stop").attr("offset", "100%").attr("stop-color", "#05050a");
+
+  // Initial rotation: center the US so first-load impression includes
+  // the active chapters. -98° lon, 38° lat is roughly Lebanon, Kansas
+  // (the U.S. geographic center).
+  let lambda = 98; // longitude rotation accumulator
+  const initialPhi = -38; // pitch (latitude); negated per d3 convention
+
+  const projection = d3
+    .geoOrthographic()
+    .scale(280)
+    .translate([width / 2, height / 2])
+    .clipAngle(90)
+    .rotate([lambda, initialPhi]);
+
   const path = d3.geoPath(projection);
-  const statesGeo = feature(topo, topo.objects.states as GeometryCollection);
+  const graticule = d3.geoGraticule10();
+
+  // Sphere outline + fill (the ocean) — sits behind countries.
+  svg
+    .append("path")
+    .datum({ type: "Sphere" } as d3.GeoPermissibleObjects)
+    .attr("class", "globe-sphere")
+    .attr("fill", "url(#sphere-grad)")
+    .attr("stroke", "rgba(129, 140, 248, 0.18)")
+    .attr("stroke-width", 1)
+    .attr("d", path as unknown as string);
+
+  // Graticule grid for "globe" feel.
+  svg
+    .append("path")
+    .datum(graticule)
+    .attr("class", "graticule")
+    .attr("fill", "none")
+    .attr("stroke", "rgba(255, 255, 255, 0.05)")
+    .attr("stroke-width", 0.5)
+    .attr("d", path as unknown as string);
+
+  const countriesGeo = feature(
+    topo,
+    topo.objects.countries as GeometryCollection,
+  );
 
   const tooltip = createTooltip();
 
-  svg
+  const countryPaths = svg
     .append("g")
-    .selectAll("path")
-    .data((statesGeo as { features: Array<{ id?: string | number }> }).features)
+    .selectAll<SVGPathElement, { id?: string | number }>("path")
+    .data((countriesGeo as { features: Array<{ id?: string | number }> }).features)
     .join("path")
     .attr("d", path as unknown as string)
     .attr("class", (d) => {
-      const id = d.id?.toString().padStart(2, "0");
-      return id && stateActive.has(id) ? "state state--active" : "state";
+      const id = d.id?.toString();
+      return id && activeCountries.has(id) ? "country country--active" : "country";
     })
     .on("mouseenter", function (event: MouseEvent, d) {
-      const id = d.id?.toString().padStart(2, "0");
-      const matched = chapters.filter((c) => c.stateId === id);
-      if (matched.length > 0) showTooltip(tooltip, event, matched);
+      rotating = false; // pause rotation while user explores
+      const id = d.id?.toString();
+      if (id) {
+        const matched = chapters.filter(
+          (c) => c.stateId && STATE_TO_COUNTRY_ISO[c.stateId] === id,
+        );
+        if (matched.length > 0) showTooltip(tooltip, event, matched);
+      }
     })
     .on("mousemove", (event: MouseEvent) => moveTooltip(tooltip, event))
-    .on("mouseleave", () => hideTooltip(tooltip));
+    .on("mouseleave", () => {
+      hideTooltip(tooltip);
+      // Resume rotation only if motion is allowed.
+      if (!prefersReducedMotion) rotating = true;
+    });
 
+  // Chapter markers — rendered as a single group, redrawn each frame
+  // (much cheaper than re-projecting each marker manually).
   const markerGroup = svg.append("g").attr("class", "hub-markers");
-  const stateMarkerCount = new Map<string, number>();
 
-  for (const ch of chapters) {
-    const cityCoord = CITY_COORDS[ch.slug];
-    const centroid = ch.stateId ? STATE_CENTROIDS[ch.stateId] : undefined;
-    const coord = cityCoord || centroid;
-    if (!coord) continue;
-    const projected = projection(coord);
-    if (!projected) continue;
-    let [x, y] = projected;
+  function drawMarkers(): void {
+    markerGroup.selectAll("*").remove();
+    const stateMarkerCount = new Map<string, number>();
+    for (const ch of chapters) {
+      const cityCoord = CITY_COORDS[ch.slug];
+      const centroid = ch.stateId ? STATE_CENTROIDS[ch.stateId] : undefined;
+      const coord = cityCoord || centroid;
+      if (!coord) continue;
 
-    if (!cityCoord && centroid && ch.stateId) {
-      const count = stateMarkerCount.get(ch.stateId) || 0;
-      if (count > 0) {
-        const angle = count * 2.1 + 0.5;
-        x += Math.cos(angle) * 12;
-        y += Math.sin(angle) * 12;
+      // clipAngle(90) makes projection return null for back-hemisphere
+      // points — skip them.
+      const projected = projection(coord);
+      if (!projected) continue;
+      let [x, y] = projected;
+
+      if (!cityCoord && centroid && ch.stateId) {
+        const count = stateMarkerCount.get(ch.stateId) || 0;
+        if (count > 0) {
+          const angle = count * 2.1 + 0.5;
+          x += Math.cos(angle) * 12;
+          y += Math.sin(angle) * 12;
+        }
+        stateMarkerCount.set(ch.stateId, count + 1);
       }
-      stateMarkerCount.set(ch.stateId, count + 1);
-    }
 
-    const color = "#818cf8";
-    const g = markerGroup.append("g").attr("class", "hub-marker");
-    g.append("circle")
-      .attr("cx", x)
-      .attr("cy", y)
-      .attr("r", 8)
-      .attr("fill", "none")
-      .attr("stroke", color)
-      .attr("stroke-width", 1.5)
-      .attr("class", "hub-marker__pulse");
-    g.append("circle")
-      .attr("cx", x)
-      .attr("cy", y)
-      .attr("r", 4)
-      .attr("fill", color)
-      .attr("class", "hub-marker__dot")
-      .attr("filter", "url(#glow-active)");
+      const color = "#818cf8";
+      const g = markerGroup.append("g").attr("class", "hub-marker");
+      g.append("circle")
+        .attr("cx", x)
+        .attr("cy", y)
+        .attr("r", 8)
+        .attr("fill", "none")
+        .attr("stroke", color)
+        .attr("stroke-width", 1.5)
+        .attr("class", "hub-marker__pulse");
+      g.append("circle")
+        .attr("cx", x)
+        .attr("cy", y)
+        .attr("r", 4)
+        .attr("fill", color)
+        .attr("class", "hub-marker__dot")
+        .attr("filter", "url(#glow-active)");
+    }
   }
+
+  drawMarkers();
+
+  // Accessibility: also publish a hidden list of countries with chapters
+  // for screen readers. The visual globe is decorative; the list is the
+  // source of truth.
+  const a11y = d3
+    .select(container)
+    .append("ul")
+    .attr("class", "impact-map__a11y-list")
+    .attr("aria-label", "Active chapter regions");
+  for (const iso of activeCountries) {
+    a11y.append("li").text(ISO_TO_NAME[iso] ?? iso);
+  }
+
+  // ── Auto-rotation ──────────────────────────────────────────────
+  // Slow continuous rotation (~360° per 75 seconds at 60fps). Pauses
+  // on hover; respects prefers-reduced-motion. Tab-visibility pause
+  // is handled implicitly because requestAnimationFrame doesn't fire
+  // while the tab is hidden. `rotating` + `prefersReducedMotion` are
+  // declared at the top of renderMap so the mouse handlers above can
+  // reference them.
+  function tick(): void {
+    if (rotating) {
+      lambda = (lambda + 0.08) % 360;
+      projection.rotate([lambda, initialPhi]);
+      countryPaths.attr("d", path as unknown as string);
+      svg
+        .selectAll<SVGPathElement, unknown>("path.globe-sphere, path.graticule")
+        .attr("d", path as unknown as string);
+      drawMarkers();
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!prefersReducedMotion) requestAnimationFrame(tick);
 }
 
 // ---------------------------------------------------------------------------
