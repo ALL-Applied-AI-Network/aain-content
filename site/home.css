@@ -2274,103 +2274,88 @@ body::before {
    The headline outcome turned into a visual hook. Photo backdrop
    carries the energy from the photo ticker into the data section;
    the gradient number is the focal point. */
-.differentiator__hero-stat {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto 2.75rem;
-  padding: 3rem clamp(1.5rem, 4vw, 3rem);
-  border-radius: 1.2rem;
-  overflow: hidden;
-  border: 1px solid rgba(129, 140, 248, 0.25);
-}
-
-.differentiator__hero-stat-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-.differentiator__hero-stat-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.85) brightness(0.5);
-}
-.differentiator__hero-stat-veil {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(10, 10, 12, 0.45), rgba(10, 10, 12, 0.85)),
-    linear-gradient(135deg, rgba(129, 140, 248, 0.18), rgba(236, 72, 153, 0.12));
-}
-
-.differentiator__hero-stat-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
+/* ── Slim featured stat ─────────────────────────────────────────
+   Horizontal banner with a moderate-size +38% paired against an
+   inline description and methodology line. Replaces the photo-
+   backdrop hero block (May 2026) — the previous version felt
+   visually loud. The page-wide photo ticker above already carries
+   that emotional energy; this section earns its weight with data
+   + typography instead of more photos. */
+.differentiator__featured-stat {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1.6rem;
+  max-width: 880px;
+  margin: 0 auto 3rem;
+  padding: 1.5rem 1.85rem;
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.07), rgba(34, 211, 238, 0.035));
+  border: 1px solid rgba(129, 140, 248, 0.22);
+  border-radius: 0.9rem;
 }
 
-.differentiator__hero-stat-number {
+.differentiator__featured-stat-num {
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 14vw, 8.5rem);
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.045em;
-  background: linear-gradient(135deg, #c7d2fe 0%, #67e8f9 45%, #f9a8d4 100%);
+  letter-spacing: -0.035em;
+  background: linear-gradient(135deg, #c7d2fe 0%, #67e8f9 50%, #f9a8d4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 8px 40px rgba(129, 140, 248, 0.3);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
-.differentiator__hero-stat-label {
-  font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  font-weight: 500;
-  line-height: 1.35;
-  color: #fff;
-  letter-spacing: -0.01em;
-  max-width: 540px;
-}
-.differentiator__hero-stat-label sup a {
-  color: #c7d2fe;
-  font-weight: 600;
-  text-decoration: none;
-  margin-left: 0.1em;
-}
-.differentiator__hero-stat-label sup a:hover { color: #fff; }
-
-.differentiator__hero-stat-meta {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.62);
-  margin-top: 0.5rem;
-  max-width: 620px;
-  line-height: 1.5;
+.differentiator__featured-stat-num-pct {
+  font-size: 0.78em;
+  margin-left: 0.04em;
+  letter-spacing: -0.05em;
 }
 
-/* ── Magazine-style audience cards ─────────────────────────────────
-   Tall photo header with the audience pill overlaid in the corner;
-   title + body live in a dedicated body block beneath. The tiny
-   icon boxes that used to float on the photo's bottom edge are gone
-   (they read as awkward and small — the photo IS the visual). */
-.differentiator__card {
-  overflow: hidden;
-  position: relative;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.025);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+.differentiator__featured-stat-meta {
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: 0;
 }
 
-/* Per-audience accent color, surfaced via custom property so the pill
-   border, the hover-border, and the title underline all stay in sync. */
+.differentiator__featured-stat-label {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #fff;
+  letter-spacing: -0.005em;
+}
+
+.differentiator__featured-stat-source {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.55;
+}
+
+/* ── Text-first outcome cards (May 2026) ────────────────────────
+   Replaces the magazine layout with the 220px photo + overlaid
+   audience pill. The pill style didn't match the rest of the brand
+   (compare with `.audience-card__kicker` in the hero). New cards
+   use a small mono kicker with a colored dot — same pattern as the
+   hero audience cards, brand-cohesive. Per-audience accent comes
+   through the dot color + the hover-border tint. */
+.differentiator__card {
+  padding: 1.65rem 1.65rem 1.75rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
+}
+
 .differentiator__card--students {
   --aud-color: #93c5fd;
   --aud-rgb: 147, 197, 253;
@@ -2385,96 +2370,58 @@ body::before {
 }
 
 .differentiator__card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(var(--aud-rgb), 0.55);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35),
-              0 0 0 1px rgba(var(--aud-rgb), 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(var(--aud-rgb), 0.4);
+  transform: translateY(-2px);
 }
 
-.differentiator__card-photo {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.4);
-}
-.differentiator__card-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.85) brightness(0.7);
-  transition: transform 0.5s ease, filter 0.3s ease;
-}
-.differentiator__card:hover .differentiator__card-photo img {
-  transform: scale(1.06);
-  filter: saturate(1) brightness(0.85);
-}
-.differentiator__card-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 30%,
-    rgba(17, 17, 19, 0.4) 65%,
-    rgba(17, 17, 19, 0.95) 100%
-  );
-  pointer-events: none;
-}
-
-/* Audience pill — overlaid in the photo's bottom-left corner with a
-   subtle backdrop blur so it reads cleanly over any chapter photo. */
-.differentiator__card-aud {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 2;
+.differentiator__card-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fff;
-  background: rgba(var(--aud-rgb, 129, 140, 248), 0.22);
-  border: 1px solid rgba(var(--aud-rgb, 129, 140, 248), 0.65);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-radius: 6px;
-  padding: 0.4rem 0.7rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.62);
+  align-self: flex-start;
 }
 
-.differentiator__card-body {
-  padding: 1.5rem 1.5rem 1.7rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  flex: 1;
+.differentiator__card-kicker-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--aud-color);
+  box-shadow: 0 0 8px rgba(var(--aud-rgb), 0.55);
 }
 
-.differentiator__card-body h3 {
+.differentiator__card-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 1.18rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
   line-height: 1.3;
+  letter-spacing: -0.01em;
   color: #fff;
 }
 
-.differentiator__card-body p {
+.differentiator__card-text {
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.94rem;
+  font-size: 0.93rem;
   line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
 }
 
-@media (max-width: 800px) {
-  .differentiator__hero-stat {
-    padding: 2rem 1.25rem;
+@media (max-width: 720px) {
+  .differentiator__featured-stat {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.85rem;
+    padding: 1.5rem 1.25rem;
   }
-  .differentiator__hero-stat-number {
-    font-size: clamp(4rem, 18vw, 6rem);
+  .differentiator__featured-stat-num {
+    font-size: clamp(3rem, 14vw, 4rem);
   }
 }
 
@@ -2522,22 +2469,10 @@ body::before {
   margin-bottom: 2rem;
 }
 
-.differentiator__card {
-  padding: 1.5rem 1.4rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 0.85rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-/* Obsolete rules removed (May 2026): the inline `.differentiator__card-icon`
-   floating-icon block + the inline `.differentiator__card-aud` audience
-   pill + the descendant `.differentiator__card h3 / p` styles are
-   replaced by the magazine-style card layout in the "Photo accent on
-   audience cards" block below — see `.differentiator__card-body h3`,
-   etc. */
+/* The `.differentiator__card` base rule lives further up in the
+   text-first outcome cards block (with the per-audience modifiers
+   and the kicker dot). The previous base rule here was deleted as
+   part of the May 2026 redesign. */
 
 .differentiator__trust {
   max-width: 820px;
@@ -2592,13 +2527,10 @@ body::before {
 @media (max-width: 800px) {
   .differentiator__grid {
     grid-template-columns: 1fr;
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
   }
   .differentiator {
     padding: 3rem 0;
-  }
-  .differentiator__card-photo {
-    height: 200px;
   }
 }
