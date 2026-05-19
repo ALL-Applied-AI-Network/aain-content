@@ -2353,16 +2353,48 @@ body::before {
   line-height: 1.5;
 }
 
-/* ── Photo accent on audience cards ────────────────────────────── */
+/* ── Magazine-style audience cards ─────────────────────────────────
+   Tall photo header with the audience pill overlaid in the corner;
+   title + body live in a dedicated body block beneath. The tiny
+   icon boxes that used to float on the photo's bottom edge are gone
+   (they read as awkward and small — the photo IS the visual). */
 .differentiator__card {
   overflow: hidden;
   position: relative;
   padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
+
+/* Per-audience accent color, surfaced via custom property so the pill
+   border, the hover-border, and the title underline all stay in sync. */
+.differentiator__card--students {
+  --aud-color: #93c5fd;
+  --aud-rgb: 147, 197, 253;
+}
+.differentiator__card--eboards {
+  --aud-color: #67e8f9;
+  --aud-rgb: 103, 232, 249;
+}
+.differentiator__card--sponsors {
+  --aud-color: #f9a8d4;
+  --aud-rgb: 249, 168, 212;
+}
+
+.differentiator__card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(var(--aud-rgb), 0.55);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35),
+              0 0 0 1px rgba(var(--aud-rgb), 0.12);
+}
+
 .differentiator__card-photo {
   position: relative;
   width: 100%;
-  height: 110px;
+  height: 220px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.4);
 }
@@ -2371,7 +2403,11 @@ body::before {
   height: 100%;
   object-fit: cover;
   filter: saturate(0.85) brightness(0.7);
-  transition: transform 0.4s ease, filter 0.3s ease;
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+.differentiator__card:hover .differentiator__card-photo img {
+  transform: scale(1.06);
+  filter: saturate(1) brightness(0.85);
 }
 .differentiator__card-photo::after {
   content: "";
@@ -2379,35 +2415,58 @@ body::before {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(17, 17, 19, 0) 0%,
-    rgba(17, 17, 19, 0.55) 75%,
+    transparent 30%,
+    rgba(17, 17, 19, 0.4) 65%,
     rgba(17, 17, 19, 0.95) 100%
   );
   pointer-events: none;
 }
-.differentiator__card:hover .differentiator__card-photo img {
-  transform: scale(1.04);
-  filter: saturate(1) brightness(0.85);
+
+/* Audience pill — overlaid in the photo's bottom-left corner with a
+   subtle backdrop blur so it reads cleanly over any chapter photo. */
+.differentiator__card-aud {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(var(--aud-rgb, 129, 140, 248), 0.22);
+  border: 1px solid rgba(var(--aud-rgb, 129, 140, 248), 0.65);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
-/* Restore inner padding now that the card is .padding-0 with a
-   photo header on top. The icon overlaps the photo's bottom edge. */
-.differentiator__card > :not(.differentiator__card-photo) {
-  padding-left: 1.4rem;
-  padding-right: 1.4rem;
+.differentiator__card-body {
+  padding: 1.5rem 1.5rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
 }
-.differentiator__card-icon {
-  margin: -22px 0 0 1.4rem;
-  position: relative;
-  z-index: 1;
-  background: rgba(31, 31, 38, 0.95);
-  border: 1px solid rgba(129, 140, 248, 0.25);
+
+.differentiator__card-body h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: #fff;
 }
-.differentiator__card > h3 {
-  padding-top: 0.8rem;
-}
-.differentiator__card > p {
-  padding-bottom: 1.5rem;
+
+.differentiator__card-body p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.94rem;
+  line-height: 1.65;
 }
 
 @media (max-width: 800px) {
@@ -2473,49 +2532,12 @@ body::before {
   gap: 0.6rem;
 }
 
-.differentiator__card-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 0.55rem;
-  background: rgba(129, 140, 248, 0.18);
-  color: #c7d2fe;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.differentiator__card h3 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: -0.01em;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem;
-}
-
-.differentiator__card-aud {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(199, 210, 254, 0.85);
-  background: rgba(129, 140, 248, 0.12);
-  border: 1px solid rgba(129, 140, 248, 0.22);
-  border-radius: 4px;
-  padding: 0.15rem 0.45rem;
-}
-
-.differentiator__card p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.92rem;
-  line-height: 1.6;
-}
+/* Obsolete rules removed (May 2026): the inline `.differentiator__card-icon`
+   floating-icon block + the inline `.differentiator__card-aud` audience
+   pill + the descendant `.differentiator__card h3 / p` styles are
+   replaced by the magazine-style card layout in the "Photo accent on
+   audience cards" block below — see `.differentiator__card-body h3`,
+   etc. */
 
 .differentiator__trust {
   max-width: 820px;
@@ -2570,13 +2592,13 @@ body::before {
 @media (max-width: 800px) {
   .differentiator__grid {
     grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
   }
   .differentiator {
     padding: 3rem 0;
   }
-  .differentiator__card h3 {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
+  .differentiator__card-photo {
+    height: 200px;
   }
 }
