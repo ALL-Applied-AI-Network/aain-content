@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Product &mdash; ALL Applied AI Network</title>
+  <meta name="description" content="What ALL ships: a chapter dashboard, an open-source hub-site template, and a sponsor portal — wired into one verified network of AI talent. Live walkthrough of the killer features and how the data flows end-to-end." />
+  <meta property="og:title" content="The Product — ALL Applied AI Network" />
+  <meta property="og:description" content="Three products, one verified network. The killer features that turn chapter activity into hiring outcomes — end-to-end." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./public/all-logo-transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Product — ALL Applied AI Network" />
+  <meta name="twitter:description" content="Three products, one verified network. The killer features that turn chapter activity into hiring outcomes — end-to-end." />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./product.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="./" class="nav__brand">
+        <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+        <span>ALL Applied AI Network</span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="./product.html" class="active">Product</a></li>
+        <li><a href="./tree.html">Learning Tree</a></li>
+        <li><a href="./toolkit.html">Hub Toolkit</a></li>
+        <li><a href="./impact.html">Impact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       HERO — neutral "what we ship" framing, audience-aware CTAs
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="product-hero">
+    <canvas id="hero-particles"></canvas>
+    <div class="container product-hero__inner">
+      <span class="product-hero__badge">
+        <span class="product-hero__badge-dot" aria-hidden="true"></span>
+        Product overview
+      </span>
+      <h1 class="product-hero__title">
+        Three products. <span class="product-hero__title-grad">One verified network.</span>
+      </h1>
+      <p class="product-hero__subtitle">
+        ALL ships a <strong>chapter dashboard</strong>, an open-source
+        <strong>hub-site template</strong>, and a
+        <strong>sponsor portal</strong> &mdash; wired into one network of
+        verified AI talent. Every chapter member&rsquo;s real activity
+        becomes a credential. Sponsors discover that signal. Chapters
+        scale without scaling officer hours. Here&rsquo;s the full thing.
+      </p>
+      <div class="product-hero__cta">
+        <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="product-hero__cta-primary">
+          Start a chapter
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener" class="product-hero__cta-secondary">
+          See the sponsor portal
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      </div>
+      <a href="#three-products" class="product-hero__scroll" aria-label="See the three products">
+        <span>Scroll</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       SECTION 01 — Three products at a glance
+       Each product gets a mini-card showing its URL, audience, and a
+       glimpse of what's inside.
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="product-section product-products" id="three-products">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-label__num">01</span>
+        <span class="section-label__text">What we ship</span>
+        <span class="section-label__line"></span>
+      </div>
+      <h2 class="product-section__heading">Three surfaces, one shared dataset.</h2>
+      <p class="product-section__lede">
+        The dashboard, hub template, and sponsor portal aren&rsquo;t three
+        independent tools &mdash; they&rsquo;re three views of the same
+        verified network. Activity created in one shows up in the others.
+      </p>
+
+      <div class="product-grid">
+        <!-- Chapter Dashboard -->
+        <article class="product-card" style="--card-accent: #818cf8; --card-accent-rgb: 129,140,248">
+          <div class="product-card__chrome">
+            <span class="product-card__chrome-dot"></span>
+            <span class="product-card__chrome-dot"></span>
+            <span class="product-card__chrome-dot"></span>
+            <code class="product-card__chrome-url">dashboard.all-ai-network.org</code>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__head">
+              <span class="product-card__kicker">For chapter officers</span>
+              <h3 class="product-card__name">Chapter Dashboard</h3>
+            </div>
+            <p class="product-card__desc">
+              The operational core. Events, members, projects, sponsors,
+              leaderboards, financial pipeline &mdash; one login, everything
+              connected.
+            </p>
+            <ul class="product-card__feat">
+              <li>Event creation + QR check-in</li>
+              <li>Member directory with opt-in living r&eacute;sum&eacute;s</li>
+              <li>Sponsor inbox + proposal flow</li>
+              <li>Stripe Connect Express + Issuing virtual cards</li>
+              <li>One-click chapter site spin-up</li>
+            </ul>
+            <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener" class="product-card__link">
+              Open dashboard
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Hub Site Template -->
+        <article class="product-card" style="--card-accent: #22d3ee; --card-accent-rgb: 34,211,238">
+          <div class="product-card__chrome">
+            <span class="product-card__chrome-dot"></span>
+            <span class="product-card__chrome-dot"></span>
+            <span class="product-card__chrome-dot"></span>
+            <code class="product-card__chrome-url">{chapter}.all-ai-network.org</code>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__head">
+              <span class="product-card__kicker">For chapter members</span>
+              <h3 class="product-card__name">Hub Site Template</h3>
+            </div>
+            <p class="product-card__desc">
+              An open-source chapter website every approved chapter forks
+              and customizes. Wired to the dashboard&rsquo;s data via one
+              API key &mdash; zero duplicated data entry.
+            </p>
+            <ul class="product-card__feat">
+              <li>Member directory, leaderboard, badges</li>
+              <li>Live event roster + upcoming events</li>
+              <li>Project gallery + sponsor recognition wall</li>
+              <li>Embedded learning tree + workshops</li>
+              <li>Theme via two colors in <code>hub.config.json</code></li>
+            </ul>
+            <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener" class="product-card__link">
+              View on GitHub
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Sponsor Portal -->
+        <article class="product-card" style="--card-accent: #ec4899; --card-accent-rgb: 236,72,153">
+          <div class="product-card__chrome">
+            <span class="product-card__chrome-dot"></span>
+            <span class="product-card__chrome-dot"></span>
+            <span class="product-card__chrome-dot"></span>
+            <code class="product-card__chrome-url">sponsors.all-ai-network.org</code>
+          </div>
+          <div class="product-card__body">
+            <div class="product-card__head">
+              <span class="product-card__kicker">For sponsors &amp; recruiters</span>
+              <h3 class="product-card__name">Sponsor Portal</h3>
+            </div>
+            <p class="product-card__desc">
+              The talent surface. Browse chapters, search verified profiles,
+              send vetted outreach (reveal-on-approval), propose sponsorships.
+              Subscription unlocks access; chapter dollars pass through uncut.
+            </p>
+            <ul class="product-card__feat">
+              <li>Skills + project search across all chapters</li>
+              <li>Reveal-on-approval member outreach</li>
+              <li>Chapter sponsorship proposals (Bronze &rarr; Platinum)</li>
+              <li>Org-wide partner tier for compute / API / mentorship</li>
+              <li>ROI analytics on every dollar</li>
+            </ul>
+            <a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener" class="product-card__link">
+              Open sponsor portal
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       SECTION 02 — Killer features
+       The six features that make the network actually work, expanded one
+       at a time with body + lightweight visual stub.
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="product-section product-features" id="features">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-label__num">02</span>
+        <span class="section-label__text">The killer features</span>
+        <span class="section-label__line"></span>
+      </div>
+      <h2 class="product-section__heading">Six features that make the network actually work.</h2>
+      <p class="product-section__lede">
+        Most chapter-management tools stop at attendance tracking. ALL is
+        built around six pieces that turn chapter activity into outcomes
+        &mdash; for students, officers, and sponsors all at once.
+      </p>
+
+      <div class="feature-stack">
+
+        <!-- 01: Living résumés -->
+        <article class="feature-row">
+          <div class="feature-row__num">01</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">Living r&eacute;sum&eacute;s for every member.</h3>
+            <p class="feature-row__desc">
+              Every event a member attends, every project they ship, every
+              award they earn, every GitHub commit they make &mdash; all of
+              it becomes a verified credential on their network profile.
+              Points on a chapter leaderboard are local; this profile is
+              for life. Sponsors browse it instead of LinkedIn. Active
+              members across the network graduate into starting salaries
+              <strong>+38% above their non-member peers</strong>.<sup><a href="#fn-salary" class="feature-row__fnref">1</a></sup>
+            </p>
+            <ul class="feature-row__bullets">
+              <li>QR check-in &rarr; timestamped attendance credential (not self-reported)</li>
+              <li>LinkedIn &ldquo;Add credential&rdquo; verification URL on every event</li>
+              <li>Opt-in for sponsor discovery &mdash; member always controls visibility</li>
+            </ul>
+          </div>
+          <div class="feature-row__visual feature-row__visual--profile" aria-hidden="true">
+            <div class="profile-mock">
+              <div class="profile-mock__row">
+                <div class="profile-mock__avatar"></div>
+                <div>
+                  <div class="profile-mock__name">Wyatt M.</div>
+                  <div class="profile-mock__meta">MSOE AI Club &middot; Class of 2026</div>
+                </div>
+                <div class="profile-mock__badge">Verified</div>
+              </div>
+              <div class="profile-mock__divider"></div>
+              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--event">event</span> Innovation Lab kickoff (Direct Supply)</div>
+              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--project">project</span> Edge-ML defect detection demo</div>
+              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--award">award</span> ROSIE Awards finalist</div>
+              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--event">event</span> NVIDIA GTC tour</div>
+              <div class="profile-mock__skills">
+                <span class="profile-mock__chip">computer vision</span>
+                <span class="profile-mock__chip">edge ml</span>
+                <span class="profile-mock__chip">pytorch</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02: One-click chapter site -->
+        <article class="feature-row feature-row--reverse">
+          <div class="feature-row__num">02</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">One-click chapter site spin-up.</h3>
+            <p class="feature-row__desc">
+              Officer hits &ldquo;Create chapter site&rdquo; in the dashboard.
+              ALL forks the open-source hub template, wires the chapter&rsquo;s
+              custom subdomain, drops the GitHub Pages action in place. A
+              live, branded chapter site exists about a minute later &mdash;
+              no Webflow, no Squarespace, no &ldquo;who has the password to
+              the WordPress.&rdquo;
+            </p>
+            <ul class="feature-row__bullets">
+              <li>GitHub OAuth + Octokit fork in ~60 seconds</li>
+              <li>Subdomain auto-provisioned (eg. <code>maic.all-ai-network.org</code>)</li>
+              <li>Theme via two colors in <code>hub.config.json</code> &mdash; no HTML editing</li>
+              <li>Auto-deploys on every push to <code>main</code></li>
+            </ul>
+          </div>
+          <div class="feature-row__visual feature-row__visual--site" aria-hidden="true">
+            <div class="site-mock">
+              <div class="site-mock__chrome">
+                <span class="site-mock__chrome-dot"></span>
+                <span class="site-mock__chrome-dot"></span>
+                <span class="site-mock__chrome-dot"></span>
+                <code class="site-mock__chrome-url">maic.all-ai-network.org</code>
+              </div>
+              <div class="site-mock__body">
+                <div class="site-mock__hero">
+                  <div class="site-mock__eyebrow">Milwaukee School of Engineering</div>
+                  <div class="site-mock__h1">MSOE AI Club</div>
+                  <div class="site-mock__sub">Real applied AI, taught by people who do it for a living.</div>
+                </div>
+                <div class="site-mock__stats">
+                  <div><strong>500+</strong><span>Members</span></div>
+                  <div><strong>120+</strong><span>Events run</span></div>
+                  <div><strong>40+</strong><span>Projects shipped</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03: Project events with sponsor-invite -->
+        <article class="feature-row">
+          <div class="feature-row__num">03</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">Project events with sponsor-invite link.</h3>
+            <p class="feature-row__desc">
+              The hardest events student orgs run &mdash; Innovation Labs,
+              hackathons, multi-sponsor research showcases &mdash; reduced
+              to a fillable form. Officer enters the goal, picks sign-up
+              and team modes, drops in a sponsor invite link. Sponsor
+              clicks, lands on the event page, approves their commitments
+              (food, recording, IP terms, prizes), and the event hub page
+              goes live with their branding the moment the officer hits
+              &ldquo;Publish.&rdquo;
+            </p>
+            <ul class="feature-row__bullets">
+              <li>Draft / publish state machine &mdash; iterate before going live</li>
+              <li>GitHub Classroom auto-provisioning (3 template modes)</li>
+              <li>Multi-sponsor configs: pooled, problem tracks, open submission</li>
+              <li>Lightweight participation agreement (checkbox, not signature)</li>
+            </ul>
+          </div>
+          <div class="feature-row__visual feature-row__visual--invite" aria-hidden="true">
+            <div class="invite-mock">
+              <div class="invite-mock__badge">Sponsor invite &middot; Innovation Lab Spring 2026</div>
+              <div class="invite-mock__row invite-mock__row--checked">
+                <span class="invite-mock__check">&#10003;</span>
+                Fund dinner for kickoff (Brady)
+              </div>
+              <div class="invite-mock__row invite-mock__row--checked">
+                <span class="invite-mock__check">&#10003;</span>
+                Bring 3 problem statements (NVIDIA)
+              </div>
+              <div class="invite-mock__row invite-mock__row--checked">
+                <span class="invite-mock__check">&#10003;</span>
+                Provide API credits via secrets vault (Anthropic)
+              </div>
+              <div class="invite-mock__row">
+                <span class="invite-mock__check invite-mock__check--pending">&middot;</span>
+                Approve recording terms (Direct Supply)
+              </div>
+              <div class="invite-mock__footer">3 of 4 sponsors approved &middot; auto-publish ready</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04: QR check-in -->
+        <article class="feature-row feature-row--reverse">
+          <div class="feature-row__num">04</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">QR check-in at every meeting.</h3>
+            <p class="feature-row__desc">
+              Print the QR code, project it, or share it on Slack. Members
+              scan once when they arrive. Attendance is logged, points
+              awarded, leaderboard updated, and a verified credential
+              dropped on their network profile &mdash; in the same instant.
+              No spreadsheets, no roll calls, no &ldquo;were you actually
+              there?&rdquo; arguments.
+            </p>
+            <ul class="feature-row__bullets">
+              <li>Single QR per event with a printable poster template</li>
+              <li>Points configurable per event type</li>
+              <li>Member always controls whether the event becomes a public credential</li>
+              <li>Bulk-import attendance from past events without an ALL QR</li>
+            </ul>
+          </div>
+          <div class="feature-row__visual feature-row__visual--qr" aria-hidden="true">
+            <div class="qr-mock">
+              <div class="qr-mock__poster">
+                <div class="qr-mock__poster-head">Scan to check in</div>
+                <div class="qr-mock__qr">
+                  <!-- Simplified QR-like pattern (decorative only) -->
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="100" height="100" fill="#fff"/>
+                    <g fill="#0a0a0c">
+                      <rect x="6" y="6" width="22" height="22"/>
+                      <rect x="11" y="11" width="12" height="12" fill="#fff"/>
+                      <rect x="14" y="14" width="6" height="6"/>
+                      <rect x="72" y="6" width="22" height="22"/>
+                      <rect x="77" y="11" width="12" height="12" fill="#fff"/>
+                      <rect x="80" y="14" width="6" height="6"/>
+                      <rect x="6" y="72" width="22" height="22"/>
+                      <rect x="11" y="77" width="12" height="12" fill="#fff"/>
+                      <rect x="14" y="80" width="6" height="6"/>
+                      <rect x="38" y="6" width="4" height="4"/>
+                      <rect x="46" y="6" width="4" height="4"/>
+                      <rect x="54" y="6" width="4" height="4"/>
+                      <rect x="38" y="14" width="4" height="4"/>
+                      <rect x="54" y="14" width="4" height="4"/>
+                      <rect x="38" y="22" width="4" height="4"/>
+                      <rect x="46" y="22" width="4" height="4"/>
+                      <rect x="6" y="38" width="4" height="4"/>
+                      <rect x="14" y="38" width="4" height="4"/>
+                      <rect x="22" y="38" width="4" height="4"/>
+                      <rect x="6" y="46" width="4" height="4"/>
+                      <rect x="22" y="46" width="4" height="4"/>
+                      <rect x="6" y="54" width="4" height="4"/>
+                      <rect x="14" y="54" width="4" height="4"/>
+                      <rect x="38" y="38" width="4" height="4"/>
+                      <rect x="46" y="38" width="4" height="4"/>
+                      <rect x="54" y="38" width="4" height="4"/>
+                      <rect x="62" y="38" width="4" height="4"/>
+                      <rect x="70" y="38" width="4" height="4"/>
+                      <rect x="38" y="46" width="4" height="4"/>
+                      <rect x="54" y="46" width="4" height="4"/>
+                      <rect x="70" y="46" width="4" height="4"/>
+                      <rect x="46" y="54" width="4" height="4"/>
+                      <rect x="62" y="54" width="4" height="4"/>
+                      <rect x="38" y="62" width="4" height="4"/>
+                      <rect x="46" y="62" width="4" height="4"/>
+                      <rect x="62" y="62" width="4" height="4"/>
+                      <rect x="70" y="62" width="4" height="4"/>
+                      <rect x="78" y="62" width="4" height="4"/>
+                      <rect x="86" y="62" width="4" height="4"/>
+                      <rect x="38" y="70" width="4" height="4"/>
+                      <rect x="54" y="70" width="4" height="4"/>
+                      <rect x="62" y="70" width="4" height="4"/>
+                      <rect x="78" y="70" width="4" height="4"/>
+                      <rect x="38" y="78" width="4" height="4"/>
+                      <rect x="46" y="78" width="4" height="4"/>
+                      <rect x="62" y="78" width="4" height="4"/>
+                      <rect x="70" y="78" width="4" height="4"/>
+                      <rect x="86" y="78" width="4" height="4"/>
+                      <rect x="38" y="86" width="4" height="4"/>
+                      <rect x="54" y="86" width="4" height="4"/>
+                      <rect x="70" y="86" width="4" height="4"/>
+                      <rect x="86" y="86" width="4" height="4"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="qr-mock__poster-foot">Innovation Lab kickoff &middot; +10 pts</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05: Stripe Issuing virtual cards -->
+        <article class="feature-row">
+          <div class="feature-row__num">05</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">Stripe Issuing virtual cards for event spending.</h3>
+            <p class="feature-row__desc">
+              When a sponsor commits to feed a hackathon, that money lands
+              in the chapter&rsquo;s Stripe Issuing balance and the officer
+              provisions a virtual card &mdash; per event, per category, per
+              team. Student adds it to Apple Wallet, taps to pay at
+              checkout, snaps the receipt, and the spend reconciles itself
+              against the event. No more reimbursement Slack threads.
+            </p>
+            <ul class="feature-row__bullets">
+              <li>Per-event, per-category, per-team card limits</li>
+              <li>Apple Wallet / Google Pay tokenization</li>
+              <li>Auto-reconciliation by event + category</li>
+              <li>Refund fallback path for after-the-fact reimbursement</li>
+            </ul>
+          </div>
+          <div class="feature-row__visual feature-row__visual--card" aria-hidden="true">
+            <div class="card-mock">
+              <div class="card-mock__row card-mock__row--top">
+                <span class="card-mock__brand">Stripe Issuing</span>
+                <span class="card-mock__chip"></span>
+              </div>
+              <div class="card-mock__num">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4127</div>
+              <div class="card-mock__row">
+                <div>
+                  <div class="card-mock__label">Chapter</div>
+                  <div class="card-mock__value">MSOE AI CLUB</div>
+                </div>
+                <div>
+                  <div class="card-mock__label">Event</div>
+                  <div class="card-mock__value">HACKSGIVING 24</div>
+                </div>
+                <div>
+                  <div class="card-mock__label">Cat.</div>
+                  <div class="card-mock__value">FOOD</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 06: The organizer hub -->
+        <article class="feature-row feature-row--reverse">
+          <div class="feature-row__num">06</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">The organizer hub.</h3>
+            <p class="feature-row__desc">
+              The single source of truth that replaces the email chain
+              running most multi-sponsor events. Every published project
+              event gets an organizer-only hub: officers, invited
+              sponsors, mentors, and the faculty advisor all land in the
+              same place &mdash; with sponsor commitments, team formation,
+              spending ledgers, and mentor session notes visible in real
+              time. End-of-event recap PDFs are one click.
+            </p>
+            <ul class="feature-row__bullets">
+              <li>Sponsor commitment + status + preferences in one row</li>
+              <li>Per-team spending ledger with receipts attached</li>
+              <li>Mentor booking + session notes per team</li>
+              <li>One-click recap PDF for sponsors and advisors</li>
+            </ul>
+          </div>
+          <div class="feature-row__visual feature-row__visual--hub" aria-hidden="true">
+            <div class="hub-mock">
+              <div class="hub-mock__head">
+                Innovation Fair &middot; Spring 2026 &middot; <span class="hub-mock__live">Live</span>
+              </div>
+              <div class="hub-mock__row">
+                <span class="hub-mock__name">Brady &mdash; Problem sponsor</span>
+                <span class="hub-mock__status hub-mock__status--ok">Approved</span>
+              </div>
+              <div class="hub-mock__row">
+                <span class="hub-mock__name">NVIDIA &mdash; API credits</span>
+                <span class="hub-mock__status hub-mock__status--ok">Active</span>
+              </div>
+              <div class="hub-mock__row">
+                <span class="hub-mock__name">Direct Supply &mdash; Mentors</span>
+                <span class="hub-mock__status hub-mock__status--pending">Pending</span>
+              </div>
+              <div class="hub-mock__divider"></div>
+              <div class="hub-mock__row hub-mock__row--meta">
+                <span>Teams: 12 of 15</span>
+                <span>Spend: $2,340 / $5,000</span>
+                <span>Mentor sessions: 8</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="product-footnote" id="fn-salary">
+        <sup>1</sup> ALL Applied AI Network Spring 2025 graduate outcomes
+        among active members (&ge;2 chapter events in a semester or
+        &ge;1 project event), across all majors. Compared against the
+        same universities&rsquo; non-member graduate cohort.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       SECTION 03 — How outcomes happen end-to-end
+       Light diagram of the data flow: chapter activity → verified profile
+       → sponsor discovery → hiring outcomes.
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="product-section product-flow">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-label__num">03</span>
+        <span class="section-label__text">How outcomes happen</span>
+        <span class="section-label__line"></span>
+      </div>
+      <h2 class="product-section__heading">From a chapter meeting to a hire.</h2>
+      <p class="product-section__lede">
+        Every loop in the network closes the same way: real chapter
+        activity becomes a verified credential, sponsors discover that
+        credential, and members get hired &mdash; or get scholarships,
+        prizes, mentorship, conference travel. The dashboard is the
+        engine; everything else is a view into it.
+      </p>
+
+      <div class="flow-strip">
+        <div class="flow-step">
+          <div class="flow-step__num">1</div>
+          <div class="flow-step__title">Student joins a chapter</div>
+          <div class="flow-step__desc">Free account at <code>all-ai-network.org</code>. Profile opt-in.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="flow-step__num">2</div>
+          <div class="flow-step__title">Events &amp; projects build credentials</div>
+          <div class="flow-step__desc">QR check-in, GitHub Classroom, Innovation Labs &mdash; every signal verified.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step">
+          <div class="flow-step__num">3</div>
+          <div class="flow-step__title">Sponsors discover the profile</div>
+          <div class="flow-step__desc">Skills + project search in the sponsor portal. Reveal-on-approval outreach.</div>
+        </div>
+        <div class="flow-arrow">&rarr;</div>
+        <div class="flow-step flow-step--terminal">
+          <div class="flow-step__num">4</div>
+          <div class="flow-step__title">Outcome lands</div>
+          <div class="flow-step__desc"><strong>+38% starting salary</strong> for active members.<sup><a href="#fn-salary" class="feature-row__fnref">1</a></sup></div>
+        </div>
+      </div>
+
+      <div class="flow-trust">
+        <span class="flow-trust__strong">
+          100% of sponsorship dollars route directly to the chapter.
+        </span>
+        ALL is funded by sponsor subscriptions, not a transaction fee.
+        Chapter sponsorships pass through uncut; ALL is filing for
+        501(c)(3) (donations are tax-deductible via fiscal sponsor in
+        the interim).
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════════════════════════════════════════════════
+       SECTION 04 — Pick your path (audience-aware CTAs)
+       ═════════════════════════════════════════════════════════════════════ -->
+  <section class="product-section product-paths">
+    <div class="container">
+      <div class="section-label">
+        <span class="section-label__num">04</span>
+        <span class="section-label__text">Get started</span>
+        <span class="section-label__line"></span>
+      </div>
+      <h2 class="product-section__heading">Pick your path.</h2>
+      <p class="product-section__lede">
+        Same product, different doors. Wherever you start, the network
+        is the same.
+      </p>
+
+      <div class="path-cards">
+        <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="path-card">
+          <div class="path-card__kicker">Officers</div>
+          <div class="path-card__title">Start a chapter.</div>
+          <div class="path-card__desc">Sign up for the dashboard, fork the hub template, run your first event this week.</div>
+          <div class="path-card__cta">
+            Open dashboard
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener" class="path-card path-card--accent">
+          <div class="path-card__kicker">Sponsors</div>
+          <div class="path-card__title">See the talent.</div>
+          <div class="path-card__desc">Browse the network free. Reveal-on-approval outreach. Sponsor chapters directly.</div>
+          <div class="path-card__cta">
+            Open sponsor portal
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="./toolkit.html" class="path-card">
+          <div class="path-card__kicker">Curious</div>
+          <div class="path-card__title">See the playbook.</div>
+          <div class="path-card__desc">The Hub Toolkit walks through standing up a chapter end-to-end &mdash; the founder timeline.</div>
+          <div class="path-card__cta">
+            Browse the toolkit
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand-area">
+          <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="footer__brand-logo" />
+          <span class="footer__brand">ALL Applied AI Network</span>
+        </div>
+        <p class="footer__legal">
+          Content licensed under CC BY-SA 4.0. Code licensed under MIT.<br />
+          Built at MSOE. Maintained by the ALL community.
+        </p>
+      </div>
+      <div class="footer__links">
+        <ul class="footer__link-col">
+          <li><a href="./product.html">Product</a></li>
+          <li><a href="./tree.html">Learning Tree</a></li>
+          <li><a href="./toolkit.html">Hub Toolkit</a></li>
+          <li><a href="./impact.html">Impact</a></li>
+          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
+          <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+  <script type="module" src="./ts/hero-particles.ts"></script>
+</body>
+</html>
