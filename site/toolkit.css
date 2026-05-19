@@ -928,6 +928,218 @@
   background: linear-gradient(180deg, rgba(129, 140, 248, 0.05), rgba(34, 211, 238, 0.025));
 }
 
+/* ── Featured living-résumé card ──────────────────────────────────
+   The headline killer feature of the dashboard. Sits ABOVE the
+   six-card grid (which holds the supporting features) so officers
+   immediately see "the network-wide profile is what makes this
+   different" before they read the per-feature grid.
+   --------------------------------------------------------------- */
+.dashboard-featured {
+  margin-top: 2rem;
+  padding: 2rem 2.25rem;
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.18), rgba(34, 211, 238, 0.1));
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  border-radius: 1rem;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.dashboard-featured__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.dashboard-featured__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #c7d2fe;
+  background: rgba(129, 140, 248, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  align-self: flex-start;
+}
+
+.dashboard-featured__eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #818cf8;
+  box-shadow: 0 0 10px rgba(129, 140, 248, 0.6);
+}
+
+.dashboard-featured__title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0;
+}
+
+.dashboard-featured__desc {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.78);
+}
+.dashboard-featured__desc strong { color: #fff; }
+.dashboard-featured__desc sup a {
+  color: #c7d2fe;
+  font-weight: 600;
+  text-decoration: none;
+}
+.dashboard-featured__desc sup a:hover { color: #fff; }
+
+.dashboard-featured__bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.dashboard-featured__bullets li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.5;
+}
+.dashboard-featured__bullets li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #818cf8;
+  font-weight: 600;
+}
+
+.dashboard-featured__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #c7d2fe;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: gap 0.15s, color 0.15s;
+}
+.dashboard-featured__cta:hover {
+  gap: 0.6rem;
+  color: #fff;
+}
+
+.dashboard-featured__visual {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.85rem;
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashboard-featured__profile-head {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.dashboard-featured__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #818cf8, #ec4899);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.dashboard-featured__name {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #fff;
+}
+
+.dashboard-featured__chapter {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dashboard-featured__verified {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+}
+
+.dashboard-featured__signal {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.3rem 0;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+.dashboard-featured__signal:nth-of-type(2) { border-top: none; }
+
+.dashboard-featured__pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+.dashboard-featured__pill--event {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.dashboard-featured__pill--project {
+  color: #c4b5fd;
+  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+.dashboard-featured__pill--award {
+  color: #fcd34d;
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+@media (max-width: 900px) {
+  .dashboard-featured {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 1.4rem;
+  }
+}
+
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -995,6 +1207,22 @@
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+}
+
+.toolkit-footnote {
+  margin: 2rem auto 0;
+  max-width: 760px;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.45);
+  padding-top: 1.2rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.07);
+}
+.toolkit-footnote sup {
+  color: #c7d2fe;
+  font-weight: 600;
+  margin-right: 0.2em;
 }
 
 @media (max-width: 900px) {
