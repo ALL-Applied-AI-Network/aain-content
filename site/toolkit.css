@@ -1700,6 +1700,79 @@
   border-radius: 4px;
 }
 
+/* ── Real-chapter photo banner under each timeline step lede ────
+   Adds a real MAIC moment to each step (May 2026) so the toolkit
+   page stops feeling all-icons-no-photos. Mono caption pinned to
+   the bottom-left tells the visitor this is a real event, not a
+   stock placeholder. */
+.toolkit-step__photo {
+  position: relative;
+  margin: 1.75rem 0 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  max-width: 920px;
+}
+
+.toolkit-step__photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.92);
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.toolkit-step__photo:hover img {
+  filter: saturate(1.05);
+  transform: scale(1.015);
+}
+
+.toolkit-step__photo::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 35%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.toolkit-step__photo-caption {
+  position: absolute;
+  bottom: 0.85rem;
+  left: 0.95rem;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding: 0.35rem 0.6rem;
+}
+
+@media (max-width: 700px) {
+  .toolkit-step__photo {
+    margin-top: 1.5rem;
+    border-radius: 0.75rem;
+  }
+  .toolkit-step__photo-caption {
+    font-size: 0.66rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
 /* The dashboard-grid, hub-steps, hub-template-features, pb-grid,
    sponsorship-flow blocks below the headers were styled relative to
    `.toolkit-section`; they don't depend on the section class itself
