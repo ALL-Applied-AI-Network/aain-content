@@ -37,6 +37,18 @@ interface NetworkPartnership {
   status: "active" | "in_conversation" | string;
   description: string | null;
   started_at: string | null;
+  /** "all" = org-wide (every chapter benefits); "selected" / "region"
+   * = chapter-scoped formal partnership. Drives the org-wide vs
+   * chapter-scoped split on /impact. */
+  chapters_scope?: string;
+}
+
+interface ChapterSponsorship {
+  companyName: string;
+  companyLogoUrl: string | null;
+  chapterName: string;
+  chapterSlug: string | null;
+  chapterUniversity: string | null;
 }
 
 interface NetworkStats {
@@ -51,6 +63,7 @@ interface NetworkStats {
   };
   chapters: NetworkChapter[];
   partnerships: NetworkPartnership[];
+  chapter_sponsorships?: ChapterSponsorship[];
 }
 
 // ---------------------------------------------------------------------------
@@ -154,6 +167,7 @@ async function init(): Promise<void> {
     renderChapterCards(stats.chapters);
     renderToolStrip(stats);
     renderPartnerships(stats.partnerships);
+    renderChapterSponsorships(stats.chapter_sponsorships ?? []);
     return;
   }
 
@@ -560,18 +574,31 @@ function renderToolStrip(stats: NetworkStats): void {
 // Partnerships
 // ---------------------------------------------------------------------------
 
+/**
+ * Renders the "Org-wide partners power every chapter" block.
+ * Pulls active org-wide partnerships (chapters_scope='all' or null
+ * for legacy rows). In-conversation partners deliberately do NOT show
+ * here — partner conversations live on dedicated pages.
+ */
 function renderPartnerships(parts: NetworkPartnership[]): void {
   const el = document.getElementById("impact-partnerships");
   if (!el) return;
-  // Only public-facing active partnerships on the impact page.
-  // In-conversation partners (e.g. Anthropic during outreach) live on
-  // dedicated /partners/<name> pages.
-  const active = parts.filter((p) => p.status === "active");
-  if (active.length === 0) {
-    el.innerHTML = "";
+  const orgWide = parts.filter(
+    (p) =>
+      p.status === "active" &&
+      (p.chapters_scope === "all" || !p.chapters_scope),
+  );
+  if (orgWide.length === 0) {
+    el.innerHTML = `
+      <div class="impact-empty-note">
+        Network partners are being onboarded. Check back as
+        org-wide partnerships (compute, AI API credits, mentorship)
+        go live.
+      </div>
+    `;
     return;
   }
-  el.innerHTML = active
+  el.innerHTML = orgWide
     .map(
       (p) => `
         <article class="impact-partner-card">
@@ -583,6 +610,60 @@ function renderPartnerships(parts: NetworkPartnership[]): void {
         </article>
       `,
     )
+    .join("");
+}
+
+/**
+ * Renders the "Chapter-specific sponsors fund local programs" block.
+ *
+ * Public roster of every active company → chapter sponsorship. Renders
+ * the company logo when present (mirrored from the sponsor's Clerk org
+ * upload on onboarding) and falls back to initials when not.
+ *
+ * Empty state is educational: explains the model + the 100% pass-
+ * through, with a CTA to the sponsor portal. We deliberately render
+ * the model copy even when there ARE active sponsors — sponsors are
+ * supplemental signal, not the headline.
+ */
+function renderChapterSponsorships(sponsors: ChapterSponsorship[]): void {
+  const el = document.getElementById("impact-chapter-sponsors");
+  if (!el) return;
+  if (sponsors.length === 0) {
+    el.innerHTML = `
+      <div class="impact-empty-note">
+        Be the first to back a chapter directly. Visit the sponsor
+        portal to browse chapters and propose a partnership.
+      </div>
+    `;
+    return;
+  }
+  el.innerHTML = sponsors
+    .map((s) => {
+      const initials = s.companyName
+        .split(/\s+/)
+        .map((w) => w[0])
+        .filter(Boolean)
+        .slice(0, 2)
+        .join("")
+        .toUpperCase();
+      const logoHtml = s.companyLogoUrl
+        ? `<img class="impact-sponsor-card__logo-img" src="${escapeHtml(s.companyLogoUrl)}" alt="${escapeHtml(s.companyName)} logo" />`
+        : `<span class="impact-sponsor-card__logo-initials">${escapeHtml(initials || "—")}</span>`;
+      return `
+        <article class="impact-sponsor-card">
+          <div class="impact-sponsor-card__logo" aria-hidden="true">
+            ${logoHtml}
+          </div>
+          <div class="impact-sponsor-card__body">
+            <div class="impact-sponsor-card__name">${escapeHtml(s.companyName)}</div>
+            <div class="impact-sponsor-card__chapter">
+              sponsors <strong>${escapeHtml(s.chapterName)}</strong>
+              ${s.chapterUniversity ? `<span class="impact-sponsor-card__uni">${escapeHtml(s.chapterUniversity)}</span>` : ""}
+            </div>
+          </div>
+        </article>
+      `;
+    })
     .join("");
 }
 

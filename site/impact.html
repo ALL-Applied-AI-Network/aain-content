@@ -141,7 +141,8 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════
-       PARTNERSHIPS
+       PARTNERSHIPS — split into org-wide vs chapter-specific so a cold
+       sponsor knows immediately which lane they're in.
        ═══════════════════════════════════════════════════════════════════════ -->
   <section class="impact-partners-section" id="sponsors">
     <div class="container">
@@ -150,19 +151,72 @@
         <span class="section-label__text">Network partnerships</span>
         <span class="section-label__line"></span>
       </div>
-      <h2 class="section__heading">Active partners</h2>
+      <h2 class="section__heading">Two ways to back the network.</h2>
       <p class="section__lede">
-        Partners back the network because the network produces real,
-        verified AI talent &mdash; the kind of signal traditional
-        recruiting tools miss. Org-wide partners power every chapter;
-        chapter-specific sponsors fund local programs. Either way,
-        <strong>100% of any direct chapter sponsorship dollars route
-        to the chapter</strong> &mdash; ALL is funded by sponsor
-        subscriptions, not a transaction fee.
+        Partners back the ALL Applied AI Network because it produces
+        real, verified AI talent &mdash; the kind of signal traditional
+        recruiting tools miss. <strong>Org-wide partners</strong>
+        provide network-wide resources every chapter benefits from;
+        <strong>chapter-specific sponsors</strong> back one chapter
+        directly. <strong>100% of any direct chapter sponsorship
+        dollars route to the chapter</strong> &mdash; ALL is funded
+        by sponsor subscriptions, not a transaction fee.
       </p>
-      <div class="impact-partners" id="impact-partnerships">
-        <!-- Populated client-side -->
+
+      <!-- ──────────────────────────────────────────────────────────────
+           BLOCK 3a — Org-wide partners
+           Active network_partnerships rows with chapters_scope='all'.
+           NVIDIA today; Anthropic + Oliphant in conversation.
+           ────────────────────────────────────────────────────────────── -->
+      <div class="impact-partners-block">
+        <div class="impact-partners-block__head">
+          <div class="impact-partners-block__eyebrow">
+            <span class="impact-partners-block__eyebrow-dot impact-partners-block__eyebrow-dot--orgwide" aria-hidden="true"></span>
+            Org-wide partners
+          </div>
+          <h3 class="impact-partners-block__title">
+            They power <em>every</em> chapter.
+          </h3>
+          <p class="impact-partners-block__desc">
+            One partnership unlocks compute, AI API credits,
+            mentorship, or tooling across the entire network. Best
+            fit for Fortune-500-scale partners that want to back
+            AI education at scale &mdash; reach matters more than
+            picking a single chapter.
+          </p>
+        </div>
+        <div class="impact-partners" id="impact-partnerships">
+          <!-- Populated client-side from network_partnerships -->
+        </div>
       </div>
+
+      <!-- ──────────────────────────────────────────────────────────────
+           BLOCK 3b — Chapter-specific sponsors
+           Active sponsorship_requests joined to companies + chapters.
+           Empty roster falls back to model explainer + CTA.
+           ────────────────────────────────────────────────────────────── -->
+      <div class="impact-partners-block">
+        <div class="impact-partners-block__head">
+          <div class="impact-partners-block__eyebrow">
+            <span class="impact-partners-block__eyebrow-dot impact-partners-block__eyebrow-dot--chapter" aria-hidden="true"></span>
+            Chapter-specific sponsors
+          </div>
+          <h3 class="impact-partners-block__title">
+            They fund a chapter directly.
+          </h3>
+          <p class="impact-partners-block__desc">
+            Sponsorships routed through the sponsor portal flow to
+            one specific chapter &mdash; for sponsors that want a
+            regional or alumni-driven relationship. Bronze starts at
+            $2,500/yr; 100% of every dollar lands in the chapter's
+            account.
+          </p>
+        </div>
+        <div class="impact-chapter-sponsors" id="impact-chapter-sponsors">
+          <!-- Populated client-side from sponsorship_requests -->
+        </div>
+      </div>
+
       <div class="impact-partners__cta">
         <p>
           Interested in sponsoring chapters or becoming a network partner?

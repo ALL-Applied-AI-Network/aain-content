@@ -1138,6 +1138,170 @@
   padding: 3rem 0 4rem;
 }
 
+/* ── Block-level treatment for the two partnership lanes ─────────
+   Each "block" (Org-wide / Chapter-specific) gets a head with an
+   accent eyebrow dot, a title, and a description; the card grid
+   below renders the actual entries. */
+.impact-partners-block {
+  margin-top: 2.25rem;
+  padding: 1.6rem 0 0;
+}
+
+.impact-partners-block + .impact-partners-block {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.impact-partners-block__head {
+  margin-bottom: 1.25rem;
+  max-width: 60ch;
+}
+
+.impact-partners-block__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.impact-partners-block__eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.impact-partners-block__eyebrow-dot--orgwide {
+  background: #22d3ee;
+  box-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+}
+
+.impact-partners-block__eyebrow-dot--chapter {
+  background: #ec4899;
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+}
+
+.impact-partners-block__title {
+  margin: 0.85rem 0 0.5rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+
+.impact-partners-block__title em {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.impact-partners-block__desc {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.impact-empty-note {
+  padding: 1.5rem 1.6rem;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.015);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ── Chapter sponsor cards (logo + company → chapter pairing) ──── */
+.impact-chapter-sponsors {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.impact-sponsor-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0.85rem;
+  padding: 1.1rem 1.2rem;
+  transition: border-color 150ms;
+}
+
+.impact-sponsor-card:hover {
+  border-color: rgba(236, 72, 153, 0.32);
+}
+
+.impact-sponsor-card__logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.impact-sponsor-card__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.impact-sponsor-card__logo-initials {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.impact-sponsor-card__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.impact-sponsor-card__name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.15rem;
+}
+
+.impact-sponsor-card__chapter {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+}
+
+.impact-sponsor-card__chapter strong {
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 600;
+}
+
+.impact-sponsor-card__uni {
+  display: block;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.1rem;
+}
+
 .impact-partners {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
