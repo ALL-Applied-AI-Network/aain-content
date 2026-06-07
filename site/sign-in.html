@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Get Started &mdash; ALL Applied AI Network</title>
-  <meta name="description" content="Pick the path that fits you. ALL connects students, officers, sponsors, and universities — tell us which one you are and we'll send you to the right sign-up." />
-  <meta property="og:title" content="Get Started — ALL Applied AI Network" />
-  <meta property="og:description" content="Sign up for ALL. Pick your path: student, club officer, sponsor, or university." />
+  <title>Sign in &mdash; ALL Applied AI Network</title>
+  <meta name="description" content="Sign in to ALL. Pick who you are — student, officer, sponsor, or university — and we'll send you to the right sign-in page." />
+  <meta property="og:title" content="Sign in — ALL Applied AI Network" />
+  <meta property="og:description" content="Sign in to ALL. Pick your role to get to the right dashboard." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./public/all-logo-transparent.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Get Started — ALL Applied AI Network" />
-  <meta name="twitter:description" content="Sign up for ALL. Pick your path: student, club officer, sponsor, or university." />
+  <meta name="twitter:title" content="Sign in — ALL Applied AI Network" />
+  <meta name="twitter:description" content="Sign in to ALL. Pick your role." />
   <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <!-- /sign-in.html shares its CSS with /get-started.html — same role-card
+       grid pattern, just reframed around "I already have an account." -->
   <link rel="stylesheet" href="./get-started.css" />
 </head>
 <body>
@@ -36,27 +38,32 @@
         <li><a href="./impact.html">Impact</a></li>
       </ul>
       <div class="nav__cta">
-        <a href="./sign-in.html" class="nav__cta-link" rel="noopener" title="Already have an account?">Sign in</a>
+        <a href="./get-started.html" class="nav__cta-btn">Get started &rarr;</a>
       </div>
     </div>
   </nav>
 
   <!-- ═══════════════════════════════════════════════════════════════════════
-       HERO — disambiguator intro
+       HERO — sign-in router intro
        ═══════════════════════════════════════════════════════════════════════ -->
   <section class="gs-hero">
     <div class="container gs-hero__inner">
-      <span class="gs-hero__badge">Sign up</span>
-      <h1 class="gs-hero__title">Pick the path that fits you.</h1>
+      <span class="gs-hero__badge">Sign in</span>
+      <h1 class="gs-hero__title">Welcome back. Who are you?</h1>
       <p class="gs-hero__subtitle">
-        ALL connects four kinds of people. Tell us which one you are and
-        we&rsquo;ll send you to the right sign-up.
+        ALL runs two sign-in surfaces &mdash; the chapter dashboard for
+        members and officers, and the sponsor portal for partner
+        companies. Pick the one that fits you.
       </p>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════════════════
        ROLE CARDS — 2 × 2 on desktop, 1-col on mobile
+       Sign-in flavor: each card goes straight to its Clerk sign-in URL.
+       Student and Officer both land on dashboard.all-ai-network.org/sign-in
+       because they share a Clerk instance — the disambiguation here is for
+       the visitor's mental model, not the URL routing.
        ═══════════════════════════════════════════════════════════════════════ -->
   <section class="gs-roles">
     <div class="container">
@@ -75,16 +82,15 @@
           <span class="gs-role-card__kicker">Student</span>
           <h2 class="gs-role-card__title">I&rsquo;m a student</h2>
           <p class="gs-role-card__body">
-            I want to build my AI career &mdash; get hired by partner
-            companies, ship real projects with people in my chapter,
-            build a verified profile employers actually browse.
+            I&rsquo;m a chapter member &mdash; signing in to check my
+            profile, points, badges, or the events I&rsquo;ve attended.
           </p>
           <a
-            href="https://dashboard.all-ai-network.org/?role=student"
+            href="https://dashboard.all-ai-network.org/sign-in?role=student"
             class="btn btn--primary btn--lg gs-role-card__cta"
             rel="noopener"
           >
-            Continue as a student &rarr;
+            Sign in as a student &rarr;
           </a>
         </article>
 
@@ -99,16 +105,15 @@
           <span class="gs-role-card__kicker">Officer</span>
           <h2 class="gs-role-card__title">I run an AI club</h2>
           <p class="gs-role-card__body">
-            I want to bring this dashboard to my club. QR check-in, sponsor
-            inbox, automatic site, full eboard handoff. Or I want to start
-            a chapter on a new campus.
+            I&rsquo;m on a chapter eboard &mdash; signing in to manage
+            events, sponsors, members, and the chapter site.
           </p>
           <a
-            href="https://dashboard.all-ai-network.org/?role=officer"
+            href="https://dashboard.all-ai-network.org/sign-in?role=officer"
             class="btn btn--primary btn--lg gs-role-card__cta"
             rel="noopener"
           >
-            Continue as an officer &rarr;
+            Sign in as an officer &rarr;
           </a>
         </article>
 
@@ -125,20 +130,19 @@
           <span class="gs-role-card__kicker">Sponsor</span>
           <h2 class="gs-role-card__title">I&rsquo;m a sponsor</h2>
           <p class="gs-role-card__body">
-            Our company is hiring AI engineers. We want to fund chapter
-            activity, run challenges with real students, and see
-            who&rsquo;s actually shipping work.
+            I&rsquo;m at a partner company &mdash; signing in to browse
+            talent, review sponsorships, or respond to event invites.
           </p>
           <a
-            href="https://sponsors.all-ai-network.org/"
+            href="https://sponsors.all-ai-network.org/sign-in"
             class="btn btn--primary btn--lg gs-role-card__cta"
             rel="noopener"
           >
-            Continue as a sponsor &rarr;
+            Sign in as a sponsor &rarr;
           </a>
         </article>
 
-        <!-- School -->
+        <!-- School / University -->
         <article class="gs-role-card gs-role-card--school">
           <div class="gs-role-card__icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -152,12 +156,12 @@
           <span class="gs-role-card__kicker">University</span>
           <h2 class="gs-role-card__title">I&rsquo;m at a university</h2>
           <p class="gs-role-card__body">
-            Our school wants to support an AI chapter &mdash; funding,
-            faculty advising, recruiting visibility, or starting one from
-            scratch. Let&rsquo;s talk.
+            Universities don&rsquo;t have a separate sign-in. Faculty
+            advisors sign in through the chapter dashboard. New
+            partnerships, talk to us directly.
           </p>
           <a
-            href="mailto:hello@all-ai-network.org?subject=Bringing%20ALL%20to%20our%20university"
+            href="mailto:hello@all-ai-network.org?subject=University%20partnership"
             class="btn btn--primary btn--lg gs-role-card__cta"
           >
             Talk to us &rarr;
@@ -166,10 +170,10 @@
 
       </div>
 
-      <!-- Already-have-an-account fallback -->
+      <!-- Don't-have-an-account fallback -->
       <p class="gs-roles__signin">
-        Already have an account?
-        <a href="./sign-in.html" rel="noopener">Sign in &rarr;</a>
+        Don&rsquo;t have an account yet?
+        <a href="./get-started.html">Get started &rarr;</a>
       </p>
 
     </div>
