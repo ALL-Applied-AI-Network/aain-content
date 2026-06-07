@@ -1,0 +1,200 @@
+/* ========================================================================
+   Get Started — role-disambiguation page
+   The dedicated front-door router. Visitors pick Student / Officer /
+   Sponsor / School and get deep-linked to the right sign-up flow.
+
+   Reuses base tokens, .container, .btn / .btn--primary, .nav, .footer
+   from styles.css. Only adds the page-local hero + role-card grid.
+   ======================================================================== */
+
+/* ---------- Hero ---------- */
+.gs-hero {
+  position: relative;
+  padding: 5rem 0 3rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.gs-hero::before {
+  content: "";
+  position: absolute;
+  inset: -10% -10% auto -10%;
+  height: 500px;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(79, 143, 234, 0.08) 0%,
+      rgba(168, 85, 247, 0.05) 40%,
+      transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gs-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.gs-hero__badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent-primary);
+  border: 1px solid rgba(79, 143, 234, 0.25);
+  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.gs-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gs-hero__subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ---------- Role grid ---------- */
+.gs-roles {
+  padding: 2rem 0 5rem;
+}
+
+.gs-role-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 760px) {
+  .gs-role-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ---------- Role card ---------- */
+.gs-role-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  transition: border-color 180ms ease, transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  overflow: hidden;
+}
+
+/* Top-edge gradient accent — picks up the brand stripe */
+.gs-role-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-brand);
+  opacity: 0.55;
+  transition: opacity 180ms ease;
+}
+
+.gs-role-card:hover {
+  border-color: rgba(129, 140, 248, 0.55);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(99, 102, 241, 0.18);
+}
+
+.gs-role-card:hover::before {
+  opacity: 1;
+}
+
+/* Per-role icon tint — keeps the four cards visually distinct without
+   shouting. Color stops mirror the brand gradient (blue → cyan → pink → purple). */
+.gs-role-card--student .gs-role-card__icon  { color: #60a5fa; background: rgba(59, 130, 246, 0.14); }
+.gs-role-card--officer .gs-role-card__icon  { color: #22d3ee; background: rgba(34, 211, 238, 0.14); }
+.gs-role-card--sponsor .gs-role-card__icon  { color: #f472b6; background: rgba(236, 72, 153, 0.14); }
+.gs-role-card--school  .gs-role-card__icon  { color: #c084fc; background: rgba(168, 85, 247, 0.14); }
+
+.gs-role-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  margin-bottom: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.gs-role-card__kicker {
+  display: inline-block;
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.gs-role-card__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.gs-role-card__body {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem;
+  flex: 1; /* pushes CTA to the bottom so all four cards align */
+}
+
+/* Button alignment override for in-card CTA. Keeps the underlying
+   .btn--primary gradient + animation from styles.css; just normalizes
+   placement inside the card. */
+.gs-role-card__cta {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+/* ---------- "Already have an account?" fallback ---------- */
+.gs-roles__signin {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.gs-roles__signin a {
+  color: var(--accent-cyan);
+  font-weight: 500;
+  margin-left: 0.35rem;
+}
+
+.gs-roles__signin a:hover {
+  color: #7dd3fc;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started &mdash; ALL Applied AI Network</title>
+  <meta name="description" content="Pick the path that fits you. ALL connects students, officers, sponsors, and universities — tell us which one you are and we'll send you to the right sign-up." />
+  <meta property="og:title" content="Get Started — ALL Applied AI Network" />
+  <meta property="og:description" content="Sign up for ALL. Pick your path: student, club officer, sponsor, or university." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./public/all-logo-transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Get Started — ALL Applied AI Network" />
+  <meta name="twitter:description" content="Sign up for ALL. Pick your path: student, club officer, sponsor, or university." />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./get-started.css" />
+</head>
+<body>
+
+  <!-- Navigation (mirrors index.html) -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="./" class="nav__brand">
+        <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="nav__logo" />
+        <span>ALL Applied AI Network</span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="./">Home</a></li>
+        <li><a href="./tree.html">Learning Tree</a></li>
+        <li><a href="./toolkit.html">Hub Toolkit</a></li>
+        <li><a href="./impact.html">Impact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       HERO — disambiguator intro
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="gs-hero">
+    <div class="container gs-hero__inner">
+      <span class="gs-hero__badge">Sign up</span>
+      <h1 class="gs-hero__title">Pick the path that fits you.</h1>
+      <p class="gs-hero__subtitle">
+        ALL connects four kinds of people. Tell us which one you are and
+        we&rsquo;ll send you to the right sign-up.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       ROLE CARDS — 2 × 2 on desktop, 1-col on mobile
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="gs-roles">
+    <div class="container">
+      <div class="gs-role-grid">
+
+        <!-- Student -->
+        <article class="gs-role-card gs-role-card--student">
+          <div class="gs-role-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Graduation cap -->
+              <path d="M16 5 3 11l13 6 13-6-13-6z"/>
+              <path d="M8 14v6c0 1.5 3.5 4 8 4s8-2.5 8-4v-6"/>
+              <path d="M29 11v8"/>
+            </svg>
+          </div>
+          <span class="gs-role-card__kicker">Student</span>
+          <h2 class="gs-role-card__title">I&rsquo;m a student</h2>
+          <p class="gs-role-card__body">
+            I want to build my AI career &mdash; get hired by partner
+            companies, ship real projects with people in my chapter,
+            build a verified profile employers actually browse.
+          </p>
+          <a
+            href="https://dashboard.all-ai-network.org/sign-up?role=student"
+            class="btn btn--primary btn--lg gs-role-card__cta"
+            rel="noopener"
+          >
+            Continue as a student &rarr;
+          </a>
+        </article>
+
+        <!-- Officer -->
+        <article class="gs-role-card gs-role-card--officer">
+          <div class="gs-role-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Wrench -->
+              <path d="M22.7 9.3a4 4 0 0 0-5.4 5.4l-9.8 9.8a2.12 2.12 0 1 0 3 3l9.8-9.8a4 4 0 0 0 5.4-5.4l-3.1 3.1-2.7-.3-.3-2.7 3.1-3.1z"/>
+            </svg>
+          </div>
+          <span class="gs-role-card__kicker">Officer</span>
+          <h2 class="gs-role-card__title">I run an AI club</h2>
+          <p class="gs-role-card__body">
+            I want to bring this dashboard to my club. QR check-in, sponsor
+            inbox, automatic site, full eboard handoff. Or I want to start
+            a chapter on a new campus.
+          </p>
+          <a
+            href="https://dashboard.all-ai-network.org/sign-up?role=officer"
+            class="btn btn--primary btn--lg gs-role-card__cta"
+            rel="noopener"
+          >
+            Continue as an officer &rarr;
+          </a>
+        </article>
+
+        <!-- Sponsor -->
+        <article class="gs-role-card gs-role-card--sponsor">
+          <div class="gs-role-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Briefcase -->
+              <rect x="4" y="10" width="24" height="17" rx="2"/>
+              <path d="M11 10V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/>
+              <path d="M4 17h24"/>
+            </svg>
+          </div>
+          <span class="gs-role-card__kicker">Sponsor</span>
+          <h2 class="gs-role-card__title">I&rsquo;m a sponsor</h2>
+          <p class="gs-role-card__body">
+            Our company is hiring AI engineers. We want to fund chapter
+            activity, run challenges with real students, and see
+            who&rsquo;s actually shipping work.
+          </p>
+          <a
+            href="https://sponsors.all-ai-network.org/sign-up"
+            class="btn btn--primary btn--lg gs-role-card__cta"
+            rel="noopener"
+          >
+            Continue as a sponsor &rarr;
+          </a>
+        </article>
+
+        <!-- School -->
+        <article class="gs-role-card gs-role-card--school">
+          <div class="gs-role-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Academic / institution -->
+              <path d="M3 27h26"/>
+              <path d="M6 27V14l10-5 10 5v13"/>
+              <path d="M12 27v-8h8v8"/>
+              <path d="M16 14v0"/>
+            </svg>
+          </div>
+          <span class="gs-role-card__kicker">University</span>
+          <h2 class="gs-role-card__title">I&rsquo;m at a university</h2>
+          <p class="gs-role-card__body">
+            Our school wants to support an AI chapter &mdash; funding,
+            faculty advising, recruiting visibility, or starting one from
+            scratch. Let&rsquo;s talk.
+          </p>
+          <a
+            href="mailto:hello@all-ai-network.org?subject=Bringing%20ALL%20to%20our%20university"
+            class="btn btn--primary btn--lg gs-role-card__cta"
+          >
+            Talk to us &rarr;
+          </a>
+        </article>
+
+      </div>
+
+      <!-- Already-have-an-account fallback -->
+      <p class="gs-roles__signin">
+        Already have an account?
+        <a href="https://dashboard.all-ai-network.org/sign-in" rel="noopener">Sign in &rarr;</a>
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Footer (mirrors index.html) -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__brand-area">
+          <img src="./public/all-logo-transparent.png" alt="ALL Logo" class="footer__brand-logo" />
+          <span class="footer__brand">ALL Applied AI Network</span>
+        </div>
+        <p class="footer__legal">
+          Content licensed under CC BY-SA 4.0. Code licensed under MIT.<br />
+          Built at MSOE. Maintained by the ALL community.
+        </p>
+      </div>
+      <div class="footer__links">
+        <ul class="footer__link-col">
+          <li><a href="./tree.html">Learning Tree</a></li>
+          <li><a href="./playbooks.html">Playbooks</a></li>
+          <li><a href="./toolkit.html">Hub Toolkit</a></li>
+          <li><a href="./impact.html">Impact</a></li>
+          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
+          <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
+          <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle (same pattern as other pages)
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+    }
+  </script>
+</body>
+</html>
