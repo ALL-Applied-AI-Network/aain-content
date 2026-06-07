@@ -202,6 +202,56 @@ img {
   color: var(--text-primary);
 }
 
+/* ---------- Nav CTAs ----------
+ * Persistent Sign in / Get started buttons in the right end of the
+ * navbar so visitors landing on any page (Home, Toolkit, Impact,
+ * Tree, etc.) always have a one-click path to the decision tree
+ * at /get-started.html. Per Brett's feedback: the front-door has
+ * to be present on every surface, not just buried in the hero.
+ */
+.nav__cta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav__cta-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav__cta-link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.nav__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  background: var(--gradient-brand);
+  color: #0a0a0b;
+  transition: opacity 0.2s, transform 0.08s;
+  white-space: nowrap;
+}
+
+.nav__cta-btn:hover {
+  opacity: 0.9;
+  color: #0a0a0b;
+}
+
+.nav__cta-btn:active {
+  transform: translateY(1px);
+}
+
 .nav__links a:hover::after {
   width: 100%;
 }
@@ -1739,6 +1789,21 @@ body:has(.tree-page) {
 
   .nav__toggle {
     display: block;
+  }
+
+  /* On mobile, hide the secondary "Sign in" link and keep only the
+     primary "Get started" button. Saves space + ensures the front-
+     door is still one tap away. */
+  .nav__cta-link {
+    display: none;
+  }
+  .nav__cta {
+    margin-left: auto;
+    margin-right: 0.75rem;
+  }
+  .nav__cta-btn {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.82rem;
   }
 
   .hero {
