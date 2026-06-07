@@ -1158,37 +1158,39 @@
   max-width: 60ch;
 }
 
+/* De-pilled — plain mono uppercase text, no rounded badge,
+   no glowing dot. The colored dot was useful as a key marker
+   though, so kept as a small square indicator rather than a
+   glowing circle. */
 .impact-partners-block__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.75);
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
 }
 
 .impact-partners-block__eyebrow-dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 2px;
   flex-shrink: 0;
 }
 
 .impact-partners-block__eyebrow-dot--orgwide {
   background: #22d3ee;
-  box-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
 }
 
 .impact-partners-block__eyebrow-dot--chapter {
   background: #ec4899;
-  box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
 }
 
 .impact-partners-block__title {
