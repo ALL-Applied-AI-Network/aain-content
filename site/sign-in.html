@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign in &mdash; ALL Applied AI Network</title>
-  <meta name="description" content="Sign in to ALL. Pick who you are — student, officer, sponsor, or university — and we'll send you to the right sign-in page." />
+  <meta name="description" content="Sign in to ALL. Pick which dashboard you want — Chapter, Sponsor, or Student — and we'll route you there." />
   <meta property="og:title" content="Sign in — ALL Applied AI Network" />
-  <meta property="og:description" content="Sign in to ALL. Pick your role to get to the right dashboard." />
+  <meta property="og:description" content="Pick which dashboard you want to sign in to." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./public/all-logo-transparent.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Sign in — ALL Applied AI Network" />
-  <meta name="twitter:description" content="Sign in to ALL. Pick your role." />
+  <meta name="twitter:description" content="Pick which dashboard you want to sign in to." />
   <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -48,67 +48,55 @@
        padding without adding meaning. Cards go straight to the top. -->
 
   <!-- ═══════════════════════════════════════════════════════════════════════
-       ROLE CARDS — 2 × 2 on desktop, 1-col on mobile
-       Sign-in flavor: each card goes straight to its Clerk sign-in URL.
-       Student and Officer both land on dashboard.all-ai-network.org/sign-in
-       because they share a Clerk instance — the disambiguation here is for
-       the visitor's mental model, not the URL routing.
+       TOOL CARDS — "Which dashboard?" router for returning users.
+
+       Different from /get-started.html, which asks "who are you?" for new
+       users picking a sign-up path. Here the visitor already has an account
+       and just needs to pick the right surface to log into.
+
+       Three destinations:
+         - Chapter Dashboard (officer/eboard view)  → dashboard.* /sign-in
+         - Sponsor Dashboard                          → sponsors.*   /sign-in
+         - Student Dashboard (member view)            → dashboard.* /sign-in
+
+       Chapter + Student share a Clerk instance (the dashboard subdomain),
+       but they're distinct mental models for the visitor — the chapter
+       view lands at /dashboard, the student view lands at /me. Showing
+       both as separate tiles lets visitors pick the destination that
+       matches what they're here to do, not just what their account type
+       is.
        ═══════════════════════════════════════════════════════════════════════ -->
   <section class="gs-roles gs-roles--compact">
     <div class="container">
-      <div class="gs-role-grid">
+      <div class="gs-role-grid gs-role-grid--three">
 
-        <!-- Student -->
-        <article class="gs-role-card gs-role-card--student">
+        <!-- Chapter Dashboard -->
+        <article class="gs-role-card gs-role-card--chapter">
           <div class="gs-role-card__icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Graduation cap -->
-              <path d="M16 5 3 11l13 6 13-6-13-6z"/>
-              <path d="M8 14v6c0 1.5 3.5 4 8 4s8-2.5 8-4v-6"/>
-              <path d="M29 11v8"/>
+              <!-- Dashboard grid -->
+              <rect x="4" y="4" width="10" height="12" rx="1.5"/>
+              <rect x="18" y="4" width="10" height="7" rx="1.5"/>
+              <rect x="18" y="15" width="10" height="13" rx="1.5"/>
+              <rect x="4" y="20" width="10" height="8" rx="1.5"/>
             </svg>
           </div>
-          <span class="gs-role-card__kicker">Student</span>
-          <h2 class="gs-role-card__title">I&rsquo;m a student</h2>
+          <span class="gs-role-card__kicker">Officers</span>
+          <h2 class="gs-role-card__title">Chapter Dashboard</h2>
           <p class="gs-role-card__body">
-            I&rsquo;m a chapter member &mdash; signing in to check my
-            profile, points, badges, or the events I&rsquo;ve attended.
-          </p>
-          <a
-            href="https://dashboard.all-ai-network.org/sign-in?role=student"
-            class="btn btn--primary btn--lg gs-role-card__cta"
-            rel="noopener"
-          >
-            Sign in as a student &rarr;
-          </a>
-        </article>
-
-        <!-- Officer -->
-        <article class="gs-role-card gs-role-card--officer">
-          <div class="gs-role-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Wrench -->
-              <path d="M22.7 9.3a4 4 0 0 0-5.4 5.4l-9.8 9.8a2.12 2.12 0 1 0 3 3l9.8-9.8a4 4 0 0 0 5.4-5.4l-3.1 3.1-2.7-.3-.3-2.7 3.1-3.1z"/>
-            </svg>
-          </div>
-          <span class="gs-role-card__kicker">Officer</span>
-          <h2 class="gs-role-card__title">I run (or want to start) an AI club</h2>
-          <p class="gs-role-card__body">
-            I&rsquo;m on a chapter eboard &mdash; or I want to start a
-            chapter at my campus. Sign in to manage events, sponsors,
-            members, and the site &mdash; or bootstrap a brand-new
-            workspace.
+            Manage events, sponsors, members, badges, and the chapter
+            hub site &mdash; the eboard workspace.
           </p>
           <a
             href="https://dashboard.all-ai-network.org/sign-in?role=officer"
             class="btn btn--primary btn--lg gs-role-card__cta"
             rel="noopener"
           >
-            Sign in as an officer &rarr;
+            Sign in &rarr;
           </a>
         </article>
 
-        <!-- Sponsor -->
+        <!-- Sponsor Dashboard -->
         <article class="gs-role-card gs-role-card--sponsor">
           <div class="gs-role-card__icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -118,44 +106,43 @@
               <path d="M4 17h24"/>
             </svg>
           </div>
-          <span class="gs-role-card__kicker">Sponsor</span>
-          <h2 class="gs-role-card__title">I&rsquo;m a sponsor</h2>
+          <span class="gs-role-card__kicker">Partners</span>
+          <h2 class="gs-role-card__title">Sponsor Dashboard</h2>
           <p class="gs-role-card__body">
-            I&rsquo;m at a partner company &mdash; signing in to browse
-            talent, review sponsorships, or respond to event invites.
+            Browse talent, review sponsorships, respond to event invites
+            &mdash; the partner-company workspace.
           </p>
           <a
             href="https://sponsors.all-ai-network.org/sign-in"
             class="btn btn--primary btn--lg gs-role-card__cta"
             rel="noopener"
           >
-            Sign in as a sponsor &rarr;
+            Sign in &rarr;
           </a>
         </article>
 
-        <!-- School / University -->
-        <article class="gs-role-card gs-role-card--school">
+        <!-- Student Dashboard -->
+        <article class="gs-role-card gs-role-card--student">
           <div class="gs-role-card__icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Academic / institution -->
-              <path d="M3 27h26"/>
-              <path d="M6 27V14l10-5 10 5v13"/>
-              <path d="M12 27v-8h8v8"/>
-              <path d="M16 14v0"/>
+              <!-- Graduation cap -->
+              <path d="M16 5 3 11l13 6 13-6-13-6z"/>
+              <path d="M8 14v6c0 1.5 3.5 4 8 4s8-2.5 8-4v-6"/>
+              <path d="M29 11v8"/>
             </svg>
           </div>
-          <span class="gs-role-card__kicker">University</span>
-          <h2 class="gs-role-card__title">I&rsquo;m at a university</h2>
+          <span class="gs-role-card__kicker">Members</span>
+          <h2 class="gs-role-card__title">Student Dashboard</h2>
           <p class="gs-role-card__body">
-            Universities don&rsquo;t have a separate sign-in. Faculty
-            advisors sign in through the chapter dashboard. New
-            partnerships, talk to us directly.
+            Your profile, points, badges, and the events you&rsquo;ve
+            attended &mdash; the member workspace.
           </p>
           <a
-            href="mailto:hello@all-ai-network.org?subject=University%20partnership"
+            href="https://dashboard.all-ai-network.org/sign-in?role=student"
             class="btn btn--primary btn--lg gs-role-card__cta"
+            rel="noopener"
           >
-            Talk to us &rarr;
+            Sign in &rarr;
           </a>
         </article>
 

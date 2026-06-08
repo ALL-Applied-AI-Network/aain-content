@@ -88,6 +88,19 @@
   }
 }
 
+/* Three-column variant for /sign-in.html (3 tool tiles).
+   Stacks earlier on narrow viewports since the cards get cramped
+   sooner at 3-col than at 2-col. */
+.gs-role-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 980px) {
+  .gs-role-grid--three {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- Role card ---------- */
 .gs-role-card {
   position: relative;
@@ -126,10 +139,13 @@
   opacity: 1;
 }
 
-/* Per-role icon tint — keeps the four cards visually distinct without
-   shouting. Color stops mirror the brand gradient (blue → cyan → pink → purple). */
+/* Per-role icon tint — keeps the cards visually distinct without
+   shouting. Color stops mirror the brand gradient (blue → cyan → pink → purple).
+   Chapter (sign-in.html only) gets indigo to match the dashboard's
+   indigo PageHero signature. */
 .gs-role-card--student .gs-role-card__icon  { color: #60a5fa; background: rgba(59, 130, 246, 0.14); }
 .gs-role-card--officer .gs-role-card__icon  { color: #22d3ee; background: rgba(34, 211, 238, 0.14); }
+.gs-role-card--chapter .gs-role-card__icon  { color: #818cf8; background: rgba(129, 140, 248, 0.14); }
 .gs-role-card--sponsor .gs-role-card__icon  { color: #f472b6; background: rgba(236, 72, 153, 0.14); }
 .gs-role-card--school  .gs-role-card__icon  { color: #c084fc; background: rgba(168, 85, 247, 0.14); }
 
