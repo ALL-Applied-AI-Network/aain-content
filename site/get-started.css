@@ -198,3 +198,75 @@
 .gs-roles__signin a:hover {
   color: #7dd3fc;
 }
+
+/* ---------- Compact variant (used on /sign-in.html) ---------------
+   /get-started.html uses the default sizing — there's a hero + four
+   cards + a footer note + plenty of headroom on a marketing page.
+   /sign-in.html doesn't have the hero anymore and the visitor is
+   here for one decision, so we tighten everything down so the four
+   cards comfortably fit in one viewport on a typical laptop.
+   ------------------------------------------------------------- */
+.gs-roles--compact {
+  padding: 1.25rem 0 1.5rem;
+}
+
+.gs-roles--compact .gs-role-grid {
+  gap: 0.875rem;
+}
+
+.gs-roles--compact .gs-role-card {
+  padding: 1rem 1.125rem 1.125rem;
+  gap: 0.4rem;
+  border-radius: 12px;
+}
+
+.gs-roles--compact .gs-role-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  margin-bottom: 0.15rem;
+}
+
+.gs-roles--compact .gs-role-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.gs-roles--compact .gs-role-card__kicker {
+  font-size: 0.6rem;
+}
+
+.gs-roles--compact .gs-role-card__title {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.gs-roles--compact .gs-role-card__body {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin: 0 0 0.25rem;
+}
+
+/* Override .btn--lg height inside compact cards. The marketing buttons
+   inherit padding from .btn--lg which is too tall for this density;
+   higher-specificity selector wins. */
+.gs-roles--compact .gs-role-card__cta.btn--lg,
+.gs-roles--compact .gs-role-card__cta {
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0;
+}
+
+.gs-roles--compact .gs-roles__signin {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+}
+
+/* Below ~880px the compact 2-col cards get too narrow for the body
+   copy — fall back to 1 column earlier than the default variant. */
+@media (max-width: 880px) {
+  .gs-roles--compact .gs-role-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
