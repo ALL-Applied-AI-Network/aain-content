@@ -36,8 +36,8 @@ const EDGE_WIDTH = 2;            // path thickness
 const EDGE_GLOW_WIDTH = 8;       // glow behind paths
 
 // Layout spacing
-const DEPTH_GAP_Y = 170;         // vertical gap between depth levels
-const NODE_GAP_X = 280;          // horizontal gap between nodes at same depth
+const DEPTH_GAP_Y = 255;         // vertical gap between depth levels
+const NODE_GAP_X = 420;          // horizontal gap between nodes at same depth
 
 // ---------------------------------------------------------------------------
 // Depth computation — longest path from root
@@ -802,7 +802,7 @@ export class TreeVisualization {
     const padding = 20;
 
     const scale = Math.max(
-      0.15,
+      0.25,
       Math.min((w - padding * 2) / treeW, (h - padding * 2) / treeH, 0.85)
     );
 
