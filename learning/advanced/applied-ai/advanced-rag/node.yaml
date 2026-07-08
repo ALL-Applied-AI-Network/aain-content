@@ -1,7 +1,7 @@
 id: "advanced/applied-ai/advanced-rag"
 title: "Advanced RAG Patterns"
 description: "Go beyond basic RAG with hybrid search, intelligent chunking strategies, reranking, and evaluation-driven iteration to build production-quality retrieval systems."
-layer: 3
+color: "#d946ef"
 difficulty: advanced
 estimated_minutes: 55
 thumbnail: "thumbnail.png"

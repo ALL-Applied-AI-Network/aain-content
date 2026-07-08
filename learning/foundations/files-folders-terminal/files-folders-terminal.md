@@ -3,7 +3,7 @@
 Every program you build lives somewhere on your computer — in files, organized into folders. Before you can run code, manage projects, or install packages, you need to understand how your computer organizes things and how to navigate that structure from the command line. This article gives you that foundation.
 
 :::callout[info]
-You don't need to know Python for this article. If you're working through Layer 1 in a different order, this one only requires the Layer 0 prerequisite "What is Programming."
+You don't need to know Python for this article. If you're working through the foundations in a different order, this one only requires the "What is Programming" prerequisite.
 :::
 
 ## The Filesystem

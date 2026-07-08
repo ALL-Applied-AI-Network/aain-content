@@ -1,7 +1,7 @@
 id: "advanced/applied-ai/llm-security"
 title: "LLM Security & Safety"
 description: "Learn to identify and defend against prompt injection, jailbreaks, and data exfiltration attacks — essential knowledge for deploying LLMs in production."
-layer: 3
+color: "#d946ef"
 difficulty: advanced
 estimated_minutes: 45
 thumbnail: "thumbnail.png"

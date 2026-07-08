@@ -1,7 +1,7 @@
 id: "foundations/debugging-with-ai"
 title: "Debugging with AI"
 description: "Turn cryptic error messages into learning opportunities — use AI to understand, diagnose, and fix bugs in your code."
-layer: 1
+color: "#3dadcf"
 difficulty: beginner
 estimated_minutes: 30
 thumbnail: "thumbnail.png"

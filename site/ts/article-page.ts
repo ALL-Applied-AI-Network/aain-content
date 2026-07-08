@@ -10,9 +10,7 @@ import {
   getSeriesNav,
   articleUrl,
   formatMinutes,
-  LAYER_COLORS,
-  LAYER_NAMES,
-  DIFFICULTY_COLORS,
+  resolveNodeColor,
   type TreeJson,
   type TreeNode,
   type TreeContributor,
@@ -47,15 +45,12 @@ async function init(): Promise<void> {
   document.title = `${node.title} — ALL Applied AI Network`;
 
   // Render breadcrumb
-  const breadcrumbLayer = document.getElementById("breadcrumb-layer");
   const breadcrumb = document.getElementById("breadcrumb");
-  if (breadcrumb && breadcrumbLayer) {
-    const layerName = LAYER_NAMES[node.layer] || `Layer ${node.layer}`;
-    const layerColor = LAYER_COLORS[node.layer] || "#6366f1";
+  if (breadcrumb) {
     breadcrumb.innerHTML = `
       <a href="./">Home</a>
       <span class="breadcrumb__sep">/</span>
-      <a href="./tree.html?layer=${node.layer}" style="color:${layerColor}">${layerName}</a>
+      <a href="./tree.html">Learning Tree</a>
       <span class="breadcrumb__sep">/</span>
       <span>${node.title}</span>
     `;
@@ -89,8 +84,8 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
   const sidebar = document.getElementById("article-sidebar");
   if (sidebar) sidebar.style.display = "";
 
-  const color = LAYER_COLORS[node.layer] || "#6366f1";
-  const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6366f1";
+  const nodesById = new Map(tree.nodes.map((n) => [n.id, n]));
+  const color = resolveNodeColor(node.id, nodesById);
 
   // View in tree button
   const actionsEl = document.getElementById("sidebar-actions");
@@ -116,10 +111,6 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
       <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.75rem">
         <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block"></span>
         <span class="badge badge--${node.difficulty}">${node.difficulty}</span>
-      </div>
-      <div style="margin-bottom:0.5rem">
-        <span class="article-sidebar__title">Layer</span>
-        <div style="color:${color};font-weight:600;font-size:0.9rem">${node.layer} - ${LAYER_NAMES[node.layer] || ""}</div>
       </div>
       <div style="margin-bottom:0.5rem">
         <span class="article-sidebar__title">Estimated Time</span>
@@ -178,10 +169,10 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
         ${contributors.map((c: TreeContributor) => {
           const initials = c.name.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
           const roleColors: Record<string, string> = {
-            author: "var(--layer-0)",
-            curator: "var(--layer-2)",
-            reviewer: "var(--layer-1)",
-            editor: "var(--layer-3)",
+            author: "var(--palette-0)",
+            curator: "var(--palette-2)",
+            reviewer: "var(--palette-1)",
+            editor: "var(--palette-3)",
           };
           const roleColor = roleColors[c.role] || "var(--text-secondary)";
           return `

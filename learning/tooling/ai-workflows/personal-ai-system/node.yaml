@@ -1,7 +1,7 @@
 id: "tooling/ai-workflows/personal-ai-system"
 title: "Building a Personal AI System"
 description: "Move beyond chatbot interactions — build a persistent, file-based AI system that compounds in value over time using markdown, Git, and context management"
-layer: 2
+color: "#9b6dd7"
 difficulty: intermediate
 estimated_minutes: 30
 thumbnail: "thumbnail.png"

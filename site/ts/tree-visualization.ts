@@ -14,9 +14,8 @@ import {
   type TreeJson,
   type TreeNode,
   type TreeEdge,
-  LAYER_COLORS,
-  LAYER_NAMES,
   DIFFICULTY_COLORS,
+  resolveNodeColor,
   articleUrl,
   formatMinutes,
   loadTreeData,
@@ -241,10 +240,10 @@ export class TreeVisualization {
   private nodes: LayoutNode[] = [];
   private edges: TreeEdge[] = [];
   private tree: TreeJson | null = null;
+  private nodesById = new Map<string, TreeNode>();
   private tooltip: HTMLElement | null = null;
   private opts: TreeVizOptions;
 
-  private activeLayer: number | null = null;
   private activeSeries: string | null = null;
   private activeDifficulty: string | null = null;
 
@@ -261,6 +260,7 @@ export class TreeVisualization {
     this.tree = await loadTreeData();
     this.edges = this.tree.edges;
     this.nodes = computeLayout(this.tree.nodes, this.tree.edges);
+    this.nodesById = new Map(this.tree.nodes.map((n) => [n.id, n]));
 
     this.createSvg();
     this.createTooltip();
@@ -351,7 +351,7 @@ export class TreeVisualization {
       const x2 = to.x;
       const y2 = to.y - CARD_H / 2;
 
-      const fromColor = LAYER_COLORS[from.layer] || "#6b7280";
+      const fromColor = resolveNodeColor(edge.from, this.nodesById);
 
       // Smooth cubic bezier — organic tree-branch feel
       const dy = y2 - y1;
@@ -382,8 +382,7 @@ export class TreeVisualization {
         .attr("stroke-width", String(EDGE_WIDTH))
         .attr("stroke-linecap", "round")
         .attr("data-from", edge.from)
-        .attr("data-to", edge.to)
-        .attr("data-layer", String(from.layer));
+        .attr("data-to", edge.to);
 
       this.edgeElements.push({ el: pathEl.node()!, from: edge.from, to: edge.to });
     }
@@ -393,7 +392,7 @@ export class TreeVisualization {
     this.nodeElements.clear();
 
     for (const node of this.nodes) {
-      const color = LAYER_COLORS[node.layer] || "#6b7280";
+      const color = resolveNodeColor(node.id, this.nodesById);
       const root = isRootNode(node);
       const clipId = `clip-${node.id.replace(/[^a-zA-Z0-9]/g, "-")}`;
 
@@ -414,7 +413,6 @@ export class TreeVisualization {
         .append("g")
         .attr("class", `tree-node${root ? " tree-node--root" : ""}`)
         .attr("data-id", node.id)
-        .attr("data-layer", String(node.layer))
         .attr("transform", `translate(${node.x}, ${node.y})`)
         .style("cursor", "pointer");
 
@@ -603,13 +601,13 @@ export class TreeVisualization {
 
   private showTooltip(node: TreeNode, event: MouseEvent | PointerEvent): void {
     if (!this.tooltip) return;
-    const color = LAYER_COLORS[node.layer] || "#6b7280";
+    const color = resolveNodeColor(node.id, this.nodesById);
     const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6b7280";
 
     this.tooltip.innerHTML = `
       <div class="node-tooltip__header">
         <span class="node-tooltip__accent" style="background:${color}"></span>
-        <span class="node-tooltip__layer">${LAYER_NAMES[node.layer] || ""}</span>
+        <span class="node-tooltip__difficulty">${node.difficulty}</span>
         <span class="node-tooltip__time">${formatMinutes(node.estimated_minutes)}</span>
       </div>
       <div class="node-tooltip__title">${node.title}</div>
@@ -709,11 +707,6 @@ export class TreeVisualization {
 
   // --- Filtering ---
 
-  setLayerFilter(layer: number | null): void {
-    this.activeLayer = layer;
-    this.applyFilters();
-  }
-
   setSeriesFilter(seriesId: string | null): void {
     this.activeSeries = seriesId;
     this.applyFilters();
@@ -738,8 +731,6 @@ export class TreeVisualization {
     const passIds = new Set<string>();
     for (const node of this.nodes) {
       let pass = true;
-      if (this.activeLayer !== null && node.layer !== this.activeLayer)
-        pass = false;
       if (seriesNodeIds && !seriesNodeIds.has(node.id)) pass = false;
       if (this.activeDifficulty && node.difficulty !== this.activeDifficulty)
         pass = false;
@@ -747,9 +738,7 @@ export class TreeVisualization {
     }
 
     const hasFilter =
-      this.activeLayer !== null ||
-      this.activeSeries !== null ||
-      this.activeDifficulty !== null;
+      this.activeSeries !== null || this.activeDifficulty !== null;
 
     for (const [id, el] of this.nodeElements) {
       const sel = d3.select(el);
@@ -858,23 +847,24 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
   const panel = $(".node-panel") as HTMLElement | null;
   if (!panel) return;
 
-  const color = LAYER_COLORS[node.layer] || "#6b7280";
+  const nodesById = new Map(tree.nodes.map((n) => [n.id, n]));
+  const color = resolveNodeColor(node.id, nodesById);
   const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6b7280";
 
   const prereqLinks = node.prerequisites
     .map((pid) => {
-      const pn = tree.nodes.find((n) => n.id === pid);
+      const pn = nodesById.get(pid);
       return pn
-        ? `<li><a href="${articleUrl(pid)}" style="color:${LAYER_COLORS[pn.layer] || color}">${pn.title}</a></li>`
+        ? `<li><a href="${articleUrl(pid)}" style="color:${resolveNodeColor(pid, nodesById)}">${pn.title}</a></li>`
         : `<li>${pid}</li>`;
     })
     .join("");
 
   const unlockLinks = node.unlocks
     .map((uid) => {
-      const un = tree.nodes.find((n) => n.id === uid);
+      const un = nodesById.get(uid);
       return un
-        ? `<li><a href="${articleUrl(uid)}" style="color:${LAYER_COLORS[un.layer] || color}">${un.title}</a></li>`
+        ? `<li><a href="${articleUrl(uid)}" style="color:${resolveNodeColor(uid, nodesById)}">${un.title}</a></li>`
         : `<li>${uid}</li>`;
     })
     .join("");
@@ -896,17 +886,11 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
     <button class="node-panel__close" aria-label="Close">&times;</button>
     ${thumbHtml}
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-      <span class="node-panel__layer" style="background:${color}"></span>
-      <span style="font-size:0.7rem;font-weight:600;color:${color}">${LAYER_NAMES[node.layer] || "Layer " + node.layer}</span>
       <span class="badge badge--${node.difficulty}" style="font-size:0.65rem;padding:2px 8px;border-radius:999px;background:${diffColor}22;color:${diffColor};border:1px solid ${diffColor}44">${node.difficulty}</span>
     </div>
     <h2 class="node-panel__title" style="color:#fff;margin:8px 0 6px">${node.title}</h2>
     <p class="node-panel__desc" style="color:#94a3b8;font-size:0.85rem;line-height:1.5;margin-bottom:12px">${node.description}</p>
     <div class="node-panel__meta-grid">
-      <div class="node-panel__meta-item">
-        <div class="node-panel__meta-label">Layer</div>
-        <div class="node-panel__meta-value" style="color:${color}">${node.layer} - ${LAYER_NAMES[node.layer] || ""}</div>
-      </div>
       <div class="node-panel__meta-item">
         <div class="node-panel__meta-label">Time</div>
         <div class="node-panel__meta-value">${formatMinutes(node.estimated_minutes)}</div>
@@ -919,7 +903,7 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
     ${tagsHtml ? `<div style="margin:8px 0">${tagsHtml}</div>` : ""}
     ${prereqLinks ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Prerequisites</p><ul class="node-panel__link-list">${prereqLinks}</ul>` : ""}
     ${unlockLinks ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Unlocks</p><ul class="node-panel__link-list">${unlockLinks}</ul>` : ""}
-    <a href="${articleUrl(node.id)}" class="node-panel__cta" style="background:linear-gradient(135deg,${color},${LAYER_COLORS[Math.min(node.layer + 1, 5)] || color})">Read Article <span style="font-size:1.1em">&rarr;</span></a>
+    <a href="${articleUrl(node.id)}" class="node-panel__cta" style="background:${color}">Read Article <span style="font-size:1.1em">&rarr;</span></a>
   `;
 
   panel.classList.add("open");

@@ -128,16 +128,16 @@
   pointer-events: none;
 }
 
-/* ---------- Layer sections ---------- */
+/* ---------- Branch sections ---------- */
 .sidebar__sections {
   padding: 0.25rem 0;
 }
 
-.sidebar__layer-group {
+.sidebar__branch-group {
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.sidebar__layer-header {
+.sidebar__branch-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -147,29 +147,29 @@
   transition: background 0.15s;
 }
 
-.sidebar__layer-header:hover {
+.sidebar__branch-header:hover {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.sidebar__layer-chevron {
+.sidebar__branch-chevron {
   font-size: 1rem;
   color: var(--text-muted);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
 }
 
-.sidebar__layer-header.collapsed .sidebar__layer-chevron {
+.sidebar__branch-header.collapsed .sidebar__branch-chevron {
   transform: rotate(-90deg);
 }
 
-.sidebar__layer-dot {
+.sidebar__branch-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
-.sidebar__layer-name {
+.sidebar__branch-name {
   font-family: var(--font-display);
   font-size: 0.7rem;
   font-weight: 600;
@@ -179,18 +179,18 @@
   flex: 1;
 }
 
-.sidebar__layer-count {
+.sidebar__branch-count {
   font-size: 0.6rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
 }
 
-.sidebar__layer-items {
+.sidebar__branch-items {
   overflow: hidden;
   transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.sidebar__layer-items.collapsed {
+.sidebar__branch-items.collapsed {
   max-height: 0 !important;
 }
 
@@ -660,12 +660,6 @@
 
 @keyframes spinner-rotate { to { transform: rotate(360deg); } }
 
-/* Layer label styling */
-.layer-label {
-  user-select: none;
-  pointer-events: none;
-}
-
 /* ========================================================================
    MOBILE: Floating Action Button + Bottom Sheet
    ======================================================================== */
@@ -799,8 +793,8 @@
   .loading__spinner { animation: spinner-rotate 1.5s linear infinite; }
   .sidebar { transition: none; }
   .sidebar-strip { transition: none; }
-  .sidebar__layer-chevron { transition: none; }
-  .sidebar__layer-items { transition: none; }
+  .sidebar__branch-chevron { transition: none; }
+  .sidebar__branch-items { transition: none; }
   .bottom-sheet { transition: none; }
   .mobile-fab { animation: none; }
 }

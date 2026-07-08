@@ -1,7 +1,7 @@
 id: "foundations/reading-writing-data"
 title: "Reading and Writing Data"
 description: "Work with files, CSV, JSON, and live APIs in Python — the skills you need before connecting to AI services"
-layer: 1
+color: "#3dadcf"
 difficulty: beginner
 estimated_minutes: 35
 thumbnail: "thumbnail.png"

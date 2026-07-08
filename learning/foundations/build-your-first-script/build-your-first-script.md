@@ -1,6 +1,6 @@
 # Build Your First Script
 
-This is the capstone for Layers 0 and 1. You've learned Python fundamentals, worked with files and APIs, and set up Git. Now you're going to combine all of it into a real, useful program — built with AI assistance from start to finish. This article walks you through the professional workflow: plan, build, test, debug, and ship.
+This is the foundations capstone. You've learned Python fundamentals, worked with files and APIs, and set up Git. Now you're going to combine all of it into a real, useful program — built with AI assistance from start to finish. This article walks you through the professional workflow: plan, build, test, debug, and ship.
 
 :::callout[info]
 This article assumes you've completed "Python Through AI" and "Reading and Writing Data." You'll also push your project to GitHub, so complete "Git Basics" first if you haven't.
@@ -301,7 +301,7 @@ You've now completed the foundational skills for applied AI engineering. You can
 :::build-challenge
 ### Your Capstone Project
 
-Build one of the three projects below (or propose your own to AI and build that). This is your Layer 0-1 capstone — make it something you're proud of.
+Build one of the three projects below (or propose your own to AI and build that). This is your foundations capstone — make it something you're proud of.
 
 **Option A: Personal Expense Tracker** (if you followed along above)
 Extend the walkthrough version with at least two new features. Ideas:

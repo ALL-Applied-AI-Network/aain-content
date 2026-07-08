@@ -1,7 +1,7 @@
 id: "foundations/apis-and-web-basics"
 title: "APIs and Web Basics"
 description: "Understand how applications talk to each other over the web — HTTP requests, JSON data, and the basics of APIs that power modern software."
-layer: 1
+color: "#3dadcf"
 difficulty: beginner
 estimated_minutes: 35
 thumbnail: "thumbnail.png"

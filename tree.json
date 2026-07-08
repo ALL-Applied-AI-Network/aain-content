@@ -1,12 +1,11 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-08T03:23:48.417Z",
+  "generated_at": "2026-07-08T16:24:40.038Z",
   "nodes": [
     {
       "id": "tooling/ai-workflows/personal-ai-system",
       "title": "Building a Personal AI System",
       "description": "Move beyond chatbot interactions — build a persistent, file-based AI system that compounds in value over time using markdown, Git, and context management",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 30,
       "thumbnail": "learning/tooling/ai-workflows/personal-ai-system/thumbnail.png",
@@ -48,13 +47,13 @@
           "contributor": "Gary Sheng"
         }
       ],
+      "color": "#9b6dd7",
       "last_updated": "2026-04-07"
     },
     {
       "id": "tooling/ai-ides/cursor-deep-dive",
       "title": "Cursor Deep Dive",
       "description": "Go beyond the basics — master Chat, Inline Edit, Composer, Tab completion, Cursor Rules, and advanced AI-assisted workflows",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
       "thumbnail": "learning/tooling/ai-ides/cursor-deep-dive/thumbnail.png",
@@ -80,6 +79,7 @@
         }
       ],
       "resources": [],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -87,7 +87,6 @@
       "id": "tooling/ai-ides/claude-code",
       "title": "Claude Code",
       "description": "Introduction to Anthropic's CLI-based AI coding agent — terminal-native, agentic, and built for real engineering workflows",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 30,
       "thumbnail": "learning/tooling/ai-ides/claude-code/thumbnail.png",
@@ -102,7 +101,9 @@
       "prerequisites": [
         "tooling/ai-ides/cursor-deep-dive"
       ],
-      "unlocks": [],
+      "unlocks": [
+        "tooling/ai-workflows/personal-ai-system"
+      ],
       "content_path": "learning/tooling/ai-ides/claude-code/claude-code.md",
       "contributors": [
         {
@@ -111,6 +112,7 @@
         }
       ],
       "resources": [],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -118,7 +120,6 @@
       "id": "intermediate/applied-ai/working-with-databases",
       "title": "Working with Databases",
       "description": "Store and query structured data with SQL and SQLite — the foundation for building data-driven AI applications.",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 50,
       "thumbnail": "learning/intermediate/applied-ai/working-with-databases/thumbnail.png",
@@ -156,6 +157,7 @@
           "type": "course"
         }
       ],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -163,7 +165,6 @@
       "id": "intermediate/applied-ai/web-scraping",
       "title": "Web Scraping for AI",
       "description": "Collect training data and build knowledge bases by scraping the web responsibly — with BeautifulSoup, ethical guidelines, and practical patterns.",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 45,
       "thumbnail": "learning/intermediate/applied-ai/web-scraping/thumbnail.png",
@@ -189,6 +190,7 @@
         }
       ],
       "resources": [],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -196,7 +198,6 @@
       "id": "intermediate/applied-ai/the-applied-ai-engineer",
       "title": "The Applied AI Engineer",
       "description": "Understand the applied AI engineer role — why implementation skills matter as much as model-building, and how to position yourself for the career opportunity",
-      "layer": 2,
       "difficulty": "beginner",
       "estimated_minutes": 25,
       "thumbnail": "learning/intermediate/applied-ai/the-applied-ai-engineer/thumbnail.png",
@@ -252,13 +253,13 @@
           "contributor": "Gary Sheng"
         }
       ],
+      "color": "#9b6dd7",
       "last_updated": "2026-04-07"
     },
     {
       "id": "intermediate/applied-ai/rag-fundamentals",
       "title": "RAG Fundamentals",
       "description": "Build retrieval-augmented generation pipelines from scratch — load documents, chunk text, create embeddings, store vectors, and generate grounded answers",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
       "thumbnail": "learning/intermediate/applied-ai/rag-fundamentals/thumbnail.png",
@@ -322,6 +323,7 @@
           "contributor": "Chip Huyen"
         }
       ],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -329,7 +331,6 @@
       "id": "intermediate/applied-ai/prompt-engineering",
       "title": "Prompt Engineering",
       "description": "Go beyond tips and tricks to engineer reliable, testable prompts that produce consistent results across system prompts, few-shot patterns, structured output, and chain-of-thought reasoning",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 50,
       "thumbnail": "learning/intermediate/applied-ai/prompt-engineering/thumbnail.png",
@@ -342,7 +343,8 @@
         "applied-ai"
       ],
       "prerequisites": [
-        "intermediate/applied-ai/how-ai-apis-work"
+        "intermediate/applied-ai/how-ai-apis-work",
+        "intermediate/applied-ai/the-applied-ai-engineer"
       ],
       "unlocks": [
         "intermediate/applied-ai/build-a-chatbot",
@@ -375,6 +377,7 @@
           "contributor": "Simon Willison"
         }
       ],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -382,7 +385,6 @@
       "id": "intermediate/applied-ai/how-ai-apis-work",
       "title": "How AI APIs Work",
       "description": "Understand the anatomy of AI API calls, make your first requests to Claude and OpenAI, and learn to manage keys, tokens, and costs like a professional",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 45,
       "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.png",
@@ -398,7 +400,8 @@
         "foundations/git-basics",
         "foundations/reading-writing-data",
         "foundations/build-your-first-script",
-        "foundations/apis-and-web-basics"
+        "foundations/apis-and-web-basics",
+        "intermediate/applied-ai/the-applied-ai-engineer"
       ],
       "unlocks": [
         "intermediate/applied-ai/prompt-engineering",
@@ -430,6 +433,7 @@
           "contributor": "Andrej Karpathy"
         }
       ],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -437,7 +441,6 @@
       "id": "intermediate/applied-ai/evaluation-and-observability",
       "title": "Evaluation and Observability",
       "description": "The article most AI tutorials skip — how to systematically test your AI applications, build eval suites, track costs, and monitor production behavior",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 45,
       "thumbnail": "learning/intermediate/applied-ai/evaluation-and-observability/thumbnail.png",
@@ -488,6 +491,7 @@
           "contributor": "Jason Liu"
         }
       ],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -495,7 +499,6 @@
       "id": "intermediate/applied-ai/build-an-agent",
       "title": "Build an Agent",
       "description": "Capstone project — build a personal assistant agent from scratch with file I/O, code execution, web search, and proper error handling",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
       "thumbnail": "learning/intermediate/applied-ai/build-an-agent/thumbnail.png",
@@ -537,6 +540,7 @@
           "contributor": "Hamel Husain"
         }
       ],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -544,7 +548,6 @@
       "id": "intermediate/applied-ai/build-a-chatbot",
       "title": "Build a Chatbot",
       "description": "Build a real conversational AI application with multi-turn memory, streaming responses, and a web interface you can share with anyone",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 60,
       "thumbnail": "learning/intermediate/applied-ai/build-a-chatbot/thumbnail.png",
@@ -573,6 +576,7 @@
         }
       ],
       "resources": [],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -580,7 +584,6 @@
       "id": "intermediate/applied-ai/ai-data-analysis",
       "title": "AI-Powered Data Analysis",
       "description": "Combine pandas, visualization libraries, and AI to analyze datasets faster — from exploratory analysis to automated insight generation.",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 55,
       "thumbnail": "learning/intermediate/applied-ai/ai-data-analysis/thumbnail.png",
@@ -639,6 +642,7 @@
           "contributor": "Travis Oliphant"
         }
       ],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -646,7 +650,6 @@
       "id": "intermediate/applied-ai/agents-and-tool-use",
       "title": "Agents and Tool Use",
       "description": "Understand AI agents that take actions in the world — define tools as JSON schemas, let the model decide when to call them, and build your first agentic loop",
-      "layer": 2,
       "difficulty": "intermediate",
       "estimated_minutes": 55,
       "thumbnail": "learning/intermediate/applied-ai/agents-and-tool-use/thumbnail.png",
@@ -696,6 +699,7 @@
           "contributor": "Andrej Karpathy"
         }
       ],
+      "color": "#9b6dd7",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -703,7 +707,6 @@
       "id": "foundations/what-is-programming",
       "title": "What Is Programming? Code, Languages, and How Computers Think",
       "description": "Understand what code actually is, why programming languages exist, why Python is the go-to for AI, and what it means to run a program",
-      "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 20,
       "thumbnail": "learning/foundations/what-is-programming/thumbnail.png",
@@ -731,6 +734,7 @@
         }
       ],
       "resources": [],
+      "color": "#e0a83a",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -738,7 +742,6 @@
       "id": "foundations/what-is-ai",
       "title": "What Is AI? The Real Story",
       "description": "Understand what artificial intelligence actually is, how it's used today, and why applied AI engineering is one of the most exciting career paths you can choose",
-      "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 20,
       "thumbnail": "learning/foundations/what-is-ai/thumbnail.png",
@@ -789,6 +792,7 @@
           "contributor": "Gary Sheng & Travis Oliphant"
         }
       ],
+      "color": "#e0a83a",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -796,7 +800,6 @@
       "id": "foundations/virtual-environments",
       "title": "Virtual Environments and Dependencies",
       "description": "Learn to isolate Python projects with virtual environments and manage packages — essential skills before building anything real.",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 25,
       "thumbnail": "learning/foundations/virtual-environments/thumbnail.png",
@@ -828,6 +831,7 @@
           "type": "article"
         }
       ],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -835,7 +839,6 @@
       "id": "foundations/setting-up-cursor",
       "title": "Setting Up Cursor: Your AI-Powered Workspace",
       "description": "Download, install, and configure Cursor — the AI-native code editor that will be your primary tool throughout this curriculum",
-      "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 30,
       "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.png",
@@ -862,6 +865,7 @@
         }
       ],
       "resources": [],
+      "color": "#e0a83a",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -869,7 +873,6 @@
       "id": "foundations/reading-writing-data",
       "title": "Reading and Writing Data",
       "description": "Work with files, CSV, JSON, and live APIs in Python — the skills you need before connecting to AI services",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
       "thumbnail": "learning/foundations/reading-writing-data/thumbnail.png",
@@ -908,6 +911,7 @@
           "contributor": "Travis Oliphant"
         }
       ],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-07"
     },
@@ -915,7 +919,6 @@
       "id": "foundations/python-through-ai",
       "title": "Python Through AI: Learn by Reading, Not Memorizing",
       "description": "Learn Python fundamentals the modern way — give AI a task, read what it writes, understand the patterns, and modify the code yourself",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 45,
       "thumbnail": "learning/foundations/python-through-ai/thumbnail.png",
@@ -960,6 +963,7 @@
           "contributor": "Travis Oliphant"
         }
       ],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -967,7 +971,6 @@
       "id": "foundations/navigating-an-ide",
       "title": "Navigating an IDE: Finding Your Way Around Cursor",
       "description": "Learn the layout of your code editor — the file explorer, editor area, terminal, and essential keyboard shortcuts that make you fast",
-      "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 25,
       "thumbnail": "learning/foundations/navigating-an-ide/thumbnail.png",
@@ -992,6 +995,7 @@
         }
       ],
       "resources": [],
+      "color": "#e0a83a",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -999,7 +1003,6 @@
       "id": "foundations/git-basics",
       "title": "Git Basics: Saving Snapshots of Your Work",
       "description": "Learn version control with Git and GitHub — track changes, write meaningful commits, and push your code to the cloud",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
       "thumbnail": "learning/foundations/git-basics/thumbnail.png",
@@ -1013,7 +1016,8 @@
         "foundations/files-folders-terminal"
       ],
       "unlocks": [
-        "intermediate/applied-ai/how-ai-apis-work"
+        "intermediate/applied-ai/how-ai-apis-work",
+        "tooling/ai-workflows/personal-ai-system"
       ],
       "content_path": "learning/foundations/git-basics/git-basics.md",
       "contributors": [
@@ -1037,6 +1041,7 @@
           "contributor": "Hamel Husain"
         }
       ],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -1044,7 +1049,6 @@
       "id": "foundations/first-conversation-with-ai",
       "title": "Your First Conversation with AI in Cursor",
       "description": "Learn to use Cursor's AI features — chat, inline editing, and the composer — to write code by having a conversation instead of typing it from memory",
-      "layer": 0,
       "difficulty": "beginner",
       "estimated_minutes": 25,
       "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.png",
@@ -1062,7 +1066,8 @@
         "foundations/what-is-programming",
         "foundations/python-through-ai",
         "tooling/ai-ides/cursor-deep-dive",
-        "foundations/debugging-with-ai"
+        "foundations/debugging-with-ai",
+        "intermediate/applied-ai/the-applied-ai-engineer"
       ],
       "content_path": "learning/foundations/first-conversation-with-ai/first-conversation-with-ai.md",
       "contributors": [
@@ -1072,6 +1077,7 @@
         }
       ],
       "resources": [],
+      "color": "#e0a83a",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -1079,7 +1085,6 @@
       "id": "foundations/files-folders-terminal",
       "title": "Files, Folders, and the Terminal",
       "description": "Understand how your computer organizes files, navigate with the command line, and run Python scripts from the terminal",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 30,
       "thumbnail": "learning/foundations/files-folders-terminal/thumbnail.png",
@@ -1104,6 +1109,7 @@
         }
       ],
       "resources": [],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -1111,7 +1117,6 @@
       "id": "foundations/debugging-with-ai",
       "title": "Debugging with AI",
       "description": "Turn cryptic error messages into learning opportunities — use AI to understand, diagnose, and fix bugs in your code.",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 30,
       "thumbnail": "learning/foundations/debugging-with-ai/thumbnail.png",
@@ -1142,6 +1147,7 @@
         }
       ],
       "resources": [],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -1149,7 +1155,6 @@
       "id": "foundations/build-your-first-script",
       "title": "Build Your First Script",
       "description": "Combine everything you've learned into a real, useful Python project — planned with AI, built step by step, and pushed to GitHub",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 40,
       "thumbnail": "learning/foundations/build-your-first-script/thumbnail.png",
@@ -1177,6 +1182,7 @@
         }
       ],
       "resources": [],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-03-30"
     },
@@ -1184,7 +1190,6 @@
       "id": "foundations/apis-and-web-basics",
       "title": "APIs and Web Basics",
       "description": "Understand how applications talk to each other over the web — HTTP requests, JSON data, and the basics of APIs that power modern software.",
-      "layer": 1,
       "difficulty": "beginner",
       "estimated_minutes": 35,
       "thumbnail": "learning/foundations/apis-and-web-basics/thumbnail.png",
@@ -1218,6 +1223,7 @@
           "type": "article"
         }
       ],
+      "color": "#3dadcf",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -1225,7 +1231,6 @@
       "id": "advanced/applied-ai/structured-outputs",
       "title": "Structured Outputs & Data Extraction",
       "description": "Learn to extract structured, validated data from LLMs using tools like Instructor and Pydantic — the backbone of reliable AI-powered data pipelines.",
-      "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 50,
       "thumbnail": "learning/advanced/applied-ai/structured-outputs/thumbnail.png",
@@ -1272,6 +1277,7 @@
           "contributor": "Chip Huyen"
         }
       ],
+      "color": "#d946ef",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -1279,7 +1285,6 @@
       "id": "advanced/applied-ai/multi-modal-ai",
       "title": "Multi-Modal AI",
       "description": "Go beyond text — work with images, audio, and video through multi-modal AI APIs to build applications that see, hear, and understand.",
-      "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 50,
       "thumbnail": "learning/advanced/applied-ai/multi-modal-ai/thumbnail.png",
@@ -1317,6 +1322,7 @@
           "type": "article"
         }
       ],
+      "color": "#d946ef",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -1324,7 +1330,6 @@
       "id": "advanced/applied-ai/ml-systems-design",
       "title": "ML Systems Design",
       "description": "Design reliable AI systems for production — covering architecture patterns, monitoring, deployment strategies, and the operational practices that separate prototypes from products.",
-      "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 50,
       "thumbnail": "learning/advanced/applied-ai/ml-systems-design/thumbnail.png",
@@ -1371,6 +1376,7 @@
           "contributor": "Hamel Husain"
         }
       ],
+      "color": "#d946ef",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -1378,7 +1384,6 @@
       "id": "advanced/applied-ai/llm-security",
       "title": "LLM Security & Safety",
       "description": "Learn to identify and defend against prompt injection, jailbreaks, and data exfiltration attacks — essential knowledge for deploying LLMs in production.",
-      "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 45,
       "thumbnail": "learning/advanced/applied-ai/llm-security/thumbnail.png",
@@ -1418,6 +1423,7 @@
           "contributor": "Lilian Weng"
         }
       ],
+      "color": "#d946ef",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -1425,7 +1431,6 @@
       "id": "advanced/applied-ai/fine-tuning",
       "title": "Fine-Tuning Fundamentals",
       "description": "Understand when and how to fine-tune language models — from dataset preparation to LoRA adapters to evaluation — and when simpler approaches are better.",
-      "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 60,
       "thumbnail": "learning/advanced/applied-ai/fine-tuning/thumbnail.png",
@@ -1472,6 +1477,7 @@
           "contributor": "Chip Huyen"
         }
       ],
+      "color": "#d946ef",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -1479,7 +1485,6 @@
       "id": "advanced/applied-ai/deploying-ai-apps",
       "title": "Deploying AI Applications",
       "description": "Ship your AI projects to the world — from FastAPI backends to Docker containers to cloud deployment, with cost management and scaling strategies.",
-      "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 55,
       "thumbnail": "learning/advanced/applied-ai/deploying-ai-apps/thumbnail.png",
@@ -1523,6 +1528,7 @@
           "contributor": "Chip Huyen"
         }
       ],
+      "color": "#d946ef",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     },
@@ -1530,7 +1536,6 @@
       "id": "advanced/applied-ai/advanced-rag",
       "title": "Advanced RAG Patterns",
       "description": "Go beyond basic RAG with hybrid search, intelligent chunking strategies, reranking, and evaluation-driven iteration to build production-quality retrieval systems.",
-      "layer": 3,
       "difficulty": "advanced",
       "estimated_minutes": 55,
       "thumbnail": "learning/advanced/applied-ai/advanced-rag/thumbnail.png",
@@ -1569,6 +1574,7 @@
           "contributor": "Jason Liu"
         }
       ],
+      "color": "#d946ef",
       "author": "ALL Applied AI Network",
       "last_updated": "2026-04-04"
     }
@@ -1627,6 +1633,10 @@
       "to": "intermediate/applied-ai/prompt-engineering"
     },
     {
+      "from": "intermediate/applied-ai/the-applied-ai-engineer",
+      "to": "intermediate/applied-ai/prompt-engineering"
+    },
+    {
       "from": "foundations/git-basics",
       "to": "intermediate/applied-ai/how-ai-apis-work"
     },
@@ -1640,6 +1650,10 @@
     },
     {
       "from": "foundations/apis-and-web-basics",
+      "to": "intermediate/applied-ai/how-ai-apis-work"
+    },
+    {
+      "from": "intermediate/applied-ai/the-applied-ai-engineer",
       "to": "intermediate/applied-ai/how-ai-apis-work"
     },
     {
@@ -1806,16 +1820,8 @@
   "series": [],
   "stats": {
     "total_nodes": 34,
-    "total_edges": 57,
+    "total_edges": 59,
     "total_series": 0,
-    "by_layer": {
-      "0": 5,
-      "1": 10,
-      "2": 12,
-      "3": 7,
-      "4": 0,
-      "5": 0
-    },
     "by_difficulty": {
       "intermediate": 11,
       "beginner": 16,

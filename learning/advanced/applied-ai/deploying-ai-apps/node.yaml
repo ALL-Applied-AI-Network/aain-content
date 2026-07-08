@@ -1,7 +1,7 @@
 id: "advanced/applied-ai/deploying-ai-apps"
 title: "Deploying AI Applications"
 description: "Ship your AI projects to the world — from FastAPI backends to Docker containers to cloud deployment, with cost management and scaling strategies."
-layer: 3
+color: "#d946ef"
 difficulty: advanced
 estimated_minutes: 55
 thumbnail: "thumbnail.png"

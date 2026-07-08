@@ -67,7 +67,7 @@ The learning tree is an interactive, interconnected graph of learning resources 
 ### Curriculum Overview
 
 ```
-Layer 0                Layer 1                 Layer 2                  Layer 3
+Getting started        Coding with AI          Building AI apps         Shipping AI products
 I want to learn AI     I'm coding with AI      I'm building AI apps     I ship AI products
 ───────────────────    ───────────────────     ───────────────────      ──────────────────
 What is AI             Python through AI       AI APIs & SDKs           Web apps + AI
@@ -77,7 +77,7 @@ First AI conversation  Working with data       Agents & tool use        Monitori
 What is programming    Build: first script     Build: AI agent          Build: production app
                                 ╲
                                  ╲
-                    Layer 4                          Layer 5
+                    Research track                   Specializations
                     I understand the engine           I go deep
                     ───────────────────              ──────────────────
                     Neural networks                  Computer vision
@@ -87,8 +87,8 @@ What is programming    Build: first script     Build: AI agent          Build: p
                     Classical ML                     MLOps & infrastructure
 ```
 
-**Layers 0-3** are the main trunk: the applied AI engineer path.
-**Layers 4-5** are branches for research-oriented students who want to understand how models work under the hood.
+**The main trunk** (foundations through production) is the applied AI engineer path — prerequisites chain each topic to the next.
+**The research track and specializations** are branches for students who want to understand how models work under the hood.
 **Tooling** is a parallel track (AI IDEs, Git, Jupyter, cloud compute) that students enter anytime.
 
 ### How it works
@@ -100,7 +100,7 @@ Every learning resource has a `node.yaml` colocated with its markdown content:
 id: "foundations/setting-up-cursor"
 title: "Setting Up Cursor: Your AI-Powered Workspace"
 difficulty: beginner
-layer: 0
+color: "#e0a83a"   # optional — omit to inherit the nearest prerequisite's color
 estimated_minutes: 30
 tags: ["setup", "cursor", "ide", "getting-started"]
 
@@ -170,15 +170,15 @@ const article = await fetch(`${CONTENT_URL}/learning/intermediate/applied-ai/rag
 
 ```
 learning/
-├── foundations/            Layer 0-1: beginner -> coding with AI
+├── foundations/            Beginner: zero -> coding with AI
 ├── intermediate/
-│   ├── applied-ai/        Layer 2: AI APIs, prompting, RAG, agents (the core)
-│   ├── production/        Layer 3: web apps, deployment, monitoring
+│   ├── applied-ai/        AI APIs, prompting, RAG, agents (the core)
+│   ├── production/        Web apps, deployment, monitoring
 │   └── data-skills/       Data handling and visualization
 ├── advanced/
-│   ├── foundations-of-ml/  Layer 4: neural nets, training, embeddings, classical ML
-│   ├── computer-vision/    Layer 5: specialization
-│   ├── nlp/                Layer 5: specialization
+│   ├── foundations-of-ml/  Neural nets, training, embeddings, classical ML
+│   ├── computer-vision/    Specialization
+│   ├── nlp/                Specialization
 │   ├── reinforcement-learning/
 │   ├── generative-models/
 │   └── mlops/

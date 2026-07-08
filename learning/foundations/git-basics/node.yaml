@@ -1,7 +1,7 @@
 id: "foundations/git-basics"
 title: "Git Basics: Saving Snapshots of Your Work"
 description: "Learn version control with Git and GitHub — track changes, write meaningful commits, and push your code to the cloud"
-layer: 1
+color: "#3dadcf"
 difficulty: beginner
 estimated_minutes: 35
 thumbnail: "thumbnail.png"
@@ -11,6 +11,7 @@ prerequisites:
   - "foundations/files-folders-terminal"
 unlocks:
   - "intermediate/applied-ai/how-ai-apis-work"
+  - "tooling/ai-workflows/personal-ai-system"
 
 content_file: "git-basics.md"
 notebook_file: null

@@ -3,7 +3,7 @@
 You're about to learn Python — the most widely used language in AI engineering. But you're not going to learn it the traditional way. Instead of memorizing syntax flashcards, you'll give AI a task, read the code it writes, understand the patterns, and then modify it yourself. This is how professional engineers work in 2026.
 
 :::callout[info]
-This article assumes you have Cursor installed and have had at least one conversation with an AI assistant. If not, go back and complete the Layer 0 prerequisites first.
+This article assumes you have Cursor installed and have had at least one conversation with an AI assistant. If not, go back and complete this article's prerequisites first — they're listed in the sidebar.
 :::
 
 ## The AI-First Learning Method

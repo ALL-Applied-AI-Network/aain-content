@@ -1,7 +1,7 @@
 id: "foundations/navigating-an-ide"
 title: "Navigating an IDE: Finding Your Way Around Cursor"
 description: "Learn the layout of your code editor — the file explorer, editor area, terminal, and essential keyboard shortcuts that make you fast"
-layer: 0
+color: "#e0a83a"
 difficulty: beginner
 estimated_minutes: 25
 thumbnail: "thumbnail.png"

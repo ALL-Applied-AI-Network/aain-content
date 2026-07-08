@@ -1,7 +1,7 @@
 id: "advanced/applied-ai/ml-systems-design"
 title: "ML Systems Design"
 description: "Design reliable AI systems for production — covering architecture patterns, monitoring, deployment strategies, and the operational practices that separate prototypes from products."
-layer: 3
+color: "#d946ef"
 difficulty: advanced
 estimated_minutes: 50
 thumbnail: "thumbnail.png"

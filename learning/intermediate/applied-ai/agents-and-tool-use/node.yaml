@@ -1,7 +1,7 @@
 id: "intermediate/applied-ai/agents-and-tool-use"
 title: "Agents and Tool Use"
 description: "Understand AI agents that take actions in the world — define tools as JSON schemas, let the model decide when to call them, and build your first agentic loop"
-layer: 2
+color: "#9b6dd7"
 difficulty: intermediate
 estimated_minutes: 55
 thumbnail: "thumbnail.png"

@@ -27,7 +27,8 @@ export interface TreeNode {
   id: string;
   title: string;
   description: string;
-  layer: number;
+  /** Optional explicit color ("#rrggbb") — see resolveNodeColor for inheritance. */
+  color?: string;
   difficulty: string;
   estimated_minutes: number;
   thumbnail: string;
@@ -59,7 +60,6 @@ export interface TreeStats {
   total_nodes: number;
   total_edges: number;
   total_series: number;
-  by_layer: Record<string, number>;
   by_difficulty: Record<string, number>;
 }
 
@@ -73,26 +73,70 @@ export interface TreeJson {
 }
 
 // ---------------------------------------------------------------------------
-// Layer helpers
+// Color helpers
 // ---------------------------------------------------------------------------
 
-export const LAYER_COLORS: Record<number, string> = {
-  0: "#e0a83a",      // warm gold — welcoming entry
-  1: "#3dadcf",      // teal — building skills
-  2: "#9b6dd7",      // purple — applied complexity
-  3: "#d946ef",      // magenta — advanced
-  4: "#e85d5d",      // red — expert
-  5: "#f5a623",      // amber — mastery
-};
+/** Fallback for nodes whose ancestor chain carries no explicit color. */
+export const DEFAULT_NODE_COLOR = "#3dadcf";
 
-export const LAYER_NAMES: Record<number, string> = {
-  0: "Foundations",
-  1: "Fundamentals",
-  2: "Intermediate",
-  3: "Advanced",
-  4: "Expert",
-  5: "Mastery",
-};
+/** Frozen preset swatches (the six former layer colors). */
+export const PALETTE: string[] = [
+  "#e0a83a",      // warm gold
+  "#3dadcf",      // teal
+  "#9b6dd7",      // purple
+  "#d946ef",      // magenta
+  "#e85d5d",      // red
+  "#f5a623",      // amber
+];
+
+// Memoized resolutions, keyed per node map so stale trees never leak colors.
+const colorCaches = new WeakMap<Map<string, TreeNode>, Map<string, string>>();
+
+/**
+ * Effective color of a node: its explicit `color` if set, otherwise the
+ * effective color of its nearest ancestor (walking the first-prerequisite
+ * chain), otherwise DEFAULT_NODE_COLOR. Cycle-guarded and memoized.
+ */
+export function resolveNodeColor(
+  nodeId: string,
+  nodesById: Map<string, TreeNode>
+): string {
+  let cache = colorCaches.get(nodesById);
+  if (!cache) {
+    cache = new Map();
+    colorCaches.set(nodesById, cache);
+  }
+
+  // Walk up the first-prerequisite chain until an explicit color, a cached
+  // resolution, a cycle, or a missing node ends the search.
+  const chain: string[] = [];
+  const visited = new Set<string>();
+  let resolved = DEFAULT_NODE_COLOR;
+  let currentId: string | undefined = nodeId;
+
+  while (currentId !== undefined && !visited.has(currentId)) {
+    const cached = cache.get(currentId);
+    if (cached) {
+      resolved = cached;
+      break;
+    }
+    visited.add(currentId);
+
+    const node = nodesById.get(currentId);
+    if (!node) break;
+    chain.push(currentId);
+
+    if (node.color) {
+      resolved = node.color;
+      break;
+    }
+    currentId = node.prerequisites[0];
+  }
+
+  // Every node on the walked chain shares the same effective color.
+  for (const id of chain) cache.set(id, resolved);
+  return resolved;
+}
 
 export const DIFFICULTY_COLORS: Record<string, string> = {
   beginner: "#4ade80",
@@ -151,12 +195,10 @@ export function articleUrl(nodeId: string): string {
 
 export function treeUrl(options?: {
   series?: string;
-  layer?: number;
   highlight?: string;
 }): string {
   const params = new URLSearchParams();
   if (options?.series) params.set("series", options.series);
-  if (options?.layer !== undefined) params.set("layer", String(options.layer));
   if (options?.highlight) params.set("highlight", options.highlight);
   const qs = params.toString();
   return `tree.html${qs ? `?${qs}` : ""}`;

@@ -1,7 +1,7 @@
 id: "foundations/build-your-first-script"
 title: "Build Your First Script"
 description: "Combine everything you've learned into a real, useful Python project — planned with AI, built step by step, and pushed to GitHub"
-layer: 1
+color: "#3dadcf"
 difficulty: beginner
 estimated_minutes: 40
 thumbnail: "thumbnail.png"

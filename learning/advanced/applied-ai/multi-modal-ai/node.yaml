@@ -1,7 +1,7 @@
 id: "advanced/applied-ai/multi-modal-ai"
 title: "Multi-Modal AI"
 description: "Go beyond text — work with images, audio, and video through multi-modal AI APIs to build applications that see, hear, and understand."
-layer: 3
+color: "#d946ef"
 difficulty: advanced
 estimated_minutes: 50
 thumbnail: "thumbnail.png"

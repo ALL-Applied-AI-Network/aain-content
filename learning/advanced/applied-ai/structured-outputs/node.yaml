@@ -1,7 +1,7 @@
 id: "advanced/applied-ai/structured-outputs"
 title: "Structured Outputs & Data Extraction"
 description: "Learn to extract structured, validated data from LLMs using tools like Instructor and Pydantic — the backbone of reliable AI-powered data pipelines."
-layer: 3
+color: "#d946ef"
 difficulty: advanced
 estimated_minutes: 50
 thumbnail: "thumbnail.png"

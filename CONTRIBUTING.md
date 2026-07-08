@@ -12,7 +12,7 @@ Thank you for helping build the open-source curriculum that powers the ALL Appli
 
 | Type | Where it goes | How to start |
 |---|---|---|
-| **Learning tree article** | `learning/{layer}/{topic}/` | Create a directory with `node.yaml` + markdown + thumbnail |
+| **Learning tree article** | `learning/{area}/{topic}/` | Create a directory with `node.yaml` + markdown + thumbnail |
 | **Workshop** | `workshops/{name}/` | Create a directory with `metadata.yaml` + `workshop.md` |
 | **Playbook** | `playbooks/{category}/` | Add a markdown file to an existing category or propose a new one |
 | **Template** | `templates/` | Add a markdown template (sponsor proposals, reports, etc.) |
@@ -36,7 +36,7 @@ learning/intermediate/applied-ai/my-new-topic/
 id: "intermediate/applied-ai/my-new-topic"
 title: "My New Topic"
 description: "A clear, one-sentence description of what the student will learn"
-layer: 2
+color: "#9b6dd7"               # optional — omit to inherit the nearest prerequisite's color
 difficulty: intermediate       # beginner | intermediate | advanced
 estimated_minutes: 45
 thumbnail: "thumbnail.png"
@@ -98,7 +98,7 @@ Open a PR against `main`. CI will run validation automatically. A maintainer wil
 ## Content Quality Standards
 
 - **Expert-quality writing.** Clear, precise, no filler. If a sentence doesn't teach something, cut it.
-- **Applied focus.** Every concept should connect to something the student can build or use. Theory for theory's sake belongs in Layer 4–5, and even there it should feel practical.
+- **Applied focus.** Every concept should connect to something the student can build or use. Theory for theory's sake belongs in the research-track branches (foundations-of-ml and the specializations), and even there it should feel practical.
 - **Build challenges.** Every article should end with a hands-on challenge (use the `:::build-challenge` component).
 - **Code that works.** All code examples must be runnable. Test them before submitting.
 - **Proper attribution.** Cite sources. Link to original papers or documentation where relevant.

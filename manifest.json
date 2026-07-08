@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-04-05T07:19:47.930Z",
+  "generated_at": "2026-07-08T16:24:40.333Z",
   "content": [
+    {
+      "type": "learning",
+      "id": "tooling/ai-workflows/personal-ai-system",
+      "title": "Building a Personal AI System",
+      "description": "Move beyond chatbot interactions — build a persistent, file-based AI system that compounds in value over time using markdown, Git, and context management",
+      "path": "learning/tooling/ai-workflows/personal-ai-system/personal-ai-system.md",
+      "thumbnail": "learning/tooling/ai-workflows/personal-ai-system/thumbnail.png"
+    },
     {
       "type": "learning",
       "id": "tooling/ai-ides/cursor-deep-dive",
@@ -33,6 +41,14 @@
       "description": "Collect training data and build knowledge bases by scraping the web responsibly — with BeautifulSoup, ethical guidelines, and practical patterns.",
       "path": "learning/intermediate/applied-ai/web-scraping/web-scraping.md",
       "thumbnail": "learning/intermediate/applied-ai/web-scraping/thumbnail.png"
+    },
+    {
+      "type": "learning",
+      "id": "intermediate/applied-ai/the-applied-ai-engineer",
+      "title": "The Applied AI Engineer",
+      "description": "Understand the applied AI engineer role — why implementation skills matter as much as model-building, and how to position yourself for the career opportunity",
+      "path": "learning/intermediate/applied-ai/the-applied-ai-engineer/the-applied-ai-engineer.md",
+      "thumbnail": "learning/intermediate/applied-ai/the-applied-ai-engineer/thumbnail.png"
     },
     {
       "type": "learning",
@@ -260,27 +276,27 @@
     },
     {
       "type": "playbook",
-      "title": "Speaker Series: Bringing Industry to Campus",
+      "title": "Speaker Series",
       "path": "playbooks/speaker-series/index.md"
     },
     {
       "type": "playbook",
-      "title": "Research Groups: From Curiosity to Publication",
+      "title": "Research Groups",
       "path": "playbooks/research-groups/index.md"
     },
     {
       "type": "playbook",
-      "title": "Innovation Labs: Sponsor-Backed AI Competitions",
+      "title": "Innovation Labs",
       "path": "playbooks/innovation-labs/index.md"
     },
     {
       "type": "playbook",
-      "title": "Hackathons: Plan, Run, and Ship",
+      "title": "Hackathons",
       "path": "playbooks/hackathons/index.md"
     },
     {
       "type": "playbook",
-      "title": "Getting Started: Launch Your AI Hub",
+      "title": "Getting Started",
       "path": "playbooks/getting-started/index.md"
     },
     {

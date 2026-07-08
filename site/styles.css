@@ -36,13 +36,13 @@
   --gradient-purple: #a855f7;
   --gradient-brand: linear-gradient(135deg, #3b82f6, #22d3ee, #ec4899, #a855f7);
 
-  /* Layer colors — used in skill tree, not splashed everywhere */
-  --layer-0: #22c55e;
-  --layer-1: #3b82f6;
-  --layer-2: #a855f7;
-  --layer-3: #f97316;
-  --layer-4: #ef4444;
-  --layer-5: #eab308;
+  /* Palette swatches — accent colors for roles/details, not splashed everywhere */
+  --palette-0: #22c55e;
+  --palette-1: #3b82f6;
+  --palette-2: #a855f7;
+  --palette-3: #f97316;
+  --palette-4: #ef4444;
+  --palette-5: #eab308;
 
   /* Difficulty colors */
   --diff-beginner: #10b981;
@@ -449,16 +449,6 @@ body {
   background: var(--bg-card-hover);
 }
 
-.outcome-card__layer {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  color: var(--layer-color, var(--accent-primary));
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.75rem;
-}
-
 .outcome-card__title {
   font-size: 1.05rem;
   font-weight: 600;
@@ -699,10 +689,6 @@ body {
   color: var(--diff-expert);
 }
 
-.badge--layer {
-  font-size: 0.6rem;
-}
-
 /* ---------- Full-Page Tree ----------
    The tree page hosts its own toolbar + sidebar layout and the nav
    sits inline at the top (not fixed). Zero out body's `padding-top`
@@ -781,13 +767,6 @@ body:has(.tree-page) {
   border-color: transparent;
   color: white;
 }
-
-.filter-btn[data-layer="0"].active { background: var(--layer-0); border-color: var(--layer-0); }
-.filter-btn[data-layer="1"].active { background: var(--layer-1); border-color: var(--layer-1); }
-.filter-btn[data-layer="2"].active { background: var(--layer-2); border-color: var(--layer-2); }
-.filter-btn[data-layer="3"].active { background: var(--layer-3); border-color: var(--layer-3); }
-.filter-btn[data-layer="4"].active { background: var(--layer-4); border-color: var(--layer-4); }
-.filter-btn[data-layer="5"].active { background: var(--layer-5); border-color: var(--layer-5); }
 
 .tree-container {
   flex: 1;
@@ -895,7 +874,7 @@ body:has(.tree-page) {
   flex-shrink: 0;
 }
 
-.node-tooltip__layer {
+.node-tooltip__difficulty {
   font-size: 0.65rem;
   font-weight: 600;
   color: var(--text-muted);
@@ -980,14 +959,6 @@ body:has(.tree-page) {
 
 .node-panel__close:hover {
   color: var(--text-primary);
-}
-
-.node-panel__layer {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 0.5rem;
 }
 
 .node-panel__title {
@@ -2470,7 +2441,7 @@ body:has(.tree-page) {
 }
 
 .hub-cta__feature .check {
-  color: var(--layer-0);
+  color: var(--palette-0);
   font-weight: 700;
 }
 

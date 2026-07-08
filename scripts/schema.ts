@@ -48,8 +48,10 @@ export const DifficultyEnum = z.enum([
 ]);
 export type Difficulty = z.infer<typeof DifficultyEnum>;
 
-/** Layer numbers map to the learning-tree depth (0 = foundations, 5 = mastery). */
-export const LayerSchema = z.number().int().min(0).max(5);
+/** Explicit node color as a 6-digit hex string, e.g. "#3dadcf". */
+export const HexColorSchema = z
+  .string()
+  .regex(/^#[0-9a-fA-F]{6}$/, 'Color must be a 6-digit hex string like "#3dadcf"');
 
 // ---------------------------------------------------------------------------
 // node.yaml — individual learning node
@@ -68,8 +70,11 @@ export const NodeYamlSchema = z.object({
   title: z.string().min(1, "Title must not be empty"),
   description: z.string().min(1, "Description must not be empty"),
 
-  /** Layer in the learning tree (0-5). */
-  layer: LayerSchema,
+  /**
+   * Optional explicit color. Nodes without one inherit the effective color of
+   * their nearest ancestor (first prerequisite chain) on the site.
+   */
+  color: HexColorSchema.optional(),
 
   difficulty: DifficultyEnum,
 

@@ -127,19 +127,12 @@ function renderContentLibrary(tree: TreeJson, manifest: ManifestJson | null): vo
   const playbooks = manifest?.content.filter((e) => e.type === "playbook") || [];
   const workshops = manifest?.content.filter((e) => e.type === "workshop") || [];
 
-  // Learning Tree card
-  const layerCounts = tree.stats.by_layer;
-  const layerLabels: Record<string, string> = {
-    "0": "Foundations",
-    "1": "Fundamentals",
-    "2": "Applied AI",
-    "3": "Advanced",
-    "4": "Expert",
-    "5": "Mastery",
-  };
-  const layerItems = Object.entries(layerCounts)
-    .filter(([, count]) => count > 0)
-    .map(([layer, count]) => `<li>${layerLabels[layer] || `Layer ${layer}`}: ${count} lessons</li>`)
+  // Learning Tree card — difficulty breakdown, in ramp order
+  const difficultyCounts = tree.stats.by_difficulty;
+  const difficultyOrder = ["beginner", "intermediate", "advanced", "expert"];
+  const difficultyItems = difficultyOrder
+    .filter((d) => (difficultyCounts[d] || 0) > 0)
+    .map((d) => `<li>${d.charAt(0).toUpperCase() + d.slice(1)}: ${difficultyCounts[d]} lessons</li>`)
     .join("");
 
   // Render compact content items inside the repo card
@@ -159,6 +152,7 @@ function renderContentLibrary(tree: TreeJson, manifest: ManifestJson | null): vo
       <div>
         <strong>Learning Tree</strong>
         <span>${learningCount} lessons &middot; ~${totalHours} hours</span>
+        ${difficultyItems ? `<ul class="repo-content-row__breakdown">${difficultyItems}</ul>` : ""}
       </div>
       <a href="./tree.html" class="repo-content-row__link">Explore &rarr;</a>
     </div>

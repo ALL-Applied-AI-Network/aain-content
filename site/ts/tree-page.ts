@@ -8,8 +8,6 @@ import {
   $,
   type TreeJson,
   type TreeNode,
-  LAYER_COLORS,
-  LAYER_NAMES,
   DIFFICULTY_COLORS,
   formatMinutes,
 } from "./main";
@@ -145,18 +143,12 @@ function renderSidebar(tree: TreeJson, query: string): void {
 
   const q = query.toLowerCase().trim();
 
-  // Group nodes by layer
-  const layers = new Map<number, TreeNode[]>();
-  for (const node of tree.nodes) {
-    if (q && !matchesQuery(node, q)) continue;
-    const arr = layers.get(node.layer) || [];
-    arr.push(node);
-    layers.set(node.layer, arr);
-  }
+  // Group nodes by difficulty (per-node key — search can only shrink
+  // groups, never reshuffle membership)
+  const filtered = tree.nodes.filter((node) => !q || matchesQuery(node, q));
+  const groups = groupByDifficulty(filtered);
 
-  const sortedLayers = Array.from(layers.entries()).sort(([a], [b]) => a - b);
-
-  if (sortedLayers.length === 0) {
+  if (groups.length === 0) {
     container.innerHTML = `<div style="padding:2rem 1rem;text-align:center;color:var(--text-muted);font-size:0.8rem;">No lessons found${q ? ` for "${query}"` : ""}.</div>`;
     return;
   }
@@ -166,19 +158,16 @@ function renderSidebar(tree: TreeJson, query: string): void {
   for (const n of tree.nodes) nodeMap.set(n.id, n);
 
   let html = "";
-  for (const [layer, nodes] of sortedLayers) {
-    const color = LAYER_COLORS[layer] || "#6366f1";
-    const name = LAYER_NAMES[layer] || `Layer ${layer}`;
-
+  for (const { key, label, color, nodes } of groups) {
     html += `
-      <div class="sidebar__layer-group" data-layer="${layer}">
-        <div class="sidebar__layer-header" data-layer="${layer}">
-          <svg class="sidebar__layer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          <span class="sidebar__layer-dot" style="background:${color}"></span>
-          <span class="sidebar__layer-name">${name}</span>
-          <span class="sidebar__layer-count">${nodes.length}</span>
+      <div class="sidebar__branch-group" data-branch="${key}">
+        <div class="sidebar__branch-header" data-branch="${key}">
+          <svg class="sidebar__branch-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          <span class="sidebar__branch-dot" style="background:${color}"></span>
+          <span class="sidebar__branch-name">${label}</span>
+          <span class="sidebar__branch-count">${nodes.length}</span>
         </div>
-        <div class="sidebar__layer-items" data-layer="${layer}">
+        <div class="sidebar__branch-items" data-branch="${key}">
     `;
 
     for (const node of nodes) {
@@ -213,18 +202,18 @@ function renderSidebar(tree: TreeJson, query: string): void {
 
   // Set max-heights for collapsible animation
   requestAnimationFrame(() => {
-    const allItemContainers = container.querySelectorAll(".sidebar__layer-items");
+    const allItemContainers = container.querySelectorAll(".sidebar__branch-items");
     allItemContainers.forEach((el) => {
       (el as HTMLElement).style.maxHeight = el.scrollHeight + "px";
     });
   });
 
-  // Wire up layer header click to toggle collapse
-  const headers = container.querySelectorAll(".sidebar__layer-header");
+  // Wire up branch header click to toggle collapse
+  const headers = container.querySelectorAll(".sidebar__branch-header");
   headers.forEach((header) => {
     header.addEventListener("click", () => {
-      const layer = header.getAttribute("data-layer");
-      const items = container.querySelector(`.sidebar__layer-items[data-layer="${layer}"]`) as HTMLElement | null;
+      const branch = header.getAttribute("data-branch");
+      const items = container.querySelector(`.sidebar__branch-items[data-branch="${branch}"]`) as HTMLElement | null;
       if (!items) return;
 
       const isCollapsed = header.classList.contains("collapsed");
@@ -294,35 +283,25 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
     </div>
   `;
 
-  // Group nodes by layer
-  const layers = new Map<number, TreeNode[]>();
-  for (const node of tree.nodes) {
-    if (q && !matchesQuery(node, q)) continue;
-    const arr = layers.get(node.layer) || [];
-    arr.push(node);
-    layers.set(node.layer, arr);
-  }
-
-  const sortedLayers = Array.from(layers.entries()).sort(([a], [b]) => a - b);
+  // Group nodes by difficulty (same grouping as the desktop sidebar)
+  const filtered = tree.nodes.filter((node) => !q || matchesQuery(node, q));
+  const groups = groupByDifficulty(filtered);
   const nodeMap = new Map<string, TreeNode>();
   for (const n of tree.nodes) nodeMap.set(n.id, n);
 
-  if (sortedLayers.length === 0) {
+  if (groups.length === 0) {
     html += `<div style="padding:2rem 1rem;text-align:center;color:var(--text-muted);font-size:0.8rem;">No lessons found.</div>`;
   } else {
-    for (const [layer, nodes] of sortedLayers) {
-      const color = LAYER_COLORS[layer] || "#6366f1";
-      const name = LAYER_NAMES[layer] || `Layer ${layer}`;
-
+    for (const { label, color, nodes } of groups) {
       html += `
-        <div class="sidebar__layer-group">
-          <div class="sidebar__layer-header">
-            <svg class="sidebar__layer-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-            <span class="sidebar__layer-dot" style="background:${color}"></span>
-            <span class="sidebar__layer-name">${name}</span>
-            <span class="sidebar__layer-count">${nodes.length}</span>
+        <div class="sidebar__branch-group">
+          <div class="sidebar__branch-header">
+            <svg class="sidebar__branch-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            <span class="sidebar__branch-dot" style="background:${color}"></span>
+            <span class="sidebar__branch-name">${label}</span>
+            <span class="sidebar__branch-count">${nodes.length}</span>
           </div>
-          <div class="sidebar__layer-items" style="max-height:9999px">
+          <div class="sidebar__branch-items" style="max-height:9999px">
       `;
 
       for (const node of nodes) {
@@ -387,26 +366,23 @@ function renderStripDots(tree: TreeJson): void {
   const container = document.getElementById("sidebar-strip-dots");
   if (!container) return;
 
-  // Get unique layers
-  const layerSet = new Set<number>();
-  for (const node of tree.nodes) layerSet.add(node.layer);
-  const layers = Array.from(layerSet).sort((a, b) => a - b);
+  // One dot per difficulty group, in the same order as the sidebar
+  const groups = groupByDifficulty(tree.nodes);
 
   let html = "";
-  for (const layer of layers) {
-    const color = LAYER_COLORS[layer] || "#6366f1";
-    html += `<div class="sidebar-strip__dot" data-layer="${layer}" style="background:${color}" title="${LAYER_NAMES[layer] || 'Layer ' + layer}"></div>`;
+  for (const { key, label, color } of groups) {
+    html += `<div class="sidebar-strip__dot" data-branch="${key}" style="background:${color}" title="${label}"></div>`;
   }
   container.innerHTML = html;
 
-  // Clicking a dot expands sidebar and scrolls to that layer
+  // Clicking a dot expands sidebar and scrolls to that group
   const dots = container.querySelectorAll(".sidebar-strip__dot");
   dots.forEach((dot) => {
     dot.addEventListener("click", () => {
       expandSidebar();
-      const layer = dot.getAttribute("data-layer");
-      if (layer) {
-        const target = document.querySelector(`.sidebar__layer-header[data-layer="${layer}"]`);
+      const branch = dot.getAttribute("data-branch");
+      if (branch) {
+        const target = document.querySelector(`.sidebar__branch-header[data-branch="${branch}"]`);
         if (target) {
           target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
@@ -552,6 +528,57 @@ function setActiveItem(nodeId: string): void {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+/**
+ * Sidebar/bottom-sheet/strip grouping: by DIFFICULTY, the one semantic
+ * taxonomy left after the layer bands were retired. Grouping by tree
+ * structure is a dead end here — the validator requires a fully
+ * connected graph, so "walk to the root" puts all 34 lessons in one
+ * group; difficulty gives learners a meaningful "where do I start"
+ * split (and matches the home-page stats and article meta).
+ */
+interface SidebarGroup {
+  /** Stable difficulty key — doubles as the data-branch DOM handle. */
+  key: string;
+  label: string;
+  color: string;
+  nodes: TreeNode[];
+}
+
+const DIFFICULTY_ORDER = ["beginner", "intermediate", "advanced", "expert"];
+
+/**
+ * Groups `filtered` nodes by difficulty in learning-ramp order
+ * (unknown difficulties sink to the end, labeled as-is). Per-node
+ * grouping keys mean search can only shrink groups, never reshuffle
+ * membership.
+ */
+function groupByDifficulty(filtered: TreeNode[]): SidebarGroup[] {
+  const groups = new Map<string, TreeNode[]>();
+  for (const node of filtered) {
+    const key = (node.difficulty || "other").toLowerCase();
+    const arr = groups.get(key) || [];
+    arr.push(node);
+    groups.set(key, arr);
+  }
+
+  return Array.from(groups.entries())
+    .map(([key, nodes]) => ({
+      key,
+      label: key.charAt(0).toUpperCase() + key.slice(1),
+      color: DIFFICULTY_COLORS[key] || "#6366f1",
+      nodes,
+    }))
+    .sort((a, b) => {
+      const ai = DIFFICULTY_ORDER.indexOf(a.key);
+      const bi = DIFFICULTY_ORDER.indexOf(b.key);
+      return (
+        (ai === -1 ? DIFFICULTY_ORDER.length : ai) -
+          (bi === -1 ? DIFFICULTY_ORDER.length : bi) ||
+        a.key.localeCompare(b.key)
+      );
+    });
+}
 
 function matchesQuery(node: TreeNode, q: string): boolean {
   return (

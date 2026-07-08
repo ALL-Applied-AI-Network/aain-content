@@ -52,7 +52,7 @@ interface TreeNode {
   id: string;
   title: string;
   description: string;
-  layer: number;
+  color?: string;
   difficulty: string;
   estimated_minutes: number;
   thumbnail: string;
@@ -84,7 +84,6 @@ interface TreeStats {
   total_nodes: number;
   total_edges: number;
   total_series: number;
-  by_layer: Record<string, number>;
   by_difficulty: Record<string, number>;
 }
 
@@ -168,7 +167,6 @@ function generateTree(): TreeJson {
       id: parsed.id,
       title: parsed.title,
       description: parsed.description,
-      layer: parsed.layer,
       difficulty: parsed.difficulty,
       estimated_minutes: parsed.estimated_minutes,
       thumbnail: path.join(relDir, parsed.thumbnail),
@@ -180,6 +178,9 @@ function generateTree(): TreeJson {
       resources: parsed.resources || [],
     };
 
+    if (parsed.color) {
+      node.color = parsed.color;
+    }
     if (parsed.notebook_file) {
       node.notebook_path = path.join(relDir, parsed.notebook_file);
     }
@@ -211,16 +212,9 @@ function generateTree(): TreeJson {
   }));
 
   // Compute statistics
-  const byLayer: Record<string, number> = {};
   const byDifficulty: Record<string, number> = {};
 
-  // Initialize all layer slots 0-5
-  for (let i = 0; i <= 5; i++) {
-    byLayer[String(i)] = 0;
-  }
-
   for (const node of treeNodes) {
-    byLayer[String(node.layer)] = (byLayer[String(node.layer)] || 0) + 1;
     byDifficulty[node.difficulty] = (byDifficulty[node.difficulty] || 0) + 1;
   }
 
@@ -228,7 +222,6 @@ function generateTree(): TreeJson {
     total_nodes: treeNodes.length,
     total_edges: edges.length,
     total_series: treeSeries.length,
-    by_layer: byLayer,
     by_difficulty: byDifficulty,
   };
 

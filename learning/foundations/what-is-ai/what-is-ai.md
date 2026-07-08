@@ -132,15 +132,15 @@ What does an applied AI engineer actually do?
 
 This curriculum follows a clear path:
 
-**Layer 0 (where you are now):** You'll set up your tools, learn what programming is, and start talking to AI to write code. No prior experience required.
+**Getting started (where you are now):** You'll set up your tools, learn what programming is, and start talking to AI to write code. No prior experience required.
 
-**Layer 1:** You'll learn Python through AI — not by memorizing syntax, but by building things with an AI assistant helping you write and understand code.
+**Coding with AI:** You'll learn Python through AI — not by memorizing syntax, but by building things with an AI assistant helping you write and understand code.
 
-**Layer 2:** You'll dive into the core applied AI skills — using AI APIs, prompt engineering, building RAG (retrieval-augmented generation) systems, and creating AI agents.
+**Building AI apps:** You'll dive into the core applied AI skills — using AI APIs, prompt engineering, building RAG (retrieval-augmented generation) systems, and creating AI agents.
 
-**Layer 3:** You'll build production-quality AI applications — web apps, databases, deployment, monitoring. Real software that real people can use.
+**Shipping AI products:** You'll build production-quality AI applications — web apps, databases, deployment, monitoring. Real software that real people can use.
 
-**Layers 4-5 (optional branches):** For students who want to go deeper into how AI models actually work — neural networks, training, computer vision, NLP, and more.
+**Research track (optional branches):** For students who want to go deeper into how AI models actually work — neural networks, training, computer vision, NLP, and more.
 
 :::callout[info]
 You don't need to follow a rigid path. The learning tree is a graph, not a straight line. You can explore topics that interest you, skip ahead if you have experience, and come back to fill in gaps. Every node shows you what it requires and what it unlocks.

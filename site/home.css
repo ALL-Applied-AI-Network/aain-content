@@ -1142,6 +1142,15 @@
   color: var(--text-secondary);
 }
 
+/* Per-difficulty lesson counts under the Learning Tree row */
+.repo-content-row__breakdown {
+  list-style: none;
+  margin: 0.15rem 0 0;
+  padding: 0;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
 .repo-content-row__link {
   font-size: 0.8rem;
   font-weight: 600;

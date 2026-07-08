@@ -1,7 +1,7 @@
 id: "foundations/virtual-environments"
 title: "Virtual Environments and Dependencies"
 description: "Learn to isolate Python projects with virtual environments and manage packages — essential skills before building anything real."
-layer: 1
+color: "#3dadcf"
 difficulty: beginner
 estimated_minutes: 25
 thumbnail: "thumbnail.png"

@@ -1,7 +1,7 @@
 id: "intermediate/applied-ai/build-a-chatbot"
 title: "Build a Chatbot"
 description: "Build a real conversational AI application with multi-turn memory, streaming responses, and a web interface you can share with anyone"
-layer: 2
+color: "#9b6dd7"
 difficulty: intermediate
 estimated_minutes: 60
 thumbnail: "thumbnail.png"

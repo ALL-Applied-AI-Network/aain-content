@@ -1,7 +1,7 @@
 id: "intermediate/applied-ai/prompt-engineering"
 title: "Prompt Engineering"
 description: "Go beyond tips and tricks to engineer reliable, testable prompts that produce consistent results across system prompts, few-shot patterns, structured output, and chain-of-thought reasoning"
-layer: 2
+color: "#9b6dd7"
 difficulty: intermediate
 estimated_minutes: 50
 thumbnail: "thumbnail.png"
@@ -9,6 +9,7 @@ tags: ["prompt-engineering", "system-prompts", "few-shot", "chain-of-thought", "
 
 prerequisites:
   - "intermediate/applied-ai/how-ai-apis-work"
+  - "intermediate/applied-ai/the-applied-ai-engineer"
 unlocks:
   - "intermediate/applied-ai/build-a-chatbot"
   - "intermediate/applied-ai/rag-fundamentals"

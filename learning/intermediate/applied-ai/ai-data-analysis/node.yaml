@@ -1,7 +1,7 @@
 id: "intermediate/applied-ai/ai-data-analysis"
 title: "AI-Powered Data Analysis"
 description: "Combine pandas, visualization libraries, and AI to analyze datasets faster — from exploratory analysis to automated insight generation."
-layer: 2
+color: "#9b6dd7"
 difficulty: intermediate
 estimated_minutes: 55
 thumbnail: "thumbnail.png"
