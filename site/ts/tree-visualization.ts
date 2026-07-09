@@ -14,11 +14,15 @@ import {
   type TreeJson,
   type TreeNode,
   type TreeEdge,
+  type ChapterContext,
+  type ChapterOverlayNode,
   DIFFICULTY_COLORS,
   resolveNodeColor,
-  articleUrl,
+  nodeArticleUrl,
   formatMinutes,
   loadTreeData,
+  thumbnailSrc,
+  escapeHtml,
   $,
 } from "./main";
 
@@ -219,7 +223,21 @@ function computeLayout(nodes: TreeNode[], edges: TreeEdge[]): LayoutNode[] {
 
   return nodes.map((node) => {
     const p = pos.get(node.id)!;
-    return { ...node, x: Math.round(p.x), y: Math.round(p.y), depth: depthMap.get(node.id) ?? 0 };
+    // Free-form pins (chapter overlay) win over the computed slot — same
+    // world-coordinate semantics as the dashboard editor's drag-to-pin.
+    const px = (node as Partial<ChapterOverlayNode>).pos_x;
+    const py = (node as Partial<ChapterOverlayNode>).pos_y;
+    const pin =
+      typeof px === "number" && Number.isFinite(px) &&
+      typeof py === "number" && Number.isFinite(py)
+        ? { x: px, y: py }
+        : null;
+    return {
+      ...node,
+      x: Math.round((pin ?? p).x),
+      y: Math.round((pin ?? p).y),
+      depth: depthMap.get(node.id) ?? 0,
+    };
   });
 }
 
@@ -231,6 +249,10 @@ export interface TreeVizOptions {
   container: HTMLElement;
   onNodeClick?: (node: TreeNode) => void;
   embedded?: boolean;
+  /** Pre-built tree (chapter overlay); omitted = fetch ./tree.json. */
+  tree?: TreeJson;
+  /** Active chapter overlay context — labels chapter-authored cards. */
+  chapter?: ChapterContext | null;
 }
 
 export class TreeVisualization {
@@ -257,7 +279,7 @@ export class TreeVisualization {
   }
 
   async init(): Promise<void> {
-    this.tree = await loadTreeData();
+    this.tree = this.opts.tree ?? (await loadTreeData());
     this.edges = this.tree.edges;
     this.nodes = computeLayout(this.tree.nodes, this.tree.edges);
     this.nodesById = new Map(this.tree.nodes.map((n) => [n.id, n]));
@@ -449,7 +471,7 @@ export class TreeVisualization {
       if (node.thumbnail) {
         g.append("image")
           .attr("class", "tree-node__thumb")
-          .attr("href", `./${node.thumbnail}`)
+          .attr("href", thumbnailSrc(node.thumbnail))
           .attr("x", -CARD_W / 2 + thumbPad)
           .attr("y", -CARD_H / 2 + thumbPad)
           .attr("width", CARD_THUMB)
@@ -510,18 +532,57 @@ export class TreeVisualization {
           .text(line);
       }
 
-      // Time estimate
-      g.append("text")
-        .attr("class", "node-time")
-        .attr("x", titleX)
-        .attr("y", textStartY + displayLines.length * lineHeight + 4)
-        .attr("text-anchor", "start")
-        .attr("dominant-baseline", "central")
-        .attr("font-size", "9.5px")
-        .attr("font-weight", "500")
-        .attr("fill", "rgba(148, 163, 184, 0.65)")
-        .attr("font-family", "var(--font-mono)")
-        .text(formatMinutes(node.estimated_minutes));
+      // Time estimate (chapter-authored nodes may not carry one)
+      if (node.estimated_minutes) {
+        g.append("text")
+          .attr("class", "node-time")
+          .attr("x", titleX)
+          .attr("y", textStartY + displayLines.length * lineHeight + 4)
+          .attr("text-anchor", "start")
+          .attr("dominant-baseline", "central")
+          .attr("font-size", "9.5px")
+          .attr("font-weight", "500")
+          .attr("fill", "rgba(148, 163, 184, 0.65)")
+          .attr("font-family", "var(--font-mono)")
+          .text(formatMinutes(node.estimated_minutes));
+      }
+
+      // Chapter chip — label the exception, not the default: only
+      // chapter-authored cards get the chapter's name; base cards stay
+      // unmarked (mirrors the dashboard canvas call).
+      if (
+        this.opts.chapter &&
+        (node as Partial<ChapterOverlayNode>).source === "chapter"
+      ) {
+        const name = this.opts.chapter.name;
+        const chipText = name.length > 18 ? `${name.slice(0, 17)}…` : name;
+        const chipW = chipText.length * 5 + 14;
+        const chipH = 15;
+        const chipX = CARD_W / 2 - chipW - 8;
+        const chipY = -CARD_H / 2 + 7;
+        g.append("rect")
+          .attr("class", "tree-node__chip")
+          .attr("x", chipX)
+          .attr("y", chipY)
+          .attr("width", chipW)
+          .attr("height", chipH)
+          .attr("rx", chipH / 2)
+          .attr("ry", chipH / 2)
+          .attr("fill", "rgba(255,255,255,0.06)")
+          .attr("stroke", color)
+          .attr("stroke-opacity", "0.35")
+          .attr("stroke-width", "1");
+        g.append("text")
+          .attr("x", chipX + chipW / 2)
+          .attr("y", chipY + chipH / 2)
+          .attr("text-anchor", "middle")
+          .attr("dominant-baseline", "central")
+          .attr("font-size", "8px")
+          .attr("font-weight", "600")
+          .attr("fill", "#94a3b8")
+          .attr("font-family", "var(--font-mono)")
+          .text(chipText);
+      }
 
       // Root indicator — accent bar on top
       if (root) {
@@ -607,13 +668,13 @@ export class TreeVisualization {
     this.tooltip.innerHTML = `
       <div class="node-tooltip__header">
         <span class="node-tooltip__accent" style="background:${color}"></span>
-        <span class="node-tooltip__difficulty">${node.difficulty}</span>
-        <span class="node-tooltip__time">${formatMinutes(node.estimated_minutes)}</span>
+        ${node.difficulty ? `<span class="node-tooltip__difficulty">${node.difficulty}</span>` : ""}
+        ${node.estimated_minutes ? `<span class="node-tooltip__time">${formatMinutes(node.estimated_minutes)}</span>` : ""}
       </div>
-      <div class="node-tooltip__title">${node.title}</div>
-      <div class="node-tooltip__desc">${node.description}</div>
+      <div class="node-tooltip__title">${escapeHtml(node.title)}</div>
+      <div class="node-tooltip__desc">${escapeHtml(node.description)}</div>
       <div class="node-tooltip__footer">
-        <span class="node-tooltip__diff" style="color:${diffColor}">${node.difficulty}</span>
+        <span class="node-tooltip__diff" style="color:${diffColor}">${node.difficulty || ""}</span>
         <span class="node-tooltip__click-hint">Click to view →</span>
       </div>
     `;
@@ -843,7 +904,11 @@ export class TreeVisualization {
 // Node detail panel
 // ---------------------------------------------------------------------------
 
-export function openNodePanel(node: TreeNode, tree: TreeJson): void {
+export function openNodePanel(
+  node: TreeNode,
+  tree: TreeJson,
+  chapter?: ChapterContext | null
+): void {
   const panel = $(".node-panel") as HTMLElement | null;
   if (!panel) return;
 
@@ -851,33 +916,36 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
   const color = resolveNodeColor(node.id, nodesById);
   const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6b7280";
 
-  const prereqLinks = node.prerequisites
-    .map((pid) => {
-      const pn = nodesById.get(pid);
-      return pn
-        ? `<li><a href="${articleUrl(pid)}" style="color:${resolveNodeColor(pid, nodesById)}">${pn.title}</a></li>`
-        : `<li>${pid}</li>`;
-    })
-    .join("");
+  // Bodyless chapter nodes have no article page — render plain text.
+  const linkFor = (id: string): string => {
+    const n = nodesById.get(id);
+    if (!n) return `<li>${id}</li>`;
+    const href = nodeArticleUrl(n, chapter?.slug);
+    return href
+      ? `<li><a href="${href}" style="color:${resolveNodeColor(id, nodesById)}">${escapeHtml(n.title)}</a></li>`
+      : `<li><span style="color:${resolveNodeColor(id, nodesById)}">${escapeHtml(n.title)}</span></li>`;
+  };
 
-  const unlockLinks = node.unlocks
-    .map((uid) => {
-      const un = nodesById.get(uid);
-      return un
-        ? `<li><a href="${articleUrl(uid)}" style="color:${resolveNodeColor(uid, nodesById)}">${un.title}</a></li>`
-        : `<li>${uid}</li>`;
-    })
-    .join("");
+  const prereqLinks = node.prerequisites.map(linkFor).join("");
+  const unlockLinks = node.unlocks.map(linkFor).join("");
+
+  // Chapter chip mirrors the card treatment: mark the exception only.
+  const chapterChip =
+    chapter && (node as Partial<ChapterOverlayNode>).source === "chapter"
+      ? `<span style="font-size:0.65rem;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,0.06);color:#94a3b8;border:1px solid rgba(255,255,255,0.12)">${escapeHtml(chapter.name)}</span>`
+      : "";
+
+  const ctaHref = nodeArticleUrl(node, chapter?.slug);
 
   const tagsHtml = node.tags
     .map(
       (t) =>
-        `<span style="display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,0.06);color:#94a3b8;font-size:0.7rem;margin:2px 4px 2px 0">${t}</span>`
+        `<span style="display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,0.06);color:#94a3b8;font-size:0.7rem;margin:2px 4px 2px 0">${escapeHtml(t)}</span>`
     )
     .join("");
 
   const thumbHtml = node.thumbnail
-    ? `<div class="node-panel__thumb"><img src="./${node.thumbnail}" alt="${node.title}" /></div>`
+    ? `<div class="node-panel__thumb"><img src="${thumbnailSrc(node.thumbnail)}" alt="${escapeHtml(node.title)}" /></div>`
     : "";
 
   panel.style.setProperty("--panel-accent", color);
@@ -885,25 +953,26 @@ export function openNodePanel(node: TreeNode, tree: TreeJson): void {
   panel.innerHTML = `
     <button class="node-panel__close" aria-label="Close">&times;</button>
     ${thumbHtml}
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-      <span class="badge badge--${node.difficulty}" style="font-size:0.65rem;padding:2px 8px;border-radius:999px;background:${diffColor}22;color:${diffColor};border:1px solid ${diffColor}44">${node.difficulty}</span>
-    </div>
-    <h2 class="node-panel__title" style="color:#fff;margin:8px 0 6px">${node.title}</h2>
-    <p class="node-panel__desc" style="color:#94a3b8;font-size:0.85rem;line-height:1.5;margin-bottom:12px">${node.description}</p>
+    ${node.difficulty || chapterChip ? `<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+      ${node.difficulty ? `<span class="badge badge--${node.difficulty}" style="font-size:0.65rem;padding:2px 8px;border-radius:999px;background:${diffColor}22;color:${diffColor};border:1px solid ${diffColor}44">${node.difficulty}</span>` : ""}
+      ${chapterChip}
+    </div>` : ""}
+    <h2 class="node-panel__title" style="color:#fff;margin:8px 0 6px">${escapeHtml(node.title)}</h2>
+    <p class="node-panel__desc" style="color:#94a3b8;font-size:0.85rem;line-height:1.5;margin-bottom:12px">${escapeHtml(node.description)}</p>
     <div class="node-panel__meta-grid">
-      <div class="node-panel__meta-item">
+      ${node.estimated_minutes ? `<div class="node-panel__meta-item">
         <div class="node-panel__meta-label">Time</div>
         <div class="node-panel__meta-value">${formatMinutes(node.estimated_minutes)}</div>
-      </div>
-      <div class="node-panel__meta-item">
+      </div>` : ""}
+      ${node.difficulty ? `<div class="node-panel__meta-item">
         <div class="node-panel__meta-label">Difficulty</div>
         <div class="node-panel__meta-value" style="color:${diffColor}">${node.difficulty}</div>
-      </div>
+      </div>` : ""}
     </div>
     ${tagsHtml ? `<div style="margin:8px 0">${tagsHtml}</div>` : ""}
     ${prereqLinks ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Prerequisites</p><ul class="node-panel__link-list">${prereqLinks}</ul>` : ""}
     ${unlockLinks ? `<p class="node-panel__links-title" style="color:#94a3b8;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin:12px 0 4px">Unlocks</p><ul class="node-panel__link-list">${unlockLinks}</ul>` : ""}
-    <a href="${articleUrl(node.id)}" class="node-panel__cta" style="background:${color}">Read Article <span style="font-size:1.1em">&rarr;</span></a>
+    ${ctaHref ? `<a href="${ctaHref}" class="node-panel__cta" style="background:${color}">Read Article <span style="font-size:1.1em">&rarr;</span></a>` : ""}
   `;
 
   panel.classList.add("open");

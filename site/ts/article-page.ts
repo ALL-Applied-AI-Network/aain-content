@@ -5,22 +5,40 @@
 
 import {
   loadTreeData,
+  loadChapterTree,
+  adaptChapterTree,
+  chapterParam,
   getNodeById,
   getSeriesForNode,
   getSeriesNav,
   articleUrl,
+  nodeArticleUrl,
+  escapeHtml,
   formatMinutes,
   resolveNodeColor,
+  type ChapterOverlayNode,
   type TreeJson,
   type TreeNode,
   type TreeContributor,
   type TreeResource,
 } from "./main";
-import { renderArticle } from "./article-renderer";
+import { renderArticle, renderMarkdown } from "./article-renderer";
+
+/** Active ?chapter= slug — carried through every tree/article link. */
+let chapterSlug: string | null = null;
+
+/** tree.html link that keeps the chapter overlay context (plus extras). */
+function treeUrlWithChapter(extra?: Record<string, string>): string {
+  const params = new URLSearchParams(extra);
+  if (chapterSlug) params.set("chapter", chapterSlug);
+  const qs = params.toString();
+  return `./tree.html${qs ? `?${qs}` : ""}`;
+}
 
 async function init(): Promise<void> {
   const params = new URLSearchParams(window.location.search);
   const nodeId = params.get("id");
+  chapterSlug = chapterParam();
 
   if (!nodeId) {
     showError("No article ID specified. Use ?id=foundations/what-is-ai");
@@ -37,6 +55,11 @@ async function init(): Promise<void> {
 
   const node = getNodeById(tree, nodeId);
   if (!node) {
+    // Not a base node — with a chapter overlay active, the id may be a
+    // chapter-authored node from the network API.
+    if (chapterSlug && (await renderChapterArticle(chapterSlug, nodeId))) {
+      return;
+    }
     showError(`Article not found: "${nodeId}"`);
     return;
   }
@@ -50,7 +73,7 @@ async function init(): Promise<void> {
     breadcrumb.innerHTML = `
       <a href="./">Home</a>
       <span class="breadcrumb__sep">/</span>
-      <a href="./tree.html">Learning Tree</a>
+      <a href="${treeUrlWithChapter()}">Learning Tree</a>
       <span class="breadcrumb__sep">/</span>
       <span>${node.title}</span>
     `;
@@ -91,7 +114,7 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
   const actionsEl = document.getElementById("sidebar-actions");
   if (actionsEl) {
     actionsEl.innerHTML = `
-      <a href="./tree.html?node=${encodeURIComponent(node.id)}" class="sidebar-action-btn">
+      <a href="${treeUrlWithChapter({ node: node.id })}" class="sidebar-action-btn">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <circle cx="8" cy="3" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
           <circle cx="4" cy="12" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -127,7 +150,7 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
       .map((pid) => {
         const pn = getNodeById(tree, pid);
         const name = pn ? pn.title : pid;
-        return `<li><a href="${articleUrl(pid)}">${name}</a></li>`;
+        return `<li><a href="${articleUrl(pid, chapterSlug)}">${name}</a></li>`;
       })
       .join("");
 
@@ -144,7 +167,7 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
       .map((uid) => {
         const un = getNodeById(tree, uid);
         const name = un ? un.title : uid;
-        return `<li><a href="${articleUrl(uid)}">${name}</a></li>`;
+        return `<li><a href="${articleUrl(uid, chapterSlug)}">${name}</a></li>`;
       })
       .join("");
 
@@ -200,7 +223,7 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
     tagsEl.innerHTML = `
       <span class="article-sidebar__title">Tags</span>
       <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.3rem">
-        ${node.tags.map((t) => `<span class="node-tooltip__tag">${t}</span>`).join("")}
+        ${node.tags.map((t) => `<span class="node-tooltip__tag">${escapeHtml(t)}</span>`).join("")}
       </div>
     `;
   }
@@ -258,7 +281,7 @@ function renderSeriesNav(node: TreeNode, tree: TreeJson): void {
     const pn = getNodeById(tree, prev);
     prevEl.innerHTML = `
       <span class="article-nav__label">Previous</span>
-      <a class="article-nav__link" href="${articleUrl(prev)}">&larr; ${pn?.title || prev}</a>
+      <a class="article-nav__link" href="${articleUrl(prev, chapterSlug)}">&larr; ${pn?.title || prev}</a>
     `;
   }
 
@@ -266,7 +289,137 @@ function renderSeriesNav(node: TreeNode, tree: TreeJson): void {
     const nn = getNodeById(tree, next);
     nextEl.innerHTML = `
       <span class="article-nav__label">Next</span>
-      <a class="article-nav__link" href="${articleUrl(next)}">${nn?.title || next} &rarr;</a>
+      <a class="article-nav__link" href="${articleUrl(next, chapterSlug)}">${nn?.title || next} &rarr;</a>
+    `;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Chapter-authored articles (?chapter=slug + non-base id)
+// ---------------------------------------------------------------------------
+
+/**
+ * Render a chapter-authored node's article from the network API payload.
+ * Returns false on any miss (fetch failure, unknown id, base-source id)
+ * so init() falls through to the existing not-found handling.
+ */
+async function renderChapterArticle(
+  slug: string,
+  nodeId: string
+): Promise<boolean> {
+  const payload = await loadChapterTree(slug);
+  if (!payload) return false;
+
+  const nodes = adaptChapterTree(payload);
+  const node = nodes.find((n) => n.id === nodeId && n.source === "chapter");
+  if (!node) return false;
+
+  document.title = `${node.title} — ${payload.chapter.name}`;
+
+  const breadcrumb = document.getElementById("breadcrumb");
+  if (breadcrumb) {
+    breadcrumb.innerHTML = `
+      <a href="./">Home</a>
+      <span class="breadcrumb__sep">/</span>
+      <a href="${treeUrlWithChapter()}">Learning Tree</a>
+      <span class="breadcrumb__sep">/</span>
+      <span>${escapeHtml(node.title)}</span>
+    `;
+  }
+
+  // Contributors/resources/series stay hidden — chapter nodes don't
+  // carry them (their sidebar sections simply never render).
+  renderChapterSidebar(node, nodes, slug);
+
+  const contentEl = document.getElementById("article-content");
+  if (contentEl) {
+    // Repo articles open with their own H1; chapter bodies usually
+    // don't — prepend the node title unless the markdown already has one.
+    const body = node.body ?? "";
+    const md = /^\s*#\s/.test(body) ? body : `# ${node.title}\n\n${body}`;
+    await renderMarkdown(md, contentEl);
+    generateTableOfContents(contentEl);
+  }
+
+  initProgressBar();
+  return true;
+}
+
+function renderChapterSidebar(
+  node: ChapterOverlayNode,
+  nodes: ChapterOverlayNode[],
+  slug: string
+): void {
+  const sidebar = document.getElementById("article-sidebar");
+  if (sidebar) sidebar.style.display = "";
+
+  const nodesById = new Map<string, TreeNode>(nodes.map((n) => [n.id, n]));
+  const color = resolveNodeColor(node.id, nodesById);
+
+  // View in tree button — back to the chapter's merged tree
+  const actionsEl = document.getElementById("sidebar-actions");
+  if (actionsEl) {
+    actionsEl.innerHTML = `
+      <a href="${treeUrlWithChapter({ node: node.id })}" class="sidebar-action-btn">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="8" cy="3" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="4" cy="12" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <line x1="8" y1="5" x2="4" y2="10" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="8" y1="5" x2="12" y2="10" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        View in learning tree
+      </a>
+    `;
+  }
+
+  // Meta — difficulty/time only when the chapter authored them
+  const metaEl = document.getElementById("sidebar-meta");
+  if (metaEl) {
+    metaEl.innerHTML = `
+      <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.75rem">
+        <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block"></span>
+        ${node.difficulty ? `<span class="badge badge--${node.difficulty}">${node.difficulty}</span>` : ""}
+      </div>
+      ${node.estimated_minutes ? `<div style="margin-bottom:0.5rem"><span class="article-sidebar__title">Estimated Time</span><div style="font-weight:600;font-size:0.9rem">${formatMinutes(node.estimated_minutes)}</div></div>` : ""}
+    `;
+  }
+
+  // Prereq/unlock links carry the chapter param; bodyless chapter
+  // targets render as plain text (they have no article page).
+  const linkFor = (id: string): string => {
+    const n = nodesById.get(id);
+    if (!n) return `<li>${id}</li>`;
+    const href = nodeArticleUrl(n, slug);
+    return href
+      ? `<li><a href="${href}">${escapeHtml(n.title)}</a></li>`
+      : `<li>${escapeHtml(n.title)}</li>`;
+  };
+
+  const prereqsEl = document.getElementById("sidebar-prereqs");
+  if (prereqsEl && node.prerequisites.length > 0) {
+    prereqsEl.innerHTML = `
+      <span class="article-sidebar__title">Prerequisites</span>
+      <ul class="article-sidebar__list">${node.prerequisites.map(linkFor).join("")}</ul>
+    `;
+  }
+
+  const unlocksEl = document.getElementById("sidebar-unlocks");
+  if (unlocksEl && node.unlocks.length > 0) {
+    unlocksEl.innerHTML = `
+      <span class="article-sidebar__title">Unlocks</span>
+      <ul class="article-sidebar__list">${node.unlocks.map(linkFor).join("")}</ul>
+    `;
+  }
+
+  // Tags
+  const tagsEl = document.getElementById("sidebar-tags");
+  if (tagsEl && node.tags.length > 0) {
+    tagsEl.innerHTML = `
+      <span class="article-sidebar__title">Tags</span>
+      <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.3rem">
+        ${node.tags.map((t) => `<span class="node-tooltip__tag">${escapeHtml(t)}</span>`).join("")}
+      </div>
     `;
   }
 }

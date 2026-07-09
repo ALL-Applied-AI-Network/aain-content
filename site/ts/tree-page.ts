@@ -6,10 +6,16 @@
 
 import {
   $,
+  type ChapterContext,
   type TreeJson,
   type TreeNode,
   DIFFICULTY_COLORS,
+  adaptChapterTree,
+  chapterParam,
+  escapeHtml,
   formatMinutes,
+  loadChapterTree,
+  loadTreeData,
 } from "./main";
 import { TreeVisualization, openNodePanel } from "./tree-visualization";
 
@@ -22,6 +28,8 @@ let viz: TreeVisualization | null = null;
 let sidebarCollapsed = false;
 let activeItemId: string | null = null;
 let searchDebounce: ReturnType<typeof setTimeout>;
+/** Non-null while a ?chapter= overlay is active — threads through panels/links. */
+let chapterCtx: ChapterContext | null = null;
 
 // ---------------------------------------------------------------------------
 // Init
@@ -39,10 +47,38 @@ async function init(): Promise<void> {
     kbdEl.textContent = "Ctrl+K";
   }
 
+  // --- Chapter overlay (?chapter=slug, composes with ?embed=1) ---
+  // Load tree.json and the chapter payload in parallel; on success the
+  // node set is REPLACED with the adapted merged tree (series stays from
+  // tree.json — it only references base ids, which are unchanged). ANY
+  // overlay failure falls back silently to the plain base tree.
+  const chapterSlug = chapterParam();
+  let overlayTree: TreeJson | null = null;
+  if (chapterSlug) {
+    const [base, payload] = await Promise.all([
+      loadTreeData().catch(() => null),
+      loadChapterTree(chapterSlug),
+    ]);
+    if (base && payload) {
+      overlayTree = {
+        ...base,
+        nodes: adaptChapterTree(payload),
+        edges: payload.edges,
+      };
+      chapterCtx = { slug: chapterSlug, name: payload.chapter.name };
+    } else if (!payload) {
+      console.warn(
+        `Chapter tree unavailable for "${chapterSlug}" — showing base tree.`
+      );
+    }
+  }
+
   viz = new TreeVisualization({
     container,
+    tree: overlayTree ?? undefined,
+    chapter: chapterCtx,
     onNodeClick: (node) => {
-      if (tree) openNodePanel(node, tree);
+      if (tree) openNodePanel(node, tree, chapterCtx);
     },
   });
 
@@ -183,14 +219,14 @@ function renderSidebar(tree: TreeJson, query: string): void {
       html += `
         <div class="sidebar__item" data-node-id="${node.id}">
           <div class="sidebar__item-row">
-            <span class="sidebar__item-title">${node.title}</span>
+            <span class="sidebar__item-title">${escapeHtml(node.title)}</span>
             <span class="sidebar__item-badges">
-              <span class="sidebar__item-diff" style="background:${diffColor}18;color:${diffColor}">${node.difficulty}</span>
-              <span class="sidebar__item-time">${formatMinutes(node.estimated_minutes)}</span>
+              ${node.difficulty ? `<span class="sidebar__item-diff" style="background:${diffColor}18;color:${diffColor}">${node.difficulty}</span>` : ""}
+              ${node.estimated_minutes ? `<span class="sidebar__item-time">${formatMinutes(node.estimated_minutes)}</span>` : ""}
             </span>
           </div>
-          ${unlocksText ? `<div class="sidebar__item-unlocks">unlocks &rarr; ${unlocksText}</div>` : ""}
-          ${pathText ? `<div class="sidebar__item-path">${pathText}</div>` : ""}
+          ${unlocksText ? `<div class="sidebar__item-unlocks">unlocks &rarr; ${escapeHtml(unlocksText)}</div>` : ""}
+          ${pathText ? `<div class="sidebar__item-path">${escapeHtml(pathText)}</div>` : ""}
         </div>
       `;
     }
@@ -254,7 +290,7 @@ function renderSidebar(tree: TreeJson, query: string): void {
       viz?.flyToNode(nodeId);
 
       // Open the detail panel
-      openNodePanel(node, tree);
+      openNodePanel(node, tree, chapterCtx);
 
       // Update active state
       setActiveItem(nodeId);
@@ -313,13 +349,13 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
         html += `
           <div class="sidebar__item" data-node-id="${node.id}">
             <div class="sidebar__item-row">
-              <span class="sidebar__item-title">${node.title}</span>
+              <span class="sidebar__item-title">${escapeHtml(node.title)}</span>
               <span class="sidebar__item-badges">
-                <span class="sidebar__item-diff" style="background:${diffColor}18;color:${diffColor}">${node.difficulty}</span>
-                <span class="sidebar__item-time">${formatMinutes(node.estimated_minutes)}</span>
+                ${node.difficulty ? `<span class="sidebar__item-diff" style="background:${diffColor}18;color:${diffColor}">${node.difficulty}</span>` : ""}
+                ${node.estimated_minutes ? `<span class="sidebar__item-time">${formatMinutes(node.estimated_minutes)}</span>` : ""}
               </span>
             </div>
-            ${unlocksText ? `<div class="sidebar__item-unlocks">unlocks &rarr; ${unlocksText}</div>` : ""}
+            ${unlocksText ? `<div class="sidebar__item-unlocks">unlocks &rarr; ${escapeHtml(unlocksText)}</div>` : ""}
           </div>
         `;
       }
@@ -351,7 +387,7 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
       const node = tree!.nodes.find((n) => n.id === nodeId);
       if (!node) return;
       viz?.flyToNode(nodeId);
-      openNodePanel(node, tree!);
+      openNodePanel(node, tree!, chapterCtx);
       setActiveItem(nodeId);
       closeBottomSheet();
     });

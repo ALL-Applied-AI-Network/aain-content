@@ -245,7 +245,18 @@ export async function renderArticle(
   }
 
   const rawMd = await resp.text();
+  await renderMarkdown(rawMd, container);
+}
 
+/**
+ * Render a markdown string into an HTML container — the shared pipeline
+ * behind repo articles (renderArticle) and chapter-authored node bodies
+ * (article-page's ?chapter= overlay).
+ */
+export async function renderMarkdown(
+  rawMd: string,
+  container: HTMLElement
+): Promise<void> {
   // Pre-process custom directives
   const processed = preprocessDirectives(rawMd);
 
