@@ -1630,6 +1630,30 @@ body:has(.tree-page) {
   justify-content: center;
 }
 
+/* Video embeds (YouTube / Vimeo) — the iframe is built post-sanitize in
+   initVideoEmbeds from a validated provider+id, never from raw body HTML. */
+.video-embed {
+  margin: 1.5rem 0;
+}
+
+.video-embed__frame {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.video-embed__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* ---------- Footer ---------- */
 .footer {
   border-top: 1px solid var(--border-subtle);

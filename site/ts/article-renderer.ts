@@ -9,6 +9,7 @@
  *   :::definition[term] -> definition card
  *   :::details[title]   -> collapsible accordion
  *   :::diagram          -> Mermaid diagrams
+ *   :::video[URL]       -> YouTube/Vimeo embed (iframe built post-sanitize)
  */
 
 import { marked } from "marked";
@@ -31,6 +32,67 @@ const CALLOUT_TITLES: Record<string, string> = {
   warning: "Warning",
   danger: "Danger",
 };
+
+// ---------------------------------------------------------------------------
+// Video embeds — :::video[URL] contract (YouTube + Vimeo only)
+//
+// KEEP IN SYNC: an identical parser lives in the hub-template repo. Both repos
+// implement the :::video[URL] embed contract and MUST agree exactly on which
+// URLs parse and what provider/id they yield.
+//
+// SECURITY: the id is validated against a strict charset here so it can later
+// be interpolated safely into a FIXED embed origin. We never trust the raw URL
+// and never emit a raw <iframe> from body content.
+// ---------------------------------------------------------------------------
+
+type VideoEmbed = { provider: "youtube" | "vimeo"; id: string };
+
+const YOUTUBE_ID_RE = /^[A-Za-z0-9_-]{1,64}$/;
+const VIMEO_ID_RE = /^[0-9]{1,20}$/;
+
+function parseVideoUrl(rawUrl: string): VideoEmbed | null {
+  const trimmed = rawUrl.trim();
+  if (!trimmed) return null;
+
+  // Normalize to an absolute URL so the URL parser can split host/path/query.
+  const withScheme = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  let url: URL;
+  try {
+    url = new URL(withScheme);
+  } catch {
+    return null;
+  }
+
+  // Strip leading www./m. so host comparisons stay simple.
+  const host = url.hostname.toLowerCase().replace(/^(www\.|m\.)/, "");
+  const path = url.pathname;
+
+  // YouTube: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID,
+  //          m.youtube.com/*, youtube-nocookie.com/embed/ID
+  if (host === "youtu.be") {
+    const id = path.split("/")[1] || "";
+    return YOUTUBE_ID_RE.test(id) ? { provider: "youtube", id } : null;
+  }
+  if (host === "youtube.com" || host === "youtube-nocookie.com") {
+    let id = "";
+    if (path === "/watch") {
+      id = url.searchParams.get("v") || "";
+    } else {
+      const m = path.match(/^\/(?:embed|v|shorts)\/([^/?#]+)/);
+      if (m) id = m[1];
+    }
+    return YOUTUBE_ID_RE.test(id) ? { provider: "youtube", id } : null;
+  }
+
+  // Vimeo: vimeo.com/ID, player.vimeo.com/video/ID
+  if (host === "vimeo.com" || host === "player.vimeo.com") {
+    const m = path.match(/^(?:\/video)?\/(\d+)/);
+    const id = m ? m[1] : "";
+    return VIMEO_ID_RE.test(id) ? { provider: "vimeo", id } : null;
+  }
+
+  return null; // anything else = unsupported
+}
 
 function preprocessDirectives(md: string): string {
   const lines = md.split("\n");
@@ -65,6 +127,44 @@ function preprocessDirectives(md: string): string {
         `</div></div></div>`,
         ""
       );
+      continue;
+    }
+
+    // :::video[URL] — YouTube/Vimeo embed. Mirrors the calloutMatch shape:
+    // URL in the bracket label, closed by :::. Emits ONLY a placeholder here;
+    // the <iframe> is built post-sanitize in initVideoEmbeds (see SECURITY note)
+    // so raw iframes in body content stay blocked by the sanitizer.
+    const videoMatch = line.match(/^:::video\[(.+?)\]\s*$/);
+    if (videoMatch) {
+      const url = videoMatch[1];
+      i++;
+      // Consume until the closing ::: (body is ignored — URL lives in label).
+      while (i < lines.length && lines[i].trim() !== ":::") {
+        i++;
+      }
+      i++; // skip closing :::
+      const parsed = parseVideoUrl(url);
+      if (parsed) {
+        // Placeholder only — validated provider/id, NO iframe at this stage.
+        output.push(
+          `<div class="video-embed" data-video-provider="${parsed.provider}" data-video-id="${parsed.id}"></div>`,
+          ""
+        );
+      } else {
+        // Unsupported/unparseable URL → inline notice, never an iframe.
+        output.push(
+          `<div class="callout callout--warning">`,
+          `<div class="callout__icon">⚠️</div>`,
+          `<div class="callout__content">`,
+          `<div class="callout__title">Unsupported video</div>`,
+          `<div class="callout__body">`,
+          "",
+          "Only YouTube and Vimeo videos are supported.",
+          "",
+          `</div></div></div>`,
+          ""
+        );
+      }
       continue;
     }
 
@@ -306,11 +406,15 @@ export async function renderMarkdown(
       "data-tabs",
       "data-panel",
       "data-title",
+      "data-video-provider",
+      "data-video-id",
       "id",
       "open",
       "style",
     ],
   });
+  // NOTE: iframe is deliberately NOT in ADD_TAGS — video embeds are built
+  // post-sanitize in initVideoEmbeds from the validated data-* placeholder.
 
   container.innerHTML = clean;
 
@@ -322,6 +426,12 @@ export async function renderMarkdown(
 
   // Apply syntax highlighting
   initHighlighting(container);
+
+  // Build video embeds — same post-sanitize, data-attribute-driven approach as
+  // Mermaid, so raw iframes in body content never survive the sanitizer. This
+  // is the single injection point shared by renderArticle (repo articles) and
+  // the ?chapter= overlay path (article-page.ts), so both get embeds.
+  initVideoEmbeds(container);
 }
 
 // ---------------------------------------------------------------------------
@@ -381,6 +491,53 @@ async function initMermaid(root: HTMLElement): Promise<void> {
   } catch (e) {
     console.warn("Mermaid failed to load:", e);
   }
+}
+
+/**
+ * Build video <iframe> embeds AFTER sanitize — mirrors initMermaid. Each
+ * placeholder (<div class="video-embed" data-video-provider data-video-id>)
+ * carries only validated data; we re-validate here (defence in depth) and
+ * construct the iframe against a FIXED embed origin, so a raw <iframe> can
+ * never ride through the sanitizer via user body content.
+ *
+ * KEEP IN SYNC with the hub-template repo's equivalent injector.
+ */
+function initVideoEmbeds(root: HTMLElement): void {
+  const EMBED_SRC: Record<string, (id: string) => string> = {
+    youtube: (id) => `https://www.youtube-nocookie.com/embed/${id}`,
+    vimeo: (id) => `https://player.vimeo.com/video/${id}`,
+  };
+
+  root
+    .querySelectorAll<HTMLElement>(".video-embed[data-video-id]")
+    .forEach((el) => {
+      const provider = el.getAttribute("data-video-provider") || "";
+      const id = el.getAttribute("data-video-id") || "";
+
+      // Re-validate against the same rules the parser used before we build a
+      // URL. Invalid → skip (leave placeholder empty), never emit an iframe.
+      const valid =
+        (provider === "youtube" && YOUTUBE_ID_RE.test(id)) ||
+        (provider === "vimeo" && VIMEO_ID_RE.test(id));
+      if (!valid || el.querySelector("iframe")) return;
+
+      const frame = document.createElement("div");
+      frame.className = "video-embed__frame";
+
+      const iframe = document.createElement("iframe");
+      iframe.src = EMBED_SRC[provider](id);
+      iframe.loading = "lazy";
+      iframe.title = "Embedded video";
+      iframe.setAttribute(
+        "allow",
+        "accelerometer; encrypted-media; picture-in-picture"
+      );
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("frameborder", "0");
+
+      frame.appendChild(iframe);
+      el.appendChild(frame);
+    });
 }
 
 function initHighlighting(root: HTMLElement): void {
