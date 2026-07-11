@@ -432,6 +432,11 @@ export async function renderMarkdown(
   // is the single injection point shared by renderArticle (repo articles) and
   // the ?chapter= overlay path (article-page.ts), so both get embeds.
   initVideoEmbeds(container);
+
+  // Apply author-specified image widths from the src `#w=` fragment. Same
+  // post-sanitize pass as the others, so it also covers both the repo-article
+  // and ?chapter= overlay paths.
+  initImageSizes(container);
 }
 
 // ---------------------------------------------------------------------------
@@ -538,6 +543,39 @@ function initVideoEmbeds(root: HTMLElement): void {
       frame.appendChild(iframe);
       el.appendChild(frame);
     });
+}
+
+/**
+ * Apply author-specified image widths AFTER sanitize — mirrors initVideoEmbeds.
+ * Width is encoded as a URL fragment on the image src: `URL#w=N` where N is a
+ * width PERCENT in {25, 50, 75}. No fragment (or w=100/anything else) = full
+ * width (the default, untouched). We read the token off the sanitized <img> and
+ * set an inline style; the fragment is harmless in src (servers ignore it) so we
+ * leave it in place. We only touch the `#w=` token and preserve any other
+ * fragment content around it.
+ *
+ * KEEP IN SYNC with the hub-template repo's equivalent injector.
+ */
+function initImageSizes(root: HTMLElement): void {
+  const ALLOWED = new Set(["25", "50", "75"]);
+
+  root.querySelectorAll<HTMLImageElement>("img").forEach((img) => {
+    // Read the raw attribute (keeps the fragment as authored). Look only inside
+    // the fragment so a `w=` in the path/query can't be mistaken for the token.
+    const src = img.getAttribute("src") || "";
+    const hashIdx = src.indexOf("#");
+    if (hashIdx === -1) return;
+
+    // Fragment may hold more than one token (be safe): match `w=N` bounded by
+    // `&` or the fragment edges, then validate N is exactly 25|50|75.
+    const frag = src.slice(hashIdx + 1);
+    const m = frag.match(/(?:^|&)w=(\d{1,3})(?:&|$)/);
+    if (!m || !ALLOWED.has(m[1])) return; // absent/invalid → leave full width
+
+    img.style.width = m[1] + "%";
+    img.style.maxWidth = "100%";
+    img.style.height = "auto";
+  });
 }
 
 function initHighlighting(root: HTMLElement): void {
