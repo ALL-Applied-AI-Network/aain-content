@@ -708,6 +708,13 @@ body:has(.tree-page) {
   position: relative;
 }
 
+/* Embedded in a hub site's iframe (?embed=1, see tree.html's inline
+   script) — the host page already has its own nav, so hide ours to
+   avoid a duplicate stacked navbar. */
+.tree-page.is-embed .nav {
+  display: none;
+}
+
 .tree-toolbar {
   background: rgba(13, 13, 31, 0.9);
   backdrop-filter: blur(12px);

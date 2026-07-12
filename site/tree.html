@@ -136,6 +136,17 @@
   </div>
 
   <script>
+    // Hide the outer nav when embedded (e.g. iframed into a hub
+    // site's Learn page via ?embed=1) — the host site already shows
+    // its own nav, so this one would stack a duplicate navbar. Runs
+    // synchronously, before the deferred module script below, so the
+    // class is set before the nav gets a chance to paint.
+    const embedParams = new URLSearchParams(window.location.search);
+    if (embedParams.get('embed') === '1') {
+      const treePageRoot = document.querySelector('.tree-page');
+      if (treePageRoot) treePageRoot.classList.add('is-embed');
+    }
+
     // Mobile nav toggle
     const toggle = document.getElementById('nav-toggle');
     const links = document.getElementById('nav-links');
