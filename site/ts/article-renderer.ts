@@ -259,9 +259,18 @@ function preprocessDirectives(md: string): string {
         .replace(/^```mermaid\s*\n?/, "")
         .replace(/\n?```\s*$/, "");
 
+      // A blank line inside a raw <div> HTML block ends the block early under
+      // CommonMark, so any mermaid diagram with a blank line (common, for
+      // readability) got split: marked re-parsed the remainder as an indented
+      // code block, mangling the diagram text before it ever reached mermaid.
+      // Encoding newlines keeps the whole div on one source line; browsers
+      // decode &#10; back to "\n" in the text node, so mermaid still gets the
+      // real diagram source.
+      const inlineMermaid = escapeHtml(mermaidContent).replace(/\r?\n/g, "&#10;");
+
       output.push(
         `<div class="diagram">`,
-        `<div class="mermaid">${escapeHtml(mermaidContent)}</div>`,
+        `<div class="mermaid">${inlineMermaid}</div>`,
         `</div>`,
         ""
       );
