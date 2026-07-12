@@ -1626,7 +1626,7 @@ body:has(.tree-page) {
 }
 
 /* Diagram */
-.diagram-block {
+.diagram {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius);
@@ -1635,9 +1635,28 @@ body:has(.tree-page) {
   overflow-x: auto;
 }
 
-.diagram-block .mermaid {
+.diagram .mermaid {
   display: flex;
   justify-content: center;
+}
+
+/* Opt-in size bump for diagrams that read as cramped at the article's
+   720px text-column width (:::diagram[large]). The column can't grow to
+   fit them, so scale the rendered SVG up and let .diagram's existing
+   overflow-x: auto handle any excess width. Left-anchored (not centered)
+   so the start of the diagram is always fully visible and any overflow
+   only requires scrolling right, not both directions. */
+.diagram--large {
+  padding: 1.75rem 1.25rem;
+}
+
+.diagram--large .mermaid {
+  justify-content: flex-start;
+}
+
+.diagram--large .mermaid svg {
+  transform: scale(1.35);
+  transform-origin: left top;
 }
 
 /* Video embeds (YouTube / Vimeo) — the iframe is built post-sanitize in

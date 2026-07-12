@@ -242,9 +242,10 @@ function preprocessDirectives(md: string): string {
       continue;
     }
 
-    // :::diagram (contains ```mermaid ... ```)
-    const diagramMatch = line.match(/^:::diagram\s*$/);
+    // :::diagram or :::diagram[large] (contains ```mermaid ... ```)
+    const diagramMatch = line.match(/^:::diagram(?:\[(\w+)\])?\s*$/);
     if (diagramMatch) {
+      const sizeModifier = diagramMatch[1] === "large" ? " diagram--large" : "";
       const body: string[] = [];
       i++;
       while (i < lines.length && lines[i].trim() !== ":::") {
@@ -269,7 +270,7 @@ function preprocessDirectives(md: string): string {
       const inlineMermaid = escapeHtml(mermaidContent).replace(/\r?\n/g, "&#10;");
 
       output.push(
-        `<div class="diagram">`,
+        `<div class="diagram${sizeModifier}">`,
         `<div class="mermaid">${inlineMermaid}</div>`,
         `</div>`,
         ""
