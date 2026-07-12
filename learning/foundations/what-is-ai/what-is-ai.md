@@ -32,10 +32,10 @@ graph TD
     ML --> DL
     DL --> GenAI
 
-    style AI fill:#1a1a2e,stroke:#e94560,color:#fff
-    style ML fill:#1a1a2e,stroke:#0f3460,color:#fff
-    style DL fill:#1a1a2e,stroke:#16213e,color:#fff
-    style GenAI fill:#1a1a2e,stroke:#e94560,color:#fff
+    style AI fill:#1a1a2e,stroke:#a855f7,stroke-width:2px,color:#fff
+    style ML fill:#1a1a2e,stroke:#be50c5,stroke-width:2px,color:#fff
+    style DL fill:#1a1a2e,stroke:#d34a92,stroke-width:2px,color:#fff
+    style GenAI fill:#1a1a2e,stroke:#e94560,stroke-width:2px,color:#fff
 ```
 :::
 
@@ -79,8 +79,9 @@ You interact with AI dozens of times a day without thinking about it. Here are s
 
 There's a critical distinction that shapes this entire curriculum.
 
-:::diagram
+:::diagram[large]
 ```mermaid
+%%{init: {'themeVariables': {'fontSize': '20px'}, 'flowchart': {'nodeSpacing': 45, 'rankSpacing': 70, 'padding': 16}}}%%
 flowchart LR
     subgraph Using ["Using AI (Billions of people)"]
         U1["Ask ChatGPT a question"]
@@ -96,8 +97,14 @@ flowchart LR
 
     Using -->|"This curriculum takes you here →"| Building
 
-    style Using fill:#1a1a2e,stroke:#0f3460,color:#fff
-    style Building fill:#1a1a2e,stroke:#e94560,color:#fff
+    style Using fill:#1a1a2e,stroke:#0f3460,stroke-width:2px,color:#fff
+    style Building fill:#1a1a2e,stroke:#e94560,stroke-width:2px,color:#fff
+    style U1 fill:#12122a,stroke:#3b82f6,stroke-width:1.5px,color:#fff
+    style U2 fill:#12122a,stroke:#3b82f6,stroke-width:1.5px,color:#fff
+    style U3 fill:#12122a,stroke:#3b82f6,stroke-width:1.5px,color:#fff
+    style B1 fill:#12122a,stroke:#f472b6,stroke-width:1.5px,color:#fff
+    style B2 fill:#12122a,stroke:#f472b6,stroke-width:1.5px,color:#fff
+    style B3 fill:#12122a,stroke:#f472b6,stroke-width:1.5px,color:#fff
 ```
 :::
 
