@@ -111,7 +111,7 @@ Be respectful, constructive, and inclusive. We're building this for students of 
 
 - Open a [discussion](https://github.com/ALL-Applied-AI-Network/aain-content/discussions)
 - Join our [Discord](https://discord.gg/all-applied-ai)
-- Email: contribute@all-ai-network.org
+- Email: ben.paulson@all-ai-network.org
 
 ---
 

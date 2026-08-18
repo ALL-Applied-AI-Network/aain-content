@@ -6,7 +6,7 @@ If you discover a security vulnerability in this repository (e.g., in build scri
 
 **Do not open a public issue.**
 
-Email **security@all-ai-network.org** with:
+Email **ben.paulson@all-ai-network.org** with:
 - A description of the vulnerability
 - Steps to reproduce
 - Potential impact
