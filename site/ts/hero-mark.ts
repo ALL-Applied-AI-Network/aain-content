@@ -156,11 +156,15 @@ export function initHeroMark(host: HTMLElement): () => void {
     raf = requestAnimationFrame(frame);
   }
 
+  // #hero-3d ships at opacity:0 and fades in on .loaded — the contract
+  // the previous Three.js scene used. Without this the mark renders
+  // perfectly into an invisible container.
   resize();
+  host.classList.add("loaded");
   raf = requestAnimationFrame(frame);
   return () => {
     running = false; cancelAnimationFrame(raf);
     ro?.disconnect(); removeEventListener("pointermove", onMove);
-    cv.remove();
+    host.classList.remove("loaded"); cv.remove();
   };
 }
