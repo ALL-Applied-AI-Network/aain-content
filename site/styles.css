@@ -237,15 +237,25 @@ img {
   font-weight: 600;
   padding: 0.5rem 1rem;
   border-radius: 7px;
-  background: var(--gradient-brand);
-  color: #0a0a0b;
-  transition: opacity 0.2s, transform 0.08s;
+  /* Matches the hero's .btn--primary: the same drifting gradient and
+     white type, so the two Get-started buttons read as one action
+     rather than two different-looking ones. */
+  background: linear-gradient(135deg, #3b82f6, #22d3ee, #ec4899, #a855f7, #3b82f6);
+  background-size: 300% 300%;
+  animation: btn-shimmer 6s ease infinite;
+  color: #fff;
+  box-shadow: 0 2px 14px rgba(59, 130, 246, 0.28),
+              0 1px 8px rgba(168, 85, 247, 0.22);
+  transition: box-shadow 0.2s, transform 0.08s, filter 0.2s;
   white-space: nowrap;
 }
 
 .nav__cta-btn:hover {
-  opacity: 0.9;
-  color: #0a0a0b;
+  color: #fff;
+  filter: brightness(1.06);
+  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.42),
+              0 2px 12px rgba(168, 85, 247, 0.32);
+  transform: translateY(-1px);
 }
 
 .nav__cta-btn:active {

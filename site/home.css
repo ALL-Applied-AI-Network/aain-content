@@ -1979,6 +1979,7 @@ body::before {
   .reveal { transition: none; opacity: 1; transform: none; }
   .reveal-stagger > * { transition: none; opacity: 1; transform: none; }
   .btn--primary { animation: none; }
+  .nav__cta-btn { animation: none; }
   .hero__title { animation: none; }
   .hero__rotating-word-cursor { animation: none; opacity: 0; }
   .event-card { animation: none; }
