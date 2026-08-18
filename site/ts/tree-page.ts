@@ -217,11 +217,11 @@ function renderSidebar(tree: TreeJson, query: string): void {
       const pathText = buildPrereqPath(node, nodeMap);
 
       html += `
-        <div class="sidebar__item" data-node-id="${node.id}">
+        <div class="sidebar__item" data-node-id="${escapeHtml(node.id)}">
           <div class="sidebar__item-row">
             <span class="sidebar__item-title">${escapeHtml(node.title)}</span>
             <span class="sidebar__item-badges">
-              ${node.difficulty ? `<span class="sidebar__item-diff" style="background:${diffColor}18;color:${diffColor}">${node.difficulty}</span>` : ""}
+              ${node.difficulty ? `<span class="sidebar__item-diff" style="background:${diffColor}18;color:${diffColor}">${escapeHtml(node.difficulty)}</span>` : ""}
               ${node.estimated_minutes ? `<span class="sidebar__item-time">${formatMinutes(node.estimated_minutes)}</span>` : ""}
             </span>
           </div>
@@ -347,11 +347,11 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
           : "";
 
         html += `
-          <div class="sidebar__item" data-node-id="${node.id}">
+          <div class="sidebar__item" data-node-id="${escapeHtml(node.id)}">
             <div class="sidebar__item-row">
               <span class="sidebar__item-title">${escapeHtml(node.title)}</span>
               <span class="sidebar__item-badges">
-                ${node.difficulty ? `<span class="sidebar__item-diff" style="background:${diffColor}18;color:${diffColor}">${node.difficulty}</span>` : ""}
+                ${node.difficulty ? `<span class="sidebar__item-diff" style="background:${diffColor}18;color:${diffColor}">${escapeHtml(node.difficulty)}</span>` : ""}
                 ${node.estimated_minutes ? `<span class="sidebar__item-time">${formatMinutes(node.estimated_minutes)}</span>` : ""}
               </span>
             </div>

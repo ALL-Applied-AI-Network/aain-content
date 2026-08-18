@@ -64,13 +64,13 @@ async function init(): Promise<void> {
   if (statNodes) statNodes.textContent = String(tree.stats.total_nodes);
   if (statHours) statHours.textContent = `~${totalEstimatedHours(tree.nodes)}`;
 
-  // --- 3D Hero Scene (Three.js — dynamically imported) ---
-  // Switch between hero scene variants:
-  //   "hero-scene-b" = desk/GPU workstation
-  //   "hero-scene-node-graph" = interactive skill tree node graph
+  // --- Hero mark (2D canvas, no dependency) ---
+  // Was a Three.js node-graph scene. The mark is the logo itself —
+  // geometry extracted from all-logo.png — which brands the hero instead
+  // of decorating it, and drops three.js from this page's bundle.
   const hero3d = document.getElementById("hero-3d");
   if (hero3d) {
-    import("./hero-scene-node-graph").then((m) => m.initHeroScene(hero3d));
+    import("./hero-mark").then((m) => m.initHeroMark(hero3d));
   }
 
   // --- Content Library ---

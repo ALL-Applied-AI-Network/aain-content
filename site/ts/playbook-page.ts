@@ -9,6 +9,7 @@
  */
 
 import { renderArticle } from "./article-renderer";
+import { escapeHtml } from "./main";
 import { getPlaybook, type PlaybookMeta } from "./playbook-metadata";
 
 // ---------------------------------------------------------------------------
@@ -108,15 +109,15 @@ async function init(): Promise<void> {
       breadcrumbSection.innerHTML = `
         <a href="${type === 'workshops' ? './toolkit.html#workshops' : './playbooks.html'}">${typeName}</a>
         <span class="playbook-breadcrumb__sep">/</span>
-        <a href="./playbook.html?path=${indexPath}">${sectionName}</a>
+        <a href="./playbook.html?path=${encodeURIComponent(indexPath)}">${escapeHtml(sectionName)}</a>
         <span class="playbook-breadcrumb__sep">/</span>
-        <span>${formatFileName(file)}</span>
+        <span>${escapeHtml(formatFileName(file))}</span>
       `;
     } else {
       breadcrumbSection.innerHTML = `
         <a href="${type === 'workshops' ? './toolkit.html#workshops' : './playbooks.html'}">${typeName}</a>
         <span class="playbook-breadcrumb__sep">/</span>
-        <span>${sectionName}</span>
+        <span>${escapeHtml(sectionName)}</span>
       `;
     }
   }

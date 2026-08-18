@@ -133,7 +133,7 @@ function renderSidebar(node: TreeNode, tree: TreeJson): void {
     metaEl.innerHTML = `
       <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.75rem">
         <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block"></span>
-        <span class="badge badge--${node.difficulty}">${node.difficulty}</span>
+        <span class="badge badge--${escapeHtml(node.difficulty)}">${escapeHtml(node.difficulty)}</span>
       </div>
       <div style="margin-bottom:0.5rem">
         <span class="article-sidebar__title">Estimated Time</span>
@@ -379,7 +379,7 @@ function renderChapterSidebar(
     metaEl.innerHTML = `
       <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.75rem">
         <span style="width:10px;height:10px;border-radius:50%;background:${color};display:inline-block"></span>
-        ${node.difficulty ? `<span class="badge badge--${node.difficulty}">${node.difficulty}</span>` : ""}
+        ${node.difficulty ? `<span class="badge badge--${escapeHtml(node.difficulty)}">${escapeHtml(node.difficulty)}</span>` : ""}
       </div>
       ${node.estimated_minutes ? `<div style="margin-bottom:0.5rem"><span class="article-sidebar__title">Estimated Time</span><div style="font-weight:600;font-size:0.9rem">${formatMinutes(node.estimated_minutes)}</div></div>` : ""}
     `;
@@ -469,8 +469,13 @@ function generateTableOfContents(contentEl: HTMLElement): void {
     headingEls.push({ el: heading, id: uniqueId });
 
     const level = heading.tagName.toLowerCase();
+    // escapeHtml is essential, not cosmetic: `text` comes from
+    // heading.textContent, which DECODES the entities DOMPurify left
+    // behind as inert text. Interpolating it raw re-parsed markup the
+    // sanitizer had already neutralised (security audit 2026-08-18,
+    // finding 1).
     items.push(
-      `<li class="toc__item toc__item--${level}"><a href="#${uniqueId}">${text}</a></li>`
+      `<li class="toc__item toc__item--${level}"><a href="#${uniqueId}">${escapeHtml(text)}</a></li>`
     );
   });
 
@@ -540,10 +545,12 @@ function initProgressBar(): void {
 function showError(msg: string): void {
   const content = document.getElementById("article-content");
   if (content) {
+    // msg carries the raw ?id= on the not-found path, so it is
+    // attacker-controlled (security audit 2026-08-18, finding 5).
     content.innerHTML = `
       <div class="callout callout--danger">
         <div class="callout__header">Error</div>
-        <div class="callout__body"><p>${msg}</p></div>
+        <div class="callout__body"><p>${escapeHtml(msg)}</p></div>
       </div>
       <p><a href="./">Return to Home</a> or <a href="./tree.html">browse Learning Content</a>.</p>
     `;

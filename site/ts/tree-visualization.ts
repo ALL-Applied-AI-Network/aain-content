@@ -668,13 +668,13 @@ export class TreeVisualization {
     this.tooltip.innerHTML = `
       <div class="node-tooltip__header">
         <span class="node-tooltip__accent" style="background:${color}"></span>
-        ${node.difficulty ? `<span class="node-tooltip__difficulty">${node.difficulty}</span>` : ""}
+        ${node.difficulty ? `<span class="node-tooltip__difficulty">${escapeHtml(node.difficulty)}</span>` : ""}
         ${node.estimated_minutes ? `<span class="node-tooltip__time">${formatMinutes(node.estimated_minutes)}</span>` : ""}
       </div>
       <div class="node-tooltip__title">${escapeHtml(node.title)}</div>
       <div class="node-tooltip__desc">${escapeHtml(node.description)}</div>
       <div class="node-tooltip__footer">
-        <span class="node-tooltip__diff" style="color:${diffColor}">${node.difficulty || ""}</span>
+        <span class="node-tooltip__diff" style="color:${diffColor}">${escapeHtml(node.difficulty || "")}</span>
         <span class="node-tooltip__click-hint">Click to view →</span>
       </div>
     `;
@@ -945,7 +945,7 @@ export function openNodePanel(
     .join("");
 
   const thumbHtml = node.thumbnail
-    ? `<div class="node-panel__thumb"><img src="${thumbnailSrc(node.thumbnail)}" alt="${escapeHtml(node.title)}" /></div>`
+    ? `<div class="node-panel__thumb"><img src="${escapeHtml(thumbnailSrc(node.thumbnail))}" alt="${escapeHtml(node.title)}" /></div>`
     : "";
 
   panel.style.setProperty("--panel-accent", color);
@@ -954,7 +954,7 @@ export function openNodePanel(
     <button class="node-panel__close" aria-label="Close">&times;</button>
     ${thumbHtml}
     ${node.difficulty || chapterChip ? `<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-      ${node.difficulty ? `<span class="badge badge--${node.difficulty}" style="font-size:0.65rem;padding:2px 8px;border-radius:999px;background:${diffColor}22;color:${diffColor};border:1px solid ${diffColor}44">${node.difficulty}</span>` : ""}
+      ${node.difficulty ? `<span class="badge badge--${escapeHtml(node.difficulty)}" style="font-size:0.65rem;padding:2px 8px;border-radius:999px;background:${diffColor}22;color:${diffColor};border:1px solid ${diffColor}44">${escapeHtml(node.difficulty)}</span>` : ""}
       ${chapterChip}
     </div>` : ""}
     <h2 class="node-panel__title" style="color:#fff;margin:8px 0 6px">${escapeHtml(node.title)}</h2>
@@ -966,7 +966,7 @@ export function openNodePanel(
       </div>` : ""}
       ${node.difficulty ? `<div class="node-panel__meta-item">
         <div class="node-panel__meta-label">Difficulty</div>
-        <div class="node-panel__meta-value" style="color:${diffColor}">${node.difficulty}</div>
+        <div class="node-panel__meta-value" style="color:${diffColor}">${escapeHtml(node.difficulty)}</div>
       </div>` : ""}
     </div>
     ${tagsHtml ? `<div style="margin:8px 0">${tagsHtml}</div>` : ""}

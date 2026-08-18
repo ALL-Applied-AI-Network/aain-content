@@ -260,6 +260,59 @@ export function chapterParam(): string | null {
  * `.text()` (textContent — already safe); this is only for the
  * innerHTML paths (tooltip, panel, sidebar, article page).
  */
+/**
+ * Chapter overlay fields are officer-authored and arrive from the public
+ * API. Title/summary/tags were already escaped at their sinks; difficulty,
+ * color, id and thumbnail were not, and reached innerHTML and style/src
+ * attributes raw (security audit 2026-08-18, findings 2).
+ *
+ * These constrain at the source rather than patching each sink, so a sink
+ * added later cannot reintroduce the hole.
+ */
+const DIFFICULTY_VALUES = new Set([
+  "beginner",
+  "intermediate",
+  "advanced",
+  "expert",
+]);
+
+/** Only the known difficulty words survive; anything else becomes "". */
+export function safeDifficulty(value: unknown): string {
+  if (typeof value !== "string") return "";
+  const v = value.trim().toLowerCase();
+  return DIFFICULTY_VALUES.has(v) ? v : "";
+}
+
+/** A CSS colour that is safe to drop into a style attribute: hex, or a bare
+ *  CSS colour keyword. Both are quote-, paren- and semicolon-free, so they
+ *  cannot break out of `style="background:…"`. */
+export function safeCssColor(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const v = value.trim();
+  if (/^#[0-9a-f]{3,8}$/i.test(v)) return v;
+  if (/^[a-z]{3,20}$/i.test(v)) return v;
+  return undefined;
+}
+
+/** Node ids become data-node-id attributes, DOM ids and URL params. */
+export function safeNodeId(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const v = value.trim();
+  return /^[A-Za-z0-9_-]{1,120}$/.test(v) ? v : null;
+}
+
+/** Thumbnails end up in an img src. Allow http(s) and simple relative
+ *  paths; reject anything carrying a quote, angle bracket or scheme we
+ *  don't recognise (javascript:, data:, …). */
+export function safeThumbnail(value: unknown): string {
+  if (typeof value !== "string") return "";
+  const v = value.trim();
+  if (!v || /["'<>\\\s]/.test(v)) return "";
+  if (/^https?:\/\//i.test(v)) return v;
+  if (/^[A-Za-z0-9._\/-]+$/.test(v)) return v;
+  return "";
+}
+
 export function escapeHtml(value: string | null | undefined): string {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
@@ -337,17 +390,23 @@ export function adaptChapterTree(
   }
 
   return payload.nodes
-    .filter((n) => n && typeof n.id === "string" && typeof n.title === "string")
+    // A node whose id isn't slug-shaped is dropped rather than repaired:
+    // ids are identity here (data-node-id, DOM ids, ?id= links), so a
+    // mangled one would silently point somewhere else.
+    .filter(
+      (n) =>
+        n && safeNodeId(n.id) !== null && typeof n.title === "string",
+    )
     .map((n): ChapterOverlayNode => {
       const body = typeof n.body === "string" ? n.body : null;
       return {
-        id: n.id,
+        id: safeNodeId(n.id) as string,
         title: n.title,
         description: n.summary ?? "",
-        color: typeof n.color === "string" ? n.color : undefined,
-        difficulty: n.difficulty ?? "",
+        color: safeCssColor(n.color),
+        difficulty: safeDifficulty(n.difficulty),
         estimated_minutes: n.estimated_minutes ?? 0,
-        thumbnail: n.thumbnail ?? "",
+        thumbnail: safeThumbnail(n.thumbnail),
         tags: Array.isArray(n.tags) ? n.tags : [],
         prerequisites:
           n.source === "base"

@@ -349,7 +349,7 @@ export async function renderArticle(
 ): Promise<void> {
   const resp = await fetch(`./${contentPath}`);
   if (!resp.ok) {
-    container.innerHTML = `<div class="callout callout--danger"><div class="callout__header">Error</div><div class="callout__body"><p>Could not load article: ${contentPath} (${resp.status})</p></div></div>`;
+    container.innerHTML = `<div class="callout callout--danger"><div class="callout__header">Error</div><div class="callout__body"><p>Could not load article: ${escapeHtml(contentPath)} (${resp.status})</p></div></div>`;
     return;
   }
 

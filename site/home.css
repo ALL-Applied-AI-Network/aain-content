@@ -10,10 +10,13 @@
 /* ---------- Hero — full-bleed photo background ---------- */
 .hero {
   position: relative;
-  padding: 4rem 0 6rem;
+  /* Tightened Aug 2026: the proof line is gone and the animated mark is
+     squarer than the 3D scene it replaced, so the section no longer needs
+     90vh to breathe. */
+  padding: 3rem 0 4rem;
   border-bottom: none;
   overflow: hidden;
-  min-height: 90vh;
+  min-height: 74vh;
   display: flex;
   align-items: center;
 }
