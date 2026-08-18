@@ -46,7 +46,16 @@
     linear-gradient(180deg, transparent 60%, rgba(17, 17, 19, 0.85) 88%, var(--bg-primary, #111113) 100%);
 }
 
-.impact-hero__inner {
+/* Specificity is bumped to `.impact-hero__inner.container` (0,2,0) on
+   purpose: the element in the markup carries both `container` and
+   `impact-hero__inner`, and the production build (Vite) does not
+   guarantee styles.css loads before impact.css in the emitted <link>
+   order, so relying on source order alone let `.container`'s
+   max-width: var(--max-width) (1120px) win over this 720px on deploy,
+   widening the hero content box and throwing off the stats/legend
+   centering below. Matching both classes here wins regardless of
+   stylesheet order. */
+.impact-hero__inner.container {
   position: relative;
   z-index: 2;
   max-width: 720px;
@@ -888,7 +897,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  margin-top: 2.5rem;
+  /* margin-top preserved, left/right set to auto so this grid
+     self-centers whenever its max-width (760px) ends up narrower than
+     its parent — it has no other centering rule of its own. */
+  margin: 2.5rem auto 0;
   max-width: 760px;
 }
 
