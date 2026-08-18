@@ -382,12 +382,31 @@ export interface ChapterOverlayNode extends TreeNode {
 export function adaptChapterTree(
   payload: ChapterTreePayload
 ): ChapterOverlayNode[] {
+  // Edge endpoints are references to ids, so they get the same shape rule
+  // the ids themselves get. A reference that isn't slug-shaped can never
+  // resolve to a real node anyway — keeping it only creates a dangling
+  // string that the sidebar renders as raw markup.
   const unlocksByFrom = new Map<string, string[]>();
   for (const e of payload.edges) {
-    const arr = unlocksByFrom.get(e.from) || [];
-    arr.push(e.to);
-    unlocksByFrom.set(e.from, arr);
+    const from = safeNodeId(e.from);
+    const to = safeNodeId(e.to);
+    if (!from || !to) continue;
+    const arr = unlocksByFrom.get(from) || [];
+    arr.push(to);
+    unlocksByFrom.set(from, arr);
   }
+
+  /** Reference lists go through the id rule and drop what fails it. */
+  const safeRefs = (...candidates: (string[] | string | null | undefined)[]) => {
+    for (const c of candidates) {
+      if (!c) continue;
+      const list = (Array.isArray(c) ? c : [c])
+        .map((v) => safeNodeId(v))
+        .filter((v): v is string => v !== null);
+      if (list.length > 0) return list;
+    }
+    return [];
+  };
 
   return payload.nodes
     // A node whose id isn't slug-shaped is dropped rather than repaired:
@@ -410,15 +429,9 @@ export function adaptChapterTree(
         tags: Array.isArray(n.tags) ? n.tags : [],
         prerequisites:
           n.source === "base"
-            ? n.prereqs && n.prereqs.length > 0
-              ? n.prereqs
-              : n.parent_ref
-                ? [n.parent_ref]
-                : []
-            : n.parent_ref
-              ? [n.parent_ref]
-              : [],
-        unlocks: unlocksByFrom.get(n.id) ?? [],
+            ? safeRefs(n.prereqs, n.parent_ref)
+            : safeRefs(n.parent_ref),
+        unlocks: unlocksByFrom.get(safeNodeId(n.id) as string) ?? [],
         content_path: "",
         contributors: [],
         resources: [],

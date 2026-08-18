@@ -919,7 +919,10 @@ export function openNodePanel(
   // Bodyless chapter nodes have no article page — render plain text.
   const linkFor = (id: string): string => {
     const n = nodesById.get(id);
-    if (!n) return `<li>${id}</li>`;
+    // An unresolved reference is still officer-authored text. Both
+    // branches below escape; this one did not, which made a dangling
+    // prerequisite/unlock a stored-XSS sink.
+    if (!n) return `<li>${escapeHtml(id)}</li>`;
     const href = nodeArticleUrl(n, chapter?.slug);
     return href
       ? `<li><a href="${href}" style="color:${resolveNodeColor(id, nodesById)}">${escapeHtml(n.title)}</a></li>`

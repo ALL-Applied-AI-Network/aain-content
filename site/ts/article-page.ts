@@ -389,7 +389,10 @@ function renderChapterSidebar(
   // targets render as plain text (they have no article page).
   const linkFor = (id: string): string => {
     const n = nodesById.get(id);
-    if (!n) return `<li>${id}</li>`;
+    // An unresolved reference is still officer-authored text. Both
+    // branches below escape; this one did not, which made a dangling
+    // prerequisite/unlock a stored-XSS sink.
+    if (!n) return `<li>${escapeHtml(id)}</li>`;
     const href = nodeArticleUrl(n, slug);
     return href
       ? `<li><a href="${href}">${escapeHtml(n.title)}</a></li>`
