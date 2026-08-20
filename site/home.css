@@ -104,6 +104,39 @@
   opacity: 0;
 }
 
+/* ---------- Home hero mark placement ----------------------------------
+   Was an inline style pinned to right:0, so the mark ran to within ~60px
+   of the viewport edge while the hero copy started 184px in — every other
+   section on the page lines up on the 1120px container, and the mark was
+   the one thing overhanging it. That gutter mismatch is what read as
+   "the page isn't centred".
+
+   The copy's left gutter comes from
+     padding-left: max(1.5rem, (100vw - var(--max-width)) / 2 + 1.5rem)
+   so this mirrors exactly that on the right. The 40px subtraction is the
+   canvas's own slack: the renderer fits the mark to 86% of its box, so
+   ~7% of the width sits either side of what you actually see, and without
+   it the mark would stop 40px short of the line it is meant to hit.
+   ---------------------------------------------------------------- */
+.hero-3d--home {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 52%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .hero-3d--home {
+    /* capped so the mark never grows into the copy column: past ~1450px
+       the slot between the copy and the container edge stops widening */
+    width: min(580px, 40vw);
+    right: max(1.5rem, calc((100vw - var(--max-width)) / 2 + 1.5rem - 40px));
+  }
+}
+
 #hero-3d.loaded {
   opacity: 1;
 }
