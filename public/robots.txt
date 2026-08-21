@@ -1,0 +1,8 @@
+# ALL Applied AI Network — https://all-ai-network.org
+# Everything here is public. Ad Grants ads need their landing pages
+# crawlable, so nothing is disallowed.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://all-ai-network.org/sitemap.xml

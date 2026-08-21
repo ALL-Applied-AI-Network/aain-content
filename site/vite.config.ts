@@ -110,10 +110,14 @@ export default defineConfig({
           }
         }
 
-        // Copy CNAME for GitHub Pages custom domain
-        const cname = resolve(contentRoot, "public", "CNAME");
-        if (existsSync(cname)) {
-          cpSync(cname, resolve(dist, "CNAME"));
+        // Copy CNAME for GitHub Pages custom domain, plus the crawl files.
+        // robots.txt / sitemap.xml must sit at the domain root to count —
+        // Ad Grants ads need their landing pages crawlable.
+        for (const file of ["CNAME", "robots.txt", "sitemap.xml"]) {
+          const src = resolve(contentRoot, "public", file);
+          if (existsSync(src)) {
+            cpSync(src, resolve(dist, file));
+          }
         }
       },
     },
