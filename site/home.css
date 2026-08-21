@@ -2582,3 +2582,14 @@ body::before {
     padding: 3rem 0;
   }
 }
+
+/* Small qualifier under a pillar — used where we name something we're
+   working toward rather than something a chapter can use today. */
+.hub-pillar__note {
+  margin-top: 0.6rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.5);
+  border-left: 2px solid rgba(255, 255, 255, 0.14);
+  padding-left: 0.7rem;
+}
