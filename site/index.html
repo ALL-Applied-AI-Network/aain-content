@@ -54,7 +54,30 @@
        ═══════════════════════════════════════════════════════════════════════ -->
   <section class="hero">
     <div class="hero__bg">
-      <img src="./public/web/hero-crowd.jpg" alt="" loading="eager" />
+      <picture>
+        <!-- LCP image. Was a single 1920px JPEG at 644KB shipped to phones too;
+             that alone was 63% of the page's initial transfer. -->
+        <source
+          media="(max-width: 700px)"
+          srcset="./public/web/hero-crowd-sm.webp"
+          type="image/webp"
+        />
+        <source
+          media="(max-width: 700px)"
+          srcset="./public/web/hero-crowd-sm.jpg"
+          type="image/jpeg"
+        />
+        <source srcset="./public/web/hero-crowd.webp" type="image/webp" />
+        <img
+          src="./public/web/hero-crowd.jpg"
+          alt=""
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
     </div>
     <canvas id="hero-particles"></canvas>
     <div id="hero-3d" class="hero-3d--home"></div>
