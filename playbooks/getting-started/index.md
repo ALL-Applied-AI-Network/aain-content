@@ -2,6 +2,44 @@
 
 Most student orgs die in their second year. This playbook is the one we wish we'd had to avoid that.
 
+---
+
+## Quick guide
+
+*Two minutes. If you read nothing else on this page, read this.*
+
+**The first three weeks of the year decide the rest of it.** Not advertising yourself well at the beginning of the year is the single thing most likely to kill your year, and you don't get that window back. Everything below serves that.
+
+**The semester, week by week**
+
+| Week | What happens |
+|---|---|
+| **0** | **Org fair.** Talk about the club, get people onto an interest list, get them saying they'll come to the first event. |
+| **1** | **"What is [your club]?"** The whole plan for the year, out loud. *Bring food if you possibly can.* |
+| **2** | **"Getting a hands-on project."** Why to join one, how, and what actually happens. *Food again.* |
+| **3** | **Your first real event.** Make it a great speaker. *Food again.* |
+| **4** | Another real event — or your first break week if you need one. |
+| **5** | **The kick-off.** Sign-ups closed earlier in the week; this is the reveal of who's on which team and who's mentoring them. |
+| **6+** | Bi-weekly speaker events and workshops. Weekly is fine if you can sustain it — the largest orgs typically run one a week. |
+
+**What to say — this is what actually brings people in**
+
+- There's a **wider community** here. That's how most people come through the door.
+- **Distinguished speakers who genuinely want to talk to *you*** — booked regularly, not one lucky catch.
+- **It has landed people jobs.** More often than not. Say it plainly.
+- **It still takes hard work.** Say that honestly too; it's why the rest gets believed.
+- **A project that matters, with upperclassmen on your team.** Not a toy dataset, and not on your own.
+- **A serious portfolio piece before Christmas break.** Not eventually.
+- **You do not need experience.** Say it every single time — most students assume the opposite and quietly opt out.
+
+**Two things run at once, not in sequence.** The regular event — a speaker or a workshop, about an hour, after class — is the *pulse*: it keeps people talking and new faces arriving. The hands-on projects run alongside it for weeks or months. They are not a ladder you climb: MSOE has had research groups, innovation labs and a hackathon going in the same semester.
+
+**Food fills a room**, and it is the fastest way to empty a budget. Look for a deal, or go with pizza. Time the event to overlap dinner if you can feed people; if you can't, start at 6:00 or 6:30 so you aren't competing with it.
+
+**Where to go next:** [Speaker Series](https://all-ai-network.org/playbook.html?path=playbooks/speaker-series/index.md) for the pulse · [Innovation Labs](https://all-ai-network.org/playbook.html?path=playbooks/innovation-labs/index.md) to start a project track · [Research Groups](https://all-ai-network.org/playbook.html?path=playbooks/research-groups/index.md) for the publication track · [Hackathons](https://all-ai-network.org/playbook.html?path=playbooks/hackathons/index.md) for the loud one.
+
+---
+
 MSOE AI Club launched in 2020 under founder Xander Neuwirth with a simple model: workshops after hours, research groups on the side. It worked at first, but by 2023 the model was showing its age. Upperclassmen thought the club was for freshmen. Freshmen thought it felt like another class. Faculty wanted to plug in but didn't know how.
 
 When Ben Paulson took over as president in fall 2023, he and Xander had a hard conversation about what to keep and what to replace. We kept the mission — *demystify AI for everyone* — and scrapped almost everything else. We rebuilt workshops around current AI news. We stood up Innovation Labs as a sponsor-backed track. We moved Research Groups to a fall-to-spring cadence with industry mentors and ROSIE supercomputer access. We grew from 60 active members to 200+ in a year, then to 500+ by 2025 — the largest undergrad AI club in the US and a pilot member of the NVIDIA Student Network.
@@ -68,27 +106,34 @@ Our semester opens with a four-week intro arc that we've now run for three years
 
 | Week | Event |
 |---|---|
+| 0 | Org fair — talk about the club, get people onto an interest list, get them saying they'll come to the first event |
 | 1 | Intro to MAIC — what we do, how to join |
-| 2 | Intro to ROSIE — getting compute access on our NVIDIA GPU cluster |
-| Weekend after Wk 2 | NVIDIA DLI workshop (hands-on, on ROSIE) |
-| 3 | Hands-On Projects Reveal — Research Groups and Innovation Labs teams announced |
-| 5, 7, 9, 11 | Speaker events (bi-weekly cadence continues) |
-| ~13 | Hands-On Project Celebration / Hacksgiving |
+| 2 | Getting a hands-on project — why to join one, how, and what actually happens |
+| 3 | First real event of the year. Make it a great speaker |
+| 4 | Another real event, or the first break week if you need one |
+| 5 | Hands-on project kick-off. Sign-ups closed earlier in the week; this is the reveal of who's on whose team and who is mentoring them |
+| 6+ | Bi-weekly speaker events and workshops |
+| ~13 | Hacksgiving (see the [Hackathons playbook](https://all-ai-network.org/playbook.html?path=playbooks/hackathons/index.md)) |
 
-This arc is our single highest-leverage move each semester. Week 1 draws curiosity, Week 2 hands out compute, Week 3 gets people committed to projects, and by Week 5 the research groups and Innovation Labs are running in parallel with the speaker series.
+We also slot two MSOE-specific sessions into the early weeks: an intro to ROSIE, our NVIDIA GPU cluster, and an NVIDIA Deep Learning Institute workshop on a weekend. Neither is load-bearing — if you don't have a cluster, Colab, Kaggle, or NVIDIA's free DLI credits do the same job.
+
+This arc is our single highest-leverage move each semester. Week 0 gets you on people's radar before anyone has committed to anything, Weeks 1–3 are the stretch that decides your year, and by Week 5 the research groups and Innovation Labs are running in parallel with the speaker series.
 
 ### The repeatable version
 
-**Pick your cadence and never miss it.** Bi-weekly is the sweet spot — weekly burns out your eboard, monthly loses momentum. Pick a day, time, and room. Don't change them.
+**Pick your cadence and never miss it.** Pick a day, time, and room, then don't change them. Bi-weekly is the sweet spot for most chapters — monthly loses momentum. Weekly is fine if you can sustain it; the largest orgs typically run one event a week.
 
-**Copy the four-week intro arc:**
+**Copy the opening arc. This is the part that decides your year:**
 
-- **Week 1 — Intro.** What is your club, what do members get, how do they sign up? Keep it under 30 minutes of talking, then hands-on.
-- **Week 2 — Compute access.** If you have a GPU cluster (ROSIE for us), walk everyone through access. If you don't, use Colab, Kaggle, or NVIDIA's free DLI credits.
-- **Weekend after Week 2 — Hands-on workshop.** NVIDIA's Deep Learning Institute has pre-made workshops you can run for free. We run the "Fundamentals of Deep Learning" one every year.
-- **Week 3 — Hands-on projects reveal.** If you're running research groups or Innovation Labs (you should), this is where you assign teams and mentors. Members know exactly what they're committed to by the end of this meeting.
+- **Week 0 — Org fair.** Before anything else. Talk about the club, get people onto an interest list, and get them saying out loud that they're coming to the first event. A name on a list in week 0 is worth more than a flyer in week 4.
+- **Week 1 — "What is [your club]?"** The whole plan for the year, said out loud. What you do, what members get, how they join. **Bring food if you possibly can.**
+- **Week 2 — "Getting a hands-on project."** Why to join one, how to get involved, and what actually happens over the next few months. **Food again.**
+- **Week 3 — Your first real event.** Make it a great speaker. This is the one that proves the first two weeks weren't a pitch. **Food again.**
+- **Week 4 — Another real event**, or take your first break week if you need it.
+- **Week 5 — The kick-off.** Sign-ups closed earlier in the week. This meeting is the reveal: who is on which team, who is mentoring them, and the start of the multi-month project. Bring the sponsor in to talk about their company, bring plenty of food, and let the teams meet in person and sort out schedules on the spot.
+- **Week 6 onward — settle into the rhythm.** Bi-weekly speaker events and workshops for the rest of the year.
 
-**Keep the speaker events bi-weekly for the rest of the semester.** (See the [Speaker Series playbook](https://all-ai-network.org/playbook.html?path=playbooks/speaker-series/index.md) for details.)
+**Keep the regular events going for the rest of the semester.** (See the [Speaker Series playbook](https://all-ai-network.org/playbook.html?path=playbooks/speaker-series/index.md) for details.)
 
 **Free food every time.** Not optional. Cover it via sponsor funding or your student org budget. MAIC's food budget is one of the biggest line items and it's the best money we spend.
 

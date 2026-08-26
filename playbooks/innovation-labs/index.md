@@ -59,7 +59,7 @@ We under-scoped the NDA conversation. Brady's CEO and president were nervous abo
 
 ### How we did it at MAIC
 
-Innovation Lab kickoff happens at the "Hands-On Project Celebration" — week 3 of the fall semester. Teams are announced, mentors are introduced, and students get the problem brief plus the baseline code. For Brady, that was a YOLOv8 segmentation notebook with their example data and a clear evaluation metric.
+Innovation Lab kickoff happens at the hands-on project kick-off — Week 5 of the fall semester, with sign-ups closing earlier that week. Teams are announced, mentors are introduced, and students get the problem brief plus the baseline code. For Brady, that was a YOLOv8 segmentation notebook with their example data and a clear evaluation metric.
 
 From kickoff onward, teams have 6 working weeks. Weekly office hours with Brady's AI ops director on Zoom. A mid-point check-in at week 4 where each team does a 2-minute status update. Eboard members are available via Discord for unblocking. Teams that don't push code in a full week get a check-in — we learned that from Adam Haile's "stuck team" rescue protocol in Hacksgiving, and it applies here too.
 

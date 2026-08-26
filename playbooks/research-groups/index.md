@@ -16,7 +16,7 @@ Ben was a 3× finalist at the ROSIE Supercomputer Super Challenge and won MICS B
 
 ### How we did it at MAIC
 
-Research group formation happens at the Hands-On Project Celebration in Week 3 of the fall semester. This is where students who signed up via the hands-on project interest form get placed onto teams with announced mentors and announced topics. By the end of Week 3, every group member knows exactly what they're committing to: the mentor, the topic, the team, the ROSIE access next steps.
+Research group formation happens at the hands-on project kick-off in Week 5 of the fall semester. Sign-ups close earlier that week, which is what makes the counts real; the kick-off itself is the reveal. Students who signed up via the hands-on project interest form are placed onto teams with announced mentors and announced topics, and teams meet in person that day. By the end of Week 5, every group member knows exactly what they're committing to: the mentor, the topic, the team, the ROSIE access next steps.
 
 We pick mentors first, topics second, students third. Mentors are usually faculty (Dr. Kedziora, Dr. Yoder, Dr. Bukowy have all mentored multiple groups), sometimes grad students, occasionally industry researchers. Each mentor proposes a topic in the scope of their research interest — that way they're genuinely invested, not just assigned. Students rank their top 3 topic preferences on the signup form, and we match as best we can.
 
@@ -36,7 +36,7 @@ Group sizes vary: 3 for a small focused project, up to 8 for a bigger ambitious 
 | Summer before fall | Eboard recruits mentors, locks topics |
 | Week 1 (semester) | Announce topics + mentors at Intro to MAIC |
 | Week 2 | Open interest form — students rank top 3 topics |
-| Week 3 (Celebration) | Teams announced, mentors introduced, ROSIE access begins |
+| Week 5 (kick-off) | Sign-ups closed earlier in the week. Teams announced, mentors introduced, ROSIE access begins |
 | Weeks 4+ | Groups meet weekly, work through the semester |
 
 **Interest form fields:**
