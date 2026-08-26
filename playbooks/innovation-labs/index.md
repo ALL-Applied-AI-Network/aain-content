@@ -4,9 +4,11 @@ We invented the Innovation Lab format in 2024 to give industry sponsors a way to
 
 Innovation Labs sit between Hacksgiving (48 hours, nonprofit, AI-for-good) and Research Groups (6 months, original research, publication track). They're 8-week industry-sponsored competitions optimized for a working prototype the sponsor can actually use.
 
-The inaugural Innovation Lab ran October 10 – December 7, 2024 with **Brady Corporation**. Their Director of AI Operations, Franz, brought us a real challenge: *predict the volume of liquid in a container from a single image.* Brady's customers measure fluids in lab and industrial settings, and current methods are slow. We handed students a YOLOv8 segmentation baseline and 8 weeks. 60 students from MSOE and UW-Milwaukee, ~7 teams. Liquid Boogaloo won ($2.5K, 9 members), Liquid Lens took second ($1.5K), a UW-Milwaukee team took third ($1K). Every participant got a recommendation letter and a Brady Corp T-shirt. Ben Paulson and Adam Haile co-organized.
+The inaugural Innovation Lab ran October 10 – December 7, 2024 with **Brady Corporation**. Their director of AI operations brought us a real challenge: *predict the volume of liquid in a container from a single image.* Brady's customers measure fluids in lab and industrial settings, and current methods are slow. We handed students a YOLOv8 segmentation baseline and 8 weeks. 60 students from MSOE and UW-Milwaukee, ~7 teams. Liquid Boogaloo won ($2.5K, 9 members), Liquid Lens took second ($1.5K), a UW-Milwaukee team took third ($1K). Every participant got a recommendation letter and a Brady Corp T-shirt. Ben Paulson and Adam Haile co-organized.
 
 Brady came back for Spring 2025. The format works: sponsors get early access to talent, students get a portfolio project with a real company name on it, and MAIC gets a funded track that complements Hacksgiving.
+
+**Why a student signs up — say this part out loud.** A Lab is the easiest way into hands-on work and it is aimed squarely at newer students. You do not need experience. You are put on a team with upperclassmen rather than left to work it out alone. The problem is a real one a company actually has, not a toy dataset. It takes real work, and it is worth being honest about that. And eight weeks means a first-year who signs up in October has a serious portfolio piece before Christmas break — with a company's name on it. That is the pitch; the sponsor logo is the occasion. The rest of it is in the [Getting Started playbook](https://all-ai-network.org/playbook.html?path=playbooks/getting-started/index.md).
 
 ---
 
@@ -16,9 +18,9 @@ Brady came back for Spring 2025. The format works: sponsors get early access to 
 
 ### How we did it at MAIC
 
-We pitched Brady Corp starting from a warm intro via `Matt Vandenbush` — MSOE '98 CE, Brady's VP of infrastructure. The first real meeting was July 23, 2024 with Franz (Director of AI Ops), Eric (Director of Business Ops), Matt, Adam (Brady Product Manager interested in AI), and Brad (SE from MSOE '03). Ben opened by recapping what MAIC was — *"Demystify AI for everyone. High-level ~40–50 per meeting. Low-level 150 students across 21 research teams last year"* — and then offered three sponsorship pathways: Speaker Events, Innovation Labs, Research Groups. Brady was interested in all three, landed on Innovation Labs at $5K.
+We pitched Brady Corp starting from a warm intro from an MSOE alum in Brady's engineering leadership. The first real meeting was July 2024, with their director of AI operations, their director of business operations, a product manager interested in AI, and two engineers — one of them also an MSOE alum. Ben opened by recapping what MAIC was — *"Demystify AI for everyone. High-level ~40–50 per meeting. Low-level 150 students across 21 research teams last year"* — and then offered three sponsorship pathways: Speaker Events, Innovation Labs, Research Groups. Brady was interested in all three, landed on Innovation Labs at $5K.
 
-Between July and September we had three more meetings with Franz to scope the problem. The NDA conversation was the hardest part — Brady's CEO and president were nervous about competitors seeing the code, and we spent two weeks in legal back-and-forth in September that we should have had in week one. We've since moved NDA discussion into the first meeting, always.
+Between July and September we had three more meetings with their AI ops director to scope the problem. The NDA conversation was the hardest part — Brady's CEO and president were nervous about competitors seeing the code, and we spent two weeks in legal back-and-forth in September that we should have had in week one. We've since moved NDA discussion into the first meeting, always.
 
 ### The repeatable version
 
@@ -59,7 +61,7 @@ We under-scoped the NDA conversation. Brady's CEO and president were nervous abo
 
 Innovation Lab kickoff happens at the "Hands-On Project Celebration" — week 3 of the fall semester. Teams are announced, mentors are introduced, and students get the problem brief plus the baseline code. For Brady, that was a YOLOv8 segmentation notebook with their example data and a clear evaluation metric.
 
-From kickoff onward, teams have 6 working weeks. Weekly office hours with Franz (Brady's AI Ops director) on Zoom. A mid-point check-in at week 4 where each team does a 2-minute status update. Eboard members are available via Discord for unblocking. Teams that don't push code in a full week get a check-in — we learned that from Adam Haile's "stuck team" rescue protocol in Hacksgiving, and it applies here too.
+From kickoff onward, teams have 6 working weeks. Weekly office hours with Brady's AI ops director on Zoom. A mid-point check-in at week 4 where each team does a 2-minute status update. Eboard members are available via Discord for unblocking. Teams that don't push code in a full week get a check-in — we learned that from Adam Haile's "stuck team" rescue protocol in Hacksgiving, and it applies here too.
 
 The 60 students split into teams of 6–9. Mixing skill levels is intentional — we want a senior ML student paired with freshmen, not all seniors on one team. Final presentations happen on a dedicated day, not as part of a regular meeting.
 
@@ -112,7 +114,7 @@ Year one we didn't require the mid-point check-in to be in-person / live — tea
 
 ### How we did it at MAIC
 
-Final presentations ran Dec 7, 2024 at Diercks Hall. Each team got 8 minutes: 5-min demo, 3-min Q&A. Four judges: Franz (Brady Ops), Eric (Brady Business), Ben (MAIC president), and one MSOE faculty. The rubric we built with Brady: **Technical quality 40%, Business applicability 40%, Presentation 20%**.
+Final presentations ran Dec 7, 2024 at Diercks Hall. Each team got 8 minutes: 5-min demo, 3-min Q&A. Four judges: Brady's AI ops director, Brady's business ops director, Ben (MAIC president), and one MSOE faculty member. The rubric we built with Brady: **Technical quality 40%, Business applicability 40%, Presentation 20%**.
 
 Liquid Boogaloo won with the cleanest application of YOLOv8 + a downstream volume estimation head that handled colored liquids and opaque containers. $2.5K split 9 ways. Everyone got a participation rec letter and a Brady Corp T-shirt. The winning team delivered cleaned-up code to Brady within 2 weeks.
 

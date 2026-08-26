@@ -2,7 +2,7 @@
 
 6-month student research projects with ROSIE supercomputer access. 21 groups and 142 students in 2024 alone, 20+ papers published over three years, $10K+ in research competition winnings.
 
-Research groups at MAIC are 6-month projects, November through April, that take teams of 3–8 students from literature review to a paper, poster, or conference submission. Every group gets a mentor (faculty, grad student, or industry researcher), access to ROSIE (our NVIDIA GPU-powered on-campus supercomputer, administered via `Dr. Retert`), and a path to present at MICS (the regional Midwest Instruction and Computing Symposium) or the ROSIE Supercomputer Super Challenge.
+Research groups at MAIC are 6-month projects, November through April, that take teams of 3–8 students from literature review to a paper, poster, or conference submission. Every group gets a mentor (faculty, grad student, or industry researcher), access to ROSIE (our NVIDIA GPU-powered on-campus supercomputer, administered by the faculty who run it), and a path to present at MICS (the regional Midwest Instruction and Computing Symposium) or the ROSIE Supercomputer Super Challenge.
 
 In 2024 we ran 21 research groups with 142 students — the largest single-year cohort in club history. Sample projects: **Lucas Gral's** LLMs for Foreign Languages (adaptive language learning that outperforms Duolingo-style flashcards); **William Lassiter's** AI for Vocal Cord Mobility Analysis (non-invasive ultrasound alternative to endoscopy); **Sam Keyser's** Multi-Agent RL in "The Crew" (cooperative agents with imperfect information); **Ben Paulson's** Nilus Project (collaboration with a Chilean startup building AI for artificial glaciers). Other featured groups: NourishNet, Silent Sound Synthesizers, Brain Alignment Innovators.
 
@@ -58,7 +58,7 @@ Group sizes vary: 3 for a small focused project, up to 8 for a bigger ambitious 
 |---|---|
 | Points toward merch | Attending RG meetings |
 | Researcher Hoodie | Participating in a research group |
-| MICS cord + stole at graduation | Presenting research at MICS |
+| Honor cord or stole at graduation | Presenting at a peer-reviewed venue — *needs registrar approval, see below* |
 | Publication credit | Co-authoring the paper |
 | ROSIE compute access | Automatic for all RG members |
 
@@ -78,7 +78,7 @@ The 6-month research group runs on a 4-week milestone cadence. Every 4 weeks eac
 
 Weekly group meetings rotate between paper reading and experiment work. For paper reading, the rule is everyone skims the paper before the meeting; during the meeting we go section-by-section with the mentor explaining hard parts. For experiment work, the project lead runs the agenda: what shipped this week, what's blocked, who's doing what next.
 
-ROSIE access is automatic for research group members — `Dr. Retert` adds new members to the `ai_club` directory. Compute budgets are effectively unlimited for research groups (we've never had a team exceed what ROSIE can provide).
+ROSIE access is automatic for research group members — the cluster's administrator adds new members to the `ai_club` directory. Compute budgets are effectively unlimited for research groups (we've never had a team exceed what ROSIE can provide).
 
 ### The repeatable version
 
@@ -105,7 +105,7 @@ ROSIE access is automatic for research group members — `Dr. Retert` adds new m
 - Maintain a shared "lit review" doc in Notion or Google Drive — one paragraph per paper
 
 **ROSIE compute workflow:**
-- Students get `ai_club` directory access via Dr. Retert
+- Students get `ai_club` directory access via the cluster administrator
 - JupyterLab interface for most experiments
 - SLURM for longer batch jobs
 - Shared conda environments per group
@@ -129,7 +129,7 @@ We undervalued the mid-month check-in between major milestones. Groups would hit
 
 Every research group picks a publication target by end of Month 2. Most aim for **MICS** (the regional Midwest conference) — lower barrier than a top-tier venue, but a real peer-reviewed submission that students can cite. Some aim for the **ROSIE Supercomputer Super Challenge** (campus-level, $2–5K + NVIDIA GPU prize). A few aim for workshop papers or arXiv preprints. A few ship an open-source release + technical blog post as the deliverable.
 
-Ben Paulson won MICS Best Paper in 2022 and 2024. Several of our 2024 research groups presented at MICS 2025. The cord-and-stole honors incentive we created rewards students who present at any peer-reviewed venue — they walk at graduation with visible recognition.
+Ben Paulson won MICS Best Paper in 2022 and 2024. Several of our 2024 research groups presented at MICS 2025. The cord-and-stole honours incentive we created rewards students who present at any peer-reviewed venue — they walk at graduation with visible recognition. Regalia is not yours to hand out, though: cords and stoles go through your registrar or dean of students. Make the ask early if you want it, and don't promise it at sign-up before it has been approved.
 
 Writing happens in parallel with experiments, not after them. We draft the intro + related work + methodology in Month 3 while experiments are still running, then fill in the results and discussion in Month 4. Groups that wait to write until experiments are "done" always run out of time.
 

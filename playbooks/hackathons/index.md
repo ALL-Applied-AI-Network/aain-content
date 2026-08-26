@@ -12,7 +12,7 @@ Hacksgiving started in November 2023 as a collaboration between MAIC and Dr. Jer
 
 Year one Ben Paulson's team (Team Skippy) won — teammates Sydney Balboni, Ella Bruce, John Cisler, Caitlyn Grant, Tyge Plater, and Brett Storoe — for a patient-screening chatbot. Year three Brett Storoe, now MAIC president, judged alongside the Domes' CEO.
 
-Three years in, we know the shape of a good Hacksgiving: one nonprofit partner, one challenge statement, 48 hours in-person, a $6K pool split 3/2/1, a 4-judge panel that includes the nonprofit's leadership, and a real code handoff where the winning project gets used.
+Three years in, we know the shape of a good Hacksgiving *for us*: one nonprofit partner, one challenge statement, 48 hours in-person, a $6K pool split 3/2/1, a 4-judge panel that includes the nonprofit's leadership, and a real code handoff where the winning project gets used. The load-bearing parts are the nonprofit partner, the single challenge statement, in-person, and the handoff. The dollar figure is ours — it comes out of an endowed chair — not a bar you have to clear.
 
 ---
 
@@ -40,6 +40,10 @@ By week -6, we draft the problem statement with the nonprofit and share it back 
 | -1 | Pre-hackathon Q&A session for registered teams. |
 | 0 | Hacksgiving weekend. |
 
+**Registration opens at -4. The announcement doesn't.** For a November event, -4 is mid-October — which leaves a brand-new chapter with nothing to say in the first three weeks of the year, the most important three weeks you get. "We're running an AI-for-good hackathon in November with a real nonprofit" belongs on your first slide of the semester, months before there is a form to fill in.
+
+**What to say when you promote it.** Channels don't fill a hackathon; the message does. Say that you do not need experience to sign up, that you'll be on a team with upperclassmen rather than left to work it out alone, that the problem is real rather than a toy dataset, and that you walk out with a portfolio piece. The full pitch is in the [Getting Started playbook](https://all-ai-network.org/playbook.html?path=playbooks/getting-started/index.md).
+
 **Lock the partner 10 weeks out.** You want enough time for them to digest what a hackathon is, enough time for you to draft a good problem statement, and enough buffer that weather, illness, or schedule conflicts don't derail you.
 
 **Draft the problem statement together.** Don't write it and send it. Set up a 45-minute call, whiteboard what the nonprofit actually wants, and write it as a collaborative doc. The best problems are *specific enough to scope a 48-hour build* and *general enough that multiple approaches can win.*
@@ -50,7 +54,9 @@ By week -6, we draft the problem statement with the nonprofit and share it back 
 - Tech skill self-rating (beginner / intermediate / advanced)
 - Dietary restrictions
 
-**Team formation:** people with teams register together. People without teams get matched at the kickoff. We cap teams at 7, minimum 2.
+**Team formation:** people with teams register together. People without teams get matched at the kickoff — and match them deliberately rather than by who happens to be standing nearby. The skill self-rating on the registration form is what it's for: put at least one upperclassman on every team of first-timers. We cap teams at 7, minimum 2.
+
+**If you can't land one this semester.** For a brand-new chapter, a hackathon or an Innovation Lab is the first hands-on format we'd point you at — pick one, not both, in your first semester. If neither comes together in time, ALL AI Network runs a network-wide event each semester, so your members still have something real to join. Run yours, run the Network's, or run both: at MSOE we've had research groups, innovation labs and a hackathon going at the same time.
 
 **Venue note:** Diercks Hall at MSOE seats ~150. The Cove in Viets Tower holds ~80. Pick your venue by expected registration, not hope.
 
@@ -121,12 +127,12 @@ Sunday afternoon, immediately after winners are announced, we hand top-3 teams a
 
 Within 48 hours we send thank-you emails to every sponsor, every judge, every nonprofit leader who attended, with photos and attendance numbers. The Tuesday after we run a 30-minute eboard retrospective: what worked, what didn't, what to change for next year. We write it up in `Meeting Notes/HacksGiving/` so next year's organizers have context.
 
-The handoff is where Hacksgiving stops being a stunt and starts being useful. In 2023, Team Skippy's chatbot was adopted by Next Step Clinic for their patient intake process. That's why sponsors like Brady Corp and NVIDIA take us seriously — our events produce things.
+The handoff is where Hacksgiving stops being a stunt and starts being useful. In 2023, Team Skippy handed their patient-screening chatbot to Next Step Clinic at the end of the weekend. Check with your partner before you describe any project as *in use* — "delivered" and "deployed" are different claims, and only they can tell you which one is true. The handoff still pays for itself: an MSOE alum on Brady's engineering leadership team reached out after hearing about Hacksgiving, and that became the Brady Corp Innovation Lab.
 
 ### The repeatable version
 
 **Within 2 hours of demos ending:**
-- Announce winners + distribute prizes (Venmo / PayPal / check)
+- Announce winners, then submit the winner list and amounts for payout. Your chapter is a project of the ALL AI Network Foundation under fiscal sponsorship, so prize money is disbursed by the Foundation — it never passes through a chapter account and never through an eboard member's Venmo. Sort the payout path before you announce a dollar figure.
 - Take a group photo for social media
 - Hand top-3 teams the nonprofit's contact + 2-week clean-up timeline
 

@@ -1,8 +1,8 @@
 # Speaker Series
 
-Bi-weekly Thursdays in the ITC Great Hall. Free food, a smart person from industry, and a room of students who care.
+Bi-weekly Thursdays in the ITC Great Hall. Free food, a distinguished speaker who genuinely wants to talk to students, and the front door most people walk through to find us.
 
-The speaker series is the lowest-effort, highest-leverage event format we run. In 2024 alone MAIC hosted 10+ industry speakers including teams from NVIDIA, Direct Supply, Kohl's, and Generac. 40–50 members attend each one. Our best-attended was an NVIDIA Q&A panel in 2024 with 80+ in a room that seats 120. Our worst was a 2023 midday experiment that drew fewer than 10 because commuters couldn't fit lunch around it.
+The speaker series is the lowest-effort, highest-leverage event format we run. Its real job isn't the talk — it's the *pulse*: the thing that runs on a predictable beat so people keep talking about you between projects and new faces keep walking in. It's also where you sell the hands-on projects. At MAIC the first regular event of the semester is "What is AI-Club?" and the next one is "Getting Involved with Hands-on Projects"; every talk after that is another chance for somebody new to hear the pitch. In 2024 alone MAIC hosted 10+ industry speakers including teams from NVIDIA, Direct Supply, Kohl's, and Generac. 40–50 members attend each one. Our best-attended was an NVIDIA Q&A panel in 2024 with 80+ in a room that seats 120. Our worst was a 2023 midday experiment that drew fewer than 10 because commuters couldn't fit lunch around it.
 
 The series wasn't always the crown jewel. In pre-2023 MAIC we had speakers, but they felt random — a one-off faculty talk here, a random alumnus there. When Ben Paulson restructured the club in 2023, he rebuilt the series around one principle: **be the source of AI news on campus.** Workshops cover current AI advancements, not foundational theory everyone already knows. Speakers cover what their company is actually building with AI, not career-panel platitudes. That shift is why upperclassmen now come to speaker events instead of skipping them.
 
@@ -14,7 +14,7 @@ The series wasn't always the crown jewel. In pre-2023 MAIC we had speakers, but 
 
 ### How we did it at MAIC
 
-The fastest "yes" we ever got was from our own faculty. Dr. Jeremy Kedziora, Dr. Josiah Yoder, and Dr. Bukowy have all spoken at MAIC multiple times — we ask them when we need a speaker slot filled in under two weeks. The second-fastest yes comes from Dr. Dwight Diercks's NVIDIA network: Ben met Leland Rayner at NVIDIA in May 2024 and had him on our speaker schedule by September. The third easiest is Direct Supply — our primary sponsor sends engineers regularly, coordinated through `Bob Hillis`.
+The fastest "yes" we ever got was from our own faculty. Dr. Jeremy Kedziora, Dr. Josiah Yoder, and Dr. Bukowy have all spoken at MAIC multiple times — we ask them when we need a speaker slot filled in under two weeks. The second-fastest yes comes from Dr. Dwight Diercks's NVIDIA network: Ben met Leland Rayner at NVIDIA in May 2024 and had him on our speaker schedule by September. The third easiest is Direct Supply — our primary sponsor sends engineers regularly, coordinated through our main contact there.
 
 For industry speakers outside our warm network, LinkedIn is the tool. Search for "Applied AI" or "ML Engineer" at Milwaukee companies, check for MSOE alumni, and send a short DM or email. Conference speakers passing through Milwaukee are another pool — we've caught a few when they were in town for Discovery World events or Brady Corp meetings.
 
@@ -66,12 +66,12 @@ We used to book speakers two weeks out and our attendance suffered because promo
 Every speaker event runs the same way: 6:30pm doors open, food out, mingling. 6:45 Ben (or the current president) does a 2-minute club intro and introduces the speaker. 6:45–7:30 speaker talks (45 minutes). 7:30–7:45 Q&A. 7:45 hard stop — people have lives.
 
 ITC Great Hall logistics are documented in Ben's Board Responsibilities guide:
-- Reserve via `Ashley.Vollrath@directsupply.com` with time, attendance estimate, catering Y/N, and any 7400-request needs
+- Reserve through the building's booking contact with time, attendance estimate, catering Y/N, and any 7400-request needs
 - Projector: iPad in back of hall, password `123456`, tap "show visual to stage"
 - Microphone: stored in room right of Mario Pipe. Grab one, unmute via the iPad
 - Seating: ~120 capacity with standard layout; additional chairs in closet by Diercks Hall entrance
 
-Food is free every event — coordinated through Direct Supply funding (`Bob Hillis` for all-inclusive, `Wade Krogwold` for merch). We default to chicken + sides in fall, pizza in spring.
+Food is free every event — coordinated through Direct Supply funding (one contact for all-inclusive spend, another for merch). We default to chicken + sides in fall, pizza in spring.
 
 ### The repeatable version
 
@@ -112,15 +112,17 @@ Our speaker series is bi-weekly Thursdays throughout the semester. Same day, sam
 
 The real work is maintaining the speaker pipeline. Ben kept a running list in `MAIC_Contacts.xlsx` with every past speaker, their company, the topic they covered, and whether they'd said yes to a return visit. When he handed off to Brett, that spreadsheet was half the handoff value. Every speaker gets a "want to do this again next year?" email 30 days after their talk, while the impression is still warm.
 
-Speakers also convert to sponsors. Brady Corp started as a speaker connection through `Matt Vandenbush` (MSOE '98 CE, Brady VP), spoke at MAIC in mid-2024, and became our inaugural Innovation Lab sponsor that fall. Same pattern with Direct Supply — they speak and they fund, and the speaker slots keep both engaged.
+Speakers also convert to sponsors. Brady Corp started as a speaker connection through an MSOE alum in Brady's engineering leadership, spoke at MAIC in mid-2024, and became our inaugural Innovation Lab sponsor that fall. Same pattern with Direct Supply — they speak and they fund, and the speaker slots keep both engaged.
 
 ### The repeatable version
 
 **Cadence that works:**
 - Bi-weekly during academic semesters (not too often, not too rare)
 - Same day and time every event
-- Alternate weeks with workshops or hands-on project check-ins
+- Speaker events and workshops share the one slot — both are "the regular event". Don't add a second track on the off weeks; hands-on project events sit outside this cadence entirely
 - Skip midterm and finals weeks — attendance will tank and it'll feel like a failure
+
+**How to promote it.** Don't advertise a talk — advertise the reason to belong. A wider community, a distinguished speaker who actually wants to talk to *you*, work that has landed people jobs more often than not, and a serious portfolio piece before Christmas break. The speaker is the occasion, not the argument. The full pitch, and why each line is in it, is in the [Getting Started playbook](https://all-ai-network.org/playbook.html?path=playbooks/getting-started/index.md).
 
 **The pipeline:**
 - Maintain a single spreadsheet with every past + prospect speaker
@@ -132,7 +134,7 @@ Speakers also convert to sponsors. Brady Corp started as a speaker connection th
 - Same-week thank-you email to the speaker
 - 30-day follow-up: "Would [Company] be open to a sponsorship conversation?"
 - If yes, schedule a 30-minute call with their engineering lead or campus recruiting manager
-- Sponsorship conversations that start from a speaker relationship close at 3–4× the rate of cold outreach
+- A speaker who has already stood in your room is a far warmer ask than a cold email — Brady Corp spoke at MAIC before it funded anything. We don't have a close rate to give you; we have the pattern.
 
 **Internal archive:**
 - Record talks (with speaker permission)

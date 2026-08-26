@@ -62,7 +62,7 @@ Ben wrote the 2023 perception audit as a private doc for eboard eyes only. We'd 
 
 ### How we did it at MAIC
 
-We meet bi-weekly on Thursdays, 6:30–7:30pm, in the ITC Great Hall (capacity ~120, reservable via `Ashley.Vollrath@directsupply.com`). Free food every single time — chicken in fall, pizza in spring. The consistency is the point; members know when and where without thinking.
+We meet bi-weekly on Thursdays, 6:30–7:30pm, in the ITC Great Hall (capacity ~120, booked through the building's reservation contact). Free food every single time — chicken in fall, pizza in spring. The consistency is the point; members know when and where without thinking.
 
 Our semester opens with a four-week intro arc that we've now run for three years:
 
@@ -88,9 +88,20 @@ This arc is our single highest-leverage move each semester. Week 1 draws curiosi
 - **Weekend after Week 2 — Hands-on workshop.** NVIDIA's Deep Learning Institute has pre-made workshops you can run for free. We run the "Fundamentals of Deep Learning" one every year.
 - **Week 3 — Hands-on projects reveal.** If you're running research groups or Innovation Labs (you should), this is where you assign teams and mentors. Members know exactly what they're committed to by the end of this meeting.
 
-**Keep the speaker events bi-weekly for the rest of the semester.** (See the [Speaker Series playbook](./playbooks.html?path=playbooks/speaker-series/index.md) for details.)
+**Keep the speaker events bi-weekly for the rest of the semester.** (See the [Speaker Series playbook](https://all-ai-network.org/playbook.html?path=playbooks/speaker-series/index.md) for details.)
 
 **Free food every time.** Not optional. Cover it via sponsor funding or your student org budget. MAIC's food budget is one of the biggest line items and it's the best money we spend.
+
+**What to actually say.** Channels don't fill a room — the message does. Every list below is a delivery mechanism for this, and this is the part most new chapters get wrong. What gets people through the door for us, in roughly this order:
+
+- **A wider community.** Not an hour on a Thursday — a group that is worth belonging to and that keeps going after the event ends. This is how most people come through the door.
+- **Distinguished speakers who want to talk to *you*.** Booked regularly, not one lucky catch. That's what makes somebody come back a second time, and the second time is when they join something.
+- **It has landed people jobs — more often than not.** Say that plainly. It is the most concrete thing you have to offer, and "looks good on a résumé" is not the same sentence.
+- **It still takes hard work.** Say that too. Being honest about the effort is a large part of why the rest of the pitch gets believed.
+- **A project that matters, with upperclassmen on your team.** Not a toy dataset, and not on your own — paired with people a couple of years ahead of you, in a real team.
+- **A serious portfolio piece before Christmas break.** Not eventually. A student who joins in September can walk into winter break with something genuinely worth showing.
+
+And say the part everyone assumes is untrue: **you do not need experience to join a project.** Most students assume a project is meant for somebody further along than they are and quietly opt out without ever asking. That one sentence does more recruiting than any flyer you will ever print.
 
 **Recruiting in parallel:**
 - **First Year Student Seminar** (if your school has one) — highest-value recruiting slot
@@ -110,11 +121,11 @@ Our early years (pre-2023) had inconsistent rooms and times because we let eboar
 
 ### How we did it at MAIC
 
-Ben handed off the presidency to Brett Storoe in 2024. The transition worked because Ben wrote a **Board Responsibilities** guide in March 2024 that documented every piece of institutional knowledge he'd accumulated: how to reserve the ITC, who at Direct Supply handles funding (`Bob Hillis` for all-inclusive, `Wade Krogwold` for merch), how to get ROSIE access for new members (ask `Dr. Retert`), how to submit posters through `my.msoe.edu`, and the full sponsor contact list with relationship history.
+Ben handed off the presidency to Brett Storoe in 2024. The transition worked because Ben wrote a **Board Responsibilities** guide in March 2024 that documented every piece of institutional knowledge he'd accumulated: how to reserve the ITC, which contact at our sponsor handles all-inclusive funding versus merch, who to ask for ROSIE access for new members, how to submit posters through `my.msoe.edu`, and the full sponsor contact list with relationship history.
 
 Without that document, half of MAIC's operational knowledge would have left with Ben. With it, Brett started her presidency with the answers to 90% of operational questions already written down.
 
-Year two is also when the club's value proposition started attracting unprompted sponsors and media. The Brady Corp Innovation Lab ($5K, Fall 2024) came through `Matt Vandenbush` (MSOE '98 CE, Brady VP of infrastructure) who reached out to us after hearing about Hacksgiving. The NVIDIA Student Network pilot came through Dr. Diercks. These didn't happen in year one — they happened because year two was visibly consistent.
+Year two is also when the club's value proposition started attracting unprompted sponsors and media. The Brady Corp Innovation Lab ($5K, Fall 2024) came through an MSOE alum on Brady's engineering leadership team, who reached out to us after hearing about Hacksgiving. The NVIDIA Student Network pilot came through Dr. Diercks. These didn't happen in year one — they happened because year two was visibly consistent.
 
 ### The repeatable version
 
@@ -123,7 +134,7 @@ Year two is also when the club's value proposition started attracting unprompted
 **Document at least:**
 - Room reservation process (who to email, what info they need)
 - Food/catering ordering process
-- A/V setup instructions (ours include `projector iPad password: 123456`)
+- A/V setup instructions, and where the credentials live — a password manager the eboard shares, never a doc like this one
 - Sponsor contact list with relationship history
 - Funding request flow (your finance office + each sponsor)
 - Website/social media access
