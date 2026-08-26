@@ -32,6 +32,8 @@ Most student orgs die in their second year. This playbook is the one we wish we'
 - **A serious portfolio piece before Christmas break.** Not eventually.
 - **You do not need experience.** Say it every single time — most students assume the opposite and quietly opt out.
 
+**Don't scope it to CS.** MSOE graduates under 100 CS students a year and the club passed 500. That growth came from software and computer engineering, and from UX, business and mechanical engineering students. A CS-only club is capped before it starts.
+
 **Two things run at once, not in sequence.** The regular event — a speaker or a workshop, about an hour, after class — is the *pulse*: it keeps people talking and new faces arriving. The hands-on projects run alongside it for weeks or months. They are not a ladder you climb: MSOE has had research groups, innovation labs and a hackathon going in the same semester.
 
 **Food fills a room**, and it is the fastest way to empty a budget. Look for a deal, or go with pizza. Time the event to overlap dinner if you can feed people; if you can't, start at 6:00 or 6:30 so you aren't competing with it.
@@ -42,7 +44,9 @@ Most student orgs die in their second year. This playbook is the one we wish we'
 
 MSOE AI Club launched in 2020 under founder Xander Neuwirth with a simple model: workshops after hours, research groups on the side. It worked at first, but by 2023 the model was showing its age. Upperclassmen thought the club was for freshmen. Freshmen thought it felt like another class. Faculty wanted to plug in but didn't know how.
 
-When Ben Paulson took over as president in fall 2023, he and Xander had a hard conversation about what to keep and what to replace. We kept the mission — *demystify AI for everyone* — and scrapped almost everything else. We rebuilt workshops around current AI news. We stood up Innovation Labs as a sponsor-backed track. We moved Research Groups to a fall-to-spring cadence with industry mentors and ROSIE supercomputer access. We grew from 60 active members to 200+ in a year, then to 500+ by 2025 — the largest undergrad AI club in the US and a pilot member of the NVIDIA Student Network.
+When Ben Paulson took over as president in fall 2023, he and Xander had a hard conversation about what to keep and what to replace. We kept the mission — *demystify AI for everyone* — and scrapped almost everything else. We rebuilt workshops around current AI news. We stood up Innovation Labs as a sponsor-backed track. We moved Research Groups to a fall-to-spring cadence with industry mentors and ROSIE supercomputer access. We grew from 20 active members to 150 in a year, then 300, then 500+ — the largest undergrad AI club in the US for a school our size, and a pilot member of the NVIDIA Student Network.
+
+It's worth being precise about where those members came from, because it is the difference between a club that plateaus and one that doesn't: **MSOE graduates fewer than 100 CS students a year.** A club of 500 cannot be a CS club. Most of the growth came from the other computing majors — software engineering, computer engineering — and a large share from outside computing entirely: UX, business, mechanical engineering. If you scope your club to your CS department, you have capped it before you have started.
 
 The three sections below map to the three phases of launching a hub that survives: the first week, the first semester, and the year-two transition that separates real orgs from ghost orgs.
 

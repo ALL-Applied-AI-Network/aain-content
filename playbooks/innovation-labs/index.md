@@ -122,12 +122,14 @@ Brady came back for Spring 2025 because the engagement was professional and the 
 
 ### The repeatable version
 
-**Showcase day:**
-- 8-minute team slots (5 demo + 3 Q&A)
-- Four judges (2 from sponsor, 1 from club, 1 faculty)
+**Showcase day.** How you close out a project track is your call — but the shape that works is a booked auditorium for the day, teams presenting, and judges asking real questions afterwards.
+
+- Book a room for the whole day, not an evening slot
+- 8-minute team slots (5 demo + 3 Q&A) — the Q&A is the part that matters
+- **Three judges is the right number.** One student from your eboard, at least one from the sponsor, and a third seat that flexes: a professor if you think they'd genuinely add something, otherwise another student or a second sponsor delegate. Ours had four because both Brady directors wanted to sit in; three is the version to plan for.
 - Audience: all participating students + sponsor team + faculty
 - Rubric printed and visible
-- Awards ceremony immediately after judging (don't make people wait)
+- Announce results immediately after judging — don't make people wait
 
 **Rubric template:**
 
