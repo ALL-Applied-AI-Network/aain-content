@@ -19,7 +19,7 @@ export interface PlaybookAction {
 }
 
 export interface PlaybookStat {
-  /** Numerical or short phrase — e.g. "60 → 500+", "$18K", "3 years". */
+  /** Numerical or short phrase — e.g. "20 → 500+", "$18K", "3 years". */
   value: string;
   /** Lowercase label — e.g. "member growth", "in prizes". */
   label: string;
@@ -51,9 +51,9 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#3b82f6",
     tagline:
-      "Launch your AI hub from scratch using the same playbook that grew MAIC from 60 active members to 500+ — the largest undergrad AI club in the US.",
+      "Launch your AI hub from scratch using the same playbook that took MAIC from 20 active members to 500+ — the largest undergrad AI club in the US for its school size.",
     stats: [
-      { value: "60 → 500+", label: "member growth" },
+      { value: "20 → 500+", label: "member growth" },
       { value: "5 years", label: "of iteration" },
       { value: "$50K+", label: "in prizes" },
     ],

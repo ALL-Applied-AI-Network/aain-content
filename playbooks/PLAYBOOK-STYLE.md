@@ -2,7 +2,7 @@
 
 Every playbook in this directory shares one voice and one structure. If you're contributing, match this or don't ship it.
 
-These playbooks were written by the team that built MSOE AI Club (MAIC) from ~60 active members in 2020 to 500+ by 2025 — the largest undergraduate AI student org in the US. They're grounded in our actual experience, not theory. Keep them that way.
+These playbooks were written by the team that built MSOE AI Club (MAIC) from 20 active members to 150, then 300, then 500+ — the largest undergraduate AI student org in the US for a school its size. They're grounded in our actual experience, not theory. Keep them that way.
 
 ---
 
@@ -17,7 +17,7 @@ Our founder is Xander Neuwirth (2020). Our president who scaled the club was Ben
 Use those names. Generic placeholders sound hollow.
 
 ### 3. Use real numbers.
-"60 → 200 → 500+ members across two years" is more useful than "grew substantially."
+"20 → 150 → 300 → 500+ members across two years" is more useful than "grew substantially."
 "21 research groups with 142 students in 2024" beats "several research groups."
 If you don't know the number, say so or leave it out — never fudge.
 

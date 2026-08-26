@@ -32,6 +32,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Validation ran ONLY on pull_request, and pushes go straight to
+      # main — so nothing on the deploy path ever checked the content.
+      # That is how half-applied corrections reached production.
+      - name: Validate content
+        run: npm run validate
+
       - name: Generate tree.json and manifest.json
         run: |
           npm run generate:tree
