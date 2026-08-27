@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-08-26T19:08:49.988Z",
+  "generated_at": "2026-08-27T20:49:11.937Z",
   "content": [
     {
       "type": "learning",
@@ -273,6 +273,11 @@
       "description": "Go beyond basic RAG with hybrid search, intelligent chunking strategies, reranking, and evaluation-driven iteration to build production-quality retrieval systems.",
       "path": "learning/advanced/applied-ai/advanced-rag/advanced-rag.md",
       "thumbnail": "learning/advanced/applied-ai/advanced-rag/thumbnail.png"
+    },
+    {
+      "type": "playbook",
+      "title": "Sponsorship",
+      "path": "playbooks/sponsorship/index.md"
     },
     {
       "type": "playbook",

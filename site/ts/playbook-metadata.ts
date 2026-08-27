@@ -64,6 +64,26 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     ],
   },
   {
+    slug: "sponsorship",
+    title: "Sponsorship",
+    icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0L12 5.35l-.77-.77a5.4 5.4 0 0 0-7.65 7.65l.77.77L12 20.66l7.65-7.66.77-.77a5.4 5.4 0 0 0 0-7.65Z"/>
+    </svg>`,
+    accent: "#22d3ee",
+    tagline:
+      "How MAIC's sponsors actually arrived — a speaker slot, a warm intro, an endowed chair — and how the money reaches your chapter.",
+    stats: [
+      { value: "Speakers first", label: "how they start" },
+      { value: "501(c)(3)", label: "tax-deductible" },
+      { value: "$5K", label: "first lab sponsor" },
+    ],
+    actions: [
+      { label: "Where they come from", sub: "Four paths that work", anchor: "#where-sponsors-actually-come-from" },
+      { label: "The sequence", sub: "Slot, thanks, follow-up", anchor: "#the-sequence" },
+      { label: "First meeting", sub: "NDA on day one", anchor: "#the-first-real-meeting" },
+    ],
+  },
+  {
     slug: "hackathons",
     title: "Hackathons",
     icon: `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
