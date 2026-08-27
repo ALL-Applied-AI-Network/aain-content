@@ -19,10 +19,19 @@ function renderCard(p: PlaybookMeta): string {
     )
     .join("");
 
+/** Getting Started is no longer rendered by the viewer: it is the body of
+ *  /start-a-chapter. One file, one rendering — a card that opened the
+ *  viewer copy would put the same guide on the site twice. */
+function playbookHref(slug: string, anchor = ""): string {
+  return slug === "getting-started"
+    ? `./start-a-chapter.html#${anchor ? anchor.replace(/^#/, "") : "the-guide"}`
+    : `./playbook.html?path=playbooks/${slug}/index.md${anchor}`;
+}
+
   const actions = p.actions
     .map(
       (a) => `
-        <a class="pb-card__action" href="./playbook.html?path=playbooks/${p.slug}/index.md${a.anchor}">
+        <a class="pb-card__action" href="${playbookHref(p.slug, a.anchor)}">
           <span class="pb-card__action-label">${a.label}</span>
           <span class="pb-card__action-sub">${a.sub}</span>
         </a>
@@ -41,7 +50,7 @@ function renderCard(p: PlaybookMeta): string {
       <div class="pb-card__stats">${stats}</div>
       <div class="pb-card__actions-label">Jump straight to:</div>
       <div class="pb-card__actions">${actions}</div>
-      <a class="pb-card__open" href="./playbook.html?path=playbooks/${p.slug}/index.md">
+      <a class="pb-card__open" href="${playbookHref(p.slug)}">
         Read the full playbook <span aria-hidden="true">&rarr;</span>
       </a>
     </article>

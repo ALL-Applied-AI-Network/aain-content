@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { resolve, dirname } from "path";
 import { cpSync, existsSync, readFileSync, statSync } from "fs";
 import { fileURLToPath } from "url";
+import { marked } from "marked";
 import { extname } from "path";
 
 const MIME_TYPES: Record<string, string> = {
@@ -35,6 +36,8 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         tree: resolve(__dirname, "tree.html"),
         article: resolve(__dirname, "article.html"),
+        startAChapter: resolve(__dirname, "start-a-chapter.html"),
+        // Redirect stub — keeps decks, QR codes and inbound links alive.
         toolkit: resolve(__dirname, "toolkit.html"),
         about: resolve(__dirname, "about.html"),
         playbooks: resolve(__dirname, "playbooks.html"),
@@ -52,6 +55,51 @@ export default defineConfig({
     },
   },
   plugins: [
+    // Inline the Getting Started guide into /start-a-chapter at build
+    // time. The markdown in content/playbooks/getting-started/index.md is
+    // the single source of truth for how to run a chapter — the public
+    // page renders it, the dashboard fetches the same file, and nothing
+    // restates it. Build-time, not runtime: the page must be static HTML
+    // so it is indexable, previewable, and has nothing to fail at load.
+    {
+      name: "inline-getting-started",
+      transformIndexHtml: {
+        order: "pre" as const,
+        handler(html: string, ctx: { filename?: string }) {
+          if (!html.includes("<!-- GS_BODY -->")) return html;
+          const md = readFileSync(
+            resolve(contentRoot, "playbooks/getting-started/index.md"),
+            "utf-8",
+          );
+          let out = marked.parse(md, { async: false }) as string;
+          // marked v12 stopped emitting heading ids, and the guide's own
+          // anchors plus the nav's #the-guide depend on them.
+          const seen = new Map<string, number>();
+          out = out.replace(
+            /<(h[23])>([\s\S]*?)<\/\1>/g,
+            (_m: string, tag: string, inner: string) => {
+              const text = inner.replace(/<[^>]+>/g, "");
+              let slug = text
+                .toLowerCase()
+                .replace(/[^\w\s-]/g, "")
+                .trim()
+                .replace(/\s+/g, "-");
+              const n = seen.get(slug) ?? 0;
+              seen.set(slug, n + 1);
+              if (n) slug = `${slug}-${n}`;
+              return `<${tag} id="${slug}">${inner}</${tag}>`;
+            },
+          );
+          // The rendered markdown carries its own H1; the page already has
+          // a hero, so drop it rather than shipping two titles.
+          out = out.replace(/<h1[^>]*>[\s\S]*?<\/h1>/, "");
+          if (ctx.filename && !ctx.filename.includes("start-a-chapter")) {
+            return html;
+          }
+          return html.replace("<!-- GS_BODY -->", out);
+        },
+      },
+    },
     // In dev: serve content files (tree.json, manifest.json, learning/, etc.) from the repo root
     {
       name: "serve-content-dev",

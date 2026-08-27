@@ -85,7 +85,16 @@ async function init(): Promise<void> {
   const contentPath = params.get("path");
 
   if (!contentPath) {
-    showError("No content path specified. Use ?path=playbooks/getting-started/index.md");
+    showError("No content path specified. Use ?path=playbooks/speaker-series/index.md");
+    return;
+  }
+
+  // Getting Started moved: it is the body of /start-a-chapter now. Old
+  // links, bookmarks and the dashboard's own deep links still arrive
+  // here, so bounce them rather than rendering a second copy.
+  if (contentPath === "playbooks/getting-started/index.md") {
+    const hash = window.location.hash || "#the-guide";
+    window.location.replace(`./start-a-chapter.html${hash}`);
     return;
   }
 
@@ -107,7 +116,7 @@ async function init(): Promise<void> {
         ? `${type}/${section}/workshop.md`
         : `${type}/${section}/index.md`;
       breadcrumbSection.innerHTML = `
-        <a href="${type === 'workshops' ? './toolkit.html#workshops' : './playbooks.html'}">${typeName}</a>
+        <a href="${type === 'workshops' ? './start-a-chapter.html#workshops' : './playbooks.html'}">${typeName}</a>
         <span class="playbook-breadcrumb__sep">/</span>
         <a href="./playbook.html?path=${encodeURIComponent(indexPath)}">${escapeHtml(sectionName)}</a>
         <span class="playbook-breadcrumb__sep">/</span>
@@ -115,7 +124,7 @@ async function init(): Promise<void> {
       `;
     } else {
       breadcrumbSection.innerHTML = `
-        <a href="${type === 'workshops' ? './toolkit.html#workshops' : './playbooks.html'}">${typeName}</a>
+        <a href="${type === 'workshops' ? './start-a-chapter.html#workshops' : './playbooks.html'}">${typeName}</a>
         <span class="playbook-breadcrumb__sep">/</span>
         <span>${escapeHtml(sectionName)}</span>
       `;
