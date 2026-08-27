@@ -18,6 +18,7 @@ import { getPlaybook, type PlaybookMeta } from "./playbook-metadata";
 
 const SECTION_NAMES: Record<string, string> = {
   "getting-started": "Getting Started",
+  sponsorship: "Sponsorship",
   hackathons: "Hackathons",
   "speaker-series": "Speaker Series",
   "innovation-labs": "Innovation Labs",
