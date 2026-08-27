@@ -1949,3 +1949,22 @@
     animation: none;
   }
 }
+
+
+/* ── The inlined Getting Started guide ─────────────────────────────
+   The guide is markdown rendered into the page at build time, so it has
+   none of the playbook viewer's layout around it. .container handles the
+   page gutters; this only sets the READING MEASURE — without it the body
+   runs the full 1280px and lines hit ~150 characters. */
+.toolkit-guide #gs-body {
+  max-width: 74ch;
+  margin: 0 auto;
+}
+.toolkit-guide #gs-body > h2:first-of-type { margin-top: 0; }
+/* The guide's tables (the week-by-week) must scroll rather than push the
+   page sideways on a narrow screen. */
+.toolkit-guide #gs-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
