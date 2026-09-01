@@ -294,11 +294,24 @@ export function safeCssColor(value: unknown): string | undefined {
   return undefined;
 }
 
-/** Node ids become data-node-id attributes, DOM ids and URL params. */
+/** Node ids become data-node-id attributes, DOM ids and URL params.
+ *
+ *  Slashes are allowed because ids ARE paths — "tooling/ai-ides/cursor-
+ *  deep-dive" is the shape every node in tree.json and in the chapter
+ *  payload actually uses. The first version of this rule left them out,
+ *  which silently rejected all 34 nodes of every chapter overlay and left
+ *  hub sites showing an empty tree and "No lessons found" (the base tree
+ *  never hits this function, so it kept working and hid the breakage).
+ *
+ *  This still rejects everything the XSS audit cared about — quotes,
+ *  angle brackets, whitespace, backslashes, colons — so ids remain safe
+ *  in attributes and URL params. The one place an id reaches a CSS
+ *  selector (the thumbnail clip-path) builds its own id by replacing
+ *  every non-alphanumeric first, so a slash can't break that. */
 export function safeNodeId(value: unknown): string | null {
   if (typeof value !== "string") return null;
   const v = value.trim();
-  return /^[A-Za-z0-9_-]{1,120}$/.test(v) ? v : null;
+  return /^[A-Za-z0-9_\-\/]{1,120}$/.test(v) ? v : null;
 }
 
 /** Thumbnails end up in an img src. Allow http(s) and simple relative
