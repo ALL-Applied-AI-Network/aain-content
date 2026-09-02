@@ -569,6 +569,54 @@
 .event-card:nth-child(4) .event-card__icon { color: var(--gradient-purple); }
 
 /* Flywheel note */
+/* ── chainflow: the causal chain, replacing the prose flywheel note ────── */
+.chainflow { margin-top: 3rem; }
+.chainflow__lede {
+  font-size: 1.05rem; color: var(--text-dim, #a1a1aa);
+  margin-bottom: 1.75rem; letter-spacing: .01em;
+}
+.chainflow__lede strong { color: #f4f4f6; font-weight: 600; }
+.chainflow__row {
+  display: grid; gap: .75rem; align-items: stretch;
+  grid-template-columns: 1fr;
+}
+.chainflow__arrow {
+  display: none; align-self: center; color: rgba(255,255,255,.28);
+  flex: none; padding: 0 .1rem;
+}
+.chainflow__step {
+  position: relative; padding: 1.5rem 1.35rem 1.4rem;
+  border: 1px solid rgba(255,255,255,.10);
+  border-top: 2px solid var(--step);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+}
+.chainflow__num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: .78rem; font-weight: 500; letter-spacing: .18em;
+  color: var(--step);
+}
+.chainflow__title {
+  margin: .55rem 0 .5rem; font-size: 1.12rem; font-weight: 600;
+  color: #f4f4f6; letter-spacing: -.01em;
+}
+.chainflow__text {
+  margin: 0; font-size: .94rem; line-height: 1.55;
+  color: var(--text-dim, #a1a1aa);
+}
+.chainflow__foot {
+  margin-top: 1.6rem; font-size: .98rem; line-height: 1.6;
+  color: var(--text-dim, #a1a1aa);
+}
+.chainflow__foot em { color: #f4f4f6; font-style: italic; }
+@media (min-width: 900px) {
+  .chainflow__row {
+    display: flex; gap: 0;
+  }
+  .chainflow__step { flex: 1 1 0; }
+  .chainflow__arrow { display: flex; }
+}
+
 .flywheel-note {
   margin-top: 0.5rem;
   padding: 1.5rem 1.75rem;

@@ -1,0 +1,94 @@
+/* ═══ overview.html — the shareable one-pager, web-native ═══ */
+.ov {
+  max-width: var(--max-width, 1180px);
+  margin: 0 auto;
+  padding: 7rem 1.5rem 5rem;
+}
+.ov-kicker {
+  display: block;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: .74rem; font-weight: 500; letter-spacing: .22em;
+  text-transform: uppercase; color: #22d3ee; margin-bottom: .9rem;
+}
+
+/* WHY */
+.ov-hero { max-width: 46rem; margin-bottom: 3rem; }
+.ov-hero__title {
+  font-size: clamp(2.1rem, 5.4vw, 3.5rem); line-height: 1.07;
+  letter-spacing: -.03em; font-weight: 700; color: #f4f4f6; margin: 0 0 1.15rem;
+}
+.ov-hero__lede { font-size: 1.1rem; line-height: 1.65; color: var(--text-dim, #a1a1aa); margin: 0; }
+
+.ov-stats {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.10); border-radius: 14px;
+  overflow: hidden; margin-bottom: 2rem;
+}
+.ov-stat { background: #0d0d10; padding: 1.5rem 1.35rem; }
+.ov-stat__num {
+  display: block; font-size: clamp(1.6rem, 3.6vw, 2.2rem); font-weight: 700;
+  letter-spacing: -.025em; color: #22d3ee; line-height: 1.05; margin-bottom: .45rem;
+}
+.ov-stat__label { display: block; font-size: .88rem; line-height: 1.45; color: var(--text-dim, #a1a1aa); }
+.ov-stat__label sup a { color: #22d3ee; text-decoration: none; }
+
+.ov-quote {
+  margin: 0 0 4.5rem; padding: 1.5rem 1.6rem;
+  border-left: 2px solid #a855f7; background: rgba(168,85,247,.05); border-radius: 0 10px 10px 0;
+}
+.ov-quote blockquote { margin: 0 0 .7rem; font-size: 1.06rem; line-height: 1.6; color: #e8e9ee; }
+.ov-quote figcaption {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: .8rem; letter-spacing: .06em; color: var(--text-dim, #a1a1aa);
+}
+
+/* HOW / WHAT */
+.ov-section { margin-bottom: 4.5rem; }
+.ov-h2 {
+  font-size: clamp(1.55rem, 3.4vw, 2.15rem); line-height: 1.2; letter-spacing: -.025em;
+  font-weight: 700; color: #f4f4f6; margin: 0 0 .9rem;
+}
+.ov-lede { font-size: 1.02rem; line-height: 1.6; color: var(--text-dim, #a1a1aa); margin: 0 0 2rem; max-width: 46rem; }
+.ov .chainflow { margin-top: 0; }
+
+.ov-quads { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.ov-quad {
+  padding: 1.6rem 1.5rem 1.4rem;
+  border: 1px solid rgba(255,255,255,.10); border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+}
+.ov-quad__title { margin: 0 0 .55rem; font-size: 1.12rem; font-weight: 600; color: #f4f4f6; letter-spacing: -.01em; }
+.ov-quad__text { margin: 0 0 1rem; font-size: .95rem; line-height: 1.55; color: var(--text-dim, #a1a1aa); }
+.ov-quad__link {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: .8rem; letter-spacing: .04em; color: #22d3ee; text-decoration: none;
+}
+.ov-quad__link:hover { text-decoration: underline; }
+
+/* CTA */
+.ov-cta {
+  border-top: 1px solid rgba(255,255,255,.10); padding-top: 3rem; text-align: center;
+}
+.ov-cta__title { font-size: clamp(1.6rem, 3.6vw, 2.3rem); font-weight: 700; letter-spacing: -.025em; color: #f4f4f6; margin: 0 0 .7rem; }
+.ov-cta__text { font-size: 1rem; line-height: 1.6; color: var(--text-dim, #a1a1aa); margin: 0 auto 1.6rem; max-width: 34rem; }
+.ov-cta__row { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.ov-btn {
+  display: inline-block; padding: .8rem 1.6rem; border-radius: 9px;
+  border: 1px solid rgba(255,255,255,.18); color: #f4f4f6; text-decoration: none;
+  font-size: .95rem; font-weight: 500; transition: border-color .18s, background .18s;
+}
+.ov-btn:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.04); }
+.ov-btn--primary { background: #22d3ee; border-color: #22d3ee; color: #0a0a0b; font-weight: 600; }
+.ov-btn--primary:hover { background: #67e3f4; border-color: #67e3f4; }
+.ov-foot { font-size: .98rem; color: var(--text-dim, #a1a1aa); margin: 0 0 1.5rem; }
+.ov-foot em { color: #e8e9ee; }
+.ov-fn { font-size: .78rem; line-height: 1.5; color: rgba(161,161,170,.75); margin: 0; }
+
+@media (min-width: 720px) {
+  .ov-stats { grid-template-columns: repeat(4, 1fr); }
+  .ov-quads { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .ov { padding: 8rem 2rem 6rem; }
+}
