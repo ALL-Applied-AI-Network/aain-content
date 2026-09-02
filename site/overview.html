@@ -52,9 +52,9 @@
         <img src="./public/web/hero-crowd.jpg" alt="" width="1920" height="1080" />
       </div>
       <div class="ov-hero__inner">
-        <span class="ov-kicker">Why we exist</span>
-        <h1 class="ov-hero__title">AI changed hiring.<br/>We show what a resume can&rsquo;t.</h1>
-        <p class="ov-hero__lede">
+        <span class="rv ov-kicker">Why we exist</span>
+        <h1 class="rv ov-hero__title">AI changed hiring. <br class="ov-br"/>We show what a resume can&rsquo;t.</h1>
+        <p class="rv ov-hero__lede">
           The best applied-AI hiring no longer runs through resumes. It runs through work
           people can actually see. We help students do that work in public, and we help
           companies watch it happen.
@@ -62,7 +62,7 @@
       </div>
     </header>
 
-    <section class="ov-stats" aria-label="Network outcomes">
+    <section class="rv ov-stats" aria-label="Network outcomes">
         <div class="ov-stat">
           <span class="ov-stat__num">20 &rarr; 500+</span>
           <span class="ov-stat__label">Members in 4 years at our founding chapter</span>
@@ -81,7 +81,7 @@
         </div>
     </section>
 
-    <figure class="ov-quote"><div class="ov-quote__shot"><img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" width="420" height="280" /></div><div class="ov-quote__body">
+    <figure class="rv ov-quote"><div class="ov-quote__shot"><img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" width="420" height="280" /></div><div class="ov-quote__body">
       <blockquote>
         &ldquo;We&rsquo;ve hired more quality candidates through Innovation Labs than any career
         fair we&rsquo;ve attended. They are now the majority of our 50-person AI team.&rdquo;
@@ -91,13 +91,13 @@
 
     <!-- HOW -->
     <section class="ov-section">
-      <span class="ov-kicker">How it works</span>
-      <h2 class="ov-h2">Industry needs talent. Students want to build.<br/>We connect the two.</h2>
-      <p class="ov-lede">
+      <span class="rv ov-kicker">How it works</span>
+      <h2 class="rv ov-h2">Industry needs talent. Students want to build. <br class="ov-br"/>We connect the two.</h2>
+      <p class="rv ov-lede">
         Every chapter runs the same loop. Each step feeds the next, and the loop is the product.
       </p>
       <div class="chainflow">
-        <div class="chainflow__row">
+        <div class="rv-group chainflow__row">
         <article class="chainflow__step" style="--step:#22d3ee">
           <div class="chainflow__img"><img src="./public/web/speaker-event.jpg" alt="" loading="lazy" width="600" height="338" /></div>
           <div class="chainflow__body">
@@ -136,13 +136,13 @@
 
     <!-- WHAT -->
     <section class="ov-section">
-      <span class="ov-kicker">What the network does</span>
-      <h2 class="ov-h2">We built the system, so you don&rsquo;t have to.</h2>
-      <p class="ov-lede">
+      <span class="rv ov-kicker">What the network does</span>
+      <h2 class="rv ov-h2">We built the system, so you don&rsquo;t have to.</h2>
+      <p class="rv ov-lede">
         Every chapter gets all of this free. We are a 501(c)(3) nonprofit and we do not take a
         cut of chapter funding.
       </p>
-      <div class="ov-quads">
+      <div class="rv-group ov-quads">
         <article class="ov-quad">
           <div class="ov-quad__shot"><img src="./public/web/gpu-winners.jpg" alt="" loading="lazy" width="600" height="300" /></div>
           <div class="ov-quad__body">
@@ -178,7 +178,7 @@
       </div>
     </section>
 
-    <section class="ov-cta">
+    <section class="rv ov-cta">
       <h2 class="ov-cta__title">Start one at your school.</h2>
       <p class="ov-cta__text">
         Tell us your school and we will walk your exec board through setup on a 30-minute call.
@@ -228,5 +228,31 @@
     </div>
   </footer>
 
+
+<script>
+(function () {
+  var root = document.documentElement;
+  // Only hide things once we know this script is running. If it never does,
+  // the page renders fully visible instead of blank.
+  root.classList.add('js-rv');
+  var els = document.querySelectorAll('.rv, .rv-group > *');
+  // last-resort safety: reveal everything after 4s no matter what
+  setTimeout(function () {
+    els.forEach(function (e) { e.classList.add('in'); });
+  }, 4000);
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(function (e) { e.classList.add('in'); });
+    return;
+  }
+  els.forEach(function (e, i) { e.style.transitionDelay = (i % 6) * 70 + 'ms'; });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
 </body>
 </html>

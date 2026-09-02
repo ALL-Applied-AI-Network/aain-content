@@ -129,3 +129,78 @@
 @media (min-width: 960px) {
   .ov-hero { margin: -8rem -2rem 3.5rem; padding: 11rem 2rem 4rem; }
 }
+
+/* ── full-bleed hero ──────────────────────────────────────────────────
+   The old negative margins only cancelled the container padding, so on
+   wide screens the photo stopped at the container edge and left a hard
+   vertical seam. 100vw breaks out of any container width. */
+.ov-hero {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: max(1.5rem, calc(50vw - var(--max-width, 1180px) / 2));
+  padding-right: max(1.5rem, calc(50vw - var(--max-width, 1180px) / 2));
+  margin-top: -7rem; margin-bottom: 3.5rem;
+  padding-top: 10rem; padding-bottom: 4.5rem;
+}
+.ov-hero__bg img { transform: scale(1.04); transition: transform 1.2s ease-out; }
+.ov-hero.in .ov-hero__bg img { transform: scale(1); }
+
+/* forced line breaks only where there is room for them */
+.ov-br { display: none; }
+@media (min-width: 900px) { .ov-br { display: inline; } }
+
+/* ── scroll reveal ───────────────────────────────────────────────── */
+.js-rv .rv, .js-rv .rv-group > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .62s cubic-bezier(.22,.61,.36,1),
+              transform .62s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+.js-rv .rv.in, .js-rv .rv-group > *.in { opacity: 1; transform: none; }
+.js-rv .rv-group > .chainflow__arrow { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js-rv .rv, .js-rv .rv-group > * { opacity: 1; transform: none; transition: none; }
+  .ov-hero__bg img { transform: none; transition: none; }
+}
+
+/* ── depth and motion on the cards ───────────────────────────────── */
+.chainflow__step, .ov-quad {
+  transition: transform .3s cubic-bezier(.22,.61,.36,1),
+              border-color .3s ease, box-shadow .3s ease;
+}
+.chainflow__step:hover, .ov-quad:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,.20);
+  box-shadow: 0 14px 40px rgba(0,0,0,.45);
+}
+.chainflow__img img, .ov-quad__shot img {
+  transition: transform .55s cubic-bezier(.22,.61,.36,1);
+}
+.chainflow__step:hover .chainflow__img img,
+.ov-quad:hover .ov-quad__shot img { transform: scale(1.045); }
+
+/* stat cells earn a little weight */
+.ov-stat { transition: background .3s ease; }
+.ov-stat:hover { background: #101015; }
+
+/* the quote should not be a flat slab */
+.ov-quote { box-shadow: 0 10px 34px rgba(0,0,0,.32); }
+
+/* ── measure: headlines get room, prose stays readable ───────────────
+   The hero inner was capped at 46rem for everything, so the headline
+   wrapped mid-sentence on wide screens while the lede was fine. Split
+   them: display type gets a wider measure, body copy keeps ~65ch. */
+.ov-hero__inner { max-width: none; }
+.ov-hero__title { max-width: 22ch; }
+.ov-hero__lede  { max-width: 54ch; }
+.ov-h2 { max-width: 26ch; }
+.ov-lede { max-width: 62ch; }
+@media (min-width: 900px) {
+  .ov-hero__title { max-width: 30ch; font-size: clamp(2.4rem, 4.4vw, 4rem); }
+  .ov-h2 { max-width: 34ch; }
+}
+@media (min-width: 1400px) {
+  .ov-hero__title { max-width: 34ch; }
+}
