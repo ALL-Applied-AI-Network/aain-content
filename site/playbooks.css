@@ -389,6 +389,55 @@
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin: 0 0 0.5rem;
+/* ── tables inside rendered playbook markdown ─────────────────────────
+   marked emits a bare <table>; without these the week-by-week schedule
+   collapses into unreadable columns. Scrolls on narrow screens instead
+   of forcing the page to scroll sideways. */
+.playbook-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 1.75rem;
+  font-size: .95rem;
+  display: block;
+  overflow-x: auto;
+  white-space: normal;
+}
+.playbook-content thead th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-primary, #f4f4f6);
+  border-bottom: 1px solid rgba(255,255,255,.18);
+  padding: .6rem .9rem .6rem 0;
+  white-space: nowrap;
+}
+.playbook-content tbody td {
+  vertical-align: top;
+  padding: .7rem .9rem .7rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  line-height: 1.55;
+}
+/* first column is the week number — keep it tight so prose gets the room */
+.playbook-content tbody td:first-child {
+  width: 3.5rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent, #22d3ee);
+  font-weight: 600;
+}
+.playbook-content tbody tr:last-child td { border-bottom: 0; }
+
+.playbook-more {
+  margin: 1.75rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+.playbook-more a {
+  font-weight: 500;
+  color: var(--accent, #22d3ee);
+  text-decoration: none;
+}
+.playbook-more a:hover { text-decoration: underline; }
+
   /* Override the playbook-content styles when this is the first H1 */
   background: none !important;
   -webkit-background-clip: unset !important;

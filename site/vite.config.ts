@@ -40,6 +40,7 @@ export default defineConfig({
         // Redirect stub — keeps decks, QR codes and inbound links alive.
         toolkit: resolve(__dirname, "toolkit.html"),
         about: resolve(__dirname, "about.html"),
+        overview: resolve(__dirname, "overview.html"),
         playbooks: resolve(__dirname, "playbooks.html"),
         playbook: resolve(__dirname, "playbook.html"),
         impact: resolve(__dirname, "impact.html"),
@@ -93,6 +94,28 @@ export default defineConfig({
           // The rendered markdown carries its own H1; the page already has
           // a hero, so drop it rather than shipping two titles.
           out = out.replace(/<h1[^>]*>[\s\S]*?<\/h1>/, "");
+          // Only the Quick guide goes on /start-a-chapter. The full guide is
+          // ~2,900 words, which buries the page's own timeline and is not
+          // what anyone reads while deciding whether to start a chapter.
+          // Single source of truth is preserved: this is still generated from
+          // the same markdown, and the rest is one click away.
+          // Stop at "Where to go next" — everything after it in the Quick
+          // guide is MAIC backstory, which belongs on the full playbook page,
+          // not on the page someone reads while deciding to start a chapter.
+          let cut = -1;
+          const nav = out.indexOf("Where to go next");
+          if (nav > -1) {
+            const endP = out.indexOf("</p>", nav);
+            if (endP > -1) cut = endP + 4;
+          }
+          if (cut === -1) cut = out.search(/<h2[^>]*id="week-1"/);
+          if (cut > -1) {
+            out =
+              out.slice(0, cut) +
+              '<p class="playbook-more">' +
+              '<a href="./playbook.html?path=playbooks/getting-started/index.md">' +
+              'Read the full Getting Started playbook &rarr;</a></p>';
+          }
           if (ctx.filename && !ctx.filename.includes("start-a-chapter")) {
             return html;
           }
