@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ALL Applied AI Network — Show up. Build. Get seen.</title>
-  <meta name="description" content="Student-run applied AI clubs where you build real projects for real sponsors, and companies watch you do it. Free, open-source, run by a 501(c)(3) that takes no cut." />
-  <meta property="og:title" content="ALL Applied AI Network — Show up. Build. Get seen." />
-  <meta property="og:description" content="AI changed hiring. We show what a résumé can't: real projects for real sponsors, and the companies watching you build them." />
+  <title>ALL Applied AI Network — Real AI work for university students, clubs and sponsors</title>
+  <meta name="description" content="Student-run applied AI chapters where you build real projects for real companies and get hired from the room. Free, open-source, run by a 501(c)(3) that takes no cut." />
+  <meta property="og:title" content="ALL Applied AI Network" />
+  <meta property="og:description" content="Show up. Build. Get seen. Student-run applied AI chapters where real companies watch you build." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://all-ai-network.org/public/film/poster.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ALL Applied AI Network — Show up. Build. Get seen." />
-  <meta name="twitter:description" content="AI changed hiring. We show what a résumé can't." />
+  <meta name="twitter:title" content="ALL Applied AI Network" />
+  <meta name="twitter:description" content="Show up. Build. Get seen." />
   <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,8 +20,11 @@
   <link rel="stylesheet" href="./home.css" />
   <link rel="stylesheet" href="./landing.css" />
   <link rel="stylesheet" href="./fx.css" />
+  <link rel="stylesheet" href="./story.css" />
 </head>
-<body>
+<body class="story">
+  <canvas class="page-aurora" data-aurora="0.34" data-fixed aria-hidden="true"></canvas>
+  <nav class="rail" data-rail aria-label="Sections of this page"></nav>
 
   <nav class="nav">
     <div class="nav__inner">
@@ -34,9 +37,7 @@
         <li><a href="./" class="active">Home</a></li>
         <li><a href="./impact.html">Chapters</a></li>
         <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-        <li><a href="./sponsors.html">Sponsors</a></li>
-        <li><a href="./playbooks.html">Playbooks</a></li>
-        <li><a href="./tree.html">Learning Tree</a></li>
+        <li><a href="./tree.html">Learn</a></li>
         <li><a href="./about.html">About</a></li>
       </ul>
       <div class="nav__cta">
@@ -46,7 +47,7 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════════════ HERO (the mark stays; the words changed) ═══════════════════════════ -->
+  <!-- ═══════════ HERO: the mark, and the people it serves ═══════════ -->
   <section class="hero">
     <div class="hero__bg">
       <picture>
@@ -60,112 +61,73 @@
     <div id="hero-3d" class="hero-3d--home"></div>
     <div class="hero__grid container">
       <div class="hero__content">
-        <h1 class="hero__title" id="hero-title">AI changed hiring.<br/>We show what a r&eacute;sum&eacute; can&rsquo;t.</h1>
+        <h1 class="hero__title" id="hero-title">
+          Real AI work<br/>for university <span class="hero__rotating-word"><span class="hero__rotating-word-text" id="hero-word"></span><span class="hero__rotating-word-cursor"></span></span>
+        </h1>
         <p class="hero__subtitle">
-          Student-run applied AI clubs where you build real projects for real sponsors,
-          and the companies watch you do it. Free, open-source, and we take no cut.
+          Student-run chapters where you build real projects for real companies, and get hired from the room.
+          Free, open-source, and we take no cut.
         </p>
         <div class="hero__actions">
           <a href="./impact.html#chapters" class="btn btn--primary btn--lg">Find your chapter &rarr;</a>
-          <a href="#film" class="btn btn--outline btn--lg film-btn" data-film-open><span class="film-btn__play" aria-hidden="true"></span>Watch the 70-second film</a>
+          <a href="./start-a-chapter.html" class="btn btn--outline btn--lg">Start a chapter</a>
         </div>
       </div>
       <div class="hero__sponsors">
         <span class="hero__sponsors-label">Network sponsors</span>
         <div class="hero__sponsors-logos">
-          <a href="https://nvidia.com" target="_blank" rel="noopener" class="hero__sponsors-logo"><img src="./public/logos/nvidia_logo.png" alt="NVIDIA" /></a>
-          <a href="https://directsupply.com" target="_blank" rel="noopener" class="hero__sponsors-logo"><img src="./public/logos/direct_supply_logo.png" alt="Direct Supply" /></a>
+          <a href="https://nvidia.com" target="_blank" rel="noopener" class="hero__sponsors-logo hero__sponsors-logo--tile"><img src="./public/logos/nvidia_tile.png" alt="NVIDIA" /></a>
+          <a href="https://directsupply.com" target="_blank" rel="noopener" class="hero__sponsors-logo hero__sponsors-logo--tile"><img src="./public/logos/direct_supply_tile.png" alt="Direct Supply" /></a>
         </div>
-        <a href="./sponsors.html" class="hero__sponsors-cta">Become a sponsor &rarr;</a>
+        <a href="https://sponsors.all-ai-network.org" class="hero__sponsors-cta" rel="noopener">Become a sponsor &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- real moments, before any claim -->
-  <div class="photo-ticker">
-    <div class="photo-ticker__track">
-      <div class="photo-ticker__item" data-tooltip="Speaker panel: engineers on how they hire"><img src="./public/web/speaker-event.jpg" alt="Speaker event at MSOE" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Hackathon: teams mid-build"><img src="./public/web/students-working.jpg" alt="Students collaborating during a hackathon" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Innovation Lab: students presenting to the sponsor"><img src="./public/web/innovation-lab.jpg" alt="Innovation Lab presentation" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE"><img src="./public/web/supercomputer-tour.jpg" alt="ROSIE supercomputer tour" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards"><img src="./public/web/gpu-winners.jpg" alt="RTX 4090 giveaway at the ROSIE Awards" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings"><img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Hiring panel: employers taking student questions"><img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Hacksgiving — a hackathon donating data science to local non-profits"><img src="./public/web/group-photo.jpg" alt="Hacksgiving group photo" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff, the first event"><img src="./public/web/first-event.jpg" alt="MAIC first event crowd" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Speaker panel: engineers on how they hire"><img src="./public/web/speaker-event.jpg" alt="" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Hackathon: teams mid-build"><img src="./public/web/students-working.jpg" alt="" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Innovation Lab: students presenting to the sponsor"><img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE"><img src="./public/web/supercomputer-tour.jpg" alt="" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards"><img src="./public/web/gpu-winners.jpg" alt="" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings"><img src="./public/web/research-presentation.jpg" alt="" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Hiring panel: employers taking student questions"><img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="Hacksgiving — a hackathon donating data science to local non-profits"><img src="./public/web/group-photo.jpg" alt="" loading="lazy" /></div>
-      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff, the first event"><img src="./public/web/first-event.jpg" alt="" loading="lazy" /></div>
+  <!-- ═══════════ THE FILM: seventy seconds, playing as soon as it is on screen ═══════════ -->
+  <section class="film" id="film" data-rail="The film">
+    <div class="film__frame">
+      <video id="film-video" playsinline muted loop preload="metadata" poster="./public/film/poster.jpg" src="./public/film/all-central-film-720.mp4" aria-label="The ALL film, seventy seconds"></video>
+      <button class="film__sound" type="button" data-sound aria-pressed="false">Turn sound on</button>
     </div>
-  </div>
+    <p class="film__cap"><span><b>Seventy seconds.</b> The page picks up where it ends.</span><a class="film__full" href="./public/film/all-central-film-720.mp4" target="_blank" rel="noopener">Watch full-screen &rarr;</a></p>
+  </section>
 
-  <!-- ═══════════════════════════ 1 · THE PROBLEM ═══════════════════════════ -->
-  <section class="lp" id="problem">
-    <div class="lp__inner problem">
+  <!-- ═══════════ THE PROBLEM: the flood ═══════════ -->
+  <section class="lp flood-section" id="problem" data-rail="Yours">
+    <div class="lp__inner flood">
       <div class="rv">
-        <p class="lp-eyebrow">The problem</p>
-        <h2 class="lp-h2">A r&eacute;sum&eacute; alone won&rsquo;t get you hired.</h2>
+        <p class="lp-eyebrow">Where the film leaves off</p>
+        <h2 class="lp-h2">Yours is in that pile.</h2>
         <p class="lp-lede">
-          AI r&eacute;sum&eacute; agents flood inboxes faster than you can apply. Applications per job posting
-          more than doubled in three years, and they read alike. What&rsquo;s left is the one thing a
-          r&eacute;sum&eacute; can&rsquo;t show: what you can build.
+          Two hundred and forty-four applications for every posting, and they read alike. The one that lights up
+          carries something a r&eacute;sum&eacute; can&rsquo;t hold: what you built, and who watched you build it.
+          The rest of this page is how yours becomes that one.
         </p>
-        <div class="problem__nums" aria-label="Applications per job posting, 2022 to 2025">
-          <div><div class="problem__num">116</div><div class="problem__numlbl"><b>2022</b></div></div>
-          <div class="problem__arrow" aria-hidden="true">&rarr;</div>
-          <div><div class="problem__num problem__num--hot" data-count="244">0</div><div class="problem__numlbl"><b>2025</b>applications per posting</div></div>
+        <div class="nums" aria-label="Applications per job posting: 116 in 2022, 244 in 2025">
+          <div class="nums__n">116</div>
+          <div class="nums__arrow" aria-hidden="true">&rarr;</div>
+          <div class="nums__n nums__n--hot" data-flood-count data-flood-from="116" data-flood-to="244">116</div>
+          <div class="nums__l"><b>2022</b></div>
+          <div></div>
+          <div class="nums__l"><b>2025</b></div>
+          <div class="nums__cap">applications per job posting</div>
         </div>
         <p class="lp-src">Greenhouse, <a href="https://www.greenhouse.com/recruiting-benchmarks" target="_blank" rel="noopener">The Hire Standard</a>, 2026 &middot; Harvard Business Review, <a href="https://hbr.org/2026/06/ai-has-broken-hiring-heres-how-to-fix-it" target="_blank" rel="noopener">&ldquo;AI Has Broken Hiring&rdquo;</a>, 2026</p>
       </div>
-      <div class="problem__figure fx-frame rv">
-        <img data-liquid src="./public/art/resume-flood.webp" alt="A flood of identical résumés, one lit in cyan" width="1400" height="933" loading="lazy" />
+      <div class="flood__frame rv">
+        <canvas data-flood="./public/art/sheet-a.png,./public/art/sheet-b.png,./public/art/sheet-c.png" aria-hidden="true"></canvas>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════ 2 · THE FORMULA ═══════════════════════════ -->
-  <section class="lp lp--line" id="formula">
+  <!-- ═══════════ THE PROOF ═══════════ -->
+  <section class="lp proof-glow" id="proof" data-rail="The proof">
     <div class="lp__inner">
       <div class="lp__head rv">
-        <p class="lp-eyebrow">The formula</p>
-        <h2 class="lp-h2">Show up. Build. <em>Get seen.</em></h2>
-        <p class="lp-lede">Four steps, in order. Every chapter runs the same loop every semester. Free to join, and the first step asks nothing of you but showing up.</p>
-      </div>
-      <div class="formula__spine rv" aria-hidden="true"><span class="is-on">Show up</span><span>Team</span><span>Build</span><span>Get seen</span></div>
-      <div class="formula rv-group">
-        <article class="formula__step">
-          <img src="./public/web/speaker-event.jpg" alt="" loading="lazy" />
-          <div class="formula__body"><div class="formula__n">Step 01 &middot; Show up</div><h3 class="formula__t">Come hear from real builders.</h3><p class="formula__d">Speaker events with engineers who ship AI for a living. Free, open to anyone, no experience needed.</p></div>
-        </article>
-        <article class="formula__step">
-          <img src="./public/web/student-collaboration.jpg" alt="" loading="lazy" />
-          <div class="formula__body"><div class="formula__n">Step 02 &middot; Team</div><h3 class="formula__t">Join a team project.</h3><p class="formula__d">Zero experience is fine. Groups of five to eight with an upperclassman mentor, kicked off in week five.</p></div>
-        </article>
-        <article class="formula__step">
-          <img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" />
-          <div class="formula__body"><div class="formula__n">Step 03 &middot; Build</div><h3 class="formula__t">Solve a real sponsor&rsquo;s problem.</h3><p class="formula__d">Two to six months on a company&rsquo;s actual problem. Cash, GPUs and publications on the line, even in your first semester.</p></div>
-        </article>
-        <article class="formula__step">
-          <img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" />
-          <div class="formula__body"><div class="formula__n">Step 04 &middot; Get seen</div><h3 class="formula__t">Get hired from the room.</h3><p class="formula__d">Sponsors watch you build for months, then hire from the team they watched.</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════ 3 · THE NUMBERS ═══════════════════════════ -->
-  <section class="lp proof fx-aurora-host" id="proof">
-    <canvas data-aurora="0.5" aria-hidden="true"></canvas>
-    <div class="lp__inner">
-      <div class="lp__head lp__head--center rv">
-        <p class="lp-eyebrow">The numbers</p>
+        <p class="lp-eyebrow">The proof</p>
         <h2 class="lp-h2">We have the numbers to prove it.</h2>
+        <p class="lp-lede">What ends up on that sheet, from the founding chapter alone: a glacier model, a UN paper, a $10,000 first place, and the companies that hired the people who built them.</p>
       </div>
       <div class="stats rv-group">
         <div class="stat"><div class="stat__n" data-count="38">+0%</div><div class="stat__l">higher starting salary for active members<sup>1</sup></div></div>
@@ -210,7 +172,7 @@
         </article>
       </div>
       <figure class="pullquote rv">
-        <img src="./public/logos/direct_supply_logo.png" alt="Direct Supply" loading="lazy" style="object-fit:contain;padding:.9rem;background:rgba(255,255,255,.07)" />
+        <img class="tile" src="./public/logos/direct_supply_tile.png" alt="Direct Supply" loading="lazy" />
         <blockquote>
           &ldquo;We&rsquo;ve hired more quality candidates through Innovation Labs than any career fair we&rsquo;ve attended. The students come in with real project experience, not just coursework. They are now the majority of our 50-person AI team.&rdquo;
           <cite>Applied AI Director, Direct Supply</cite>
@@ -220,80 +182,65 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════ 4 · PICK YOUR LANE ═══════════════════════════ -->
-  <section class="lp lp--line" id="lanes">
+  <!-- ═══════════ HOW IT WORKS: the pipeline, and the button to bring it to your school ═══════════ -->
+  <section class="lp" id="how" data-rail="How it works">
     <div class="lp__inner">
       <div class="lp__head rv">
-        <p class="lp-eyebrow">Pick your lane</p>
-        <h2 class="lp-h2">Where do you fit?</h2>
+        <p class="lp-eyebrow">How it works</p>
+        <h2 class="lp-h2">Show up. Build. <em>Get seen.</em></h2>
+        <p class="lp-lede">Four steps, in order. Every chapter runs the same loop every semester. Open a step to see what it asks of you and where to start.</p>
       </div>
-      <div class="lanes rv-group">
-        <article class="lane lane--student">
-          <div class="lane__k">Students</div>
-          <h3 class="lane__t">Come to your first event.</h3>
-          <p class="lane__d">Find your chapter and show up once. <b>Free to join, no sign-up to attend,</b> no experience needed. Join a team when you&rsquo;re ready.</p>
-          <div class="chapters-strip" id="chapters-strip" aria-live="polite"></div>
-          <a href="./impact.html#chapters" class="btn btn--primary">Find your chapter &rarr;</a>
-          <p class="lane__alt">No chapter yet? <a href="./start-a-chapter.html">Start one</a>, or begin today on the <a href="./tree.html">Learning Tree</a>: 34 free lessons, no account needed.</p>
-        </article>
-        <article class="lane lane--officer">
-          <div class="lane__k">Officers</div>
-          <h3 class="lane__t">Start or claim your chapter.</h3>
-          <p class="lane__d">One <b>30-minute setup call</b> leaves you with a roster, a live chapter site, your first event published and a sponsor invited.</p>
-          <a href="./start-a-chapter.html" class="btn btn--primary">Start a chapter &rarr;</a>
-          <p class="lane__alt">Already running one? <a href="https://dashboard.all-ai-network.org/sign-up?role=officer" rel="noopener">Claim it in the dashboard.</a></p>
-        </article>
-        <article class="lane lane--sponsor">
-          <div class="lane__k">Sponsors</div>
-          <h3 class="lane__t">Sponsor an Innovation Lab.</h3>
-          <p class="lane__d"><b>$5,000</b> puts a student team on your problem for eight weeks, with one of your engineers holding office hours. You hire the ones you watched. Tax-deductible, and every dollar reaches the chapter.</p>
-          <a href="./sponsors.html" class="btn btn--primary">How sponsoring works &rarr;</a>
-          <p class="lane__alt">Faculty or advisor? <a href="mailto:hello@all-ai-network.org">Email us.</a></p>
-        </article>
+      <div class="pipe rv-group" role="tablist" aria-label="The four steps">
+        <button class="pipe__step is-open" type="button" role="tab" aria-selected="true" data-step="0">
+          <img src="./public/web/speaker-event.jpg" alt="" loading="lazy" />
+          <div class="pipe__body"><div class="pipe__n">Step 01</div><h3 class="pipe__t">Show up</h3><div class="pipe__hint">Speaker events</div></div>
+        </button>
+        <button class="pipe__step" type="button" role="tab" aria-selected="false" data-step="1">
+          <img src="./public/web/student-collaboration.jpg" alt="" loading="lazy" />
+          <div class="pipe__body"><div class="pipe__n">Step 02</div><h3 class="pipe__t">Team</h3><div class="pipe__hint">Mentored projects</div></div>
+        </button>
+        <button class="pipe__step" type="button" role="tab" aria-selected="false" data-step="2">
+          <img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" />
+          <div class="pipe__body"><div class="pipe__n">Step 03</div><h3 class="pipe__t">Build</h3><div class="pipe__hint">Real sponsor problems</div></div>
+        </button>
+        <button class="pipe__step" type="button" role="tab" aria-selected="false" data-step="3">
+          <img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" />
+          <div class="pipe__body"><div class="pipe__n">Step 04</div><h3 class="pipe__t">Get seen</h3><div class="pipe__hint">Hired from the room</div></div>
+        </button>
+      </div>
+      <div class="pipe__detail rv" id="pipe-detail" role="tabpanel" aria-live="polite">
+        <p data-detail="0"><b>Come hear from real builders.</b> Speaker events with engineers who ship AI for a living. Free, open to anyone, no experience needed. This is the front door.</p>
+        <p data-detail="1" hidden><b>Join a team project.</b> Zero experience is fine. Groups of five to eight with an upperclassman mentor, kicked off in week five. Three to five hours a week is plenty.</p>
+        <p data-detail="2" hidden><b>Solve a real sponsor&rsquo;s problem.</b> Two to six months on a company&rsquo;s actual problem. Cash, GPUs and publications on the line, even in your first semester.</p>
+        <p data-detail="3" hidden><b>Get hired from the room.</b> Sponsors watch you build for months, then hire from the team they watched. Every event and project becomes a verified line on a profile they can see.</p>
+        <a class="btn btn--primary" data-detail-cta="0" href="./impact.html#chapters">Find your chapter &rarr;</a>
+        <a class="btn btn--primary" data-detail-cta="1" href="https://dashboard.all-ai-network.org/sign-up?role=student" rel="noopener" hidden>Join as a member &rarr;</a>
+        <a class="btn btn--primary" data-detail-cta="2" href="#proof" hidden>See what teams built &uarr;</a>
+        <a class="btn btn--primary" data-detail-cta="3" href="https://sponsors.all-ai-network.org" rel="noopener" hidden>How sponsors hire &rarr;</a>
+      </div>
+      <div class="pipe__cta rv">
+        <div>
+          <h3>Want events like this at your school?</h3>
+          <p>One 30-minute setup call leaves you with a roster, a live chapter site and your first event published. Free, open-source, and we take no cut.</p>
+        </div>
+        <div class="actions">
+          <a href="./start-a-chapter.html" class="btn btn--primary btn--lg">Start hosting events like this &rarr;</a>
+          <a href="./playbooks.html" class="btn btn--outline btn--lg">Read the playbooks</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════ 5 · WHAT RUNS IT ═══════════════════════════ -->
-  <section class="lp lp--line" id="stack">
+  <!-- ═══════════ CLOSE ═══════════ -->
+  <section class="close-band" id="join" data-rail="Join">
     <div class="lp__inner">
-      <div class="lp__head rv">
-        <p class="lp-eyebrow">What runs it</p>
-        <h2 class="lp-h2">One dashboard. Free, open-source.</h2>
-        <p class="lp-lede">Everything a chapter needs to run the loop above, so officers spend their time on events instead of spreadsheets.</p>
+      <div class="close-band__sheet rv" aria-hidden="true"><img src="./public/art/sheet-a.png" alt="" /></div>
+      <h2 class="rv">Make yours the one that lights up.</h2>
+      <p class="rv">Show up once. The rest is on the calendar. Free to join, no experience needed, run by a 501(c)(3) that takes no cut.</p>
+      <div class="actions rv">
+        <a href="./impact.html#chapters" class="btn btn--primary btn--lg">Find your chapter &rarr;</a>
       </div>
-      <div class="stack rv-group">
-        <article class="stack__card">
-          <div class="stack__shot"><img src="./public/web/ui-platform.jpg" alt="The chapter dashboard" loading="lazy" /></div>
-          <div class="stack__body"><h3 class="stack__t">The chapter dashboard</h3><p class="stack__d">Events with one-second QR check-in, teams, submissions, sponsors and a leaderboard, in one place.</p></div>
-        </article>
-        <article class="stack__card">
-          <div class="stack__shot"><img src="./public/web/ui-resume.jpg" alt="A member's living résumé" loading="lazy" /></div>
-          <div class="stack__body"><h3 class="stack__t">A r&eacute;sum&eacute; that keeps itself current</h3><p class="stack__d">Every event and project you show up for becomes a verified line that sponsors can see. You can opt out any time.</p></div>
-        </article>
-        <article class="stack__card">
-          <div class="stack__shot"><img src="./public/web/ui-playbooks.jpg" alt="The playbooks" loading="lazy" /></div>
-          <div class="stack__body"><h3 class="stack__t">A chapter site and six playbooks</h3><p class="stack__d">A website in ten minutes, and the six playbooks the founding chapter used to grow from 20 to 500 members.</p></div>
-        </article>
-      </div>
-      <div class="trust rv">
-        <span><b>We don&rsquo;t take a cut.</b> Sponsorships are tax-deductible gifts to a 501(c)(3), restricted to the chapter you choose.</span>
-        <span><b>Nobody fronts their own money.</b> Every event gets its own card, so no student floats $400 for pizza.</span>
-        <a href="./about.html#money">How the money works &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════ CLOSE ═══════════════════════════ -->
-  <section class="final-cta">
-    <div class="final-cta__bg"><img src="./public/web/group-photo.jpg" alt="" loading="lazy" /></div>
-    <div class="container container--narrow">
-      <h2>Start one at your school.</h2>
-      <p>If nobody runs one at your school yet, we&rsquo;ll set it up with you on a call.</p>
-      <div class="final-cta__actions">
-        <a href="./start-a-chapter.html" class="btn btn--primary btn--lg">Start a chapter &rarr;</a>
-        <a href="./playbooks.html" class="btn btn--outline btn--lg">Read the playbooks</a>
-      </div>
+      <p class="small rv">No chapter at your school? <a href="./start-a-chapter.html" style="color:#22d3ee;text-decoration:none">Start one</a>. Faculty or a company? <a href="mailto:hello@all-ai-network.org" style="color:#22d3ee;text-decoration:none">hello@all-ai-network.org</a></p>
     </div>
   </section>
 
@@ -314,10 +261,10 @@
         <ul class="footer__link-col">
           <li><a href="./impact.html">Chapters</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-          <li><a href="./sponsors.html">Sponsors</a></li>
           <li><a href="./playbooks.html">Playbooks</a></li>
           <li><a href="./tree.html">Learning Tree</a></li>
           <li><a href="./about.html">About</a></li>
+          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
           <li><a href="https://dashboard.all-ai-network.org/donate/msoe-ai-club" target="_blank" rel="noopener">Donate</a></li>
           <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
           <li><a href="https://dashboard.all-ai-network.org/docs" target="_blank" rel="noopener">API Docs</a></li>
@@ -327,22 +274,13 @@
     </div>
   </footer>
 
-  <!-- the film: loads only when opened -->
-  <dialog id="film" class="film-dialog" aria-label="The 70-second film">
-    <div class="film-dialog__box">
-      <video controls playsinline preload="none" poster="./public/film/poster.jpg" data-src="./public/film/all-central-film-720.mp4"></video>
-      <button class="film-dialog__close" data-film-close aria-label="Close">&times;</button>
-    </div>
-  </dialog>
-
   <script>
     // Mobile nav toggle
-    const toggle = document.getElementById('nav-toggle');
-    const links = document.getElementById('nav-links');
+    const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
     if (toggle && links) toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
 
-    // Smooth scroll for anchor links (the film button is handled by home.ts)
-    document.querySelectorAll('a[href^="#"]:not([data-film-open])').forEach((a) => {
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
       a.addEventListener('click', (e) => {
         const id = a.getAttribute('href'); if (!id || id === '#') return;
         const target = document.querySelector(id);
@@ -350,20 +288,28 @@
       });
     });
 
+    // The people this is for, typed one at a time
+    (function() {
+      const el = document.getElementById('hero-word'); if (!el) return;
+      const words = ['students.', 'clubs.', 'sponsors.', 'builders.', 'researchers.', 'communities.'];
+      let wordIdx = 0, charIdx = 0, deleting = false;
+      const TYPE_SPEED = 65, DELETE_SPEED = 40, PAUSE_AFTER_TYPE = 2200, PAUSE_AFTER_DELETE = 300;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = words[0]; return; }
+      function tick() {
+        const current = words[wordIdx];
+        if (!deleting) { charIdx++; el.textContent = current.slice(0, charIdx); if (charIdx === current.length) { setTimeout(() => { deleting = true; tick(); }, PAUSE_AFTER_TYPE); return; } setTimeout(tick, TYPE_SPEED); }
+        else { charIdx--; el.textContent = current.slice(0, charIdx); if (charIdx === 0) { deleting = false; wordIdx = (wordIdx + 1) % words.length; setTimeout(tick, PAUSE_AFTER_DELETE); return; } setTimeout(tick, DELETE_SPEED); }
+      }
+      setTimeout(tick, 800);
+    })();
+
     // Parallax hero background
     (function() {
       const heroBg = document.querySelector('.hero__bg');
       if (!heroBg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       let ticking = false;
       window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            const scrollY = window.scrollY;
-            if (scrollY < window.innerHeight * 1.5) heroBg.style.transform = `translateY(${scrollY * 0.35}px)`;
-            ticking = false;
-          });
-          ticking = true;
-        }
+        if (!ticking) { requestAnimationFrame(() => { const y = window.scrollY; if (y < window.innerHeight * 1.5) heroBg.style.transform = `translateY(${y * 0.35}px)`; ticking = false; }); ticking = true; }
       }, { passive: true });
     })();
 
@@ -376,23 +322,14 @@
       const PARTICLE_COUNT = 50, CONNECTION_DIST = 140, SPEED = 0.3;
       const colors = [{ r: 59, g: 130, b: 246 }, { r: 34, g: 211, b: 238 }, { r: 236, g: 72, b: 153 }, { r: 168, g: 85, b: 247 }];
       function resize() { const hero = canvas.parentElement; width = canvas.width = hero.offsetWidth; height = canvas.height = hero.offsetHeight; }
-      function createParticles() {
-        particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          particles.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * SPEED, vy: (Math.random() - 0.5) * SPEED, r: Math.random() * 2 + 1, color });
-        }
-      }
+      function createParticles() { particles = []; for (let i = 0; i < PARTICLE_COUNT; i++) { const color = colors[Math.floor(Math.random() * colors.length)]; particles.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * SPEED, vy: (Math.random() - 0.5) * SPEED, r: Math.random() * 2 + 1, color }); } }
       function draw() {
         ctx.clearRect(0, 0, width, height);
         for (let i = 0; i < particles.length; i++) for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < CONNECTION_DIST) { const c = particles[i].color; ctx.strokeStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${(1 - dist / CONNECTION_DIST) * 0.3})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); }
         }
-        for (const p of particles) {
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0.6)`; ctx.fill();
-          p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > width) p.vx *= -1; if (p.y < 0 || p.y > height) p.vy *= -1;
-        }
+        for (const p of particles) { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0.6)`; ctx.fill(); p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > width) p.vx *= -1; if (p.y < 0 || p.y > height) p.vy *= -1; }
         animId = requestAnimationFrame(draw);
       }
       resize(); createParticles(); draw();
