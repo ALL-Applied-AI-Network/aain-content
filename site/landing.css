@@ -128,7 +128,7 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
 .film-btn { display: inline-flex; align-items: center; gap: .6rem; }
 .film-btn__play { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: rgba(255,255,255,.14); display: grid; place-items: center; }
 .film-btn__play::after { content: ""; border-left: .5rem solid currentColor; border-top: .32rem solid transparent; border-bottom: .32rem solid transparent; margin-left: .12rem; }
-.film-dialog { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); width: 100%; }
+.film-dialog { border: 0; padding: 0; background: transparent; max-width: min(1100px, 94vw); width: 100%; margin: auto; }
 .film-dialog::backdrop { background: rgba(6,6,8,.86); backdrop-filter: blur(6px); }
 .film-dialog__box { position: relative; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 40px 120px rgba(0,0,0,.7); }
 .film-dialog video { display: block; width: 100%; aspect-ratio: 16 / 9; }
