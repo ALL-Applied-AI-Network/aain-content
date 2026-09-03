@@ -23,7 +23,6 @@
   <link rel="stylesheet" href="./story.css" />
 </head>
 <body class="story">
-  <canvas class="page-aurora" data-aurora="0.34" data-fixed aria-hidden="true"></canvas>
   <nav class="rail" data-rail aria-label="Sections of this page"></nav>
 
   <nav class="nav">
@@ -35,7 +34,7 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./" class="active">Home</a></li>
-        <li><a href="./impact.html">Chapters</a></li>
+        <li><a href="./impact.html">The Network</a></li>
         <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
         <li><a href="./tree.html">Learn</a></li>
         <li><a href="./about.html">About</a></li>
@@ -84,30 +83,46 @@
     </div>
   </section>
 
-  <!-- ═══════════ THE FILM: seventy seconds, playing as soon as it is on screen ═══════════ -->
-  <section class="film" id="film" data-rail="The film">
-    <div class="film__frame">
-      <video id="film-video" playsinline muted loop preload="metadata" poster="./public/film/poster.jpg" src="./public/film/all-central-film-720.mp4" aria-label="The ALL film, seventy seconds"></video>
-      <button class="film__sound" type="button" data-sound aria-pressed="false">Turn sound on</button>
+  <!-- real moments, before any claim -->
+  <div class="photo-ticker">
+    <div class="photo-ticker__track">
+      <div class="photo-ticker__item" data-tooltip="Speaker panel: engineers on how they hire"><img src="./public/web/speaker-event.jpg" alt="Speaker event at MSOE" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hackathon: teams mid-build"><img src="./public/web/students-working.jpg" alt="Students collaborating during a hackathon" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Innovation Lab: students presenting to the sponsor"><img src="./public/web/innovation-lab.jpg" alt="Innovation Lab presentation" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE"><img src="./public/web/supercomputer-tour.jpg" alt="ROSIE supercomputer tour" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards"><img src="./public/web/gpu-winners.jpg" alt="RTX 4090 giveaway at the ROSIE Awards" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings"><img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hiring panel: employers taking student questions"><img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hacksgiving: a hackathon donating data science to local non-profits"><img src="./public/web/group-photo.jpg" alt="Hacksgiving group photo" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff, the first event"><img src="./public/web/first-event.jpg" alt="MAIC first event crowd" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Speaker panel: engineers on how they hire"><img src="./public/web/speaker-event.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hackathon: teams mid-build"><img src="./public/web/students-working.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Innovation Lab: students presenting to the sponsor"><img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE"><img src="./public/web/supercomputer-tour.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards"><img src="./public/web/gpu-winners.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings"><img src="./public/web/research-presentation.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hiring panel: employers taking student questions"><img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hacksgiving: a hackathon donating data science to local non-profits"><img src="./public/web/group-photo.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff, the first event"><img src="./public/web/first-event.jpg" alt="" loading="lazy" /></div>
     </div>
-    <p class="film__cap"><span><b>Seventy seconds.</b> The page picks up where it ends.</span><a class="film__full" href="./public/film/all-central-film-720.mp4" target="_blank" rel="noopener">Watch full-screen &rarr;</a></p>
-  </section>
+  </div>
 
-  <!-- ═══════════ THE PROBLEM: the flood ═══════════ -->
-  <section class="lp flood-section" id="problem" data-rail="Yours">
-    <div class="lp__inner flood">
+  <!-- ═══════════ YOURS: the deck ═══════════ -->
+  <section class="lp deck-section" id="problem" data-rail="Yours">
+    <div class="lp__inner deckgrid">
       <div class="rv">
-        <p class="lp-eyebrow">Where the film leaves off</p>
+        <p class="lp-eyebrow">The problem</p>
         <h2 class="lp-h2">Yours is in that pile.</h2>
         <p class="lp-lede">
-          Two hundred and forty-four applications for every posting, and they read alike. The one that lights up
-          carries something a r&eacute;sum&eacute; can&rsquo;t hold: what you built, and who watched you build it.
-          The rest of this page is how yours becomes that one.
+          AI r&eacute;sum&eacute; agents flood inboxes faster than you can apply: two hundred and forty-four
+          applications for every posting, and they read alike. The one that gets pulled carries something a
+          r&eacute;sum&eacute; can&rsquo;t hold: what you built, and who watched you build it. The rest of this page
+          is how yours becomes that one.
         </p>
         <div class="nums" aria-label="Applications per job posting: 116 in 2022, 244 in 2025">
           <div class="nums__n">116</div>
           <div class="nums__arrow" aria-hidden="true">&rarr;</div>
-          <div class="nums__n nums__n--hot" data-flood-count data-flood-from="116" data-flood-to="244">116</div>
+          <div class="nums__n nums__n--hot" data-deck-count data-deck-from="116" data-deck-to="244">116</div>
           <div class="nums__l"><b>2022</b></div>
           <div></div>
           <div class="nums__l"><b>2025</b></div>
@@ -115,9 +130,7 @@
         </div>
         <p class="lp-src">Greenhouse, <a href="https://www.greenhouse.com/recruiting-benchmarks" target="_blank" rel="noopener">The Hire Standard</a>, 2026 &middot; Harvard Business Review, <a href="https://hbr.org/2026/06/ai-has-broken-hiring-heres-how-to-fix-it" target="_blank" rel="noopener">&ldquo;AI Has Broken Hiring&rdquo;</a>, 2026</p>
       </div>
-      <div class="flood__frame rv">
-        <canvas data-flood="./public/art/sheet-a.png,./public/art/sheet-b.png,./public/art/sheet-c.png" aria-hidden="true"></canvas>
-      </div>
+      <div class="deck rv" data-deck="./public/art/sheet-a.png,./public/art/sheet-b.png,./public/art/sheet-c.png" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -240,7 +253,7 @@
       <div class="actions rv">
         <a href="./impact.html#chapters" class="btn btn--primary btn--lg">Find your chapter &rarr;</a>
       </div>
-      <p class="small rv">No chapter at your school? <a href="./start-a-chapter.html" style="color:#22d3ee;text-decoration:none">Start one</a>. Faculty or a company? <a href="mailto:hello@all-ai-network.org" style="color:#22d3ee;text-decoration:none">hello@all-ai-network.org</a></p>
+      <p class="small rv">No chapter at your school? <a href="./start-a-chapter.html" style="color:#22d3ee;text-decoration:none">Start one</a>. Faculty or a company? <a href="mailto:hello@all-ai-network.org" style="color:#22d3ee;text-decoration:none">hello@all-ai-network.org</a> &middot; <a href="./public/film/all-central-film-720.mp4" target="_blank" rel="noopener" style="color:#22d3ee;text-decoration:none">Watch the 70-second film</a></p>
     </div>
   </section>
 
@@ -259,7 +272,7 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./impact.html">Chapters</a></li>
+          <li><a href="./impact.html">The Network</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
           <li><a href="./playbooks.html">Playbooks</a></li>
           <li><a href="./tree.html">Learning Tree</a></li>

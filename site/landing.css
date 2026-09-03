@@ -41,7 +41,7 @@ html.js-rv .rv-group.in > :nth-child(2) { transition-delay: .08s } html.js-rv .r
 html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .rv-group.in > :nth-child(5) { transition-delay: .32s } html.js-rv .rv-group.in > :nth-child(6) { transition-delay: .40s }
 @media (prefers-reduced-motion: reduce) { html.js-rv .rv, html.js-rv .rv-group > * { opacity: 1; transform: none; transition: none; } }
 
-/* ── 1 · the problem: copy left, the flood right ───────────────────────── */
+/* ── 1 · the problem: copy left, the deck right ───────────────────────── */
 .problem { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
 .problem__figure { border-radius: 20px; aspect-ratio: 3 / 2; border: 1px solid var(--lp-line); box-shadow: 0 40px 90px rgba(0,0,0,.55); }
 .problem__nums { display: flex; align-items: flex-end; gap: 1.25rem; margin: 1.75rem 0 .35rem; font-family: var(--lp-display); }
@@ -68,7 +68,7 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
 .formula__spine span:last-child::after { content: none; }
 .formula__spine span.is-on { color: var(--lp-cyan); }
 
-/* ── 3 · proof: aurora band, stats, showcase, quote ───────────────────── */
+/* ── 3 · proof: band, stats, showcase, quote ───────────────────── */
 .proof { background: #0a0a0b; }
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 0 0 clamp(2.5rem, 5vw, 4rem); }
 .stat { padding: 1.4rem 1.5rem; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid var(--lp-line); backdrop-filter: blur(6px); }

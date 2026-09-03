@@ -1,0 +1,22 @@
+/* about.css — the origin timeline and the money-flow diagram */
+.timeline { list-style: none; margin: 1.6rem 0 2.4rem; padding: 0 0 0 1.6rem; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: .4rem; bottom: .4rem; width: 2px; background: linear-gradient(180deg, #22d3ee, #a855f7, #ec4899); border-radius: 2px; }
+.timeline li { position: relative; margin: 0 0 1.1rem; padding-left: .4rem; font-size: 1rem; line-height: 1.55; color: var(--text-secondary); }
+.timeline li::before { content: ""; position: absolute; left: -1.6rem; top: .55rem; width: 14px; height: 14px; border-radius: 50%; background: #111113; border: 2px solid #22d3ee; box-shadow: 0 0 0 4px rgba(34,211,238,.15); }
+.timeline li b { color: var(--text-primary); font-weight: 600; margin-right: .25rem; }
+.timeline__yr { display: inline-block; min-width: 3.4rem; font: 600 .72rem/1 "JetBrains Mono", monospace; letter-spacing: .16em; color: #22d3ee; text-transform: uppercase; margin-right: .5rem; }
+.flow { margin: 1.4rem auto 2.2rem; max-width: 420px; }
+.flow svg { width: 100%; height: auto; display: block; overflow: visible; }
+.flow__node rect { fill: rgba(255,255,255,.04); stroke: rgba(255,255,255,.14); stroke-width: 1; }
+.flow__node--mid rect { stroke: rgba(34,211,238,.55); fill: rgba(34,211,238,.06); }
+.flow__node text { fill: #f4f4f6; font: 600 14px "Space Grotesk", sans-serif; }
+.flow__node text.flow__sub { fill: rgba(244,244,246,.6); font: 400 11px "JetBrains Mono", monospace; }
+.flow__path { fill: none; stroke: url(#fg); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 80; stroke-dashoffset: 80; }
+.flow.in .flow__path { animation: flow-draw .8s cubic-bezier(.2,.7,.2,1) forwards; }
+.flow.in .flow__path:nth-of-type(2) { animation-delay: .7s; }
+.flow__dot { fill: #22d3ee; filter: drop-shadow(0 0 8px #22d3ee); opacity: 0; offset-path: path("M210 76 L210 146 L210 216 L210 286"); }
+.flow.in .flow__dot { animation: flow-travel 2.6s 1.2s ease-in-out infinite; }
+@keyframes flow-draw { to { stroke-dashoffset: 0; } }
+@keyframes flow-travel { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 36% { offset-distance: 38%; opacity: 1; } 40% { opacity: 0; } 60% { offset-distance: 62%; opacity: 0; } 64% { opacity: 1; } 92% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .flow__path { stroke-dashoffset: 0; } .flow.in .flow__dot { animation: none; opacity: 0; } }
+.flow__lbl { fill: rgba(34,211,238,.85); font: 500 11px "JetBrains Mono", monospace; }

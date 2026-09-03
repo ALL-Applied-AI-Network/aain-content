@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chapters &mdash; ALL Applied AI Network</title>
+  <title>The Network &mdash; ALL Applied AI Network</title>
   <meta name="description" content="Find your chapter. Every chapter here has a live dashboard, real members and runs events on the platform. No chapter at your school yet? Start one." />
-  <meta property="og:title" content="Chapters — ALL Applied AI Network" />
+  <meta property="og:title" content="The Network — ALL Applied AI Network" />
   <meta property="og:description" content="Find your chapter, or start one at your school." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./public/all-logo-transparent.png" />
@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./landing.css" />
+  <link rel="stylesheet" href="./fx.css" />
   <link rel="stylesheet" href="./impact.css" />
 </head>
 <body>
@@ -29,7 +31,7 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./">Home</a></li>
-        <li><a href="./impact.html" class="active">Chapters</a></li>
+        <li><a href="./impact.html" class="active">The Network</a></li>
         <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
         <li><a href="./tree.html">Learn</a></li>
         <li><a href="./about.html">About</a></li>
@@ -57,10 +59,11 @@
     <div class="impact-hero__veil" aria-hidden="true"></div>
     <div class="container impact-hero__inner">
       <span class="impact-hero__badge">Live from the dashboard</span>
-      <h1 class="impact-hero__title">Find your chapter.</h1>
+      <h1 class="impact-hero__title">The network.</h1>
       <p class="impact-hero__subtitle">
-        Every chapter here has a live dashboard, real members and runs events on the
-        platform. No chapter at your school yet? <a href="./start-a-chapter.html">Start one.</a>
+        Every chapter here has a live dashboard, real members and runs events on the platform.
+        Students find a room, founders <a href="./start-a-chapter.html">start one</a>, and companies
+        <a href="https://sponsors.all-ai-network.org" rel="noopener">back one</a>.
       </p>
       <div class="impact-stats" id="impact-stats-strip">
         <div class="impact-stats__item impact-stats__item--loading">
@@ -87,6 +90,36 @@
     </a>
   </section>
 
+  <!-- ═══════════ GET INVOLVED: three ways in ═══════════ -->
+  <section class="lp lp--tight" id="involve">
+    <div class="lp__inner">
+      <div class="lp__head rv">
+        <p class="lp-eyebrow">Get involved</p>
+        <h2 class="lp-h2">Three ways in.</h2>
+      </div>
+      <div class="lanes rv-group">
+        <article class="lane lane--student" data-tilt="4">
+          <div class="lane__k">Students</div>
+          <h3 class="lane__t">Come to your first event.</h3>
+          <p class="lane__d">Pick your chapter below and show up once. <b>Free to join, no sign-up to attend,</b> no experience needed.</p>
+          <a href="#chapters" class="btn btn--primary">See the chapters &darr;</a>
+        </article>
+        <article class="lane lane--officer" data-tilt="4">
+          <div class="lane__k">Founders</div>
+          <h3 class="lane__t">Start or claim a chapter.</h3>
+          <p class="lane__d">One <b>30-minute setup call</b> leaves you with a roster, a live chapter site and your first event published.</p>
+          <a href="./start-a-chapter.html" class="btn btn--primary">Start a chapter &rarr;</a>
+        </article>
+        <article class="lane lane--sponsor" data-tilt="4">
+          <div class="lane__k">Companies</div>
+          <h3 class="lane__t">Back a chapter, hire from it.</h3>
+          <p class="lane__d"><b>$5,000</b> puts a student team on your problem for a semester. Tax-deductible, and every dollar reaches the chapter.</p>
+          <a href="https://sponsors.all-ai-network.org" class="btn btn--primary" rel="noopener">Open the sponsor portal &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════════════════════════════════════════════════════════════
        CHAPTERS (cards)
        ═══════════════════════════════════════════════════════════════════════ -->
@@ -94,10 +127,10 @@
     <div class="container">
       <div class="section-label">
         <span class="section-label__num">01</span>
-        <span class="section-label__text">Chapters</span>
+        <span class="section-label__text">The Network</span>
         <span class="section-label__line"></span>
       </div>
-      <h2 class="section__heading">Active chapters</h2>
+      <h2 class="section__heading rv">Active chapters</h2>
       <p class="section__lede">
         Every chapter listed here has a live dashboard, real members, and
         runs events on the platform. When more orgs come online, they show
@@ -228,7 +261,7 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./impact.html">Chapters</a></li>
+          <li><a href="./impact.html">The Network</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
           <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
           <li><a href="./playbooks.html">Playbooks</a></li>
@@ -251,5 +284,6 @@
     }
   </script>
   <script type="module" src="./ts/impact-page.ts"></script>
+  <script type="module" src="./ts/page.ts"></script>
 </body>
 </html>

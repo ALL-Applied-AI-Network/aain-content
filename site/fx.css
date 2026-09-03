@@ -1,14 +1,5 @@
 /* fx.css — styles for the three effects in ts/fx.ts. Purely additive; safe on every page. */
 
-/* aurora backdrop: the canvas fills its positioned parent and sits behind content */
-.fx-aurora-host { position: relative; isolation: isolate; }
-.fx-aurora-host > canvas[data-aurora] {
-  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; display: block;
-  mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
-}
-.fx-aurora-host > :not(canvas) { position: relative; z-index: 1; }
-
 /* liquid image: the canvas is drawn over the original <img>, which stays for layout, print and no-WebGL */
 .fx-frame { position: relative; overflow: hidden; }
 .fx-frame > img { display: block; width: 100%; height: 100%; object-fit: cover; }
