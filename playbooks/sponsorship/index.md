@@ -8,6 +8,16 @@ One structural thing to understand before any of it. Your chapter is a **sponsor
 
 ---
 
+## Start here
+
+If you read nothing else:
+
+1. Your chapter is a project of a 501(c)(3): a company's gift is tax-deductible, the Foundation holds the money, the chapter directs the spend.
+2. Sponsors come from people who have already been in your room: past speakers, alumni at the company, faculty with discretionary funds. Ask for a speaker slot first, not money, and thank them within 48 hours.
+3. In the first real meeting: put the NDA on the table, recap what the chapter is as if they know nothing, and offer pathways (a speaker slot, a sponsored project, a hackathon) rather than a price.
+
+The rest of this playbook is how we learned that, and what we would do differently.
+
 ## How we did it at MAIC
 
 **Direct Supply, our primary sponsor, speaks and funds.** They send engineers to our speaker events regularly and they cover our food. The two are not separate relationships — the speaking is what keeps the funding warm, and the funding is what makes the speaking easy to ask for.

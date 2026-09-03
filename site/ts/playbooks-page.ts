@@ -1,7 +1,7 @@
 /**
  * playbooks-page.ts — Renders the Playbooks landing grid.
  *
- * Reads from playbook-metadata.ts and builds 5 interactive cards with
+ * Reads from playbook-metadata.ts and builds six cards with
  * tagline, stat pills, and 3 action buttons each.
  */
 
@@ -19,13 +19,8 @@ function renderCard(p: PlaybookMeta): string {
     )
     .join("");
 
-/** Getting Started is no longer rendered by the viewer: it is the body of
- *  /start-a-chapter. One file, one rendering — a card that opened the
- *  viewer copy would put the same guide on the site twice. */
 function playbookHref(slug: string, anchor = ""): string {
-  return slug === "getting-started"
-    ? `./start-a-chapter.html#${anchor ? anchor.replace(/^#/, "") : "the-guide"}`
-    : `./playbook.html?path=playbooks/${slug}/index.md${anchor}`;
+  return `./playbook.html?path=playbooks/${slug}/index.md${anchor}`;
 }
 
   const actions = p.actions
@@ -47,6 +42,8 @@ function playbookHref(slug: string, anchor = ""): string {
         <h2 class="pb-card__title">${p.title}</h2>
       </div>
       <p class="pb-card__tagline">${p.tagline}</p>
+      <div class="pb-card__keys-label">Start here</div>
+      <ol class="pb-card__keys">${p.keys.map((k) => `<li>${k}</li>`).join("")}</ol>
       <div class="pb-card__stats">${stats}</div>
       <div class="pb-card__actions-label">Jump straight to:</div>
       <div class="pb-card__actions">${actions}</div>

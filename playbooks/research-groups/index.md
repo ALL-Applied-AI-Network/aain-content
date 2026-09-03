@@ -10,6 +10,16 @@ Ben was a 3× finalist at the ROSIE Supercomputer Super Challenge and won MICS B
 
 ---
 
+## Start here
+
+If you read nothing else:
+
+1. Mentors first, topics second, students third: recruit mentors and lock topics over the summer, announce them at the week-one intro event, then open an interest form.
+2. Set the commitment bar in the form and enforce it: three to five hours a week, weekly meetings, a deliverable every four weeks with a short check-in between milestones.
+3. Pick the publication target by the end of month two (MICS by default; a blog post or open-source release is a legitimate floor) and write the intro, related work and method in month three while experiments still run.
+
+The rest of this playbook is how we learned that, and what we would do differently.
+
 ## Form the group
 
 **The group is only as good as the commitment. Set the bar high and flakes will self-select out.**

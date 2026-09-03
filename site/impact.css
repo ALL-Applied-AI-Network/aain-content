@@ -1411,3 +1411,5 @@
   color: rgba(255, 255, 255, 0.55);
   font-size: 0.95rem;
 }
+
+@media (max-width: 760px) { .impact-hero__scroll-cue { display: none; } }

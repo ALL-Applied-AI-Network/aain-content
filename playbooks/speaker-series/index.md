@@ -8,6 +8,16 @@ The series wasn't always the crown jewel. In pre-2023 MAIC we had speakers, but 
 
 ---
 
+## Start here
+
+If you read nothing else:
+
+1. Where speakers come from, in order: your own faculty, your sponsors' networks, alumni at tech companies, LinkedIn outreach to local ML and AI titles, conference speakers passing through. Confirm each four or more weeks out.
+2. One slot, never moved: same day, time and room, every other week. Doors and food at 6:30, an intro under 90 seconds, a 45-minute talk, 15 minutes of Q&A with a seeded first question, hard stop at 60. Skip midterm and finals weeks.
+3. The series is the sponsor pipeline: a same-week thank-you, a 30-day follow-up asking whether the company would be open to a sponsorship conversation, one spreadsheet of every past and prospective speaker.
+
+The rest of this playbook is how we learned that, and what we would do differently.
+
 ## Find a speaker
 
 **The best speakers are one warm intro away. Ask the faculty first.**

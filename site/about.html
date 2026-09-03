@@ -4,76 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About &mdash; ALL Applied AI Network</title>
-  <meta name="description" content="ALL Applied AI Network Foundation is a 501(c)(3) nonprofit that helps students start and run applied AI clubs at their universities. Here is what we do, how it started, and how to support it." />
+  <meta name="description" content="ALL Applied AI Network Foundation is a 501(c)(3) that helps students start and run applied AI clubs at their universities, and holds the money so a student treasurer never has to become an accountant." />
   <meta property="og:title" content="About — ALL Applied AI Network" />
   <meta property="og:description" content="A 501(c)(3) nonprofit helping students start and run applied AI clubs at their universities." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./public/all-logo-transparent.png" />
+  <meta property="og:image" content="https://all-ai-network.org/public/web/group-photo.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About — ALL Applied AI Network" />
-  <meta name="twitter:description" content="A 501(c)(3) nonprofit helping students start and run applied AI clubs at their universities." />
   <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
-  <style>
-    /* Scoped prose styles for the legal pages. Deliberately narrow —
-       these class names are prefixed `legal-` so they can't collide with
-       anything in styles.css. */
-    .legal-wrap { max-width: 46rem; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
-    .legal-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-      opacity: .65; margin: 0 0 .75rem;
-    }
-    .legal-wrap h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.1;
-      margin: 0 0 .75rem; letter-spacing: -.02em;
-    }
-    .legal-updated {
-      font-family: 'JetBrains Mono', monospace; font-size: .8rem;
-      opacity: .7; margin: 0 0 2.5rem; padding-bottom: 2rem;
-      border-bottom: 1px solid rgba(128,128,128,.25);
-    }
-    .legal-wrap h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.35rem; line-height: 1.25; margin: 2.75rem 0 .75rem;
-      letter-spacing: -.01em;
-    }
-    .legal-wrap h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.02rem; margin: 1.75rem 0 .5rem;
-    }
-    .legal-wrap p, .legal-wrap li { line-height: 1.7; }
-    .legal-wrap p { margin: 0 0 1rem; }
-    .legal-wrap ul { padding-left: 1.25rem; margin: 0 0 1.25rem; }
-    .legal-wrap li { margin-bottom: .55rem; }
-    .legal-wrap strong { font-weight: 600; }
-    .legal-table-wrap { overflow-x: auto; margin: 1.25rem 0 1.75rem; }
-    .legal-table { border-collapse: collapse; width: 100%; font-size: .9rem; }
-    .legal-table th, .legal-table td {
-      text-align: left; padding: .65rem .75rem; vertical-align: top;
-      border-bottom: 1px solid rgba(128,128,128,.22);
-    }
-    .legal-table th {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
-      opacity: .7; white-space: nowrap;
-    }
-    .legal-callout {
-      margin: 1.75rem 0; padding: 1.1rem 1.25rem;
-      border-left: 3px solid var(--accent, #6d4aff);
-      background: rgba(128,128,128,.08); border-radius: 0 4px 4px 0;
-    }
-    .legal-callout > :last-child { margin-bottom: 0; }
-    .legal-wrap a { text-decoration: underline; text-underline-offset: 2px; }
-  </style>
+  <link rel="stylesheet" href="./landing.css" />
+  <link rel="stylesheet" href="./fx.css" />
 </head>
 <body>
 
-  <!-- Navigation (mirrors index.html) -->
   <nav class="nav">
     <div class="nav__inner">
       <a href="./" class="nav__brand">
@@ -83,104 +29,53 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./">Home</a></li>
-        <li><a href="./tree.html">Learning Tree</a></li>
+        <li><a href="./impact.html">Chapters</a></li>
         <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-        <li><a href="./impact.html">Impact</a></li>
-        <li><a href="./overview.html">Overview</a></li>
-        <li><a href="./about.html">About</a></li>
+        <li><a href="./sponsors.html">Sponsors</a></li>
+        <li><a href="./playbooks.html">Playbooks</a></li>
+        <li><a href="./tree.html">Learning Tree</a></li>
+        <li><a href="./about.html" class="active">About</a></li>
       </ul>
       <div class="nav__cta">
         <a href="https://dashboard.all-ai-network.org/sign-in" class="nav__cta-link" rel="noopener" title="Already have an account?">Sign in</a>
+        <a href="./get-started.html" class="nav__cta-btn">Get started &rarr;</a>
       </div>
     </div>
   </nav>
 
-  <main class="legal-wrap">
-
-    <p class="legal-eyebrow">ALL Applied AI Network Foundation</p>
-    <h1>About us</h1>
-    <p class="legal-updated">A 501(c)(3) nonprofit &middot; Milwaukee, Wisconsin</p>
-
-    <div class="legal-callout">
-      <p><strong>What we do.</strong> We help students start and run applied AI
-      clubs at their universities &mdash; and we act as the nonprofit that holds
-      the money, so a student treasurer never has to become an accountant.</p>
+  <header class="pagehead">
+    <div class="pagehead__art" aria-hidden="true"><img src="./public/art/field.webp" alt="" /></div>
+    <div class="lp__inner">
+      <p class="lp-eyebrow">ALL Applied AI Network Foundation</p>
+      <h1 class="lp-h2">We hold the money so students can run the club.</h1>
+      <p class="lp-lede">A 501(c)(3) in Milwaukee, Wisconsin. We help students start and run applied AI clubs at their universities, and we hold the money so a student treasurer never has to become an accountant.</p>
     </div>
+  </header>
 
-    <h2>Our mission</h2>
-    <p>Most students who want to work in AI never get to build anything with it
-    before they graduate. Coursework covers the theory; the part that actually
-    gets someone hired &mdash; shipping a real project, meeting the people who do
-    this for a living &mdash; usually depends on whether their campus happens to
-    have a club that does it well.</p>
+  <section class="lp lp--tight">
+    <div class="lp__inner about-grid">
+      <div class="prose">
+        <h3>How it started</h3>
+        <p>This began as the AI Club at the Milwaukee School of Engineering. The first year was run on a budget of zero and mostly went wrong: weekly technical workshops that were too advanced for freshmen and too basic for juniors, and not many people came back.</p>
+        <p>Two things worked: speaker events anyone could walk into, and projects scoped with a company that ran a couple of months with older students mentoring younger ones. That version of the club grew past 500 members, and other schools started asking how to copy it. We set the first few up by hand, realized that didn&rsquo;t scale, and turned it into a nonprofit.</p>
 
-    <p>We exist to make that less of an accident. We give student organizers the
-    playbook, the software, and the funding rails to run a serious applied AI
-    club, so a student at any university can get the same shot as a student at a
-    school that already had one.</p>
+        <h3 id="money">How the money works</h3>
+        <p>ALL Applied AI Network Foundation is a nonprofit corporation recognized as tax-exempt under section 501(c)(3) of the Internal Revenue Code. Chapters are projects of the Foundation rather than separate legal entities.</p>
+        <p>When someone gives to a chapter, the gift goes to the Foundation, restricted to that chapter&rsquo;s charitable work. The Foundation holds and accounts for the funds; the chapter spends against them. <b>We do not take a platform fee.</b></p>
 
-    <h2>How it started</h2>
-    <p>This began as the AI Club at the Milwaukee School of Engineering. The
-    first year was run on a budget of zero and mostly went wrong: weekly
-    technical workshops that were too advanced for freshmen and too basic for
-    juniors, and not many people came back.</p>
+        <h3>Support a chapter</h3>
+        <p>Gifts are tax-deductible and the receipt arrives within a minute. Every chapter has its own giving page; the founding chapter&rsquo;s is below. Companies that want to sponsor a chapter, fund a prize pool, or put engineers in front of students start at the <a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">sponsor portal</a>.</p>
+        <p><a class="btn btn--primary btn--lg" href="https://dashboard.all-ai-network.org/donate/msoe-ai-club" target="_blank" rel="noopener">Donate to MSOE AI Club &rarr;</a></p>
 
-    <p>What worked was different. Speaker events anyone could walk into. Real
-    projects, scoped with a company, that ran for a couple of months with older
-    students mentoring younger ones. That version of the club grew past 500
-    members, and other schools started asking how to copy it. We set the first
-    few up by hand, realized that didn&rsquo;t scale, and turned it into a
-    nonprofit.</p>
-
-    <h2>What a chapter gets</h2>
-    <ul>
-      <li><strong>The playbook.</strong> Written guides for the things that are
-      hard the first time &mdash; running a hackathon, pitching a sponsor,
-      handing the club over to next year&rsquo;s board.</li>
-      <li><strong>The software.</strong> A free dashboard for the officers
-      running the club: events with QR check-in, a member roster, project
-      tracking, and a chapter website that deploys in about ten minutes.</li>
-      <li><strong>The money rails.</strong> Chapters raise money through our
-      501(c)(3), so a company&rsquo;s sponsorship is tax-deductible and every
-      gift gets a proper receipt.</li>
-      <li><strong>The network.</strong> What works at one school gets used at
-      the next one.</li>
-    </ul>
-
-    <h2>How the money works</h2>
-    <p>ALL Applied AI Network Foundation is a nonprofit corporation recognized
-    as tax-exempt under section 501(c)(3) of the Internal Revenue Code. Chapters
-    are projects of the Foundation rather than separate legal entities.</p>
-
-    <p>That has a specific consequence worth stating plainly: when someone gives
-    to support a chapter, the gift is made to the Foundation and is restricted
-    to that chapter&rsquo;s charitable work. The Foundation holds and accounts
-    for the funds; the chapter spends against them. We do not take a
-    platform fee.</p>
-
-    <h2>Support a chapter</h2>
-    <p>Gifts are tax-deductible and the receipt arrives within a minute. Every
-    chapter has its own giving page; the founding chapter&rsquo;s is below.</p>
-
-    <p>
-      <a class="btn btn--primary btn--lg"
-         href="https://dashboard.all-ai-network.org/donate/msoe-ai-club"
-         target="_blank" rel="noopener">Donate to MSOE AI Club &rarr;</a>
-    </p>
-
-    <p>If you are a company looking to sponsor a chapter, fund a hackathon
-    prize pool, or put engineers in front of students, the
-    <a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">sponsor portal</a>
-    is the place to start. If you want to bring a chapter to your campus, begin
-    at <a href="./get-started.html">Get started</a>.</p>
-
-    <h2>Contact</h2>
-    <p>Questions about the Foundation, a chapter, or a gift:
-    <a href="mailto:hello@all-ai-network.org">hello@all-ai-network.org</a>.
-    Our <a href="./privacy.html">privacy policy</a> covers what we collect and
-    why, and carries our full legal identity.</p>
-
-  </main>
+        <h3>Contact</h3>
+        <p>Questions about the Foundation, a chapter, or a gift: <a href="mailto:hello@all-ai-network.org">hello@all-ai-network.org</a>. Our <a href="./privacy.html">privacy policy</a> covers what we collect and why, and lists our legal name and EIN.</p>
+      </div>
+      <figure class="about-photo">
+        <img src="./public/web/group-photo.jpg" alt="The Hacksgiving group photo" width="1400" height="933" loading="lazy" />
+        <figcaption>Hacksgiving at MSOE, the founding chapter.</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="footer__inner">
@@ -197,13 +92,13 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./tree.html">Learning Tree</a></li>
-          <li><a href="./playbooks.html">Playbooks</a></li>
+          <li><a href="./impact.html">Chapters</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-          <li><a href="./impact.html">Impact</a></li>
+          <li><a href="./sponsors.html">Sponsors</a></li>
+          <li><a href="./playbooks.html">Playbooks</a></li>
+          <li><a href="./tree.html">Learning Tree</a></li>
           <li><a href="./about.html">About</a></li>
           <li><a href="https://dashboard.all-ai-network.org/donate/msoe-ai-club" target="_blank" rel="noopener">Donate</a></li>
-          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
           <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
           <li><a href="https://dashboard.all-ai-network.org/docs" target="_blank" rel="noopener">API Docs</a></li>
           <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
@@ -212,5 +107,9 @@
     </div>
   </footer>
 
+  <script>
+    const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+    if (toggle && links) toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
+  </script>
 </body>
 </html>

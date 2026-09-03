@@ -625,3 +625,9 @@
   text-decoration: none;
 }
 .playbook-more a:hover { text-decoration: underline; }
+
+/* Start here: the three things a president needs from this playbook, before the stats */
+.pb-card__keys-label { font-family: "JetBrains Mono", monospace; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--pb-accent, #22d3ee); margin: .9rem 0 .45rem; }
+.pb-card__keys { margin: 0 0 1rem; padding-left: 1.2rem; display: grid; gap: .4rem; }
+.pb-card__keys li { font-size: .9rem; line-height: 1.5; color: var(--text-secondary, #a0a0ad); }
+.pb-card__keys li::marker { color: var(--pb-accent, #22d3ee); font-weight: 600; }

@@ -4,23 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Start a Chapter &mdash; ALL Applied AI Network</title>
-  <meta name="description" content="Everything a chapter needs to launch and run on the ALL Applied AI Network — chapter dashboard, hub site template, operational playbooks, and a shared sponsor pipeline." />
+  <meta name="description" content="Start or claim an applied AI chapter at your university. One 30-minute setup call leaves you with a roster, a live chapter site, your first event published and a sponsor invited. Free, open-source, no cut." />
   <meta property="og:title" content="Start a Chapter — ALL Applied AI Network" />
-  <meta property="og:description" content="The chapter dashboard, hub site template, playbooks, and sponsor pipeline — everything a founding eboard needs in one place." />
+  <meta property="og:description" content="A dashboard, a chapter website, six playbooks and a sponsor portal, set up with you on one call." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./public/all-logo-transparent.png" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://all-ai-network.org/public/web/maic-first-event.jpg" />
   <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./toolkit.css" />
-  <link rel="stylesheet" href="./playbooks.css" />
+  <link rel="stylesheet" href="./landing.css" />
+  <link rel="stylesheet" href="./fx.css" />
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav class="nav">
     <div class="nav__inner">
       <a href="./" class="nav__brand">
@@ -30,10 +29,11 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./">Home</a></li>
-        <li><a href="./tree.html">Learning Tree</a></li>
+        <li><a href="./impact.html">Chapters</a></li>
         <li><a href="./start-a-chapter.html" class="active">Start a Chapter</a></li>
-        <li><a href="./impact.html">Impact</a></li>
-        <li><a href="./overview.html">Overview</a></li>
+        <li><a href="./sponsors.html">Sponsors</a></li>
+        <li><a href="./playbooks.html">Playbooks</a></li>
+        <li><a href="./tree.html">Learning Tree</a></li>
         <li><a href="./about.html">About</a></li>
       </ul>
       <div class="nav__cta">
@@ -43,9 +43,7 @@
     </div>
   </nav>
 
-  <!-- ═════════════════════════════════════════════════════════════════════
-       HERO — title, subtitle, and the two-path CTA
-       ═════════════════════════════════════════════════════════════════════ -->
+  <!-- ═══════════ HERO (the page mark stays) ═══════════ -->
   <section class="toolkit-hero">
     <canvas id="hero-particles"></canvas>
     <div id="hero-3d" class="hero-3d--page"></div>
@@ -53,573 +51,136 @@
       <span class="toolkit-hero__badge">Start a Chapter</span>
       <h1 class="toolkit-hero__title">Run a chapter without rebuilding the wheel.</h1>
       <p class="toolkit-hero__subtitle">
-        A <strong>dashboard</strong>, a <strong>hub site template</strong>,
-        five operational <strong>playbooks</strong>, and a shared
-        <strong>sponsor pipeline</strong> &mdash; everything a founding
-        eboard needs, in one place. Free, open-source, and battle-tested
-        at MAIC.
+        A <strong>dashboard</strong>, a <strong>chapter website</strong>, <strong>six playbooks</strong> and a
+        <strong>sponsor portal</strong>, set up with you on one 30-minute call. Free, open-source, and we take no cut.
       </p>
-
       <div class="path-tiles">
         <div class="path-tile path-tile--scratch">
           <div class="path-tile__top">
             <span class="path-tile__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-                <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-              </svg>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
             </span>
-            <div class="path-tile__heading">
-              <span class="path-tile__kicker">No club yet?</span>
-              <h2 class="path-tile__title">Start from scratch</h2>
-            </div>
+            <div class="path-tile__heading"><span class="path-tile__kicker">No club yet?</span><h2 class="path-tile__title">Start from scratch</h2></div>
           </div>
-          <p class="path-tile__desc">
-            Sign up for the dashboard, fork the hub-site template, run
-            the &ldquo;Getting Started&rdquo; playbook. Your first event
-            is on the calendar this week.
-          </p>
-          <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="path-tile__button">
-            <span>Sign up &mdash; create a chapter</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
+          <p class="path-tile__desc">Sign up, book the setup call, and your first event is on the calendar this week.</p>
+          <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="path-tile__button"><span>Sign up &mdash; create a chapter</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
-
         <div class="path-tile path-tile--connect">
           <div class="path-tile__top">
             <span class="path-tile__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-              </svg>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             </span>
-            <div class="path-tile__heading">
-              <span class="path-tile__kicker">Already running a club?</span>
-              <h2 class="path-tile__title">Connect existing chapter</h2>
-            </div>
+            <div class="path-tile__heading"><span class="path-tile__kicker">Already running a club?</span><h2 class="path-tile__title">Claim your chapter</h2></div>
           </div>
-          <p class="path-tile__desc">
-            Keep your identity. Plug into the dashboard, swap your
-            website to the hub template (or just hit the JSON content
-            API), and join the shared sponsor pipeline.
-          </p>
-          <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="path-tile__button">
-            <span>Sign up &mdash; claim your chapter</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
+          <p class="path-tile__desc">Keep your name, your site and everything else. Add the dashboard and the sponsor portal.</p>
+          <a href="https://dashboard.all-ai-network.org/sign-up?role=officer" target="_blank" rel="noopener" class="path-tile__button"><span>Sign up &mdash; claim your chapter</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═════════════════════════════════════════════════════════════════════
-       FOUNDER TIMELINE — four steps, Day 1 → Year 1
-       ═════════════════════════════════════════════════════════════════════ -->
-  <div class="toolkit-timeline">
-    <!-- Sticky vertical track on the left, lights up as the user scrolls -->
-    <aside class="timeline-track" aria-hidden="true">
-      <div class="timeline-track__line">
-        <div class="timeline-track__fill"></div>
-      </div>
-      <ol class="timeline-track__markers">
-        <li class="timeline-track__marker">
-          <span class="timeline-track__dot"></span>
-          <span class="timeline-track__when">Day 1</span>
-          <span class="timeline-track__what">Dashboard + hub site</span>
-        </li>
-        <li class="timeline-track__marker">
-          <span class="timeline-track__dot"></span>
-          <span class="timeline-track__when">First event</span>
-          <span class="timeline-track__what">Playbooks</span>
-        </li>
-        <li class="timeline-track__marker">
-          <span class="timeline-track__dot"></span>
-          <span class="timeline-track__when">First semester</span>
-          <span class="timeline-track__what">Sponsorship</span>
-        </li>
-      </ol>
-    </aside>
-
-    <!-- ═════════════════════════════════════════════════════════════════
-         STEP 01 · Day 1 — Stand up your chapter
-         (Dashboard AND hub site both live on the same day — fork is fast)
-         ═════════════════════════════════════════════════════════════ -->
-    <section class="toolkit-step toolkit-step--dashboard" id="dashboard">
-      <div class="container">
-        <div class="toolkit-step__header">
-          <div class="toolkit-step__chip">
-            <span class="toolkit-step__chip-num">01</span>
-            <span class="toolkit-step__chip-when">Day 1</span>
-          </div>
-          <h2 class="toolkit-step__title">
-            Stand up your chapter.
-          </h2>
-          <p class="toolkit-step__lede">
-            One afternoon: sign up for the dashboard, fork the hub-site
-            template, push to deploy. Your chapter has a live operations
-            backend AND a public website on the same day &mdash; that&rsquo;s
-            the headline difference between joining the network and
-            starting from scratch.
-          </p>
-          <figure class="toolkit-step__photo">
-            <img src="./public/web/maic-first-event.jpg"
-                 alt="MAIC's first event of the 2024 season — full room of new members"
-                 loading="lazy" />
-            <figcaption class="toolkit-step__photo-caption">
-              MAIC&rsquo;s first event of the season &middot; Fall 2024
-            </figcaption>
-          </figure>
-        </div>
-
-        <!-- Sub-section A: The dashboard -->
-        <div class="toolkit-substep">
-          <h3 class="toolkit-substep__title">
-            <span class="toolkit-substep__num">A</span>
-            The chapter dashboard
-          </h3>
-          <p class="toolkit-substep__desc">
-            <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener"><code>dashboard.all-ai-network.org</code></a>
-            is the operational core. Events, members, projects,
-            sponsors, leaderboards &mdash; one login, everything
-            connected.
-          </p>
-        </div>
-
-      <!-- ── Featured killer feature ─────────────────────────────
-           Verified living résumés is the headline reason to be on
-           the dashboard — every chapter's biggest unlock for its
-           members. Hoisted out of the six-card grid to lead the
-           dashboard sub-section per the cross-site narrative audit.
-           ─────────────────────────────────────────────────────── -->
-      <div class="dashboard-featured">
-        <div class="dashboard-featured__body">
-          <span class="dashboard-featured__eyebrow">Headline killer feature</span>
-          <h3 class="dashboard-featured__title">Members get verified living r&eacute;sum&eacute;s that follow them for life.</h3>
-          <p class="dashboard-featured__desc">
-            Every member who opts in builds a network-wide profile
-            from their real chapter activity: QR-verified event
-            attendance, GitHub commits on project repos, awards
-            earned, talks given. Sponsors browse this surface in the
-            sponsor portal when they&rsquo;re hiring. Active members
-            graduate at <strong>+38% starting salaries above their
-            non-member peers</strong>.<sup><a href="#fn-salary">1</a></sup>
-          </p>
-          <ul class="dashboard-featured__bullets">
-            <li>Opt-in only &mdash; member always controls visibility</li>
-            <li>LinkedIn &ldquo;Add credential&rdquo; verification URL on every event</li>
-            <li>Auto-pulled from GitHub + chapter activity &mdash; no self-reporting</li>
-          </ul>
-          <a href="./#features" class="dashboard-featured__cta">
-            See the full living-r&eacute;sum&eacute; surface on /product
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
-        </div>
-        <div class="dashboard-featured__visual" aria-hidden="true">
-          <div class="dashboard-featured__profile-head">
-            <div class="dashboard-featured__avatar"></div>
-            <div>
-              <div class="dashboard-featured__name">Wyatt M.</div>
-              <div class="dashboard-featured__chapter">MSOE AI Club &middot; Class of 2026</div>
-            </div>
-            <div class="dashboard-featured__verified">Verified</div>
-          </div>
-          <div class="dashboard-featured__signal">
-            <span class="dashboard-featured__pill dashboard-featured__pill--event">event</span>
-            Innovation Lab kickoff (Direct Supply)
-          </div>
-          <div class="dashboard-featured__signal">
-            <span class="dashboard-featured__pill dashboard-featured__pill--project">project</span>
-            Edge-ML defect detection demo
-          </div>
-          <div class="dashboard-featured__signal">
-            <span class="dashboard-featured__pill dashboard-featured__pill--award">award</span>
-            ROSIE Awards finalist
-          </div>
-        </div>
-      </div>
-
-      <p class="toolkit-substep__desc" style="margin-top: 2rem; margin-bottom: -0.5rem; font-size: 0.95rem; color: rgba(255, 255, 255, 0.62);">
-        Plus five more dashboard surfaces officers use every week:
-      </p>
-
-      <div class="dashboard-grid">
-        <div class="dashboard-card">
-          <div class="dashboard-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-          </div>
-          <h3 class="dashboard-card__title">Events &amp; QR check-in</h3>
-          <p class="dashboard-card__desc">
-            Create events with a single form. Each one gets a printable
-            QR code; members scan to check in and earn points. Check-in
-            history feeds the chapter leaderboard automatically.
-          </p>
-        </div>
-
-        <div class="dashboard-card">
-          <div class="dashboard-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-          </div>
-          <h3 class="dashboard-card__title">Sponsor inbox &amp; proposals</h3>
-          <p class="dashboard-card__desc">
-            Every sponsor inquiry &mdash; from your hub site form or the
-            sponsor portal &mdash; lands in your dashboard inbox. Accept
-            or decline proposals; emails go out automatically.
-          </p>
-        </div>
-
-        <div class="dashboard-card">
-          <div class="dashboard-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/>
-            </svg>
-          </div>
-          <h3 class="dashboard-card__title">Reports + exports</h3>
-          <p class="dashboard-card__desc">
-            Attendance heatmaps, semester reports, sponsor ROI summaries.
-            One-click export for advisor reports, year-end officer
-            handoffs, and grant applications.
-          </p>
-        </div>
-
-        <div class="dashboard-card">
-          <div class="dashboard-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="18" cy="5" r="3"/>
-              <circle cx="6" cy="12" r="3"/>
-              <circle cx="18" cy="19" r="3"/>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-            </svg>
-          </div>
-          <h3 class="dashboard-card__title">Hub-site sync</h3>
-          <p class="dashboard-card__desc">
-            One public endpoint wires any site &mdash; ours or your own
-            &mdash; to your real data: events, members, leaderboard,
-            projects, learning tree. No API key, no duplicated data entry.
-            <a href="https://dashboard.all-ai-network.org/docs" target="_blank" rel="noopener">Read the API docs</a>.
-          </p>
-        </div>
-
-        <div class="dashboard-card">
-          <div class="dashboard-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="7"/>
-              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-            </svg>
-          </div>
-          <h3 class="dashboard-card__title">Badges + points</h3>
-          <p class="dashboard-card__desc">
-            Custom badges per chapter (&ldquo;ROSIE Award winner&rdquo;,
-            &ldquo;Hackathon champion&rdquo;) plus a points system you
-            can wire to whatever rewards make sense at your school.
-          </p>
-        </div>
-      </div>
-
-      <p class="toolkit-footnote" id="fn-salary">
-        <sup>1</sup> ALL Applied AI Network Spring 2025 graduate outcomes
-        among active members (&ge;2 chapter events in a semester or
-        &ge;1 project event), across all majors. Compared against the
-        same universities&rsquo; non-member graduate cohort.
-      </p>
-
-      <!-- Sub-section B: Hub site template (folded into Day 1) -->
-      <div class="toolkit-substep" id="hub-template">
-        <h3 class="toolkit-substep__title">
-          <span class="toolkit-substep__num">B</span>
-          Your chapter website
-        </h3>
-        <p class="toolkit-substep__desc">
-          Fork
-          <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener"><code>aain-hub-template</code></a>,
-          edit one config file, push to deploy. Auto-pulls curriculum,
-          playbooks, and workshops from the shared content library; the
-          &ldquo;What you get&rdquo; list reads live from the template
-          repo&rsquo;s README.
+  <!-- ═══════════ 1 · THE SETUP CALL ═══════════ -->
+  <section class="lp" id="call">
+    <div class="lp__inner problem">
+      <div class="rv">
+        <p class="lp-eyebrow">How it starts</p>
+        <h2 class="lp-h2">One call and your chapter is live.</h2>
+        <p class="lp-lede">
+          Book 30 minutes with us. You leave the call with your roster imported, your chapter site live at
+          <b>yourschool.all-ai-network.org</b>, your first event published and one sponsor invited. We handle
+          payments and hosting. <a href="https://all-applied-ai-network.github.io/aain-hub-template/" target="_blank" rel="noopener" style="color:var(--lp-cyan);text-decoration:none">See a demo chapter site &rarr;</a>
         </p>
-
-      <div class="hub-steps">
-        <div class="hub-step">
-          <div class="hub-step__number">1</div>
-          <h3 class="hub-step__title">Use the template</h3>
-          <p class="hub-step__desc">
-            One click on GitHub &mdash; you get a full repo with dark
-            theme, event pages, leaderboards, and sponsor showcase.
-          </p>
-        </div>
-        <div class="hub-step__arrow" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
-        <div class="hub-step">
-          <div class="hub-step__number">2</div>
-          <h3 class="hub-step__title">Edit hub.config.json</h3>
-          <p class="hub-step__desc">
-            Set chapter name, university, colors, officers, social links.
-            One file. Everything on the site updates from it.
-          </p>
-        </div>
-        <div class="hub-step__arrow" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
-        <div class="hub-step">
-          <div class="hub-step__number">3</div>
-          <h3 class="hub-step__title">Push to deploy</h3>
-          <p class="hub-step__desc">
-            GitHub Actions deploys to GitHub Pages on push. Optional:
-            we&rsquo;ll wire <code>your-hub.all-ai-network.org</code> as
-            a custom subdomain.
-          </p>
+        <div class="lp-actions">
+          <a href="https://dashboard.all-ai-network.org/sign-up" class="btn btn--primary btn--lg" rel="noopener">Sign up, then book the call &rarr;</a>
+          <a href="mailto:hello@all-ai-network.org?subject=Chapter%20setup%20call" class="btn btn--outline btn--lg">Email us first</a>
         </div>
       </div>
-
-      <div class="hub-template-features">
-        <div class="hub-template-features__col">
-          <h3 class="hub-template-features__title">What you get</h3>
-          <p class="hub-template-features__caveat">
-            Live list from <code>aain-hub-template</code>&rsquo;s README,
-            re-fetched on every site build.
-          </p>
-          <ul class="hub-template-features__list" id="hub-template-list">
-            <!-- Populated client-side from /hub-template-data.json -->
-            <li class="hub-template-features__item hub-template-features__item--loading">
-              Loading from repo&hellip;
-            </li>
-          </ul>
-          <div class="hub-template-features__updated" id="hub-template-updated"></div>
-        </div>
-        <div class="hub-template-features__col">
-          <h3 class="hub-template-features__title">Live demo + repo</h3>
-          <p class="hub-template-features__caveat">
-            See the deployed template before you fork.
-          </p>
-          <div class="hub-template-features__actions">
-            <a id="hub-template-demo" href="https://all-applied-ai-network.github.io/aain-hub-template/" target="_blank" rel="noopener" class="btn btn--primary">
-              View demo site <span aria-hidden="true">&rarr;</span>
-            </a>
-            <a id="hub-template-repo" href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener" class="btn btn--outline">
-              Use this template
-            </a>
-          </div>
-          <p class="hub-template-features__note">
-            Already have a website? You can also fetch the curriculum
-            and playbooks directly:
-            <code>fetch("https://all-ai-network.org/manifest.json")</code>.
-            No SDK, no auth.
-          </p>
-        </div>
+      <div class="problem__figure fx-frame rv">
+        <img data-liquid src="./public/web/maic-first-event.jpg" alt="A packed room at MAIC's first event of the season" width="1400" height="933" loading="lazy" />
       </div>
+    </div>
+  </section>
 
-      <div class="toolkit-step__cta">
-        <p class="toolkit-step__cta-why">
-          <strong>By the end of day one</strong> your chapter has a
-          live operations backend AND a public website &mdash; no
-          spreadsheets, no DIY Stripe wiring, no static-site config.
-          Every improvement we ship next quarter rolls out to your
-          chapter automatically.
+  <!-- ═══════════ 2 · THE FIRST THREE WEEKS ═══════════ -->
+  <section class="lp lp--line" id="weeks">
+    <div class="lp__inner">
+      <div class="lp__head rv">
+        <p class="lp-eyebrow">The playbook, in one screen</p>
+        <h2 class="lp-h2">Your first three weeks decide your year.</h2>
+        <p class="lp-lede">Miss that window and you spend the rest of the year recruiting instead of building. Here is the timeline from the chapter that grew from 20 members to 500.</p>
+      </div>
+      <div class="weeks rv-group">
+        <div class="week"><div class="week__k">Week 0</div><h3 class="week__t">Org fair.</h3><p class="week__d">Collect an interest list. Lock the day, time and room before you recruit, and never move them. One moved meeting costs about 15% of your attendance, for good.</p></div>
+        <div class="week"><div class="week__k">Week 1</div><h3 class="week__t">Say the whole year out loud.</h3><p class="week__d">The pitch, in order: other chapters in the network, speakers who come to you, it has landed people jobs, it takes work, a real project with upperclassmen on your team.</p></div>
+        <div class="week"><div class="week__k">Week 3</div><h3 class="week__t">First speaker event.</h3><p class="week__d">Book a great speaker. Same slot every other week from here on, free food every time. That is the best money you will spend.</p></div>
+        <div class="week"><div class="week__k">Week 5</div><h3 class="week__t">Project kick-off.</h3><p class="week__d">Teams of five to eight with an upperclassman mentor, announced in the room. Pick one hackathon or one Innovation Lab this semester, not both.</p></div>
+      </div>
+      <p class="lp-src rv">Full detail, with what went wrong the first time: the <a href="./playbook.html?path=playbooks/getting-started/index.md">Getting Started playbook</a>. Speakers, projects, sponsors and hackathons each have <a href="./playbooks.html">their own</a>.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ 3 · WHAT YOU GET ═══════════ -->
+  <section class="lp lp--line" id="kit">
+    <div class="lp__inner">
+      <div class="lp__head rv">
+        <p class="lp-eyebrow">What you get</p>
+        <h2 class="lp-h2">Everything an eboard needs, already built.</h2>
+      </div>
+      <div class="stack rv-group">
+        <article class="stack__card">
+          <a class="stack__shot" href="./public/web/ui-platform.jpg" target="_blank" rel="noopener" title="Open full size"><img src="./public/web/ui-platform.jpg" alt="The chapter dashboard" loading="lazy" /></a>
+          <div class="stack__body"><h3 class="stack__t">The chapter dashboard</h3><p class="stack__d">Events with one-second QR check-in, members, teams, submissions, sponsors and a leaderboard. Every event gets its own card, so nobody fronts their own money.</p></div>
+        </article>
+        <article class="stack__card">
+          <a class="stack__shot" href="./public/web/ui-tools.jpg" target="_blank" rel="noopener" title="Open full size"><img src="./public/web/ui-tools.jpg" alt="Chapter tools in the dashboard" loading="lazy" /></a>
+          <div class="stack__body"><h3 class="stack__t">A chapter website in ten minutes</h3><p class="stack__d">Your own subdomain, events and officers pulled from the dashboard, and a one-page edit screen. Keep your own site if you already have one.</p></div>
+        </article>
+        <article class="stack__card">
+          <a class="stack__shot" href="./public/web/ui-resume.jpg" target="_blank" rel="noopener" title="Open full size"><img src="./public/web/ui-resume.jpg" alt="A member's living résumé" loading="lazy" /></a>
+          <div class="stack__body"><h3 class="stack__t">Living r&eacute;sum&eacute;s for your members</h3><p class="stack__d">Every event and project becomes a verified line that sponsors can see.</p></div>
+        </article>
+      </div>
+      <div class="trust rv">
+        <span><b>Open-source, end to end.</b> Dashboard, chapter site, playbooks and learning tree are all on <a href="https://github.com/ALL-Applied-AI-Network" rel="noopener">GitHub</a>.</span>
+        <a href="https://dashboard.all-ai-network.org/docs" rel="noopener">API docs &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 4 · GET SPONSORED ═══════════ -->
+  <section class="lp lp--line" id="sponsors">
+    <div class="lp__inner problem">
+      <div class="problem__figure fx-frame rv">
+        <img src="./public/web/maic-rosie-awards-check.jpg" alt="An MSOE student receiving the $5,000 first-place check at the ROSIE Awards" width="1400" height="1120" loading="lazy" />
+      </div>
+      <div class="rv">
+        <p class="lp-eyebrow">Get sponsored</p>
+        <h2 class="lp-h2">How sponsors find you.</h2>
+        <p class="lp-lede">
+          Sponsors sign up at the portal and browse chapters by members, recent events and tech focus, then send a
+          proposal with a tier and an amount. You accept or decline from your dashboard. <b>An Innovation Lab is
+          $5,000</b>, direct chapter sponsorships start lower, and every dollar lands in your chapter&rsquo;s account.
         </p>
-        <div class="toolkit-step__cta-actions">
-          <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
-            Sign up &mdash; create your chapter <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="https://github.com/ALL-Applied-AI-Network/aain-hub-template" target="_blank" rel="noopener" class="btn btn--outline btn--lg">
-            Use the hub template
-          </a>
+        <div class="weeks" style="grid-template-columns:1fr;gap:.6rem;margin-top:1.4rem">
+          <div class="week" style="padding:.9rem 1.1rem"><div class="week__d"><b style="color:var(--lp-ink)">We take no cut.</b> Sponsorships are tax-deductible gifts to a 501(c)(3), restricted to your chapter. The Foundation holds the money; your chapter directs the spend.</div></div>
+          <div class="week" style="padding:.9rem 1.1rem"><div class="week__d"><b style="color:var(--lp-ink)">Ask for a speaker slot first, not money.</b> Most of our sponsors were speakers first. The <a href="./playbook.html?path=playbooks/sponsorship/index.md" style="color:var(--lp-cyan);text-decoration:none">Sponsorship playbook</a> has the sequence and the first-meeting script.</div></div>
         </div>
       </div>
-    </div><!-- /.toolkit-substep (B) -->
-  </section>
-
-    <!-- ═════════════════════════════════════════════════════════════════
-         STEP 02 · First event — Run events that matter
-         ═════════════════════════════════════════════════════════════ -->
-    <!-- Teaser only. THIS PAGE IS the Getting Started playbook: playbook-page.ts
-         redirects ?path=playbooks/getting-started/index.md back here, so never
-         link there — it round-trips to this same scroll position. The full
-         2,900-word markdown still generates nothing but this teaser; the rest
-         of the page IS the guide. -->
-    <section class="toolkit-step toolkit-guide" id="the-guide">
-      <div class="container">
-        <div class="guide-teaser">
-          <p class="guide-teaser__kicker">The playbook</p>
-          <h2 class="guide-teaser__title">Your first three weeks decide your year.</h2>
-          <p class="guide-teaser__lede">
-            Miss that window and you spend the rest of the year recruiting instead of
-            building. Here is the shape of it.
-          </p>
-          <ol class="guide-teaser__weeks">
-            <li><span class="guide-teaser__wk">Week 0</span><span class="guide-teaser__wt">Org fair. Collect an interest list.</span></li>
-            <li><span class="guide-teaser__wk">Week 1</span><span class="guide-teaser__wt">Say the whole year out loud.</span></li>
-            <li><span class="guide-teaser__wk">Week 3</span><span class="guide-teaser__wt">First real event. Book a great speaker.</span></li>
-            <li><span class="guide-teaser__wk">Week 5</span><span class="guide-teaser__wt">Project kick-off. Teams announced.</span></li>
-          </ol>
-          <a class="guide-teaser__cta" href="#dashboard">Start with Day 1 &darr;</a>
-          <p class="guide-teaser__meta">
-            This page is the Getting Started playbook, written by the eboard that grew
-            MAIC from 20 to 500+. <a href="./playbooks.html">The other four playbooks</a>
-            cover speakers, innovation labs, research groups and hackathons.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="toolkit-step toolkit-step--alt" id="playbooks">
-      <div class="container">
-        <div class="toolkit-step__header">
-          <div class="toolkit-step__chip">
-            <span class="toolkit-step__chip-num">02</span>
-            <span class="toolkit-step__chip-when">First event</span>
-          </div>
-          <h2 class="toolkit-step__title">Run events that matter.</h2>
-          <p class="toolkit-step__lede">
-            Five operational playbooks battle-tested at MAIC &mdash;
-            speaker series, hackathons, innovation labs, research
-            groups, and the &ldquo;getting started&rdquo; arc. Each
-            one is a complete blueprint, not a checklist: real numbers,
-            candid retrospectives, what we&rsquo;d do differently. Pick
-            the format that fits this week and ship it.
-          </p>
-          <figure class="toolkit-step__photo">
-            <img src="./public/web/maic-projects-kickoff.jpg"
-                 alt="Hands-on Projects kickoff event at MAIC — full crowd"
-                 loading="lazy" />
-            <figcaption class="toolkit-step__photo-caption">
-              Hands-on Projects kickoff &middot; MAIC, Fall 2024
-            </figcaption>
-          </figure>
-        </div>
-
-      <div class="pb-grid" id="pb-grid">
-        <!-- Cards rendered by playbooks-page.ts -->
-      </div>
-
-      <p class="toolkit-grid__more">
-        Need session-level material to actually run? The
-        <a href="./tree.html">Learning Tree</a> ships with workshops
-        (Build a Chatbot, Intro to RAG, Git for Students, more) you
-        can run at your next meeting &mdash; full facilitator guides
-        included.
-      </p>
     </div>
   </section>
 
-    <!-- ═════════════════════════════════════════════════════════════════
-         STEP 03 · First semester — Get sponsored
-         ═════════════════════════════════════════════════════════════ -->
-    <section class="toolkit-step" id="sponsorship">
-      <div class="container">
-        <div class="toolkit-step__header">
-          <div class="toolkit-step__chip">
-            <span class="toolkit-step__chip-num">03</span>
-            <span class="toolkit-step__chip-when">First semester</span>
-          </div>
-          <h2 class="toolkit-step__title">Get sponsored.</h2>
-          <p class="toolkit-step__lede">
-            Companies are already on the network looking for chapters
-            to back &mdash; this isn&rsquo;t a year-one project. The
-            sponsor portal does the front of the funnel: companies
-            sign up, browse chapters, find you automatically. Your
-            eboard owns the relationship.
-          </p>
-          <figure class="toolkit-step__photo">
-            <img src="./public/web/maic-rosie-awards-check.jpg"
-                 alt="MAIC student receiving the $5,000 first-place check at the ROSIE Awards, presented by Dwight Diercks"
-                 loading="lazy" />
-            <figcaption class="toolkit-step__photo-caption">
-              ROSIE Awards 1st place &middot; $5K prize from NVIDIA co-founder Dwight Diercks
-            </figcaption>
-          </figure>
-        </div>
-
-      <div class="sponsorship-flow">
-        <div class="sponsorship-flow__step">
-          <div class="sponsorship-flow__num">A</div>
-          <h3>Sponsors find you</h3>
-          <p>
-            Companies sign up at
-            <a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">sponsors.all-ai-network.org</a>
-            and browse chapters. They see your real data: members,
-            recent events, tech focus, opt-in talent. No outreach
-            required from you.
-          </p>
-        </div>
-        <div class="sponsorship-flow__step">
-          <div class="sponsorship-flow__num">B</div>
-          <h3>You review proposals</h3>
-          <p>
-            Tier + amount + message land in
-            <code>dashboard.all-ai-network.org/sponsors</code> &rarr;
-            <strong>Proposals</strong>. Accept, decline, or counter
-            with a note &mdash; the sponsor gets emailed automatically.
-          </p>
-        </div>
-        <div class="sponsorship-flow__step">
-          <div class="sponsorship-flow__num">C</div>
-          <h3>Money goes to your chapter&rsquo;s work</h3>
-          <p>
-            <strong>Sponsorships are tax-deductible gifts to ALL Applied AI
-            Network Foundation, restricted to your chapter&rsquo;s
-            programs.</strong> We take no cut and there are no transaction
-            fees or escrow &mdash; the Foundation holds the funds, your
-            chapter spends them.
-          </p>
-        </div>
-      </div>
-
-      <p class="sponsorship-footnote">
-        New to this? The
-        <a href="./playbook.html?path=playbooks/speaker-series/index.md">Speaker Series playbook</a>
-        covers the route most of our sponsors actually took &mdash; they
-        spoke first and funded later, which is a far warmer ask than a cold
-        email. Already have sponsors? Send them
-        <a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">sponsors.all-ai-network.org</a>
-        to onboard onto the platform.
-      </p>
-    </div>
-  </section>
-  </div><!-- /.toolkit-timeline -->
-
-  <!-- ═════════════════════════════════════════════════════════════════════
-       FINAL CTA
-       ═════════════════════════════════════════════════════════════════════ -->
+  <!-- ═══════════ CLOSE ═══════════ -->
   <section class="toolkit-cta">
-    <div class="container">
-      <h2 class="toolkit-cta__title">Ready to start your chapter?</h2>
-      <p class="toolkit-cta__desc">
-        Sign up for the dashboard and you&rsquo;ll have events, members,
-        and a leaderboard before your first meeting. We&rsquo;ll get
-        your hub-site subdomain wired the same week.
-      </p>
+    <div class="container toolkit-cta__inner">
+      <h2 class="toolkit-cta__title">Start your chapter.</h2>
+      <p class="toolkit-cta__desc">Sign up and the events, roster and leaderboard tools are ready before your first meeting. Your chapter site goes live the same week.</p>
       <div class="toolkit-cta__actions">
-        <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
-          Sign up &mdash; create your chapter <span aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="mailto:ben@all-ai-network.org?subject=Hub%20Toolkit%20%E2%80%94%20question" class="btn btn--outline btn--lg">
-          Email Ben with a question
-        </a>
+        <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Sign up &mdash; create your chapter <span aria-hidden="true">&rarr;</span></a>
+        <a href="mailto:hello@all-ai-network.org?subject=Starting%20a%20chapter" class="btn btn--outline btn--lg">Email us a question</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
       <div>
@@ -635,12 +196,13 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./tree.html">Learning Tree</a></li>
+          <li><a href="./impact.html">Chapters</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-          <li><a href="./impact.html">Impact</a></li>
+          <li><a href="./sponsors.html">Sponsors</a></li>
+          <li><a href="./playbooks.html">Playbooks</a></li>
+          <li><a href="./tree.html">Learning Tree</a></li>
           <li><a href="./about.html">About</a></li>
           <li><a href="https://dashboard.all-ai-network.org/donate/msoe-ai-club" target="_blank" rel="noopener">Donate</a></li>
-          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
           <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
           <li><a href="https://dashboard.all-ai-network.org/docs" target="_blank" rel="noopener">API Docs</a></li>
           <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
@@ -650,15 +212,9 @@
   </footer>
 
   <script>
-    const toggle = document.getElementById('nav-toggle');
-    const links = document.getElementById('nav-links');
-    if (toggle && links) {
-      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
-    }
+    const toggle = document.getElementById('nav-toggle'), links = document.getElementById('nav-links');
+    if (toggle && links) toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
   </script>
-  <!-- Inline playbook grid renderer (uses same data as /playbooks.html) -->
-  <script type="module" src="./ts/playbooks-page.ts"></script>
-  <!-- Hub-template README live data renderer -->
-  <script type="module" src="./ts/toolkit-page.ts"></script>
+  <script type="module" src="./ts/chapter.ts"></script>
 </body>
 </html>

@@ -90,14 +90,6 @@ async function init(): Promise<void> {
     return;
   }
 
-  // Getting Started moved: it is the body of /start-a-chapter now. Old
-  // links, bookmarks and the dashboard's own deep links still arrive
-  // here, so bounce them rather than rendering a second copy.
-  if (contentPath === "playbooks/getting-started/index.md") {
-    const hash = window.location.hash || "#the-guide";
-    window.location.replace(`./start-a-chapter.html${hash}`);
-    return;
-  }
 
   // Determine type and section from path
   const parts = contentPath.split("/");
