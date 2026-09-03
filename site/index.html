@@ -3,32 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ALL Applied AI Network — Real AI work, real outcomes</title>
-  <meta name="description" content="ALL Applied AI Network is a 501(c)(3) nonprofit that helps students start and run applied AI clubs at their universities — with the playbook, the software, and the funding rails to do it." />
-  <meta property="og:title" content="ALL Applied AI Network — Real AI work, real outcomes" />
-  <meta property="og:description" content="A verified network of AI talent at universities. Students get hiring outcomes, sponsors get real talent signal, chapters get bigger without more officer work." />
+  <title>ALL Applied AI Network — Show up. Build. Get seen.</title>
+  <meta name="description" content="Student-run applied AI clubs where you build real projects for real sponsors, and companies watch you do it. Free, open-source, run by a 501(c)(3) that takes no cut." />
+  <meta property="og:title" content="ALL Applied AI Network — Show up. Build. Get seen." />
+  <meta property="og:description" content="AI changed hiring. We show what a résumé can't: real projects for real sponsors, and the companies watching you build them." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="./public/all-logo-transparent.png" />
+  <meta property="og:image" content="https://all-ai-network.org/public/film/poster.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ALL Applied AI Network — Real AI work, real outcomes" />
-  <meta name="twitter:description" content="A verified network of AI talent at universities. Students get hiring outcomes, sponsors get real talent signal, chapters get bigger without more officer work." />
+  <meta name="twitter:title" content="ALL Applied AI Network — Show up. Build. Get seen." />
+  <meta name="twitter:description" content="AI changed hiring. We show what a résumé can't." />
   <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./home.css" />
-  <!-- product.css carries the feature-row + visual-mock styles
-       (profile card, chrome site, sponsor invite, QR poster, Stripe
-       Issuing card, organizer hub) used by Section 01 "Inside the
-       network" — consolidated from the deprecated /product page
-       (May 2026). -->
-  <link rel="stylesheet" href="./product.css" />
+  <link rel="stylesheet" href="./landing.css" />
+  <link rel="stylesheet" href="./fx.css" />
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav class="nav">
     <div class="nav__inner">
       <a href="./" class="nav__brand">
@@ -38,10 +32,11 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./" class="active">Home</a></li>
-        <li><a href="./tree.html">Learning Tree</a></li>
+        <li><a href="./impact.html">Chapters</a></li>
         <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-        <li><a href="./impact.html">Impact</a></li>
-        <li><a href="./overview.html">Overview</a></li>
+        <li><a href="./sponsors.html">Sponsors</a></li>
+        <li><a href="./playbooks.html">Playbooks</a></li>
+        <li><a href="./tree.html">Learning Tree</a></li>
         <li><a href="./about.html">About</a></li>
       </ul>
       <div class="nav__cta">
@@ -51,1135 +46,257 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       HERO — real photo background
-       ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════ HERO (the mark stays; the words changed) ═══════════════════════════ -->
   <section class="hero">
     <div class="hero__bg">
       <picture>
-        <!-- LCP image. Was a single 1920px JPEG at 644KB shipped to phones too;
-             that alone was 63% of the page's initial transfer. -->
-        <source
-          media="(max-width: 700px)"
-          srcset="./public/web/hero-crowd-sm.webp"
-          type="image/webp"
-        />
-        <source
-          media="(max-width: 700px)"
-          srcset="./public/web/hero-crowd-sm.jpg"
-          type="image/jpeg"
-        />
+        <source media="(max-width: 700px)" srcset="./public/web/hero-crowd-sm.webp" type="image/webp" />
+        <source media="(max-width: 700px)" srcset="./public/web/hero-crowd-sm.jpg" type="image/jpeg" />
         <source srcset="./public/web/hero-crowd.webp" type="image/webp" />
-        <img
-          src="./public/web/hero-crowd.jpg"
-          alt=""
-          width="1920"
-          height="1080"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
+        <img src="./public/web/hero-crowd.jpg" alt="" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async" />
       </picture>
     </div>
     <canvas id="hero-particles"></canvas>
     <div id="hero-3d" class="hero-3d--home"></div>
     <div class="hero__grid container">
       <div class="hero__content">
-        <h1 class="hero__title" id="hero-title">
-          The open-source playbook<br/>for university AI <span class="hero__rotating-word"><span class="hero__rotating-word-text" id="hero-word"></span><span class="hero__rotating-word-cursor"></span></span>
-        </h1>
+        <h1 class="hero__title" id="hero-title">AI changed hiring.<br/>We show what a r&eacute;sum&eacute; can&rsquo;t.</h1>
         <p class="hero__subtitle">
-          Structured curriculum, mentorship playbooks, and hub infrastructure
-          that turns compute access into a thriving student AI community &mdash;
-          and students into the most employable AI talent in their region.
+          Student-run applied AI clubs where you build real projects for real sponsors,
+          and the companies watch you do it. Free, open-source, and we take no cut.
         </p>
-        <!--
-          Hero CTAs (June 2026): replaced the 4-card audience-grid with a
-          single primary "Get started" CTA + "Sign in" secondary. The role
-          disambiguation now lives on /get-started.html, which is the
-          dedicated front-door router for Students / Officers / Sponsors /
-          Schools. Keeps the hero focused on one decision.
-        -->
         <div class="hero__actions">
-          <a href="./get-started.html" class="btn btn--primary btn--lg">
-            Get started &rarr;
-          </a>
-          <a
-            href="./sign-in.html"
-            class="btn btn--outline btn--lg"
-            title="Already have an account?"
-            rel="noopener"
-          >
-            Sign in
-          </a>
+          <a href="./impact.html#chapters" class="btn btn--primary btn--lg">Find your chapter &rarr;</a>
+          <a href="#film" class="btn btn--outline btn--lg film-btn" data-film-open><span class="film-btn__play" aria-hidden="true"></span>Watch the 70-second film</a>
         </div>
-
       </div>
       <div class="hero__sponsors">
         <span class="hero__sponsors-label">Network sponsors</span>
         <div class="hero__sponsors-logos">
-          <a href="https://nvidia.com" target="_blank" rel="noopener" class="hero__sponsors-logo">
-            <img src="./public/logos/nvidia_logo.png" alt="NVIDIA" />
-          </a>
-          <a href="https://directsupply.com" target="_blank" rel="noopener" class="hero__sponsors-logo">
-            <img src="./public/logos/direct_supply_logo.png" alt="Direct Supply" />
-          </a>
+          <a href="https://nvidia.com" target="_blank" rel="noopener" class="hero__sponsors-logo"><img src="./public/logos/nvidia_logo.png" alt="NVIDIA" /></a>
+          <a href="https://directsupply.com" target="_blank" rel="noopener" class="hero__sponsors-logo"><img src="./public/logos/direct_supply_logo.png" alt="Direct Supply" /></a>
         </div>
-        <a href="./get-started.html" class="hero__sponsors-cta">Become a sponsor &rarr;</a>
+        <a href="./sponsors.html" class="hero__sponsors-cta">Become a sponsor &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       PHOTO STRIP — real moments before the data lands
-       Repositioned ABOVE the differentiator (May 2026): emotional
-       energy from real members + events first, then the outcome
-       data lands on the visitor primed by what they just saw.
-       ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- real moments, before any claim -->
   <div class="photo-ticker">
     <div class="photo-ticker__track">
-      <!-- Set 1 -->
-      <div class="photo-ticker__item" data-tooltip="Speaker panel — industry engineers share hiring insights">
-        <img src="./public/web/speaker-event.jpg" alt="Speaker event at MSOE" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="Hackathon — students collaborating on AI projects">
-        <img src="./public/web/students-working.jpg" alt="Students collaborating during hackathon" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="Innovation Lab — presenting solutions to sponsor leadership">
-        <img src="./public/web/innovation-lab.jpg" alt="Innovation Lab presentation" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE">
-        <img src="./public/web/supercomputer-tour.jpg" alt="ROSIE supercomputer tour" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards — NVIDIA-sponsored supercomputer competition">
-        <img src="./public/web/gpu-winners.jpg" alt="RTX 4090 giveaway at ROSIE Awards" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings">
-        <img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="Hiring panel — connecting students with employers">
-        <img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="HacksGiving 2024 — hackathon donating data science work to local non-profits">
-        <img src="./public/web/group-photo.jpg" alt="HacksGiving 2024 group" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff — the first event that started it all">
-        <img src="./public/web/first-event.jpg" alt="MAIC first event crowd" loading="lazy" />
-      </div>
-      <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="photo-ticker__item" data-tooltip="Speaker panel — industry engineers share hiring insights">
-        <img src="./public/web/speaker-event.jpg" alt="Speaker event at MSOE" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="Hackathon — students collaborating on AI projects">
-        <img src="./public/web/students-working.jpg" alt="Students collaborating during hackathon" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="Innovation Lab — presenting solutions to sponsor leadership">
-        <img src="./public/web/innovation-lab.jpg" alt="Innovation Lab presentation" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE">
-        <img src="./public/web/supercomputer-tour.jpg" alt="ROSIE supercomputer tour" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards — NVIDIA-sponsored supercomputer competition">
-        <img src="./public/web/gpu-winners.jpg" alt="RTX 4090 giveaway at ROSIE Awards" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings">
-        <img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="Hiring panel — connecting students with employers">
-        <img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="HacksGiving 2024 — hackathon donating data science work to local non-profits">
-        <img src="./public/web/group-photo.jpg" alt="HacksGiving 2024 group" loading="lazy" />
-      </div>
-      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff — the first event that started it all">
-        <img src="./public/web/first-event.jpg" alt="MAIC first event crowd" loading="lazy" />
-      </div>
+      <div class="photo-ticker__item" data-tooltip="Speaker panel: engineers on how they hire"><img src="./public/web/speaker-event.jpg" alt="Speaker event at MSOE" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hackathon: teams mid-build"><img src="./public/web/students-working.jpg" alt="Students collaborating during a hackathon" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Innovation Lab: students presenting to the sponsor"><img src="./public/web/innovation-lab.jpg" alt="Innovation Lab presentation" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE"><img src="./public/web/supercomputer-tour.jpg" alt="ROSIE supercomputer tour" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards"><img src="./public/web/gpu-winners.jpg" alt="RTX 4090 giveaway at the ROSIE Awards" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings"><img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hiring panel: employers taking student questions"><img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hacksgiving — a hackathon donating data science to local non-profits"><img src="./public/web/group-photo.jpg" alt="Hacksgiving group photo" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff, the first event"><img src="./public/web/first-event.jpg" alt="MAIC first event crowd" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Speaker panel: engineers on how they hire"><img src="./public/web/speaker-event.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hackathon: teams mid-build"><img src="./public/web/students-working.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Innovation Lab: students presenting to the sponsor"><img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="ROSIE supercomputer tour at MSOE"><img src="./public/web/supercomputer-tour.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="RTX 4090 giveaway winners at the ROSIE Awards"><img src="./public/web/gpu-winners.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Research group mentor presenting findings"><img src="./public/web/research-presentation.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hiring panel: employers taking student questions"><img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="Hacksgiving — a hackathon donating data science to local non-profits"><img src="./public/web/group-photo.jpg" alt="" loading="lazy" /></div>
+      <div class="photo-ticker__item" data-tooltip="MAIC 2024 kickoff, the first event"><img src="./public/web/first-event.jpg" alt="" loading="lazy" /></div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       DIFFERENTIATOR — the headline thing nobody else does
-       ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="differentiator">
-    <div class="container">
-      <div class="differentiator__head">
-        <span class="differentiator__badge">How we&rsquo;re different</span>
-        <h2 class="differentiator__title">
-          Real applied AI work.
-          <span class="differentiator__title-gradient">Real outcomes for everyone.</span>
-        </h2>
-        <p class="differentiator__sub">
-          Every chapter member builds a verified record of real activity &mdash;
-          events run, projects shipped, awards earned, GitHub work. That record
-          turns into hiring outcomes for students, recruiting outcomes for
-          sponsors, and a thriving chapter for officers. It&rsquo;s the
-          network that closes the loop.
+  <!-- ═══════════════════════════ 1 · THE PROBLEM ═══════════════════════════ -->
+  <section class="lp" id="problem">
+    <div class="lp__inner problem">
+      <div class="rv">
+        <p class="lp-eyebrow">The problem</p>
+        <h2 class="lp-h2">A r&eacute;sum&eacute; alone won&rsquo;t get you hired.</h2>
+        <p class="lp-lede">
+          AI r&eacute;sum&eacute; agents flood inboxes faster than you can apply. Applications per job posting
+          more than doubled in three years, and they read alike. What&rsquo;s left is the one thing a
+          r&eacute;sum&eacute; can&rsquo;t show: what you can build.
         </p>
+        <div class="problem__nums" aria-label="Applications per job posting, 2022 to 2025">
+          <div><div class="problem__num">116</div><div class="problem__numlbl"><b>2022</b></div></div>
+          <div class="problem__arrow" aria-hidden="true">&rarr;</div>
+          <div><div class="problem__num problem__num--hot" data-count="244">0</div><div class="problem__numlbl"><b>2025</b>applications per posting</div></div>
+        </div>
+        <p class="lp-src">Greenhouse, <a href="https://www.greenhouse.com/recruiting-benchmarks" target="_blank" rel="noopener">The Hire Standard</a>, 2026 &middot; Harvard Business Review, <a href="https://hbr.org/2026/06/ai-has-broken-hiring-heres-how-to-fix-it" target="_blank" rel="noopener">&ldquo;AI Has Broken Hiring&rdquo;</a>, 2026</p>
       </div>
-
-      <!-- Slim featured stat — replaces the photo-backdrop hero block
-           (May 2026). The previous block was visually loud; this one
-           is a small banner with the number paired against an inline
-           description and methodology line. Photos already carry the
-           emotional energy via the ticker above — this section earns
-           its weight with data + typography, not more photos. -->
-      <aside class="differentiator__featured-stat" aria-label="Network outcome">
-        <span class="differentiator__featured-stat-num">+38<span class="differentiator__featured-stat-num-pct">%</span></span>
-        <div class="differentiator__featured-stat-meta">
-          <span class="differentiator__featured-stat-label">
-            higher starting salary for active members in the network.
-          </span>
-          <span class="differentiator__featured-stat-source">
-            ALL Spring 2025 grads &middot; &ge;2 events in a semester
-            or &ge;1 project event &middot; all majors
-          </span>
-        </div>
-      </aside>
-
-      <div class="differentiator__grid">
-        <article class="differentiator__card differentiator__card--students">
-          <span class="differentiator__card-kicker">
-            <span class="differentiator__card-kicker-dot" aria-hidden="true"></span>
-            Students
-          </span>
-          <h3 class="differentiator__card-title">Real applied AI work, in your portfolio.</h3>
-          <p class="differentiator__card-text">
-            Active members ship projects, run events, win awards,
-            contribute code. By graduation your verified record speaks
-            for itself &mdash; and it&rsquo;s the surface recruiters
-            and grad programs see first.
-          </p>
-        </article>
-
-        <article class="differentiator__card differentiator__card--eboards">
-          <span class="differentiator__card-kicker">
-            <span class="differentiator__card-kicker-dot" aria-hidden="true"></span>
-            Eboards
-          </span>
-          <h3 class="differentiator__card-title">Bigger chapter, less officer time.</h3>
-          <p class="differentiator__card-text">
-            One-click chapter site, QR check-in, automatic
-            leaderboards, sponsor proposals routed through the
-            dashboard. Scale your club without scaling your officer
-            hours.
-          </p>
-        </article>
-
-        <article class="differentiator__card differentiator__card--sponsors">
-          <span class="differentiator__card-kicker">
-            <span class="differentiator__card-kicker-dot" aria-hidden="true"></span>
-            Sponsors
-          </span>
-          <h3 class="differentiator__card-title">Talent signal recruiters miss.</h3>
-          <p class="differentiator__card-text">
-            Sponsors discover the AI engineers your chapter is
-            producing &mdash; projects shipped, events run, awards
-            earned, GitHub work &mdash; before anyone else sees a
-            r&eacute;sum&eacute;. Better-than-LinkedIn signal,
-            verified by the chapters themselves.
-          </p>
-        </article>
-      </div>
-
-      <div class="differentiator__trust">
-        <span class="differentiator__trust-strong">
-          We don&rsquo;t take a cut.
-        </span>
-        Sponsorships are tax-deductible gifts to ALL Applied AI Network
-        Foundation, a 501(c)(3) nonprofit, restricted to
-        the chapter you pick. No platform fee, and no &ldquo;file a request
-        and wait six weeks.&rdquo;
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       SECTION 01 — WHY  (story + pipeline + proof)
-       ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="why-section" id="why">
-    <!-- Section label -->
-    <div class="section-label reveal">
-      <span class="section-label__num">01</span>
-      <span class="section-label__text">Why this exists</span>
-      <span class="section-label__line"></span>
-    </div>
-
-    <!-- Story -->
-    <div class="container reveal">
-      <h2 class="why-section__heading">AI moves faster than any curriculum.<br/>Students need a better path.</h2>
-      <p>
-        Students graduate with theory but without the applied skills that get them hired.
-        We started ALL believing the best way to learn AI is to use it on real problems,
-        surrounded by people who already do it professionally.
-      </p>
-      <p>
-        That's what MSOE's AI Club (MAIC) proved over four years &mdash; growing
-        to 500+ members and partnerships with NVIDIA, Direct Supply, and others
-        with no playbook, no template, and no parent organization.
-        <strong>ALL exists to package that model so any university can deploy it.</strong>
-      </p>
-    </div>
-
-    <!-- Pipeline -->
-    <div class="container reveal">
-      <div class="pipeline reveal-stagger">
-        <div class="pipeline__item">
-          <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- GPU Card — isometric graphics card with fan and heatsink -->
-            <!-- PCB board — top face -->
-            <polygon points="10,20 30,10 42,16 22,26" fill="#3b82f6" opacity="0.88"/>
-            <!-- PCB board — front face -->
-            <polygon points="22,26 42,16 42,20 22,30" fill="#3b82f6" opacity="0.35"/>
-            <!-- PCB board — left face -->
-            <polygon points="10,20 22,26 22,30 10,24" fill="#3b82f6" opacity="0.55"/>
-            <!-- Heatsink fins on top -->
-            <line x1="14" y1="19" x2="26" y2="13" stroke="#60a5fa" stroke-width="1.2" opacity="0.35"/>
-            <line x1="16" y1="20" x2="28" y2="14" stroke="#60a5fa" stroke-width="1.2" opacity="0.3"/>
-            <line x1="18" y1="21" x2="30" y2="15" stroke="#60a5fa" stroke-width="1.2" opacity="0.25"/>
-            <!-- Fan shroud -->
-            <ellipse cx="27" cy="17.5" rx="5.5" ry="3.2" fill="#1e293b" opacity="0.65"/>
-            <ellipse cx="27" cy="17.5" rx="4" ry="2.3" fill="none" stroke="#60a5fa" stroke-width="0.8" opacity="0.45"/>
-            <ellipse cx="27" cy="17.5" rx="1.5" ry="0.9" fill="#60a5fa" opacity="0.55"/>
-            <!-- Fan blades -->
-            <line x1="24" y1="16.5" x2="30" y2="18.5" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
-            <line x1="25" y1="19" x2="29" y2="16" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
-            <!-- Power connector pins -->
-            <rect x="35" y="12" width="1.2" height="2.2" rx="0.3" fill="#93c5fd" opacity="0.45"/>
-            <rect x="37" y="11.3" width="1.2" height="2.2" rx="0.3" fill="#93c5fd" opacity="0.45"/>
-            <!-- PCIe gold connector -->
-            <polygon points="13,24 20,28 20,30 13,26" fill="#fbbf24" opacity="0.45"/>
-            <!-- NVIDIA green LED -->
-            <circle cx="39" cy="15" r="1" fill="#76b900" opacity="0.8"/>
-          </svg>
-          <strong>Compute that gets used</strong>
-          <span>The GPUs a campus already has, and students with a reason to run something on them.</span>
-        </div>
-        <div class="pipeline__arrow">
-          <svg viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="4,2 12,8 4,14" fill="currentColor" opacity="0.4"/></svg>
-        </div>
-        <div class="pipeline__item">
-          <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Mentorship — two people with knowledge-sharing arrow -->
-            <!-- Mentor (left, taller) — head -->
-            <circle cx="15" cy="13" r="4" fill="#22d3ee" opacity="0.85"/>
-            <!-- Mentor body — isometric box -->
-            <polygon points="15,18 22,22 15,26 8,22" fill="#22d3ee" opacity="0.75"/>
-            <polygon points="8,22 15,26 15,35 8,29" fill="#22d3ee" opacity="0.55"/>
-            <polygon points="15,26 22,22 22,29 15,35" fill="#22d3ee" opacity="0.35"/>
-            <!-- Mentee (right, shorter) — head -->
-            <circle cx="34" cy="17" r="3.5" fill="#22d3ee" opacity="0.75"/>
-            <!-- Mentee body -->
-            <polygon points="34,21 40,24.5 34,28 28,24.5" fill="#22d3ee" opacity="0.65"/>
-            <polygon points="28,24.5 34,28 34,35 28,29" fill="#22d3ee" opacity="0.48"/>
-            <polygon points="34,28 40,24.5 40,29 34,35" fill="#22d3ee" opacity="0.3"/>
-            <!-- Arrow from mentor to mentee -->
-            <path d="M22,18 C27,13 30,15 32,17" stroke="#67e8f9" stroke-width="1.8" fill="none" opacity="0.55" stroke-linecap="round"/>
-            <polygon points="32,15 34,18 31,18" fill="#67e8f9" opacity="0.65"/>
-          </svg>
-          <strong>Mentorship loop</strong>
-          <span>Upperclassmen mentor newcomers who build real portfolio pieces.</span>
-        </div>
-        <div class="pipeline__arrow">
-          <svg viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="4,2 12,8 4,14" fill="currentColor" opacity="0.4"/></svg>
-        </div>
-        <div class="pipeline__item">
-          <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Community — calendar/event board with people dots -->
-            <!-- Board — top face -->
-            <polygon points="24,12 40,20 24,28 8,20" fill="#ec4899" opacity="0.88"/>
-            <!-- Board — left face -->
-            <polygon points="8,20 24,28 24,32 8,24" fill="#ec4899" opacity="0.55"/>
-            <!-- Board — right face -->
-            <polygon points="24,28 40,20 40,24 24,32" fill="#ec4899" opacity="0.35"/>
-            <!-- Grid lines on top face (calendar grid) -->
-            <line x1="16" y1="16" x2="32" y2="24" stroke="#f9a8d4" stroke-width="0.6" opacity="0.3"/>
-            <line x1="12" y1="20" x2="36" y2="20" stroke="#f9a8d4" stroke-width="0.6" opacity="0.25"/>
-            <line x1="20" y1="14" x2="28" y2="26" stroke="#f9a8d4" stroke-width="0.6" opacity="0.25"/>
-            <!-- People dots (clustered on the board) -->
-            <circle cx="18" cy="17" r="1.8" fill="#f472b6" opacity="0.75"/>
-            <circle cx="24" cy="18" r="1.8" fill="#f472b6" opacity="0.85"/>
-            <circle cx="30" cy="19" r="1.8" fill="#f472b6" opacity="0.7"/>
-            <circle cx="21" cy="21" r="1.5" fill="#f472b6" opacity="0.6"/>
-            <circle cx="27" cy="22" r="1.5" fill="#f472b6" opacity="0.55"/>
-            <!-- Connection lines between dots -->
-            <line x1="19.5" y1="17.5" x2="22.5" y2="18" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4"/>
-            <line x1="25.5" y1="18.5" x2="28.5" y2="19.5" stroke="#f9a8d4" stroke-width="0.8" opacity="0.35"/>
-            <line x1="22" y1="20" x2="26" y2="21" stroke="#f9a8d4" stroke-width="0.8" opacity="0.3"/>
-          </svg>
-          <strong>Year-round community</strong>
-          <span>Competition energy expands into projects, research groups, and speaker series.</span>
-        </div>
-        <div class="pipeline__arrow">
-          <svg viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="4,2 12,8 4,14" fill="currentColor" opacity="0.4"/></svg>
-        </div>
-        <div class="pipeline__item">
-          <svg class="pipeline__icon-img" viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Industry Pipeline — clean isometric bar chart -->
-            <!-- Bar 1 (shortest) — left face -->
-            <polygon points="9,32 15,29 15,40 9,40" fill="#a855f7" opacity="0.55"/>
-            <!-- Bar 1 — right face -->
-            <polygon points="15,29 19,31 19,40 15,40" fill="#a855f7" opacity="0.35"/>
-            <!-- Bar 1 — top face -->
-            <polygon points="9,32 15,29 19,31 13,34" fill="#a855f7" opacity="0.85"/>
-            <!-- Bar 2 -->
-            <polygon points="16,25 22,22 22,40 16,40" fill="#a855f7" opacity="0.55"/>
-            <polygon points="22,22 26,24 26,40 22,40" fill="#a855f7" opacity="0.35"/>
-            <polygon points="16,25 22,22 26,24 20,27" fill="#a855f7" opacity="0.85"/>
-            <!-- Bar 3 -->
-            <polygon points="23,17 29,14 29,40 23,40" fill="#a855f7" opacity="0.55"/>
-            <polygon points="29,14 33,16 33,40 29,40" fill="#a855f7" opacity="0.35"/>
-            <polygon points="23,17 29,14 33,16 27,19" fill="#a855f7" opacity="0.88"/>
-            <!-- Bar 4 (tallest, accent) -->
-            <polygon points="30,9 36,6 36,40 30,40" fill="#c084fc" opacity="0.55"/>
-            <polygon points="36,6 40,8 40,40 36,40" fill="#c084fc" opacity="0.35"/>
-            <polygon points="30,9 36,6 40,8 34,11" fill="#c084fc" opacity="0.92"/>
-            <!-- Trend line -->
-            <path d="M11,31 L19,24 L26,16 L34,8" stroke="#e9d5ff" stroke-width="1.5" fill="none" opacity="0.45" stroke-linecap="round"/>
-            <polygon points="35,6 37,10 32,10" fill="#e9d5ff" opacity="0.5"/>
-          </svg>
-          <strong>Industry pipeline</strong>
-          <span>Students with real experience become the strongest hires. Sponsors keep coming back.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Proof — asymmetric bento with photo backgrounds -->
-    <div class="why-proof">
-      <div class="why-proof__photo">
-        <img src="./public/web/group-photo.jpg" alt="" loading="lazy" />
-      </div>
-      <div class="container reveal">
-        <div class="bento-proof reveal-stagger">
-
-          <!-- Featured hero stat — large, with photo bg -->
-          <div class="bento-proof__featured">
-            <div class="bento-proof__featured-photo">
-              <img src="./public/web/first-event.jpg" alt="" loading="lazy" />
-            </div>
-            <div class="bento-proof__featured-content">
-              <strong>515</strong>
-              <span>members at the founding chapter &mdash; with five more
-              chapters starting</span>
-            </div>
-          </div>
-
-          <!-- Cluster of 3 smaller stats -->
-          <div class="bento-proof__stat-cluster">
-            <div class="bento-proof__stat">
-              <svg class="proof__num-icon-svg" viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Isometric upward arrow / growth -->
-                <!-- Shaft -->
-                <polygon points="12,12 16,10 16,22 12,24" fill="#22d3ee" opacity="0.55"/>
-                <polygon points="12,12 14,11 14,23 12,24" fill="#22d3ee" opacity="0.7"/>
-                <!-- Arrowhead — top face -->
-                <polygon points="14,3 21,8 14,13 7,8" fill="#22d3ee" opacity="0.9"/>
-                <!-- Arrowhead — left face -->
-                <polygon points="7,8 14,13 12,12 7,8" fill="#22d3ee" opacity="0.6"/>
-                <!-- Arrowhead — right face -->
-                <polygon points="14,13 21,8 16,10 14,13" fill="#22d3ee" opacity="0.4"/>
-                <!-- Spark dots -->
-                <circle cx="8" cy="14" r="1" fill="#67e8f9" opacity="0.4"/>
-                <circle cx="20" cy="12" r="0.8" fill="#67e8f9" opacity="0.3"/>
-              </svg>
-              <strong>300+</strong>
-              <span>students per project period</span>
-            </div>
-            <div class="bento-proof__stat">
-              <svg class="proof__num-icon-svg" viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Isometric open book -->
-                <!-- Left page — top face -->
-                <polygon points="14,8 14,22 4,18 4,4" fill="#ec4899" opacity="0.65"/>
-                <!-- Right page — top face -->
-                <polygon points="14,8 14,22 24,18 24,4" fill="#ec4899" opacity="0.4"/>
-                <!-- Spine highlight -->
-                <line x1="14" y1="8" x2="14" y2="22" stroke="#f472b6" stroke-width="1.2" opacity="0.7"/>
-                <!-- Text lines left page -->
-                <line x1="6" y1="8" x2="12" y2="10" stroke="#f9a8d4" stroke-width="0.8" opacity="0.5" stroke-linecap="round"/>
-                <line x1="6" y1="11" x2="12" y2="13" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/>
-                <line x1="6" y1="14" x2="11" y2="16" stroke="#f9a8d4" stroke-width="0.8" opacity="0.35" stroke-linecap="round"/>
-                <!-- Text lines right page -->
-                <line x1="16" y1="10" x2="22" y2="8" stroke="#f9a8d4" stroke-width="0.8" opacity="0.35" stroke-linecap="round"/>
-                <line x1="16" y1="13" x2="22" y2="11" stroke="#f9a8d4" stroke-width="0.8" opacity="0.3" stroke-linecap="round"/>
-              </svg>
-              <strong>50+</strong>
-              <span>student publications</span>
-            </div>
-            <div class="bento-proof__stat">
-              <svg class="proof__num-icon-svg" viewBox="0 0 28 28" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Isometric handshake / deal -->
-                <!-- Base platform -->
-                <polygon points="14,16 24,21 14,26 4,21" fill="#a855f7" opacity="0.3"/>
-                <!-- Left hand -->
-                <polygon points="5,11 11,8 14,12 8,15" fill="#a855f7" opacity="0.7"/>
-                <polygon points="5,11 8,15 8,17 5,13" fill="#a855f7" opacity="0.55"/>
-                <!-- Right hand -->
-                <polygon points="14,12 17,8 23,11 20,15" fill="#c084fc" opacity="0.65"/>
-                <polygon points="20,15 23,11 23,13 20,17" fill="#c084fc" opacity="0.4"/>
-                <!-- Clasp (where hands meet) -->
-                <polygon points="11,13 17,10 17,12 11,15" fill="#e9d5ff" opacity="0.5"/>
-                <!-- Star above -->
-                <circle cx="14" cy="5" r="1.5" fill="#c084fc" opacity="0.5"/>
-                <circle cx="14" cy="5" r="0.6" fill="#e9d5ff" opacity="0.7"/>
-              </svg>
-              <strong>10+</strong>
-              <span>direct sponsor hires per cycle</span>
-            </div>
-          </div>
-
-          <!-- Quote with photo accent -->
-          <div class="bento-proof__quote-card">
-            <div class="bento-proof__quote-photo">
-              <img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" />
-            </div>
-            <blockquote>
-              <p>&ldquo;The AI Club completely changed my trajectory. I came in as a CE student with zero
-              coding experience &mdash; within a semester I'd built a computer vision prototype for
-              a Databricks Innovation Lab and had three internship offers.&rdquo;</p>
-              <cite>MSOE student, Class of 2029</cite>
-            </blockquote>
-          </div>
-
-          <!-- Second quote — simpler, wide -->
-          <div class="bento-proof__quote-card bento-proof__quote-card--wide">
-            <blockquote>
-              <p>&ldquo;We've hired more quality candidates through Innovation Labs than any career fair
-              we've attended. The students come in with real project experience, not just coursework.
-              They are now the majority of our 50-person AI team.&rdquo;</p>
-              <cite>Applied AI Director, Direct Supply</cite>
-            </blockquote>
-          </div>
-
-        </div>
+      <div class="problem__figure fx-frame rv">
+        <img data-liquid src="./public/art/resume-flood.webp" alt="A flood of identical résumés, one lit in cyan" width="1400" height="933" loading="lazy" />
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       SECTION 02 — HOW  (event flywheel)
-       ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="how-section" id="how">
-    <div class="section-label reveal">
-      <span class="section-label__num">02</span>
-      <span class="section-label__text">How it works</span>
-      <span class="section-label__line"></span>
-    </div>
-
-    <div class="container reveal">
-      <h2 class="how-section__heading">Four formats. One flywheel.</h2>
-      <p>
-        New members bring the passion &mdash; what they need is direction.
-        We pair that energy with experienced mentors who point it toward
-        real projects from day one. Each event type feeds the next.
-      </p>
-    </div>
-
-    <div class="container">
-      <div class="event-grid reveal-stagger">
-        <div class="event-card">
-          <div class="event-card__img">
-            <img src="./public/web/hiring-panel.jpg" alt="Industry hiring panel" loading="lazy" />
-          </div>
-          <div class="event-card__body">
-            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="10" cy="5" r="3" fill="#3b82f6" opacity="0.85"/><polygon points="10,8.5 14,11 10,13.5 6,11" fill="#3b82f6" opacity="0.75"/><polygon points="6,11 10,13.5 10,17 6,14.5" fill="#3b82f6" opacity="0.55"/><polygon points="10,13.5 14,11 14,14.5 10,17" fill="#3b82f6" opacity="0.35"/><rect x="3" y="9" width="2" height="4" rx="0.5" fill="#60a5fa" opacity="0.5"/></svg> Speaker Events</h3>
-            <p>Engineers from industry show what they're building. You meet the people doing the work, ask real questions, and walk out with internship leads.</p>
-          </div>
-        </div>
-        <div class="event-card">
-          <div class="event-card__img">
-            <img src="./public/web/innovation-lab.jpg" alt="Innovation Lab kickoff" loading="lazy" />
-          </div>
-          <div class="event-card__body">
-            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="10,2 15,5 10,8 5,5" fill="#22d3ee" opacity="0.88"/><polygon points="5,5 10,8 10,13 5,10" fill="#22d3ee" opacity="0.55"/><polygon points="10,8 15,5 15,10 10,13" fill="#22d3ee" opacity="0.35"/><circle cx="8" cy="7" r="0.8" fill="#67e8f9" opacity="0.7"/><circle cx="10" cy="15" r="2" fill="#22d3ee" opacity="0.3"/><line x1="10" y1="13" x2="10" y2="15" stroke="#22d3ee" stroke-width="1" opacity="0.4"/></svg> Innovation Labs</h3>
-            <p>A company brings a real problem and real data. You join a mentor-led team, build a working solution over 2 months, and present to their leadership.</p>
-          </div>
-        </div>
-        <div class="event-card">
-          <div class="event-card__img">
-            <img src="./public/web/research-presentation.jpg" alt="Research group presentation" loading="lazy" />
-          </div>
-          <div class="event-card__body">
-            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="10,2 16,5.5 10,9 4,5.5" fill="#ec4899" opacity="0.85"/><polygon points="4,5.5 10,9 10,12 4,8.5" fill="#ec4899" opacity="0.55"/><polygon points="10,9 16,5.5 16,8.5 10,12" fill="#ec4899" opacity="0.35"/><line x1="7" y1="7" x2="10" y2="5" stroke="#f9a8d4" stroke-width="0.8" opacity="0.5" stroke-linecap="round"/><line x1="7" y1="8.5" x2="9" y2="7.5" stroke="#f9a8d4" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/><circle cx="6" cy="15" r="1.5" fill="#ec4899" opacity="0.5"/><circle cx="10" cy="16" r="1.5" fill="#ec4899" opacity="0.6"/><circle cx="14" cy="15" r="1.5" fill="#ec4899" opacity="0.5"/></svg> Research Groups</h3>
-            <p>Pick a topic, go deep for a semester. Small teams produce publications, open-source tools, or technical reports.</p>
-          </div>
-        </div>
-        <div class="event-card">
-          <div class="event-card__img">
-            <img src="./public/web/students-working.jpg" alt="Students hacking" loading="lazy" />
-          </div>
-          <div class="event-card__body">
-            <h3><svg class="event-card__icon-svg" viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="10,2 17,6 10,10 3,6" fill="#a855f7" opacity="0.88"/><polygon points="3,6 10,10 10,14 3,10" fill="#a855f7" opacity="0.55"/><polygon points="10,10 17,6 17,10 10,14" fill="#a855f7" opacity="0.35"/><line x1="6" y1="7.5" x2="9" y2="6" stroke="#e9d5ff" stroke-width="1" opacity="0.55" stroke-linecap="round"/><line x1="6" y1="9" x2="8" y2="8" stroke="#e9d5ff" stroke-width="1" opacity="0.4" stroke-linecap="round"/><line x1="12" y1="6.5" x2="14" y2="8" stroke="#e9d5ff" stroke-width="0.8" opacity="0.4" stroke-linecap="round"/><rect x="8.5" y="15" width="3" height="2" rx="0.5" fill="#a855f7" opacity="0.45"/></svg> Hackathons</h3>
-            <p>12&ndash;48 hours. Build something, ship it, put it in your portfolio. You learn more in one weekend than most courses teach all year.</p>
-          </div>
-        </div>
+  <!-- ═══════════════════════════ 2 · THE FORMULA ═══════════════════════════ -->
+  <section class="lp lp--line" id="formula">
+    <div class="lp__inner">
+      <div class="lp__head rv">
+        <p class="lp-eyebrow">The formula</p>
+        <h2 class="lp-h2">Show up. Build. <em>Get seen.</em></h2>
+        <p class="lp-lede">Four steps, in order. Every chapter runs the same loop every semester. Free to join, and the first step asks nothing of you but showing up.</p>
       </div>
-
-      <div class="chainflow reveal">
-        <p class="chainflow__lede"><strong>Each event feeds the next.</strong> That loop is the product.</p>
-        <div class="chainflow__row">
-        <article class="chainflow__step" style="--step:#22d3ee">
-          <span class="chainflow__num">01</span>
-          <h3 class="chainflow__title">Speaker Event</h3>
-          <p class="chainflow__text">Engineers from industry show what they&rsquo;re actually building, and which skills actually matter.</p>
-        </article><div class="chainflow__arrow" aria-hidden="true"><svg viewBox="0 0 28 12" width="28" height="12"><path d="M0 6h22M17 1.5 22 6l-5 4.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <article class="chainflow__step" style="--step:#3b82f6">
-          <span class="chainflow__num">02</span>
-          <h3 class="chainflow__title">Mentored Project</h3>
-          <p class="chainflow__text">Experienced members lead new ones. Real problems, real data, a working solution in two months.</p>
-        </article><div class="chainflow__arrow" aria-hidden="true"><svg viewBox="0 0 28 12" width="28" height="12"><path d="M0 6h22M17 1.5 22 6l-5 4.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <article class="chainflow__step" style="--step:#a855f7">
-          <span class="chainflow__num">03</span>
-          <h3 class="chainflow__title">Sponsor Engagement</h3>
-          <p class="chainflow__text">Companies watch students build for months. That is a better signal than any resume or career fair.</p>
-        </article><div class="chainflow__arrow" aria-hidden="true"><svg viewBox="0 0 28 12" width="28" height="12"><path d="M0 6h22M17 1.5 22 6l-5 4.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <article class="chainflow__step" style="--step:#ec4899">
-          <span class="chainflow__num">04</span>
-          <h3 class="chainflow__title">Everyone Benefits</h3>
-          <p class="chainflow__text">Companies find AI talent. Students become AI leaders. Schools get real AI problems on campus.</p>
+      <div class="formula__spine rv" aria-hidden="true"><span class="is-on">Show up</span><span>Team</span><span>Build</span><span>Get seen</span></div>
+      <div class="formula rv-group">
+        <article class="formula__step">
+          <img src="./public/web/speaker-event.jpg" alt="" loading="lazy" />
+          <div class="formula__body"><div class="formula__n">Step 01 &middot; Show up</div><h3 class="formula__t">Come hear from real builders.</h3><p class="formula__d">Speaker events with engineers who ship AI for a living. Free, open to anyone, no experience needed.</p></div>
         </article>
-        </div>
-        <p class="chainflow__foot">
-          And upperclassmen come back to lead &mdash; because
-          <em>leading a team as an undergraduate is something most students never get to do.</em>
-        </p>
+        <article class="formula__step">
+          <img src="./public/web/student-collaboration.jpg" alt="" loading="lazy" />
+          <div class="formula__body"><div class="formula__n">Step 02 &middot; Team</div><h3 class="formula__t">Join a team project.</h3><p class="formula__d">Zero experience is fine. Groups of five to eight with an upperclassman mentor, kicked off in week five.</p></div>
+        </article>
+        <article class="formula__step">
+          <img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" />
+          <div class="formula__body"><div class="formula__n">Step 03 &middot; Build</div><h3 class="formula__t">Solve a real sponsor&rsquo;s problem.</h3><p class="formula__d">Two to six months on a company&rsquo;s actual problem. Cash, GPUs and publications on the line, even in your first semester.</p></div>
+        </article>
+        <article class="formula__step">
+          <img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" />
+          <div class="formula__body"><div class="formula__n">Step 04 &middot; Get seen</div><h3 class="formula__t">Get hired from the room.</h3><p class="formula__d">Sponsors watch you build for months, then hire from the team they watched.</p></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       SECTION 03 — WHAT  (pillars + contributors + hub CTA)
-       ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="what-section" id="start-a-hub">
-    <div class="what-section__bg">
-      <img src="./public/web/first-event.jpg" alt="" loading="lazy" />
-    </div>
-
-    <div class="section-label reveal">
-      <span class="section-label__num">03</span>
-      <span class="section-label__text">What you get</span>
-      <span class="section-label__line"></span>
-    </div>
-
-    <div class="container reveal">
-      <h2 class="what-section__heading">Everything a hub needs to launch and scale.</h2>
-      <p>
-        Every piece of this infrastructure exists for one reason:
-        <strong>to turn students into the most employable AI talent in their region.</strong>
-        You don't start from scratch &mdash; you join a network that's already proven.
-      </p>
-    </div>
-
-    <!-- Hub pillars — three parallel offerings.
-         Reframed (May 2026): pillar order leads with The Network as
-         the asset, with The Tools as the mechanism and The Resources
-         (sponsor funding / mentor hours / prize pools) as the supporting
-         partner layer. Compute is named only as something we are working
-         toward — see the qualifier under that pillar. -->
-    <div class="container">
-      <div class="hub-pillars reveal-stagger">
-
-        <div class="hub-pillar" style="--pillar-accent: var(--gradient-cyan); --pillar-rgb: 34,211,238">
-          <div class="hub-pillar__icon">
-            <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Network — isometric nodes connected by lines -->
-              <polygon points="24,18 32,22 24,26 16,22" fill="#22d3ee" opacity="0.85"/>
-              <polygon points="16,22 24,26 24,28 16,24" fill="#22d3ee" opacity="0.5"/>
-              <polygon points="24,26 32,22 32,24 24,28" fill="#22d3ee" opacity="0.33"/>
-              <circle cx="24" cy="18" r="3" fill="#67e8f9" opacity="0.9"/>
-              <line x1="21" y1="17" x2="10" y2="10" stroke="#22d3ee" stroke-width="1.5" opacity="0.45" stroke-linecap="round"/>
-              <line x1="27" y1="17" x2="38" y2="10" stroke="#22d3ee" stroke-width="1.5" opacity="0.45" stroke-linecap="round"/>
-              <line x1="21" y1="23" x2="10" y2="34" stroke="#22d3ee" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
-              <line x1="27" y1="23" x2="38" y2="34" stroke="#22d3ee" stroke-width="1.5" opacity="0.4" stroke-linecap="round"/>
-              <circle cx="10" cy="9" r="3" fill="#22d3ee" opacity="0.7"/>
-              <circle cx="38" cy="9" r="3" fill="#22d3ee" opacity="0.7"/>
-              <circle cx="10" cy="35" r="2.5" fill="#22d3ee" opacity="0.55"/>
-              <circle cx="38" cy="35" r="2.5" fill="#22d3ee" opacity="0.55"/>
-              <line x1="13" y1="9" x2="35" y2="9" stroke="#22d3ee" stroke-width="0.8" opacity="0.2"/>
-              <line x1="12" y1="34" x2="36" y2="34" stroke="#22d3ee" stroke-width="0.8" opacity="0.15"/>
-            </svg>
-          </div>
-          <h3>The Network</h3>
-          <p>
-            Every chapter member builds a verified profile of real activity
-            &mdash; events, projects, awards, GitHub work &mdash; that follows
-            them for life. Shared sponsors across chapters, cross-chapter
-            mentor playbooks, and a single talent surface sponsors browse
-            when they&rsquo;re hiring.
-          </p>
-          <a href="#features" class="hub-pillar__link">
-            <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/><line x1="8" y1="5" x2="8" y2="11" stroke="currentColor" stroke-width="1.5" opacity="0.7"/><line x1="5" y1="8" x2="11" y2="8" stroke="currentColor" stroke-width="1.5" opacity="0.7"/></svg> See what officers actually get
-          </a>
-        </div>
-
-        <div class="hub-pillar" style="--pillar-accent: var(--gradient-purple); --pillar-rgb: 168,85,247">
-          <div class="hub-pillar__icon">
-            <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Code editor / terminal — isometric laptop-like screen -->
-              <polygon points="24,8 42,17 24,26 6,17" fill="#a855f7" opacity="0.88"/>
-              <polygon points="6,17 24,26 24,30 6,21" fill="#a855f7" opacity="0.55"/>
-              <polygon points="24,26 42,17 42,21 24,30" fill="#a855f7" opacity="0.35"/>
-              <polygon points="24,11 38,18.5 24,24 10,18.5" fill="#1e1b2e" opacity="0.8"/>
-              <line x1="14" y1="16" x2="22" y2="12.5" stroke="#c084fc" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
-              <line x1="14" y1="18" x2="20" y2="15.5" stroke="#e9d5ff" stroke-width="1" opacity="0.45" stroke-linecap="round"/>
-              <line x1="14" y1="20" x2="24" y2="16" stroke="#c084fc" stroke-width="1" opacity="0.5" stroke-linecap="round"/>
-              <line x1="27" y1="16" x2="34" y2="19.5" stroke="#e9d5ff" stroke-width="1" opacity="0.4" stroke-linecap="round"/>
-              <line x1="27" y1="18" x2="32" y2="20.5" stroke="#c084fc" stroke-width="1" opacity="0.35" stroke-linecap="round"/>
-              <polygon points="24,28 38,34 24,40 10,34" fill="#a855f7" opacity="0.5"/>
-              <polygon points="10,34 24,40 24,42 10,36" fill="#a855f7" opacity="0.35"/>
-              <polygon points="24,40 38,34 38,36 24,42" fill="#a855f7" opacity="0.22"/>
-              <rect x="24" y="14.5" width="1" height="2.5" fill="#e9d5ff" opacity="0.6"/>
-            </svg>
-          </div>
-          <h3>The Tools</h3>
-          <p>
-            Hub site template (one-click chapter site), chapter dashboard
-            (QR check-in, event creation, leaderboards, financial pipeline),
-            sponsor portal (reveal-on-approval outreach), open-source learning
-            tree, operational playbooks. Everything an officer needs to scale
-            their chapter without scaling officer hours.
-          </p>
-          <a href="#features" class="hub-pillar__link">
-            <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><line x1="8" y1="2" x2="8" y2="11" stroke="currentColor" stroke-width="1.5" opacity="0.6"/><polygon points="4,9 8,14 12,9" fill="currentColor" opacity="0.5"/></svg> See the six
-          </a>
-        </div>
-
-        <div class="hub-pillar" style="--pillar-accent: var(--gradient-blue); --pillar-rgb: 59,130,246">
-          <div class="hub-pillar__icon">
-            <svg viewBox="0 0 48 48" width="48" height="48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- GPU Card — isometric graphics card with fan and heatsink -->
-              <polygon points="10,20 30,10 42,16 22,26" fill="#3b82f6" opacity="0.88"/>
-              <polygon points="22,26 42,16 42,20 22,30" fill="#3b82f6" opacity="0.35"/>
-              <polygon points="10,20 22,26 22,30 10,24" fill="#3b82f6" opacity="0.55"/>
-              <line x1="14" y1="19" x2="26" y2="13" stroke="#60a5fa" stroke-width="1.2" opacity="0.35"/>
-              <line x1="16" y1="20" x2="28" y2="14" stroke="#60a5fa" stroke-width="1.2" opacity="0.3"/>
-              <line x1="18" y1="21" x2="30" y2="15" stroke="#60a5fa" stroke-width="1.2" opacity="0.25"/>
-              <ellipse cx="27" cy="17.5" rx="5.5" ry="3.2" fill="#1e293b" opacity="0.65"/>
-              <ellipse cx="27" cy="17.5" rx="4" ry="2.3" fill="none" stroke="#60a5fa" stroke-width="0.8" opacity="0.45"/>
-              <ellipse cx="27" cy="17.5" rx="1.5" ry="0.9" fill="#60a5fa" opacity="0.55"/>
-              <line x1="24" y1="16.5" x2="30" y2="18.5" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
-              <line x1="25" y1="19" x2="29" y2="16" stroke="#60a5fa" stroke-width="0.6" opacity="0.25"/>
-              <rect x="35" y="12" width="1.2" height="2.2" rx="0.3" fill="#93c5fd" opacity="0.45"/>
-              <rect x="37" y="11.3" width="1.2" height="2.2" rx="0.3" fill="#93c5fd" opacity="0.45"/>
-              <polygon points="13,24 20,28 20,30 13,26" fill="#fbbf24" opacity="0.45"/>
-              <circle cx="39" cy="15" r="1" fill="#76b900" opacity="0.8"/>
-            </svg>
-          </div>
-          <h3>The Resources</h3>
-          <p>
-            Sponsors fund what a chapter actually needs: food for the first
-            meeting, prize pools for a hackathon, mentor hours from people who
-            do this for a living. Org-wide partners back every chapter;
-            chapter sponsors fund local programs, restricted to that
-            chapter&rsquo;s work.
-          </p>
-          <p class="hub-pillar__note">
-            Pooled GPU compute for member projects is what we&rsquo;re working
-            toward with NVIDIA next &mdash; it isn&rsquo;t live yet.
-          </p>
-          <a href="./impact.html#sponsors" class="hub-pillar__link">
-            <svg class="link-icon" viewBox="0 0 16 16" width="14" height="14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><polygon points="8,2 14,8 8,14" fill="currentColor" opacity="0.7"/><rect x="2" y="6" width="4" height="4" rx="0.5" fill="currentColor" opacity="0.4"/></svg> See active partners
-          </a>
-        </div>
-
+  <!-- ═══════════════════════════ 3 · THE NUMBERS ═══════════════════════════ -->
+  <section class="lp proof fx-aurora-host" id="proof">
+    <canvas data-aurora="0.5" aria-hidden="true"></canvas>
+    <div class="lp__inner">
+      <div class="lp__head lp__head--center rv">
+        <p class="lp-eyebrow">The numbers</p>
+        <h2 class="lp-h2">We have the numbers to prove it.</h2>
       </div>
-    </div>
-
-    <!-- Two-open-source-repos block intentionally removed (May 2026).
-         Developer-focused detail — moved to the GitHub footer link.
-         The product surface is now documented in Section 01 "Inside
-         the network" with the six-feature explainer. -->
-
-    <!-- Contributors -->
-    <div class="container reveal">
-      <div class="what-contributors">
-        <h3 class="what-sub-heading">Built by</h3>
-        <p class="what-sub-desc">Written and curated by working AI engineers, researchers, and educators.</p>
-        <div class="contributors-grid" id="contributors-grid">
-          <!-- Populated by JS from tree.json contributor data -->
-        </div>
+      <div class="stats rv-group">
+        <div class="stat"><div class="stat__n" data-count="38">+0%</div><div class="stat__l">higher starting salary for active members<sup>1</sup></div></div>
+        <div class="stat"><div class="stat__n stat__n--ink" data-count="500">0+</div><div class="stat__l">members at the founding chapter, from 20</div></div>
+        <div class="stat"><div class="stat__n stat__n--pink" data-count="50">0+</div><div class="stat__l">student publications</div></div>
+        <div class="stat"><div class="stat__n stat__n--violet" data-count="10">0+</div><div class="stat__l">direct sponsor hires per project cycle</div></div>
       </div>
+      <div class="showcase rv-group">
+        <article class="show show--juno" data-tilt="5">
+          <div class="show__media">
+            <img class="show__logo" src="./public/logos/juno.svg" alt="Juno" width="64" height="64" />
+            <div class="show__ks">Juno &middot; one sponsor, one semester</div>
+          </div>
+          <div class="show__body">
+            <div class="show__rows">
+              <div class="show__row"><b>$5,000</b><span>to sponsor one Innovation Lab</span></div>
+              <div class="show__row"><b>5 interns</b><span>hired straight off the student team</span></div>
+              <div class="show__row"><b>8 figures</b><span>valuation a year later, from pre-revenue</span></div>
+            </div>
+            <p class="show__d">Juno, a startup, sponsored one lab while still pre-revenue and hired five of the students it watched. They hired from the room, not the r&eacute;sum&eacute; pile.</p>
+          </div>
+        </article>
+        <article class="show" data-tilt="5">
+          <div class="show__media"><img src="./public/art/nilus-card.webp" alt="A student in a MAIC Researcher hoodie in front of an ice stupa" loading="lazy" style="object-position:50% 18%" /><span class="chip chip--violet">Product</span></div>
+          <div class="show__body"><div class="show__k">Nilus &middot; Chile</div><h3 class="show__t">AI for artificial glaciers</h3><p class="show__d">Students built the models behind a startup&rsquo;s ice reservoirs, then went to see them.</p></div>
+        </article>
+        <article class="show" data-tilt="5">
+          <div class="show__media"><img src="./public/art/fao-card.webp" alt="" loading="lazy" /><span class="chip chip--pink">Published</span></div>
+          <div class="show__body"><div class="show__k">NourishNet &middot; UN FAO</div><h3 class="show__t">Food-price forecasting for the UN</h3><p class="show__d">Published research on global food security, built by undergraduates with the Food and Agriculture Organization.</p></div>
+        </article>
+        <article class="show" data-tilt="5">
+          <div class="show__media"><img src="./public/art/tile-xprospect.webp" alt="" loading="lazy" /><span class="chip">$10,000 &middot; 1st</span></div>
+          <div class="show__body"><div class="show__k">XprospeCT</div><h3 class="show__t">3D CT scans from two X-rays</h3><p class="show__d">A reconstruction model that took first place, a $10,000 prize and a paper.</p></div>
+        </article>
+        <article class="show" data-tilt="5">
+          <div class="show__media"><img src="./public/art/hacksgiving-card.webp" alt="A student holding a $3,000 first-place check" loading="lazy" /><span class="chip">$3,000 &middot; 1st</span></div>
+          <div class="show__body"><div class="show__k">Hacksgiving</div><h3 class="show__t">A weekend that pays</h3><p class="show__d">A hackathon that donates data science to local non-profits. Winners take home cash.</p></div>
+        </article>
+        <article class="show" data-tilt="5">
+          <div class="show__media"><img src="./public/art/tile-graymatter.webp" alt="" loading="lazy" /><span class="chip chip--pink">Published</span></div>
+          <div class="show__body"><div class="show__k">Mind Over Gray Matter</div><h3 class="show__t">Brain histology, matched to MRI</h3><p class="show__d">Published with the Medical College of Wisconsin. Undergrads on the author list.</p></div>
+        </article>
+      </div>
+      <figure class="pullquote rv">
+        <img src="./public/logos/direct_supply_logo.png" alt="Direct Supply" loading="lazy" style="object-fit:contain;padding:.9rem;background:rgba(255,255,255,.07)" />
+        <blockquote>
+          &ldquo;We&rsquo;ve hired more quality candidates through Innovation Labs than any career fair we&rsquo;ve attended. The students come in with real project experience, not just coursework. They are now the majority of our 50-person AI team.&rdquo;
+          <cite>Applied AI Director, Direct Supply</cite>
+        </blockquote>
+      </figure>
+      <p class="lp-src rv" id="fn-salary"><sup>1</sup> Spring 2025 graduate outcomes: active members (two or more chapter events in a semester, or one project event) against the same universities&rsquo; non-member graduates, across majors. Chapter records for the rest.</p>
     </div>
+  </section>
 
-    <!-- Start a Chapter -->
-    <div class="what-content-divider"></div>
-    <div class="container container--narrow reveal" id="start-a-chapter">
-      <div class="chapter-form-section">
-        <h3 class="what-sub-heading">Start a chapter at your university.</h3>
-        <p class="what-sub-desc">
-          MSOE is the founding chapter; the playbook is open-source and ready
-          for the next 10. Universities are standing up serious AI hardware
-          faster than they are standing up the student communities to use it
-          &mdash; that community layer is the part we help you build. Sign up
-          for the dashboard to get started instantly, or reach out if you need
-          help.
-        </p>
-        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;">
-          <a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
-            Open the Chapter Dashboard <span aria-hidden="true">&rarr;</span>
-          </a>
-          <a href="./start-a-chapter.html" class="btn btn--outline btn--lg">
-            Explore the Start a Chapter
-          </a>
-        </div>
-        <details class="chapter-form-toggle">
-          <summary class="chapter-form-toggle__trigger">Need help getting started? Send us a message.</summary>
-          <form class="chapter-form" action="https://formspree.io/f/mykboonk" method="POST">
-            <input type="hidden" name="_subject" value="New Chapter Interest — ALL Applied AI Network" />
-            <div class="chapter-form__row">
-              <div class="chapter-form__field">
-                <label for="chapter-name" class="chapter-form__label">Your name</label>
-                <input type="text" id="chapter-name" name="name" required class="chapter-form__input" placeholder="Alex Johnson" />
-              </div>
-              <div class="chapter-form__field">
-                <label for="chapter-email" class="chapter-form__label">Email</label>
-                <input type="email" id="chapter-email" name="email" required class="chapter-form__input" placeholder="alex@university.edu" />
-              </div>
-            </div>
-            <div class="chapter-form__row">
-              <div class="chapter-form__field">
-                <label for="chapter-university" class="chapter-form__label">University</label>
-                <input type="text" id="chapter-university" name="university" required class="chapter-form__input" placeholder="Milwaukee School of Engineering" />
-              </div>
-              <div class="chapter-form__field">
-                <label for="chapter-club" class="chapter-form__label">Club name (if you have one)</label>
-                <input type="text" id="chapter-club" name="club_name" class="chapter-form__input" placeholder="MSOE AI Club" />
-              </div>
-            </div>
-            <div class="chapter-form__field">
-              <label for="chapter-message" class="chapter-form__label">Tell us about your situation</label>
-              <textarea id="chapter-message" name="message" rows="3" class="chapter-form__textarea" placeholder="Are you starting from scratch? Do you already have a club? What kind of help are you looking for?"></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary btn--lg chapter-form__submit">Send message</button>
-          </form>
-        </details>
+  <!-- ═══════════════════════════ 4 · PICK YOUR LANE ═══════════════════════════ -->
+  <section class="lp lp--line" id="lanes">
+    <div class="lp__inner">
+      <div class="lp__head rv">
+        <p class="lp-eyebrow">Pick your lane</p>
+        <h2 class="lp-h2">Where do you fit?</h2>
+      </div>
+      <div class="lanes rv-group">
+        <article class="lane lane--student">
+          <div class="lane__k">Students</div>
+          <h3 class="lane__t">Come to your first event.</h3>
+          <p class="lane__d">Find your chapter and show up once. <b>Free to join, no sign-up to attend,</b> no experience needed. Join a team when you&rsquo;re ready.</p>
+          <div class="chapters-strip" id="chapters-strip" aria-live="polite"></div>
+          <a href="./impact.html#chapters" class="btn btn--primary">Find your chapter &rarr;</a>
+          <p class="lane__alt">No chapter yet? <a href="./start-a-chapter.html">Start one</a>, or begin today on the <a href="./tree.html">Learning Tree</a>: 34 free lessons, no account needed.</p>
+        </article>
+        <article class="lane lane--officer">
+          <div class="lane__k">Officers</div>
+          <h3 class="lane__t">Start or claim your chapter.</h3>
+          <p class="lane__d">One <b>30-minute setup call</b> leaves you with a roster, a live chapter site, your first event published and a sponsor invited.</p>
+          <a href="./start-a-chapter.html" class="btn btn--primary">Start a chapter &rarr;</a>
+          <p class="lane__alt">Already running one? <a href="https://dashboard.all-ai-network.org/sign-up?role=officer" rel="noopener">Claim it in the dashboard.</a></p>
+        </article>
+        <article class="lane lane--sponsor">
+          <div class="lane__k">Sponsors</div>
+          <h3 class="lane__t">Sponsor an Innovation Lab.</h3>
+          <p class="lane__d"><b>$5,000</b> puts a student team on your problem for eight weeks, with one of your engineers holding office hours. You hire the ones you watched. Tax-deductible, and every dollar reaches the chapter.</p>
+          <a href="./sponsors.html" class="btn btn--primary">How sponsoring works &rarr;</a>
+          <p class="lane__alt">Faculty or advisor? <a href="mailto:hello@all-ai-network.org">Email us.</a></p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       SECTION 04 — INSIDE THE NETWORK (the six)
-       Consolidated from the previous /product page (May 2026). Reordered
-       to live AFTER the WHY/HOW/WHAT story (May 2026 — Ben's feedback)
-       so the six-feature detail lands as drill-down, not as
-       a spec dump before the narrative is set up. The visual mocks
-       (profile / chapter site / sponsor invite / QR poster / Stripe
-       Issuing card / organizer hub) live inline.
-       ═══════════════════════════════════════════════════════════════════════ -->
-  <section class="product-section product-features" id="features">
-    <div class="container">
-      <div class="section-label">
-        <span class="section-label__num">04</span>
-        <span class="section-label__text">Inside the network</span>
-        <span class="section-label__line"></span>
+  <!-- ═══════════════════════════ 5 · WHAT RUNS IT ═══════════════════════════ -->
+  <section class="lp lp--line" id="stack">
+    <div class="lp__inner">
+      <div class="lp__head rv">
+        <p class="lp-eyebrow">What runs it</p>
+        <h2 class="lp-h2">One dashboard. Free, open-source.</h2>
+        <p class="lp-lede">Everything a chapter needs to run the loop above, so officers spend their time on events instead of spreadsheets.</p>
       </div>
-      <h2 class="product-section__heading">Six things we got tired of doing by hand.</h2>
-      <p class="product-section__lede">
-        We ran a club before we built any of this. Everything here started as
-        a spreadsheet somebody hated.
-      </p>
-
-      <div class="feature-stack">
-
-        <!-- 01: Living résumés -->
-        <article class="feature-row">
-          <div class="feature-row__num">01</div>
-          <div class="feature-row__body">
-            <h3 class="feature-row__title">A profile that keeps itself current.</h3>
-            <p class="feature-row__desc">
-              Nobody keeps their résumé current in October of junior year. So we build
-              a profile from your LinkedIn and GitHub and keep it fresh, and
-              that&rsquo;s what a sponsor sees when they come looking. You can turn
-              sponsor visibility off whenever you want.
-            </p>
-          </div>
-          <div class="feature-row__visual feature-row__visual--profile" aria-hidden="true">
-            <div class="profile-mock">
-              <div class="profile-mock__row">
-                <div class="profile-mock__avatar"></div>
-                <div>
-                  <div class="profile-mock__name">Wyatt M.</div>
-                  <div class="profile-mock__meta">MSOE AI Club &middot; Class of 2026</div>
-                </div>
-                <span class="profile-mock__badge">Verified</span>
-              </div>
-              <div class="profile-mock__divider"></div>
-              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--event">event</span> Innovation Lab kickoff (Direct Supply)</div>
-              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--project">project</span> Edge-ML defect detection demo</div>
-              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--award">award</span> ROSIE Awards finalist</div>
-              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--event">event</span> NVIDIA GTC tour</div>
-              <div class="profile-mock__skills">
-                <span class="profile-mock__chip">computer vision</span>
-                <span class="profile-mock__chip">edge ml</span>
-                <span class="profile-mock__chip">pytorch</span>
-              </div>
-            </div>
-          </div>
+      <div class="stack rv-group">
+        <article class="stack__card">
+          <div class="stack__shot"><img src="./public/web/ui-platform.jpg" alt="The chapter dashboard" loading="lazy" /></div>
+          <div class="stack__body"><h3 class="stack__t">The chapter dashboard</h3><p class="stack__d">Events with one-second QR check-in, teams, submissions, sponsors and a leaderboard, in one place.</p></div>
         </article>
-
-        <!-- 02: One-click chapter site -->
-        <article class="feature-row feature-row--reverse">
-          <div class="feature-row__num">02</div>
-          <div class="feature-row__body">
-            <h3 class="feature-row__title">Your chapter site, in ten minutes.</h3>
-            <p class="feature-row__desc">
-              Name it, connect GitHub, pick two colors. You get a real site that
-              redeploys every time someone pushes &mdash; and nobody has to hunt down
-              whoever set up the WordPress in 2021.
-            </p>
-          </div>
-          <div class="feature-row__visual feature-row__visual--site" aria-hidden="true">
-            <div class="site-mock">
-              <div class="site-mock__chrome">
-                <span class="site-mock__chrome-dot"></span>
-                <span class="site-mock__chrome-dot"></span>
-                <span class="site-mock__chrome-dot"></span>
-                <code class="site-mock__chrome-url">maic.all-ai-network.org</code>
-              </div>
-              <div class="site-mock__body">
-                <div class="site-mock__hero">
-                  <div class="site-mock__eyebrow">Milwaukee School of Engineering</div>
-                  <div class="site-mock__h1">MSOE AI Club</div>
-                  <div class="site-mock__sub">Real applied AI, taught by people who do it for a living.</div>
-                </div>
-                <div class="site-mock__stats">
-                  <div><strong>500+</strong><span>Members</span></div>
-                  <div><strong>120+</strong><span>Events run</span></div>
-                  <div><strong>40+</strong><span>Projects shipped</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <article class="stack__card">
+          <div class="stack__shot"><img src="./public/web/ui-resume.jpg" alt="A member's living résumé" loading="lazy" /></div>
+          <div class="stack__body"><h3 class="stack__t">A r&eacute;sum&eacute; that keeps itself current</h3><p class="stack__d">Every event and project you show up for becomes a verified line that sponsors can see. You can opt out any time.</p></div>
         </article>
-
-        <!-- 03: Project events with sponsor-invite -->
-        <article class="feature-row">
-          <div class="feature-row__num">03</div>
-          <div class="feature-row__body">
-            <h3 class="feature-row__title">Sponsors say what they&rsquo;re bringing.</h3>
-            <p class="feature-row__desc">
-              Create the event, then email your sponsors an invite. They say what
-              they&rsquo;re bringing &mdash; money, cloud credits, mentor hours, or a real
-              problem for students to work on &mdash; and it shows up on the event page
-              with their name on it.
-            </p>
-          </div>
-          <div class="feature-row__visual feature-row__visual--invite" aria-hidden="true">
-            <div class="invite-mock">
-              <div class="invite-mock__badge">Sponsor invite &middot; Innovation Lab Spring 2026</div>
-              <div class="invite-mock__row invite-mock__row--checked">
-                <span class="invite-mock__check">&#10003;</span>
-                Fund dinner for kickoff (Brady)
-              </div>
-              <div class="invite-mock__row invite-mock__row--checked">
-                <span class="invite-mock__check">&#10003;</span>
-                Bring 3 problem statements (NVIDIA)
-              </div>
-              <div class="invite-mock__row invite-mock__row--checked">
-                <span class="invite-mock__check">&#10003;</span>
-                Provide API credits via secrets vault
-              </div>
-              <div class="invite-mock__row">
-                <span class="invite-mock__check invite-mock__check--pending">&middot;</span>
-                Approve recording terms (Direct Supply)
-              </div>
-              <div class="invite-mock__footer">3 of 4 sponsors approved &middot; auto-publish ready</div>
-            </div>
-          </div>
+        <article class="stack__card">
+          <div class="stack__shot"><img src="./public/web/ui-playbooks.jpg" alt="The playbooks" loading="lazy" /></div>
+          <div class="stack__body"><h3 class="stack__t">A chapter site and six playbooks</h3><p class="stack__d">A website in ten minutes, and the six playbooks the founding chapter used to grow from 20 to 500 members.</p></div>
         </article>
-
-        <!-- 04: QR check-in -->
-        <article class="feature-row feature-row--reverse">
-          <div class="feature-row__num">04</div>
-          <div class="feature-row__body">
-            <h3 class="feature-row__title">Check-in that takes one second.</h3>
-            <p class="feature-row__desc">
-              One code at the door. Members scan on the way in, first-timers make an
-              account once, and attendance is done before the pizza gets there.
-            </p>
-          </div>
-          <div class="feature-row__visual feature-row__visual--qr" aria-hidden="true">
-            <div class="qr-mock">
-              <div class="qr-mock__poster">
-                <div class="qr-mock__poster-head">Scan to check in</div>
-                <div class="qr-mock__qr">
-                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <rect width="100" height="100" fill="#fff"/>
-                    <g fill="#0a0a0c">
-                      <rect x="6" y="6" width="22" height="22"/>
-                      <rect x="11" y="11" width="12" height="12" fill="#fff"/>
-                      <rect x="14" y="14" width="6" height="6"/>
-                      <rect x="72" y="6" width="22" height="22"/>
-                      <rect x="77" y="11" width="12" height="12" fill="#fff"/>
-                      <rect x="80" y="14" width="6" height="6"/>
-                      <rect x="6" y="72" width="22" height="22"/>
-                      <rect x="11" y="77" width="12" height="12" fill="#fff"/>
-                      <rect x="14" y="80" width="6" height="6"/>
-                      <rect x="38" y="6" width="4" height="4"/>
-                      <rect x="46" y="6" width="4" height="4"/>
-                      <rect x="54" y="6" width="4" height="4"/>
-                      <rect x="38" y="14" width="4" height="4"/>
-                      <rect x="54" y="14" width="4" height="4"/>
-                      <rect x="38" y="22" width="4" height="4"/>
-                      <rect x="46" y="22" width="4" height="4"/>
-                      <rect x="6" y="38" width="4" height="4"/>
-                      <rect x="14" y="38" width="4" height="4"/>
-                      <rect x="22" y="38" width="4" height="4"/>
-                      <rect x="6" y="46" width="4" height="4"/>
-                      <rect x="22" y="46" width="4" height="4"/>
-                      <rect x="6" y="54" width="4" height="4"/>
-                      <rect x="14" y="54" width="4" height="4"/>
-                      <rect x="38" y="38" width="4" height="4"/>
-                      <rect x="46" y="38" width="4" height="4"/>
-                      <rect x="54" y="38" width="4" height="4"/>
-                      <rect x="62" y="38" width="4" height="4"/>
-                      <rect x="70" y="38" width="4" height="4"/>
-                      <rect x="38" y="46" width="4" height="4"/>
-                      <rect x="54" y="46" width="4" height="4"/>
-                      <rect x="70" y="46" width="4" height="4"/>
-                      <rect x="46" y="54" width="4" height="4"/>
-                      <rect x="62" y="54" width="4" height="4"/>
-                      <rect x="38" y="62" width="4" height="4"/>
-                      <rect x="46" y="62" width="4" height="4"/>
-                      <rect x="62" y="62" width="4" height="4"/>
-                      <rect x="70" y="62" width="4" height="4"/>
-                      <rect x="78" y="62" width="4" height="4"/>
-                      <rect x="86" y="62" width="4" height="4"/>
-                      <rect x="38" y="70" width="4" height="4"/>
-                      <rect x="54" y="70" width="4" height="4"/>
-                      <rect x="62" y="70" width="4" height="4"/>
-                      <rect x="78" y="70" width="4" height="4"/>
-                      <rect x="38" y="78" width="4" height="4"/>
-                      <rect x="46" y="78" width="4" height="4"/>
-                      <rect x="62" y="78" width="4" height="4"/>
-                      <rect x="70" y="78" width="4" height="4"/>
-                      <rect x="86" y="78" width="4" height="4"/>
-                      <rect x="38" y="86" width="4" height="4"/>
-                      <rect x="54" y="86" width="4" height="4"/>
-                      <rect x="70" y="86" width="4" height="4"/>
-                      <rect x="86" y="86" width="4" height="4"/>
-                    </g>
-                  </svg>
-                </div>
-                <div class="qr-mock__poster-foot">Innovation Lab kickoff &middot; +10 pts</div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 05: Stripe Issuing virtual cards -->
-        <article class="feature-row">
-          <div class="feature-row__num">05</div>
-          <div class="feature-row__body">
-            <h3 class="feature-row__title">Nobody fronts their own money.</h3>
-            <p class="feature-row__desc">
-              A student should not be floating $400 for pizza and waiting three weeks
-              to get it back. When a sponsor funds an event, an officer gets a
-              virtual card scoped to that event, and the charges land against it.
-            </p>
-          </div>
-          <div class="feature-row__visual feature-row__visual--card" aria-hidden="true">
-            <div class="card-mock">
-              <div class="card-mock__row card-mock__row--top">
-                <span class="card-mock__brand">Stripe Issuing</span>
-                <span class="card-mock__chip"></span>
-              </div>
-              <div class="card-mock__num">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4127</div>
-              <div class="card-mock__row">
-                <div>
-                  <div class="card-mock__label">Chapter</div>
-                  <div class="card-mock__value">MSOE AI CLUB</div>
-                </div>
-                <div>
-                  <div class="card-mock__label">Event</div>
-                  <div class="card-mock__value">HACKSGIVING 24</div>
-                </div>
-                <div>
-                  <div class="card-mock__label">Cat.</div>
-                  <div class="card-mock__value">FOOD</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 06: The organizer hub -->
-        <article class="feature-row feature-row--reverse">
-          <div class="feature-row__num">06</div>
-          <div class="feature-row__body">
-            <h3 class="feature-row__title">One page instead of the email chain.</h3>
-            <p class="feature-row__desc">
-              Officers see teams, submissions and who&rsquo;s coming. Sponsors get a
-              read-only link instead of a seventh reply-all.
-            </p>
-          </div>
-          <div class="feature-row__visual feature-row__visual--hub" aria-hidden="true">
-            <div class="hub-mock">
-              <div class="hub-mock__head">
-                Innovation Fair &middot; Spring 2026 &middot; <span class="hub-mock__live">Live</span>
-              </div>
-              <div class="hub-mock__row">
-                <span class="hub-mock__name">Brady &mdash; Problem sponsor</span>
-                <span class="hub-mock__status hub-mock__status--ok">Approved</span>
-              </div>
-              <div class="hub-mock__row">
-                <span class="hub-mock__name">NVIDIA &mdash; API credits</span>
-                <span class="hub-mock__status hub-mock__status--ok">Active</span>
-              </div>
-              <div class="hub-mock__row">
-                <span class="hub-mock__name">Direct Supply &mdash; Mentors</span>
-                <span class="hub-mock__status hub-mock__status--pending">Pending</span>
-              </div>
-              <div class="hub-mock__divider"></div>
-              <div class="hub-mock__row hub-mock__row--meta">
-                <span>Teams: 12 of 15</span>
-                <span>Spend: $2,340 / $5,000</span>
-                <span>Mentor sessions: 8</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
       </div>
-
-      <p class="product-footnote" id="fn-salary">
-        <sup>1</sup> ALL Applied AI Network Spring 2025 graduate outcomes
-        among active members (&ge;2 chapter events in a semester or &ge;1
-        project event), across all majors. Compared against the same
-        universities&rsquo; non-member graduate cohort.
-      </p>
+      <div class="trust rv">
+        <span><b>We don&rsquo;t take a cut.</b> Sponsorships are tax-deductible gifts to a 501(c)(3), restricted to the chapter you choose.</span>
+        <span><b>Nobody fronts their own money.</b> Every event gets its own card, so no student floats $400 for pizza.</span>
+        <a href="./about.html#money">How the money works &rarr;</a>
+      </div>
     </div>
   </section>
 
-  <!-- Hidden series section (only shows if series exist in data) -->
-  <section class="section" id="series-section" style="display:none">
-    <div class="container">
-      <h2 class="section__title">Learning Tracks</h2>
-      <p class="section__subtitle">Follow a curated series from start to finish, or mix and match based on your goals.</p>
-      <div class="series-grid" id="series-grid"></div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       FINAL CTA — with group photo background
-       ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ═══════════════════════════ CLOSE ═══════════════════════════ -->
   <section class="final-cta">
-    <div class="final-cta__bg">
-      <img src="./public/web/group-photo.jpg" alt="" loading="lazy" />
-    </div>
+    <div class="final-cta__bg"><img src="./public/web/group-photo.jpg" alt="" loading="lazy" /></div>
     <div class="container container--narrow">
       <h2>Start one at your school.</h2>
-      <p>
-        Every chapter here began with one student who got tired of waiting for
-        someone else to run it. If that&rsquo;s you, we&rsquo;ll help you set it up.
-      </p>
+      <p>If nobody runs one at your school yet, we&rsquo;ll set it up with you on a call.</p>
       <div class="final-cta__actions">
-        <a href="./get-started.html" class="btn btn--primary btn--lg">Start a chapter &rarr;</a>
-        <a href="./tree.html" class="btn btn--outline btn--lg">Browse the learning tree</a>
+        <a href="./start-a-chapter.html" class="btn btn--primary btn--lg">Start a chapter &rarr;</a>
+        <a href="./playbooks.html" class="btn btn--outline btn--lg">Read the playbooks</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer__inner">
       <div>
@@ -1195,13 +312,13 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./tree.html">Learning Tree</a></li>
-          <li><a href="./playbooks.html">Playbooks</a></li>
+          <li><a href="./impact.html">Chapters</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-          <li><a href="./impact.html">Impact</a></li>
+          <li><a href="./sponsors.html">Sponsors</a></li>
+          <li><a href="./playbooks.html">Playbooks</a></li>
+          <li><a href="./tree.html">Learning Tree</a></li>
           <li><a href="./about.html">About</a></li>
           <li><a href="https://dashboard.all-ai-network.org/donate/msoe-ai-club" target="_blank" rel="noopener">Donate</a></li>
-          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
           <li><a href="https://dashboard.all-ai-network.org" target="_blank" rel="noopener">Dashboard</a></li>
           <li><a href="https://dashboard.all-ai-network.org/docs" target="_blank" rel="noopener">API Docs</a></li>
           <li><a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></li>
@@ -1210,116 +327,30 @@
     </div>
   </footer>
 
+  <!-- the film: loads only when opened -->
+  <dialog id="film" class="film-dialog" aria-label="The 70-second film">
+    <div class="film-dialog__box">
+      <video controls playsinline preload="none" poster="./public/film/poster.jpg" data-src="./public/film/all-central-film-720.mp4"></video>
+      <button class="film-dialog__close" data-film-close aria-label="Close">&times;</button>
+    </div>
+  </dialog>
+
   <script>
     // Mobile nav toggle
     const toggle = document.getElementById('nav-toggle');
     const links = document.getElementById('nav-links');
-    if (toggle && links) {
-      toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
-    }
+    if (toggle && links) toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    // Smooth scroll for anchor links (the film button is handled by home.ts)
+    document.querySelectorAll('a[href^="#"]:not([data-film-open])').forEach((a) => {
       a.addEventListener('click', (e) => {
-        const id = a.getAttribute('href');
-        if (!id || id === '#') return;
+        const id = a.getAttribute('href'); if (!id || id === '#') return;
         const target = document.querySelector(id);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
 
-    // Scroll-reveal observer
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
-      revealObserver.observe(el);
-    });
-
-    // Animated stat counter (works for both old .proof__num and new bento layout)
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const text = el.textContent || '';
-          const match = text.match(/^(\d+)/);
-          if (!match) return;
-          const target = parseInt(match[1], 10);
-          const suffix = text.replace(/^\d+/, '');
-          const duration = 1200;
-          const start = performance.now();
-
-          function tick(now) {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = Math.round(target * eased) + suffix;
-            if (progress < 1) requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
-          countObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.proof__num strong, .bento-proof__stat strong, .bento-proof__featured-content strong').forEach((el) => {
-      countObserver.observe(el);
-    });
-
-    // ─── FEATURE: Rotating typewriter word ───
-    (function() {
-      const el = document.getElementById('hero-word');
-      if (!el) return;
-      const words = ['communities.', 'clubs.', 'learners.', 'labs.', 'supporters.', 'students.', 'builders.'];
-      let wordIdx = 0;
-      let charIdx = 0;
-      let deleting = false;
-      const TYPE_SPEED = 65;
-      const DELETE_SPEED = 40;
-      const PAUSE_AFTER_TYPE = 2200;
-      const PAUSE_AFTER_DELETE = 300;
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        el.textContent = words[0];
-        return;
-      }
-
-      function tick() {
-        const current = words[wordIdx];
-        if (!deleting) {
-          charIdx++;
-          el.textContent = current.slice(0, charIdx);
-          if (charIdx === current.length) {
-            // Finished typing — pause then delete
-            setTimeout(() => { deleting = true; tick(); }, PAUSE_AFTER_TYPE);
-            return;
-          }
-          setTimeout(tick, TYPE_SPEED);
-        } else {
-          charIdx--;
-          el.textContent = current.slice(0, charIdx);
-          if (charIdx === 0) {
-            deleting = false;
-            wordIdx = (wordIdx + 1) % words.length;
-            setTimeout(tick, PAUSE_AFTER_DELETE);
-            return;
-          }
-          setTimeout(tick, DELETE_SPEED);
-        }
-      }
-      // Start after a short delay
-      setTimeout(tick, 800);
-    })();
-
-    // ─── FEATURE: Parallax hero background ───
+    // Parallax hero background
     (function() {
       const heroBg = document.querySelector('.hero__bg');
       if (!heroBg || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1328,10 +359,7 @@
         if (!ticking) {
           requestAnimationFrame(() => {
             const scrollY = window.scrollY;
-            // Only apply parallax while hero is visible
-            if (scrollY < window.innerHeight * 1.5) {
-              heroBg.style.transform = `translateY(${scrollY * 0.35}px)`;
-            }
+            if (scrollY < window.innerHeight * 1.5) heroBg.style.transform = `translateY(${scrollY * 0.35}px)`;
             ticking = false;
           });
           ticking = true;
@@ -1339,129 +367,37 @@
       }, { passive: true });
     })();
 
-    // ─── FEATURE: 3D tilt on event cards ───
-    (function() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (window.matchMedia('(hover: none)').matches) return; // skip touch devices
-
-      document.querySelectorAll('.event-card').forEach((card) => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -3;
-          const rotateY = ((x - centerX) / centerX) * 3;
-          card.classList.add('tilt-active');
-          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
-        });
-        card.addEventListener('mouseleave', () => {
-          card.classList.remove('tilt-active');
-          card.style.transform = '';
-        });
-      });
-    })();
-
-    // ─── FEATURE: Hero particle network canvas ───
+    // Hero particle network canvas
     (function() {
       const canvas = document.getElementById('hero-particles');
       if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-
+      const ctx = canvas.getContext('2d'); if (!ctx) return;
       let width, height, particles, animId;
-      const PARTICLE_COUNT = 50;
-      const CONNECTION_DIST = 140;
-      const SPEED = 0.3;
-
-      // Brand colors for particles
-      const colors = [
-        { r: 59, g: 130, b: 246 },   // blue
-        { r: 34, g: 211, b: 238 },   // cyan
-        { r: 236, g: 72, b: 153 },   // pink
-        { r: 168, g: 85, b: 247 },   // purple
-      ];
-
-      function resize() {
-        const hero = canvas.parentElement;
-        width = canvas.width = hero.offsetWidth;
-        height = canvas.height = hero.offsetHeight;
-      }
-
+      const PARTICLE_COUNT = 50, CONNECTION_DIST = 140, SPEED = 0.3;
+      const colors = [{ r: 59, g: 130, b: 246 }, { r: 34, g: 211, b: 238 }, { r: 236, g: 72, b: 153 }, { r: 168, g: 85, b: 247 }];
+      function resize() { const hero = canvas.parentElement; width = canvas.width = hero.offsetWidth; height = canvas.height = hero.offsetHeight; }
       function createParticles() {
         particles = [];
         for (let i = 0; i < PARTICLE_COUNT; i++) {
           const color = colors[Math.floor(Math.random() * colors.length)];
-          particles.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx: (Math.random() - 0.5) * SPEED,
-            vy: (Math.random() - 0.5) * SPEED,
-            r: Math.random() * 2 + 1,
-            color: color,
-          });
+          particles.push({ x: Math.random() * width, y: Math.random() * height, vx: (Math.random() - 0.5) * SPEED, vy: (Math.random() - 0.5) * SPEED, r: Math.random() * 2 + 1, color });
         }
       }
-
       function draw() {
         ctx.clearRect(0, 0, width, height);
-
-        // Draw connections
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < CONNECTION_DIST) {
-              const alpha = (1 - dist / CONNECTION_DIST) * 0.3;
-              const c = particles[i].color;
-              ctx.strokeStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${alpha})`;
-              ctx.lineWidth = 0.5;
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
-          }
+        for (let i = 0; i < particles.length; i++) for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECTION_DIST) { const c = particles[i].color; ctx.strokeStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${(1 - dist / CONNECTION_DIST) * 0.3})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); }
         }
-
-        // Draw + move particles
         for (const p of particles) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0.6)`;
-          ctx.fill();
-
-          p.x += p.vx;
-          p.y += p.vy;
-
-          // Bounce off edges
-          if (p.x < 0 || p.x > width) p.vx *= -1;
-          if (p.y < 0 || p.y > height) p.vy *= -1;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(${p.color.r}, ${p.color.g}, ${p.color.b}, 0.6)`; ctx.fill();
+          p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > width) p.vx *= -1; if (p.y < 0 || p.y > height) p.vy *= -1;
         }
-
         animId = requestAnimationFrame(draw);
       }
-
-      resize();
-      createParticles();
-      draw();
-
-      window.addEventListener('resize', () => {
-        resize();
-        createParticles();
-      });
-
-      // Stop animation when hero is not visible
-      const heroObs = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          if (!animId) draw();
-        } else {
-          cancelAnimationFrame(animId);
-          animId = null;
-        }
-      }, { threshold: 0 });
+      resize(); createParticles(); draw();
+      window.addEventListener('resize', () => { resize(); createParticles(); });
+      const heroObs = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { if (!animId) draw(); } else { cancelAnimationFrame(animId); animId = null; } }, { threshold: 0 });
       heroObs.observe(canvas.parentElement);
     })();
   </script>

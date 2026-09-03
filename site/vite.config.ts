@@ -40,6 +40,7 @@ export default defineConfig({
         // Redirect stub — keeps decks, QR codes and inbound links alive.
         toolkit: resolve(__dirname, "toolkit.html"),
         about: resolve(__dirname, "about.html"),
+        sponsors: resolve(__dirname, "sponsors.html"),
         overview: resolve(__dirname, "overview.html"),
         playbooks: resolve(__dirname, "playbooks.html"),
         playbook: resolve(__dirname, "playbook.html"),

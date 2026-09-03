@@ -16,6 +16,16 @@ Three years in, we know the shape of a good Hacksgiving *for us*: one nonprofit 
 
 ---
 
+## Start here
+
+If you read nothing else:
+
+1. Lock one nonprofit partner ten weeks out and co-write a single challenge statement with them on a 45-minute call; send it back for sign-off by week minus six.
+2. Announce it on the first slide of the semester even though registration opens at week minus four. A new chapter should pick a hackathon or an Innovation Lab in its first semester, not both.
+3. Prize money is disbursed by the Foundation, never through a chapter account or an officer's Venmo. Sort the payout path before you announce a dollar figure.
+
+The rest of this playbook is how we learned that, and what we would do differently.
+
 ## Plan it
 
 **10 weeks of prep. The nonprofit is locked first, the sponsors next, the logistics last.**

@@ -4,6 +4,16 @@ Most student orgs die in their second year. This playbook is the one we wish we'
 
 ---
 
+## Start here
+
+If you read nothing else:
+
+1. The first three weeks decide the year: org fair (week 0), say the whole year out loud (week 1), a great speaker by week 3, projects kicked off by week 5.
+2. Lock the day, time and room before you recruit, and never move them. One moved meeting costs about 15% of attendance that does not come back. Free food every time.
+3. Year two is the survival test. Recruit next year's board in the spring, not after graduation.
+
+The rest of this playbook is how we learned that, and what we would do differently.
+
 ## Quick guide
 
 *Two minutes. If you read nothing else on this page, read this.*

@@ -12,6 +12,16 @@ Brady came back for Spring 2025. The format works: sponsors get early access to 
 
 ---
 
+## Start here
+
+If you read nothing else:
+
+1. Put the NDA and IP question on the table in the first sponsor meeting, every time, and lock the answer before students see the problem brief.
+2. The shape: eight weeks, a $5K default pool, kicked off at the week-five project kick-off, teams of six to nine mixed across years, a sponsor engineer holding weekly office hours.
+3. Close the loop so it recurs: cleaned-up code to the sponsor within two weeks, a recommendation letter for every participant, three judges lined up, and an email to the sponsor within 30 days.
+
+The rest of this playbook is how we learned that, and what we would do differently.
+
 ## Pitch a sponsor
 
 **The Innovation Lab pitch is different from a speaker pitch or a hackathon pitch. Lead with the talent access, not the charity.**

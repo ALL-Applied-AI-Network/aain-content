@@ -1,0 +1,30 @@
+/* fx.css — styles for the three effects in ts/fx.ts. Purely additive; safe on every page. */
+
+/* aurora backdrop: the canvas fills its positioned parent and sits behind content */
+.fx-aurora-host { position: relative; isolation: isolate; }
+.fx-aurora-host > canvas[data-aurora] {
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; display: block;
+  mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+.fx-aurora-host > :not(canvas) { position: relative; z-index: 1; }
+
+/* liquid image: the canvas is drawn over the original <img>, which stays for layout, print and no-WebGL */
+.fx-frame { position: relative; overflow: hidden; }
+.fx-frame > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.fx-frame > img.fx-liquid-src { visibility: hidden; }
+.fx-frame > canvas.fx-liquid { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* tilt card: transform is set by JS; the glare follows the cursor via --gx/--gy */
+[data-tilt] { transform-style: preserve-3d; transition: transform 320ms cubic-bezier(.2,.8,.2,1), box-shadow 320ms ease; will-change: transform; position: relative; }
+[data-tilt].is-tilting { transition: transform 60ms linear, box-shadow 320ms ease; box-shadow: 0 30px 70px rgba(0,0,0,.55); }
+[data-tilt]::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 240ms ease;
+  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,.14), rgba(255,255,255,0) 60%);
+}
+[data-tilt].is-tilting::after { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-tilt], [data-tilt].is-tilting { transform: none !important; transition: none; }
+  [data-tilt]::after { display: none; }
+}

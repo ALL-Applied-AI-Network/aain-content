@@ -3039,3 +3039,8 @@ body:has(.tree-page) {
     display: none;
   }
 }
+
+/* seven links + two CTAs: keep every label on one line */
+.nav__links { gap: 1.05rem; }
+.nav__links a, .nav__cta-link, .nav__cta-btn { white-space: nowrap; }
+.nav__links a { font-size: .92rem; }

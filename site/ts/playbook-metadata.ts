@@ -37,6 +37,8 @@ export interface PlaybookMeta {
   tagline: string;
   stats: [PlaybookStat, PlaybookStat, PlaybookStat];
   actions: [PlaybookAction, PlaybookAction, PlaybookAction];
+  /** The three things a new chapter president needs from this playbook, in one screen. */
+  keys: [string, string, string];
 }
 
 export const PLAYBOOKS: PlaybookMeta[] = [
@@ -56,6 +58,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "20 → 500+", label: "member growth" },
       { value: "5 years", label: "of iteration" },
       { value: "$50K+", label: "in prizes" },
+    ],
+    keys: [
+      "The first three weeks decide the year: org fair, say the whole year out loud, a great speaker by week three, projects kicked off by week five.",
+      "Lock the day, time and room before you recruit, and never move them. Free food every time.",
+      "Year two is the survival test. Recruit next year's board in the spring, not after graduation.",
     ],
     actions: [
       { label: "Week 1", sub: "Validate and launch", anchor: "#week-1" },
@@ -77,8 +84,13 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "501(c)(3)", label: "tax-deductible" },
       { value: "$5K", label: "first lab sponsor" },
     ],
+    keys: [
+      "Your chapter is a project of a 501(c)(3): gifts are tax-deductible, the Foundation holds the money, the chapter directs the spend.",
+      "Sponsors come from people who have already been in your room: past speakers, alumni, faculty. Ask for a speaker slot first, not money.",
+      "In the first real meeting: NDA on the table, recap the chapter as if they know nothing, offer pathways rather than a price.",
+    ],
     actions: [
-      { label: "Where they come from", sub: "Four paths that work", anchor: "#where-sponsors-actually-come-from" },
+      { label: "Sources", sub: "Four paths that work", anchor: "#where-sponsors-actually-come-from" },
       { label: "The sequence", sub: "Slot, thanks, follow-up", anchor: "#the-sequence" },
       { label: "First meeting", sub: "NDA on day one", anchor: "#the-first-real-meeting" },
     ],
@@ -102,6 +114,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "$18K+", label: "in prize pool" },
       { value: "3 nonprofits", label: "partnered with" },
     ],
+    keys: [
+      "Lock one nonprofit partner ten weeks out and co-write a single challenge statement with them on a 45-minute call.",
+      "Announce it on the first slide of the semester; registration opens at week minus four. Pick a hackathon or an Innovation Lab in your first semester, not both.",
+      "Prize money moves through the Foundation, never a chapter account or a Venmo. Sort the payout path before you announce a dollar figure.",
+    ],
     actions: [
       { label: "Plan it", sub: "10-week countdown", anchor: "#plan-it" },
       { label: "Run it", sub: "48 hours on the clock", anchor: "#run-it" },
@@ -123,6 +140,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "10+", label: "speakers / year" },
       { value: "Bi-weekly", label: "Thursday cadence" },
       { value: "40–50", label: "typical attendance" },
+    ],
+    keys: [
+      "Where speakers come from, in order: your faculty, your sponsors' networks, alumni, LinkedIn outreach, conference speakers passing through. Confirm four weeks out.",
+      "One slot, never moved. Food at 6:30, a 90-second intro, a 45-minute talk, 15 minutes of Q&A with a seeded first question, hard stop at 60.",
+      "The series is the sponsor pipeline: thank them the same week, ask about sponsorship in 30 days, keep one spreadsheet of every speaker.",
     ],
     actions: [
       { label: "Find a speaker", sub: "Sourcing and outreach", anchor: "#find-a-speaker" },
@@ -146,6 +168,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "$5K+", label: "sponsor pool" },
       { value: "2 schools", label: "MSOE + UWM" },
     ],
+    keys: [
+      "Put NDA and IP on the table in the first sponsor meeting, every time, and lock the answer before students see the brief.",
+      "The shape: eight weeks, a $5K default pool, teams of six to nine across years, a sponsor engineer holding weekly office hours.",
+      "Close the loop so it recurs: cleaned-up code within two weeks, a rec letter for every participant, an email to the sponsor within 30 days.",
+    ],
     actions: [
       { label: "Pitch a sponsor", sub: "Sourcing and scoping", anchor: "#pitch-a-sponsor" },
       { label: "Run the lab", sub: "8-week competition", anchor: "#run-the-lab" },
@@ -168,6 +195,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "21 groups", label: "in 2024" },
       { value: "142 students", label: "in one year" },
       { value: "20+ papers", label: "published" },
+    ],
+    keys: [
+      "Mentors first, topics second, students third. Recruit mentors and lock topics over the summer; announce them at the week-one event.",
+      "Set the bar in the sign-up form and enforce it: three to five hours a week, weekly meetings, a deliverable every four weeks.",
+      "Pick the publication target by the end of month two (MICS by default; a blog post is a fine floor) and write the intro while experiments run.",
     ],
     actions: [
       { label: "Form the group", sub: "Recruit and scope", anchor: "#form-the-group" },
