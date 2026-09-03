@@ -1,0 +1,64 @@
+/* mocks.css — the six product mocks (product.css) come alive once their row scrolls in (.feature-row.in). */
+
+.feature-row .feature-row__visual { transition: transform .35s ease; }
+
+/* 01 profile: signals slide in one after another, the badge pops */
+.feature-row.in .profile-mock__signal { animation: mock-slide .55s cubic-bezier(.2,.7,.2,1) both; }
+.feature-row.in .profile-mock__signal:nth-child(3) { animation-delay: .15s; }
+.feature-row.in .profile-mock__signal:nth-child(4) { animation-delay: .30s; }
+.feature-row.in .profile-mock__signal:nth-child(5) { animation-delay: .45s; }
+.feature-row.in .profile-mock__signal:nth-child(6) { animation-delay: .60s; }
+.feature-row.in .profile-mock__badge { animation: mock-pop .5s .8s cubic-bezier(.2,.9,.3,1.4) both; }
+.feature-row.in .profile-mock__chip { animation: mock-fade .5s both; }
+.feature-row.in .profile-mock__chip:nth-child(2) { animation-delay: .9s; } .feature-row.in .profile-mock__chip:nth-child(3) { animation-delay: 1.0s; } .feature-row.in .profile-mock__chip:nth-child(4) { animation-delay: 1.1s; }
+
+/* 02 site: the address types, the stats count in by fading */
+.site-mock__chrome-url { position: relative; }
+.feature-row.in .site-mock__chrome-url { animation: mock-type 1.4s steps(24, end) both; overflow: hidden; white-space: nowrap; display: inline-block; vertical-align: middle; }
+.feature-row.in .site-mock__hero > * { animation: mock-slide .6s both; }
+.feature-row.in .site-mock__hero > :nth-child(2) { animation-delay: .5s; } .feature-row.in .site-mock__hero > :nth-child(3) { animation-delay: .7s; }
+.feature-row.in .site-mock__stats > div { animation: mock-fade .5s both; }
+.feature-row.in .site-mock__stats > div:nth-child(2) { animation-delay: 1.0s; } .feature-row.in .site-mock__stats > div:nth-child(3) { animation-delay: 1.15s; }
+
+/* 03 invite: the checks land in sequence; the pending one breathes */
+.feature-row.in .invite-mock__row { animation: mock-slide .5s both; }
+.feature-row.in .invite-mock__row:nth-of-type(2) { animation-delay: .15s; } .feature-row.in .invite-mock__row:nth-of-type(3) { animation-delay: .30s; } .feature-row.in .invite-mock__row:nth-of-type(4) { animation-delay: .45s; }
+.feature-row.in .invite-mock__row--checked .invite-mock__check { animation: mock-pop .45s cubic-bezier(.2,.9,.3,1.4) both; }
+.feature-row.in .invite-mock__row:nth-of-type(2) .invite-mock__check { animation-delay: .45s; } .feature-row.in .invite-mock__row:nth-of-type(3) .invite-mock__check { animation-delay: .6s; }
+.invite-mock__check--pending { animation: mock-breathe 1.6s ease-in-out infinite; }
+
+/* 04 qr: a scan line sweeps the code; the poster hovers */
+.qr-mock__qr { position: relative; overflow: hidden; }
+.qr-mock__qr::after { content: ""; position: absolute; left: 0; right: 0; top: -12%; height: 10%; background: linear-gradient(180deg, transparent, rgba(34,211,238,.85), transparent); opacity: 0; }
+.feature-row.in .qr-mock__qr::after { animation: mock-scan 2.6s .4s ease-in-out infinite; }
+.feature-row.in .qr-mock__poster { animation: mock-float 6s ease-in-out infinite; }
+
+/* 05 card: a light sweeps across it now and then; the chip glints */
+.card-mock { position: relative; overflow: hidden; }
+.card-mock::after { content: ""; position: absolute; top: -40%; bottom: -40%; width: 30%; left: -40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.22), transparent); transform: skewX(-18deg); opacity: 0; }
+.feature-row.in .card-mock::after { animation: mock-sweep 4.5s 1s ease-in-out infinite; }
+.feature-row.in .card-mock__num { animation: mock-fade .6s .4s both; }
+
+/* 06 hub: statuses arrive; "Live" blinks */
+.feature-row.in .hub-mock__row { animation: mock-slide .5s both; }
+.feature-row.in .hub-mock__row:nth-of-type(2) { animation-delay: .12s; } .feature-row.in .hub-mock__row:nth-of-type(3) { animation-delay: .24s; } .feature-row.in .hub-mock__row:nth-of-type(4) { animation-delay: .36s; }
+.hub-mock__live { animation: mock-breathe 1.4s ease-in-out infinite; }
+.feature-row.in .hub-mock__status--pending { animation: mock-breathe 1.8s ease-in-out infinite; }
+
+/* the row itself rises in */
+html.js-rv .feature-row { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+html.js-rv .feature-row.in { opacity: 1; transform: none; }
+
+@keyframes mock-slide { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+@keyframes mock-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mock-pop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: scale(1); } }
+@keyframes mock-type { from { width: 0; } to { width: 100%; } }
+@keyframes mock-scan { 0% { top: -12%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { top: 104%; opacity: 0; } }
+@keyframes mock-float { 0%, 100% { transform: translateY(0) rotate(-1.2deg); } 50% { transform: translateY(-8px) rotate(-0.4deg); } }
+@keyframes mock-sweep { 0% { left: -40%; opacity: 0; } 10% { opacity: 1; } 45% { left: 120%; opacity: 1; } 46% { opacity: 0; } 100% { left: 120%; opacity: 0; } }
+@keyframes mock-breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-row.in *, .feature-row.in .qr-mock__qr::after, .feature-row.in .card-mock::after, .invite-mock__check--pending, .hub-mock__live { animation: none !important; }
+  html.js-rv .feature-row { opacity: 1; transform: none; }
+}

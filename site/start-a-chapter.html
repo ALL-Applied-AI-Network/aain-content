@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="./toolkit.css" />
   <link rel="stylesheet" href="./landing.css" />
   <link rel="stylesheet" href="./fx.css" />
+  <link rel="stylesheet" href="./product.css" />
+  <link rel="stylesheet" href="./mocks.css" />
 </head>
 <body>
 
@@ -29,7 +31,7 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./">Home</a></li>
-        <li><a href="./impact.html">Chapters</a></li>
+        <li><a href="./impact.html">The Network</a></li>
         <li><a href="./start-a-chapter.html" class="active">Start a Chapter</a></li>
         <li><a href="./tree.html">Learn</a></li>
         <li><a href="./about.html">About</a></li>
@@ -117,25 +119,120 @@
     </div>
   </section>
 
-  <!-- ═══════════ 3 · WHAT YOU GET ═══════════ -->
-  <section class="lp lp--line" id="kit">
+  <!-- ═══════════ 3 · WHAT YOU GET: six things we got tired of doing by hand ═══════════ -->
+  <section class="lp lp--line product-features" id="kit">
     <div class="lp__inner">
       <div class="lp__head rv">
         <p class="lp-eyebrow">What you get</p>
-        <h2 class="lp-h2">Everything an eboard needs, already built.</h2>
+        <h2 class="lp-h2">Six things we got tired of doing by hand.</h2>
+        <p class="lp-lede">We ran a club before we built any of this. Everything here started as a spreadsheet somebody hated.</p>
       </div>
-      <div class="stack rv-group">
-        <article class="stack__card">
-          <a class="stack__shot" href="./public/web/ui-platform.jpg" target="_blank" rel="noopener" title="Open full size"><img src="./public/web/ui-platform.jpg" alt="The chapter dashboard" loading="lazy" /></a>
-          <div class="stack__body"><h3 class="stack__t">The chapter dashboard</h3><p class="stack__d">Events with one-second QR check-in, members, teams, submissions, sponsors and a leaderboard. Every event gets its own card, so nobody fronts their own money.</p></div>
+      <div class="feature-stack">
+        <article class="feature-row rv">
+          <div class="feature-row__num">01</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">A profile that keeps itself current.</h3>
+            <p class="feature-row__desc">Nobody keeps their r&eacute;sum&eacute; current in October of junior year. So we build a profile from your LinkedIn and GitHub and keep it fresh, and that&rsquo;s what a sponsor sees when they come looking. Members can turn sponsor visibility off whenever they want.</p>
+          </div>
+          <div class="feature-row__visual feature-row__visual--profile" aria-hidden="true" data-tilt="4">
+            <div class="profile-mock">
+              <div class="profile-mock__row">
+                <div class="profile-mock__avatar"></div>
+                <div><div class="profile-mock__name">Wyatt M.</div><div class="profile-mock__meta">MSOE AI Club &middot; Class of 2026</div></div>
+                <span class="profile-mock__badge">Verified</span>
+              </div>
+              <div class="profile-mock__divider"></div>
+              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--event">event</span> Innovation Lab kickoff (Direct Supply)</div>
+              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--project">project</span> Edge-ML defect detection demo</div>
+              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--award">award</span> ROSIE Awards finalist</div>
+              <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--event">event</span> NVIDIA GTC tour</div>
+              <div class="profile-mock__skills"><span class="profile-mock__chip">computer vision</span><span class="profile-mock__chip">edge ml</span><span class="profile-mock__chip">pytorch</span></div>
+            </div>
+          </div>
         </article>
-        <article class="stack__card">
-          <a class="stack__shot" href="./public/web/ui-tools.jpg" target="_blank" rel="noopener" title="Open full size"><img src="./public/web/ui-tools.jpg" alt="Chapter tools in the dashboard" loading="lazy" /></a>
-          <div class="stack__body"><h3 class="stack__t">A chapter website in ten minutes</h3><p class="stack__d">Your own subdomain, events and officers pulled from the dashboard, and a one-page edit screen. Keep your own site if you already have one.</p></div>
+        <article class="feature-row feature-row--reverse rv">
+          <div class="feature-row__num">02</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">Your chapter site, in ten minutes.</h3>
+            <p class="feature-row__desc">Name it, pick two colours, and you get a real site on your own subdomain that updates itself from the dashboard. Nobody has to hunt down whoever set up the WordPress in 2021.</p>
+          </div>
+          <div class="feature-row__visual feature-row__visual--site" aria-hidden="true" data-tilt="4">
+            <div class="site-mock">
+              <div class="site-mock__chrome"><span class="site-mock__chrome-dot"></span><span class="site-mock__chrome-dot"></span><span class="site-mock__chrome-dot"></span><code class="site-mock__chrome-url">maic.all-ai-network.org</code></div>
+              <div class="site-mock__body">
+                <div class="site-mock__hero"><div class="site-mock__eyebrow">Milwaukee School of Engineering</div><div class="site-mock__h1">MSOE AI Club</div><div class="site-mock__sub">Real applied AI, taught by people who do it for a living.</div></div>
+                <div class="site-mock__stats"><div><strong>500+</strong><span>Members</span></div><div><strong>120+</strong><span>Events run</span></div><div><strong>40+</strong><span>Projects shipped</span></div></div>
+              </div>
+            </div>
+          </div>
         </article>
-        <article class="stack__card">
-          <a class="stack__shot" href="./public/web/ui-resume.jpg" target="_blank" rel="noopener" title="Open full size"><img src="./public/web/ui-resume.jpg" alt="A member's living résumé" loading="lazy" /></a>
-          <div class="stack__body"><h3 class="stack__t">Living r&eacute;sum&eacute;s for your members</h3><p class="stack__d">Every event and project becomes a verified line that sponsors can see.</p></div>
+        <article class="feature-row rv">
+          <div class="feature-row__num">03</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">Sponsors say what they&rsquo;re bringing.</h3>
+            <p class="feature-row__desc">Create the event, then invite your sponsors. They say what they&rsquo;re bringing, money, cloud credits, mentor hours or a real problem to work on, and it shows up on the event page with their name on it.</p>
+          </div>
+          <div class="feature-row__visual feature-row__visual--invite" aria-hidden="true" data-tilt="4">
+            <div class="invite-mock">
+              <div class="invite-mock__badge">Sponsor invite &middot; Innovation Lab Spring 2026</div>
+              <div class="invite-mock__row invite-mock__row--checked"><span class="invite-mock__check">&#10003;</span> Fund dinner for kickoff (Brady)</div>
+              <div class="invite-mock__row invite-mock__row--checked"><span class="invite-mock__check">&#10003;</span> Bring 3 problem statements (NVIDIA)</div>
+              <div class="invite-mock__row invite-mock__row--checked"><span class="invite-mock__check">&#10003;</span> Provide API credits via secrets vault</div>
+              <div class="invite-mock__row"><span class="invite-mock__check invite-mock__check--pending">&middot;</span> Approve recording terms (Direct Supply)</div>
+              <div class="invite-mock__footer">3 of 4 sponsors approved &middot; auto-publish ready</div>
+            </div>
+          </div>
+        </article>
+        <article class="feature-row feature-row--reverse rv">
+          <div class="feature-row__num">04</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">Check-in that takes one second.</h3>
+            <p class="feature-row__desc">One code at the door. Members scan on the way in, first-timers make an account once, and attendance is done before the pizza gets there.</p>
+          </div>
+          <div class="feature-row__visual feature-row__visual--qr" aria-hidden="true">
+            <div class="qr-mock">
+              <div class="qr-mock__poster">
+                <div class="qr-mock__poster-head">Scan to check in</div>
+                <div class="qr-mock__qr"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="100" height="100" fill="#fff"/><g fill="#0a0a0c"><rect x="6" y="6" width="22" height="22"/><rect x="11" y="11" width="12" height="12" fill="#fff"/><rect x="14" y="14" width="6" height="6"/><rect x="72" y="6" width="22" height="22"/><rect x="77" y="11" width="12" height="12" fill="#fff"/><rect x="80" y="14" width="6" height="6"/><rect x="6" y="72" width="22" height="22"/><rect x="11" y="77" width="12" height="12" fill="#fff"/><rect x="14" y="80" width="6" height="6"/><rect x="38" y="6" width="4" height="4"/><rect x="46" y="6" width="4" height="4"/><rect x="54" y="6" width="4" height="4"/><rect x="38" y="14" width="4" height="4"/><rect x="54" y="14" width="4" height="4"/><rect x="38" y="22" width="4" height="4"/><rect x="46" y="22" width="4" height="4"/><rect x="6" y="38" width="4" height="4"/><rect x="14" y="38" width="4" height="4"/><rect x="22" y="38" width="4" height="4"/><rect x="6" y="46" width="4" height="4"/><rect x="22" y="46" width="4" height="4"/><rect x="6" y="54" width="4" height="4"/><rect x="14" y="54" width="4" height="4"/><rect x="38" y="38" width="4" height="4"/><rect x="46" y="38" width="4" height="4"/><rect x="54" y="38" width="4" height="4"/><rect x="62" y="38" width="4" height="4"/><rect x="70" y="38" width="4" height="4"/><rect x="38" y="46" width="4" height="4"/><rect x="54" y="46" width="4" height="4"/><rect x="70" y="46" width="4" height="4"/><rect x="46" y="54" width="4" height="4"/><rect x="62" y="54" width="4" height="4"/><rect x="38" y="62" width="4" height="4"/><rect x="46" y="62" width="4" height="4"/><rect x="62" y="62" width="4" height="4"/><rect x="70" y="62" width="4" height="4"/><rect x="78" y="62" width="4" height="4"/><rect x="86" y="62" width="4" height="4"/><rect x="38" y="70" width="4" height="4"/><rect x="54" y="70" width="4" height="4"/><rect x="62" y="70" width="4" height="4"/><rect x="78" y="70" width="4" height="4"/><rect x="38" y="78" width="4" height="4"/><rect x="46" y="78" width="4" height="4"/><rect x="62" y="78" width="4" height="4"/><rect x="70" y="78" width="4" height="4"/><rect x="86" y="78" width="4" height="4"/><rect x="38" y="86" width="4" height="4"/><rect x="54" y="86" width="4" height="4"/><rect x="70" y="86" width="4" height="4"/><rect x="86" y="86" width="4" height="4"/></g></svg></div>
+                <div class="qr-mock__poster-foot">Innovation Lab kickoff &middot; +10 pts</div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="feature-row rv">
+          <div class="feature-row__num">05</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">Nobody fronts their own money.</h3>
+            <p class="feature-row__desc">A student should not be floating $400 for pizza and waiting three weeks to get it back. When a sponsor funds an event, an officer gets a virtual card scoped to that event, and the charges land against it.</p>
+          </div>
+          <div class="feature-row__visual feature-row__visual--card" aria-hidden="true" data-tilt="6">
+            <div class="card-mock">
+              <div class="card-mock__row card-mock__row--top"><span class="card-mock__brand">Stripe Issuing</span><span class="card-mock__chip"></span></div>
+              <div class="card-mock__num">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 4127</div>
+              <div class="card-mock__row">
+                <div><div class="card-mock__label">Chapter</div><div class="card-mock__value">MSOE AI CLUB</div></div>
+                <div><div class="card-mock__label">Event</div><div class="card-mock__value">HACKSGIVING 24</div></div>
+                <div><div class="card-mock__label">Cat.</div><div class="card-mock__value">FOOD</div></div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="feature-row feature-row--reverse rv">
+          <div class="feature-row__num">06</div>
+          <div class="feature-row__body">
+            <h3 class="feature-row__title">One page instead of the email chain.</h3>
+            <p class="feature-row__desc">Officers see teams, submissions and who&rsquo;s coming. Sponsors get a read-only link instead of a seventh reply-all.</p>
+          </div>
+          <div class="feature-row__visual feature-row__visual--hub" aria-hidden="true" data-tilt="4">
+            <div class="hub-mock">
+              <div class="hub-mock__head">Innovation Fair &middot; Spring 2026 &middot; <span class="hub-mock__live">Live</span></div>
+              <div class="hub-mock__row"><span class="hub-mock__name">Brady &mdash; Problem sponsor</span><span class="hub-mock__status hub-mock__status--ok">Approved</span></div>
+              <div class="hub-mock__row"><span class="hub-mock__name">NVIDIA &mdash; API credits</span><span class="hub-mock__status hub-mock__status--ok">Active</span></div>
+              <div class="hub-mock__row"><span class="hub-mock__name">Direct Supply &mdash; Mentors</span><span class="hub-mock__status hub-mock__status--pending">Pending</span></div>
+              <div class="hub-mock__divider"></div>
+              <div class="hub-mock__row hub-mock__row--meta"><span>Teams: 12 of 15</span><span>Spend: $2,340 / $5,000</span><span>Mentor sessions: 8</span></div>
+            </div>
+          </div>
         </article>
       </div>
       <div class="trust rv">
@@ -194,7 +291,7 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./impact.html">Chapters</a></li>
+          <li><a href="./impact.html">The Network</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
           <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
           <li><a href="./playbooks.html">Playbooks</a></li>

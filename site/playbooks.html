@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./landing.css" />
+  <link rel="stylesheet" href="./fx.css" />
   <link rel="stylesheet" href="./playbooks.css" />
 </head>
 <body>
@@ -29,7 +31,7 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./">Home</a></li>
-        <li><a href="./impact.html">Chapters</a></li>
+        <li><a href="./impact.html">The Network</a></li>
         <li><a href="./start-a-chapter.html" class="active">Start a Chapter</a></li>
         <li><a href="./tree.html">Learn</a></li>
         <li><a href="./about.html">About</a></li>
@@ -42,7 +44,7 @@
   </nav>
 
   <!-- Hero -->
-  <section class="pb-hero">
+  <section class="pb-hero rv">
     <div class="container pb-hero__inner">
       <span class="pb-hero__badge">Six playbooks · From the founding chapter</span>
       <h1 class="pb-hero__title">Playbooks</h1>
@@ -71,7 +73,7 @@
   <!-- Playbook grid -->
   <section class="pb-grid-section">
     <div class="container">
-      <div class="pb-grid" id="pb-grid">
+      <div class="pb-grid rv-group" id="pb-grid">
         <!-- cards rendered by playbooks-page.ts -->
       </div>
     </div>
@@ -111,7 +113,7 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./impact.html">Chapters</a></li>
+          <li><a href="./impact.html">The Network</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
           <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
           <li><a href="./playbooks.html">Playbooks</a></li>
@@ -134,5 +136,6 @@
     }
   </script>
   <script type="module" src="./ts/playbooks-page.ts"></script>
+  <script type="module" src="./ts/page.ts"></script>
 </body>
 </html>

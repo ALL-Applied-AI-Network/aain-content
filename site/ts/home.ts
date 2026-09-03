@@ -1,7 +1,6 @@
 /**
  * home.ts — the landing page as one story.
- * Mounts the hero mark (untouched), the film that plays when it is on screen, the pipeline tabs, the reveals,
- * the counters, and the effects (page aurora, the flood, the rail, tilt).
+ * Mounts the hero mark (untouched), the pipeline tabs, the reveals, the counters, and the effects (the deck, the rail, tilt).
  */
 import { mountFx } from "./fx";
 
@@ -46,26 +45,6 @@ function initCounters(): void {
   els.forEach((el) => io.observe(el));
 }
 
-/** The film plays, muted, whenever most of it is on screen; the pill turns the sound on. */
-function initFilm(): void {
-  const video = document.getElementById("film-video") as HTMLVideoElement | null;
-  const sound = document.querySelector<HTMLButtonElement>("[data-sound]");
-  if (!video) return;
-  video.muted = true;
-  const play = () => { video.play().catch(() => { video.controls = true; }); };
-  if ("IntersectionObserver" in window && !REDUCED) {
-    new IntersectionObserver(([e]) => { if (e.isIntersecting) play(); else video.pause(); }, { threshold: 0.5 }).observe(video);
-  } else { video.controls = true; }
-  video.addEventListener("click", () => { if (video.paused) play(); else video.pause(); });
-  if (sound) sound.addEventListener("click", () => {
-    video.muted = !video.muted;
-    if (!video.muted) { if (video.currentTime < 2) video.currentTime = 0; play(); }
-    sound.textContent = video.muted ? "Turn sound on" : "Sound on";
-    sound.classList.toggle("is-on", !video.muted);
-    sound.setAttribute("aria-pressed", String(!video.muted));
-  });
-}
-
 /** The pipeline: one step open at a time, its detail and its call to action below. */
 function initPipeline(): void {
   const steps = Array.from(document.querySelectorAll<HTMLButtonElement>(".pipe__step"));
@@ -95,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroMark();
   initReveal();
   initCounters();
-  initFilm();
   initPipeline();
   mountFx();
 });

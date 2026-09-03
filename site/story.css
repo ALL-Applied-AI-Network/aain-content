@@ -1,10 +1,4 @@
-/* story.css — the home page as one continuous story: page-wide aurora, the rail, the film, the flood, the pipeline. */
-
-/* ── the living background: one fixed canvas behind everything ─────────────── */
-.page-aurora { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: .9; }
-body.story { background: #0c0c0e; }
-body.story > *:not(.page-aurora):not(.rail) { position: relative; z-index: 1; }
-body.story .hero { z-index: 1; }
+/* story.css — the home page as one continuous story: the rail, the deck, the proof, the pipeline, the close. */
 
 /* ── the rail ─────────────────────────────────────────────────────────────── */
 .rail { position: fixed; left: 18px; top: 16vh; height: 68vh; width: 28px; z-index: 5; transition: opacity .5s ease; }
@@ -20,25 +14,6 @@ body.story .hero { z-index: 1; }
 @media (min-width: 1640px) { .rail__node.is-cur .rail__lbl { opacity: 1; transform: translateY(-50%) translateX(0); } }
 @media (max-width: 1180px) { .rail { display: none; } }
 
-/* ── the film: the first thing that moves after the hero ──────────────────── */
-.film { padding: 0 0 .5rem; margin-top: clamp(-140px, -9vw, -60px); position: relative; z-index: 2; }
-.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38%; background: linear-gradient(180deg, transparent, #0c0c0e); pointer-events: none; z-index: 1; }
-.flood-section { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
-.film__frame { position: relative; width: min(1120px, calc(100% - 3rem)); margin: 0 auto; border-radius: 22px; overflow: hidden; background: #000; box-shadow: 0 50px 120px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.08); }
-.film__frame video { display: block; width: 100%; aspect-ratio: 16 / 9; }
-.film__sound { position: absolute; right: 1rem; top: 1rem; z-index: 2; display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .9rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); background: rgba(10,10,11,.72); color: #f4f4f6; font: 600 .78rem/1 "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; backdrop-filter: blur(6px); transition: background .2s; }
-.film__sound:hover { background: rgba(34,211,238,.25); }
-.film__sound::before { content: ""; width: .6rem; height: .6rem; border-radius: 50%; background: #ec4899; box-shadow: 0 0 10px #ec4899; }
-.film__sound.is-on::before { background: #22d3ee; box-shadow: 0 0 10px #22d3ee; }
-.film__cap { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; width: min(1120px, calc(100% - 3rem)); margin: .9rem auto 0; font: 400 .82rem/1.5 "JetBrains Mono", monospace; color: rgba(244,244,246,.55); }
-.film__cap b { color: #f4f4f6; font-weight: 600; }
-.film__cap a { color: #22d3ee; text-decoration: none; }
-
-/* ── the flood: sheets fall into the frame, one becomes the stat ───────────── */
-.flood { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-.flood__frame { position: relative; height: clamp(360px, 44vw, 560px); border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,.10); background: radial-gradient(80% 70% at 60% 30%, rgba(59,130,246,.16), rgba(12,12,14,0) 70%), #0a0a0c; box-shadow: 0 40px 90px rgba(0,0,0,.55); }
-.flood__frame canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.flood__frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(10,10,12,.55), transparent 22%, transparent 80%, rgba(10,10,12,.5)); }
 .nums { display: grid; grid-template-columns: auto auto auto; align-items: end; column-gap: 1.25rem; margin: 1.75rem 0 .25rem; }
 .nums__n { font: 700 clamp(3.2rem, 6vw, 4.8rem)/.88 "Space Grotesk", sans-serif; letter-spacing: -.045em; color: #f4f4f6; }
 .nums__n--hot { color: #22d3ee; text-shadow: 0 0 30px rgba(34,211,238,.35); }
@@ -47,7 +22,7 @@ body.story .hero { z-index: 1; }
 .nums__l b { display: block; color: #f4f4f6; }
 .nums__cap { grid-column: 1 / -1; font: 500 .8rem/1.3 "JetBrains Mono", monospace; color: rgba(244,244,246,.5); margin-top: .35rem; }
 
-/* ── proof: a darker translucent panel so the numbers sit on the aurora ────── */
+/* ── proof: a slightly lifted band so the numbers read as a chapter of their own ── */
 .proof-glow { background: radial-gradient(70% 50% at 50% 30%, rgba(34,211,238,.06), transparent 70%); }
 
 /* ── the pipeline: four clickable steps, one open at a time ────────────────── */
@@ -88,8 +63,6 @@ body.story .hero { z-index: 1; }
 
 @media (max-width: 1024px) { .pipe { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 760px) {
-  .flood { grid-template-columns: 1fr; }
-  .flood__frame { height: 60vw; min-height: 300px; }
   .pipe { grid-template-columns: 1fr; }
   .pipe__step { min-height: 220px; }
   .pipe__detail, .pipe__cta { grid-template-columns: 1fr; }
@@ -119,3 +92,11 @@ body.story .hero { z-index: 1; }
 .hero .hero__sponsors-logo--tile { flex: none; width: auto !important; height: auto !important; transform: none !important; }
 .hero .hero__sponsors-logo--tile img { height: 40px !important; width: 40px !important; min-width: 40px; max-width: none; }
 @media (max-width: 760px) { .hero .hero__sponsors-logo--tile img { height: 34px !important; width: 34px !important; min-width: 34px; } }
+
+/* ── the deck: a fanned stack; one sheet pulls out, lit ─────────────────── */
+.deckgrid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.deck { position: relative; height: clamp(360px, 42vw, 540px); border-radius: 22px; overflow: hidden; border: 1px solid rgba(255,255,255,.10); background: radial-gradient(70% 60% at 65% 35%, rgba(59,130,246,.10), transparent 70%), #0d0d11; box-shadow: 0 40px 90px rgba(0,0,0,.5); }
+.deck__sheet { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; will-change: transform, opacity; user-select: none; filter: brightness(.94) drop-shadow(0 16px 26px rgba(0,0,0,.6)); }
+.deck__sheet--me { --glow: 0; filter: sepia(var(--glow)) saturate(calc(1 + 6 * var(--glow))) hue-rotate(calc(150deg * var(--glow))) brightness(calc(.94 + .2 * var(--glow))) drop-shadow(0 16px 26px rgba(0,0,0,.6)) drop-shadow(0 0 calc(34px * var(--glow)) rgba(34,211,238,calc(.9 * var(--glow)))); }
+body.story { background: #0c0c0e; }
+@media (max-width: 760px) { .deckgrid { grid-template-columns: 1fr; } .deck { height: 62vw; min-height: 300px; } }
