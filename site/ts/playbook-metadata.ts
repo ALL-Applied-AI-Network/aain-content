@@ -53,7 +53,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#3b82f6",
     tagline:
-      "Launch your AI hub from scratch using the same playbook that took MAIC from 20 active members to 500+ — the largest undergrad AI club in the US for its school size.",
+      "The playbook that took MAIC from 20 active members to 500+, the largest undergrad AI club in the US for its school size.",
     stats: [
       { value: "20 → 500+", label: "member growth" },
       { value: "5 years", label: "of iteration" },
@@ -67,7 +67,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     actions: [
       { label: "Week 1", sub: "Validate and launch", anchor: "#week-1" },
       { label: "First semester", sub: "Run the arc", anchor: "#first-semester" },
-      { label: "Year two", sub: "Build for longevity", anchor: "#year-two" },
+      { label: "Year two", sub: "Make it last", anchor: "#year-two" },
     ],
   },
   {
@@ -78,7 +78,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#22d3ee",
     tagline:
-      "How MAIC's sponsors actually arrived — a speaker slot, a warm intro, an endowed chair — and how the money reaches your chapter.",
+      "Where MAIC's sponsors came from (a speaker slot, a warm intro, an endowed chair) and how the money reaches your chapter.",
     stats: [
       { value: "Speakers first", label: "how they start" },
       { value: "501(c)(3)", label: "tax-deductible" },
@@ -108,7 +108,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#f59e0b",
     tagline:
-      "The Hacksgiving playbook — 3 years of running 48-hour AI-for-good hackathons with Milwaukee nonprofits.",
+      "The Hacksgiving playbook: 3 years of 48-hour AI-for-good hackathons with Milwaukee nonprofits.",
     stats: [
       { value: "3 years", label: "of Hacksgiving" },
       { value: "$18K+", label: "in prize pool" },
@@ -135,7 +135,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#22d3ee",
     tagline:
-      "Bi-weekly Thursdays in the ITC Great Hall — how MAIC hosts NVIDIA, Direct Supply, Kohl's, and Generac with 40–50 in the room.",
+      "How MAIC hosts NVIDIA, Direct Supply, Kohl's, and Generac. Bi-weekly Thursdays in the ITC Great Hall, 40–50 in the room.",
     stats: [
       { value: "10+", label: "speakers / year" },
       { value: "Bi-weekly", label: "Thursday cadence" },
@@ -162,7 +162,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#a855f7",
     tagline:
-      "Sponsor-backed AI competitions. We invented this format in 2024 with Brady Corp — 60 students, $5K pool, real industry problems.",
+      "Sponsor-backed AI competitions. We invented the format in 2024 with Brady Corp: 60 students, $5K pool, real industry problems.",
     stats: [
       { value: "60 students", label: "in first Lab" },
       { value: "$5K+", label: "sponsor pool" },
@@ -190,7 +190,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#ec4899",
     tagline:
-      "6-month student research projects with ROSIE supercomputer access. 21 groups and 142 students in 2024 alone.",
+      "6-month student research projects with ROSIE supercomputer access. 21 groups and 142 students in 2024.",
     stats: [
       { value: "21 groups", label: "in 2024" },
       { value: "142 students", label: "in one year" },
