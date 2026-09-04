@@ -3,6 +3,7 @@
  * Mounts the hero mark (untouched), the pipeline tabs, the reveals, the counters, and the effects (the deck, the rail, tilt).
  */
 import { mountFx } from "./fx";
+import { storiesByDate, fmtDate } from "./stories";
 
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -87,7 +88,17 @@ function initPipeline(): void {
   open(0);
 }
 
+/** The photo strip under the hero is the stories feed: every tile is a real piece of coverage, and links to it. */
+function initStories(): void {
+  const track = document.querySelector<HTMLElement>(".photo-ticker__track"); const ticker = track?.parentElement;
+  const stories = storiesByDate(); if (!track || !ticker || stories.length < 4) return;
+  const tile = (s: typeof stories[number]) => `<a class="photo-ticker__item" href="${s.url}" target="_blank" rel="noopener"><img src="${s.image}" alt="" loading="lazy"${s.pos ? ` style="object-position:${s.pos}"` : ""} /><span class="photo-ticker__cap"><b>${s.outlet} &middot; ${fmtDate(s.date)}${s.kind === "video" ? " &middot; video" : ""}</b><span>${s.title}</span></span></a>`;
+  track.innerHTML = stories.map(tile).join("") + stories.map(tile).join("");
+  ticker.classList.add("photo-ticker--stories");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initStories();
   initHeroMark();
   initReveal();
   initCounters();
