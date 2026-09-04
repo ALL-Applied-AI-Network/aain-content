@@ -45,26 +45,43 @@ function initCounters(): void {
   els.forEach((el) => io.observe(el));
 }
 
-/** The pipeline: one step open at a time, its detail and its call to action below. */
+/** The pipeline: one step open at a time, its detail and its call to action below.
+ *  Once the section is on screen the steps sequence on their own (a bar fills on the open card); the first click or
+ *  key press hands control to the reader. Hovering pauses it. Phones, where the cards stack, stay manual. */
 function initPipeline(): void {
   const steps = Array.from(document.querySelectorAll<HTMLButtonElement>(".pipe__step"));
   const details = Array.from(document.querySelectorAll<HTMLElement>("[data-detail]"));
   const ctas = Array.from(document.querySelectorAll<HTMLElement>("[data-detail-cta]"));
   if (!steps.length) return;
-  const panel = document.getElementById("pipe-detail"); const grid = steps[0].parentElement;
+  const panel = document.getElementById("pipe-detail"); const grid = steps[0].parentElement; const section = document.getElementById("how");
+  const INTERVAL = 4800;
+  let cur = 0, auto = !REDUCED && innerWidth >= 760 && "IntersectionObserver" in window, timer = 0, deadline = 0, remaining = INTERVAL;
+  steps.forEach((s) => { const bar = document.createElement("span"); bar.className = "pipe__bar"; bar.setAttribute("aria-hidden", "true"); s.appendChild(bar); });
+  document.documentElement.style.setProperty("--pipe-interval", INTERVAL + "ms");
   const open = (i: number) => {
+    cur = i;
     steps.forEach((s, j) => { s.classList.toggle("is-open", j === i); s.setAttribute("aria-selected", String(j === i)); });
     details.forEach((d) => { d.hidden = d.dataset.detail !== String(i); });
     ctas.forEach((c) => { c.hidden = c.dataset.detailCta !== String(i); });
     // on a phone the cards stack, so the panel moves to sit under the open card
     if (panel && grid) { if (innerWidth < 760) { if (panel.previousElementSibling !== steps[i]) steps[i].insertAdjacentElement("afterend", panel); } else if (panel.previousElementSibling !== grid) grid.insertAdjacentElement("afterend", panel); }
   };
-  window.addEventListener("resize", () => { const cur = steps.findIndex((s) => s.classList.contains("is-open")); if (cur >= 0) open(cur); });
+  const restartBar = () => { steps.forEach((s) => s.classList.remove("is-timing")); void steps[cur].offsetWidth; steps[cur].classList.add("is-timing"); };
+  const arm = (ms: number) => { deadline = performance.now() + ms; timer = window.setTimeout(() => { timer = 0; open((cur + 1) % steps.length); restartBar(); arm(INTERVAL); }, ms); };
+  const pause = () => { if (!timer) return; clearTimeout(timer); timer = 0; remaining = Math.max(400, deadline - performance.now()); grid?.classList.add("is-paused"); };
+  const resume = () => { if (!auto || timer) return; grid?.classList.remove("is-paused"); if (!grid?.classList.contains("is-auto")) { grid?.classList.add("is-auto"); restartBar(); remaining = INTERVAL; } arm(remaining); };
+  const stop = () => { auto = false; clearTimeout(timer); timer = 0; grid?.classList.remove("is-auto", "is-paused"); steps.forEach((s) => s.classList.remove("is-timing")); };
+  if (auto && section && grid) {
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) resume(); else pause(); }, { threshold: 0.35 }).observe(section);
+    grid.addEventListener("mouseenter", pause); grid.addEventListener("mouseleave", resume);
+    panel?.addEventListener("mouseenter", pause); panel?.addEventListener("mouseleave", resume);
+  }
+  window.addEventListener("resize", () => { if (innerWidth < 760) stop(); open(cur); });
   steps.forEach((s, i) => {
-    s.addEventListener("click", () => open(i));
+    s.addEventListener("click", () => { stop(); open(i); });
     s.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") { const n = (i + 1) % steps.length; open(n); steps[n].focus(); }
-      if (e.key === "ArrowLeft") { const n = (i + steps.length - 1) % steps.length; open(n); steps[n].focus(); }
+      if (e.key === "ArrowRight") { stop(); const n = (i + 1) % steps.length; open(n); steps[n].focus(); }
+      if (e.key === "ArrowLeft") { stop(); const n = (i + steps.length - 1) % steps.length; open(n); steps[n].focus(); }
     });
   });
   open(0);
