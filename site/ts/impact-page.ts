@@ -504,9 +504,9 @@ function hideTooltip(el: HTMLElement): void {
 
 function renderStories(): void {
   const el = document.getElementById("stories-grid"); if (!el) return;
-  el.innerHTML = storiesByDate().map((s) => `<a class="story" href="${s.url}" target="_blank" rel="noopener" data-tilt="4">
-    <div class="story__media"><img src="${s.image}" alt="" loading="lazy"${s.pos ? ` style="object-position:${s.pos}"` : ""} />${s.kind === "video" ? '<span class="chip chip--violet">Video</span>' : ""}</div>
-    <div class="story__body"><div class="story__k">${s.outlet} &middot; ${fmtDate(s.date)}</div><h3 class="story__t">${s.title}</h3><p class="story__d">${s.blurb}</p><span class="story__more">${s.kind === "video" ? "Watch" : "Read"} &rarr;</span></div></a>`).join("");
+  el.innerHTML = storiesByDate().map((s) => `<a class="press" href="${s.url}" target="_blank" rel="noopener" data-tilt="4">
+    <div class="press__media"><img src="${s.image}" alt="" loading="lazy"${s.pos ? ` style="object-position:${s.pos}"` : ""} />${s.kind === "video" ? '<span class="chip chip--violet">Video</span>' : ""}</div>
+    <div class="press__body"><div class="press__k">${s.outlet} &middot; ${fmtDate(s.date)}</div><h3 class="press__t">${s.title}</h3><p class="press__d">${s.blurb}</p><span class="press__more">${s.kind === "video" ? "Watch" : "Read"} &rarr;</span></div></a>`).join("");
 }
 
 function renderChapterCards(chapters: NetworkChapter[]): void {
