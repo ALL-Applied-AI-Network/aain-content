@@ -160,6 +160,7 @@ export function mountDeck(root: ParentNode = document) {
     const from = counter ? parseFloat(counter.dataset.deckFrom || "0") : 0, to = counter ? parseFloat(counter.dataset.deckTo || "0") : 0;
     const N = 11, ME = 6;
     const sheets = Array.from({ length: N }, (_, i) => { const img = document.createElement("img"); img.src = srcs[(i * 2) % srcs.length]; img.className = "deck__sheet" + (i === ME ? " deck__sheet--me" : ""); img.alt = ""; img.draggable = false; deck.appendChild(img); return img; });
+    if (counter && !REDUCED) counter.textContent = String(from);
     let progress = 0, target = 0;
     const onScroll = () => { const r = deck.getBoundingClientRect(); const vh = innerHeight; target = Math.max(0, Math.min(1, (vh - r.top) / (r.height + vh * 0.25))); };
     window.addEventListener("scroll", onScroll, { passive: true }); window.addEventListener("resize", () => { onScroll(); progress = target; }); onScroll();
