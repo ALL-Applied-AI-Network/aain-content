@@ -57,7 +57,7 @@ function initPipeline(): void {
     details.forEach((d) => { d.hidden = d.dataset.detail !== String(i); });
     ctas.forEach((c) => { c.hidden = c.dataset.detailCta !== String(i); });
     // on a phone the cards stack, so the panel moves to sit under the open card
-    if (panel && grid) { if (innerWidth < 760) steps[i].insertAdjacentElement("afterend", panel); else if (panel.previousElementSibling !== grid) grid.insertAdjacentElement("afterend", panel); }
+    if (panel && grid) { if (innerWidth < 760) { if (panel.previousElementSibling !== steps[i]) steps[i].insertAdjacentElement("afterend", panel); } else if (panel.previousElementSibling !== grid) grid.insertAdjacentElement("afterend", panel); }
   };
   window.addEventListener("resize", () => { const cur = steps.findIndex((s) => s.classList.contains("is-open")); if (cur >= 0) open(cur); });
   steps.forEach((s, i) => {

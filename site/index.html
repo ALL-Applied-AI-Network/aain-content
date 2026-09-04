@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="./landing.css" />
   <link rel="stylesheet" href="./fx.css" />
   <link rel="stylesheet" href="./story.css" />
+  <link rel="stylesheet" href="./product.css" />
+  <link rel="stylesheet" href="./mocks.css" />
 </head>
 <body class="story">
   <nav class="rail" data-rail aria-label="Sections of this page"></nav>
@@ -108,21 +110,16 @@
   </div>
 
   <!-- ═══════════ YOURS: the deck ═══════════ -->
-  <section class="lp deck-section" id="problem" data-rail="Yours">
+  <section class="lp deck-section" id="problem" data-rail="The problem">
     <div class="lp__inner deckgrid">
       <div class="rv">
         <p class="lp-eyebrow">The problem</p>
-        <h2 class="lp-h2">Yours is in that pile.</h2>
-        <p class="lp-lede">
-          AI r&eacute;sum&eacute; agents flood inboxes faster than you can apply: two hundred and forty-four
-          applications for every posting, and they read alike. The one that gets pulled carries something a
-          r&eacute;sum&eacute; can&rsquo;t hold: what you built, and who watched you build it. The rest of this page
-          is how yours becomes that one.
-        </p>
+        <h2 class="lp-h2" data-copy="problem.h2">Your r&eacute;sum&eacute; looks like 243 others.</h2>
+        <p class="lp-lede" data-copy="problem.lede">AI agents apply on students&rsquo; behalf now, so a posting that drew 116 applications in 2022 draws 244. They all read alike, and neither the recruiter nor the screening software can tell one from the next. What gets you pulled out of the pile is proof you built something real, and people who watched you do it.</p>
         <div class="nums" aria-label="Applications per job posting: 116 in 2022, 244 in 2025">
           <div class="nums__n">116</div>
           <div class="nums__arrow" aria-hidden="true">&rarr;</div>
-          <div class="nums__n nums__n--hot" data-deck-count data-deck-from="116" data-deck-to="244">116</div>
+          <div class="nums__n nums__n--hot" data-deck-count data-deck-from="116" data-deck-to="244">244</div>
           <div class="nums__l"><b>2022</b></div>
           <div></div>
           <div class="nums__l"><b>2025</b></div>
@@ -134,107 +131,120 @@
     </div>
   </section>
 
-  <!-- ═══════════ THE PROOF ═══════════ -->
-  <section class="lp proof-glow" id="proof" data-rail="The proof">
-    <div class="lp__inner">
-      <div class="lp__head rv">
-        <p class="lp-eyebrow">The proof</p>
-        <h2 class="lp-h2">We have the numbers to prove it.</h2>
-        <p class="lp-lede">What ends up on that sheet, from the founding chapter alone: a glacier model, a UN paper, a $10,000 first place, and the companies that hired the people who built them.</p>
-      </div>
-      <div class="stats rv-group">
-        <div class="stat"><div class="stat__n" data-count="38">+0%</div><div class="stat__l">higher starting salary for active members<sup>1</sup></div></div>
-        <div class="stat"><div class="stat__n stat__n--ink" data-count="500">0+</div><div class="stat__l">members at the founding chapter, from 20</div></div>
-        <div class="stat"><div class="stat__n stat__n--pink" data-count="50">0+</div><div class="stat__l">student publications</div></div>
-        <div class="stat"><div class="stat__n stat__n--violet" data-count="10">0+</div><div class="stat__l">direct sponsor hires per project cycle</div></div>
-      </div>
-      <div class="showcase rv-group">
-        <article class="show show--juno" data-tilt="5">
-          <div class="show__media">
-            <img class="show__logo" src="./public/logos/juno.svg" alt="Juno" width="64" height="64" />
-            <div class="show__ks">Juno &middot; one sponsor, one semester</div>
-          </div>
-          <div class="show__body">
-            <div class="show__rows">
-              <div class="show__row"><b>$5,000</b><span>to sponsor one Innovation Lab</span></div>
-              <div class="show__row"><b>5 interns</b><span>hired straight off the student team</span></div>
-              <div class="show__row"><b>8 figures</b><span>valuation a year later, from pre-revenue</span></div>
-            </div>
-            <p class="show__d">Juno, a startup, sponsored one lab while still pre-revenue and hired five of the students it watched. They hired from the room, not the r&eacute;sum&eacute; pile.</p>
-          </div>
-        </article>
-        <article class="show" data-tilt="5">
-          <div class="show__media"><img src="./public/art/nilus-card.webp" alt="A student in a MAIC Researcher hoodie in front of an ice stupa" loading="lazy" style="object-position:50% 18%" /><span class="chip chip--violet">Product</span></div>
-          <div class="show__body"><div class="show__k">Nilus &middot; Chile</div><h3 class="show__t">AI for artificial glaciers</h3><p class="show__d">Students built the models behind a startup&rsquo;s ice reservoirs, then went to see them.</p></div>
-        </article>
-        <article class="show" data-tilt="5">
-          <div class="show__media"><img src="./public/art/fao-card.webp" alt="" loading="lazy" /><span class="chip chip--pink">Published</span></div>
-          <div class="show__body"><div class="show__k">NourishNet &middot; UN FAO</div><h3 class="show__t">Food-price forecasting for the UN</h3><p class="show__d">Published research on global food security, built by undergraduates with the Food and Agriculture Organization.</p></div>
-        </article>
-        <article class="show" data-tilt="5">
-          <div class="show__media"><img src="./public/art/tile-xprospect.webp" alt="" loading="lazy" /><span class="chip">$10,000 &middot; 1st</span></div>
-          <div class="show__body"><div class="show__k">XprospeCT</div><h3 class="show__t">3D CT scans from two X-rays</h3><p class="show__d">A reconstruction model that took first place, a $10,000 prize and a paper.</p></div>
-        </article>
-        <article class="show" data-tilt="5">
-          <div class="show__media"><img src="./public/art/hacksgiving-card.webp" alt="A student holding a $3,000 first-place check" loading="lazy" /><span class="chip">$3,000 &middot; 1st</span></div>
-          <div class="show__body"><div class="show__k">Hacksgiving</div><h3 class="show__t">A weekend that pays</h3><p class="show__d">A hackathon that donates data science to local non-profits. Winners take home cash.</p></div>
-        </article>
-        <article class="show" data-tilt="5">
-          <div class="show__media"><img src="./public/art/tile-graymatter.webp" alt="" loading="lazy" /><span class="chip chip--pink">Published</span></div>
-          <div class="show__body"><div class="show__k">Mind Over Gray Matter</div><h3 class="show__t">Brain histology, matched to MRI</h3><p class="show__d">Published with the Medical College of Wisconsin. Undergrads on the author list.</p></div>
-        </article>
-      </div>
-      <figure class="pullquote rv">
-        <img class="tile" src="./public/logos/direct_supply_tile.png" alt="Direct Supply" loading="lazy" />
-        <blockquote>
-          &ldquo;We&rsquo;ve hired more quality candidates through Innovation Labs than any career fair we&rsquo;ve attended. The students come in with real project experience, not just coursework. They are now the majority of our 50-person AI team.&rdquo;
-          <cite>Applied AI Director, Direct Supply</cite>
-        </blockquote>
-      </figure>
-      <p class="lp-src rv" id="fn-salary"><sup>1</sup> Spring 2025 graduate outcomes: active members (two or more chapter events in a semester, or one project event) against the same universities&rsquo; non-member graduates, across majors. Chapter records for the rest.</p>
-    </div>
-  </section>
-
-  <!-- ═══════════ HOW IT WORKS: the pipeline, and the button to bring it to your school ═══════════ -->
+  <!-- ═══════════ HOW IT WORKS: the four steps, each with what came out of it ═══════════ -->
   <section class="lp" id="how" data-rail="How it works">
     <div class="lp__inner">
       <div class="lp__head rv">
         <p class="lp-eyebrow">How it works</p>
         <h2 class="lp-h2">Show up. Build. <em>Get seen.</em></h2>
-        <p class="lp-lede">Four steps, in order. Every chapter runs the same loop every semester. Open a step to see what it asks of you and where to start.</p>
+        <p class="lp-lede" data-copy="how.lede">Every chapter runs the same four steps each semester. You can walk into step one with zero experience, and each step leaves something a recruiter can check. Open one to see what came out of it.</p>
       </div>
       <div class="pipe rv-group" role="tablist" aria-label="The four steps">
         <button class="pipe__step is-open" type="button" role="tab" aria-selected="true" data-step="0">
           <img src="./public/web/speaker-event.jpg" alt="" loading="lazy" />
-          <div class="pipe__body"><div class="pipe__n">Step 01</div><h3 class="pipe__t">Show up</h3><div class="pipe__hint">Speaker events</div></div>
+          <div class="pipe__body"><div class="pipe__n">Step 01</div><h3 class="pipe__t" data-copy="how.steps.0.title">Show up</h3><div class="pipe__hint" data-copy="how.steps.0.hint">Every other week</div></div>
         </button>
         <button class="pipe__step" type="button" role="tab" aria-selected="false" data-step="1">
           <img src="./public/web/student-collaboration.jpg" alt="" loading="lazy" />
-          <div class="pipe__body"><div class="pipe__n">Step 02</div><h3 class="pipe__t">Team</h3><div class="pipe__hint">Mentored projects</div></div>
+          <div class="pipe__body"><div class="pipe__n">Step 02</div><h3 class="pipe__t" data-copy="how.steps.1.title">Team</h3><div class="pipe__hint" data-copy="how.steps.1.hint">From week five</div></div>
         </button>
         <button class="pipe__step" type="button" role="tab" aria-selected="false" data-step="2">
           <img src="./public/web/innovation-lab.jpg" alt="" loading="lazy" />
-          <div class="pipe__body"><div class="pipe__n">Step 03</div><h3 class="pipe__t">Build</h3><div class="pipe__hint">Real sponsor problems</div></div>
+          <div class="pipe__body"><div class="pipe__n">Step 03</div><h3 class="pipe__t" data-copy="how.steps.2.title">Build</h3><div class="pipe__hint" data-copy="how.steps.2.hint">A sponsor&rsquo;s problem</div></div>
         </button>
         <button class="pipe__step" type="button" role="tab" aria-selected="false" data-step="3">
           <img src="./public/web/hiring-panel.jpg" alt="" loading="lazy" />
-          <div class="pipe__body"><div class="pipe__n">Step 04</div><h3 class="pipe__t">Get seen</h3><div class="pipe__hint">Hired from the room</div></div>
+          <div class="pipe__body"><div class="pipe__n">Step 04</div><h3 class="pipe__t" data-copy="how.steps.3.title">Get seen</h3><div class="pipe__hint" data-copy="how.steps.3.hint">Watched, then hired</div></div>
         </button>
       </div>
-      <div class="pipe__detail rv" id="pipe-detail" role="tabpanel" aria-live="polite">
-        <p data-detail="0"><b>Come hear from real builders.</b> Speaker events with engineers who ship AI for a living. Free, open to anyone, no experience needed. This is the front door.</p>
-        <p data-detail="1" hidden><b>Join a team project.</b> Zero experience is fine. Groups of five to eight with an upperclassman mentor, kicked off in week five. Three to five hours a week is plenty.</p>
-        <p data-detail="2" hidden><b>Solve a real sponsor&rsquo;s problem.</b> Two to six months on a company&rsquo;s actual problem. Cash, GPUs and publications on the line, even in your first semester.</p>
-        <p data-detail="3" hidden><b>Get hired from the room.</b> Sponsors watch you build for months, then hire from the team they watched. Every event and project becomes a verified line on a profile they can see.</p>
-        <a class="btn btn--primary" data-detail-cta="0" href="./impact.html#chapters">Find your chapter &rarr;</a>
-        <a class="btn btn--primary" data-detail-cta="1" href="https://dashboard.all-ai-network.org/sign-up?role=student" rel="noopener" hidden>Join as a member &rarr;</a>
-        <a class="btn btn--primary" data-detail-cta="2" href="#proof" hidden>See what teams built &uarr;</a>
-        <a class="btn btn--primary" data-detail-cta="3" href="https://sponsors.all-ai-network.org" rel="noopener" hidden>How sponsors hire &rarr;</a>
+      <div class="pipe__detail" id="pipe-detail" role="tabpanel" aria-live="polite">
+        <div class="pipe__pane" data-detail="0">
+          <div class="pipe__lead">
+            <p data-copy="how.steps.0.detail"><b>Come hear from people who ship AI for a living.</b> Every other week, free, open to anyone. NVIDIA, Direct Supply, Kohl&rsquo;s and Generac have sent engineers to a room of forty to fifty.</p>
+            <a class="btn btn--primary" href="./impact.html#chapters">Find your chapter &rarr;</a>
+          </div>
+          <div class="pipe__exk">What came out of it</div>
+          <div class="showcase showcase--2">
+            <article class="show" data-tilt="5">
+              <div class="show__media"><img src="./public/web/speaker-event.jpg" alt="" loading="lazy" /><span class="chip chip--violet">Every other week</span></div>
+              <div class="show__body"><div class="show__k">Speaker series &middot; every other Thursday</div><h3 class="show__t">Forty to fifty in the room</h3><p class="show__d">Engineers from NVIDIA, Direct Supply, Kohl&rsquo;s and Generac, a 45-minute talk and a hard stop at 60.</p></div>
+            </article>
+            <article class="show" data-tilt="5">
+              <div class="show__media"><img src="./public/art/hacksgiving-card.webp" alt="A student holding a $3,000 first-place check" loading="lazy" /><span class="chip">$3,000 &middot; 1st</span></div>
+              <div class="show__body"><div class="show__k">Hacksgiving &middot; 48 hours</div><h3 class="show__t">A weekend that pays</h3><p class="show__d">A hackathon that donates data science to local non-profits. Winners take home cash.</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="pipe__pane" data-detail="1" hidden>
+          <div class="pipe__lead">
+            <p data-copy="how.steps.1.detail"><b>Join a mentored team in week five.</b> Five to eight of you with an upperclassman mentor, three to five hours a week. Research groups run on the ROSIE supercomputer: 21 groups and 142 students in 2024.</p>
+            <a class="btn btn--primary" href="./impact.html#chapters">Find your chapter &rarr;</a>
+          </div>
+          <div class="pipe__exk">What came out of it</div>
+          <div class="showcase showcase--2">
+            <article class="show" data-tilt="5">
+              <div class="show__media"><img src="./public/art/tile-graymatter.webp" alt="" loading="lazy" /><span class="chip chip--pink">Published</span></div>
+              <div class="show__body"><div class="show__k">Mind Over Gray Matter</div><h3 class="show__t">Brain histology, matched to MRI</h3><p class="show__d">Published with the Medical College of Wisconsin. Undergrads on the author list.</p></div>
+            </article>
+            <article class="show" data-tilt="5">
+              <div class="show__media"><img src="./public/web/student-collaboration.jpg" alt="" loading="lazy" /><span class="chip chip--violet">ROSIE</span></div>
+              <div class="show__body"><div class="show__k">Research groups &middot; 2024</div><h3 class="show__t">21 groups, 142 students, one supercomputer</h3><p class="show__d">Six-month student research projects with supercomputer time, mentors first and a publication target by month two.</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="pipe__pane" data-detail="2" hidden>
+          <div class="pipe__lead">
+            <p data-copy="how.steps.2.detail"><b>Spend a semester on a sponsor&rsquo;s real problem.</b> Two to six months in an Innovation Lab, with cash, GPUs and publications on the line, even in your first semester.</p>
+            <a class="btn btn--primary" href="./impact.html#chapters">Find your chapter &rarr;</a>
+          </div>
+          <div class="pipe__exk">What came out of it</div>
+          <div class="showcase">
+            <article class="show" data-tilt="5">
+              <div class="show__media"><img src="./public/art/nilus-card.webp" alt="A student in a MAIC Researcher hoodie in front of an ice stupa" loading="lazy" style="object-position:50% 18%" /><span class="chip chip--violet">Product</span></div>
+              <div class="show__body"><div class="show__k">Nilus &middot; Chile</div><h3 class="show__t">AI for artificial glaciers</h3><p class="show__d">Students built the models behind a startup&rsquo;s ice reservoirs, then went to see them.</p></div>
+            </article>
+            <article class="show" data-tilt="5">
+              <div class="show__media"><img src="./public/art/tile-xprospect.webp" alt="" loading="lazy" /><span class="chip">$10,000 &middot; 1st</span></div>
+              <div class="show__body"><div class="show__k">XprospeCT</div><h3 class="show__t">3D CT scans from two X-rays</h3><p class="show__d">A reconstruction model that took first place, a $10,000 prize and a paper.</p></div>
+            </article>
+            <article class="show" data-tilt="5">
+              <div class="show__media"><img src="./public/art/fao-card.webp" alt="" loading="lazy" /><span class="chip chip--pink">Published</span></div>
+              <div class="show__body"><div class="show__k">NourishNet &middot; UN FAO</div><h3 class="show__t">Food-price forecasting for the UN</h3><p class="show__d">Published research on global food security, built by undergraduates with the Food and Agriculture Organization.</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="pipe__pane" data-detail="3" hidden>
+          <div class="pipe__lead">
+            <p data-copy="how.steps.3.detail"><b>Get hired from the room.</b> Sponsors watch you build for months, then hire from the team they watched. Every event and project becomes a verified line on a profile they can see.</p>
+            <a class="btn btn--primary" href="https://sponsors.all-ai-network.org" rel="noopener">Companies: sponsor a lab &rarr;</a>
+          </div>
+          <div class="pipe__exk">What came out of it</div>
+          <div class="showcase showcase--2">
+            <article class="show show--quote" data-tilt="4">
+              <div class="show__qhead"><img class="show__tile" src="./public/logos/direct_supply_tile.png" alt="Direct Supply" loading="lazy" /><div class="show__ks">Direct Supply &middot; hiring</div></div>
+              <blockquote>&ldquo;We&rsquo;ve hired more quality candidates through Innovation Labs than any career fair we&rsquo;ve attended. The students come in with real project experience, not just coursework. They are now the majority of our 50-person AI team.&rdquo;<cite>Applied AI Director, Direct Supply</cite></blockquote>
+            </article>
+            <article class="show show--juno" data-tilt="5">
+              <div class="show__media">
+                <img class="show__logo" src="./public/logos/juno.svg" alt="Juno" width="64" height="64" />
+                <div class="show__ks">Juno &middot; one sponsor, one semester</div>
+              </div>
+              <div class="show__body">
+                <div class="show__rows">
+                  <div class="show__row"><b>$5,000</b><span>to sponsor one Innovation Lab</span></div>
+                  <div class="show__row"><b>5 interns</b><span>hired straight off the student team</span></div>
+                  <div class="show__row"><b>8 figures</b><span>what the company was worth a year later; pre-revenue at the time</span></div>
+                </div>
+                <p class="show__d">Juno sponsored one lab while still pre-revenue and hired five of the students it watched. From the room, not the pile.</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
       <div class="pipe__cta rv">
         <div>
-          <h3>Want events like this at your school?</h3>
-          <p>One 30-minute setup call leaves you with a roster, a live chapter site and your first event published. Free, open-source, and we take no cut.</p>
+          <h3>Run these four steps at your school.</h3>
+          <p>One 30-minute setup call leaves you with a roster, a live chapter site and your first event published.</p>
         </div>
         <div class="actions">
           <a href="./start-a-chapter.html" class="btn btn--primary btn--lg">Start hosting events like this &rarr;</a>
@@ -244,16 +254,62 @@
     </div>
   </section>
 
-  <!-- ═══════════ CLOSE ═══════════ -->
+  <!-- ═══════════ THE NUMBERS: proof the loop works ═══════════ -->
+  <section class="lp proof-glow" id="proof" data-rail="The numbers">
+    <div class="lp__inner">
+      <div class="numgrid">
+        <div class="lp__head rv">
+          <p class="lp-eyebrow" data-copy="numbers.eyebrow">The numbers</p>
+          <h2 class="lp-h2" data-copy="numbers.h2">Lines no r&eacute;sum&eacute; agent can write.</h2>
+          <p class="lp-lede" data-copy="numbers.lede">The MSOE AI Club, five years in. Every event and project a member shows up for becomes a verified line like these, and sponsors read them.</p>
+        </div>
+        <div class="mockwrap rv" data-tilt="4" aria-label="Example member profile">
+          <div class="profile-mock">
+            <div class="profile-mock__row">
+              <div class="profile-mock__avatar"></div>
+              <div><div class="profile-mock__name">Wyatt M.</div><div class="profile-mock__meta">MSOE AI Club &middot; Class of 2026</div></div>
+              <span class="profile-mock__badge">Verified</span>
+            </div>
+            <div class="profile-mock__divider"></div>
+            <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--event">event</span> Innovation Lab kickoff (Direct Supply)</div>
+            <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--project">project</span> Edge-ML defect detection demo</div>
+            <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--award">award</span> ROSIE Awards finalist</div>
+            <div class="profile-mock__signal"><span class="profile-mock__pill profile-mock__pill--event">event</span> NVIDIA GTC tour</div>
+            <div class="profile-mock__skills"><span class="profile-mock__chip">computer vision</span><span class="profile-mock__chip">edge ml</span><span class="profile-mock__chip">pytorch</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="stats rv-group">
+        <div class="stat"><div class="stat__n" data-count="38">+0%</div><div class="stat__l">higher starting salary for active members<sup>1</sup></div></div>
+        <div class="stat"><div class="stat__n stat__n--ink" data-count="500">0+</div><div class="stat__l">members at the founding chapter, from 20</div></div>
+        <div class="stat"><div class="stat__n stat__n--pink" data-count="50">0+</div><div class="stat__l">student publications</div></div>
+        <div class="stat"><div class="stat__n stat__n--violet" data-count="10">0+</div><div class="stat__l">direct sponsor hires per project cycle</div></div>
+      </div>
+      <ul class="cases rv-group" aria-label="Success cases">
+        <li data-case="Juno"><img src="./public/logos/juno.svg" alt="" loading="lazy" /><div><b>Juno</b> sponsored a lab for $5,000 while pre-revenue and hired five interns off it. An eight-figure company a year later.</div></li>
+        <li data-case="Direct Supply"><img class="tile" src="./public/logos/direct_supply_tile.png" alt="" loading="lazy" /><div><b>Direct Supply</b> says Innovation Labs beat every career fair it has attended. Lab alumni are now most of its 50-person AI team.</div></li>
+        <li data-case="Nilus"><img src="./public/art/nilus-card.webp" alt="" loading="lazy" style="object-position:50% 18%" /><div><b>Nilus</b> runs student-built models behind its artificial glaciers in Chile. The team went to see them.</div></li>
+        <li data-case="NourishNet"><img src="./public/art/fao-card.webp" alt="" loading="lazy" /><div><b>NourishNet</b> is food-price forecasting research by undergraduates, published with the UN Food and Agriculture Organization.</div></li>
+        <li data-case="XprospeCT"><img src="./public/art/tile-xprospect.webp" alt="" loading="lazy" /><div><b>XprospeCT</b> reconstructs 3D CT scans from two X-rays. First place, $10,000, and a paper.</div></li>
+        <li data-case="Hacksgiving"><img src="./public/art/hacksgiving-card.webp" alt="" loading="lazy" /><div><b>Hacksgiving</b> is a 48-hour hackathon that donates data science to local non-profits. $3,000 for first place.</div></li>
+      </ul>
+      <p class="lp-src rv" id="fn-salary"><sup>1</sup> Spring 2025 graduate outcomes: active members (two or more chapter events in a semester, or one project event) against the same universities&rsquo; non-member graduates, across majors. Chapter records for the rest.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════ CLOSE: the line, then a door for everyone ═══════════ -->
   <section class="close-band" id="join" data-rail="Join">
     <div class="lp__inner">
       <div class="close-band__sheet rv" aria-hidden="true"><img src="./public/art/sheet-a.png" alt="" /></div>
       <h2 class="rv">Make yours the one that lights up.</h2>
-      <p class="rv">Show up once. The rest is on the calendar. Free to join, no experience needed, run by a 501(c)(3) that takes no cut.</p>
-      <div class="actions rv">
-        <a href="./impact.html#chapters" class="btn btn--primary btn--lg">Find your chapter &rarr;</a>
+      <p class="rv" data-copy="close.lede">The pile keeps growing. The one that gets pulled has real work on it, and people who watched. Three ways in.</p>
+      <div class="doors rv-group">
+        <a class="door door--student" href="./impact.html#chapters"><span class="door__k" data-copy="close.doors.0.who">Students</span><span class="door__t" data-copy="close.doors.0.cta">Find your chapter &rarr;</span><span class="door__d" data-copy="close.doors.0.sub">Free to join. No experience needed.</span></a>
+        <a class="door" href="./start-a-chapter.html"><span class="door__k" data-copy="close.doors.1.who">Founders &amp; faculty</span><span class="door__t" data-copy="close.doors.1.cta">Start a chapter &rarr;</span><span class="door__d" data-copy="close.doors.1.sub">One 30-minute call. Sponsor money sits with the Foundation, not your school, and we take no cut.</span></a>
+        <a class="door" href="https://sponsors.all-ai-network.org" rel="noopener"><span class="door__k" data-copy="close.doors.2.who">Companies</span><span class="door__t" data-copy="close.doors.2.cta">Sponsor a lab &rarr;</span><span class="door__d" data-copy="close.doors.2.sub">$5,000 puts a team of five to eight on your problem for a semester. Watch them, then hire.</span></a>
       </div>
-      <p class="small rv">No chapter at your school? <a href="./start-a-chapter.html" style="color:#22d3ee;text-decoration:none">Start one</a>. Faculty or a company? <a href="mailto:hello@all-ai-network.org" style="color:#22d3ee;text-decoration:none">hello@all-ai-network.org</a> &middot; <a href="./public/film/all-central-film-720.mp4" target="_blank" rel="noopener" style="color:#22d3ee;text-decoration:none">Watch the 70-second film</a></p>
+      <p class="doors__alt rv">No chapter at your school yet? <a href="./start-a-chapter.html">Start one &rarr;</a></p>
+      <p class="small rv"><span class="nowrap">Questions? <a href="mailto:hello@all-ai-network.org" style="color:#22d3ee;text-decoration:none">hello@all-ai-network.org</a></span> <span class="nowrap">&middot; <a href="./public/film/all-central-film-720.mp4" target="_blank" rel="noopener" style="color:#22d3ee;text-decoration:none">Watch the 70-second film</a></span></p>
     </div>
   </section>
 
