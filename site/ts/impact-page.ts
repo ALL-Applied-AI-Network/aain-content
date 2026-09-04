@@ -1,3 +1,4 @@
+import { storiesByDate, fmtDate } from "./stories";
 /**
  * impact-page.ts — US map + live stats from the network-api.
  *
@@ -501,6 +502,13 @@ function hideTooltip(el: HTMLElement): void {
 // Chapter cards (below the map)
 // ---------------------------------------------------------------------------
 
+function renderStories(): void {
+  const el = document.getElementById("stories-grid"); if (!el) return;
+  el.innerHTML = storiesByDate().map((s) => `<a class="story" href="${s.url}" target="_blank" rel="noopener" data-tilt="4">
+    <div class="story__media"><img src="${s.image}" alt="" loading="lazy"${s.pos ? ` style="object-position:${s.pos}"` : ""} />${s.kind === "video" ? '<span class="chip chip--violet">Video</span>' : ""}</div>
+    <div class="story__body"><div class="story__k">${s.outlet} &middot; ${fmtDate(s.date)}</div><h3 class="story__t">${s.title}</h3><p class="story__d">${s.blurb}</p><span class="story__more">${s.kind === "video" ? "Watch" : "Read"} &rarr;</span></div></a>`).join("");
+}
+
 function renderChapterCards(chapters: NetworkChapter[]): void {
   const el = document.getElementById("impact-chapters");
   if (!el) return;
@@ -699,3 +707,6 @@ function escapeAttr(s: string): string {
 init().catch((err) => {
   console.error("[impact] init failed:", err);
 });
+
+// the stories grid does not depend on the live network data
+document.addEventListener("DOMContentLoaded", renderStories);
