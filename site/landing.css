@@ -214,7 +214,7 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
 .photo-ticker__cap > span { font: 600 .84rem/1.3 var(--lp-display); color: #fff; letter-spacing: -.01em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .photo-ticker--stories .photo-ticker__item:hover .photo-ticker__cap b { color: #fff; }
 .stories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
-.press { display: flex; flex-direction: column; border-radius: 18px; background: #131318; border: 1px solid var(--lp-line); overflow: hidden; color: inherit; text-decoration: none; transition: border-color .3s, transform .35s cubic-bezier(.2,.7,.2,1); }
+.press { position: relative; display: flex; flex-direction: column; border-radius: 18px; background: #131318; border: 1px solid var(--lp-line); overflow: hidden; color: inherit; text-decoration: none; transition: border-color .3s, transform .35s cubic-bezier(.2,.7,.2,1); }
 .press:hover { border-color: rgba(34,211,238,.45); }
 .press__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #0f0f14; }
 .press__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
@@ -228,3 +228,29 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
 .press:hover .press__more { color: var(--lp-cyan); }
 @media (max-width: 900px) { .stories { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .stories { grid-template-columns: 1fr; } .stories-head .lp__inner { flex-wrap: wrap; } }
+
+/* ── the kit on Start a Chapter: six tabs, one stage, sequencing until clicked ── */
+.kit { margin-top: 1.6rem; }
+.kit__tabs { display: grid; grid-template-columns: repeat(6, 1fr); gap: .6rem; }
+.kit__tab { position: relative; text-align: left; border: 1px solid rgba(255,255,255,.10); border-radius: 14px; background: #131318; padding: .9rem 1rem 1.1rem; cursor: pointer; color: inherit; font: inherit; overflow: hidden; transition: border-color .3s, transform .3s cubic-bezier(.2,.7,.2,1), background .3s, box-shadow .3s; }
+.kit__tab:hover { border-color: rgba(34,211,238,.4); }
+.kit__tab.is-open { border-color: rgba(34,211,238,.6); background: rgba(34,211,238,.07); transform: translateY(-3px); box-shadow: 0 0 0 3px rgba(34,211,238,.14), 0 18px 40px rgba(0,0,0,.4); }
+.kit__n { display: block; font: 600 .66rem/1 var(--lp-mono); letter-spacing: .22em; color: var(--lp-cyan); }
+.kit__t { display: block; margin-top: .45rem; font: 700 .95rem/1.2 var(--lp-display); letter-spacing: -.01em; color: var(--lp-ink); }
+.kit__stage { margin-top: 1rem; border-radius: 18px; border: 1px solid rgba(34,211,238,.25); background: linear-gradient(135deg, rgba(34,211,238,.07), rgba(168,85,247,.06)); padding: clamp(1.4rem, 3vw, 2.2rem) clamp(1.4rem, 3vw, 2.4rem); min-height: 420px; display: grid; }
+.kit__pane { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; animation: kit-in .45s cubic-bezier(.2,.7,.2,1) both; }
+.kit__pane[hidden] { display: none !important; }
+.kit__num { font: 500 1.4rem/1 var(--lp-mono); color: rgba(255,255,255,.18); letter-spacing: .02em; margin-bottom: .8rem; }
+.kit__title { margin: 0 0 .7rem; font: 700 clamp(1.4rem, 2.2vw, 1.9rem)/1.15 var(--lp-display); letter-spacing: -.02em; color: var(--lp-ink); }
+.kit__desc { margin: 0; font-size: 1.02rem; line-height: 1.6; color: var(--lp-ink-2); max-width: 32rem; }
+.kit__visual { display: flex; justify-content: center; align-items: center; min-width: 0; }
+.kit__visual > .feature-row__visual { width: 100%; }
+@keyframes kit-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.toolkit-hero__press { margin: 1rem 0 0; font: 500 .82rem/1.5 var(--lp-mono); color: var(--lp-ink-3); }
+.toolkit-hero__press b { color: var(--lp-ink-2); font-weight: 600; }
+.toolkit-hero__press a { color: var(--lp-cyan); text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.4); }
+@media (max-width: 900px) { .kit__tabs { grid-template-columns: repeat(3, 1fr); } .kit__pane { grid-template-columns: 1fr; } .kit__stage { min-height: 0; } }
+@media (max-width: 480px) { .kit__tabs { grid-template-columns: repeat(2, 1fr); } }
+.press.is-open { border-color: rgba(34,211,238,.6); transform: translateY(-4px); box-shadow: 0 0 0 3px rgba(34,211,238,.14), 0 22px 50px rgba(0,0,0,.45); }
+.press.is-open .press__media img { transform: scale(1.05); }
+.press.is-open .press__more { color: var(--lp-cyan); }

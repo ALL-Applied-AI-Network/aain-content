@@ -21,4 +21,18 @@ function initCounters(): void {
   }, { threshold: 0.6 });
   els.forEach((el) => io.observe(el));
 }
-document.addEventListener("DOMContentLoaded", () => { initReveal(); initCounters(); mountFx(); });
+/** A timeline fills from the top as it scrolls in; each milestone lights as the fill line passes it. */
+function mountTimeline(): void {
+  document.querySelectorAll<HTMLElement>(".timeline").forEach((tl) => {
+    const items = Array.from(tl.querySelectorAll<HTMLElement>("li"));
+    if (REDUCED) { tl.style.setProperty("--fill", "100%"); items.forEach((li) => li.classList.add("is-lit")); return; }
+    const update = () => {
+      const r = tl.getBoundingClientRect(); const line = innerHeight * 0.72;
+      tl.style.setProperty("--fill", (Math.max(0, Math.min(1, (line - r.top) / r.height)) * 100).toFixed(1) + "%");
+      items.forEach((li) => li.classList.toggle("is-lit", li.getBoundingClientRect().top + 12 < line));
+    };
+    window.addEventListener("scroll", update, { passive: true }); window.addEventListener("resize", update); update();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => { initReveal(); initCounters(); mountTimeline(); mountFx(); });

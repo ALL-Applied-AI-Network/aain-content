@@ -1,10 +1,18 @@
 /* about.css — the origin timeline and the money-flow diagram */
 .timeline { list-style: none; margin: 1.6rem 0 2.4rem; padding: 0 0 0 1.6rem; position: relative; }
-.timeline::before { content: ""; position: absolute; left: 6px; top: .4rem; bottom: .4rem; width: 2px; background: linear-gradient(180deg, #22d3ee, #a855f7, #ec4899); border-radius: 2px; }
-.timeline li { position: relative; margin: 0 0 1.1rem; padding-left: .4rem; font-size: 1rem; line-height: 1.55; color: var(--text-secondary); }
-.timeline li::before { content: ""; position: absolute; left: -1.6rem; top: .55rem; width: 14px; height: 14px; border-radius: 50%; background: #111113; border: 2px solid #22d3ee; box-shadow: 0 0 0 4px rgba(34,211,238,.15); }
-.timeline li b { color: var(--text-primary); font-weight: 600; margin-right: .25rem; }
-.timeline__yr { display: inline-block; min-width: 3.4rem; font: 600 .72rem/1 "JetBrains Mono", monospace; letter-spacing: .16em; color: #22d3ee; text-transform: uppercase; margin-right: .5rem; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: .4rem; bottom: .4rem; width: 2px; background: rgba(255,255,255,.12); border-radius: 2px; }
+.timeline::after { content: ""; position: absolute; left: 6px; top: .4rem; width: 2px; height: var(--fill, 0%); max-height: calc(100% - .8rem); background: linear-gradient(180deg, #22d3ee, #a855f7, #ec4899); border-radius: 2px; box-shadow: 0 0 10px rgba(34,211,238,.5); transition: height .12s linear; }
+.timeline li { position: relative; margin: 0 0 1.1rem; padding-left: .4rem; font-size: 1rem; line-height: 1.55; color: rgba(160,160,173,.55); transition: color .4s; }
+.timeline li.is-lit { color: var(--text-secondary); }
+.timeline li::before { content: ""; position: absolute; left: -1.6rem; top: .55rem; width: 14px; height: 14px; border-radius: 50%; background: #111113; border: 2px solid rgba(255,255,255,.28); box-shadow: none; transition: border-color .35s, background .35s, box-shadow .35s; z-index: 1; }
+.timeline li.is-lit::before { border-color: #22d3ee; background: #22d3ee; box-shadow: 0 0 0 5px rgba(34,211,238,.18), 0 0 16px rgba(34,211,238,.8); }
+.timeline li::after { content: ""; position: absolute; left: -1.6rem; top: .55rem; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #22d3ee; opacity: 0; pointer-events: none; }
+.timeline li.is-lit::after { animation: tl-burst .8s cubic-bezier(.1,.7,.3,1) both; }
+@keyframes tl-burst { from { transform: scale(.6); opacity: .9; } to { transform: scale(3.2); opacity: 0; } }
+.timeline li b { color: rgba(244,244,246,.6); font-weight: 600; margin-right: .25rem; transition: color .4s; }
+.timeline li.is-lit b { color: var(--text-primary); }
+.timeline__yr { display: inline-block; transition: color .4s; min-width: 3.4rem; font: 600 .72rem/1 "JetBrains Mono", monospace; letter-spacing: .16em; color: rgba(34,211,238,.5); text-transform: uppercase; margin-right: .5rem; }
+.timeline li.is-lit .timeline__yr { color: #22d3ee; }
 .flow { margin: 1.4rem auto 2.2rem; max-width: 420px; }
 .flow svg { width: 100%; height: auto; display: block; overflow: visible; }
 .flow__node rect { fill: rgba(255,255,255,.04); stroke: rgba(255,255,255,.14); stroke-width: 1; }

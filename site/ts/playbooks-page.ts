@@ -42,8 +42,8 @@ function playbookHref(slug: string, anchor = ""): string {
         <h2 class="pb-card__title">${p.title}</h2>
       </div>
       <p class="pb-card__tagline">${p.tagline}</p>
-      <div class="pb-card__keys-label">Start here</div>
-      <ol class="pb-card__keys">${p.keys.map((k) => `<li>${k}</li>`).join("")}</ol>
+      <div class="pb-card__keys-label">Start here <span class="pb-card__keys-hint" aria-hidden="true">&#9662;</span></div>
+      <div class="pb-card__more"><div class="pb-card__more-inner"><ol class="pb-card__keys">${p.keys.map((k) => `<li>${k}</li>`).join("")}</ol></div></div>
       <div class="pb-card__stats">${stats}</div>
       <div class="pb-card__actions-label">Jump straight to:</div>
       <div class="pb-card__actions">${actions}</div>

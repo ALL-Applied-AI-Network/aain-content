@@ -19,3 +19,11 @@
   [data-tilt], [data-tilt].is-tilting { transform: none !important; transition: none; }
   [data-tilt]::after { display: none; }
 }
+
+/* sequencer: a bar fills along the bottom of whatever is open, until someone clicks */
+.seq__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,.14); opacity: 0; transition: opacity .3s; pointer-events: none; }
+.seq__bar::after { content: ""; display: block; height: 100%; width: 0; background: linear-gradient(90deg, #22d3ee, #a855f7 70%, #ec4899); }
+.is-auto .is-open .seq__bar { opacity: 1; }
+.is-auto .is-timing .seq__bar::after { animation: seq-fill var(--seq-interval, 3200ms) linear forwards; }
+.is-paused .seq__bar::after { animation-play-state: paused; }
+@keyframes seq-fill { from { width: 0; } to { width: 100%; } }

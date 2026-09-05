@@ -1,4 +1,5 @@
 import { storiesByDate, fmtDate } from "./stories";
+import { mountSequencer } from "./sequence";
 /**
  * impact-page.ts — US map + live stats from the network-api.
  *
@@ -511,21 +512,23 @@ function renderStories(): void {
 
 function renderChapterCards(chapters: NetworkChapter[]): void {
   const el = document.getElementById("impact-chapters");
+  // chapters with members rank first; a test entry with events but nobody in it never leads
+  const real = (c: NetworkChapter) => (c.members_count > 0 ? 1 : 0);
+  const sorted = [...chapters].sort((a, b) => real(b) - real(a) || b.events_90d - a.events_90d || b.members_count - a.members_count);
+  const maxEv = Math.max(1, ...sorted.map((c) => c.events_90d));
   if (!el) return;
   if (chapters.length === 0) {
     el.innerHTML = `<p class="impact-chapters__empty">No chapters live yet.</p>`;
     return;
   }
-  el.innerHTML = chapters
-    .map(
-      (c) => `
+  el.innerHTML = sorted.map((c, i) => `
         <article class="impact-chapter-card">
           <header class="impact-chapter-card__head">
             <div>
               <h3 class="impact-chapter-card__name">${escapeHtml(c.name)}</h3>
               <p class="impact-chapter-card__sub">${escapeHtml(c.university)}${c.city && c.state ? ` &middot; ${escapeHtml(c.city)}, ${escapeHtml(c.state)}` : ""}</p>
             </div>
-            <span class="impact-chapter-card__pill">Active</span>
+            ${i === 0 && c.events_90d > 0 && c.members_count > 0 ? `<span class="impact-chapter-card__pill impact-chapter-card__pill--top">Most active</span>` : `<span class="impact-chapter-card__pill">Active</span>`}
           </header>
           <dl class="impact-chapter-card__stats">
             <div>
@@ -538,6 +541,7 @@ function renderChapterCards(chapters: NetworkChapter[]): void {
             </div>
             ${c.founded ? `<div><dt>Founded</dt><dd>${escapeHtml(c.founded)}</dd></div>` : ""}
           </dl>
+          <div class="impact-chapter-card__pulse"><span class="pulse__dot${c.events_90d > 0 ? " is-on" : ""}"></span><span class="pulse__t">${c.events_90d > 0 ? `${c.events_90d} event${c.events_90d === 1 ? "" : "s"} in the last 90 days` : "Quiet this term"}</span><span class="pulse__bar"><i style="width:${Math.round((100 * c.events_90d) / maxEv)}%"></i></span></div>
           ${
             c.tools.length > 0
               ? `<div class="impact-chapter-card__tools">
@@ -709,4 +713,8 @@ init().catch((err) => {
 });
 
 // the stories grid does not depend on the live network data
-document.addEventListener("DOMContentLoaded", renderStories);
+document.addEventListener("DOMContentLoaded", () => {
+  renderStories();
+  const grid = document.getElementById("stories-grid"); const cards = grid ? Array.from(grid.querySelectorAll<HTMLElement>(".press")) : [];
+  if (grid && cards.length > 1) mountSequencer({ root: grid, tabs: cards, interval: 2600, minWidth: 900 });
+});

@@ -1,5 +1,6 @@
 /** chapter.ts — Start a Chapter: the page mark + particles in the hero, reveals, and the shared effects. */
 import { mountFx } from "./fx";
+import { mountSequencer } from "./sequence";
 
 function initHero(): void {
   const hero3d = document.getElementById("hero-3d");
@@ -19,4 +20,10 @@ function initReveal(): void {
   els.forEach((el) => io.observe(el));
 }
 
-document.addEventListener("DOMContentLoaded", () => { initHero(); initReveal(); mountFx(); });
+function initKit(): void {
+  const root = document.getElementById("kit-seq"); if (!root) return;
+  const tabs = Array.from(root.querySelectorAll<HTMLElement>(".kit__tab")); const panes = Array.from(root.querySelectorAll<HTMLElement>(".kit__pane"));
+  mountSequencer({ root, tabs, panes, interval: 3600 });
+}
+
+document.addEventListener("DOMContentLoaded", () => { initHero(); initReveal(); initKit(); mountFx(); });

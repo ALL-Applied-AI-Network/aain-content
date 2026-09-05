@@ -631,3 +631,12 @@
 .pb-card__keys { margin: 0 0 1rem; padding-left: 1.2rem; display: grid; gap: .4rem; }
 .pb-card__keys li { font-size: .9rem; line-height: 1.5; color: var(--text-secondary, #a0a0ad); }
 .pb-card__keys li::marker { color: var(--pb-accent, #22d3ee); font-weight: 600; }
+
+/* the three facts open on hover or focus; touch screens see them open */
+.pb-card__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.2,.7,.2,1); }
+.pb-card__more-inner { overflow: hidden; min-height: 0; }
+.pb-card:hover .pb-card__more, .pb-card:focus-within .pb-card__more { grid-template-rows: 1fr; }
+.pb-card__keys-hint { display: inline-block; margin-left: .3rem; transition: transform .35s; }
+.pb-card:hover .pb-card__keys-hint, .pb-card:focus-within .pb-card__keys-hint { transform: rotate(180deg); }
+@media (hover: none) { .pb-card__more { grid-template-rows: 1fr; } .pb-card__keys-hint { display: none; } }
+@media (prefers-reduced-motion: reduce) { .pb-card__more, .pb-card__keys-hint { transition: none; } }
