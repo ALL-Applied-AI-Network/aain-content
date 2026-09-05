@@ -55,7 +55,7 @@ function initPipeline(): void {
   const ctas = Array.from(document.querySelectorAll<HTMLElement>("[data-detail-cta]"));
   if (!steps.length) return;
   const panel = document.getElementById("pipe-detail"); const grid = steps[0].parentElement; const section = document.getElementById("how");
-  const INTERVAL = 3200;
+  const INTERVAL = 3600; // ~1.3s of entrance, then the cards hold before the next step
   let cur = 0, auto = !REDUCED && innerWidth >= 760 && "IntersectionObserver" in window, timer = 0, deadline = 0, remaining = INTERVAL;
   steps.forEach((s) => { const bar = document.createElement("span"); bar.className = "pipe__bar"; bar.setAttribute("aria-hidden", "true"); s.appendChild(bar); });
   document.documentElement.style.setProperty("--pipe-interval", INTERVAL + "ms");
