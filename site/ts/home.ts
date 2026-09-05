@@ -4,6 +4,7 @@
  */
 import { mountFx } from "./fx";
 import { storiesByDate, fmtDate } from "./stories";
+import { mountSequencer } from "./sequence";
 
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -46,46 +47,22 @@ function initCounters(): void {
   els.forEach((el) => io.observe(el));
 }
 
-/** The pipeline: one step open at a time, its detail and its call to action below.
- *  Once the section is on screen the steps sequence on their own (a bar fills on the open card); the first click or
- *  key press hands control to the reader. Hovering pauses it. Phones, where the cards stack, stay manual. */
+/** The pipeline: one step open at a time, sequencing until someone clicks. Shared sequencer; the only extra
+ *  is that on a phone the detail panel moves to sit under the open card. */
 function initPipeline(): void {
   const steps = Array.from(document.querySelectorAll<HTMLButtonElement>(".pipe__step"));
-  const details = Array.from(document.querySelectorAll<HTMLElement>("[data-detail]"));
-  const ctas = Array.from(document.querySelectorAll<HTMLElement>("[data-detail-cta]"));
   if (!steps.length) return;
-  const panel = document.getElementById("pipe-detail"); const grid = steps[0].parentElement; const section = document.getElementById("how");
-  const INTERVAL = 3600; // ~1.3s of entrance, then the cards hold before the next step
-  let cur = 0, auto = !REDUCED && innerWidth >= 760 && "IntersectionObserver" in window, timer = 0, deadline = 0, remaining = INTERVAL;
-  steps.forEach((s) => { const bar = document.createElement("span"); bar.className = "pipe__bar"; bar.setAttribute("aria-hidden", "true"); s.appendChild(bar); });
-  document.documentElement.style.setProperty("--pipe-interval", INTERVAL + "ms");
-  const open = (i: number) => {
-    cur = i;
-    steps.forEach((s, j) => { s.classList.toggle("is-open", j === i); s.setAttribute("aria-selected", String(j === i)); });
-    details.forEach((d) => { d.hidden = d.dataset.detail !== String(i); });
-    ctas.forEach((c) => { c.hidden = c.dataset.detailCta !== String(i); });
-    // on a phone the cards stack, so the panel moves to sit under the open card
-    if (panel && grid) { if (innerWidth < 760) { if (panel.previousElementSibling !== steps[i]) steps[i].insertAdjacentElement("afterend", panel); } else if (panel.previousElementSibling !== grid) grid.insertAdjacentElement("afterend", panel); }
+  const panes = Array.from(document.querySelectorAll<HTMLElement>("[data-detail]"));
+  const panel = document.getElementById("pipe-detail"); const grid = steps[0].parentElement as HTMLElement | null;
+  if (!grid) return;
+  const place = (i?: number) => {
+    if (!panel) return;
+    const k = i ?? Math.max(0, steps.findIndex((s) => s.classList.contains("is-open")));
+    if (innerWidth < 760) { if (panel.previousElementSibling !== steps[k]) steps[k].insertAdjacentElement("afterend", panel); }
+    else if (panel.previousElementSibling !== grid) grid.insertAdjacentElement("afterend", panel);
   };
-  const restartBar = () => { steps.forEach((s) => s.classList.remove("is-timing")); void steps[cur].offsetWidth; steps[cur].classList.add("is-timing"); };
-  const arm = (ms: number) => { deadline = performance.now() + ms; timer = window.setTimeout(() => { timer = 0; open((cur + 1) % steps.length); restartBar(); arm(INTERVAL); }, ms); };
-  const pause = () => { if (!timer) return; clearTimeout(timer); timer = 0; remaining = Math.max(400, deadline - performance.now()); grid?.classList.add("is-paused"); };
-  const resume = () => { if (!auto || timer) return; grid?.classList.remove("is-paused"); if (!grid?.classList.contains("is-auto")) { grid?.classList.add("is-auto"); restartBar(); remaining = INTERVAL; } arm(remaining); };
-  const stop = () => { auto = false; clearTimeout(timer); timer = 0; grid?.classList.remove("is-auto", "is-paused"); steps.forEach((s) => s.classList.remove("is-timing")); };
-  if (auto && section && grid) {
-    new IntersectionObserver(([e]) => { if (e.isIntersecting) resume(); else pause(); }, { threshold: 0.35 }).observe(section);
-    grid.addEventListener("mouseenter", pause); grid.addEventListener("mouseleave", resume);
-    panel?.addEventListener("mouseenter", pause); panel?.addEventListener("mouseleave", resume);
-  }
-  window.addEventListener("resize", () => { if (innerWidth < 760) stop(); open(cur); });
-  steps.forEach((s, i) => {
-    s.addEventListener("click", () => { stop(); open(i); });
-    s.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") { stop(); const n = (i + 1) % steps.length; open(n); steps[n].focus(); }
-      if (e.key === "ArrowLeft") { stop(); const n = (i + steps.length - 1) % steps.length; open(n); steps[n].focus(); }
-    });
-  });
-  open(0);
+  mountSequencer({ root: grid, tabs: steps, panes, interval: 3600, hoverZones: panel ? [panel] : [], viewTargets: panel ? [grid, panel] : [grid], onOpen: place });
+  window.addEventListener("resize", () => place(), { passive: true });
 }
 
 /** The photo strip under the hero is the stories feed: every tile is a real piece of coverage, and links to it. */
