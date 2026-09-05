@@ -55,7 +55,7 @@ function initPipeline(): void {
   const ctas = Array.from(document.querySelectorAll<HTMLElement>("[data-detail-cta]"));
   if (!steps.length) return;
   const panel = document.getElementById("pipe-detail"); const grid = steps[0].parentElement; const section = document.getElementById("how");
-  const INTERVAL = 4800;
+  const INTERVAL = 3200;
   let cur = 0, auto = !REDUCED && innerWidth >= 760 && "IntersectionObserver" in window, timer = 0, deadline = 0, remaining = INTERVAL;
   steps.forEach((s) => { const bar = document.createElement("span"); bar.className = "pipe__bar"; bar.setAttribute("aria-hidden", "true"); s.appendChild(bar); });
   document.documentElement.style.setProperty("--pipe-interval", INTERVAL + "ms");
@@ -97,7 +97,27 @@ function initStories(): void {
   ticker.classList.add("photo-ticker--stories");
 }
 
+/** The closer's sheet: grey until you reach it, then it lights up; a click spins it and throws sparks. */
+function initSheet(): void {
+  const sheet = document.querySelector<HTMLElement>(".close-band__sheet"); if (!sheet) return;
+  const light = () => sheet.classList.add("is-lit");
+  if ("IntersectionObserver" in window && !REDUCED) new IntersectionObserver(([e]) => { if (e.isIntersecting) setTimeout(light, 400); }, { threshold: 0.6 }).observe(sheet); else light();
+  const colors = ["#22d3ee", "#ec4899", "#a855f7", "#f4f4f6", "#67e8f9"];
+  sheet.addEventListener("click", () => {
+    light(); if (REDUCED) return;
+    sheet.classList.remove("is-spin"); void sheet.offsetWidth; sheet.classList.add("is-spin");
+    for (let i = 0; i < 36; i++) {
+      const sp = document.createElement("span"); sp.className = "spark" + (i % 3 === 0 ? " spark--gem" : "");
+      const a = Math.random() * Math.PI * 2, r = 70 + Math.random() * 130;
+      sp.style.setProperty("--dx", `${(Math.cos(a) * r).toFixed(1)}px`); sp.style.setProperty("--dy", `${(Math.sin(a) * r - 30).toFixed(1)}px`); sp.style.setProperty("--c", colors[i % colors.length]);
+      sp.style.animationDuration = `${Math.round(650 + Math.random() * 550)}ms`; sp.style.animationDelay = `${Math.round(Math.random() * 80)}ms`;
+      sheet.appendChild(sp); sp.addEventListener("animationend", () => sp.remove());
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initSheet();
   initStories();
   initHeroMark();
   initReveal();
