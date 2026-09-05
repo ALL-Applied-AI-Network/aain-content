@@ -1413,3 +1413,15 @@
 }
 
 @media (max-width: 760px) { .impact-hero__scroll-cue { display: none; } }
+
+/* activity per chapter, from the live stats */
+.impact-chapter-card__pulse { display: flex; align-items: center; gap: .55rem; margin: .8rem 0 .2rem; font: 500 .74rem/1 "JetBrains Mono", monospace; letter-spacing: .04em; color: rgba(244,244,246,.6); }
+.pulse__dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.2); flex: none; }
+.pulse__dot.is-on { background: #22d3ee; box-shadow: 0 0 0 3px rgba(34,211,238,.18); animation: pulse-beat 2.2s ease-in-out infinite; }
+.pulse__t { white-space: nowrap; }
+.pulse__bar { flex: 1; height: 3px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; min-width: 40px; }
+.pulse__bar i { display: block; height: 100%; background: linear-gradient(90deg, #22d3ee, #a855f7); border-radius: 3px; transform-origin: left; animation: pulse-grow 1.1s cubic-bezier(.2,.7,.2,1) both; }
+.impact-chapter-card__pill--top { background: rgba(34,211,238,.16); color: #22d3ee; border-color: rgba(34,211,238,.5); }
+@keyframes pulse-beat { 0%, 100% { box-shadow: 0 0 0 3px rgba(34,211,238,.18); } 50% { box-shadow: 0 0 0 6px rgba(34,211,238,.06); } }
+@keyframes pulse-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .pulse__dot.is-on, .pulse__bar i { animation: none; } }
