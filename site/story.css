@@ -154,10 +154,3 @@ body.story { background: #0c0c0e; }
 .close-band p.doors__alt { margin: 2rem auto 0; font: 500 .8rem/1.4 "JetBrains Mono", monospace; color: rgba(244,244,246,.55); text-align: center; }
 .close-band p.doors__alt a { color: #22d3ee; text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.5); }
 .close-band .small .nowrap { white-space: nowrap; display: inline-block; }
-/* the pipeline sequences on its own until someone clicks: a bar fills along the bottom of the open card */
-.pipe__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,.14); opacity: 0; transition: opacity .3s; }
-.pipe__bar::after { content: ""; display: block; height: 100%; width: 0; background: linear-gradient(90deg, #22d3ee, #a855f7 70%, #ec4899); }
-.pipe.is-auto .pipe__step.is-open .pipe__bar { opacity: 1; }
-.pipe.is-auto .pipe__step.is-timing .pipe__bar::after { animation: pipe-fill var(--pipe-interval, 4800ms) linear forwards; }
-.pipe.is-paused .pipe__bar::after { animation-play-state: paused; }
-@keyframes pipe-fill { from { width: 0; } to { width: 100%; } }
