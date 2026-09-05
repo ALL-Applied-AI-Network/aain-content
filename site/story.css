@@ -41,7 +41,19 @@
 .pipe__hint { font: 500 .72rem/1 "JetBrains Mono", monospace; letter-spacing: .1em; color: rgba(244,244,246,.55); text-transform: uppercase; }
 .pipe__step.is-open .pipe__hint { color: #22d3ee; }
 .pipe__detail { margin-top: 1rem; border-radius: 18px; border: 1px solid rgba(34,211,238,.25); background: linear-gradient(135deg, rgba(34,211,238,.07), rgba(168,85,247,.06)); padding: 1.4rem 1.6rem 1.6rem; }
-.pipe__pane { animation: pane-in .45s cubic-bezier(.2,.7,.2,1) both; }
+/* each step's pane plays its own entrance: the lead lands, then the label, then the cards one after another; the timer waits for it */
+.pipe__pane .pipe__lead { animation: pane-lead .45s cubic-bezier(.2,.8,.2,1) both; }
+.pipe__pane .pipe__exk { animation: pane-fade .35s .22s both; }
+.pipe__pane .show { animation: card-in .5s cubic-bezier(.2,.85,.25,1) both; will-change: transform, opacity; }
+.pipe__pane .show:nth-child(1) { animation-delay: .30s; } .pipe__pane .show:nth-child(2) { animation-delay: .44s; } .pipe__pane .show:nth-child(3) { animation-delay: .58s; }
+.pipe__pane .show .chip { animation: chip-pop .4s cubic-bezier(.2,.9,.3,1.4) both; }
+.pipe__pane .show:nth-child(1) .chip { animation-delay: .62s; } .pipe__pane .show:nth-child(2) .chip { animation-delay: .76s; } .pipe__pane .show:nth-child(3) .chip { animation-delay: .90s; }
+.pipe__pane .pipe__lead .btn { animation: pane-fade .35s .3s both; }
+@keyframes pane-lead { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+@keyframes pane-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes card-in { from { opacity: 0; transform: translateY(28px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes chip-pop { from { opacity: 0; transform: rotate(-3deg) scale(.5); } to { opacity: 1; transform: rotate(-3deg) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .pipe__pane .pipe__lead, .pipe__pane .pipe__exk, .pipe__pane .show, .pipe__pane .show .chip, .pipe__pane .pipe__lead .btn { animation: none; } }
 .pipe__lead { display: grid; grid-template-columns: 1fr auto; gap: 1.2rem 2rem; align-items: center; }
 .pipe__exk { margin: 1.4rem 0 .8rem; font: 600 .68rem/1 "JetBrains Mono", monospace; letter-spacing: .22em; text-transform: uppercase; color: rgba(244,244,246,.5); display: flex; align-items: center; gap: .8rem; }
 .pipe__exk::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,.10); }
