@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-09-10T03:14:31.047Z",
+  "generated_at": "2026-09-10T15:42:49.004Z",
   "nodes": [
     {
       "id": "tooling/ai-workflows/personal-ai-system",
@@ -384,9 +384,9 @@
     {
       "id": "intermediate/applied-ai/how-ai-apis-work",
       "title": "How AI APIs Work",
-      "description": "Understand the anatomy of AI API calls, make your first requests to Claude and OpenAI, and learn to manage keys, tokens, and costs like a professional",
+      "description": "Run a simulated request, handle failures, then optionally try one live model call.",
       "difficulty": "intermediate",
-      "estimated_minutes": 45,
+      "estimated_minutes": 30,
       "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.png",
       "tags": [
         "api",
@@ -837,8 +837,8 @@
     },
     {
       "id": "foundations/setting-up-cursor",
-      "title": "Setting Up Cursor: Your AI-Powered Workspace",
-      "description": "Download, install, and configure Cursor — the AI-native code editor that will be your primary tool throughout this curriculum",
+      "title": "Set Up Your Coding Workspace",
+      "description": "Choose an editor, install Python and run your first file. AI tools are optional.",
       "difficulty": "beginner",
       "estimated_minutes": 30,
       "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.png",
@@ -867,7 +867,7 @@
       "resources": [],
       "color": "#e0a83a",
       "author": "ALL Applied AI Network",
-      "last_updated": "2026-03-30"
+      "last_updated": "2026-09-10"
     },
     {
       "id": "foundations/reading-writing-data",
@@ -1047,8 +1047,8 @@
     },
     {
       "id": "foundations/first-conversation-with-ai",
-      "title": "Your First Conversation with AI in Cursor",
-      "description": "Learn to use Cursor's AI features — chat, inline editing, and the composer — to write code by having a conversation instead of typing it from memory",
+      "title": "Review Your First AI-Generated Program",
+      "description": "Ask for a small function, understand it and test its output.",
       "difficulty": "beginner",
       "estimated_minutes": 25,
       "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.png",
@@ -1079,7 +1079,7 @@
       "resources": [],
       "color": "#e0a83a",
       "author": "ALL Applied AI Network",
-      "last_updated": "2026-03-30"
+      "last_updated": "2026-09-10"
     },
     {
       "id": "foundations/files-folders-terminal",
@@ -1817,11 +1817,68 @@
       "to": "advanced/applied-ai/advanced-rag"
     }
   ],
-  "series": [],
+  "series": [
+    {
+      "id": "series/research-track",
+      "title": "Research Track: Understanding the Engine",
+      "description": "Go deep into how AI models work — for students interested in research and model development. These nodes are coming soon.",
+      "difficulty": "advanced",
+      "nodes": []
+    },
+    {
+      "id": "series/python-foundations",
+      "title": "Python Foundations",
+      "description": "Build confident Python skills with AI as your coding partner",
+      "difficulty": "beginner",
+      "nodes": [
+        "foundations/what-is-programming",
+        "foundations/python-through-ai",
+        "foundations/files-folders-terminal",
+        "foundations/reading-writing-data",
+        "foundations/git-basics",
+        "foundations/build-your-first-script"
+      ]
+    },
+    {
+      "id": "series/getting-started",
+      "title": "Getting Started",
+      "description": "Your first steps into AI — from zero to your first AI conversation",
+      "difficulty": "beginner",
+      "nodes": [
+        "foundations/what-is-ai",
+        "foundations/setting-up-cursor",
+        "foundations/navigating-an-ide",
+        "foundations/first-conversation-with-ai",
+        "foundations/what-is-programming"
+      ]
+    },
+    {
+      "id": "series/applied-ai-core",
+      "title": "Applied AI Core Track",
+      "description": "The main path: from zero to building and shipping real AI applications",
+      "difficulty": "beginner-to-advanced",
+      "nodes": [
+        "foundations/what-is-ai",
+        "foundations/setting-up-cursor",
+        "foundations/first-conversation-with-ai",
+        "foundations/what-is-programming",
+        "foundations/python-through-ai",
+        "foundations/reading-writing-data",
+        "foundations/build-your-first-script",
+        "intermediate/applied-ai/how-ai-apis-work",
+        "intermediate/applied-ai/prompt-engineering",
+        "intermediate/applied-ai/build-a-chatbot",
+        "intermediate/applied-ai/rag-fundamentals",
+        "intermediate/applied-ai/agents-and-tool-use",
+        "intermediate/applied-ai/build-an-agent",
+        "intermediate/applied-ai/evaluation-and-observability"
+      ]
+    }
+  ],
   "stats": {
     "total_nodes": 34,
     "total_edges": 59,
-    "total_series": 0,
+    "total_series": 4,
     "by_difficulty": {
       "intermediate": 11,
       "beginner": 16,

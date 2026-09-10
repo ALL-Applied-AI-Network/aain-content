@@ -1,6 +1,6 @@
 id: "foundations/first-conversation-with-ai"
-title: "Your First Conversation with AI in Cursor"
-description: "Learn to use Cursor's AI features — chat, inline editing, and the composer — to write code by having a conversation instead of typing it from memory"
+title: "Review Your First AI-Generated Program"
+description: "Ask for a small function, understand it and test its output."
 color: "#e0a83a"
 difficulty: beginner
 estimated_minutes: 25
@@ -19,4 +19,4 @@ unlocks:
 content_file: "first-conversation-with-ai.md"
 notebook_file: null
 author: "ALL Applied AI Network"
-last_updated: "2026-03-30"
+last_updated: "2026-09-10"

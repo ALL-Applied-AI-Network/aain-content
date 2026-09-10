@@ -126,7 +126,7 @@ function loadNodes(): { parsed: NodeYaml; dirPath: string }[] {
 function loadSeries(): SeriesYaml[] {
   if (!existsSync(LEARNING_DIR)) return [];
 
-  const files = glob.sync("**/series.yaml", { cwd: LEARNING_DIR, absolute: true });
+  const files = glob.sync("series/*.yaml", { cwd: LEARNING_DIR, absolute: true });
   const results: SeriesYaml[] = [];
 
   for (const filePath of files) {

@@ -347,14 +347,15 @@ export async function renderArticle(
   contentPath: string,
   container: HTMLElement
 ): Promise<void> {
-  const resp = await fetch(`./${contentPath}`);
-  if (!resp.ok) {
-    container.innerHTML = `<div class="callout callout--danger"><div class="callout__header">Error</div><div class="callout__body"><p>Could not load article: ${escapeHtml(contentPath)} (${resp.status})</p></div></div>`;
-    return;
+  try {
+    const resp = await fetch(new URL(contentPath, document.baseURI));
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const rawMd = await resp.text();
+    if (/^\s*(<!doctype html|<html)/i.test(rawMd)) throw new Error("Received a web page instead of lesson content");
+    await renderMarkdown(rawMd, container);
+  } catch {
+    container.innerHTML = '<div class="callout callout--danger" role="alert"><h2>This lesson couldn’t load.</h2><p>Check your connection and reload, or return to the learning tree to choose another lesson.</p></div>';
   }
-
-  const rawMd = await resp.text();
-  await renderMarkdown(rawMd, container);
 }
 
 /**

@@ -17,8 +17,9 @@
 
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./tree.css" />
+  <link rel="stylesheet" href="./curriculum.css" />
 </head>
-<body>
+<body class="curriculum-page">
   <div class="tree-page">
 
     <!-- Navigation -->
@@ -43,97 +44,9 @@
       </div>
     </nav>
 
-    <!-- Main layout: sidebar + tree -->
-    <div class="tree-layout">
-
-      <!-- Left Sidebar (Figma-style layers panel) -->
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar__inner">
-          <!-- Search -->
-          <div class="sidebar__search">
-            <svg class="sidebar__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input
-              type="text"
-              id="sidebar-search"
-              class="sidebar__search-input"
-              placeholder="Search lessons..."
-              autocomplete="off"
-              spellcheck="false"
-            />
-            <kbd class="sidebar__search-kbd" id="search-kbd">&#8984;K</kbd>
-          </div>
-
-          <!-- Learning Content sections (populated by JS) -->
-          <div class="sidebar__sections" id="sidebar-sections"></div>
-
-          <!-- Divider -->
-          <div class="sidebar__divider"></div>
-
-          <!-- Playbooks -->
-          <div class="sidebar__extra-section">
-            <div class="sidebar__extra-header">
-              <svg class="sidebar__extra-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z"/></svg>
-              <span class="sidebar__extra-title">Playbooks</span>
-            </div>
-            <a href="./playbook.html?path=playbooks/getting-started/index.md" class="sidebar__extra-item">
-              <span class="sidebar__extra-item-title">Starting Your AI Club</span>
-              <svg class="sidebar__extra-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-
-          <!-- Event Frameworks -->
-          <div class="sidebar__extra-section">
-            <div class="sidebar__extra-header">
-              <svg class="sidebar__extra-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              <span class="sidebar__extra-title">Event Frameworks</span>
-            </div>
-            <a href="./playbook.html?path=playbooks/hackathons/index.md" class="sidebar__extra-item">
-              <span class="sidebar__extra-item-title">Hackathon Framework</span>
-              <svg class="sidebar__extra-link-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Collapse toggle -->
-        <button class="sidebar__collapse-btn" id="sidebar-collapse" aria-label="Collapse sidebar">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-      </aside>
-
-      <!-- Collapsed sidebar strip -->
-      <div class="sidebar-strip" id="sidebar-strip">
-        <button class="sidebar-strip__expand" id="sidebar-expand" aria-label="Expand sidebar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        </button>
-        <div class="sidebar-strip__dots" id="sidebar-strip-dots"></div>
-      </div>
-
-      <!-- Tree View (always visible) -->
-      <div class="tree-container" id="tree-container">
-        <div class="tree-container__glow" id="tree-glow"></div>
-        <div class="loading" id="tree-loading">
-          <div class="loading__spinner"></div>
-          Loading skill tree&hellip;
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Detail Panel (slides in from right — coexists with sidebar) -->
+    <div id="curriculum-notice" role="status"></div>
+    <main id="curriculum" aria-label="Learning curriculum"><p role="status">Loading lessons…</p></main>
     <div class="node-panel" id="node-panel"></div>
-
-    <!-- Mobile: floating button to open sidebar as bottom sheet -->
-    <button class="mobile-fab" id="mobile-fab" aria-label="Open content list">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
-    </button>
-
-    <!-- Mobile: bottom sheet overlay -->
-    <div class="bottom-sheet-overlay" id="bottom-sheet-overlay"></div>
-    <div class="bottom-sheet" id="bottom-sheet">
-      <div class="bottom-sheet__handle"></div>
-      <div class="bottom-sheet__content" id="bottom-sheet-content"></div>
-    </div>
-
   </div>
 
   <script>
@@ -155,6 +68,6 @@
       toggle.addEventListener('click', () => links.classList.toggle('nav__links--open'));
     }
   </script>
-  <script type="module" src="./ts/tree-page.ts"></script>
+  <script type="module" src="./ts/curriculum-page.ts"></script>
 </body>
 </html>

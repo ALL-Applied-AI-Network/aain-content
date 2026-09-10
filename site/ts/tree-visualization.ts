@@ -294,6 +294,10 @@ export class TreeVisualization {
     return this.tree;
   }
 
+  zoomBy(factor: number): void {
+    this.svg.call(this.zoom.scaleBy, factor);
+  }
+
   /**
    * Show one curriculum topic at a time. The full tree remains the source of
    * truth for detail panels and search; this only changes the graph currently

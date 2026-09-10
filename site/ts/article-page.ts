@@ -23,6 +23,34 @@ import {
   type TreeResource,
 } from "./main";
 import { renderArticle, renderMarkdown } from "./article-renderer";
+import curriculum from "../../learning/curriculum.json";
+
+function addPractice(node: TreeNode, content: HTMLElement) {
+  const activity = (curriculum.activities as Record<string, { goal: string; needs: string; steps: string[]; check: string }>)[node.id];
+  if (!activity || content.querySelector('[role="alert"]')) return;
+  const reference = document.createElement("details");
+  reference.className = "lesson-reference";
+  const summary = document.createElement("summary");
+  summary.textContent = "Background and worked examples";
+  reference.append(summary);
+  while (content.firstChild) reference.append(content.firstChild);
+  const heading = document.createElement("h1"); heading.textContent = node.title;
+  const practice = document.createElement("section"); practice.className = "lesson-practice";
+  const inline = (s: string) => escapeHtml(s).replace(/`([^`]+)`/g, '<code>$1</code>');
+  practice.innerHTML = `<h2>${escapeHtml(activity.goal)}</h2><p><strong>Before you start:</strong> ${inline(activity.needs)}</p><h3>Try it</h3><ol>${activity.steps.map(s => `<li>${inline(s)}</li>`).join("")}</ol><div class="lesson-practice__check"><h3>Check your result</h3><p>${inline(activity.check)}</p></div><button type="button" id="practice-done">I completed the exercise</button><small id="practice-status">Self-reported practice, saved on this device. For account progress, use <a href="https://dashboard.all-ai-network.org/me/learn">My Learning</a>.</small>`;
+  content.append(heading, practice, reference);
+  const key = `all-practice:${chapterSlug ?? "base"}:${node.id}`;
+  const button = practice.querySelector<HTMLButtonElement>("button")!;
+  let done = false;
+  try { done = localStorage.getItem(key) === "done"; } catch { /* storage may be disabled */ }
+  const paint = () => { button.textContent = done ? "Completed · Undo" : "I completed the exercise"; button.setAttribute("aria-pressed", String(done)); };
+  paint();
+  button.onclick = () => {
+    done = !done;
+    try { if (done) localStorage.setItem(key,"done"); else localStorage.removeItem(key); paint(); }
+    catch { done = !done; practice.querySelector("small")!.textContent = "Your browser couldn't save progress. Use My Learning to save it to your account."; }
+  };
+}
 
 /** Active ?chapter= slug — carried through every tree/article link. */
 let chapterSlug: string | null = null;
@@ -86,6 +114,7 @@ async function init(): Promise<void> {
   const contentEl = document.getElementById("article-content");
   if (contentEl) {
     await renderArticle(node.content_path, contentEl);
+    addPractice(node, contentEl);
 
     // Render curated resources section after article content
     if (node.resources && node.resources.length > 0) {
@@ -243,7 +272,7 @@ function renderResources(resources: TreeResource[], contentEl: HTMLElement): voi
   section.className = "resources-section";
   section.innerHTML = `
     <h2 class="resources-section__title">Curated Resources</h2>
-    <p class="resources-section__desc">Hand-picked by contributors — each chosen for a reason.</p>
+    <p class="resources-section__desc">Further reading and reference.</p>
     <div class="resources-grid">
       ${resources.map((r) => `
         <a href="${r.url}" class="resource-card" target="_blank" rel="noopener">
@@ -267,12 +296,13 @@ function renderSeriesNav(node: TreeNode, tree: TreeJson): void {
   const nextEl = document.getElementById("nav-next");
   if (!navEl || !prevEl || !nextEl) return;
 
-  // Find the first series this node belongs to
-  const series = getSeriesForNode(tree, node.id);
-  if (series.length === 0) return;
-
-  const primarySeries = series[0];
-  const { prev, next } = getSeriesNav(primarySeries, node.id);
+  // The reader follows the same chapter order shown by the curriculum browser.
+  const sequence = curriculum.chapters.find(c => c.nodes.includes(node.id))?.nodes
+    ?? getSeriesForNode(tree, node.id)[0]?.nodes ?? [];
+  const index = sequence.indexOf(node.id);
+  if (index < 0) return;
+  const prev = sequence[index-1];
+  const next = sequence[index+1];
 
   if (!prev && !next) return;
   navEl.style.display = "";
@@ -281,7 +311,7 @@ function renderSeriesNav(node: TreeNode, tree: TreeJson): void {
     const pn = getNodeById(tree, prev);
     prevEl.innerHTML = `
       <span class="article-nav__label">Previous</span>
-      <a class="article-nav__link" href="${articleUrl(prev, chapterSlug)}">&larr; ${pn?.title || prev}</a>
+      <a class="article-nav__link" href="${articleUrl(prev, chapterSlug)}">&larr; ${escapeHtml(pn?.title || prev)}</a>
     `;
   }
 
@@ -289,7 +319,7 @@ function renderSeriesNav(node: TreeNode, tree: TreeJson): void {
     const nn = getNodeById(tree, next);
     nextEl.innerHTML = `
       <span class="article-nav__label">Next</span>
-      <a class="article-nav__link" href="${articleUrl(next, chapterSlug)}">${nn?.title || next} &rarr;</a>
+      <a class="article-nav__link" href="${articleUrl(next, chapterSlug)}">${escapeHtml(nn?.title || next)} &rarr;</a>
     `;
   }
 }
@@ -496,6 +526,11 @@ function generateTableOfContents(contentEl: HTMLElement): void {
   tocLinks.forEach((link) => {
     const href = link.getAttribute("href");
     if (href) linkMap.set(href.slice(1), link.parentElement!);
+    link.addEventListener("click", () => {
+      const target = href ? document.getElementById(href.slice(1)) : null;
+      let parent = target?.parentElement;
+      while (parent) { if (parent instanceof HTMLDetailsElement) parent.open = true; parent = parent.parentElement; }
+    });
   });
 
   const observer = new IntersectionObserver(

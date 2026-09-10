@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated_at": "2026-09-10T03:14:31.566Z",
+  "generated_at": "2026-09-10T15:42:49.522Z",
   "content": [
     {
       "type": "learning",
@@ -70,7 +70,7 @@
       "type": "learning",
       "id": "intermediate/applied-ai/how-ai-apis-work",
       "title": "How AI APIs Work",
-      "description": "Understand the anatomy of AI API calls, make your first requests to Claude and OpenAI, and learn to manage keys, tokens, and costs like a professional",
+      "description": "Run a simulated request, handle failures, then optionally try one live model call.",
       "path": "learning/intermediate/applied-ai/how-ai-apis-work/how-ai-apis-work.md",
       "thumbnail": "learning/intermediate/applied-ai/how-ai-apis-work/thumbnail.png"
     },
@@ -141,8 +141,8 @@
     {
       "type": "learning",
       "id": "foundations/setting-up-cursor",
-      "title": "Setting Up Cursor: Your AI-Powered Workspace",
-      "description": "Download, install, and configure Cursor — the AI-native code editor that will be your primary tool throughout this curriculum",
+      "title": "Set Up Your Coding Workspace",
+      "description": "Choose an editor, install Python and run your first file. AI tools are optional.",
       "path": "learning/foundations/setting-up-cursor/setting-up-cursor.md",
       "thumbnail": "learning/foundations/setting-up-cursor/thumbnail.png"
     },
@@ -181,8 +181,8 @@
     {
       "type": "learning",
       "id": "foundations/first-conversation-with-ai",
-      "title": "Your First Conversation with AI in Cursor",
-      "description": "Learn to use Cursor's AI features — chat, inline editing, and the composer — to write code by having a conversation instead of typing it from memory",
+      "title": "Review Your First AI-Generated Program",
+      "description": "Ask for a small function, understand it and test its output.",
       "path": "learning/foundations/first-conversation-with-ai/first-conversation-with-ai.md",
       "thumbnail": "learning/foundations/first-conversation-with-ai/thumbnail.png"
     },
