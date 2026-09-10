@@ -5,12 +5,14 @@ export type LearningGraphNode = { id: string; title: string; chapter: string; le
 export const GRAPH_NODE_HEIGHT = 120;
 const colors = ["#4f8fea", "#22d3ee", "#a855f7", "#ec4899", "#818cf8", "#38bdf8", "#c084fc"];
 
-/** Collapse only the representation, never the underlying prerequisite edges.
- * Other chapters remain as context while one chapter is expanded. */
+/** The overview is a reading path, not an aggregate of every dependency.
+ * A chapter has at most one incoming branch. Opening it shows only its
+ * lessons; full prerequisite lists remain in lesson details. */
 export function learningGraph(chapters: GraphChapter[], lessons: GraphLesson[], expanded: string, width: number) {
   const owner = new Map(chapters.flatMap(c => c.nodes.map(id => [id, c.id] as const)));
   const existing = new Set(lessons.map(n => n.id));
   const nodes = chapters.flatMap<LearningGraphNode>((c, i) => {
+    if (expanded && c.id !== expanded) return [];
     const children = lessons.filter(n => owner.get(n.id) === c.id);
     const base = { chapter: c.id, color: colors[i % colors.length], x: 0, y: 0 };
     return c.id === expanded
@@ -21,13 +23,22 @@ export function learningGraph(chapters: GraphChapter[], lessons: GraphLesson[], 
   const edgeCounts = new Map<string, { from: string; to: string; count: number }>();
   for (const n of lessons) for (const prerequisite of n.prerequisites) {
     if (!existing.has(prerequisite) || !owner.has(prerequisite) || !owner.has(n.id)) continue;
+    if (expanded && (owner.get(n.id) !== expanded || owner.get(prerequisite) !== expanded)) continue;
     const from = represent(prerequisite), to = represent(n.id);
     if (from === to) continue;
     const key = JSON.stringify([from, to]);
     const edge = edgeCounts.get(key);
     if (edge) edge.count++; else edgeCounts.set(key, { from, to, count: 1 });
   }
-  const edges = [...edgeCounts.values()];
+  const chapterOrder = new Map(chapters.map((c, i) => [`chapter:${c.id}`, i]));
+  const allEdges = [...edgeCounts.values()];
+  // Choose the nearest earlier prerequisite chapter. Forward-only edges
+  // keep the overview a forest even if a custom curriculum contains cycles.
+  const edges = expanded ? allEdges : nodes.flatMap(n => {
+    const candidates = allEdges.filter(e => e.to === n.id && chapterOrder.get(e.from)! < chapterOrder.get(e.to)!);
+    candidates.sort((a, b) => chapterOrder.get(b.from)! - chapterOrder.get(a.from)! || b.count - a.count);
+    return candidates.slice(0, 1);
+  });
   // Strongly connected components make arbitrary chapter overlays safe: a
   // cycle across groups must not hang the layout or erase a relationship.
   const adjacent = new Map(nodes.map(n => [n.id, edges.filter(e => e.from === n.id).map(e => e.to)]));
@@ -76,6 +87,6 @@ export function learningGraph(chapters: GraphChapter[], lessons: GraphLesson[], 
     const path = y2 - y1 > 90 || y2 < y1
       ? `M ${a.x} ${a.y + 60} C ${lane} ${a.y + 60}, ${lane} ${b.y + 60}, ${b.x} ${b.y + 60}`
       : `M ${x1} ${y1} C ${x1} ${(y1+y2)/2}, ${x2} ${(y1+y2)/2}, ${x2} ${y2}`;
-    return { ...e, path, label: `${a.title} → ${b.title} (${e.count} prerequisite${e.count === 1 ? "" : "s"})` };
+    return { ...e, path, label: expanded ? `${a.title} → ${b.title} (prerequisite)` : `${a.title} → ${b.title} (main learning path)` };
   }) };
 }
