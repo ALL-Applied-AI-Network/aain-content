@@ -938,6 +938,8 @@ export class TreeVisualization {
 // Node detail panel
 // ---------------------------------------------------------------------------
 
+const panelListeners = new WeakMap<HTMLElement, () => void>();
+
 export function openNodePanel(
   node: TreeNode,
   tree: TreeJson,
@@ -945,6 +947,8 @@ export function openNodePanel(
 ): void {
   const panel = $(".node-panel") as HTMLElement | null;
   if (!panel) return;
+  // Retire the previous opening's handlers before the new click can reach them.
+  panelListeners.get(panel)?.();
 
   const nodesById = new Map(tree.nodes.map((n) => [n.id, n]));
   const color = resolveNodeColor(node.id, nodesById);
@@ -1014,30 +1018,34 @@ export function openNodePanel(
 
   panel.classList.add("open");
 
-  panel.querySelector(".node-panel__close")?.addEventListener("click", () => {
-    panel.classList.remove("open");
-  });
+  const listeners = new AbortController();
+  let outsideTimer: ReturnType<typeof setTimeout>;
+  const cleanup = () => {
+    clearTimeout(outsideTimer);
+    listeners.abort();
+    panelListeners.delete(panel);
+  };
+  const close = () => { panel.classList.remove("open"); cleanup(); };
+  panelListeners.set(panel, cleanup);
+  panel.querySelector(".node-panel__close")?.addEventListener("click", close, { signal: listeners.signal });
 
   const escHandler = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
-      panel.classList.remove("open");
-      document.removeEventListener("keydown", escHandler);
+      close();
     }
   };
-  document.addEventListener("keydown", escHandler);
+  document.addEventListener("keydown", escHandler, { signal: listeners.signal });
 
   const outsideHandler = (e: MouseEvent | TouchEvent) => {
     const target = (e as TouchEvent).changedTouches
       ? (e as TouchEvent).changedTouches[0]?.target as Node
       : (e as MouseEvent).target as Node;
     if (target && !panel.contains(target)) {
-      panel.classList.remove("open");
-      document.removeEventListener("click", outsideHandler);
-      document.removeEventListener("touchend", outsideHandler);
+      close();
     }
   };
-  setTimeout(() => {
-    document.addEventListener("click", outsideHandler);
-    document.addEventListener("touchend", outsideHandler);
+  outsideTimer = setTimeout(() => {
+    document.addEventListener("click", outsideHandler, { signal: listeners.signal });
+    document.addEventListener("touchend", outsideHandler, { signal: listeners.signal });
   }, 300);
 }
