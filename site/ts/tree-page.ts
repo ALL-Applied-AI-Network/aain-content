@@ -27,6 +27,7 @@ let tree: TreeJson | null = null;
 let viz: TreeVisualization | null = null;
 let sidebarCollapsed = false;
 let activeItemId: string | null = null;
+let activeTopicKey: string | null = null;
 let searchDebounce: ReturnType<typeof setTimeout>;
 /** Non-null while a ?chapter= overlay is active — threads through panels/links. */
 let chapterCtx: ChapterContext | null = null;
@@ -94,6 +95,13 @@ async function init(): Promise<void> {
 
   tree = viz.getTree();
   if (!tree) return;
+
+  // Lead with one useful, human-sized topic instead of fitting the entire
+  // curriculum into a single wall of 34 cards. Topic headers below switch the
+  // graph and expand into their individual lessons.
+  const initialTopic = groupByTopic(tree.nodes)[0] ?? null;
+  activeTopicKey = initialTopic?.key ?? null;
+  if (initialTopic) viz.setTopicFilter(initialTopic.nodes.map((node) => node.id), false);
 
   // Build sidebar content
   renderSidebar(tree, "");
@@ -179,10 +187,10 @@ function renderSidebar(tree: TreeJson, query: string): void {
 
   const q = query.toLowerCase().trim();
 
-  // Group nodes by difficulty (per-node key — search can only shrink
-  // groups, never reshuffle membership)
+  // Curriculum chapters are topic-based; difficulty remains a badge on each
+  // lesson instead of being the navigation hierarchy.
   const filtered = tree.nodes.filter((node) => !q || matchesQuery(node, q));
-  const groups = groupByDifficulty(filtered);
+  const groups = groupByTopic(filtered);
 
   if (groups.length === 0) {
     container.innerHTML = `<div style="padding:2rem 1rem;text-align:center;color:var(--text-muted);font-size:0.8rem;">No lessons found${q ? ` for "${query}"` : ""}.</div>`;
@@ -196,14 +204,14 @@ function renderSidebar(tree: TreeJson, query: string): void {
   let html = "";
   for (const { key, label, color, nodes } of groups) {
     html += `
-      <div class="sidebar__branch-group" data-branch="${key}">
-        <div class="sidebar__branch-header" data-branch="${key}">
+      <div class="sidebar__branch-group${key === activeTopicKey ? " sidebar__branch-group--active" : ""}" data-branch="${key}">
+        <div class="sidebar__branch-header${!q && key !== activeTopicKey ? " collapsed" : ""}" data-branch="${key}">
           <svg class="sidebar__branch-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           <span class="sidebar__branch-dot" style="background:${color}"></span>
           <span class="sidebar__branch-name">${label}</span>
           <span class="sidebar__branch-count">${nodes.length}</span>
         </div>
-        <div class="sidebar__branch-items" data-branch="${key}">
+        <div class="sidebar__branch-items${!q && key !== activeTopicKey ? " collapsed" : ""}" data-branch="${key}">
     `;
 
     for (const node of nodes) {
@@ -240,7 +248,10 @@ function renderSidebar(tree: TreeJson, query: string): void {
   requestAnimationFrame(() => {
     const allItemContainers = container.querySelectorAll(".sidebar__branch-items");
     allItemContainers.forEach((el) => {
-      (el as HTMLElement).style.maxHeight = el.scrollHeight + "px";
+      const itemContainer = el as HTMLElement;
+      itemContainer.style.maxHeight = itemContainer.classList.contains("collapsed")
+        ? "0px"
+        : itemContainer.scrollHeight + "px";
     });
   });
 
@@ -251,6 +262,19 @@ function renderSidebar(tree: TreeJson, query: string): void {
       const branch = header.getAttribute("data-branch");
       const items = container.querySelector(`.sidebar__branch-items[data-branch="${branch}"]`) as HTMLElement | null;
       if (!items) return;
+
+      // Selecting another topic replaces the graph and keeps only that
+      // chapter's lessons expanded. A second click on the active topic simply
+      // collapses/expands its lesson list without blanking the canvas.
+      if (branch && branch !== activeTopicKey && tree) {
+        const topic = groupByTopic(tree.nodes).find((group) => group.key === branch);
+        if (topic) {
+          activeTopicKey = branch;
+          viz?.setTopicFilter(topic.nodes.map((node) => node.id));
+          renderSidebar(tree, query);
+          return;
+        }
+      }
 
       const isCollapsed = header.classList.contains("collapsed");
       if (isCollapsed) {
@@ -286,6 +310,19 @@ function renderSidebar(tree: TreeJson, query: string): void {
       const node = tree.nodes.find((n) => n.id === nodeId);
       if (!node) return;
 
+      // Search can surface a lesson from a different topic. Switch the graph
+      // before flying to it so the selected lesson is never missing from the
+      // canvas just because another chapter was active.
+      const key = topicKey(node);
+      if (key !== activeTopicKey) {
+        const topic = groupByTopic(tree.nodes).find((group) => group.key === key);
+        if (topic) {
+          activeTopicKey = key;
+          viz?.setTopicFilter(topic.nodes.map((entry) => entry.id), false);
+          renderSidebar(tree, query);
+        }
+      }
+
       // Zoom tree to this node
       viz?.flyToNode(nodeId);
 
@@ -319,25 +356,25 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
     </div>
   `;
 
-  // Group nodes by difficulty (same grouping as the desktop sidebar)
+  // Same topic chapters as desktop.
   const filtered = tree.nodes.filter((node) => !q || matchesQuery(node, q));
-  const groups = groupByDifficulty(filtered);
+  const groups = groupByTopic(filtered);
   const nodeMap = new Map<string, TreeNode>();
   for (const n of tree.nodes) nodeMap.set(n.id, n);
 
   if (groups.length === 0) {
     html += `<div style="padding:2rem 1rem;text-align:center;color:var(--text-muted);font-size:0.8rem;">No lessons found.</div>`;
   } else {
-    for (const { label, color, nodes } of groups) {
+    for (const { key, label, color, nodes } of groups) {
       html += `
-        <div class="sidebar__branch-group">
-          <div class="sidebar__branch-header">
+        <div class="sidebar__branch-group${key === activeTopicKey ? " sidebar__branch-group--active" : ""}" data-branch="${key}">
+          <div class="sidebar__branch-header${!q && key !== activeTopicKey ? " collapsed" : ""}" data-branch="${key}">
             <svg class="sidebar__branch-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             <span class="sidebar__branch-dot" style="background:${color}"></span>
             <span class="sidebar__branch-name">${label}</span>
             <span class="sidebar__branch-count">${nodes.length}</span>
           </div>
-          <div class="sidebar__branch-items" style="max-height:9999px">
+          <div class="sidebar__branch-items${!q && key !== activeTopicKey ? " collapsed" : ""}" data-branch="${key}" style="max-height:${!q && key !== activeTopicKey ? "0" : "9999px"}">
       `;
 
       for (const node of nodes) {
@@ -378,6 +415,29 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
   }
 
   // Wire up bottom sheet items
+  const topicHeaders = container.querySelectorAll(".sidebar__branch-header");
+  topicHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      const key = header.getAttribute("data-branch");
+      if (!key || !tree) return;
+      const items = container.querySelector(
+        `.sidebar__branch-items[data-branch="${key}"]`,
+      ) as HTMLElement | null;
+      if (key === activeTopicKey && items) {
+        const collapsing = !header.classList.contains("collapsed");
+        header.classList.toggle("collapsed", collapsing);
+        items.classList.toggle("collapsed", collapsing);
+        items.style.maxHeight = collapsing ? "0" : "9999px";
+        return;
+      }
+      const topic = groupByTopic(tree.nodes).find((group) => group.key === key);
+      if (!topic) return;
+      activeTopicKey = key;
+      viz?.setTopicFilter(topic.nodes.map((node) => node.id));
+      renderBottomSheet(tree, query);
+    });
+  });
+
   const items = container.querySelectorAll(".sidebar__item");
   items.forEach((item) => {
     const nodeId = item.getAttribute("data-node-id");
@@ -386,6 +446,16 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
     item.addEventListener("click", () => {
       const node = tree!.nodes.find((n) => n.id === nodeId);
       if (!node) return;
+      const key = topicKey(node);
+      if (key !== activeTopicKey) {
+        const topic = groupByTopic(tree!.nodes).find((group) => group.key === key);
+        if (topic) {
+          activeTopicKey = key;
+          viz?.setTopicFilter(topic.nodes.map((entry) => entry.id), false);
+          renderSidebar(tree!, "");
+          renderBottomSheet(tree!, query);
+        }
+      }
       viz?.flyToNode(nodeId);
       openNodePanel(node, tree!, chapterCtx);
       setActiveItem(nodeId);
@@ -402,8 +472,8 @@ function renderStripDots(tree: TreeJson): void {
   const container = document.getElementById("sidebar-strip-dots");
   if (!container) return;
 
-  // One dot per difficulty group, in the same order as the sidebar
-  const groups = groupByDifficulty(tree.nodes);
+  // One dot per topic chapter, in the same order as the sidebar.
+  const groups = groupByTopic(tree.nodes);
 
   let html = "";
   for (const { key, label, color } of groups) {
@@ -566,54 +636,51 @@ function setActiveItem(nodeId: string): void {
 // ---------------------------------------------------------------------------
 
 /**
- * Sidebar/bottom-sheet/strip grouping: by DIFFICULTY, the one semantic
- * taxonomy left after the layer bands were retired. Grouping by tree
- * structure is a dead end here — the validator requires a fully
- * connected graph, so "walk to the root" puts all 34 lessons in one
- * group; difficulty gives learners a meaningful "where do I start"
- * split (and matches the home-page stats and article meta).
+ * Sidebar, bottom-sheet, and strip grouping by curriculum topic. Difficulty
+ * remains useful lesson metadata, but it is not a navigational category:
+ * learners choose what they want to understand, then see the progression
+ * inside that topic.
  */
 interface SidebarGroup {
-  /** Stable difficulty key — doubles as the data-branch DOM handle. */
+  /** Stable topic key — doubles as the data-branch DOM handle. */
   key: string;
   label: string;
   color: string;
   nodes: TreeNode[];
 }
 
-const DIFFICULTY_ORDER = ["beginner", "intermediate", "advanced", "expert"];
+const TOPICS = [
+  { key: "foundations", label: "AI Foundations", color: "#4f8fea" },
+  { key: "applied-ai", label: "Applied AI", color: "#22c55e" },
+  { key: "advanced-ai", label: "Advanced AI", color: "#a855f7" },
+  { key: "tools-workflows", label: "Tools & Workflows", color: "#f59e0b" },
+  { key: "chapter", label: "Chapter Lessons", color: "#ec4899" },
+  { key: "other", label: "More Topics", color: "#64748b" },
+] as const;
 
-/**
- * Groups `filtered` nodes by difficulty in learning-ramp order
- * (unknown difficulties sink to the end, labeled as-is). Per-node
- * grouping keys mean search can only shrink groups, never reshuffle
- * membership.
- */
-function groupByDifficulty(filtered: TreeNode[]): SidebarGroup[] {
-  const groups = new Map<string, TreeNode[]>();
+/** Map stable curriculum namespaces to human topics. */
+function topicKey(node: TreeNode): string {
+  if ((node as TreeNode & { source?: string }).source === "chapter") return "chapter";
+  if (node.id.startsWith("foundations/")) return "foundations";
+  if (node.id.startsWith("intermediate/applied-ai/")) return "applied-ai";
+  if (node.id.startsWith("advanced/applied-ai/")) return "advanced-ai";
+  if (node.id.startsWith("tooling/")) return "tools-workflows";
+  return "other";
+}
+
+function groupByTopic(filtered: TreeNode[]): SidebarGroup[] {
+  const buckets = new Map<string, TreeNode[]>();
   for (const node of filtered) {
-    const key = (node.difficulty || "other").toLowerCase();
-    const arr = groups.get(key) || [];
-    arr.push(node);
-    groups.set(key, arr);
+    const key = topicKey(node);
+    const bucket = buckets.get(key) ?? [];
+    bucket.push(node);
+    buckets.set(key, bucket);
   }
 
-  return Array.from(groups.entries())
-    .map(([key, nodes]) => ({
-      key,
-      label: key.charAt(0).toUpperCase() + key.slice(1),
-      color: DIFFICULTY_COLORS[key] || "#6366f1",
-      nodes,
-    }))
-    .sort((a, b) => {
-      const ai = DIFFICULTY_ORDER.indexOf(a.key);
-      const bi = DIFFICULTY_ORDER.indexOf(b.key);
-      return (
-        (ai === -1 ? DIFFICULTY_ORDER.length : ai) -
-          (bi === -1 ? DIFFICULTY_ORDER.length : bi) ||
-        a.key.localeCompare(b.key)
-      );
-    });
+  return TOPICS.flatMap((topic) => {
+    const nodes = buckets.get(topic.key);
+    return nodes?.length ? [{ ...topic, nodes }] : [];
+  });
 }
 
 function matchesQuery(node: TreeNode, q: string): boolean {

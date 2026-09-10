@@ -294,6 +294,32 @@ export class TreeVisualization {
     return this.tree;
   }
 
+  /**
+   * Show one curriculum topic at a time. The full tree remains the source of
+   * truth for detail panels and search; this only changes the graph currently
+   * laid out on the canvas. Recomputing the layout is intentional: merely
+   * dimming 25 unrelated cards still leaves the overwhelming mega-tree that
+   * this topic picker is meant to replace.
+   */
+  setTopicFilter(nodeIds: readonly string[] | null, animate = true): void {
+    if (!this.tree) return;
+
+    const visibleIds = nodeIds ? new Set(nodeIds) : null;
+    const nodes = visibleIds
+      ? this.tree.nodes.filter((node) => visibleIds.has(node.id))
+      : this.tree.nodes;
+    const nodeSet = new Set(nodes.map((node) => node.id));
+    const edges = this.tree.edges.filter(
+      (edge) => nodeSet.has(edge.from) && nodeSet.has(edge.to),
+    );
+
+    this.edges = edges;
+    this.nodes = computeLayout(nodes, edges);
+    this.nodesById = new Map(nodes.map((node) => [node.id, node]));
+    this.render();
+    this.fitView(animate);
+  }
+
   // --- SVG setup ---
 
   private createSvg(): void {
@@ -357,6 +383,9 @@ export class TreeVisualization {
     const nodeMap = new Map<string, LayoutNode>();
     for (const n of this.nodes) nodeMap.set(n.id, n);
     const defs = this.svg.select("defs");
+    // Topic switches rerender the cards. Remove the previous generated clip
+    // paths so duplicate SVG ids never accumulate across switches.
+    defs.selectAll("clipPath[data-tree-node-clip]").remove();
 
     // --- Edges (smooth bezier curves for organic tree feel) ---
     // Single path per edge (no duplicate glow paths — halves DOM count)
@@ -422,6 +451,7 @@ export class TreeVisualization {
       const thumbPad = (CARD_H - CARD_THUMB) / 2;
       defs
         .append("clipPath")
+        .attr("data-tree-node-clip", "")
         .attr("id", clipId)
         .append("rect")
         .attr("x", -CARD_W / 2 + thumbPad)

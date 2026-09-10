@@ -151,6 +151,15 @@
   background: rgba(255, 255, 255, 0.02);
 }
 
+.sidebar__branch-group--active .sidebar__branch-header {
+  background: rgba(79, 143, 234, 0.08);
+  box-shadow: inset 3px 0 0 var(--accent-primary);
+}
+
+.sidebar__branch-group--active .sidebar__branch-name {
+  color: var(--text-primary);
+}
+
 .sidebar__branch-chevron {
   font-size: 1rem;
   color: var(--text-muted);
@@ -709,11 +718,13 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 310;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
 .bottom-sheet-overlay.visible {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Bottom sheet */
