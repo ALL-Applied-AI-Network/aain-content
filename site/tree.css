@@ -709,7 +709,11 @@
   color: var(--text-secondary);
 }
 
-.sidebar__branch-header:focus-visible {
+/* Every keyboard-activatable row wears the same ring: chapter headers,
+   lesson rows and "All chapters" are all divs with role="button". */
+.sidebar__branch-header:focus-visible,
+.sidebar__item:focus-visible,
+.sidebar__all:focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: -2px;
 }

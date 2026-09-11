@@ -174,7 +174,8 @@ async function init(): Promise<void> {
   setupMobile();
 
   // --- "All chapters" ---
-  document.getElementById("sidebar-all")?.addEventListener("click", showAllBands);
+  const allRow = document.getElementById("sidebar-all");
+  if (allRow) activateOn(allRow, showAllBands);
 
   // --- Escape: close what is open; with nothing open, show every band ---
   document.addEventListener("keydown", (e) => {
@@ -339,6 +340,10 @@ function renderSidebar(tree: TreeJson, query: string): void {
 
   document.getElementById("sidebar-all")?.classList.toggle("sidebar__all--active", !activeBandId);
 
+  // A keyboard activation of a row re-renders this list, which would
+  // destroy the focused row; remember it so focus can be handed back.
+  const focusKey = focusKeyIn(container);
+
   if (groups.length === 0) {
     container.innerHTML = `<div style="padding:2rem 1rem;text-align:center;color:var(--text-muted);font-size:0.8rem;">No lessons found${q ? ` for "${escapeHtml(query)}"` : ""}.</div>`;
     return;
@@ -369,6 +374,7 @@ function renderSidebar(tree: TreeJson, query: string): void {
   }
 
   container.innerHTML = html;
+  restoreFocus(container, focusKey);
 
   // Set max-heights for collapsible animation
   requestAnimationFrame(() => {
@@ -413,14 +419,7 @@ function renderSidebar(tree: TreeJson, query: string): void {
         items.classList.add("collapsed");
       }
     };
-    header.addEventListener("click", activate);
-    header.addEventListener("keydown", (e) => {
-      const key = (e as KeyboardEvent).key;
-      if (key === "Enter" || key === " ") {
-        e.preventDefault();
-        activate();
-      }
-    });
+    activateOn(header, activate);
   });
 
   // Wire up item hover and click
@@ -437,8 +436,49 @@ function renderSidebar(tree: TreeJson, query: string): void {
       viz?.highlightNodeVisual(nodeId, false);
     });
 
-    item.addEventListener("click", () => selectNode(nodeId));
+    activateOn(item, () => selectNode(nodeId));
   });
+}
+
+/**
+ * Click AND Enter/Space. The rows are divs with role="button", and a div
+ * does not synthesise click from the keyboard the way a <button> does,
+ * so every row needs both or it is a focusable control that does nothing.
+ */
+function activateOn(el: Element, fn: () => void): void {
+  el.addEventListener("click", fn);
+  el.addEventListener("keydown", (e) => {
+    const key = (e as KeyboardEvent).key;
+    if (key === "Enter" || key === " ") {
+      e.preventDefault();
+      fn();
+    }
+  });
+}
+
+/**
+ * The focused row inside `container`, as a selector that finds its
+ * replacement after the list is rebuilt with innerHTML. Only chapter
+ * headers and lesson rows: the sheet's search input is rebuilt on every
+ * keystroke and is left to its own devices.
+ */
+function focusKeyIn(container: HTMLElement): string | null {
+  const el = document.activeElement;
+  if (!(el instanceof HTMLElement) || !container.contains(el)) return null;
+  if (el.classList.contains("sidebar__branch-header") && el.dataset.branch) {
+    return `.sidebar__branch-header[data-branch="${el.dataset.branch}"]`;
+  }
+  if (el.classList.contains("sidebar__item") && el.dataset.nodeId) {
+    return `.sidebar__item[data-node-id="${el.dataset.nodeId}"]`;
+  }
+  return null;
+}
+
+/** Hand focus back after a rebuild; otherwise it falls to <body> and the
+ *  next Tab starts over from the top of the page. */
+function restoreFocus(container: HTMLElement, key: string | null): void {
+  if (!key) return;
+  (container.querySelector(key) as HTMLElement | null)?.focus({ preventScroll: true });
 }
 
 // ---------------------------------------------------------------------------
@@ -451,6 +491,7 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
 
   sheetQuery = query;
   const q = query.toLowerCase().trim();
+  const focusKey = focusKeyIn(container);
 
   // Search bar in bottom sheet
   let html = `
@@ -473,7 +514,7 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
       const collapsed = !q && !current;
       html += `
         <div class="sidebar__branch-group${current ? " sidebar__branch-group--active" : ""}" data-branch="${escapeHtml(id)}">
-          <div class="sidebar__branch-header${collapsed ? " collapsed" : ""}" data-branch="${escapeHtml(id)}" role="button"${current ? ' aria-current="true"' : ""}>
+          <div class="sidebar__branch-header${collapsed ? " collapsed" : ""}" data-branch="${escapeHtml(id)}" role="button" tabindex="0"${current ? ' aria-current="true"' : ""}>
             <svg class="sidebar__branch-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             <span class="sidebar__branch-number">${eyebrow(group)}</span>
             <span class="sidebar__branch-dot" style="background:${color}"></span>
@@ -490,6 +531,7 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
   }
 
   container.innerHTML = html;
+  restoreFocus(container, focusKey);
 
   // Wire up bottom sheet search
   const bsSearch = document.getElementById("bottom-sheet-search") as HTMLInputElement | null;
@@ -506,7 +548,7 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
   // so the lessons can be picked); the current chapter toggles its list.
   const headers = container.querySelectorAll(".sidebar__branch-header");
   headers.forEach((header) => {
-    header.addEventListener("click", () => {
+    activateOn(header, () => {
       const key = header.getAttribute("data-branch");
       if (!key) return;
       const items = container.querySelector(
@@ -527,7 +569,7 @@ function renderBottomSheet(tree: TreeJson, query: string): void {
   items.forEach((item) => {
     const nodeId = item.getAttribute("data-node-id");
     if (!nodeId) return;
-    item.addEventListener("click", () => selectNode(nodeId));
+    activateOn(item, () => selectNode(nodeId));
   });
 }
 
@@ -655,15 +697,47 @@ function setupKeyboardShortcuts(): void {
 // Mobile Bottom Sheet
 // ---------------------------------------------------------------------------
 
+/**
+ * The sheet is a modal dialog (tree.html gives it role="dialog"), so it
+ * gets the dialog's focus contract: closed, it is `inert` — it is only
+ * translated off-screen, and its search box, save link and rows would
+ * otherwise sit in the tab order behind the page; open, focus moves in,
+ * Tab wraps inside it, and closing hands focus back to where it came
+ * from.
+ */
 function setupMobile(): void {
   const fab = document.getElementById("mobile-fab");
   const overlay = document.getElementById("bottom-sheet-overlay");
+  const sheet = document.getElementById("bottom-sheet");
 
   if (fab) {
     fab.addEventListener("click", openBottomSheet);
   }
   if (overlay) {
     overlay.addEventListener("click", closeBottomSheet);
+  }
+  if (sheet) {
+    sheet.setAttribute("inert", "");
+    sheet.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab") return;
+      const nodes = Array.from(
+        sheet.querySelectorAll<HTMLElement>(
+          'a[href], input:not([disabled]), [role="button"][tabindex="0"]',
+        ),
+      );
+      if (!nodes.length) return;
+      const first = nodes[0];
+      const last = nodes[nodes.length - 1];
+      // Focus on the sheet itself (where opening puts it) counts as
+      // "before first", so Shift+Tab from there wraps to the end.
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === sheet)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   }
 }
 
@@ -676,6 +750,11 @@ function openBottomSheet(): void {
   // Trigger reflow for transition
   sheet.offsetHeight;
   sheet.classList.add("open");
+  sheet.removeAttribute("inert");
+  document.getElementById("mobile-fab")?.setAttribute("aria-expanded", "true");
+  // The sheet itself, not its search box: focusing an input would raise
+  // the phone keyboard over the list the member just asked to see.
+  sheet.focus({ preventScroll: true });
 }
 
 function closeBottomSheet(): void {
@@ -683,8 +762,22 @@ function closeBottomSheet(): void {
   const overlay = document.getElementById("bottom-sheet-overlay");
   if (!sheet || !overlay) return;
 
+  const hadFocus = sheet.contains(document.activeElement);
   sheet.classList.remove("open");
   overlay.classList.remove("visible");
+  sheet.setAttribute("inert", "");
+  const fab = document.getElementById("mobile-fab");
+  fab?.setAttribute("aria-expanded", "false");
+  if (!hadFocus) return;
+  // Back to the FAB — unless the close came from picking a lesson, when
+  // the FAB is hidden behind the open panel and the panel is the place.
+  const panel = $(".node-panel") as HTMLElement | null;
+  if (panel?.classList.contains("open")) {
+    panel.tabIndex = -1;
+    panel.focus({ preventScroll: true });
+  } else {
+    fab?.focus({ preventScroll: true });
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -834,11 +927,13 @@ function matchesQuery(node: TreeNode, q: string): boolean {
   );
 }
 
-/** One lesson row, shared by the sidebar and the bottom sheet. */
+/** One lesson row, shared by the sidebar and the bottom sheet. A div
+ *  made a button (activateOn wires Enter/Space) so the keyboard can open
+ *  a lesson from the list, not only the mouse. */
 function lessonRow(node: TreeNode): string {
   const diffColor = DIFFICULTY_COLORS[node.difficulty] || "#6366f1";
   return `
-    <div class="sidebar__item${node.id === activeItemId ? " active" : ""}" data-node-id="${escapeHtml(node.id)}">
+    <div class="sidebar__item${node.id === activeItemId ? " active" : ""}" data-node-id="${escapeHtml(node.id)}" role="button" tabindex="0"${node.id === activeItemId ? ' aria-current="true"' : ""}>
       <div class="sidebar__item-row">
         <span class="sidebar__item-title">${escapeHtml(node.title)}</span>
         <span class="sidebar__item-badges">
