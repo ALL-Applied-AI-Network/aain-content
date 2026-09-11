@@ -7,6 +7,11 @@
  *  - Deterministic, identical every load
  *  - Wide rectangular cards with thumbnail + title
  *  - Smooth bezier edge routing
+ *
+ * With `bands` supplied, the same layout runs once per curriculum chapter
+ * and the chapters stack as outlined bands (banded-layout.ts, shared with
+ * the dashboard) — the picture a hub's iframe shows is the one /me/learn
+ * shows.
  */
 
 import * as d3 from "d3";
@@ -25,6 +30,15 @@ import {
   escapeHtml,
   $,
 } from "./main";
+import {
+  type BandBox,
+  type BandConnector,
+  type BandInput,
+  BAND_GAP_Y,
+  BAND_LABEL_H,
+  BAND_PAD,
+  computeBandedLayout,
+} from "./banded-layout";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -35,12 +49,23 @@ const CARD_H = 120;              // card height
 const CARD_R = 10;               // border radius
 const CARD_THUMB = 100;          // thumbnail size (square, left side)
 const CARD_BORDER = 2;           // border thickness
+const CARD_FILL = "#14141f";     // flat card face (the dashboard's cards are flat too)
 const EDGE_WIDTH = 2;            // path thickness
-const EDGE_GLOW_WIDTH = 8;       // glow behind paths
 
 // Layout spacing
 const DEPTH_GAP_Y = 255;         // vertical gap between depth levels
 const NODE_GAP_X = 420;          // horizontal gap between nodes at same depth
+
+// Bands (same numbers the dashboard canvas draws)
+const BAND_R = 12;               // outline corner radius
+const SPINE_X = -60;             // x the chapter spine runs along
+const SPINE_ARROW = 6;           // arrowhead size, world px
+const FRAME_PAD = 60;            // breathing room beside a framed band
+// Above and below a framed band the pad reaches past the gap into the
+// neighbours, so the previous band's bottom edge and the next band's label
+// sit at the frame edges — the reader can see there is more either way.
+const FRAME_PAD_Y = BAND_GAP_Y + BAND_LABEL_H + BAND_PAD;
+const FRAME_MS = 350;            // frameBand fly duration
 
 // ---------------------------------------------------------------------------
 // Depth computation — longest path from root
@@ -97,6 +122,8 @@ interface LayoutNode extends TreeNode {
   x: number;
   y: number;
   depth: number;
+  /** Owning band id — only set when the canvas was laid out in bands. */
+  band?: string;
 }
 
 function isRootNode(node: TreeNode): boolean {
@@ -253,6 +280,12 @@ export interface TreeVizOptions {
   tree?: TreeJson;
   /** Active chapter overlay context — labels chapter-authored cards. */
   chapter?: ChapterContext | null;
+  /**
+   * Curriculum bands in reading order. Present → every card is placed inside
+   * its band and the band outlines, labels and spine are drawn; absent → the
+   * single free-form DAG layout.
+   */
+  bands?: BandInput[];
 }
 
 export class TreeVisualization {
@@ -261,6 +294,8 @@ export class TreeVisualization {
   private zoom!: d3.ZoomBehavior<SVGSVGElement, unknown>;
   private nodes: LayoutNode[] = [];
   private edges: TreeEdge[] = [];
+  private bands: BandBox[] = [];
+  private connectors: BandConnector[] = [];
   private tree: TreeJson | null = null;
   private nodesById = new Map<string, TreeNode>();
   private tooltip: HTMLElement | null = null;
@@ -271,18 +306,53 @@ export class TreeVisualization {
 
   // Cached element references for O(1) hover/filter lookups
   private nodeElements = new Map<string, SVGGElement>();
+  private bandElements = new Map<string, SVGGElement>();
   private edgeElements: { el: SVGPathElement; from: string; to: string }[] = [];
-  private edgeGlowElements: { el: SVGPathElement; from: string; to: string }[] = [];
+
+  // A fit requested while the container has no size yet (hub iframes are
+  // often display:none until their tab opens); runs on the first real size.
+  private pendingFit: (() => void) | null = null;
+  private sizeObserver: ResizeObserver | null = null;
 
   constructor(opts: TreeVizOptions) {
     this.opts = opts;
   }
 
+  /**
+   * Run a fit now if the container has a size, else once it first gets one.
+   * Fitting a 0×0 container produces a transform at the minimum scale pinned
+   * to nothing, and nothing later corrects it. Last request wins.
+   */
+  private whenSized(fit: () => void): boolean {
+    const c = this.opts.container;
+    if (c.clientWidth > 0 && c.clientHeight > 0) {
+      this.pendingFit = null;
+      return true;
+    }
+    this.pendingFit = fit;
+    if (!this.sizeObserver && typeof ResizeObserver !== "undefined") {
+      this.sizeObserver = new ResizeObserver(() => {
+        if (c.clientWidth <= 0 || c.clientHeight <= 0 || !this.pendingFit) return;
+        const run = this.pendingFit;
+        this.pendingFit = null;
+        this.sizeObserver?.disconnect();
+        this.sizeObserver = null;
+        run();
+      });
+      this.sizeObserver.observe(c);
+    }
+    return false;
+  }
+
   async init(): Promise<void> {
     this.tree = this.opts.tree ?? (await loadTreeData());
-    this.edges = this.tree.edges;
-    this.nodes = computeLayout(this.tree.nodes, this.tree.edges);
     this.nodesById = new Map(this.tree.nodes.map((n) => [n.id, n]));
+    if (this.opts.bands?.length) {
+      this.layoutBanded(this.tree, this.opts.bands);
+    } else {
+      this.edges = this.tree.edges;
+      this.nodes = computeLayout(this.tree.nodes, this.tree.edges);
+    }
 
     this.createSvg();
     this.createTooltip();
@@ -294,34 +364,88 @@ export class TreeVisualization {
     return this.tree;
   }
 
+  /** Band boxes in reading order (empty without `bands`). */
+  getBands(): readonly BandBox[] {
+    return this.bands;
+  }
+
   zoomBy(factor: number): void {
     this.svg.call(this.zoom.scaleBy, factor);
   }
 
   /**
-   * Show one curriculum topic at a time. The full tree remains the source of
-   * truth for detail panels and search; this only changes the graph currently
-   * laid out on the canvas. Recomputing the layout is intentional: merely
-   * dimming 25 unrelated cards still leaves the overwhelming mega-tree that
-   * this topic picker is meant to replace.
+   * Bands on: computeBandedLayout runs this file's computeLayout inside each
+   * band and stacks the bands. Pins are stripped before that pass so the
+   * per-band layout is pure; chapter-authored pins are re-applied afterwards
+   * with x kept and y clamped into the band — the dashboard's rule, so a hub's
+   * iframe and /me/learn place the officer's card the same way. Base-node
+   * position overrides are ignored under bands.
    */
-  setTopicFilter(nodeIds: readonly string[] | null, animate = true): void {
-    if (!this.tree) return;
-
-    const visibleIds = nodeIds ? new Set(nodeIds) : null;
-    const nodes = visibleIds
-      ? this.tree.nodes.filter((node) => visibleIds.has(node.id))
-      : this.tree.nodes;
-    const nodeSet = new Set(nodes.map((node) => node.id));
-    const edges = this.tree.edges.filter(
-      (edge) => nodeSet.has(edge.from) && nodeSet.has(edge.to),
+  private layoutBanded(tree: TreeJson, bands: BandInput[]): void {
+    const unpinned = (n: TreeNode): TreeNode =>
+      ({ ...n, pos_x: null, pos_y: null }) as TreeNode;
+    const laid = computeBandedLayout(tree.nodes, tree.edges, bands, (ids, edges) =>
+      computeLayout(
+        ids.map(({ id }) => unpinned(this.nodesById.get(id)!)),
+        edges,
+      ),
     );
 
-    this.edges = edges;
-    this.nodes = computeLayout(nodes, edges);
-    this.nodesById = new Map(nodes.map((node) => [node.id, node]));
-    this.render();
-    this.fitView(animate);
+    const boxById = new Map(laid.bands.map((b) => [b.id, b]));
+    const placed = new Map(laid.nodes.map((p) => [p.id, p]));
+    const depthMap = computeDepths(tree.nodes, tree.edges);
+
+    this.nodes = [];
+    for (const node of tree.nodes) {
+      const p = placed.get(node.id);
+      // Listed in no band → not drawn (banded-layout's contract).
+      if (!p) continue;
+      const box = boxById.get(p.band)!;
+      let { x, y } = p;
+      const overlay = node as Partial<ChapterOverlayNode>;
+      const px = overlay.pos_x;
+      const py = overlay.pos_y;
+      if (
+        overlay.source === "chapter" &&
+        typeof px === "number" && Number.isFinite(px) &&
+        typeof py === "number" && Number.isFinite(py)
+      ) {
+        const top = box.y + BAND_LABEL_H + BAND_PAD + CARD_H / 2;
+        const bottom = box.y + box.h - BAND_PAD - CARD_H / 2;
+        // A pin left of the band would sit on the spine, so x is only kept
+        // from the band's inset edge rightwards; the outline grows to keep
+        // enclosing the card rather than leaving it floating outside.
+        x = Math.round(Math.max(px, box.x + BAND_PAD + CARD_W / 2));
+        y = Math.round(Math.min(bottom, Math.max(top, py)));
+        const right = x + CARD_W / 2 + BAND_PAD;
+        if (right > box.x + box.w) box.w = right - box.x;
+      }
+      this.nodes.push({
+        ...node,
+        x: Math.round(x),
+        y: Math.round(y),
+        depth: depthMap.get(node.id) ?? 0,
+        band: p.band,
+      });
+    }
+
+    // Lesson edges stay inside their band; a cross-band prerequisite lives in
+    // the lesson panel instead. The one drawn exception is a chapter-authored
+    // lesson hung under a base card in another band — tree-page's grouping
+    // files such a lesson beside its parent, so this only fires for bands
+    // built some other way, but the rule belongs here with the layout.
+    const bandOf = new Map(laid.nodes.map((p) => [p.id, p.band]));
+    this.edges = tree.edges.filter((e) => {
+      const a = bandOf.get(e.from);
+      const b = bandOf.get(e.to);
+      if (!a || !b) return false;
+      if (a === b) return true;
+      const child = this.nodesById.get(e.to) as Partial<ChapterOverlayNode> | undefined;
+      return child?.source === "chapter" && child.prerequisites?.[0] === e.from;
+    });
+
+    this.bands = laid.bands;
+    this.connectors = laid.connectors;
   }
 
   // --- SVG setup ---
@@ -337,35 +461,11 @@ export class TreeVisualization {
 
     const defs = this.svg.append("defs");
 
-    // Single lightweight hover glow filter (only applied to hovered node)
-    const hoverGlow = defs
-      .append("filter")
-      .attr("id", "node-hover-glow")
-      .attr("x", "-15%")
-      .attr("y", "-15%")
-      .attr("width", "130%")
-      .attr("height", "130%");
-    hoverGlow
-      .append("feDropShadow")
-      .attr("dx", "0")
-      .attr("dy", "0")
-      .attr("stdDeviation", "6")
-      .attr("flood-color", "#ffffff")
-      .attr("flood-opacity", "0.12");
-
-    // Card background gradient (subtle depth)
-    const cardGrad = defs.append("linearGradient")
-      .attr("id", "card-bg-grad")
-      .attr("x1", "0").attr("y1", "0")
-      .attr("x2", "0").attr("y2", "1");
-    cardGrad.append("stop").attr("offset", "0%").attr("stop-color", "#1a1a28");
-    cardGrad.append("stop").attr("offset", "100%").attr("stop-color", "#0f0f1a");
-
     this.g = this.svg.append("g").attr("class", "tree-root");
 
     this.zoom = d3
       .zoom<SVGSVGElement, unknown>()
-      .scaleExtent([0.15, 3])
+      .scaleExtent([0.1, 3])
       .on("zoom", (event) => {
         this.g.attr("transform", event.transform);
       });
@@ -387,9 +487,111 @@ export class TreeVisualization {
     const nodeMap = new Map<string, LayoutNode>();
     for (const n of this.nodes) nodeMap.set(n.id, n);
     const defs = this.svg.select("defs");
-    // Topic switches rerender the cards. Remove the previous generated clip
-    // paths so duplicate SVG ids never accumulate across switches.
-    defs.selectAll("clipPath[data-tree-node-clip]").remove();
+    // Generated defs are re-created per render; drop the previous set so a
+    // second render never accumulates duplicate SVG ids.
+    defs.selectAll("[data-tree-generated]").remove();
+
+    // --- Bands (outline + eyebrow label) and the chapter spine, under
+    // everything else so cards and edges always paint on top ---
+    this.bandElements.clear();
+    if (this.bands.length) {
+      const bandGroup = this.g.append("g").attr("class", "bands");
+      const minutesByBand = new Map<string, number>();
+      for (const n of this.nodes) {
+        if (!n.band) continue;
+        minutesByBand.set(n.band, (minutesByBand.get(n.band) ?? 0) + (n.estimated_minutes || 0));
+      }
+
+      for (const [i, band] of this.bands.entries()) {
+        const g = bandGroup
+          .append("g")
+          .attr("class", "tree-band")
+          .attr("data-band", band.id);
+        this.bandElements.set(band.id, g.node()!);
+
+        const outline = g.append("rect")
+          .attr("class", "tree-band__outline")
+          .attr("x", band.x)
+          .attr("y", band.y)
+          .attr("width", band.w)
+          .attr("height", band.h)
+          .attr("rx", BAND_R)
+          .attr("ry", BAND_R)
+          .attr("fill", "none")
+          .attr("stroke", band.color)
+          .attr("stroke-opacity", "0.25")
+          .attr("stroke-width", "1");
+
+        // "01 START WITH AI · 4 lessons · about 35 min". A one-column band
+        // is only 288 wide, narrower than that label, so the outline grows
+        // to the label rather than the label losing its count — every band
+        // reads the same three-part eyebrow. this.bands is mutated so the
+        // spine, fitView and frameBand see the widened box.
+        const number = String(i + 1).padStart(2, "0");
+        const minutes = minutesByBand.get(band.id) ?? 0;
+        const parts = [
+          `${number} ${band.title.toUpperCase()}`,
+          `${band.count} lesson${band.count === 1 ? "" : "s"}`,
+          minutes ? `about ${formatMinutes(minutes)}` : "",
+        ].filter(Boolean);
+        const label = g.append("text")
+          .attr("class", "tree-band__label")
+          .attr("x", band.x + BAND_PAD)
+          .attr("y", band.y + BAND_LABEL_H / 2)
+          .attr("text-anchor", "start")
+          .attr("dominant-baseline", "central")
+          .attr("fill", band.color)
+          .text(parts.join(" · "));
+        const labelW = label.node()!.getComputedTextLength() + BAND_PAD * 2;
+        if (labelW > band.w) {
+          band.w = Math.ceil(labelW);
+          outline.attr("width", band.w);
+        }
+      }
+
+      // Spine: one hairline per chapter connector, label to label, routed
+      // down the left of the bands at SPINE_X so it never crosses a card.
+      const boxById = new Map(this.bands.map((b) => [b.id, b]));
+      const spineGroup = this.g.append("g").attr("class", "band-spine");
+      const markerIds = new Map<string, string>();
+      for (const [i, c] of this.connectors.entries()) {
+        const from = boxById.get(c.from);
+        const to = boxById.get(c.to);
+        if (!from || !to) continue;
+        // One arrowhead per colour: a marker cannot inherit its path's stroke.
+        let markerId = markerIds.get(from.color);
+        if (!markerId) {
+          markerId = `band-arrow-${markerIds.size}`;
+          markerIds.set(from.color, markerId);
+          defs.append("marker")
+            .attr("data-tree-generated", "")
+            .attr("id", markerId)
+            .attr("viewBox", "0 0 10 10")
+            .attr("refX", "10")
+            .attr("refY", "5")
+            .attr("markerWidth", String(SPINE_ARROW))
+            .attr("markerHeight", String(SPINE_ARROW))
+            .attr("markerUnits", "userSpaceOnUse")
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,0 L10,5 L0,10 Z")
+            .attr("fill", from.color)
+            .attr("fill-opacity", "0.5");
+        }
+        const y0 = from.y + BAND_LABEL_H / 2;
+        const y1 = to.y + BAND_LABEL_H / 2;
+        spineGroup.append("path")
+          .attr("class", "band-spine__link")
+          .attr("data-index", String(i))
+          .attr("d", `M${from.x},${y0} L${SPINE_X},${y0} L${SPINE_X},${y1} L${to.x},${y1}`)
+          .attr("fill", "none")
+          .attr("stroke", from.color)
+          .attr("stroke-opacity", "0.5")
+          .attr("stroke-width", "1")
+          .attr("stroke-linejoin", "round")
+          .attr("marker-end", `url(#${markerId})`);
+      }
+    }
 
     // --- Edges (smooth bezier curves for organic tree feel) ---
     // Single path per edge (no duplicate glow paths — halves DOM count)
@@ -415,17 +617,6 @@ export class TreeVisualization {
       const pathD = Math.abs(x1 - x2) < 2
         ? `M${x1},${y1} L${x2},${y2}`
         : `M${x1},${y1} C${x1},${cy1} ${x2},${cy2} ${x2},${y2}`;
-
-      // Subtle glow path behind each edge
-      edgeGroup
-        .append("path")
-        .attr("d", pathD)
-        .attr("class", "tree-edge-glow")
-        .attr("stroke", fromColor)
-        .attr("stroke-opacity", "0.06")
-        .attr("fill", "none")
-        .attr("stroke-width", String(EDGE_GLOW_WIDTH))
-        .attr("stroke-linecap", "round");
 
       const pathEl = edgeGroup
         .append("path")
@@ -455,7 +646,7 @@ export class TreeVisualization {
       const thumbPad = (CARD_H - CARD_THUMB) / 2;
       defs
         .append("clipPath")
-        .attr("data-tree-node-clip", "")
+        .attr("data-tree-generated", "")
         .attr("id", clipId)
         .append("rect")
         .attr("x", -CARD_W / 2 + thumbPad)
@@ -475,7 +666,7 @@ export class TreeVisualization {
       // Cache element reference for O(1) lookups
       this.nodeElements.set(node.id, g.node()!);
 
-      // Card background with gradient
+      // Card face
       g.append("rect")
         .attr("class", "tree-node__card")
         .attr("x", -CARD_W / 2)
@@ -484,7 +675,7 @@ export class TreeVisualization {
         .attr("height", CARD_H)
         .attr("rx", CARD_R)
         .attr("ry", CARD_R)
-        .attr("fill", "url(#card-bg-grad)")
+        .attr("fill", CARD_FILL)
         .attr("stroke", color)
         .attr("stroke-width", String(root ? CARD_BORDER + 1 : CARD_BORDER))
         .attr("stroke-opacity", root ? "0.80" : "0.40");
@@ -733,71 +924,44 @@ export class TreeVisualization {
 
   // --- Hover highlighting ---
 
+  /**
+   * Hover lifts the card (stroke and face, no shadow) and its edges;
+   * nothing else changes. Every other card stays at full contrast — the
+   * canvas never dims to point at something, the same rule the dashboard
+   * canvas follows.
+   */
   private onNodeHover(node: LayoutNode, entering: boolean): void {
     const nodeId = node.id;
 
     if (!entering) {
-      // Reset all edges via cached references
       for (const e of this.edgeElements) {
+        if (e.from !== nodeId && e.to !== nodeId) continue;
         e.el.setAttribute("stroke-opacity", "0.32");
         e.el.setAttribute("stroke-width", String(EDGE_WIDTH));
       }
-      // Reset all nodes via cached references
-      for (const [id, el] of this.nodeElements) {
-        const group = d3.select(el);
-        const isRoot = group.classed("tree-node--root");
-        group.classed("tree-node--connected", false);
-        group.select(".tree-node__card")
-          .attr("filter", null)
-          .attr("stroke-opacity", isRoot ? "0.80" : "0.40")
-          .attr("fill", "url(#card-bg-grad)");
-        group.select(".tree-node__thumb").attr("opacity", "1");
-        group.selectAll(".node-title").attr("fill", "#e8eaf0");
-      }
+      const el = this.nodeElements.get(nodeId);
+      if (!el) return;
+      const group = d3.select(el);
+      const isRoot = group.classed("tree-node--root");
+      group.select(".tree-node__card")
+        .attr("stroke-opacity", isRoot ? "0.80" : "0.40")
+        .attr("fill", CARD_FILL);
+      group.selectAll(".node-title").attr("fill", "#e8eaf0");
       return;
     }
 
-    // Find connected nodes from cached edge list
-    const connectedNodeIds = new Set<string>([nodeId]);
     for (const e of this.edgeElements) {
-      if (e.from === nodeId || e.to === nodeId) {
-        connectedNodeIds.add(e.from);
-        connectedNodeIds.add(e.to);
-      }
+      if (e.from !== nodeId && e.to !== nodeId) continue;
+      e.el.setAttribute("stroke-opacity", "0.8");
+      e.el.setAttribute("stroke-width", "3");
     }
-
-    // Update edges
-    for (const e of this.edgeElements) {
-      if (e.from === nodeId || e.to === nodeId) {
-        e.el.setAttribute("stroke-opacity", "0.8");
-        e.el.setAttribute("stroke-width", "3");
-      } else {
-        e.el.setAttribute("stroke-opacity", "0.04");
-        e.el.setAttribute("stroke-width", "1.5");
-      }
-    }
-
-    // Update nodes
-    for (const [id, el] of this.nodeElements) {
-      const group = d3.select(el);
-      if (id === nodeId) {
-        group.select(".tree-node__card")
-          .attr("filter", "url(#node-hover-glow)")
-          .attr("stroke-opacity", "0.9")
-          .attr("fill", "#1e1e2e");
-        group.select(".tree-node__thumb").attr("opacity", "1");
-        group.selectAll(".node-title").attr("fill", "#ffffff");
-      } else if (connectedNodeIds.has(id)) {
-        group.classed("tree-node--connected", true);
-        group.select(".tree-node__thumb").attr("opacity", "1");
-        group.select(".tree-node__card").attr("stroke-opacity", "0.60");
-        group.selectAll(".node-title").attr("fill", "#dfe1e8");
-      } else {
-        group.select(".tree-node__thumb").attr("opacity", "0.2");
-        group.select(".tree-node__card").attr("stroke-opacity", "0.08").attr("fill", "#0e0e18");
-        group.selectAll(".node-title").attr("fill", "rgba(200,204,212,0.15)");
-      }
-    }
+    const el = this.nodeElements.get(nodeId);
+    if (!el) return;
+    const group = d3.select(el);
+    group.select(".tree-node__card")
+      .attr("stroke-opacity", "0.9")
+      .attr("fill", "#1e1e2e");
+    group.selectAll(".node-title").attr("fill", "#ffffff");
   }
 
   // --- Filtering ---
@@ -862,6 +1026,7 @@ export class TreeVisualization {
 
   fitView(animate = true): void {
     if (!this.nodes.length) return;
+    if (!this.whenSized(() => this.fitView(false))) return;
 
     const containerEl = this.opts.container;
     const w = containerEl.clientWidth;
@@ -876,6 +1041,16 @@ export class TreeVisualization {
       if (n.y + CARD_H / 2 + 10 > maxY) maxY = n.y + CARD_H / 2 + 10;
     }
 
+    // Band outlines extend past their cards, and the spine runs left of
+    // every band; both belong inside the fitted picture.
+    for (const b of this.bands) {
+      if (b.x < minX) minX = b.x;
+      if (b.y < minY) minY = b.y;
+      if (b.x + b.w > maxX) maxX = b.x + b.w;
+      if (b.y + b.h > maxY) maxY = b.y + b.h;
+    }
+    if (this.connectors.length && SPINE_X < minX) minX = SPINE_X;
+
     minX -= 30;
     maxX += 30;
     minY -= 15;
@@ -885,8 +1060,11 @@ export class TreeVisualization {
     const treeH = maxY - minY;
     const padding = 20;
 
+    // Seven stacked bands are ~5,500 world px tall; at the old 0.25 floor
+    // "All chapters" showed half of them. 0.1 keeps every outline and label
+    // in view — cards are thumbnails at that size, which an overview is.
     const scale = Math.max(
-      0.25,
+      0.1,
       Math.min((w - padding * 2) / treeW, (h - padding * 2) / treeH, 0.85)
     );
 
@@ -905,6 +1083,61 @@ export class TreeVisualization {
     }
   }
 
+  /** Every band in view — the "All chapters" / Escape target. */
+  fitAll(animate = true): void {
+    this.fitView(animate);
+  }
+
+  /**
+   * Fly until the band's outline plus label fills the canvas. Scale is
+   * clamped to [0.35, 0.9]: a seven-lesson band laid out in a row is wider
+   * than any canvas, and past 0.35 the cards stop being readable, so a wide
+   * band is framed at its left edge rather than shrunk to a strip. Returns
+   * false for an unknown band id.
+   */
+  frameBand(bandId: string, animate = true): boolean {
+    const band = this.bands.find((b) => b.id === bandId);
+    if (!band) return false;
+    if (!this.whenSized(() => this.frameBand(bandId, false))) return true;
+
+    const w = this.opts.container.clientWidth;
+    const h = this.opts.container.clientHeight;
+    const scale = Math.max(
+      0.35,
+      Math.min(w / (band.w + FRAME_PAD * 2), h / (band.h + FRAME_PAD_Y * 2), 0.9)
+    );
+    // Centre on the band unless it is wider than the view — then pin the
+    // left edge so the label and first cards are what the reader sees.
+    const fitsAcross = band.w * scale <= w - FRAME_PAD * 2 * scale;
+    const cx = band.x + band.w / 2;
+    const cy = band.y + band.h / 2;
+    const tx = fitsAcross ? w / 2 - cx * scale : FRAME_PAD * scale - band.x * scale;
+    // A band shorter than the view hangs from the top: centred on a phone
+    // it leaves half a screen of nothing above its label, and the next
+    // band peeking in below is the cue to keep going. Taller bands were
+    // fit to the height already, so centring them is the same picture.
+    const fitsDown = band.h * scale <= h - FRAME_PAD_Y * 2 * scale;
+    const ty = fitsDown ? FRAME_PAD * scale - band.y * scale : h / 2 - cy * scale;
+    const transform = d3.zoomIdentity.translate(tx, ty).scale(scale);
+
+    if (animate) {
+      this.svg
+        .transition()
+        .duration(FRAME_MS)
+        .ease(d3.easeCubicInOut)
+        .call(this.zoom.transform, transform);
+    } else {
+      this.svg.call(this.zoom.transform, transform);
+    }
+    return true;
+  }
+
+  /** Thicken a band's outline (sidebar row hover) without moving the view. */
+  highlightBand(bandId: string, active: boolean): void {
+    const el = this.bandElements.get(bandId);
+    if (el) d3.select(el).classed("tree-band--hover", active);
+  }
+
   highlightNode(nodeId: string): void {
     const node = this.nodes.find((n) => n.id === nodeId);
     if (!node) return;
@@ -916,14 +1149,23 @@ export class TreeVisualization {
     this.svg.transition().duration(750).call(this.zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
   }
 
-  flyToNode(nodeId: string): void {
+  /**
+   * Centre a card in the canvas — or, given `window` (container px, top to
+   * bottom), in that strip: a phone's panel is a bottom sheet over most of
+   * the canvas, and a card centred under it leaves a different lesson
+   * peeking out on top. The card is scaled to fit the strip, never below
+   * 0.6 where the title stops being readable.
+   */
+  flyToNode(nodeId: string, window?: { top: number; bottom: number }): void {
     const node = this.nodes.find((n) => n.id === nodeId);
     if (!node) return;
     const w = this.opts.container.clientWidth;
     const h = this.opts.container.clientHeight;
-    const scale = 1.1;
+    const top = window?.top ?? 0;
+    const bottom = window?.bottom ?? h;
+    const scale = Math.min(1.1, Math.max(0.6, (bottom - top - 24) / CARD_H));
     const tx = w / 2 - node.x * scale;
-    const ty = h / 2 - node.y * scale;
+    const ty = (top + bottom) / 2 - node.y * scale;
     this.svg.transition().duration(800).ease(d3.easeCubicInOut).call(this.zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
   }
 

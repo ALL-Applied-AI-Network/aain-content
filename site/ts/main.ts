@@ -201,6 +201,10 @@ const CHAPTER_FETCH_TIMEOUT_MS = 6000;
 export interface ChapterContext {
   slug: string;
   name: string;
+  /** The hub's primary colour (chapter_hub_configs.theme_primary) —
+   *  paints the trailing "{Club} lessons" band. Optional: older API
+   *  builds omit it, and a chapter without a hub config sends null. */
+  theme_primary?: string | null;
 }
 
 /** Node shape served by /api/public/learning-tree/{slug} (the v1 shape). */
