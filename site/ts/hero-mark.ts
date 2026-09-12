@@ -147,6 +147,7 @@ export function initHeroMark(host: HTMLElement): () => void {
   // ── pointer ───────────────────────────────────────────────────────────
   let mx = 0, my = 0, tmx = 0, tmy = 0;
   let overWord = false, wasOver = false, hoverT = 0, floodAt = -1;
+  let pendingBurst: [number, number] | null = null;
   const onMove = (e: PointerEvent) => {
     const r = cv.getBoundingClientRect();
     tmx = (e.clientX - r.left) / r.width - 0.5;
@@ -161,10 +162,25 @@ export function initHeroMark(host: HTMLElement): () => void {
   const onLeave = () => { overWord = false; };
   // Touch has no hover: a tap anywhere on the mark plays the same sequence.
   const onDown = () => { overWord = true; setTimeout(() => { overWord = false; }, 1400); };
+  // The home hero box is pointer-events:none so the mark never blocks the copy,
+  // which means the canvas itself never sees a click. Listen on the window and
+  // hit-test the mark's own box instead, yielding to anything clickable.
+  const onEggDown = (e: PointerEvent) => {
+    if (!EGG || innerWidth < 1024) return;
+    const t = e.target as HTMLElement | null;
+    if (t && t.closest && t.closest("a,button,input,textarea,select,label,[role=button]")) return;
+    const r = cv.getBoundingClientRect();
+    const px = e.clientX - r.left, py = e.clientY - r.top;
+    const pad = 26 * scale;             // the mark, not the empty hero around it
+    if (px < ox - pad || px > ox + G.w * scale + pad) return;
+    if (py < oy - pad || py > oy + G.h * scale + pad) return;
+    pendingBurst = [px, py];
+  };
   if (!reduce) {
     addEventListener("pointermove", onMove, { passive: true });
     cv.addEventListener("pointerleave", onLeave);
     cv.addEventListener("pointerdown", onDown, { passive: true });
+    addEventListener("pointerdown", onEggDown, { passive: true });
   }
 
   // ── the wordmark ──────────────────────────────────────────────────────
@@ -225,6 +241,88 @@ export function initHeroMark(host: HTMLElement): () => void {
     const dy = reduce ? 0 : Math.cos(time * 0.00013 + n.phase * 1.3) * 1.8 * n.z;
     return [ox + n.x * scale + px + dx, oy + n.y * scale + py + dy];
   }
+
+  // ── the easter egg: click the mark and it throws glitter ──────────────
+  // Every node tosses a few shards, the ones nearest the click going first, so
+  // the sparkle ripples out through the logo's own geometry instead of sitting
+  // on top of it as generic confetti. Home only, and never under reduced motion.
+  const EGG = !reduce && host.classList.contains("hero-3d--home");
+  type Spark = {
+    x: number; y: number; vx: number; vy: number;
+    life: number; ttl: number; size: number; rot: number; vr: number;
+    col: string; round: boolean;
+  };
+  const sparks: Spark[] = [];
+  const SPARK_CAP = 620;
+  const unit = () => Math.max(1.8, Math.min(W, H) * 0.0062);   // one glitter unit, in px
+  let ringAt = -1, ringX = 0, ringY = 0;
+  const EGG_COLS = ["#22D3EE", "#3B82F6", "#A855F7", "#EC4899", "#F4F4F6"];
+
+  function burst(px: number, py: number, time: number) {
+    ringAt = time; ringX = px; ringY = py;
+    for (const n of G.nodes) {
+      const [nx, ny] = pos(n, time);
+      const U = unit();
+      const delay = Math.hypot(nx - px, ny - py) * 0.40;   // the ripple
+      const count = 4 + ((Math.random() * 4) | 0);
+      for (let k = 0; k < count; k++) {
+        const a = Math.random() * Math.PI * 2, sp = U * (0.26 + Math.random() * 0.92);
+        sparks.push({
+          x: nx, y: ny,
+          vx: Math.cos(a) * sp + (nx - px) * 0.010,
+          vy: Math.sin(a) * sp + (ny - py) * 0.010 - U * 0.22,
+          life: -delay, ttl: 950 + Math.random() * 850,
+          size: U * (0.52 + Math.random() * 1.42),
+          rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.3,
+          col: Math.random() < 0.5 ? n.c : EGG_COLS[(Math.random() * EGG_COLS.length) | 0],
+          round: Math.random() < 0.38,
+        });
+      }
+    }
+    if (sparks.length > SPARK_CAP) sparks.splice(0, sparks.length - SPARK_CAP);
+  }
+
+  function drawEgg(time: number, dt: number) {
+    if (ringAt >= 0) {                    // a quick shockwave off the click point
+      const e = (time - ringAt) / 620;
+      if (e < 1) {
+        ctx!.save(); ctx!.globalCompositeOperation = "lighter";
+        ctx!.globalAlpha = (1 - e) * 0.5; ctx!.strokeStyle = "#22D3EE";
+        ctx!.lineWidth = Math.max(1, 2.4 * scale * (1 - e));
+        ctx!.beginPath(); ctx!.arc(ringX, ringY, 8 + e * 190 * scale, 0, 7); ctx!.stroke();
+        ctx!.restore();
+      } else ringAt = -1;
+    }
+    if (!sparks.length) return;
+    ctx!.save(); ctx!.globalCompositeOperation = "lighter";
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const s = sparks[i];
+      s.life += dt;
+      if (s.life < 0) continue;                                  // still waiting its turn
+      if (s.life > s.ttl) { sparks.splice(i, 1); continue; }
+      s.x += s.vx * dt * 0.06; s.y += s.vy * dt * 0.06;
+      s.vy += 0.00055 * dt * unit();                             // a little gravity
+      s.vx *= 0.992; s.vy *= 0.992; s.rot += s.vr * dt * 0.06;
+      const p = s.life / s.ttl;
+      const twinkle = 0.5 + 0.5 * Math.sin(s.life * 0.022 + s.rot * 3);
+      const al = Math.max(0, (1 - p * p) * twinkle);
+      const r = s.size * (1 - p * 0.35);
+      ctx!.fillStyle = s.col;
+      ctx!.globalAlpha = al * 0.22;                              // halo
+      ctx!.beginPath(); ctx!.arc(s.x, s.y, r * 2.3, 0, 7); ctx!.fill();
+      ctx!.globalAlpha = al;                                     // core
+      if (s.round) { ctx!.beginPath(); ctx!.arc(s.x, s.y, r * 0.82, 0, 7); ctx!.fill(); }
+      else {                                                     // a crossed glint
+        ctx!.save(); ctx!.translate(s.x, s.y); ctx!.rotate(s.rot);
+        ctx!.fillRect(-r * 1.35, -r * 0.26, r * 2.7, r * 0.52);
+        ctx!.fillRect(-r * 0.26, -r * 1.35, r * 0.52, r * 2.7);
+        ctx!.restore();
+      }
+    }
+    ctx!.restore();
+  }
+
+  let lastNow = 0;
 
   function frame(now: number) {
     if (!running) return;
@@ -503,6 +601,13 @@ export function initHeroMark(host: HTMLElement): () => void {
     }
     ctx!.globalAlpha = 1;
 
+    if (EGG) {
+      const dt = lastNow ? Math.min(now - lastNow, 50) : 16;
+      if (pendingBurst) { burst(pendingBurst[0], pendingBurst[1], time); pendingBurst = null; }
+      drawEgg(time, dt);
+    }
+    lastNow = now;
+
     if (reduce) return;                 // one frame is enough
     raf = requestAnimationFrame(frame);
   }
@@ -519,6 +624,7 @@ export function initHeroMark(host: HTMLElement): () => void {
     removeEventListener("pointermove", onMove);
     cv.removeEventListener("pointerleave", onLeave);
     cv.removeEventListener("pointerdown", onDown);
+    removeEventListener("pointerdown", onEggDown);
     host.classList.remove("loaded"); cv.remove();
   };
 }
