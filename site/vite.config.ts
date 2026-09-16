@@ -56,6 +56,17 @@ export default defineConfig({
     },
   },
   plugins: [
+    // One session-aware navigation implementation for every public page.
+    {
+      name: "site-account-navigation",
+      transformIndexHtml: {
+        order: "pre" as const,
+        handler(html: string) {
+          if (!html.includes('class="nav__cta"')) return html;
+          return html.replace("</body>", '<script type="module" src="./ts/site-account.ts"></script></body>');
+        },
+      },
+    },
     // Inline the Getting Started guide into /start-a-chapter at build
     // time. The markdown in content/playbooks/getting-started/index.md is
     // the single source of truth for how to run a chapter — the public
