@@ -59,6 +59,33 @@ function renderActionHeader(meta: PlaybookMeta, slug: string): string {
     )
     .join("");
 
+  // The film, when this playbook has one. It sits directly under the title so a
+  // reader who would rather watch is offered that before the wall of text starts.
+  const film = meta.film
+    ? `
+      <div class="pb-film">
+        <video
+          class="pb-film__video"
+          controls
+          preload="none"
+          playsinline
+          poster="${meta.film.poster}"
+          aria-label="${escapeHtml(meta.film.title)} — ${meta.film.runtime}, silent"
+        >
+          <source src="${meta.film.src}" type="video/mp4" />
+          <p>Your browser cannot play this video.
+             <a href="${meta.film.src}">Download it instead</a>.</p>
+        </video>
+        <div class="pb-film__meta">
+          <span class="pb-film__kicker">Watch instead</span>
+          <p class="pb-film__blurb">${escapeHtml(meta.film.blurb)}</p>
+          <p class="pb-film__note">${meta.film.runtime} &middot; silent, so it reads with the sound off &middot;
+            <a href="${meta.film.src}" download>download</a></p>
+        </div>
+      </div>
+    `
+    : "";
+
   return `
     <section class="pb-header" style="--pb-accent: ${meta.accent};">
       <div class="pb-header__accent-bar"></div>
@@ -70,6 +97,7 @@ function renderActionHeader(meta: PlaybookMeta, slug: string): string {
           <p class="pb-header__tagline">${meta.tagline}</p>
         </div>
       </div>
+      ${film}
       <div class="pb-header__stats">${stats}</div>
       <div class="pb-header__actions-label">Jump to a stage:</div>
       <div class="pb-header__actions">${actions}</div>

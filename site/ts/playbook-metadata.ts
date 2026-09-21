@@ -25,6 +25,21 @@ export interface PlaybookStat {
   label: string;
 }
 
+/** A film that covers the same ground as the playbook, for people who would
+ *  rather watch than read. Silent and captioned on screen, so it works muted. */
+export interface PlaybookFilm {
+  /** Path to the mp4, relative to the site root. */
+  src: string;
+  /** Poster frame shown before playback. */
+  poster: string;
+  /** Runtime as it reads on screen — e.g. "3:39". */
+  runtime: string;
+  /** What the film is called, which may differ from the playbook's title. */
+  title: string;
+  /** One line on what watching it gets you, in the playbook's own voice. */
+  blurb: string;
+}
+
 export interface PlaybookMeta {
   slug: string;
   title: string;
@@ -39,6 +54,8 @@ export interface PlaybookMeta {
   actions: [PlaybookAction, PlaybookAction, PlaybookAction];
   /** The three things a new chapter president needs from this playbook, in one screen. */
   keys: [string, string, string];
+  /** Optional: the film that covers this playbook. Not every playbook has one. */
+  film?: PlaybookFilm;
 }
 
 export const PLAYBOOKS: PlaybookMeta[] = [
@@ -69,6 +86,13 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "First semester", sub: "Run the arc", anchor: "#first-semester" },
       { label: "Year two", sub: "Make it last", anchor: "#year-two" },
     ],
+    film: {
+      src: "./public/film/your-first-five-weeks.mp4",
+      poster: "./public/film/your-first-five-weeks.jpg",
+      runtime: "3:39",
+      title: "Your First Five Weeks",
+      blurb: "The five weeks that decide the year, week by week, with the calendar the arc runs on.",
+    },
   },
   {
     slug: "sponsorship",
@@ -124,6 +148,13 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "Run it", sub: "48 hours on the clock", anchor: "#run-it" },
       { label: "Wrap it", sub: "Handoff and retro", anchor: "#wrap-it" },
     ],
+    film: {
+      src: "./public/film/how-to-run-a-build-event.mp4",
+      poster: "./public/film/how-to-run-a-build-event.jpg",
+      runtime: "3:02",
+      title: "How to Run a Build Event",
+      blurb: "Nine decisions behind a hackathon or an Innovation Lab, answered side by side.",
+    },
   },
   {
     slug: "speaker-series",
@@ -151,6 +182,13 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "Run the event", sub: "Day-of script", anchor: "#run-the-event" },
       { label: "Build the series", sub: "Make it recurring", anchor: "#build-the-series" },
     ],
+    film: {
+      src: "./public/film/how-to-run-a-speaker-event.mp4",
+      poster: "./public/film/how-to-run-a-speaker-event.jpg",
+      runtime: "3:11",
+      title: "How to Run Speaker Events",
+      blurb: "The slot, the ask, the two weeks of promotion, and the hour itself drawn to scale.",
+    },
   },
   {
     slug: "innovation-labs",
@@ -178,6 +216,13 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "Run the lab", sub: "8-week competition", anchor: "#run-the-lab" },
       { label: "Showcase + handoff", sub: "Judge and deliver", anchor: "#showcase-and-handoff" },
     ],
+    film: {
+      src: "./public/film/how-to-run-a-build-event.mp4",
+      poster: "./public/film/how-to-run-a-build-event.jpg",
+      runtime: "3:02",
+      title: "How to Run a Build Event",
+      blurb: "Nine decisions behind an Innovation Lab or a hackathon, answered side by side.",
+    },
   },
   {
     slug: "research-groups",

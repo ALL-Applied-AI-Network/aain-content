@@ -403,6 +403,51 @@
   margin: 0;
 }
 
+/* ---------------------------------------------------------------------------
+   The film. Every playbook that has one offers it directly under the title, so
+   somebody who would rather watch than read is given that before the wall of
+   text starts. The films are silent by design, so the note says so — otherwise
+   a viewer assumes their sound is broken.
+   --------------------------------------------------------------------------- */
+.pb-film {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--pb-accent, var(--border-subtle));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--pb-accent, #888) 6%, transparent);
+}
+
+.pb-film__video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border-radius: 6px;
+  background: #0b0b0d;
+}
+
+.pb-film__meta { display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; }
+
+.pb-film__kicker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--pb-accent, inherit);
+}
+
+.pb-film__blurb { margin: 0; font-size: 0.95rem; line-height: 1.45; }
+.pb-film__note  { margin: 0; font-size: 0.8rem; opacity: 0.72; }
+.pb-film__note a { color: inherit; }
+
+@media (max-width: 720px) {
+  .pb-film { grid-template-columns: 1fr; gap: 0.85rem; }
+}
+
 .pb-header__stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

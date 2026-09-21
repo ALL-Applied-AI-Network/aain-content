@@ -393,3 +393,50 @@
     transform: none;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   THE FILMS — the watch-instead route for the playbooks a new chapter uses
+   first. Silent by design, so the meta line says so; a viewer who hears
+   nothing otherwise assumes the page is broken.
+   --------------------------------------------------------------------------- */
+.gs-films {
+  padding: 3rem 0 4rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.gs-films__title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+}
+
+.gs-films__lede {
+  margin: 0 0 1.75rem;
+  max-width: 54ch;
+  opacity: 0.78;
+}
+
+.gs-film-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.gs-film-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.gs-film-card__video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: #0b0b0d;
+}
+
+.gs-film-card__title { margin: 0.35rem 0 0; font-size: 1.05rem; }
+.gs-film-card__body  { margin: 0; font-size: 0.92rem; line-height: 1.45; opacity: 0.84; }
+.gs-film-card__meta  { margin: 0; font-size: 0.8rem; opacity: 0.7; }
