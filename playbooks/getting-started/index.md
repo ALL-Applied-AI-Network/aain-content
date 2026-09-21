@@ -201,7 +201,7 @@ Year two is also when the club's value proposition started attracting unprompted
 
 **Pick your successor by mid-year.** Not the last week. The handoff should overlap — your successor shadows you for at least one event, runs one alongside you, then runs one with you shadowing them.
 
-**Build recurring sponsor relationships, not one-offs.** Every speaker, every hackathon partner, every innovation lab sponsor should get a thank-you email within 48 hours and a "want to do this again next year?" ask within 30 days. Brady Corp came back for Spring 2025 because we asked while the impression was warm.
+**Build recurring sponsor relationships, not one-offs.** Every speaker, every hackathon partner, every innovation lab sponsor should get a thank-you email within 48 hours and a "want to do this again next year?" ask within 30 days. MAIC had an Innovation Lab partner in every term from Fall 2024 through Fall 2025 because it kept making that ask while the impression was warm.
 
 **Stay in the story.** Once you have outcomes (attendance numbers, research publications, hackathon winners), pitch your story to your university's communications office. Our three MSOE news articles about Hacksgiving brought in sponsor interest we never had to cold-pitch.
 

@@ -6,7 +6,14 @@ Innovation Labs sit between Hacksgiving (48 hours, nonprofit, AI-for-good) and R
 
 The inaugural Innovation Lab ran October 10 – December 7, 2024 with **Brady Corporation**. Their director of AI operations brought us a real challenge: *predict the volume of liquid in a container from a single image.* Brady's customers measure fluids in lab and industrial settings, and current methods are slow. We handed students a YOLOv8 segmentation baseline and 8 weeks. 60 students from MSOE and UW-Milwaukee, ~7 teams. Liquid Boogaloo won ($2.5K, 9 members), Liquid Lens took second ($1.5K), a UW-Milwaukee team took third ($1K). Every participant got a recommendation letter and a Brady Corp T-shirt. Ben Paulson and Adam Haile co-organized.
 
-Brady came back for Spring 2025. The format works: sponsors get early access to talent, students get a portfolio project with a real company name on it, and MAIC gets a funded track that complements Hacksgiving.
+The format works, and it recurs: four Labs across three terms, Fall 2024 through Fall 2025. Sponsors get early access to talent, students get a portfolio project with a real company name on it, and MAIC gets a funded track that complements Hacksgiving.
+
+| Term | Partner |
+|---|---|
+| Fall 2024 | Brady Corporation |
+| Spring 2025 | Juno |
+| Spring 2025 | Databricks / Persistent Systems |
+| Fall 2025 | Xorbix |
 
 **Why a student signs up — say this part out loud.** A Lab is the easiest way into hands-on work and it is aimed squarely at newer students. You do not need experience. You are put on a team with upperclassmen rather than left to work it out alone. The problem is a real one a company actually has, not a toy dataset. It takes real work, and it is worth being honest about that. And eight weeks means a first-year who signs up in October has a serious portfolio piece before Christmas break — with a company's name on it. That is the pitch; the sponsor logo is the occasion. The rest of it is in the [Getting Started playbook](https://all-ai-network.org/playbook.html?path=playbooks/getting-started/index.md).
 
@@ -128,7 +135,7 @@ Final presentations ran Dec 7, 2024 at Diercks Hall. Each team got 8 minutes: 5-
 
 Liquid Boogaloo won with the cleanest application of YOLOv8 + a downstream volume estimation head that handled colored liquids and opaque containers. $2.5K split 9 ways. Everyone got a participation rec letter and a Brady Corp T-shirt. The winning team delivered cleaned-up code to Brady within 2 weeks.
 
-Brady came back for Spring 2025 because the engagement was professional and the output was real. The showcase mattered, but the handoff mattered more.
+The engagement was professional and the output was real, and a finished handoff is what the next sponsor conversation gets built on — MAIC had a new Lab partner the following term, and the one after that. The showcase mattered, but the handoff mattered more.
 
 ### The repeatable version
 
@@ -169,7 +176,7 @@ Brady came back for Spring 2025 because the engagement was professional and the 
 
 **Convert to recurring:**
 - 30 days after showcase, email the sponsor: "Want to do this again next year?"
-- Brady came back for Spring 2025 because we asked within 30 days of the Fall 2024 showcase
+- Ask while the impression is still warm. That habit is why MAIC had a Lab partner in every term from Fall 2024 through Fall 2025
 
 ### What we'd do differently
 

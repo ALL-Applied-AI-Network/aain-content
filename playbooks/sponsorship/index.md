@@ -22,7 +22,7 @@ The rest of this playbook is how we learned that, and what we would do different
 
 **Direct Supply, our primary sponsor, speaks and funds.** They send engineers to our speaker events regularly and they cover our food. The two are not separate relationships — the speaking is what keeps the funding warm, and the funding is what makes the speaking easy to ask for.
 
-**Brady Corp came through a warm intro and a speaker slot.** An MSOE alum in Brady's engineering leadership reached out after hearing about Hacksgiving. They spoke at MAIC in mid-2024. The first real scoping meeting was July 2024, with their director of AI operations, their director of business operations, a product manager interested in AI, and two engineers — one also an MSOE alum. Ben opened by recapping what MAIC actually was, then offered three sponsorship pathways: speaker events, Innovation Labs, and Research Groups. Brady was interested in all three and landed on the Innovation Lab at $5K. They came back for Spring 2025.
+**Brady Corp came through a warm intro and a speaker slot.** An MSOE alum in Brady's engineering leadership reached out after hearing about Hacksgiving. They spoke at MAIC in mid-2024. The first real scoping meeting was July 2024, with their director of AI operations, their director of business operations, a product manager interested in AI, and two engineers — one also an MSOE alum. Ben opened by recapping what MAIC actually was, then offered three sponsorship pathways: speaker events, Innovation Labs, and Research Groups. Brady was interested in all three and landed on the Innovation Lab at $5K.
 
 **The hardest part was not the ask.** It was the NDA. Brady's CEO and president were nervous about competitors seeing student code, and we spent two weeks in legal back-and-forth in September that should have happened in week one. We've moved NDA discussion into the first meeting ever since.
 
@@ -45,7 +45,7 @@ In the order they've worked for us:
 
 - **Ask for a speaker slot first, not money.** It is a smaller ask, it gets you in the room, and it gives them a reason to care before you name a number.
 - **Thank them within 48 hours** of the event, with photos and the attendance number.
-- **Follow up within 30 days**: "would your team want to do this again next year?" Brady came back because we asked while the impression was still warm.
+- **Follow up within 30 days**: "would your team want to do this again next year?" Ask while the impression is still warm — that habit is why MAIC had an Innovation Lab partner in every term from Fall 2024 through Fall 2025.
 - **Open the money conversation from what they saw**, not from a tier sheet. The tiers are how you close, not how you open.
 
 ### The first real meeting
