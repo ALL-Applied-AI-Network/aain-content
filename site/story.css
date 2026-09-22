@@ -151,6 +151,27 @@ body.story { background: #0c0c0e; }
 .mockwrap .profile-mock { box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 1px rgba(34,211,238,.18); }
 @media (max-width: 900px) { .numgrid { grid-template-columns: 1fr; } .mockwrap { justify-self: start; } }
 .show__qhead { display: flex; align-items: center; gap: .9rem; }
+
+/* ── the tour: one player, two films ──────────────────────────────────────
+   preload="none" + a poster, so the section costs one image until someone
+   presses play. The end card only appears on 'ended'; its scrim is
+   pointer-events:none so a click anywhere but the button still reaches the
+   video's own play/pause. It stops short of the bottom so the browser's own
+   control bar stays visible, and it is opaque because the last baked frame
+   carries the same words — a translucent panel reads as two overlapping
+   copies of one sentence. */
+.tour { max-width: 1040px; }
+.tour__frame { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.10); background: #0b0b0d; box-shadow: 0 30px 70px rgba(0,0,0,.5); }
+.tour__video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0b0b0d; }
+.tour__end { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 1rem; pointer-events: none;
+  background: linear-gradient(180deg, #0b0b0d 0 68%, rgba(11,11,13,0) 86%); }
+.tour__end[hidden] { display: none; }
+.tour__endbtn { pointer-events: auto; cursor: pointer; font: 600 .95rem/1 "Space Grotesk", sans-serif; letter-spacing: -.01em; color: #06232a; background: #22d3ee; border: 0; border-radius: 10px; padding: .85rem 1.25rem; max-width: 100%; }
+.tour__endbtn::before { content: "\25B6"; margin-right: .5rem; font-size: .8em; }
+.tour__endbtn:focus-visible { outline: 2px solid #f4f4f6; outline-offset: 3px; }
+.tour__meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.1rem; margin: .9rem 0 0; font: 400 .82rem/1.5 "JetBrains Mono", monospace; color: rgba(244,244,246,.55); }
+.tour__link { color: #22d3ee; text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.5); }
+@media (max-width: 560px) { .tour__endbtn { font-size: .8rem; padding: .65rem .85rem; } }
 .close-band p.doors__alt { margin: 2rem auto 0; font: 500 .8rem/1.4 "JetBrains Mono", monospace; color: rgba(244,244,246,.55); text-align: center; }
 .close-band p.doors__alt a { color: #22d3ee; text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.5); }
 .close-band .small .nowrap { white-space: nowrap; display: inline-block; }

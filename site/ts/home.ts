@@ -5,6 +5,7 @@
 import { mountFx } from "./fx";
 import { storiesByDate, fmtDate } from "./stories";
 import { mountSequencer } from "./sequence";
+import { mountTour } from "./tour";
 
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -100,5 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initReveal();
   initCounters();
   initPipeline();
+  mountTour();
   mountFx();
 });
