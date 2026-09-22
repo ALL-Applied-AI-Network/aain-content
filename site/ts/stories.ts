@@ -27,7 +27,7 @@ export const STORIES: Story[] = [
     image: "./public/web/students-working.jpg", blurb: "Seventy students in ten teams built AI tools for Discovery World over a weekend. First prize $3,000.", kind: "article" },
   { title: "Mount Pleasant's John Cisler earns 3rd place in MSOE's Rosie Supercomputer Super Challenge", outlet: "Racine County Eye", date: "2024-05-21",
     url: "https://racinecountyeye.com/2024/05/21/john-cisler-msoe-supercomputer/",
-    image: "./public/web/research-presentation.jpg", blurb: "Racine's paper on NourishNet, the club's food-price forecaster, taking third at the 2024 Super Challenge.", kind: "article" },
+    image: "./public/web/john-cisler-super-challenge.png", pos: "50% 40%", blurb: "Racine's paper on NourishNet, the club's food-price forecaster, taking third at the 2024 Super Challenge.", kind: "article" },
   { title: "Rosie Supercomputer Super Challenge 2024: NourishNet", outlet: "MSOE on Vimeo", date: "2024-05-15",
     url: "https://vimeo.com/946650435",
     image: "./public/art/tile-stage.jpg", blurb: "The NourishNet team presents food-price forecasting, filmed at the 2024 Super Challenge.", kind: "video" },
