@@ -152,26 +152,40 @@ body.story { background: #0c0c0e; }
 @media (max-width: 900px) { .numgrid { grid-template-columns: 1fr; } .mockwrap { justify-self: start; } }
 .show__qhead { display: flex; align-items: center; gap: .9rem; }
 
-/* ── the tour: one player, two films ──────────────────────────────────────
-   preload="none" + a poster, so the section costs one image until someone
-   presses play. The end card only appears on 'ended'; its scrim is
-   pointer-events:none so a click anywhere but the button still reaches the
-   video's own play/pause. It stops short of the bottom so the browser's own
-   control bar stays visible, and it is opaque because the last baked frame
-   carries the same words — a translucent panel reads as two overlapping
-   copies of one sentence. */
-.tour { max-width: 1040px; }
-.tour__frame { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.10); background: #0b0b0d; box-shadow: 0 30px 70px rgba(0,0,0,.5); }
+/* ── the tour: an embedded moving screenshot, inside the close band ───────
+   No control bar, no chrome: the 33-second cut is silent, plays itself once
+   when the frame scrolls into view (tour.ts attaches the source then, so a
+   visitor who never gets here pays no video bytes), and rests on the film's
+   own baked end card. The whole frame is one link to the full 1:27
+   walkthrough, which does get controls and sound. Narrower than the doors
+   above it on purpose — it answers them, it does not outrank them. */
+.tour { max-width: 660px; margin: 1.7rem auto 0; }
+.tour__frame { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.10); background: #0b0b0d; box-shadow: 0 20px 46px rgba(0,0,0,.45); }
 .tour__video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0b0b0d; }
-.tour__end { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 1rem; pointer-events: none;
-  background: linear-gradient(180deg, #0b0b0d 0 68%, rgba(11,11,13,0) 86%); }
-.tour__end[hidden] { display: none; }
-.tour__endbtn { pointer-events: auto; cursor: pointer; font: 600 .95rem/1 "Space Grotesk", sans-serif; letter-spacing: -.01em; color: #06232a; background: #22d3ee; border: 0; border-radius: 10px; padding: .85rem 1.25rem; max-width: 100%; }
-.tour__endbtn::before { content: "\25B6"; margin-right: .5rem; font-size: .8em; }
-.tour__endbtn:focus-visible { outline: 2px solid #f4f4f6; outline-offset: 3px; }
-.tour__meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.1rem; margin: .9rem 0 0; font: 400 .82rem/1.5 "JetBrains Mono", monospace; color: rgba(244,244,246,.55); }
+/* The cue sits in the middle of the frame and only while the picture is
+   still: the film's own top-right corner carries the browser mock's toolbar
+   pills, so a chip parked there collides with them, and its bottom edge runs
+   a caption band the whole way. Centred on the poster it reads as a play
+   button; once the preview is running it gets out of the way, and the film's
+   baked end card is the affordance at rest. Hover or keyboard focus brings
+   it back. It is an <a> to the mp4, so it still works with JS off. */
+.tour__hit { position: absolute; inset: 0; width: 100%; display: flex; align-items: center; justify-content: center; padding: .7rem; border: 0; background: none; cursor: pointer; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.tour__hit[hidden] { display: none; }
+.tour__hit:focus-visible { outline: 2px solid #f4f4f6; outline-offset: 3px; }
+.tour__hitlabel { font: 500 .74rem/1 "JetBrains Mono", monospace; color: #e9fbff; background: rgba(8,10,12,.78); border: 1px solid rgba(34,211,238,.45); border-radius: 999px; padding: .52rem .85rem; transition: opacity .35s ease; }
+.tour__hitlabel::before { content: "\25B6"; margin-right: .45rem; font-size: .85em; color: #22d3ee; }
+/* moving picture, or the film's own end card: stand down either way. */
+.tour.is-playing .tour__hitlabel,
+.tour.is-resting .tour__hitlabel { opacity: 0; }
+.tour__hit:hover .tour__hitlabel,
+.tour__hit:focus-visible .tour__hitlabel { opacity: 1; }
+.close-band p.tour__meta { max-width: 40rem; margin: .75rem auto 0; font: 400 .78rem/1.5 "JetBrains Mono", monospace; color: rgba(244,244,246,.55); text-align: center; }
 .tour__link { color: #22d3ee; text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.5); }
-@media (max-width: 560px) { .tour__endbtn { font-size: .8rem; padding: .65rem .85rem; } }
+@media (prefers-reduced-motion: reduce) { .tour__hitlabel { transition: none; } }
+@media (max-width: 560px) {
+  .tour { margin-top: 1.4rem; }
+  .tour__hitlabel { font-size: .7rem; padding: .46rem .72rem; }
+}
 .close-band p.doors__alt { margin: 2rem auto 0; font: 500 .8rem/1.4 "JetBrains Mono", monospace; color: rgba(244,244,246,.55); text-align: center; }
 .close-band p.doors__alt a { color: #22d3ee; text-decoration: none; border-bottom: 1px solid rgba(34,211,238,.5); }
 .close-band .small .nowrap { white-space: nowrap; display: inline-block; }
