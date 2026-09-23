@@ -52,7 +52,7 @@ section[id] { scroll-margin-top: calc(var(--nav-height, 56px) + 16px); }
 .about-list li { position: relative; padding-left: 1.4rem; font-size: 1rem; line-height: 1.55; color: var(--lp-ink-2); }
 .about-list li::before { content: ""; position: absolute; left: 0; top: .6rem; width: .5rem; height: .5rem; border-radius: 50%; background: var(--lp-cyan); box-shadow: 0 0 10px rgba(34, 211, 238, .55); }
 
-.team { list-style: none; margin: clamp(2.5rem, 5vw, 3.5rem) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.team { list-style: none; margin: clamp(2.5rem, 5vw, 3.5rem) 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; max-width: 52rem; }
 .team__p { padding: 1.2rem 1.3rem 1.35rem; border-radius: 16px; background: var(--lp-card); border: 1px solid var(--lp-line); }
 .team__p h3 { font: 700 1.1rem/1.2 var(--lp-display); color: var(--lp-ink); margin: 0; }
 .team__p p { margin: 0; font-size: .93rem; line-height: 1.55; color: var(--lp-ink-2); }
