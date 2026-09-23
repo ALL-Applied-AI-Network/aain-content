@@ -172,22 +172,49 @@ export function initHeroMark(host: HTMLElement): () => void {
   // The home hero box is pointer-events:none so the mark never blocks the copy,
   // which means the canvas itself never sees a click. Listen on the window and
   // hit-test the mark's own box instead, yielding to anything clickable.
-  const onEggDown = (e: PointerEvent) => {
-    if (!EGG || innerWidth < 1024) return;
+  // (This used to be desktop-only: on phones the mark sat under the paragraph,
+  // so a tap on the text would have set it off. Phones now stack the mark
+  // below the copy, so it has its own space at every width.)
+  const onMark = (e: PointerEvent): [number, number] | null => {
     const t = e.target as HTMLElement | null;
-    if (t && t.closest && t.closest("a,button,input,textarea,select,label,[role=button]")) return;
+    if (t && t.closest && t.closest("a,button,input,textarea,select,label,[role=button]")) return null;
     const r = cv.getBoundingClientRect();
     const px = e.clientX - r.left, py = e.clientY - r.top;
     const pad = 26 * scale;             // the mark, not the empty hero around it
-    if (px < ox - pad || px > ox + G.w * scale + pad) return;
-    if (py < oy - pad || py > oy + G.h * scale + pad) return;
-    pendingBurst = [px, py];
+    if (px < ox - pad || px > ox + G.w * scale + pad) return null;
+    if (py < oy - pad || py > oy + G.h * scale + pad) return null;
+    return [px, py];
   };
+  // Mouse: burst on press (hover already plays the charge). Touch and pen:
+  // wait for a real tap, so a scroll that happens to start on the mark does
+  // nothing, and since touch has no hover, the tap plays the charge as well.
+  let tap: { id: number; x: number; y: number; t: number } | null = null;
+  let tapTimer = 0;
+  const onEggDown = (e: PointerEvent) => {
+    if (!EGG) return;
+    if (e.pointerType === "mouse") { const p = onMark(e); if (p) pendingBurst = p; return; }
+    tap = { id: e.pointerId, x: e.clientX, y: e.clientY, t: performance.now() };
+  };
+  const onEggUp = (e: PointerEvent) => {
+    if (!tap || e.pointerId !== tap.id) return;
+    const moved = Math.hypot(e.clientX - tap.x, e.clientY - tap.y), held = performance.now() - tap.t;
+    tap = null;
+    if (moved > 12 || held > 600) return;
+    const p = onMark(e);
+    if (!p) return;
+    pendingBurst = p;
+    overWord = true;
+    clearTimeout(tapTimer);
+    tapTimer = window.setTimeout(() => { overWord = false; }, 1400);
+  };
+  const onEggCancel = () => { tap = null; };   // the browser took it as a scroll
   if (!reduce) {
     addEventListener("pointermove", onMove, { passive: true });
     cv.addEventListener("pointerleave", onLeave);
     cv.addEventListener("pointerdown", onDown, { passive: true });
     addEventListener("pointerdown", onEggDown, { passive: true });
+    addEventListener("pointerup", onEggUp, { passive: true });
+    addEventListener("pointercancel", onEggCancel, { passive: true });
   }
 
   // ── the wordmark ──────────────────────────────────────────────────────
@@ -632,6 +659,9 @@ export function initHeroMark(host: HTMLElement): () => void {
     cv.removeEventListener("pointerleave", onLeave);
     cv.removeEventListener("pointerdown", onDown);
     removeEventListener("pointerdown", onEggDown);
+    removeEventListener("pointerup", onEggUp);
+    removeEventListener("pointercancel", onEggCancel);
+    clearTimeout(tapTimer);
     host.classList.remove("loaded"); cv.remove();
   };
 }
