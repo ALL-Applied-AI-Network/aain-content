@@ -45,7 +45,7 @@ export const STORIES: Story[] = [
     image: "./public/web/supercomputer-tour.jpg", blurb: "Spectrum News on MSOE's AI push, with the club's president on the UN food-price forecasting project.", kind: "article" },
   { title: "MSOE celebrates five years of student and industry impact with Diercks Hall", outlet: "MSOE News", date: "2024-09-13",
     url: "https://www.msoe.edu/about-msoe/news/details/msoe-celebrates-five-years-of-student-and-industry-impact-with-diercks-hall-computer-science-ai-programs/",
-    image: "./public/web/maic-projects-kickoff.jpg", blurb: "The five-year Diercks Hall story features the club's projects, NourishNet among them.", kind: "article" },
+    image: "./public/web/diercks-hall-five-years.png", blurb: "The five-year Diercks Hall story features the club's projects, NourishNet among them.", kind: "article" },
   { title: "Students compete at Midwest Instruction and Computing Symposium", outlet: "MSOE News", date: "2024-04-10",
     url: "https://www.msoe.edu/about-msoe/news/details/students-compete-at-midwest-instruction-and-computing-symposium/",
     image: "./public/web/mics-2024-students.png", blurb: "The NourishNet paper won Best Student Paper at MICS 2024, all eight authors named.", kind: "article" },
