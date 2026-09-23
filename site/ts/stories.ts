@@ -48,7 +48,7 @@ export const STORIES: Story[] = [
     image: "./public/web/maic-projects-kickoff.jpg", blurb: "The five-year Diercks Hall story features the club's projects, NourishNet among them.", kind: "article" },
   { title: "Students compete at Midwest Instruction and Computing Symposium", outlet: "MSOE News", date: "2024-04-10",
     url: "https://www.msoe.edu/about-msoe/news/details/students-compete-at-midwest-instruction-and-computing-symposium/",
-    image: "./public/art/tile-nourish.jpg", blurb: "The NourishNet paper won Best Student Paper at MICS 2024, all eight authors named.", kind: "article" },
+    image: "./public/web/mics-2024-students.png", blurb: "The NourishNet paper won Best Student Paper at MICS 2024, all eight authors named.", kind: "article" },
 ];
 
 /** Newest first. */
