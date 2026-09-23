@@ -103,27 +103,49 @@
   <!-- ═══════════ 2 · THE FIRST FIVE WEEKS ═══════════ -->
   <section class="lp lp--line" id="weeks">
     <div class="lp__inner">
-      <div class="weeks-top">
-        <div class="lp__head rv">
-          <p class="lp-eyebrow">The playbook, in one screen</p>
-          <h2 class="lp-h2">Your first five weeks decide your year.</h2>
-          <p class="lp-lede">Miss that window and you spend the rest of the year recruiting instead of building. Here is the timeline from the chapter that grew from 20 members to 500.</p>
-        </div>
-        <figure class="weeks-film rv">
-          <video class="weeks-film__video" controls preload="none" playsinline
+      <div class="lp__head rv">
+        <p class="lp-eyebrow">The playbook, in one screen</p>
+        <h2 class="lp-h2">Your first five weeks decide your year.</h2>
+        <p class="lp-lede">Miss that window and you spend the rest of the year recruiting instead of building. Here is the timeline from the chapter that grew from 20 members to 500.</p>
+      </div>
+      <!-- The six cards are chapters of the film below: times are the film's own
+           section starts (collateral/first-five-weeks/build.py, 104 BPM, 1 bar =
+           2.3077s). ts/weeks-film.ts lights whichever week is playing and jumps the
+           film when a card is clicked. data-arc-* is the closing "every week at once"
+           table, when all six light together. -->
+      <div class="weeks-film" data-weeks-film data-arc-from="191.88" data-arc-to="204.69">
+        <ol class="weeks weeks--six rv-group" aria-label="Jump to a week in the film">
+          <li><a class="week week--chap" href="./public/film/your-first-five-weeks.mp4#t=21.23" data-from="21.23" aria-controls="weeks-film-video">
+            <span class="sr-only">Play the film from </span><span class="week__k">Week 0</span><span class="week__t">The slot, then the org fair.</span><span class="week__d">Lock one day, time and room. Then get names on a list, not flyers into hands.</span><span class="seq__bar" aria-hidden="true"></span>
+          </a></li>
+          <li><a class="week week--chap" href="./public/film/your-first-five-weeks.mp4#t=65.54" data-from="65.54" aria-controls="weeks-film-video">
+            <span class="sr-only">Play the film from </span><span class="week__k">Week 1</span><span class="week__t">Say the whole year out loud.</span><span class="week__d">Every reason to show up, and that nobody needs experience.</span><span class="seq__bar" aria-hidden="true"></span>
+          </a></li>
+          <li><a class="week week--chap" href="./public/film/your-first-five-weeks.mp4#t=95.88" data-from="95.88" aria-controls="weeks-film-video">
+            <span class="sr-only">Play the film from </span><span class="week__k">Week 2</span><span class="week__t">&ldquo;Getting a hands-on project.&rdquo;</span><span class="week__d">Why to join one, how sign-ups work, and what happens next.</span><span class="seq__bar" aria-hidden="true"></span>
+          </a></li>
+          <li><a class="week week--chap" href="./public/film/your-first-five-weeks.mp4#t=116.08" data-from="116.08" aria-controls="weeks-film-video">
+            <span class="sr-only">Play the film from </span><span class="week__k">Week 3</span><span class="week__t">First real event.</span><span class="week__d">A great speaker, faculty first, advertised everywhere.</span><span class="seq__bar" aria-hidden="true"></span>
+          </a></li>
+          <li><a class="week week--chap" href="./public/film/your-first-five-weeks.mp4#t=141.35" data-from="141.35" aria-controls="weeks-film-video">
+            <span class="sr-only">Play the film from </span><span class="week__k">Week 5</span><span class="week__t">Project kick-off.</span><span class="week__d">Week 4 is another event or a break. Then teams, mentors and the sponsor in the room.</span><span class="seq__bar" aria-hidden="true"></span>
+          </a></li>
+          <li><a class="week week--chap" href="./public/film/your-first-five-weeks.mp4#t=165.69" data-from="165.69" aria-controls="weeks-film-video">
+            <span class="sr-only">Play the film from </span><span class="week__k">Week 6+</span><span class="week__t">The pulse, and projects.</span><span class="week__d">An event every other week, projects running underneath all semester.</span><span class="seq__bar" aria-hidden="true"></span>
+          </a></li>
+        </ol>
+        <div class="weeks-film__frame rv">
+          <video class="weeks-film__video" id="weeks-film-video" controls muted playsinline preload="none"
                  poster="./public/film/your-first-five-weeks.jpg"
-                 aria-label="Your First Five Weeks, 3:39, silent">
+                 aria-label="Your First Five Weeks: the six weeks above, as a 3 minute 39 second silent film">
             <source src="./public/film/your-first-five-weeks.mp4" type="video/mp4" />
             <p>Your browser cannot play this video. <a href="./public/film/your-first-five-weeks.mp4">Download it</a>.</p>
           </video>
-          <figcaption class="weeks-film__cap">Your First Five Weeks &middot; 3:39 &middot; silent</figcaption>
-        </figure>
-      </div>
-      <div class="weeks rv-group">
-        <div class="week"><div class="week__k">Week 0</div><h3 class="week__t">Org fair.</h3><p class="week__d">Collect an interest list. Lock day, time and room before you recruit; never move them. One move costs about 15% of your attendance, for good.</p></div>
-        <div class="week"><div class="week__k">Week 1</div><h3 class="week__t">Say the whole year out loud.</h3><p class="week__d">The pitch, in order: other chapters in the network, speakers come to you, it has landed jobs, it takes work, a real project with upperclassmen.</p></div>
-        <div class="week"><div class="week__k">Week 3</div><h3 class="week__t">First speaker event.</h3><p class="week__d">Book a great speaker. Same slot every other week from here on, free food every time. That is the best money you will spend.</p></div>
-        <div class="week"><div class="week__k">Week 5</div><h3 class="week__t">Project kick-off.</h3><p class="week__d">Teams of five to eight with an upperclassman mentor, announced in the room. Pick one hackathon or one Innovation Lab this semester, not both.</p></div>
+          <button class="weeks-film__hit" type="button" data-weeks-hit hidden aria-controls="weeks-film-video" aria-label="Play the film">
+            <span class="weeks-film__pill" data-weeks-pill>Play</span>
+          </button>
+        </div>
+        <p class="weeks-film__cap">Your First Five Weeks &middot; 3:39 &middot; silent. Pick a week to jump to it, or click the film to pause.</p>
       </div>
       <p class="lp-src rv">Full detail, with what went wrong the first time: the <a href="./playbook.html?path=playbooks/getting-started/index.md">Getting Started playbook</a>. Speakers, projects, sponsors and hackathons each have <a href="./playbooks.html">their own</a>.</p>
     </div>

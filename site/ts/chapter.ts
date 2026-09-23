@@ -1,6 +1,7 @@
 /** chapter.ts — Start a Chapter: the page mark + particles in the hero, reveals, and the shared effects. */
 import { mountFx } from "./fx";
 import { mountSequencer } from "./sequence";
+import { mountWeeksFilm } from "./weeks-film";
 
 function initHero(): void {
   const hero3d = document.getElementById("hero-3d");
@@ -26,4 +27,4 @@ function initKit(): void {
   mountSequencer({ root, tabs, panes, interval: 3600 });
 }
 
-document.addEventListener("DOMContentLoaded", () => { initHero(); initReveal(); initKit(); mountFx(); });
+document.addEventListener("DOMContentLoaded", () => { initHero(); initReveal(); initKit(); mountWeeksFilm(); mountFx(); });

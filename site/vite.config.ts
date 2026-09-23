@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import { resolve, dirname } from "path";
-import { cpSync, existsSync, readFileSync, statSync } from "fs";
+import { cpSync, createReadStream, existsSync, readFileSync, statSync } from "fs";
 import { fileURLToPath } from "url";
 import { marked } from "marked";
 import { extname } from "path";
@@ -20,6 +20,8 @@ const MIME_TYPES: Record<string, string> = {
   ".css": "text/css",
   ".js": "application/javascript",
   ".txt": "text/plain",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
 };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -149,11 +151,34 @@ export default defineConfig({
 
           try {
             if (existsSync(filePath) && statSync(filePath).isFile()) {
-              const content = readFileSync(filePath);
               const mimeType = MIME_TYPES[extname(filePath)] || "application/octet-stream";
               res.setHeader("Content-Type", mimeType);
               res.setHeader("Access-Control-Allow-Origin", "*");
-              res.end(content);
+              res.setHeader("Accept-Ranges", "bytes");
+              // Byte ranges, as GitHub Pages serves them. Without these a
+              // browser cannot seek a film into a part it has not downloaded
+              // yet, so every chromeless film on the site (and its chapter
+              // jumps) would misbehave locally while working in production.
+              const range = /^bytes=(\d*)-(\d*)$/.exec(String(req.headers.range ?? ""));
+              if (range) {
+                const size = statSync(filePath).size;
+                let start = range[1] === "" ? size - Number(range[2]) : Number(range[1]);
+                let end = range[1] !== "" && range[2] !== "" ? Number(range[2]) : size - 1;
+                start = Math.max(0, start);
+                end = Math.min(end, size - 1);
+                if (start > end || start >= size) {
+                  res.statusCode = 416;
+                  res.setHeader("Content-Range", `bytes */${size}`);
+                  res.end();
+                  return;
+                }
+                res.statusCode = 206;
+                res.setHeader("Content-Range", `bytes ${start}-${end}/${size}`);
+                res.setHeader("Content-Length", String(end - start + 1));
+                createReadStream(filePath, { start, end }).pipe(res);
+                return;
+              }
+              res.end(readFileSync(filePath));
               return;
             }
           } catch {
