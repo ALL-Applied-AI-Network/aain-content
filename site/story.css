@@ -63,12 +63,33 @@
 .show--quote blockquote { margin: 0; font: 500 1.02rem/1.5 "Space Grotesk", sans-serif; letter-spacing: -.01em; color: #f4f4f6; }
 .show--quote cite { display: block; margin-top: .6rem; font: 400 .78rem/1.4 "JetBrains Mono", monospace; color: rgba(244,244,246,.5); font-style: normal; }
 @keyframes pane-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-/* the doors: one for each audience, the student one lit */
+/* the doors: one for each audience, all three equal, each in its own persona colour.
+   --persona / --persona-rgb are set once per door; every rule below reads them. */
 .doors { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; max-width: 62rem; margin: .4rem auto 0; text-align: left; align-items: stretch; }
-.door { display: flex; flex-direction: column; gap: .35rem; padding: 1.2rem 1.3rem 1.25rem; border-radius: 16px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: inherit; text-decoration: none; transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s, background .3s; }
-.door:hover { transform: translateY(-4px); border-color: rgba(34,211,238,.5); background: rgba(34,211,238,.06); }
-.door--student { border-color: rgba(34,211,238,.55); background: linear-gradient(135deg, rgba(34,211,238,.12), rgba(168,85,247,.08)); box-shadow: 0 0 0 3px rgba(34,211,238,.12), 0 20px 50px rgba(0,0,0,.4); }
-.door__k { font: 600 .68rem/1 "JetBrains Mono", monospace; letter-spacing: .22em; text-transform: uppercase; color: #22d3ee; }
+.door { --persona: #22d3ee; --persona-rgb: 34,211,238; display: flex; flex-direction: column; gap: .35rem; padding: 1.2rem 1.3rem 1.25rem; border-radius: 16px; border: 1px solid rgba(var(--persona-rgb), .26); background: rgba(255,255,255,.04); color: inherit; text-decoration: none; transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s, background .3s; }
+.door--student { --persona: #22d3ee; --persona-rgb: 34,211,238; }
+.door--leader { --persona: #a855f7; --persona-rgb: 168,85,247; }
+.door--company { --persona: #ec4899; --persona-rgb: 236,72,153; }
+.door:hover, .door:focus-visible { transform: translateY(-4px); border-color: var(--persona); background: rgba(var(--persona-rgb), .06); }
+.door:focus-visible { outline: 2px solid var(--persona); outline-offset: 3px; }
+/* the four parts of each door (icon, label, title, description) share row tracks across the three doors,
+   so a label that wraps to two lines ("Student Leaders & Educators" at ~900-930px) moves every door's
+   title down together instead of dropping only its own. Browsers without subgrid keep the flex column. */
+@supports (grid-template-rows: subgrid) {
+  .door { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: .35rem; align-content: start; }
+}
+/* the reveal (landing.css: html.js-rv .rv-group.in > *, 0,3,1) sets transform:none and a reveal-only
+   transition, which beat .door:hover. Re-state both at higher specificity: opacity keeps the stagger,
+   the lift and the persona colour ease in with no delay. Reduced motion keeps the reveal's own rule. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js-rv .doors.rv-group.in > .door { transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s, background .3s; }
+  html.js-rv .doors.rv-group.in > .door:nth-child(2) { transition-delay: .08s, 0s, 0s, 0s; }
+  html.js-rv .doors.rv-group.in > .door:nth-child(3) { transition-delay: .16s, 0s, 0s, 0s; }
+  html.js-rv .doors.rv-group.in > .door:is(:hover, :focus-visible) { transform: translateY(-4px); }
+}
+.door__icon { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; margin-bottom: .55rem; border-radius: 11px; background: rgba(var(--persona-rgb), .13); color: var(--persona); }
+.door__icon svg { display: block; width: 22px; height: 22px; }
+.door__k { font: 600 .68rem/1.35 "JetBrains Mono", monospace; letter-spacing: .22em; text-transform: uppercase; color: var(--persona); }
 .door__t { font: 700 1.15rem/1.2 "Space Grotesk", sans-serif; letter-spacing: -.02em; color: #f4f4f6; }
 .door__d { font-size: .88rem; color: #a0a0ad; }
 .pipe__lead p { margin: 0; font-size: 1.05rem; line-height: 1.6; color: #d7d7dc; max-width: 46rem; }
@@ -80,13 +101,15 @@
 .pipe__cta .actions { display: flex; gap: .7rem; flex-wrap: wrap; }
 
 /* ── the close ─────────────────────────────────────────────────────────────── */
-.close-band { position: relative; padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(3rem, 5vw, 4.5rem); text-align: center; }
-.close-band__sheet { position: relative; display: block; width: 74px; margin: 0 auto 1.2rem; padding: 0; border: 0; background: none; cursor: pointer; filter: drop-shadow(0 0 0 rgba(34,211,238,0)); transition: filter .7s ease; -webkit-tap-highlight-color: transparent; }
+/* overflow-x: clip keeps the light-up ring and the click sparks (which fly up to 230px out from the sheet)
+   from widening the page on a phone for the second they are on screen; clip, unlike hidden, leaves y visible. */
+.close-band { position: relative; overflow-x: clip; padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(3rem, 5vw, 4.5rem); text-align: center; }
+.close-band__sheet { --sheet-w: 140px; position: relative; display: block; width: var(--sheet-w); margin: 0 auto 1.3rem; padding: 0; border: 0; background: none; cursor: pointer; filter: drop-shadow(0 0 0 rgba(34,211,238,0)); transition: filter .7s ease; -webkit-tap-highlight-color: transparent; }
 .close-band__sheet img { width: 100%; display: block; filter: grayscale(1) brightness(.5); transition: filter .7s ease; transform-origin: 50% 55%; }
 .close-band__sheet.is-lit { filter: drop-shadow(0 0 22px rgba(34,211,238,.85)); }
 .close-band__sheet.is-lit img { filter: sepia(1) saturate(7) hue-rotate(150deg) brightness(1.05); }
 .close-band__sheet:hover.is-lit { filter: drop-shadow(0 0 30px rgba(34,211,238,1)); }
-.sheet__burst { position: absolute; left: 50%; top: 50%; width: 90px; height: 90px; margin: -45px 0 0 -45px; border-radius: 50%; border: 2px solid rgba(34,211,238,.9); opacity: 0; pointer-events: none; }
+.sheet__burst { position: absolute; left: 50%; top: 50%; width: calc(var(--sheet-w) * 1.2); height: calc(var(--sheet-w) * 1.2); margin: calc(var(--sheet-w) * -.6) 0 0 calc(var(--sheet-w) * -.6); border-radius: 50%; border: 2px solid rgba(34,211,238,.9); opacity: 0; pointer-events: none; }
 .close-band__sheet.is-lit .sheet__burst { animation: sheet-burst .9s cubic-bezier(.1,.7,.3,1) both; }
 .close-band__sheet.is-spin img { animation: sheet-spin .9s cubic-bezier(.2,.7,.2,1); }
 .close-band__sheet.is-spin { filter: drop-shadow(0 0 44px rgba(34,211,238,1)); transition: filter .15s ease; }
@@ -96,8 +119,32 @@
 @keyframes sheet-burst { from { transform: scale(.5); opacity: .9; } to { transform: scale(2.8); opacity: 0; } }
 @keyframes sheet-spin { 0% { transform: rotateY(0) scale(1); } 45% { transform: rotateY(180deg) scale(1.22); } 100% { transform: rotateY(360deg) scale(1); } }
 @keyframes spark { 0% { transform: translate(0, 0) scale(.6) rotate(0); opacity: 1; } 25% { transform: translate(calc(var(--dx) * .45), calc(var(--dy) * .45)) scale(1.25) rotate(90deg); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)) scale(.1) rotate(260deg); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .close-band__sheet img, .close-band__sheet { transition: none; } .close-band__sheet.is-lit .sheet__burst, .close-band__sheet.is-spin img, .spark { animation: none; } }
-.close-band h2 { font: 700 clamp(2rem, 4.4vw, 3.4rem)/1.05 "Space Grotesk", sans-serif; letter-spacing: -.03em; color: #f4f4f6; margin: 0 0 .8rem; }
+/* once lit, the sheet is a living object: a slow bob with a slight tilt, and a few star points
+   twinkling around it, one at a time. Three elements, three jobs: the button reveals (.rv),
+   .sheet__float floats, the img spins on click, so no animation clobbers another's transform.
+   Transform and opacity only; home.ts pauses both (.is-away) while the sheet is off-screen. */
+.sheet__float { position: relative; display: block; will-change: transform; }
+.close-band__sheet.is-lit .sheet__float { animation: sheet-float 6.4s ease-in-out infinite; }
+.sheet__twinkle { position: absolute; left: var(--x); top: var(--y); width: var(--s, 10px); height: var(--s, 10px); margin: calc(var(--s, 10px) / -2) 0 0 calc(var(--s, 10px) / -2); background: #e9fbff; clip-path: polygon(50% 0, 57% 43%, 100% 50%, 57% 57%, 50% 100%, 43% 57%, 0 50%, 43% 43%); opacity: 0; pointer-events: none; }
+.sheet__twinkle:nth-child(2) { --x: 4%; --y: 16%; --s: 14px; }
+.sheet__twinkle:nth-child(3) { --x: 97%; --y: 34%; --s: 11px; background: #67e8f9; }
+.sheet__twinkle:nth-child(4) { --x: 90%; --y: 92%; --s: 15px; }
+.sheet__twinkle:nth-child(5) { --x: 9%; --y: 74%; --s: 10px; background: #67e8f9; }
+.close-band__sheet.is-lit .sheet__twinkle { animation: sheet-twinkle 4s ease-in-out infinite both; }
+/* four stars on one 4s cycle, a quarter-cycle apart: each is visible for ~30% of it, so they never peak together */
+.close-band__sheet.is-lit .sheet__twinkle:nth-child(3) { animation-delay: 1s; }
+.close-band__sheet.is-lit .sheet__twinkle:nth-child(4) { animation-delay: 2s; }
+.close-band__sheet.is-lit .sheet__twinkle:nth-child(5) { animation-delay: 3s; }
+.close-band__sheet.is-away .sheet__float, .close-band__sheet.is-away .sheet__twinkle { animation-play-state: paused; }
+@keyframes sheet-float { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 30% { transform: translate3d(0, -9px, 0) rotate(-1.6deg); } 65% { transform: translate3d(0, -3px, 0) rotate(1.1deg); } }
+@keyframes sheet-twinkle { 0% { opacity: 0; transform: scale(.2) rotate(-45deg); } 14% { opacity: 1; transform: scale(1) rotate(0deg); } 34%, 100% { opacity: 0; transform: scale(.2) rotate(45deg); } }
+@media (max-width: 560px) { .close-band__sheet { --sheet-w: 110px; } }
+@media (prefers-reduced-motion: reduce) { .close-band__sheet img, .close-band__sheet { transition: none; } .close-band__sheet.is-lit .sheet__burst, .close-band__sheet.is-spin img, .spark, .close-band__sheet.is-lit .sheet__float { animation: none; } .sheet__twinkle, .close-band__sheet.is-lit .sheet__twinkle { display: none; animation: none; } .close-band__neon { transition: none; } .door { transition: border-color .3s, background .3s; } .door:hover, .door:focus-visible { transform: none; } }
+/* the one neon word: lit at rest (no JS, reduced motion); home.ts holds it in plain ink
+   (.is-pending) only once its observer has run, and lets go the moment the sheet lights. */
+.close-band__neon { color: #22d3ee; text-shadow: 0 0 18px rgba(34,211,238,.7), 0 0 42px rgba(34,211,238,.35); transition: color .7s ease, text-shadow .7s ease; }
+.close-band.is-pending .close-band__neon { color: #f4f4f6; text-shadow: 0 0 18px rgba(34,211,238,0), 0 0 42px rgba(34,211,238,0); }
+.close-band h2 { font: 700 clamp(2rem, 4.4vw, 3.4rem)/1.05 "Space Grotesk", sans-serif; letter-spacing: -.03em; color: #f4f4f6; margin: 0 0 1.6rem; text-wrap: balance; }
 .close-band p { color: #a0a0ad; max-width: 38rem; margin: 0 auto 1.6rem; font-size: 1.05rem; }
 .close-band .actions { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
 .close-band .small { margin-top: 1.7rem; font: 400 .82rem/1.5 "JetBrains Mono", monospace; color: rgba(244,244,246,.5); }
@@ -157,9 +204,9 @@ body.story { background: #0c0c0e; }
    when the frame scrolls into view (tour.ts attaches the source then, so a
    visitor who never gets here pays no video bytes), and rests on the film's
    own baked end card. The whole frame is one link to the full 1:27
-   walkthrough, which does get controls and sound. Narrower than the doors
-   above it on purpose — it answers them, it does not outrank them. */
-.tour { max-width: 660px; margin: 1.7rem auto 0; }
+   walkthrough, which does get controls and sound. Exactly as wide as the
+   doors above it (same max-width, same centring), at every breakpoint. */
+.tour { max-width: 62rem; margin: 1.7rem auto 0; }
 .tour__frame { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.10); background: #0b0b0d; box-shadow: 0 20px 46px rgba(0,0,0,.45); }
 .tour__video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0b0b0d; }
 /* The cue sits in the middle of the frame and only while the picture is

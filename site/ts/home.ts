@@ -75,18 +75,34 @@ function initStories(): void {
   ticker.classList.add("photo-ticker--stories");
 }
 
-/** The closer's sheet: grey until you reach it, then it lights up; a click spins it and throws sparks. */
+/** The closer's sheet: grey until you reach it, then it lights up (and so does the headline's neon word);
+ *  once lit it floats and twinkles (CSS), paused while off-screen; a click spins it and throws sparks. */
 function initSheet(): void {
   const sheet = document.querySelector<HTMLElement>(".close-band__sheet"); if (!sheet) return;
-  const light = () => sheet.classList.add("is-lit");
-  if ("IntersectionObserver" in window && !REDUCED) new IntersectionObserver(([e]) => { if (e.isIntersecting) setTimeout(light, 400); }, { threshold: 0.6 }).observe(sheet); else light();
+  const band = sheet.closest<HTMLElement>(".close-band");
+  const word = band?.querySelector<HTMLElement>(".close-band__neon");
+  // The word is neon at rest. It is held in plain ink only after an observer has actually reported it
+  // off-screen, and any of three things lets it go: the sheet lighting, the word itself coming into view, or JS never running.
+  const unpend = () => band?.classList.remove("is-pending");
+  const light = () => { sheet.classList.add("is-lit"); unpend(); };
+  if ("IntersectionObserver" in window && !REDUCED) {
+    let first = true;
+    new IntersectionObserver(([e]) => {
+      if (first) { first = false; if (!e.isIntersecting && !sheet.classList.contains("is-lit")) band?.classList.add("is-pending"); }
+      if (e.isIntersecting) setTimeout(light, 400);
+    }, { threshold: 0.6 }).observe(sheet);
+    // failsafe: the word in view with the sheet still dark (landed below it) lights the word on its own
+    if (word) new IntersectionObserver(([e], io) => { if (e.isIntersecting) { io.disconnect(); setTimeout(unpend, 900); } }, { threshold: 1 }).observe(word);
+    // the idle float and twinkle cost nothing while the sheet is scrolled away
+    new IntersectionObserver(([e]) => sheet.classList.toggle("is-away", !e.isIntersecting), { rootMargin: "80px 0px" }).observe(sheet);
+  } else light();
   const colors = ["#22d3ee", "#ec4899", "#a855f7", "#f4f4f6", "#67e8f9"];
   sheet.addEventListener("click", () => {
     light(); if (REDUCED) return;
     sheet.classList.remove("is-spin"); void sheet.offsetWidth; sheet.classList.add("is-spin");
     for (let i = 0; i < 36; i++) {
       const sp = document.createElement("span"); sp.className = "spark" + (i % 3 === 0 ? " spark--gem" : "");
-      const a = Math.random() * Math.PI * 2, r = 70 + Math.random() * 130;
+      const a = Math.random() * Math.PI * 2, r = 90 + Math.random() * 140;
       sp.style.setProperty("--dx", `${(Math.cos(a) * r).toFixed(1)}px`); sp.style.setProperty("--dy", `${(Math.sin(a) * r - 30).toFixed(1)}px`); sp.style.setProperty("--c", colors[i % colors.length]);
       sp.style.animationDuration = `${Math.round(650 + Math.random() * 550)}ms`; sp.style.animationDelay = `${Math.round(Math.random() * 80)}ms`;
       sheet.appendChild(sp); sp.addEventListener("animationend", () => sp.remove());
