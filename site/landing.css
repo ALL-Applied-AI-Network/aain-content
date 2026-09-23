@@ -181,6 +181,8 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
 .weeks-film.is-ended .weeks-film__pill::before { content: "\21BB"; }
 .weeks-film__hit:hover .weeks-film__pill, .weeks-film__hit:focus-visible .weeks-film__pill { opacity: 1; }
 .weeks-film__cap { margin: .65rem 0 0; font: 400 .78rem/1.4 var(--lp-mono); letter-spacing: .04em; color: var(--lp-ink-2); }
+.weeks-film__cap a { color: var(--lp-cyan); text-decoration: none; border-bottom: 1px solid rgba(34, 211, 238, .5); }
+.weeks-film__cap a:hover { border-bottom-color: var(--lp-cyan); }
 @media (prefers-reduced-motion: reduce) { .week--chap, .weeks-film__pill { transition: none; } .week--chap.is-open { transform: none; } }
 /* six across is too tight below ~1140px (3-line titles, 5-line descriptions) */
 @media (max-width: 1140px) { .weeks--six { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
