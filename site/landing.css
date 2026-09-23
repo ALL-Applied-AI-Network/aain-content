@@ -166,10 +166,21 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
 .prose h3 { font: 700 1.35rem/1.2 var(--lp-display); color: var(--lp-ink); margin: 2.2rem 0 .7rem; letter-spacing: -.015em; }
 .prose p { margin: 0 0 1rem; } .prose b { color: var(--lp-ink); font-weight: 600; }
 .prose a { color: var(--lp-cyan); text-decoration: none; }
-.about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
-.about-photo { border-radius: 20px; overflow: hidden; border: 1px solid var(--lp-line); position: sticky; top: 6rem; }
+/* one row per topic: the text on the left, the one visual that illustrates it on the right */
+.about-rows { display: flex; flex-direction: column; gap: clamp(3rem, 6vw, 4.5rem); }
+.about-row { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.about-row .prose > h3:first-child { margin-top: 0; }
+.about-row .prose > :last-child { margin-bottom: 0; }
+.about-row > .flow { margin: 0 auto; width: 100%; }
+.about-photo { margin: 0; border-radius: 20px; overflow: hidden; border: 1px solid var(--lp-line); }
 .about-photo img { display: block; width: 100%; height: auto; }
 .about-photo figcaption { padding: .8rem 1rem; font: 400 .8rem/1.4 var(--lp-mono); color: var(--lp-ink-3); }
+.about-stack { display: grid; gap: 1.25rem; }
+.about-photo--wide img { aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 85%; }
+/* Support + Contact share a row; the photo sits in DOM order after Support so a phone shows it there, not under Contact */
+.about-row--split { grid-template-rows: auto 1fr; row-gap: 2.2rem; }
+.about-row--split > .about-photo { grid-column: 2; grid-row: 1 / span 2; }
+.about-row--split > .prose:last-child { grid-column: 1; grid-row: 2; }
 
 /* ── responsive ────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
@@ -180,8 +191,9 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
-  .problem, .about-grid { grid-template-columns: 1fr; }
-  .about-photo { position: static; }
+  .problem, .about-row { grid-template-columns: 1fr; }
+  .about-row--split { grid-template-rows: none; row-gap: clamp(2rem, 5vw, 5rem); }
+  .about-row--split > .about-photo, .about-row--split > .prose:last-child { grid-column: auto; grid-row: auto; }
   .formula, .weeks, .showcase, .lanes, .stack, .paths { grid-template-columns: 1fr; }
   .formula__step { min-height: 300px; }
   .pullquote { grid-template-columns: 1fr; }
