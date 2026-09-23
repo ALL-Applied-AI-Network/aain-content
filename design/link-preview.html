@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ALL link-preview artwork</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+    body { background: #111113; color: #f2f2f4; font-family: "Space Grotesk", sans-serif; }
+    .card { position: relative; width: 1200px; height: 630px; overflow: hidden; }
+    .card::after { content: ""; position: absolute; left: 0; bottom: 0; right: 0; height: 7px; background: linear-gradient(90deg, #3b82f6, #22d3ee, #ec4899, #a855f7); }
+    .brand { position: absolute; left: 57px; top: 49px; display: flex; gap: 19px; align-items: center; }
+    .brand img { width: 100px; height: 90px; object-fit: contain; }
+    .brand-name { font-size: 29px; font-weight: 600; line-height: 1.15; letter-spacing: -.6px; }
+    .brand-name span { display: block; }
+    h1 { position: absolute; left: 64px; top: 207px; margin: 0; font-size: 70px; line-height: 1.06; letter-spacing: -3.7px; font-weight: 700; }
+    h1 span { display: block; }
+    .accent { background: linear-gradient(110deg, #57a0ff, #36d6ee 30%, #ef77bc 70%, #b78aff); background-clip: text; -webkit-background-clip: text; color: transparent; width: fit-content; }
+    .domain { position: absolute; left: 66px; bottom: 57px; font-size: 24px; font-weight: 500; color: #a8a8b1; letter-spacing: .1px; }
+    .photo { position: absolute; top: 36px; right: 36px; width: 432px; height: 550px; border-radius: 22px; overflow: hidden; border: 1px solid #ffffff16; }
+    .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 43% 50%; }
+    .dashboard-art, .dashboard-title, .dashboard-subtitle { display: none; }
+    body.dashboard .site-title, body.dashboard .photo { display: none; }
+    body.dashboard .dashboard-title { display: block; top: 226px; font-size: 77px; line-height: 1.09; }
+    body.dashboard .dashboard-subtitle { display: block; position: absolute; left: 66px; top: 425px; font-size: 27px; color: #b7b7c0; }
+    body.dashboard .dashboard-art { display: block; position: absolute; right: 44px; top: 40px; width: 426px; height: 544px; border: 1px solid #ffffff12; border-radius: 24px; background: radial-gradient(ellipse at 45% 36%, #182534 0%, #17171d 57%, #151518 100%); }
+    .brain { position: absolute; width: 320px; height: 284px; left: 53px; top: 38px; object-fit: contain; }
+    .tools { position: absolute; left: 25px; right: 25px; bottom: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .tool { border: 1px solid #ffffff12; background: #111113; border-radius: 12px; padding: 20px 17px; font-size: 25px; font-weight: 500; display: flex; align-items: center; gap: 12px; }
+    .tool i { width: 8px; height: 8px; border-radius: 50%; background: var(--tone); box-shadow: 0 0 14px color-mix(in srgb, var(--tone) 30%, transparent); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand"><img src="../public/all-logo-transparent.png" alt="ALL brain logo" /><div class="brand-name"><span>ALL Applied</span><span>AI Network</span></div></div>
+    <h1 class="site-title"><span>Learn AI.</span><span>Build something</span><span class="accent">real.</span></h1>
+    <div class="photo"><img src="../public/web/students-working.jpg" alt="MSOE students working together on a project" /></div>
+    <h1 class="dashboard-title"><span>Your ALL</span><span class="accent">workspace.</span></h1>
+    <div class="dashboard-subtitle">For members &amp; chapter leaders.</div>
+    <div class="dashboard-art">
+      <img class="brain" src="../public/all-logo-transparent.png" alt="" />
+      <div class="tools">
+        <div class="tool" style="--tone:#4f8fea"><i></i>Learn</div>
+        <div class="tool" style="--tone:#22d3ee"><i></i>Projects</div>
+        <div class="tool" style="--tone:#ec4899"><i></i>Events</div>
+        <div class="tool" style="--tone:#a855f7"><i></i>Profile</div>
+      </div>
+    </div>
+    <div class="domain">all-ai-network.org</div>
+  </main>
+  <script>
+    if (new URLSearchParams(location.search).get("variant") === "dashboard") {
+      document.body.classList.add("dashboard");
+      document.querySelector(".domain").textContent = "dashboard.all-ai-network.org";
+    }
+  </script>
+</body>
+</html>
