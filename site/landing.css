@@ -155,6 +155,11 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
 .week__k { font: 600 .72rem/1 var(--lp-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--lp-cyan); }
 .week__t { font: 700 1.15rem/1.2 var(--lp-display); color: var(--lp-ink); margin: .55rem 0 .35rem; }
 .week__d { font-size: .92rem; line-height: 1.5; color: var(--lp-ink-2); margin: 0; }
+.weeks-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 27rem); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: end; margin-bottom: clamp(2rem, 4vw, 3.25rem); }
+.weeks-top .lp__head { margin-bottom: 0; }
+.weeks-film { margin: 0; }
+.weeks-film__video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 1px solid var(--lp-line); background: #000; }
+.weeks-film__cap { margin-top: .6rem; font: 400 .78rem/1.4 var(--lp-mono); letter-spacing: .04em; color: var(--lp-ink-3); }
 
 /* ── prose blocks (about) ──────────────────────────────────────────────── */
 .prose { max-width: 42rem; font-size: 1.05rem; line-height: 1.7; color: var(--lp-ink-2); }
@@ -170,6 +175,8 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
 @media (max-width: 1024px) {
   .formula, .weeks { grid-template-columns: repeat(2, 1fr); }
   .showcase, .lanes, .stack { grid-template-columns: repeat(2, 1fr); }
+  .weeks-top { grid-template-columns: 1fr; align-items: start; }
+  .weeks-film { max-width: 36rem; }
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
