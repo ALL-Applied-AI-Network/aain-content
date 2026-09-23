@@ -141,7 +141,14 @@ export function initHeroMark(host: HTMLElement): () => void {
     haloAt = -1;                                     // rebuild the cached glow
     return true;
   }
-  const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => resize()) : null;
+  // Resizing a canvas clears it. The animated path repaints every frame, but
+  // under reduced motion only one frame is ever drawn, and the observer's
+  // first callback (and any later resize) wiped it, leaving a blank mark.
+  const ro = typeof ResizeObserver !== "undefined"
+    ? new ResizeObserver(() => {
+        if (resize() && reduce && running) { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }
+      })
+    : null;
   ro?.observe(cv);
 
   // ── pointer ───────────────────────────────────────────────────────────

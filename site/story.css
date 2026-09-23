@@ -173,7 +173,6 @@
   .film__sound { position: static; margin: .7rem auto 0; display: flex; width: max-content; }
   .film__cap { align-items: stretch; }
   .film__full { display: inline-block; margin-top: .3rem; padding: .7rem 1rem; border: 1px solid rgba(34,211,238,.45); border-radius: 999px; text-align: center; }
-  .hero .hero-3d--home { opacity: .16; }
   .hero .hero__sponsors-logo img { height: 28px !important; width: auto; }
   .hero .hero__sponsors-logo--tile img { height: 34px !important; width: 34px; }
   .film { margin-top: -30px; }

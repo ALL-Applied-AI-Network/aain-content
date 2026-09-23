@@ -149,6 +149,100 @@
   opacity: 1;
 }
 
+/* ---------- The hero on a phone or narrow tablet --------------------------
+   Below 768px the copy is full width, so the mark (pinned right, 52% wide,
+   full height) sat squarely on the paragraph. Two earlier patches tried to
+   dim it behind the text; neither ever applied, because #hero-3d.loaded
+   out-specifies them, so it rendered at full brightness over the copy.
+
+   Instead the hero stacks the way a two-column hero should: the copy and
+   both buttons first, then the mark at full strength as the picture, then
+   the sponsors. .hero__grid steps aside (display: contents) so its two
+   children and the mark, which is its sibling, share one column and can be
+   ordered. The mark sizes itself to its box (ResizeObserver, fit to 86% of
+   the width / 80% of the height), so it only needs a box.
+   ------------------------------------------------------------------------ */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2.25rem 0 2rem;
+  }
+  .hero .hero__grid { display: contents; }
+  .hero .hero__content {
+    order: 1;
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    padding: 0 1.5rem;
+  }
+  /* 32px everywhere left big phones with half a line of empty space */
+  .hero .hero__title { font-size: clamp(2rem, 9.4vw, 2.6rem); margin-bottom: 1.1rem; }
+  .hero .hero__subtitle {
+    font-size: 1rem;
+    line-height: 1.62;
+    color: rgba(240, 240, 242, 0.82);
+    margin-bottom: 1.75rem;
+    text-wrap: pretty;
+  }
+  .hero .hero__actions { margin-bottom: 0; }
+  #hero-3d.hero-3d--home {
+    order: 2;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: clamp(220px, 62vw, 300px);
+    margin-top: 1rem;
+    z-index: 1;
+  }
+  .hero .hero__sponsors {
+    order: 3;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+    row-gap: 0.85rem;
+    margin: 0 1.5rem;
+    max-width: calc(560px - 3rem);   /* the copy column, not the full tablet width */
+    padding-top: 1.15rem;
+  }
+  /* the mark is drawn by script: with scripting off its box would be a hole */
+  @media (scripting: none) { #hero-3d.hero-3d--home { display: none; } }
+}
+
+/* Over the photograph a transparent outline button reads as loose text:
+   give it a glass fill and a border you can see (phones and short landscape). */
+@media (max-width: 768px), (orientation: landscape) and (max-height: 500px) {
+  .hero .btn--outline {
+    background: rgba(17, 17, 19, 0.55);
+    border-color: rgba(255, 255, 255, 0.24);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* Wherever the sponsor strip wraps (phones, and tablets in portrait where
+   the copy column is ~360px): the label gets its own line and enough
+   contrast to read as a heading, and the link a thumb-sized target. */
+@media (max-width: 1023px) {
+  .hero .hero__sponsors { flex-wrap: wrap; row-gap: 0.85rem; }
+  .hero .hero__sponsors-label { flex-basis: 100%; color: rgba(240, 240, 242, 0.58); }
+  .hero .hero__sponsors-cta { padding: 0.8rem 0; }
+}
+
+/* Phones held sideways: a very short viewport, so the headline, a short
+   lede and both buttons (side by side) have to fit on the first screen. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero { min-height: 0; padding: 1.25rem 0 1.5rem; }
+  .hero .hero__title { font-size: clamp(1.9rem, 4.2vw, 2.5rem); margin-bottom: 0.75rem; }
+  .hero .hero__subtitle { font-size: 0.95rem; line-height: 1.55; margin-bottom: 1.1rem; max-width: 46ch; }
+  .hero .hero__actions { flex-wrap: nowrap; }
+  .hero .hero__actions .btn { width: auto; padding: 0.8rem 1.25rem; }
+  .hero .hero__sponsors { padding-top: 1rem; margin-top: 0.75rem; }
+}
+@media (orientation: landscape) and (max-height: 500px) and (max-width: 768px) {
+  #hero-3d.hero-3d--home { height: 220px; }
+}
+
 /* The blend overlay is gone with the 3D scene. That scene filled this box
    with opaque geometry, so darkening its edges blended it into the hero.
    The mark's canvas is transparent, so the same overlay painted a visible
@@ -1541,7 +1635,7 @@
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
   .hero {
-    padding: 6rem 0 4rem;
+    /* padding lives in "The hero on a phone" block near the top */
     min-height: auto;
   }
 

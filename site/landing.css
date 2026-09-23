@@ -230,13 +230,6 @@ html.js-rv .rv-group.in > :nth-child(4) { transition-delay: .24s } html.js-rv .r
   .pullquote img { width: 72px; height: 72px; }
 }
 
-/* the hero on a phone: the mark stays, but behind legible text */
-@media (max-width: 760px) {
-  .hero .hero-3d--home { opacity: .28; }
-  .hero__content { position: relative; z-index: 2; }
-  .hero__subtitle { text-shadow: 0 2px 14px rgba(0,0,0,.85), 0 0 2px rgba(0,0,0,.9); }
-}
-
 /* audit fixes */
 .prose a.btn, .prose a.btn:hover { color: #fff; text-decoration: none; }
 .hero .hero__sponsors-logo { opacity: .78; filter: grayscale(1) brightness(2.1); }
