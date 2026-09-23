@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About &mdash; ALL Applied AI Network</title>
-  <meta name="description" content="ALL Applied AI Network Foundation is a 501(c)(3) that helps students start and run applied AI chapters: speaker events, real projects with companies, and the network that gets them hired." />
+  <meta name="description" content="ALL Applied AI Network Foundation is a Milwaukee 501(c)(3) that gives university students the playbooks, software and fiscal sponsorship to run AI clubs, free." />
   <meta property="og:title" content="About — ALL Applied AI Network" />
   <meta property="og:description" content="A 501(c)(3) nonprofit helping students start and run applied AI clubs at their universities." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://all-ai-network.org/about.html" />
+  <link rel="canonical" href="https://all-ai-network.org/about.html" />
   <meta property="og:image" content="https://all-ai-network.org/public/web/group-photo.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
@@ -18,6 +20,117 @@
   <link rel="stylesheet" href="./landing.css" />
   <link rel="stylesheet" href="./fx.css" />
   <link rel="stylesheet" href="./about.css" />
+  <!-- Structured data for search and AI answer engines. Mirrors the visible Key facts and FAQ below;
+       if you edit one, edit the other to match (the FAQ text must match exactly). -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NGO",
+      "@id": "https://all-ai-network.org/#organization",
+      "name": "ALL Applied AI Network Foundation",
+      "alternateName": [
+        "ALL Applied AI Network",
+        "ALL AI Network",
+        "ALL"
+      ],
+      "url": "https://all-ai-network.org/",
+      "logo": "https://all-ai-network.org/public/all-logo-transparent.png",
+      "description": "ALL Applied AI Network Foundation is a 501(c)(3) nonprofit that gives university students the playbooks, software and fiscal sponsorship to start and run applied AI clubs.",
+      "nonprofitStatus": "https://schema.org/Nonprofit501c3",
+      "taxID": "42-3604980",
+      "foundingDate": "2026",
+      "founder": {
+        "@type": "Person",
+        "name": "Ben Paulson"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Milwaukee",
+        "addressRegion": "WI",
+        "addressCountry": "US"
+      },
+      "email": "ben.paulson@all-ai-network.org",
+      "sameAs": [
+        "https://www.youtube.com/@ALLAppliedAINetwork",
+        "https://github.com/ALL-Applied-AI-Network"
+      ]
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://all-ai-network.org/about.html",
+      "url": "https://all-ai-network.org/about.html",
+      "name": "About ALL Applied AI Network",
+      "about": {
+        "@id": "https://all-ai-network.org/#organization"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://all-ai-network.org/about.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does it cost anything to start a chapter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. There are no dues and no fees, and the Foundation takes $0 from the money a chapter raises; only card processing fees come out of card payments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do members need AI experience, or to be computer science majors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Chapter events are free and open to anyone, with no sign-up needed to attend. The founding chapter grew through software and computer engineering, UX, business and mechanical engineering students as much as through computer science."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Our school already has an AI club. Can it join?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. An existing club claims its chapter instead of starting a new one, keeps its name and its site, and adds the dashboard, the sponsor portal and the playbooks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does sponsorship money reach a chapter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A company or donor gives to the Foundation, restricted to that chapter’s work, and gets a receipt stating what is tax-deductible. The Foundation holds and accounts for the money, and the chapter spends it, usually through a virtual card for each event."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a chapter its own legal entity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Chapters are projects of the Foundation, so a student club doesn’t need its own bank account to accept a sponsorship. Some universities route corporate sponsorships through their own advancement office, and a chapter follows its school’s rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do sponsors see student profiles?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sponsors the Foundation has approved can browse member profiles, and each member also has a public profile page; both are on by default. Any member with an account can turn both off with one switch under Profile → Share, and the privacy policy has the details."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is ALL’s relationship with NVIDIA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Foundation has an exploratory partnership with NVIDIA to potentially scale the MSOE AI Club’s model beyond MSOE. NVIDIA engineers have spoken at the founding chapter, which is a pilot member of the NVIDIA Student Network."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -47,16 +160,69 @@
     <div class="lp__inner">
       <p class="lp-eyebrow">ALL Applied AI Network Foundation</p>
       <h1 class="lp-h2">Students who build real AI before they graduate.</h1>
-      <p class="lp-lede">We help students run applied AI chapters: speaker events anyone can walk into, projects scoped with companies, and the network that gets them hired.</p>
+      <p class="lp-lede">ALL Applied AI Network Foundation is a 501(c)(3) nonprofit that gives university students the playbooks, software and fiscal sponsorship to start and run applied AI clubs.</p>
+      <nav class="about-toc" aria-label="On this page">
+        <a href="#what">What we do</a>
+        <a href="#different">What&rsquo;s different</a>
+        <a href="#who">Who it&rsquo;s for</a>
+        <a href="#team">Team</a>
+        <a href="#how">How it works</a>
+        <a href="#facts">Key facts</a>
+        <a href="#faq">FAQ</a>
+      </nav>
     </div>
   </header>
 
-  <section class="lp lp--tight">
-    <div class="lp__inner about-rows">
+  <section class="lp lp--tight" id="what">
+    <div class="lp__inner">
+        <h2 class="about-h2 rv">What ALL does</h2>
+        <p class="about-sub rv">Everything a student club needs to run a serious applied AI program, free.</p>
+        <ul class="about-cards rv-group">
+          <li class="about-card"><h3>Playbooks and films</h3><p>Six playbooks cover the first five weeks, speaker events, sponsorship, Innovation Labs, hackathons and research groups, with three short films. Each one is what the MSOE AI Club learned by running it, including what went wrong.</p></li>
+          <li class="about-card"><h3>A chapter dashboard</h3><p>Officers run the roster, events, check-in and attendance from one place. Members check in with a QR code and earn points and badges on their profile.</p></li>
+          <li class="about-card"><h3>A chapter website</h3><p>Each chapter can have a live site on all-ai-network.org that updates from the dashboard, so officers don&rsquo;t maintain a second website.</p></li>
+          <li class="about-card"><h3>Sponsorship and the money</h3><p>Companies sponsor a chapter, fund a prize pool or back an Innovation Lab through the sponsor portal. The Foundation holds the funds and issues a virtual card per event, so no student treasurer needs a bank account.</p></li>
+          <li class="about-card"><h3>A way to get hired</h3><p>Sponsors the Foundation approves can see member profiles and recruit from the room. Any member with an account can turn that off with one switch.</p></li>
+          <li class="about-card"><h3>A learning tree</h3><p>A free map of the best AI learning resources that already exist, sorted into a skill tree a student can follow from first steps to real projects.</p></li>
+        </ul>
+    </div>
+  </section>
+
+  <section class="lp lp--tight lp--line" id="different">
+    <div class="lp__inner">
+        <h2 class="about-h2 rv">What makes ALL different</h2>
+        <ol class="about-cards about-cards--num rv-group">
+          <li class="about-card"><span class="about-card__n">01</span><h3>Free, and we take no cut</h3><p>Chapters pay no dues and no fees, and the Foundation takes $0 from sponsorships and gifts, so everything but card processing reaches the chapter the giver chose. Fiscal sponsors commonly keep a percentage of each gift; we keep none.</p></li>
+          <li class="about-card"><span class="about-card__n">02</span><h3>Built by a chapter that did it</h3><p>The playbooks come from the MSOE AI Club, which grew from 20 active members to 500+ at a school that graduates fewer than 100 computer science students a year. Everything in them was run there first.</p></li>
+          <li class="about-card"><span class="about-card__n">03</span><h3>Real problems from real companies</h3><p>In an Innovation Lab a company brings a real problem, funds a prize pool and mentors a student team for eight weeks. Direct Supply&rsquo;s Applied AI Director: &ldquo;We&rsquo;ve hired more quality candidates through Innovation Labs than any career fair we&rsquo;ve attended.&rdquo;</p></li>
+          <li class="about-card"><span class="about-card__n">04</span><h3>We hold the money</h3><p>Chapters raise money through the Foundation, which holds it for them, so a student club can accept a sponsorship without opening its own bank account. Online gifts get an emailed tax receipt.</p></li>
+          <li class="about-card"><span class="about-card__n">05</span><h3>Open source</h3><p>The playbooks are licensed CC BY-SA 4.0, and the code for this site and the chapter website template is MIT-licensed, on GitHub. Any school can read, copy or improve them without signing up.</p></li>
+        </ol>
+    </div>
+  </section>
+
+  <section class="lp lp--tight lp--line" id="who">
+    <div class="lp__inner">
+        <h2 class="about-h2 rv">Who uses ALL</h2>
+        <ul class="about-list rv">
+          <li>University students who want to start an AI club at a school that doesn&rsquo;t have one.</li>
+          <li>Officers of an existing AI, machine learning or data science club who want the playbooks and the software, without giving up their club&rsquo;s name.</li>
+          <li>Faculty advisors who want a club that keeps running after its founding officers graduate.</li>
+          <li>Students of any major and any experience level: chapter events are free, and nobody needs experience or a sign-up to attend.</li>
+          <li>Companies that want to sponsor a chapter, fund a prize pool, put engineers in front of students or recruit from project teams.</li>
+          <li>Donors who want a tax-deductible gift to reach one specific chapter.</li>
+        </ul>
+    </div>
+  </section>
+
+  <section class="lp lp--tight lp--line" id="team">
+    <div class="lp__inner">
+        <h2 class="about-h2 rv">The team behind ALL</h2>
+      <div class="about-rows">
       <div class="about-row">
         <div class="prose">
           <h3 class="rv">How it started</h3>
-          <p>This began as the AI Club at the Milwaukee School of Engineering. The first year ran on a budget of zero and mostly went wrong: weekly technical workshops that were too advanced for freshmen and too basic for juniors, and not many people came back.</p>
+          <p>This began as the AI Club at the Milwaukee School of Engineering, founded by Xander Neuwirth in 2020. The first year ran on a budget of zero and mostly went wrong: weekly technical workshops that were too advanced for freshmen and too basic for juniors, and not many people came back.</p>
           <p>Two things worked: speaker events anyone could walk into, and projects scoped with a company that ran a couple of months with older students mentoring younger ones. That version of the club grew past 500 members, and other schools started asking how to copy it. We set the first few up by hand, realized that didn&rsquo;t scale, and turned it into a nonprofit.</p>
           <ol class="timeline rv-group" aria-label="How it started">
             <li><span class="timeline__yr">2020</span><b>An AI club at MSOE.</b> Budget of zero, weekly workshops, most people didn&rsquo;t come back.</li>
@@ -76,7 +242,27 @@
           </figure>
         </div>
       </div>
+      </div>
+        <ul class="team rv-group" aria-label="The founding team">
+          <li class="team__p"><h3>Ben Paulson</h3><p class="team__role">Founder</p><p>President of the MSOE AI Club from fall 2023, when the club was rebuilt around speaker events anyone could walk into. Builds the software chapters run on.</p><p class="team__link"><a href="mailto:ben.paulson@all-ai-network.org">ben.paulson@all-ai-network.org</a></p></li>
+          <li class="team__p"><h3>Dr. Derek Riley</h3><p class="team__role">Co-founder</p><p>Director of the Computer Science program at the Milwaukee School of Engineering, and advisor to the founding chapter.</p></li>
+          <li class="team__p"><h3>Brett Storoe</h3><p class="team__role">Founding team</p><p>President of the MSOE AI Club. The founding chapter is where every playbook is tried first.</p></li>
+        </ul>
+        <p class="about-note rv">Every chapter is run by its own student officers. The founding team holds the money, maintains the software and writes the playbooks.</p>
+    </div>
+  </section>
 
+  <section class="lp lp--tight lp--line" id="how">
+    <div class="lp__inner">
+        <h2 class="about-h2 rv">How ALL works</h2>
+        <ol class="about-steps rv-group">
+          <li><b>Onboard in about thirty minutes.</b> Set the chapter up yourself, with no call and no dues. You leave with a roster, a live chapter site, your first event published and a sponsor invited.</li>
+          <li><b>Or claim the club you already run.</b> An existing club keeps its name and its site and adds the dashboard, the sponsor portal and the playbooks.</li>
+          <li><b>Run the year from the dashboard.</b> Officers publish events, members check in with a QR code, and each check-in earns points and badges on the member&rsquo;s profile.</li>
+          <li><b>Bring in sponsors.</b> Invite a company from the dashboard. It works through the sponsor portal, and its money comes through the Foundation.</li>
+        </ol>
+        <p class="about-note rv">Questions go to <a href="mailto:ben.paulson@all-ai-network.org">ben.paulson@all-ai-network.org</a>. The <a href="./playbook.html?path=playbooks/getting-started/index.md">Getting Started playbook</a> covers a chapter&rsquo;s first five weeks.</p>
+      <div class="about-rows about-rows--gap">
       <div class="about-row">
         <div class="prose">
           <h3 id="money" class="rv">How the money works</h3>
@@ -96,7 +282,58 @@
           </svg>
         </figure>
       </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="lp lp--tight lp--line" id="facts">
+    <div class="lp__inner">
+        <h2 class="about-h2 rv">Key facts</h2>
+        <dl class="facts rv">
+          <dt>Legal name</dt><dd>ALL Applied AI Network Foundation</dd>
+          <dt>Also known as</dt><dd>ALL Applied AI Network, ALL AI Network, ALL</dd>
+          <dt>Type</dt><dd>501(c)(3) nonprofit corporation, and fiscal sponsor for its student chapters</dd>
+          <dt>EIN</dt><dd>42-3604980</dd>
+          <dt>Founded</dt><dd>2026. The founding chapter, the MSOE AI Club, started in 2020.</dd>
+          <dt>Founder</dt><dd>Ben Paulson</dd>
+          <dt>Headquarters</dt><dd>Milwaukee, Wisconsin, United States</dd>
+          <dt>Website</dt><dd><a href="https://all-ai-network.org">all-ai-network.org</a></dd>
+          <dt>What it offers</dt><dd>Playbooks and films, a chapter dashboard, hosted chapter websites, a sponsor portal and fiscal sponsorship for university AI clubs</dd>
+          <dt>Cost</dt><dd>Free to chapters and members: no dues and no fees. The Foundation takes $0 from sponsorships and gifts; card processing fees apply to card payments.</dd>
+          <dt>Terms</dt><dd>No dues and no fees. Chapters operate as projects of the Foundation.</dd>
+          <dt>Onboarding</dt><dd>About 30 minutes, self-serve, no call</dd>
+          <dt>Chapters</dt><dd>12 on the platform as of September 2026, most in their first term. The live list is on <a href="./impact.html">The Network</a>.</dd>
+          <dt>Members</dt><dd>705 across the network as of September 2026, most of them at the founding chapter</dd>
+          <dt>Founding chapter</dt><dd>MSOE AI Club, Milwaukee School of Engineering: 500+ members, up from 20</dd>
+          <dt>Founding chapter sponsor</dt><dd>Direct Supply, primary sponsor of the MSOE AI Club</dd>
+          <dt>Founding chapter projects</dt><dd>Innovation Labs with Brady Corp (2024), Juno (2025), Databricks / Persistent Systems (2025) and Xorbix (2025); Hacksgiving challenges from Next Step Clinic (2023), Discovery World (2024) and the Milwaukee Domes Alliance (2025)</dd>
+          <dt>NVIDIA</dt><dd>An exploratory partnership to potentially scale the MSOE AI Club&rsquo;s model beyond MSOE. The founding chapter is a pilot member of the NVIDIA Student Network.</dd>
+          <dt>Licenses</dt><dd>Playbooks CC BY-SA 4.0; site and chapter website template code MIT</dd>
+          <dt>Contact</dt><dd><a href="mailto:ben.paulson@all-ai-network.org">ben.paulson@all-ai-network.org</a></dd>
+          <dt>Social</dt><dd><a href="https://www.youtube.com/@ALLAppliedAINetwork" target="_blank" rel="noopener">YouTube</a>, <a href="https://github.com/ALL-Applied-AI-Network" target="_blank" rel="noopener">GitHub</a></dd>
+        </dl>
+    </div>
+  </section>
+
+  <section class="lp lp--tight lp--line" id="faq">
+    <div class="lp__inner">
+        <h2 class="about-h2 rv">Frequently asked questions</h2>
+        <div class="faq rv">
+          <details><summary><h3>Does it cost anything to start a chapter?</h3></summary><p>No. There are no dues and no fees, and the Foundation takes $0 from the money a chapter raises; only card processing fees come out of card payments.</p></details>
+          <details><summary><h3>Do members need AI experience, or to be computer science majors?</h3></summary><p>No. Chapter events are free and open to anyone, with no sign-up needed to attend. The founding chapter grew through software and computer engineering, UX, business and mechanical engineering students as much as through computer science.</p></details>
+          <details><summary><h3>Our school already has an AI club. Can it join?</h3></summary><p>Yes. An existing club claims its chapter instead of starting a new one, keeps its name and its site, and adds the dashboard, the sponsor portal and the playbooks.</p></details>
+          <details><summary><h3>How does sponsorship money reach a chapter?</h3></summary><p>A company or donor gives to the Foundation, restricted to that chapter&rsquo;s work, and gets a receipt stating what is tax-deductible. The Foundation holds and accounts for the money, and the chapter spends it, usually through a virtual card for each event.</p></details>
+          <details><summary><h3>Is a chapter its own legal entity?</h3></summary><p>No. Chapters are projects of the Foundation, so a student club doesn&rsquo;t need its own bank account to accept a sponsorship. Some universities route corporate sponsorships through their own advancement office, and a chapter follows its school&rsquo;s rules.</p></details>
+          <details><summary><h3>Do sponsors see student profiles?</h3></summary><p>Sponsors the Foundation has approved can browse member profiles, and each member also has a public profile page; both are on by default. Any member with an account can turn both off with one switch under Profile &rarr; Share, and the <a href="./privacy.html">privacy policy</a> has the details.</p></details>
+          <details><summary><h3>What is ALL&rsquo;s relationship with NVIDIA?</h3></summary><p>The Foundation has an exploratory partnership with NVIDIA to potentially scale the MSOE AI Club&rsquo;s model beyond MSOE. NVIDIA engineers have spoken at the founding chapter, which is a pilot member of the NVIDIA Student Network.</p></details>
+        </div>
+    </div>
+  </section>
+
+  <section class="lp lp--tight lp--line" id="support">
+    <div class="lp__inner">
+        <h2 class="about-h2 rv">Support and contact</h2>
+      <div class="about-rows">
       <div class="about-row about-row--split">
         <div class="prose">
           <h3>Support a chapter</h3>
@@ -111,6 +348,8 @@
           <h3>Contact</h3>
           <p>Questions about the Foundation, a chapter, or a gift: <a href="mailto:ben.paulson@all-ai-network.org">ben.paulson@all-ai-network.org</a>. Our <a href="./privacy.html">privacy policy</a> covers what we collect and why, and lists our legal name and EIN.</p>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   </section>
