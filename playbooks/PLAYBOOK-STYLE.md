@@ -2,7 +2,7 @@
 
 Every playbook in this directory shares one voice and one structure. If you're contributing, match this or don't ship it.
 
-These playbooks were written by the team that built MSOE AI Club (MAIC) from 20 active members to 150, then 300, then 500+ — the largest undergraduate AI student org in the US for a school its size. They're grounded in our actual experience, not theory. Keep them that way.
+These playbooks were written by the team that built MSOE AI Club (MAIC) from 20 active members to 150, then 300, then 500+, at a school that graduates fewer than 100 computer science students a year. They're grounded in our actual experience, not theory. Keep them that way.
 
 ---
 
@@ -12,7 +12,7 @@ These playbooks were written by the team that built MSOE AI Club (MAIC) from 20 
 Say "We ran three Hacksgivings" — not "hosts typically run hackathons." The reader is getting advice from MAIC, not from a manual.
 
 ### 2. Name names.
-Our founder is Xander Neuwirth (2020). Our president who scaled the club was Ben Paulson (2023–24). Our current president is Brett Storoe (2025–). Our primary sponsor is Direct Supply. Our strategic partner is NVIDIA (via Dr. Dwight Diercks, SVP at NVIDIA and MSOE Regent). Our faculty champion is Dr. Jeremy Kedziora (PieperPower Endowed Chair in AI). Our advisor on logistics is Dr. Riley.
+Our founder is Xander Neuwirth (2020). Our president who scaled the club was Ben Paulson (2023–24). Our current president is Brett Storoe (2025–). Our primary sponsor is Direct Supply. MAIC was a pilot school of the NVIDIA Student Network in 2023, and the Foundation has an exploratory partnership with NVIDIA to potentially scale MAIC's model beyond MSOE. Our faculty champion is Dr. Jeremy Kedziora (PieperPower Endowed Chair in AI). Our advisor on logistics is Dr. Riley.
 
 Use those names. Generic placeholders sound hollow.
 

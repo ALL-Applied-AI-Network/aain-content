@@ -28,18 +28,16 @@
 ### Sponsors
 
 <p align="center">
-  <em>Sponsors fund the network so students learn for free.</em>
+  <em>Direct Supply sponsors the founding chapter, the MSOE AI Club.</em>
 </p>
 
 <table align="center">
   <tr>
-    <td align="center"><strong>NVIDIA</strong></td>
     <td align="center"><strong>Direct Supply</strong></td>
     <td align="center"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
     <td align="center"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://nvidia.com"><img src="public/logos/nvidia_logo.png" alt="NVIDIA" height="48" /></a></td>
     <td align="center"><a href="https://directsupply.com"><img src="public/logos/direct_supply_logo.png" alt="Direct Supply" height="48" /></a></td>
     <td align="center"><a href="https://github.com/ALL-Applied-AI-Network"><em>Your logo here</em></a></td>
     <td align="center"><a href="https://github.com/ALL-Applied-AI-Network"><em>Your logo here</em></a></td>
@@ -140,7 +138,7 @@ Hands-on, session-ready workshop content. Each includes a facilitator guide, stu
 **Applied AI workshops** — the core:
 - Build a Chatbot · RAG from Scratch · Build an Agent · Deploy Your First AI App · Prompt Engineering Lab
 
-**Deep dives** — adapted from MAIC's proven curriculum:
+**Deep dives** — adapted from the curriculum MAIC runs:
 - Deep Learning from Scratch · CNNs · Image Segmentation · Intro to LLMs · Q-Learning · Attention Is All You Need · Embeddings
 
 ## Using This Content

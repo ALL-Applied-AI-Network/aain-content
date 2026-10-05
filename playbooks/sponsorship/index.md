@@ -4,7 +4,7 @@
 
 Sponsorship is the second thing a new chapter asks about and the thing there was no playbook for. This is that playbook: how MAIC's sponsors actually arrived, what to send, what to ask for, and how the money reaches your chapter without anyone fronting it on a personal card.
 
-One structural thing to understand before any of it. Your chapter is a **sponsored project of the ALL Applied AI Network Foundation**, a 501(c)(3) (EIN 42-3604980). That means a company's gift is tax-deductible, the Foundation holds and accounts for the money, and your chapter directs how it's spent. You never take custody of the funds — which is exactly why the deduction works, and why a company's finance team can approve you without a fight.
+One structural thing to understand before any of it. Your chapter is a **sponsored project of the ALL Applied AI Network Foundation**, a 501(c)(3) (EIN 42-3604980). That means a company's gift goes to a charity: the Foundation holds and accounts for the money, your chapter directs how it's spent, and the receipt states what is tax-deductible. You never take custody of the funds — which is exactly why the deduction works, and why a company's finance team can approve you without a fight. Money your university holds, like an endowed chair's prize pool, stays with the university and follows its rules.
 
 ---
 
@@ -12,7 +12,7 @@ One structural thing to understand before any of it. Your chapter is a **sponsor
 
 If you read nothing else:
 
-1. Your chapter is a project of a 501(c)(3): a company's gift is tax-deductible, the Foundation holds the money, the chapter directs the spend.
+1. Your chapter is a project of a 501(c)(3): the Foundation holds a company's gift and issues a receipt stating what is tax-deductible, and the chapter directs the spend.
 2. Sponsors come from people who have already been in your room: past speakers, alumni at the company, faculty with discretionary funds. Ask for a speaker slot first, not money, and thank them within 48 hours.
 3. In the first real meeting: put the NDA on the table, recap what the chapter is as if they know nothing, and offer pathways (a speaker slot, a sponsored project, a hackathon) rather than a price.
 
@@ -39,7 +39,7 @@ In the order they've worked for us:
 1. **Speakers you already hosted.** They've stood in your room and seen the students. Every sponsor conversation that started this way was warmer than any cold outreach. See the [Speaker Series playbook](https://all-ai-network.org/playbook.html?path=playbooks/speaker-series/index.md).
 2. **Alumni at the company.** A warm intro from someone who went to your school is the single highest-conversion path we have. Your alumni office and LinkedIn will both find these.
 3. **Faculty with endowed or discretionary funds.** Often faster than a corporate budget cycle and far less paperwork.
-4. **The network.** Companies come to ALL Applied AI Network wanting to reach students rather than to any one club, so being a chapter puts you in conversations you didn't start. You can also pitch a prospect the whole network instead of one club at one school, which is a much lower bar for them to clear.
+4. **The network.** You can pitch a prospect the whole network instead of one club at one school, which is a much lower bar for them to clear.
 
 ### The sequence
 

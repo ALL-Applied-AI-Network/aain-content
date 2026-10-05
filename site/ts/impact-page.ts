@@ -98,7 +98,7 @@ const FALLBACK: NetworkStats = {
       state: "WI",
       stateName: "Wisconsin",
       stateId: "55",
-      founded: "2023",
+      founded: "2020",
       url: "https://msoe-maic.com",
       members_count: 517,
       events_90d: 1,
@@ -197,13 +197,10 @@ function renderStatsStrip(stats: NetworkStats): void {
   const el = document.getElementById("impact-stats-strip");
   if (!el) return;
   const items = [
-    { label: "Active chapters", value: stats.stats.chapters_active },
+    { label: "Chapters on the platform", value: stats.stats.chapters_active },
     { label: "Members reached", value: stats.stats.members_total.toLocaleString() },
     { label: "States", value: stats.stats.states_active },
-    {
-      label: "Active partners",
-      value: stats.partnerships.filter((p) => p.status === "active").length,
-    },
+    { label: "Events, last 90 days", value: stats.stats.events_90d },
   ];
   el.innerHTML = items
     .map(
@@ -431,7 +428,7 @@ function renderMap(topo: Topology, chapters: NetworkChapter[]): void {
     .select(container)
     .append("ul")
     .attr("class", "impact-map__a11y-list")
-    .attr("aria-label", "Active chapter regions");
+    .attr("aria-label", "Chapter regions");
   for (const iso of activeCountries) {
     a11y.append("li").text(ISO_TO_NAME[iso] ?? iso);
   }
@@ -528,7 +525,7 @@ function renderChapterCards(chapters: NetworkChapter[]): void {
               <h3 class="impact-chapter-card__name">${escapeHtml(c.name)}</h3>
               <p class="impact-chapter-card__sub">${escapeHtml(c.university)}${c.city && c.state ? ` &middot; ${escapeHtml(c.city)}, ${escapeHtml(c.state)}` : ""}</p>
             </div>
-            ${i === 0 && c.events_90d > 0 && c.members_count > 0 ? `<span class="impact-chapter-card__pill impact-chapter-card__pill--top">Most active</span>` : `<span class="impact-chapter-card__pill">Active</span>`}
+            ${i === 0 && c.events_90d > 0 && c.members_count > 0 ? `<span class="impact-chapter-card__pill impact-chapter-card__pill--top">Most active</span>` : c.events_90d > 0 ? `<span class="impact-chapter-card__pill">Active</span>` : ""}
           </header>
           <dl class="impact-chapter-card__stats">
             <div>
@@ -587,7 +584,7 @@ function renderToolStrip(stats: NetworkStats): void {
 // ---------------------------------------------------------------------------
 
 /**
- * Renders the "Org-wide partners power every chapter" block.
+ * Renders the "Network-wide partners" block.
  * Pulls active org-wide partnerships (chapters_scope='all' or null
  * for legacy rows). In-conversation partners deliberately do NOT show
  * here — partner conversations live on dedicated pages.
@@ -603,9 +600,7 @@ function renderPartnerships(parts: NetworkPartnership[]): void {
   if (orgWide.length === 0) {
     el.innerHTML = `
       <div class="impact-empty-note">
-        Network partners are being onboarded. Check back as
-        org-wide partnerships (compute, AI API credits, mentorship)
-        go live.
+        No network-wide partner yet.
       </div>
     `;
     return;
@@ -644,7 +639,7 @@ function renderChapterSponsorships(sponsors: ChapterSponsorship[]): void {
     el.innerHTML = `
       <div class="impact-empty-note">
         Be the first to back a chapter directly. Visit the sponsor
-        portal to browse chapters and propose a partnership.
+        portal to find a chapter and sponsor it.
       </div>
     `;
     return;

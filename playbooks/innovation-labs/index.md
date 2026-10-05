@@ -6,7 +6,7 @@ Innovation Labs sit between Hacksgiving (48 hours, nonprofit, AI-for-good) and R
 
 The inaugural Innovation Lab ran October 10 – December 7, 2024 with **Brady Corporation**. Their director of AI operations brought us a real challenge: *predict the volume of liquid in a container from a single image.* Brady's customers measure fluids in lab and industrial settings, and current methods are slow. We handed students a YOLOv8 segmentation baseline and 8 weeks. 60 students from MSOE and UW-Milwaukee, ~7 teams. Liquid Boogaloo won ($2.5K, 9 members), Liquid Lens took second ($1.5K), a UW-Milwaukee team took third ($1K). Every participant got a recommendation letter and a Brady Corp T-shirt. Ben Paulson and Adam Haile co-organized.
 
-The format works, and it recurs: four Labs across three terms, Fall 2024 through Fall 2025. Sponsors get early access to talent, students get a portfolio project with a real company name on it, and MAIC gets a funded track that complements Hacksgiving.
+The format works, and it recurs: four Labs across three terms, Fall 2024 through Fall 2025. Sponsors get eight weeks of student work on a problem they actually have, students get a portfolio project with a real company name on it, and MAIC gets a funded track that complements Hacksgiving.
 
 | Term | Partner |
 |---|---|
@@ -31,11 +31,11 @@ The rest of this playbook is how we learned that, and what we would do different
 
 ## Pitch a sponsor
 
-**The Innovation Lab pitch is different from a speaker pitch or a hackathon pitch. Lead with the talent access, not the charity.**
+**The Innovation Lab pitch is different from a speaker pitch or a hackathon pitch. Lead with the problem their team actually has, not the charity.**
 
 ### How we did it at MAIC
 
-We pitched Brady Corp starting from a warm intro from an MSOE alum in Brady's engineering leadership. The first real meeting was July 2024, with their director of AI operations, their director of business operations, a product manager interested in AI, and two engineers — one of them also an MSOE alum. Ben opened by recapping what MAIC was — *"Demystify AI for everyone. High-level ~40–50 per meeting. Low-level 150 students across 21 research teams last year"* — and then offered three sponsorship pathways: Speaker Events, Innovation Labs, Research Groups. Brady was interested in all three, landed on Innovation Labs at $5K.
+We pitched Brady Corp starting from a warm intro from an MSOE alum in Brady's engineering leadership. The first real meeting was July 2024, with their director of AI operations, their director of business operations, a product manager interested in AI, and two engineers — one of them also an MSOE alum. Ben opened by recapping what MAIC was — *"Demystify AI for everyone. High-level ~40–50 per meeting. Low-level 142 students across 21 research teams last year"* — and then offered three sponsorship pathways: Speaker Events, Innovation Labs, Research Groups. Brady was interested in all three, landed on Innovation Labs at $5K.
 
 Between July and September we had three more meetings with their AI ops director to scope the problem. The NDA conversation was the hardest part — Brady's CEO and president were nervous about competitors seeing the code, and we spent two weeks in legal back-and-forth in September that we should have had in week one. We've since moved NDA discussion into the first meeting, always.
 
@@ -50,15 +50,15 @@ Between July and September we had three more meetings with their AI ops director
 
 **Ben's actual opening pitch at the first Brady meeting** (paraphrased from 7/23/2024 meeting notes):
 
-> Thanks for agreeing to meet. Quick recap on MAIC: we demystify AI for everyone. Two event tracks — high-level talks that draw 40–50 per meeting, and low-level hands-on research groups that ran 150 students across 21 teams last year. Brad mentioned you were interested in the Hacksgiving formula. In 2023 our first Hacksgiving was with a non-profit, Next Step Clinic, sponsored by the Endowed Chair. Over 40 students competed for $6K. Top-3 teams actually implemented their work with Next Step. It's a MSOE relationship with strong not-for-profit focus, and we iterate the format every year. What's your goal with MAIC? That'll help me figure out which of our three pathways — Speaker Events, Innovation Labs, or Research Groups — fits best.
+> Thanks for agreeing to meet. Quick recap on MAIC: we demystify AI for everyone. Two event tracks — high-level talks that draw 40–50 per meeting, and low-level hands-on research groups that ran 142 students across 21 teams last year. Brad mentioned you were interested in the Hacksgiving formula. In 2023 our first Hacksgiving was with a non-profit, Next Step Clinic, sponsored by the Endowed Chair. Over 40 students competed for $6K. Top-3 teams actually implemented their work with Next Step. It's a MSOE relationship with strong not-for-profit focus, and we iterate the format every year. What's your goal with MAIC? That'll help me figure out which of our three pathways — Speaker Events, Innovation Labs, or Research Groups — fits best.
 
 **Sponsorship tier template:**
 
 | Tier | Amount | What they get |
 |---|---|---|
-| Innovation Lab (full) | $5K–$20K | Problem statement ownership, mentor engineer slot, final showcase invite, logo on all materials, recruiting access to top teams |
+| Innovation Lab (full) | $5K–$20K | Problem statement ownership, mentor engineer slot, final showcase invite, logo on all materials |
 | Speaker Event (single) | $500–$2K (optional) | 45-min talk slot, Q&A, recording rights, club shoutouts |
-| Research Group sponsor | In-kind + mentor time | Named mentor role, paper acknowledgment, student connection pipeline |
+| Research Group sponsor | In-kind + mentor time | Named mentor role, paper acknowledgment |
 
 **Have the NDA conversation in meeting 1.** Every time. Even if the answer is "we don't need one," having the conversation up front prevents the 2-week legal sprint we did with Brady in September 2024.
 

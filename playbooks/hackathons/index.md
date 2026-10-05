@@ -22,7 +22,7 @@ If you read nothing else:
 
 1. Lock one nonprofit partner ten weeks out and co-write a single challenge statement with them on a 45-minute call; send it back for sign-off by week minus six.
 2. Announce it on the first slide of the semester even though registration opens at week minus four. A new chapter should pick a hackathon or an Innovation Lab in its first semester, not both.
-3. Prize money is disbursed by the Foundation, never through a chapter account or an officer's Venmo. Sort the payout path before you announce a dollar figure.
+3. Prize money never goes through a chapter account or an officer's Venmo: the Foundation pays out what it holds for your chapter, and your university pays out what it holds. Sort the payout path before you announce a dollar figure.
 
 The rest of this playbook is how we learned that, and what we would do differently.
 
@@ -142,7 +142,7 @@ The handoff is where Hacksgiving stops being a stunt and starts being useful. In
 ### The repeatable version
 
 **Within 2 hours of demos ending:**
-- Announce winners, then submit the winner list and amounts for payout. Your chapter is a project of the ALL AI Network Foundation under fiscal sponsorship, so prize money is disbursed by the Foundation — it never passes through a chapter account and never through an eboard member's Venmo. Sort the payout path before you announce a dollar figure.
+- Announce winners, then submit the winner list and amounts for payout. Prize money never passes through a chapter account or an eboard member's Venmo. Money the Foundation holds for your chapter is disbursed by the Foundation; money your university holds (an endowed chair, a department budget) pays out through the university's process. Sort the payout path before you announce a dollar figure.
 - Take a group photo for social media
 - Hand top-3 teams the nonprofit's contact + 2-week clean-up timeline
 

@@ -70,10 +70,10 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#3b82f6",
     tagline:
-      "The playbook that took MAIC from 20 active members to 500+, the largest undergrad AI club in the US for its school size.",
+      "The playbook that took MAIC from 20 active members to 500+, at a school that graduates fewer than 100 computer science students a year.",
     stats: [
       { value: "20 → 500+", label: "member growth" },
-      { value: "5 years", label: "of iteration" },
+      { value: "6 years", label: "of iteration" },
       { value: "$50K+", label: "in prizes" },
     ],
     keys: [
@@ -105,11 +105,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       "Where MAIC's sponsors came from (a speaker slot, a warm intro, an endowed chair) and how the money reaches your chapter.",
     stats: [
       { value: "Speakers first", label: "how they start" },
-      { value: "501(c)(3)", label: "tax-deductible" },
+      { value: "501(c)(3)", label: "fiscal sponsor" },
       { value: "$5K", label: "first lab sponsor" },
     ],
     keys: [
-      "Your chapter is a project of a 501(c)(3): gifts are tax-deductible, the Foundation holds the money, the chapter directs the spend.",
+      "Your chapter is a project of a 501(c)(3): the Foundation holds the money and issues the receipt, the chapter directs the spend.",
       "Sponsors come from people who have already been in your room: past speakers, alumni, faculty. Ask for a speaker slot first, not money.",
       "In the first real meeting: NDA on the table, recap the chapter as if they know nothing, offer pathways rather than a price.",
     ],
@@ -141,7 +141,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     keys: [
       "Lock one nonprofit partner ten weeks out and co-write a single challenge statement with them on a 45-minute call.",
       "Announce it on the first slide of the semester; registration opens at week minus four. Pick a hackathon or an Innovation Lab in your first semester, not both.",
-      "Prize money moves through the Foundation, never a chapter account or a Venmo. Sort the payout path before you announce a dollar figure.",
+      "Prize money pays out through the Foundation or your university, never a chapter account or a Venmo. Sort the payout path before you announce a dollar figure.",
     ],
     actions: [
       { label: "Plan it", sub: "10-week countdown", anchor: "#plan-it" },
@@ -203,7 +203,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       "Sponsor-backed AI competitions. We invented the format in 2024 with Brady Corp: 60 students, $5K pool, real industry problems.",
     stats: [
       { value: "60 students", label: "in first Lab" },
-      { value: "$5K+", label: "sponsor pool" },
+      { value: "$5K", label: "sponsor pool" },
       { value: "2 schools", label: "MSOE + UWM" },
     ],
     keys: [
