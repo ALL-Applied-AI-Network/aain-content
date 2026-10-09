@@ -121,7 +121,7 @@ On every push to `main`, GitHub Actions validates the entire graph (no orphans, 
 
 ## Playbooks
 
-Battle-tested operational guides for running a hub. Written from the experience of scaling MSOE's AI Club to 500+ active members.
+Battle-tested operational guides for running a hub. Written from the experience of scaling MSOE's AI Club to 600+ active members.
 
 | Playbook | What it covers |
 |---|---|

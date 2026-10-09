@@ -70,9 +70,9 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     </svg>`,
     accent: "#3b82f6",
     tagline:
-      "The playbook that took MAIC from 20 active members to 500+, at a school that graduates fewer than 100 computer science students a year.",
+      "The playbook that took MAIC from 20 active members to 600+, at a school that graduates fewer than 100 computer science students a year.",
     stats: [
-      { value: "20 → 500+", label: "member growth" },
+      { value: "20 → 600+", label: "member growth" },
       { value: "6 years", label: "of iteration" },
       { value: "$50K+", label: "in prizes" },
     ],
@@ -239,7 +239,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     stats: [
       { value: "21 groups", label: "in 2024" },
       { value: "142 students", label: "in one year" },
-      { value: "20+ papers", label: "published" },
+      { value: "50+ papers", label: "published" },
     ],
     keys: [
       "Mentors first, topics second, students third. Recruit mentors and lock topics over the summer; announce them at the week-one event.",

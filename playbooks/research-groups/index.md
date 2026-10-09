@@ -1,6 +1,6 @@
 # Research Groups
 
-6-month student research projects with ROSIE supercomputer access. 21 groups and 142 students in 2024 alone, 20+ papers published over three years, $10K+ in research competition winnings.
+6-month student research projects with ROSIE supercomputer access. 21 groups and 142 students in 2024 alone, 50+ papers published, $10K+ in research competition winnings.
 
 Research groups at MAIC are 6-month projects, November through April, that take teams of 3–8 students from literature review to a paper, poster, or conference submission. Every group gets a mentor (faculty, grad student, or industry researcher), access to ROSIE (our NVIDIA GPU-powered on-campus supercomputer, administered by the faculty who run it), and a path to present at MICS (the regional Midwest Instruction and Computing Symposium) or the ROSIE Supercomputer Super Challenge.
 
