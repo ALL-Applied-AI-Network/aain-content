@@ -2736,14 +2736,14 @@ body::before {
   padding-left: 0.7rem;
 }
 
-/* ---------- Hired by: two rows of company logos under the numbers (ts/hired.ts) ----------
+/* ---------- Hired at: two rows of company logos closing The problem (ts/hired.ts) ----------
    The sponsor site's logo strip, in this site's tokens. Each row's belt carries two copies of the
    row and slides by one copy's width; the rows run opposite ways and hold while a pointer is over
    the band. Reduced motion: one copy per row, still, and the rows scroll sideways under a finger or
    a trackpad (Ben: a scrolling strip, never a collage). No script: no band. */
 .hired { margin-top: 72px; }
 .hired__h {
-  max-width: var(--max-width); margin: 0 auto; padding-inline: 24px; text-align: center;
+  max-width: var(--max-width); margin: 0 auto; padding-inline: 24px; text-align: center; text-wrap: balance;
   font: 600 clamp(1.3rem, 2.3vw, 1.65rem)/1.25 var(--font-display); letter-spacing: -.01em; color: var(--text-primary);
 }
 .hired__rows { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }

@@ -1,4 +1,5 @@
-/** hired.ts — the home page's "Our members have been hired by" strip (Ben, 2026-10-26).
+/** hired.ts — the home page's "But our members have been hired at" strip, closing The problem so it
+ *  shows within a scroll of the hero (Ben, 2026-10-26).
  *  Where each company comes from, so the list can be checked later:
  *    records  — a member's own LinkedIn experience on the dashboard (a job or an internship), 2026-10-26
  *    sponsors — on the sponsor site's logo strip (src/content/partnerLogos.ts in the portal)
