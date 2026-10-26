@@ -2,7 +2,7 @@
 <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 117.648 28.865">
     <style>
         .darkBlue {
-        fill: var(--ds-logo-color-dark, #ffffff);
+        fill: var(--ds-logo-color-dark, #003478);
         }
         .lightBlue {
         fill: var(--ds-logo-color-light, #0076DD);
