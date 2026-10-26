@@ -2739,7 +2739,8 @@ body::before {
 /* ---------- Hired by: two rows of company logos under the numbers (ts/hired.ts) ----------
    The sponsor site's logo strip, in this site's tokens. Each row's belt carries two copies of the
    row and slides by one copy's width; the rows run opposite ways and hold while a pointer is over
-   the band. Reduced motion: one copy, wrapped and still. No script: no band. */
+   the band. Reduced motion: one copy per row, still, and the rows scroll sideways under a finger or
+   a trackpad (Ben: a scrolling strip, never a collage). No script: no band. */
 .hired { margin-top: 72px; }
 .hired__h {
   max-width: var(--max-width); margin: 0 auto; padding-inline: 24px; text-align: center;
@@ -2767,9 +2768,11 @@ body::before {
 .hired--moving .hired__row--rev .hired__belt { animation-direction: reverse; }
 .hired:hover .hired__belt { animation-play-state: paused; }
 @keyframes hired-slide { to { transform: translateX(-50%); } }
-.hired--still .hired__row { -webkit-mask-image: none; mask-image: none; }
-.hired--still .hired__belt { flex: 1 1 100%; min-width: 0; }
-.hired--still .hired__track { flex: 1 1 100%; min-width: 0; flex-wrap: wrap; justify-content: center; row-gap: 14px; }
+.hired--still .hired__row { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
+.hired--still .hired__row::-webkit-scrollbar { display: none; }
+.hired--still .hired__row:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 4px; }
+.hired--still .hired__belt { min-width: 0; }
+.hired--still .hired__track { padding-inline: 24px; }
 @media (scripting: none) { .hired { display: none; } }
 @media (max-width: 600px) {
   .hired { margin-top: 56px; }

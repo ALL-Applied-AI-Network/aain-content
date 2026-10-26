@@ -2,11 +2,12 @@
  *  Where each company comes from, so the list can be checked later:
  *    records  — a member's own LinkedIn experience on the dashboard (a job or an internship), 2026-10-26
  *    sponsors — on the sponsor site's logo strip (src/content/partnerLogos.ts in the portal)
- *    ben      — named by Ben, from what he knows of the founding chapter's alumni
+ *    ben      — named by Ben, from what he knows of the founding chapter's alumni (OpenAI, Google,
+ *               NVIDIA, SpaceX, NASA, Milwaukee Tool)
  *  Every logo is the company's own file under public/logos/hired/ (its website or its Wikimedia
  *  Commons file). Never draw, trace or generate one. SVGs are stripped of scripts before they go in.
- *  Left off on purpose: NASA (federal rules limit use of its insignia), NVIDIA (public copy names it
- *  only in the authorized partnership line), and the sponsor strip's museum and garden nonprofits. */
+ *  NASA and NVIDIA: Ben, 2026-10-26 ("we've had members get hired at NASA and NVIDIA"). Left off:
+ *  the sponsor strip's museum and garden nonprofits, which never hired anyone. */
 export type HiredLogo = {
   name: string;
   file: string;
@@ -28,8 +29,10 @@ export const HIRED: HiredLogo[] = [
   // row one
   { name: "OpenAI", file: `${L}openai.svg`, w: 269.66, h: 72.52, size: 24, mono: true, from: "ben" },
   { name: "Google", file: `${L}google.svg`, w: 74, h: 24, size: 26, from: "ben" },
+  { name: "NVIDIA", file: `${L}nvidia.svg`, w: 139, h: 26, size: 26, from: "ben" },
   { name: "Direct Supply", file: `${L}direct-supply-on-dark.svg`, w: 118, h: 29, size: 26, from: "records+sponsors" },
   { name: "SpaceX", file: `${L}spacex.svg`, w: 147, h: 19, size: 18, from: "ben" },
+  { name: "NASA", file: `${L}nasa.svg`, w: 110, h: 92, size: 44, from: "ben" },
   { name: "Apple", file: `${L}apple.svg`, w: 842.32, h: 1000, size: 32, from: "records" },
   { name: "Milwaukee Tool", file: `${L}milwaukee-tool.svg`, w: 891, h: 401, size: 40, from: "ben" },
   { name: "IBM", file: `${L}ibm.svg`, w: 1075, h: 401, size: 24, mono: true, from: "sponsors" },
@@ -65,8 +68,8 @@ export const HIRED: HiredLogo[] = [
 const MIN = 8;
 
 /** Two rows that run opposite ways. Each row's belt carries two copies of the row (the second
- *  aria-hidden) and slides by one copy's width, so the loop has no seam. Still (wrapped, one copy)
- *  under reduced motion. */
+ *  aria-hidden) and slides by one copy's width, so the loop has no seam. Under reduced motion the
+ *  rows hold still (one copy) but stay rows you can swipe or scroll sideways: never a wrapped grid. */
 export function mountHired(root: HTMLElement, still: boolean): void {
   if (HIRED.length < MIN) return;
   const half = Math.ceil(HIRED.length / 2);
@@ -80,7 +83,7 @@ export function mountHired(root: HTMLElement, still: boolean): void {
   const track = (list: HiredLogo[], copy: boolean): string =>
     `<ul class="hired__track"${copy ? ' aria-hidden="true"' : ""}>${list.map((l) => item(l, copy)).join("")}</ul>`;
   root.innerHTML = rows
-    .map((list, i) => `<div class="hired__row${i ? " hired__row--rev" : ""}" style="--dur:${list.length * 5}s"><div class="hired__belt">${track(list, false)}${still ? "" : track(list, true)}</div></div>`)
+    .map((list, i) => `<div class="hired__row${i ? " hired__row--rev" : ""}" style="--dur:${list.length * 5}s"${still ? ` tabindex="0" aria-label="Companies, row ${i + 1} of 2 (scrolls sideways)"` : ""}><div class="hired__belt">${track(list, false)}${still ? "" : track(list, true)}</div></div>`)
     .join("");
   root.closest(".hired")?.classList.add(still ? "hired--still" : "hired--moving");
 }
