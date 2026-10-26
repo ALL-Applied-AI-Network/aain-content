@@ -2735,3 +2735,43 @@ body::before {
   border-left: 2px solid rgba(255, 255, 255, 0.14);
   padding-left: 0.7rem;
 }
+
+/* ---------- Hired by: two rows of company logos under the numbers (ts/hired.ts) ----------
+   The sponsor site's logo strip, in this site's tokens. Each row's belt carries two copies of the
+   row and slides by one copy's width; the rows run opposite ways and hold while a pointer is over
+   the band. Reduced motion: one copy, wrapped and still. No script: no band. */
+.hired { margin-top: 72px; }
+.hired__h {
+  max-width: var(--max-width); margin: 0 auto; padding-inline: 24px; text-align: center;
+  font: 600 clamp(1.3rem, 2.3vw, 1.65rem)/1.25 var(--font-display); letter-spacing: -.01em; color: var(--text-primary);
+}
+.hired__rows { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+.hired__row {
+  display: flex; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+/* the belt is at least two screens wide; the copies share it equally, so each is at least one */
+.hired__belt { display: flex; flex: none; min-width: 200%; }
+.hired__track { display: flex; flex: 1 0 auto; align-items: center; justify-content: space-around; gap: 14px; margin: 0; padding: 2px 7px; list-style: none; }
+.hired__item { flex: none; display: flex; }
+.hired__chip {
+  display: flex; align-items: center; justify-content: center; height: 64px; padding: 0 26px; border-radius: 14px;
+  background: rgba(255, 255, 255, .03); box-shadow: inset 0 0 0 1px var(--border-subtle);
+}
+.hired__item img { display: block; flex: none; width: auto; max-width: none; opacity: .85; transition: opacity .2s linear; }
+.hired__chip:hover img { opacity: 1; }
+.hired__item--tile img { border-radius: 8px; }
+.hired__item--mono img { filter: brightness(0) invert(1); }
+.hired--moving .hired__belt { animation: hired-slide var(--dur, 80s) linear infinite; }
+.hired--moving .hired__row--rev .hired__belt { animation-direction: reverse; }
+.hired:hover .hired__belt { animation-play-state: paused; }
+@keyframes hired-slide { to { transform: translateX(-50%); } }
+.hired--still .hired__row { -webkit-mask-image: none; mask-image: none; }
+.hired--still .hired__belt { flex: 1 1 100%; min-width: 0; }
+.hired--still .hired__track { flex: 1 1 100%; min-width: 0; flex-wrap: wrap; justify-content: center; row-gap: 14px; }
+@media (scripting: none) { .hired { display: none; } }
+@media (max-width: 600px) {
+  .hired { margin-top: 56px; }
+  .hired__chip { height: 56px; padding: 0 20px; }
+}

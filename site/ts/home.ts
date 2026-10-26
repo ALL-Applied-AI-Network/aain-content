@@ -4,6 +4,7 @@
  */
 import { mountFx } from "./fx";
 import { storiesByDate, fmtDate } from "./stories";
+import { mountHired } from "./hired";
 import { mountSequencer } from "./sequence";
 import { mountTour } from "./tour";
 
@@ -113,6 +114,8 @@ function initSheet(): void {
 document.addEventListener("DOMContentLoaded", () => {
   initSheet();
   initStories();
+  const hired = document.querySelector<HTMLElement>("[data-hired]");
+  if (hired) mountHired(hired, REDUCED);
   initHeroMark();
   initReveal();
   initCounters();
