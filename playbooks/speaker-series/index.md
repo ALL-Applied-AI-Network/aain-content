@@ -24,7 +24,7 @@ The rest of this playbook is how we learned that, and what we would do different
 
 ### How we did it at MAIC
 
-The fastest "yes" we ever got was from our own faculty. Dr. Jeremy Kedziora, Dr. Josiah Yoder, and Dr. Bukowy have all spoken at MAIC multiple times — we ask them when we need a speaker slot filled in under two weeks. The second-fastest yes comes from Dr. Dwight Diercks's NVIDIA network: Ben met Leland Rayner at NVIDIA in May 2024 and had him on our speaker schedule by September. The third easiest is Direct Supply — our primary sponsor sends engineers regularly, coordinated through our main contact there.
+The fastest "yes" we ever got was from our own faculty. Dr. Jeremy Kedziora, Dr. Josiah Yoder, and Dr. Bukowy have all spoken at MAIC multiple times — we ask them when we need a speaker slot filled in under two weeks. The second-fastest yes comes from your advisors' networks: Ben met someone at NVIDIA through ours in May 2024 and had him on our speaker schedule by September. The third easiest is Direct Supply — our primary sponsor sends engineers regularly, coordinated through our main contact there.
 
 For industry speakers outside our warm network, LinkedIn is the tool. Search for "Applied AI" or "ML Engineer" at Milwaukee companies, check for MSOE alumni, and send a short DM or email. Conference speakers passing through Milwaukee are another pool — we've caught a few when they were in town for Discovery World events or Brady Corp meetings.
 
@@ -77,7 +77,7 @@ Every speaker event runs the same way: 6:30pm doors open, food out, mingling. 6:
 
 ITC Great Hall logistics are documented in Ben's Board Responsibilities guide:
 - Reserve through the building's booking contact with time, attendance estimate, catering Y/N, and any 7400-request needs
-- Projector: iPad in back of hall, password `123456`, tap "show visual to stage"
+- Projector: iPad in back of hall, tap "show visual to stage" (the eboard's password manager has the login)
 - Microphone: stored in room right of Mario Pipe. Grab one, unmute via the iPad
 - Seating: ~120 capacity with standard layout; additional chairs in closet by Diercks Hall entrance
 

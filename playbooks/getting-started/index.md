@@ -54,7 +54,7 @@ The rest of this playbook is how we learned that, and what we would do different
 
 MSOE AI Club launched in 2020 under founder Xander Neuwirth with a simple model: workshops after hours, research groups on the side. It worked at first, but by 2023 the model was showing its age. Upperclassmen thought the club was for freshmen. Freshmen thought it felt like another class. Faculty wanted to plug in but didn't know how.
 
-When Ben Paulson took over as president in fall 2023, he and Xander had a hard conversation about what to keep and what to replace. We kept the mission — *demystify AI for everyone* — and scrapped almost everything else. We rebuilt workshops around current AI news. We stood up Innovation Labs as a sponsor-backed track. We moved Research Groups to a fall-to-spring cadence with industry mentors and ROSIE supercomputer access. We grew from 20 active members to 150 in a year, then 300, then 500+, at a school that graduates fewer than 100 computer science students a year. In 2023 MAIC was also a pilot school of the NVIDIA Student Network.
+When Ben Paulson took over as president in fall 2023, he and Xander had a hard conversation about what to keep and what to replace. We kept the mission — *demystify AI for everyone* — and scrapped almost everything else. We rebuilt workshops around current AI news. We stood up Innovation Labs as a sponsor-backed track. We moved Research Groups to a fall-to-spring cadence with industry mentors and ROSIE supercomputer access. We grew from 20 active members to 150 in a year, then 300, then 500+, at a school that graduates fewer than 100 computer science students a year.
 
 It's worth being precise about where those members came from, because it is the difference between a club that plateaus and one that doesn't: **MSOE graduates fewer than 100 CS students a year.** A club of 500 cannot be a CS club. Most of the growth came from the other computing majors — software engineering, computer engineering — and a large share from outside computing entirely: UX, business, mechanical engineering. If you scope your club to your CS department, you have capped it before you have started.
 
@@ -73,8 +73,8 @@ MAIC existed for three years before the "explosion." When Ben took over in 2023,
 - **Upperclassmen:** thought the club was for getting lowerclassmen up to speed
 - **Lowerclassmen:** felt like it was another class, without context to know where to start
 - **EECS Faculty:** glad the club existed, didn't know how to plug in
-- **MSOE Corporate (Dr. Riley):** wanted MAIC more visible in front-facing marketing
-- **Dr. Dwight Diercks (NVIDIA):** wanted MAIC connected to other student networks
+- **The school's corporate relations office:** wanted MAIC more visible in front-facing marketing
+- **An industry advisor:** wanted MAIC connected to other student networks
 - **Industry:** didn't know how to engage
 - **Other universities:** didn't know we existed
 
@@ -184,7 +184,7 @@ Ben handed off the presidency to Brett Storoe in 2024. The transition worked bec
 
 Without that document, half of MAIC's operational knowledge would have left with Ben. With it, Brett started her presidency with the answers to 90% of operational questions already written down.
 
-Year two is also when the club's value proposition started attracting unprompted sponsors and media. The Brady Corp Innovation Lab ($5K, Fall 2024) came through an MSOE alum on Brady's engineering leadership team, who reached out to us after hearing about Hacksgiving. The NVIDIA Student Network pilot came through Dr. Diercks. These didn't happen in year one — they happened because year two was visibly consistent.
+Year two is also when the club's value proposition started attracting unprompted sponsors and media. The Brady Corp Innovation Lab ($5K, Fall 2024) came through an MSOE alum on Brady's engineering leadership team, who reached out to us after hearing about Hacksgiving. These didn't happen in year one — they happened because year two was visibly consistent.
 
 ### The repeatable version
 
