@@ -12,7 +12,7 @@ These playbooks were written by the team that built MSOE AI Club (MAIC) from 20 
 Say "We ran three Hacksgivings" — not "hosts typically run hackathons." The reader is getting advice from MAIC, not from a manual.
 
 ### 2. Name names.
-Our founder is Xander Neuwirth (2020). Our president who scaled the club was Ben Paulson (2023–24). Our current president is Brett Storoe (2025–). Our primary sponsor is Direct Supply. MAIC was a pilot school of the NVIDIA Student Network in 2023, and the Foundation has an exploratory partnership with NVIDIA to potentially scale MAIC's model beyond MSOE. Our faculty champion is Dr. Jeremy Kedziora (PieperPower Endowed Chair in AI). Our advisor on logistics is Dr. Riley.
+Our founder is Xander Neuwirth (2020). Our president who scaled the club was Ben Paulson (2023–24). Our current president is Brett Storoe (2025–). Our primary sponsor is Direct Supply. The Foundation has an exploratory partnership with NVIDIA to potentially scale MAIC's model beyond MSOE. Our faculty champion is Dr. Jeremy Kedziora (PieperPower Endowed Chair in AI). Our advisor on logistics is Dr. Riley.
 
 Use those names. Generic placeholders sound hollow.
 
