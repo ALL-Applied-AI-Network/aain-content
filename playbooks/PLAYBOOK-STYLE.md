@@ -1,82 +1,63 @@
 # Playbook Style Guide
 
-Every playbook in this directory shares one voice and one structure. If you're contributing, match this or don't ship it.
+The six playbooks are short on purpose. An officer reads one between classes and acts on it the same week. If you're contributing, match this or don't ship it.
 
-These playbooks were written by the team that built MSOE AI Club (MAIC) from 20 active members to 150, then 300, then 500+, at a school that graduates fewer than 100 computer science students a year. They're grounded in our actual experience, not theory. Keep them that way.
+They're written by the founding chapter's team, from what it actually did. Keep them that way.
 
----
+## The model they all teach
+
+- **Two tracks run at once.** The pulse: a speaker or a workshop, about an hour, at least every two weeks. The depth: at least one hands-on project a semester (an Innovation Lab, a Research Group or a hackathon), kicked off in week 5.
+- **The first three weeks decide the year.** A quiet start is what kills one.
+- **New chapters start with a hackathon or an Innovation Lab.** Clubs that already run 40 to 100 members skip the founding steps.
+- **Every job names the dashboard feature that does it**, by the name it has in the dashboard today.
+
+## Shape
+
+```
+# Title
+
+One sentence: what this playbook gets you.
+
+Optional background: two to four sentences, or a small table.
+
+## Start here
+
+1. Key one, on one line.
+2. Key two, on one line.
+3. Key three, on one line.
+
+## A chapter
+
+**One or two bold sentences that say the chapter's point.**
+
+A numbered checklist or a short table.
+
+**In the dashboard:** the feature that does this job, by its real name.
+```
+
+- **Exactly three Start here keys**, each a single line. The dashboard shows them as three cards.
+- **Three chapters** (Getting Started has four). Each opens with a bold lead of one or two sentences, under 260 characters.
+- **Checklists and short tables beat prose.** Numbered lists with a bold opener are best: the dashboard lists the bold openers as a preview.
+- **One "In the dashboard" line per chapter.** Use the names on screen: Events → New Event, the QR tile, Invite/Import Members, Request From the ALL Network, Sponsors → Requests, Compute → Find Compute, Funding → Money, the run sheet, Deliverables, Badges → New Certificate.
+- **Length:** about 500 to 800 words. If it runs longer, cut the story, not the steps.
 
 ## Voice
 
-### 1. First-person plural, not consultant-speak.
-Say "We ran three Hacksgivings" — not "hosts typically run hackathons." The reader is getting advice from MAIC, not from a manual.
+- **First person plural** for the founding chapter's own experience ("we ran three"), plain instructions for everything else.
+- **Roles, not names.** "The president", "a faculty member's endowed chair", "an alum in the company's engineering leadership". Never a third party's email, phone number, login, or a meeting's attendee list.
+- **Real numbers only, scoped to where they're true.** A founding-chapter number says so. If you don't have the number, leave it out.
+- **No em dashes.** No "verified", "proven", "celebration", "seamless" or "powerful". Never print a chapter count.
+- **Don't confess for others.** Say what we'd do differently about our own work, never imply a partner or a sponsor mishandled anything.
 
-### 2. Name names.
-Our founder is Xander Neuwirth (2020). Our president who scaled the club was Ben Paulson (2023–24). Our current president is Brett Storoe (2025–). Our primary sponsor is Direct Supply. The Foundation has an exploratory partnership with NVIDIA to potentially scale MAIC's model beyond MSOE. Our faculty champion is Dr. Jeremy Kedziora (PieperPower Endowed Chair in AI). Our advisor on logistics is Dr. Riley.
+## What the dashboard depends on
 
-Use those names. Generic placeholders sound hollow.
+The dashboard's Getting Started reader parses these files live from all-ai-network.org. Its pictures are keyed to chapter headings and stand on phrases the files say. Changing either breaks the reader.
 
-### 3. Use real numbers.
-"20 → 150 → 300 → 500+ members across two years" is more useful than "grew substantially."
-"21 research groups with 142 students in 2024" beats "several research groups."
-If you don't know the number, say so or leave it out — never fudge.
+- **Keep every `##` heading.** Getting Started: Start here, Quick guide, Week 1, First semester, Year two (with its three "How we did it at MAIC" and two "The repeatable version" `###` headings). Speaker Series: Find a speaker, Run the event, Build the series. Innovation Labs: Pitch a sponsor, Run the lab, Showcase and handoff. Hackathons: Plan it, Run it, Wrap it. Research Groups: Form the group, Run experiments, Publish. Sponsorship: How we did it at MAIC (with "Where sponsors actually come from"), The repeatable version (with "The sequence" and "The first real meeting"), What we'd do differently. Innovation Labs and Sponsorship also need background text before Start here.
+- **Keep the week-by-week table in Getting Started word for word.** The dashboard's semester map is drawn from it.
+- **Before you push**, run the dashboard's own check against your copy. From a network-api checkout, with each file copied to `<dir>/<slug>.md`: `PLAYBOOK_DIR=<dir> node scripts/test-learn.cjs`. It names any phrase a picture still needs.
+- **Update `site/ts/playbook-metadata.ts`** when a key, a heading or the length changes. `npm run validate` checks that the keys, anchors and reading times still match.
 
-### 4. Be candid about failures.
-Our mid-day meeting pilot died because commuters couldn't eat lunch there. Our first Hacksgiving ran 30 minutes long because we didn't time-box demos. Our early "workshops as lecture series" format made upperclassmen feel the club was for freshmen. Say the things. New hub leaders learn more from our failures than from our wins.
+## Linking
 
----
-
-## Structure — every sub-page
-
-Every sub-page follows the same four-section pattern, in this order:
-
-1. **One-sentence hook.** Bolded, under the H1. The lede that makes a new hub leader want to read more.
-2. **`## How we did it at MAIC`.** 2–3 paragraphs of concrete story. Real people, real events, real dollars. This is the soul of the playbook.
-3. **`## The repeatable version`.** The portable playbook: checklists, templates, numbered steps. This is what other hubs will actually use.
-4. **`## What we'd do differently`.** One honest paragraph of retrospective. What didn't work, what we'd redo, what we'd warn a new hub leader about.
-
-Index pages follow a similar pattern but replace section 3 with a linked Table of Contents for the sub-pages.
-
----
-
-## Length targets
-
-- **Index pages:** 40–80 lines.
-- **Sub-pages:** 80–150 lines.
-
-If you can't say it in under 150 lines, you're padding. Cut the "why this matters" preamble and trust the reader.
-
----
-
-## Formatting conventions
-
-- **Headings.** H1 at top, then hook, then section H2s. Don't go deeper than H3 except in templates.
-- **Callouts.** Use `:::callout[tip|info|warning|danger]` sparingly — at most one per sub-page.
-- **Tables.** Use for comparisons (sponsor tiers, prize pools, year-over-year numbers). Not for padding.
-- **Code blocks.** Use for real templates — outreach emails, room reservation messages, meeting agendas. Quote MAIC's actual artifacts where possible.
-- **Links.** Cross-link between playbooks liberally. A Research Group mentor contact shows up in Sponsors too.
-
----
-
-## Attribution
-
-- When quoting a templated email or message MAIC actually sent, prefix with:
-  > *Adapted from a message sent by MAIC to [Company/Partner], [Month Year].*
-- When referencing a specific Hacksgiving, Innovation Lab, or Research Group: cite the year, partner, and outcome (prize, attendance, or publication).
-- When describing a policy from MAIC's internal documents, cite the source: *"From the MAIC Board Responsibilities guide, compiled by Ben Paulson, 2024."*
-
----
-
-## What these playbooks are not
-
-- Not generic startup advice. If you find yourself writing something that could apply to any student org, delete it.
-- Not a theoretical framework. Every claim should be backed by a MAIC event, conversation, or artifact.
-- Not exhaustive. We cover what we actually did. If we never ran a virtual-only hackathon, we don't have a playbook for that.
-
----
-
-## The one-sentence test
-
-Before you ship a sub-page, ask: *"If someone read only the hook, would they know what specific thing this page teaches them to do?"*
-
-If yes, ship it. If no, rewrite the hook.
+Cross-links between playbooks are absolute, `https://all-ai-network.org/playbook.html?path=playbooks/<slug>/index.md`, so they also work inside the dashboard. Links within a playbook use the heading's anchor, like `#quick-guide`.
