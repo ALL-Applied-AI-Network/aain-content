@@ -64,7 +64,7 @@ They aren't a ladder. MSOE has had research groups, Innovation Labs and a hackat
 
 ### How we did it at MAIC
 
-The club was three years old before it grew. The turnaround started with a one-page audit: upperclassmen thought it was for freshmen, freshmen thought it was another class, and faculty and companies didn't know how to plug in. Every change that followed answered a line on that page.
+MSOE AI Club (MAIC) was three years old before it grew. The turnaround started with a one-page audit: upperclassmen thought it was for freshmen, freshmen thought it was another class, and faculty and companies didn't know how to plug in. Every change that followed answered a line on that page.
 
 ### The repeatable version
 

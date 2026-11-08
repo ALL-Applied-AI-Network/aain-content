@@ -12,7 +12,7 @@ Your chapter is a sponsored project of the ALL Applied AI Network Foundation, a 
 
 ## How we did it at MAIC
 
-**Every sponsor we landed had already been in our room.**
+**Every sponsor we landed at MAIC, the founding chapter at MSOE, had already been in our room.**
 
 1. **Direct Supply speaks and funds.** Its engineers give talks and it covers food, and the talks keep the funding warm.
 2. **Brady Corporation came through an alum and a talk.** An MSOE alum in its engineering leadership heard about the hackathon, the company spoke, and then it funded the first Innovation Lab.
