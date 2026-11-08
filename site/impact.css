@@ -895,7 +895,7 @@
 
 .impact-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   /* margin-top preserved, left/right set to auto so this grid
      self-centers whenever its max-width (760px) ends up narrower than
@@ -940,7 +940,17 @@
 
 @media (max-width: 768px) {
   .impact-stats {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .impact-stats__item {
+    padding: 1rem 0.5rem;
+  }
+  .impact-stats__value {
+    font-size: 1.5rem;
+  }
+  .impact-stats__label {
+    font-size: 0.6875rem;
   }
 }
 

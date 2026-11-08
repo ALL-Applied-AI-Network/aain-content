@@ -196,8 +196,8 @@ async function loadStats(): Promise<NetworkStats> {
 function renderStatsStrip(stats: NetworkStats): void {
   const el = document.getElementById("impact-stats-strip");
   if (!el) return;
+  // No chapter count: the network never prints one (claims rule).
   const items = [
-    { label: "Chapters on the platform", value: stats.stats.chapters_active },
     { label: "Members reached", value: stats.stats.members_total.toLocaleString() },
     { label: "States", value: stats.stats.states_active },
     { label: "Events, last 90 days", value: stats.stats.events_90d },
