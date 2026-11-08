@@ -7,6 +7,9 @@
    prefers-reduced-motion at the bottom of this file.
    ======================================================================== */
 
+/* Small labels: the site's --text-muted is under 4.5:1 on these surfaces, this is over 5 */
+:root { --pb-quiet: #8e8e9a; }
+
 /* ---------- Library hero ---------- */
 .pb-hero {
   position: relative;
@@ -129,7 +132,7 @@
   font-size: 0.66rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--pb-quiet);
   padding-left: 0.75rem;
 }
 .pbm__wk {
@@ -138,7 +141,7 @@
   text-align: center;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--text-muted);
+  color: var(--pb-quiet);
   font-variant-numeric: tabular-nums;
 }
 
@@ -337,7 +340,8 @@
 html.js-rv .pbm__frame.in .pbm__dot { animation: pbm-pop 0.36s cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: calc(var(--w) * 45ms + 120ms); }
 html.js-rv .pbm__frame.in .pbm__bar,
 html.js-rv .pbm__frame.in .pbm__line::before { animation: pbm-grow 0.52s cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 0.36s; }
-html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 0.62s; }
+html.js-rv .pbm__frame.in .pbm__block,
+html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 0.62s; }
 
 /* Narrow screens: the label sits above its row, and the weeks take the width */
 @media (max-width: 760px) {
@@ -424,7 +428,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   align-items: center;
   gap: 0.6rem;
   font-size: 0.74rem;
-  color: var(--text-muted);
+  color: var(--pb-quiet);
   white-space: nowrap;
 }
 .pbc__film {
@@ -488,7 +492,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   color: var(--text-primary);
   line-height: 1.2;
 }
-.pbc__fact dd { margin: 0.15rem 0 0; font-size: 0.72rem; line-height: 1.35; color: var(--text-muted); }
+.pbc__fact dd { margin: 0.15rem 0 0; font-size: 0.72rem; line-height: 1.35; color: var(--pb-quiet); }
 
 .pbc__jumps {
   position: relative;
@@ -682,7 +686,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   flex-wrap: wrap;
   gap: 0.4rem 1rem;
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--pb-quiet);
 }
 .pb-header__meta span { display: inline-flex; align-items: center; gap: 0.35rem; }
 .pb-header__meta svg { width: 0.85rem; height: 0.85rem; }
@@ -733,7 +737,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   color: var(--text-primary);
   line-height: 1.15;
 }
-.pb-header__stat-label { font-size: 0.74rem; color: var(--text-muted); line-height: 1.35; }
+.pb-header__stat-label { font-size: 0.74rem; color: var(--pb-quiet); line-height: 1.35; }
 
 .pb-header__actions-label {
   position: relative;
@@ -741,7 +745,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   font-size: 0.66rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--text-muted);
+  color: var(--pb-quiet);
   margin-bottom: 0.6rem;
 }
 
@@ -967,7 +971,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--pb-quiet);
   border-bottom-color: rgba(255, 255, 255, 0.16);
   white-space: nowrap;
 }
@@ -991,6 +995,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   padding-right: 1.1rem;
 }
 .playbook-content.pbr td strong { color: var(--text-primary); font-weight: 600; }
+.playbook-content.pbr table.pbr-axis tbody td:first-child strong { color: inherit; }
 .playbook-content.pbr td em { color: var(--pb-accent, #22d3ee); font-style: normal; font-size: 0.86em; }
 @media (max-width: 640px) {
   .playbook-content.pbr table { font-size: 0.88rem; }
@@ -1041,7 +1046,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   font-size: 0.64rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--pb-quiet);
 }
 .pbr-copy {
   position: absolute;
@@ -1089,7 +1094,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   outline: none;
 }
 .pbr-next__link--next { text-align: right; grid-column: 2; }
-.pbr-next__k { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
+.pbr-next__k { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pb-quiet); }
 .pbr-next__t { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--c); }
 @media (max-width: 560px) {
   .pbr-next { grid-template-columns: 1fr; }
@@ -1100,6 +1105,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   html.js-rv .pbm__frame.in .pbm__dot,
   html.js-rv .pbm__frame.in .pbm__bar,
   html.js-rv .pbm__frame.in .pbm__line::before,
-  html.js-rv .pbm__frame.in .pbm__block { animation: none; }
+  html.js-rv .pbm__frame.in .pbm__block,
+  html.js-rv .pbm__frame.in .pbm__blocktext { animation: none; }
   .pbc, .pbc:hover, .pb-header__action, .pb-header__action:hover, .pbm__go { transition: none; transform: none; }
 }

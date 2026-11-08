@@ -387,6 +387,11 @@ body {
   100% { background-position: 0% 50%; }
 }
 
+/* The drifting gradient is decoration: it holds still for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .btn--primary, .nav__cta-btn, .playbooks-pointer__cta { animation: none; }
+}
+
 .btn--primary:hover {
   color: #fff;
   box-shadow: 0 4px 24px rgba(59, 130, 246, 0.35), 0 2px 12px rgba(168, 85, 247, 0.25);
