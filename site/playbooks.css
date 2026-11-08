@@ -615,7 +615,7 @@ html.js-rv .pbm__frame.in .pbm__block { animation: pbm-pop 0.36s cubic-bezier(0.
   inset: -40% -20% auto auto;
   width: 60%;
   height: 120%;
-  background: radial-gradient(circle at center, color-mix(in srgb, var(--pb-accent) 14%, transparent), transparent 65%);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--pb-accent) 14%, transparent), transparent);
   pointer-events: none;
 }
 

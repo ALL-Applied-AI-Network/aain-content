@@ -199,7 +199,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       "The shape: about eight weeks from the week 5 kick-off, teams of six to nine mixed across years, and a sponsor engineer holding weekly office hours.",
       "Close the loop: cleaned-up code to the sponsor within two weeks, a letter for every finisher, and an email 30 days after the showcase about the next one.",
     ],
-    minutes: 3,
+    minutes: 4,
     actions: [
       { label: "Pitch a Sponsor", sub: "Three meetings", anchor: "#pitch-a-sponsor" },
       { label: "Run the Lab", sub: "Eight weeks, one problem", anchor: "#run-the-lab" },
