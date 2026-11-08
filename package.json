@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "validate": "tsx scripts/validate-tree.ts && tsx scripts/validate-content.ts && tsx scripts/validate-curriculum.ts && node scripts/test-beginner-examples.mjs",
+    "validate": "tsx scripts/validate-tree.ts && tsx scripts/validate-content.ts && tsx scripts/validate-playbooks.ts && tsx scripts/validate-curriculum.ts && node scripts/test-beginner-examples.mjs",
     "build": "npm run validate && tsx scripts/generate-tree.ts && tsx scripts/generate-manifest.ts && tsx scripts/fetch-hub-template-readme.ts",
     "generate:tree": "tsx scripts/generate-tree.ts",
     "generate:manifest": "tsx scripts/generate-manifest.ts",

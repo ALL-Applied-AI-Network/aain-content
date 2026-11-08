@@ -36,7 +36,7 @@ How to open the year so people stay, run two tracks all semester, and hand the c
 | Track | What it is | How often |
 |---|---|---|
 | **The pulse** | A speaker or a workshop, about an hour, after classes | At least every two weeks |
-| **The depth** | A hands-on project: an [Innovation Lab](https://all-ai-network.org/playbook.html?path=playbooks/innovation-labs/index.md) for newer students, a [Research Group](https://all-ai-network.org/playbook.html?path=playbooks/research-groups/index.md) for advanced ones, or a [hackathon](https://all-ai-network.org/playbook.html?path=playbooks/hackathons/index.md) | At least one a semester, kicked off in week 5 |
+| **The depth** | A hands-on project: an Innovation Lab, a Research Group or a hackathon | At least one a semester, kicked off in week 5 |
 
 They aren't a ladder. MSOE has had research groups, Innovation Labs and a hackathon running in the same semester.
 
@@ -64,7 +64,7 @@ They aren't a ladder. MSOE has had research groups, Innovation Labs and a hackat
 
 ### How we did it at MAIC
 
-The club existed for three years before it grew. The turnaround started with a one-page audit of what every audience thought of it: upperclassmen thought it was for freshmen, freshmen thought it felt like another class, faculty didn't know how to plug in, and companies didn't know how to engage. Every change that followed answered a line on that page.
+The club was three years old before it grew. The turnaround started with a one-page audit: upperclassmen thought it was for freshmen, freshmen thought it was another class, and faculty and companies didn't know how to plug in. Every change that followed answered a line on that page.
 
 ### The repeatable version
 
@@ -82,12 +82,12 @@ The club existed for three years before it grew. The turnaround started with a o
 
 ### How we did it at MAIC
 
-Every other Thursday, 6:30 to 7:30, the same room all year, with free food every time. Before that slot was fixed, rooms and times followed whoever on the board was free, and every move cost attendance that never came back.
+Every other Thursday, 6:30 to 7:30, the same room all year, with free food every time. Before that, the slot moved with the board's schedules, and every move cost people who never came back.
 
 ### The repeatable version
 
 1. **Pick a day, time, and room**, then never change them. Bi-weekly is the sweet spot. One moved meeting costs about 15% of attendance that doesn't come back.
-2. **Copy the opening weeks** from the [Quick guide](#quick-guide). The week 5 kick-off is a reveal: teams, mentors and the sponsor in one room.
+2. **Copy the opening weeks** from the [Quick guide](#quick-guide). Week 5 is a reveal: teams, mentors and the sponsor in one room.
 3. **Recruit in parallel:** first-year seminars, 30 seconds at the start of relevant lectures, one group chat on every poster, and "bring a friend".
 4. **Feed people.** Sponsor money or your student org budget. It's the best money you'll spend.
 
@@ -107,7 +107,7 @@ Every other Thursday, 6:30 to 7:30, the same room all year, with free food every
 
 ### How we did it at MAIC
 
-Seven months into the job, the president who rebuilt the club wrote a Board Responsibilities guide: rooms, food, funding contacts, sponsor history. His successor started with most answers already written down. Next time he'd start it on day one.
+Seven months in, the president who rebuilt the club wrote down how everything worked: rooms, food, funding, sponsors. His successor started with most answers in hand. Next time he'd start the doc on day one.
 
 ### The repeatable version
 
@@ -119,6 +119,6 @@ Seven months into the job, the president who rebuilt the club wrote a Board Resp
 2. **Pick your successor by mid-year.** Your successor shadows you for at least one event, runs one alongside you, then runs one with you shadowing them.
 3. **Recruit next year's board in the spring**, not after graduation.
 4. **Ask every partner back within 30 days**, while the impression is warm. That habit is why the founding chapter had an Innovation Lab partner every term from Fall 2024 through Fall 2025.
-5. **Tell the story.** Send winners, papers and projects to your university's news office.
+5. **Tell the story.** Send winners and papers to your university's news office.
 
 **In the dashboard:** add next year's board under **Your Chapter → Officers & Roles**: that's who can use the dashboard and who appears on your site. Events, the roster and the money history stay with the chapter, not with whoever set them up.

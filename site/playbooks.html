@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Playbooks — ALL Applied AI Network</title>
-  <meta name="description" content="Open-source playbooks for running a university AI hub. Written by the team that built MSOE AI Club from 20 to 600+ members." />
-  <meta property="og:title" content="Playbooks — ALL Applied AI Network" />
-  <meta property="og:description" content="Six playbooks from the chapter that grew from 20 members to 500. Each opens with the three things to do first." />
+  <title>Playbooks &middot; ALL Applied AI Network</title>
+  <meta name="description" content="Six short playbooks for running a university AI chapter: the first three weeks, a speaker every other week, Innovation Labs, hackathons, research groups and sponsorship. From the founding chapter." />
+  <meta property="og:title" content="Playbooks · ALL Applied AI Network" />
+  <meta property="og:description" content="Six short playbooks from the founding chapter. Each opens with the three things to do first and names the dashboard tool for each job." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./public/all-logo-transparent.png" />
   <meta name="twitter:card" content="summary" />
@@ -44,36 +44,41 @@
   </nav>
 
   <!-- Hero -->
-  <section class="pb-hero rv">
-    <div class="container pb-hero__inner">
-      <span class="pb-hero__badge">Six playbooks · From the founding chapter</span>
+  <section class="pb-hero">
+    <div class="container pb-hero__inner rv">
+      <span class="pb-hero__badge">Six playbooks &middot; From the founding chapter</span>
       <h1 class="pb-hero__title">Playbooks</h1>
       <p class="pb-hero__subtitle">
-        Written by the people who grew the founding chapter from 20 members to 500.
-        Each opens with the three things to do first.
+        Short guides to running a chapter, each a few minutes long. Every one starts with
+        the three things to do first and names the dashboard tool for each job.
       </p>
-      <div class="pb-hero__stats">
-        <div class="pb-hero__stat">
-          <span class="pb-hero__stat-value">600+</span>
-          <span class="pb-hero__stat-label">members</span>
-        </div>
-        <div class="pb-hero__stat">
-          <span class="pb-hero__stat-value">$50K+</span>
-          <span class="pb-hero__stat-label">in prize pools</span>
-        </div>
-        <div class="pb-hero__stat">
-          <span class="pb-hero__stat-value">6 years</span>
-          <span class="pb-hero__stat-label">of iteration</span>
-        </div>
+    </div>
+  </section>
+
+  <!-- The year, on two tracks: how the six fit together -->
+  <section class="pbm" aria-labelledby="pbm-title">
+    <div class="container">
+      <div class="pbm__head rv">
+        <p class="pbm__eyebrow">How they fit</p>
+        <h2 class="pbm__title" id="pbm-title">One semester, two tracks.</h2>
+        <p class="pbm__lede">A regular event every two weeks keeps people coming. A hands-on project, kicked off in week 5, gives them something to build. Each row is a playbook.</p>
+      </div>
+      <div class="pbm__frame rv" id="pb-map">
+        <!-- the map, rendered by playbooks-page.ts -->
       </div>
     </div>
   </section>
 
-  <!-- Playbook grid -->
-  <section class="pb-grid-section">
+  <!-- Playbook cards -->
+  <section class="pb-grid-section" aria-label="All six playbooks">
     <div class="container">
       <div class="pb-grid rv-group" id="pb-grid">
         <!-- cards rendered by playbooks-page.ts -->
+      </div>
+      <div class="pb-door rv">
+        <span class="pb-door__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8M12 18v3"/></svg></span>
+        <p class="pb-door__text"><b>Already running a chapter?</b> The same six playbooks open inside your dashboard under Getting Started, next to a map of your own semester.</p>
+        <a class="btn btn--outline pb-door__btn" href="https://dashboard.all-ai-network.org/resources?tab=playbooks" rel="noopener">Open in the Dashboard</a>
       </div>
     </div>
   </section>
@@ -84,12 +89,12 @@
       <div>
         <h2 class="pb-contrib__title">Want to contribute?</h2>
         <p class="pb-contrib__desc">
-          Every playbook has four parts: a hook, how we did it at MAIC,
-          the repeatable version, and what we'd do differently.
+          Every playbook has the same shape: three things to do first, three short chapters,
+          and the dashboard feature for each job.
         </p>
       </div>
       <div class="pb-contrib__actions">
-        <a href="./playbook.html?path=playbooks/PLAYBOOK-STYLE.md" class="btn btn--outline">Read the style guide</a>
+        <a href="./playbook.html?path=playbooks/PLAYBOOK-STYLE.md" class="btn btn--outline">Read the Style Guide</a>
         <a href="https://github.com/ALL-Applied-AI-Network/aain-content" target="_blank" rel="noopener" class="btn btn--primary">Open on GitHub</a>
       </div>
     </div>

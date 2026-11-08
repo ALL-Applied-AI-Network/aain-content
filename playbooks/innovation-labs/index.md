@@ -1,6 +1,6 @@
 # Innovation Labs
 
-A company brings a real problem, mixed teams of newer and older students build for eight weeks, and the company leaves with a working prototype. It's the easiest way into hands-on work.
+A company brings a real problem, mixed teams build for eight weeks, and the company leaves with a working prototype. The easiest way into hands-on work.
 
 Innovation Labs are 8-week industry-sponsored competitions, kicked off at the week 5 project kick-off. The founding chapter has run them with Brady Corporation (Fall 2024), Juno (Spring 2025), Persistent Systems with Databricks, Xorbix (Fall 2025), and Rockwell Automation with NVIDIA (Fall 2026, with UW-Milwaukee). Sell it to students as a project with a company's name on it, teammates a few years ahead of them, and a portfolio piece before Christmas break. No experience needed.
 
