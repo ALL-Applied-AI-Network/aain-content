@@ -942,7 +942,8 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
   color: var(--pb-accent, #22d3ee);
   border: 1px solid color-mix(in srgb, var(--pb-accent, #22d3ee) 45%, transparent);
 }
-.playbook-content.pbr li strong { color: var(--text-primary); font-weight: 600; }
+.playbook-content.pbr li strong,
+.playbook-content.pbr p strong { color: var(--text-primary); font-weight: 600; }
 .playbook-content.pbr ul { padding-left: 1.2rem; }
 .playbook-content.pbr ul li::marker { color: var(--pb-accent, #22d3ee); }
 .playbook-content.pbr ol li ul { margin: 0.4rem 0 0; }
