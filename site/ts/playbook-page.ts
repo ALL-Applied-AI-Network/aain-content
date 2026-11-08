@@ -51,11 +51,14 @@ function renderActionHeader(meta: PlaybookMeta): string {
     )
     .join("");
 
+  // Each door names the chapter it lands in, filled in by numberJumps() once the
+  // markdown has rendered (a door can land on a section inside a chapter). The
+  // space holds the line so nothing shifts when it fills.
   const actions = meta.actions
     .map(
-      (a, i) => `
+      (a) => `
         <a class="pb-header__action" href="${a.anchor}">
-          <span class="pb-header__action-num">${String(i + 1).padStart(2, "0")}</span>
+          <span class="pb-header__action-num">&nbsp;</span>
           <span class="pb-header__action-label">${escapeHtml(a.label)}</span>
           <span class="pb-header__action-sub">${escapeHtml(a.sub)}</span>
           <span class="pb-header__action-arrow" aria-hidden="true">&rarr;</span>
@@ -204,6 +207,20 @@ function dressPlaybook(root: HTMLElement): void {
   });
 }
 
+/** Label each "Jump to a chapter" door with the number of the chapter it lands in,
+ *  the same number the chapter's own eyebrow shows. */
+function numberJumps(root: HTMLElement): void {
+  const chapters = Array.from(root.querySelectorAll<HTMLElement>("h2.pbr-chapter"));
+  document.querySelectorAll<HTMLAnchorElement>(".pb-header__action").forEach((a) => {
+    const num = a.querySelector(".pb-header__action-num");
+    const id = decodeURIComponent((a.getAttribute("href") ?? "").replace(/^#/, ""));
+    let el: Element | null = id ? root.querySelector(`[id="${CSS.escape(id)}"]`) : null;
+    while (el && !(el.tagName === "H2" && el.classList.contains("pbr-chapter"))) el = el.previousElementSibling;
+    const n = el ? chapters.indexOf(el as HTMLElement) + 1 : 0;
+    if (num && n > 0) num.textContent = `Chapter ${String(n).padStart(2, "0")}`;
+  });
+}
+
 /** Previous and next playbook, in the library's order. */
 function renderNext(slug: string): string {
   const i = PLAYBOOKS.findIndex((p) => p.slug === slug);
@@ -297,6 +314,7 @@ async function init(): Promise<void> {
   if (meta) {
     contentEl.style.setProperty("--pb-accent", meta.accent);
     dressPlaybook(contentEl);
+    numberJumps(contentEl);
     const nav = document.getElementById("playbook-nav");
     if (nav) nav.innerHTML = renderNext(section);
   }

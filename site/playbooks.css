@@ -781,6 +781,7 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
   font-family: var(--font-mono);
   font-size: 0.64rem;
   letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--pb-accent);
 }
 .pb-header__action-label {
