@@ -42,7 +42,7 @@ Innovation Labs are 8-week industry-sponsored competitions, kicked off at the we
 3. **The mentor** holds weekly office hours, answers async, and never writes the code.
 4. **A quiet team gets a nudge.** No commits in a week, and an officer messages the team lead.
 
-**In the dashboard:** **Events → New Event → Innovation Lab** puts the run sheet at the top of Project Work: Sign-up, Teams (**Import Teams** takes a CSV), GitHub (a repo per team), Deliverables (a one-pager or progress update with a due date and reminders), Showcase.
+**In the dashboard:** **Events → New Event → Innovation Lab** puts the run sheet at the top of Project Work: Sign-Up, Teams (**Import Teams** takes a CSV), GitHub (a repo per team), Deliverables (a one-pager or progress update with a due date and reminders), Finished projects.
 
 ## Showcase and handoff
 

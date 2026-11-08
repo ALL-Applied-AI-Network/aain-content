@@ -30,7 +30,7 @@ Hacksgiving has run every year since 2023, with Next Step Clinic (2023), Discove
 
 **No partner this semester?** ALL AI Network runs a network-wide event each semester, so your members still have something real to join.
 
-**In the dashboard:** **Events → New Event → Hackathon** sets it up as a project event with a run sheet: Sign-up, Teams, GitHub, Deliverables, Showcase. **Request From the ALL Network** in the same flow asks for judges, mentors, food or money.
+**In the dashboard:** **Events → New Event → Hackathon** sets it up as a project event with a run sheet: Sign-Up, Teams, GitHub, Deliverables, Finished projects. **Request From the ALL Network** in the same flow asks for judges, mentors, food or money.
 
 ## Run it
 
