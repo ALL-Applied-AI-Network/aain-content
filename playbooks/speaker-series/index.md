@@ -50,7 +50,7 @@ The pulse of the chapter: a speaker or a workshop every other week, in the same 
 
 1. **Speakers and workshops share the one slot.** Project work runs outside it.
 2. **Advertise the reason to belong, not the talk.** The pitch is in [Getting Started](https://all-ai-network.org/playbook.html?path=playbooks/getting-started/index.md#quick-guide).
-3. **One list of every speaker**, past and prospective: company, topic, date, and whether they'd come back. Not a single spreadsheet on one officer's laptop.
+3. **One list of every speaker**, past and prospective: company, topic, date, and whether they'd come back. Keep it where the whole board can open it: Connections, or a single spreadsheet everyone shares.
 4. **Same-week thank-you**, then a **30-day follow-up**: would their company want to do more, from a workshop to an Innovation Lab?
 5. **Record talks** with the speaker's permission. Next year you'll want them.
 
