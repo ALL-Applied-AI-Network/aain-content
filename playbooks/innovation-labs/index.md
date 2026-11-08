@@ -1,13 +1,13 @@
 # Innovation Labs
 
-A company brings a real problem, mixed teams build for eight weeks, and the company leaves with a working prototype. The easiest way into hands-on work.
+A company brings a real problem, mixed teams build for four to eight weeks, and the company leaves with a working prototype. The easiest way into hands-on work.
 
-Innovation Labs are 8-week industry-sponsored competitions, kicked off at the week 5 project kick-off. The first, with Brady Corporation in Fall 2024, asked 60 MSOE and UWM students to predict the volume of liquid in a container from a single photo. The founding chapter has since run them with Juno (Spring 2025), Persistent Systems with Databricks, Xorbix (Fall 2025), and Rockwell Automation with NVIDIA (Fall 2026, with UW-Milwaukee). Sell it to students as a project with a company's name on it, teammates a few years ahead of them, and a portfolio piece before Christmas break. No experience needed.
+Innovation Labs are 4- to 8-week industry-sponsored competitions, eight by default, kicked off at the week 5 project kick-off. The first, with Brady Corporation in Fall 2024, asked 60 MSOE and UWM students to predict the volume of liquid in a container from a single photo. The founding chapter has since run them with Juno (Spring 2025), Xorbix (Fall 2025) and Rockwell Automation with NVIDIA (four weeks in Fall 2026, with UW-Milwaukee), plus one with Persistent Systems and Databricks. Sell it to students as a project with a company's name on it, teammates a few years ahead of them, and a portfolio piece before Christmas break. No experience needed.
 
 ## Start here
 
 1. Lead with the problem their team actually has, and put NDA and IP on the table in the first meeting. Students don't sign NDAs.
-2. The shape: about eight weeks from the week 5 kick-off, teams of six to nine mixed across years, and a sponsor engineer holding weekly office hours.
+2. The shape: four to eight weeks from the week 5 kick-off, teams of six to nine mixed across years, and a sponsor engineer holding weekly office hours.
 3. Close the loop: cleaned-up code to the sponsor within two weeks, a letter for every finisher, and an email 30 days after the showcase about the next one.
 
 ## Pitch a sponsor
@@ -27,7 +27,9 @@ Innovation Labs are 8-week industry-sponsored competitions, kicked off at the we
 
 ## Run the lab
 
-**One clear problem, a baseline, eight weeks, and the sponsor's engineer every week.**
+**One clear problem, a baseline, four to eight weeks, and the sponsor's engineer every week.**
+
+Eight weeks is the default, and New Event also offers six or four. A shorter Lab keeps the same beats, closer together.
 
 | Week | What happens |
 |---|---|

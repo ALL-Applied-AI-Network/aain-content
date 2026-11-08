@@ -49,7 +49,7 @@ const ROWS: MapRow[] = [
   {
     slug: "innovation-labs",
     note: "The depth",
-    marks: [{ kind: "bar", week: 5, span: 8, text: "8 weeks", title: "Weeks 5 to 12" }],
+    marks: [{ kind: "bar", week: 5, span: 8, text: "4 to 8 weeks", title: "Weeks 5 to 12 at the most" }],
   },
   {
     slug: "research-groups",
