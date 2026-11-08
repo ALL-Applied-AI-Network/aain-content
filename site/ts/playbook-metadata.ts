@@ -190,7 +190,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     track: "The Depth",
     tagline: "A company brings a real problem, mixed teams build for four to eight weeks, and the company leaves with a working prototype. The easiest way into hands-on work.",
     stats: [
-      { value: "4 to 8 weeks", label: "from the kick-off" },
+      { value: "4 to 8", label: "weeks from the kick-off" },
       { value: "6 to 9", label: "students a team" },
       { value: "Newer students", label: "welcome" },
     ],
@@ -202,7 +202,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     minutes: 4,
     actions: [
       { label: "Pitch a Sponsor", sub: "Three meetings", anchor: "#pitch-a-sponsor" },
-      { label: "Run the Lab", sub: "Four to eight weeks, one problem", anchor: "#run-the-lab" },
+      { label: "Run the Lab", sub: "Four to eight weeks", anchor: "#run-the-lab" },
       { label: "Showcase and Handoff", sub: "Judge and deliver", anchor: "#showcase-and-handoff" },
     ],
     film: BUILD_FILM,
