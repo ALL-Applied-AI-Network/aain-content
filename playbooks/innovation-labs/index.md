@@ -23,7 +23,7 @@ Innovation Labs are 8-week industry-sponsored competitions, kicked off at the we
 
 **Ask for a mentor.** A sponsor engineer with weekly office hours is what makes it a Lab and not a long hackathon.
 
-**In the dashboard:** **Sponsors → Requests → A Problem to Work On** asks ALL's team to find a company with one. **Find Sponsors** searches companies near you once ALL approves your chapter.
+**In the dashboard:** **Sponsors → Requests → A Problem to Work On** asks ALL's team to find a company with one. **Sponsors → Find Sponsors** finds companies where your school's alumni work, or checks a list you paste, such as a career-fair list. It opens once ALL approves your chapter (US chapters only).
 
 ## Run the lab
 

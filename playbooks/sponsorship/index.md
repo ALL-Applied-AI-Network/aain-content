@@ -51,7 +51,7 @@ Your chapter is a sponsored project of the ALL Applied AI Network Foundation, a 
 | Your tiers and the sponsors you already have | **Funding → Involvement Page** |
 | Every dollar in and out, and spending approvals | **Funding → Money** |
 | Ask ALL's team for a sponsor, speaker, judges, a venue or money | **Sponsors → Requests** |
-| Search companies near you | **Sponsors → Find Sponsors**, once approved |
+| Find companies where your alumni work, or check a career-fair list | **Sponsors → Find Sponsors**, once approved (US chapters only) |
 
 ## What we'd do differently
 
