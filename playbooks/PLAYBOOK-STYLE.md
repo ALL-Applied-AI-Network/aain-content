@@ -38,7 +38,7 @@ A numbered checklist or a short table.
 - **Exactly three Start here keys**, each a single line. The dashboard shows them as three cards.
 - **Three chapters** (Getting Started has four). Each opens with a bold lead of one or two sentences, under 260 characters.
 - **Checklists and short tables beat prose.** Numbered lists with a bold opener are best: the dashboard lists the bold openers as a preview.
-- **One "In the dashboard" line per chapter.** Use the names on screen: Events → New Event, the QR tile, Invite/Import Members, Request From the ALL Network, Sponsors → Requests, Compute → Find Compute, Funding → Money, the run sheet, Deliverables, Badges → New Certificate.
+- **Name the dashboard feature for each job.** Most chapters close with an "In the dashboard" line; Sponsorship gathers its into one table. Use the names on screen: Events → New Event, the QR tile, Invite/Import Members, Request From the ALL Network, Sponsors → Requests, Compute → Find Compute, Funding → Money, the run sheet, Deliverables, Badges → New Certificate.
 - **Length:** about 500 to 800 words. If it runs longer, cut the story, not the steps.
 
 ## Voice
@@ -53,10 +53,10 @@ A numbered checklist or a short table.
 
 The dashboard's Getting Started reader parses these files live from all-ai-network.org. Its pictures are keyed to chapter headings and stand on phrases the files say. Changing either breaks the reader.
 
-- **Keep every `##` heading.** Getting Started: Start here, Quick guide, Week 1, First semester, Year two (with its three "How we did it at MAIC" and two "The repeatable version" `###` headings). Speaker Series: Find a speaker, Run the event, Build the series. Innovation Labs: Pitch a sponsor, Run the lab, Showcase and handoff. Hackathons: Plan it, Run it, Wrap it. Research Groups: Form the group, Run experiments, Publish. Sponsorship: How we did it at MAIC (with "Where sponsors actually come from"), The repeatable version (with "The sequence" and "The first real meeting"), What we'd do differently. Innovation Labs and Sponsorship also need background text before Start here.
+- **Keep every `##` heading.** Getting Started: Start here, Quick guide, Week 1, First semester, Year two (with its three "How we did it at MAIC" and three "The repeatable version" `###` headings). Speaker Series: Find a speaker, Run the event, Build the series. Innovation Labs: Pitch a sponsor, Run the lab, Showcase and handoff. Hackathons: Plan it, Run it, Wrap it. Research Groups: Form the group, Run experiments, Publish. Sponsorship: How we did it at MAIC (with "Where sponsors actually come from"), The repeatable version (with "The sequence" and "The first real meeting"), What we'd do differently. Innovation Labs and Sponsorship also need background text before Start here.
 - **Keep the week-by-week table in Getting Started word for word.** The dashboard's semester map is drawn from it.
 - **Before you push**, run the dashboard's own check against your copy. From a network-api checkout, with each file copied to `<dir>/<slug>.md`: `PLAYBOOK_DIR=<dir> node scripts/test-learn.cjs`. It names any phrase a picture still needs.
-- **Update `site/ts/playbook-metadata.ts`** when a key, a heading or the length changes. `npm run validate` checks that the keys, anchors and reading times still match.
+- **Update `site/ts/playbook-metadata.ts`** when a key, a heading or the length changes. `npm run validate` checks that the keys, anchors and reading times still match, that the week table is unchanged, and that every phrase the dashboard's pictures stand on is still there (a copy of the dashboard's list, in `scripts/validate-playbooks.ts`).
 
 ## Linking
 

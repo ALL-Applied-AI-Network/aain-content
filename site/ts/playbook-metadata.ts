@@ -9,7 +9,7 @@
  * playbook says. This file holds what the pages show around it. `tagline` repeats
  * the file's first paragraph, `keys` its three "Start here" lines,
  * `actions[].anchor` names its headings and `minutes` is its reading time:
- * scripts/validate-content.ts fails if any of them drifts from the markdown.
+ * scripts/validate-playbooks.ts fails if any of them drifts from the markdown.
  *
  * The dashboard keeps its own copy (network-api src/lib/playbook-metadata.tsx).
  * The accents here are the dashboard's event-type colours, so a playbook wears
