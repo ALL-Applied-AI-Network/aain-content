@@ -42,7 +42,7 @@ Innovation Labs are 8-week industry-sponsored competitions, kicked off at the we
 3. **The mentor** holds weekly office hours, answers async, and never writes the code.
 4. **A quiet team gets a nudge.** No commits in a week, and an officer messages the team lead.
 
-**In the dashboard:** **Events → New Event → Innovation Lab** puts the run sheet at the top of Project Work: Sign-Up, Teams (**Import Teams** takes a CSV), GitHub (a repo per team), Deliverables (a one-pager or progress update with a due date and reminders), Finished projects. Under **Add to This Event → Stages**, the kick-off, the mid-point and the showcase each get a date and their own QR. ALL's team sets up surveys for now: ask through **Sponsors → Requests** (Something Else), and the answers, plus an email to everyone who hasn't replied, sit in the event's **Surveys** block.
+**In the dashboard:** **Events → New Event → Innovation Lab** puts the run sheet at the top of Project Work: Sign-Up, Teams (**Import Teams** takes a CSV), GitHub (a repo per team), Deliverables (a one-pager or progress update with a due date and reminders), Finished projects. Under **Add to This Event → Stages**, the kick-off, the mid-point and the showcase each get a date and their own QR. If the event has a survey, its answers sit in the event's **Surveys** block, with a button that emails everyone who hasn't replied.
 
 ## Showcase and handoff
 
