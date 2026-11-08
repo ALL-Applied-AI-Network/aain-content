@@ -118,7 +118,7 @@ Seven months in, the president who rebuilt the club wrote down how everything wo
    - Where logins live: a password manager the board shares, never a doc
 2. **Pick your successor by mid-year.** Your successor shadows you for at least one event, runs one alongside you, then runs one with you shadowing them.
 3. **Recruit next year's board in the spring**, not after graduation.
-4. **Ask every partner back within 30 days**, while the impression is warm. That habit is why the founding chapter had an Innovation Lab partner every term from Fall 2024 through Fall 2025.
+4. **Ask every partner back within 30 days**, while the impression is warm.
 5. **Tell the story.** Send winners and papers to your university's news office.
 
 **In the dashboard:** add next year's board under **Your Chapter → Officers & Roles**: that's who can use the dashboard and who appears on your site. Events, the roster and the money history stay with the chapter, not with whoever set them up.
