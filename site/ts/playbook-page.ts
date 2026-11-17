@@ -11,6 +11,7 @@
 import { renderArticle } from "./article-renderer";
 import { escapeHtml } from "./main";
 import { PLAYBOOKS, getPlaybook, type PlaybookMeta } from "./playbook-metadata";
+import { drawFigures } from "./playbook-figures";
 
 // ---------------------------------------------------------------------------
 // Pretty names for sections
@@ -371,6 +372,7 @@ async function init(): Promise<void> {
   if (meta) {
     contentEl.style.setProperty("--pb-accent", meta.accent);
     dressPlaybook(contentEl);
+    drawFigures(contentEl, meta);
     numberJumps(contentEl);
     const nav = document.getElementById("playbook-nav");
     if (nav) nav.innerHTML = renderNext(section);

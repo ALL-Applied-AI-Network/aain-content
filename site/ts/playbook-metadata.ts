@@ -208,9 +208,9 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { value: "Newer students", label: "welcome" },
     ],
     keys: [
-      "Lead with the problem their team actually has, and put NDA and IP on the table in the first meeting. Students don't sign NDAs.",
-      "The shape: four to eight weeks from the week 5 kick-off, teams of six to nine mixed across years, and a sponsor engineer holding weekly office hours.",
-      "Close the loop: cleaned-up code to the sponsor within two weeks, a letter for every finisher, and an email 30 days after the showcase about the next one.",
+      "Lead with the problem their team actually has, and settle NDA and IP in the first meeting. Students don't sign NDAs.",
+      "Four to eight weeks from the week 5 kick-off, teams of six to nine across years, and a sponsor engineer every week.",
+      "Close the loop: code to the sponsor within two weeks, a letter for every finisher, and an email 30 days later about the next one.",
     ],
     minutes: 4,
     actions: [

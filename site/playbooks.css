@@ -912,13 +912,13 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
 }
 
 /* Steps: a numbered list reads as a checklist */
-.playbook-content.pbr ol:not(.pbr-keys) {
+.playbook-content.pbr ol:not(.pbr-keys):not([class^="pbf"]) {
   list-style: none;
   counter-reset: step;
   padding-left: 0;
   margin: 0 0 1.25rem;
 }
-.playbook-content.pbr ol:not(.pbr-keys) > li {
+.playbook-content.pbr ol:not(.pbr-keys):not([class^="pbf"]) > li {
   counter-increment: step;
   position: relative;
   padding: 0.55rem 0 0.55rem 2.4rem;
@@ -926,8 +926,8 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   line-height: 1.6;
 }
-.playbook-content.pbr ol:not(.pbr-keys) > li:last-child { border-bottom: 0; }
-.playbook-content.pbr ol:not(.pbr-keys) > li::before {
+.playbook-content.pbr ol:not(.pbr-keys):not([class^="pbf"]) > li:last-child { border-bottom: 0; }
+.playbook-content.pbr ol:not(.pbr-keys):not([class^="pbf"]) > li::before {
   content: counter(step);
   position: absolute;
   left: 0;
@@ -945,7 +945,7 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
 }
 .playbook-content.pbr li strong,
 .playbook-content.pbr p strong { color: var(--text-primary); font-weight: 600; }
-.playbook-content.pbr ul { padding-left: 1.2rem; }
+.playbook-content.pbr ul:not([class^="pbf"]) { padding-left: 1.2rem; }
 .playbook-content.pbr ul li::marker { color: var(--pb-accent, #22d3ee); }
 .playbook-content.pbr ol li ul { margin: 0.4rem 0 0; }
 
@@ -1186,3 +1186,252 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
   background: var(--pb-accent); color: #0a0a0d; font: 700 0.62rem/1 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase;
 }
 .pbc__headline { margin: 0.1rem 0 0.5rem; font: 700 1.08rem/1.3 var(--font-display); color: #fff; text-wrap: balance; }
+
+/* ========================================================================
+   Pictures: what playbook-figures.ts draws from a playbook's markdown, in
+   the look of the audience kits: dark cards, real photos, and one line
+   that runs blue to violet to pink. Each picture sizes itself to its own
+   width (container queries), so the same rules serve a phone and a desk.
+   ======================================================================== */
+.playbook-content.pbr .pbf { margin: 1.6rem 0 1.9rem; container-type: inline-size; }
+.playbook-content.pbr .pbf--wide {
+  width: min(60rem, calc(100vw - 2rem));
+  margin-left: calc(50% - min(30rem, 50vw - 1rem));
+}
+.playbook-content.pbr .pbf img { margin: 0; border-radius: 0; max-width: none; }
+.playbook-content.pbr .pbf ul,
+.playbook-content.pbr .pbf ol { margin: 0; padding: 0; color: inherit; }
+.playbook-content.pbr .pbf li { margin: 0; line-height: inherit; }
+.playbook-content.pbr .pbf p { margin: 0; }
+.pbf-sr {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.pbf__cap {
+  width: fit-content;
+  margin: 0 0 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #4eaaf1, #a855f7 55%, #d64cb8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pbf-tag {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--c, #a855f7) 55%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--c, #a855f7) 65%, #fff);
+}
+
+/* :::steps: numbered stops on one line, down the page when narrow */
+.pbf-steps { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 1.1rem; }
+.pbf-steps::before {
+  content: "";
+  position: absolute;
+  left: calc(1.05rem - 1px); top: 1.05rem; bottom: 1.05rem; width: 2px;
+  background: linear-gradient(180deg, #4eaaf1, #a855f7, #d64cb8);
+  opacity: 0.75;
+}
+.pbf-step { position: relative; display: grid; grid-template-columns: 2.1rem minmax(0, 1fr); gap: 0.85rem; align-items: start; align-content: start; }
+.pbf-step__n {
+  position: relative; z-index: 1;
+  width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.98rem;
+  color: #0b0b10; background: var(--c);
+  box-shadow: 0 0 0 5px var(--bg-primary);
+}
+.pbf-step__words { padding-top: 0.2rem; }
+.pbf-step__t {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-display); font-size: 1.06rem; font-weight: 600; line-height: 1.3;
+  color: var(--text-primary) !important;
+}
+.pbf-step__words p { margin-top: 0.45rem !important; font-size: 0.9rem; line-height: 1.55; color: var(--text-secondary); }
+@container (min-width: 700px) {
+  .pbf-steps { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 1.4rem; }
+  .pbf-steps::before {
+    left: 1.05rem; top: calc(1.05rem - 1px); bottom: auto; height: 2px; width: auto;
+    right: calc((100% - (var(--n) - 1) * 1.4rem) / var(--n) - 1.05rem);
+    background: linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8);
+  }
+  .pbf-step { grid-template-columns: minmax(0, 1fr); gap: 0.85rem; }
+  .pbf-step__words { padding-top: 0; }
+}
+
+/* :::stories: real photos, the organization's logo on each, one line below */
+.pbf-stories { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
+@container (min-width: 560px) { .pbf-stories { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (min-width: 840px) { .pbf-stories { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pbf-story {
+  display: flex; flex-direction: column;
+  border: 1.5px solid var(--c); border-radius: 14px; overflow: hidden;
+  background: #121217;
+}
+.pbf-story__ph { position: relative; aspect-ratio: 16 / 10; background: #0c0c10; }
+.pbf-story__ph > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.pbf-story__ph::after { content: ""; position: absolute; inset: 40% 0 0; background: linear-gradient(180deg, transparent, rgba(8, 8, 12, 0.92)); }
+.pbf-story__who { position: absolute; z-index: 1; left: 0.95rem; right: 0.95rem; bottom: 0.8rem; display: flex; align-items: center; gap: 0.55rem; }
+.playbook-content.pbr .pbf .pbf-story__logo { position: static; height: 1.45rem; width: auto; max-width: 8.5rem; object-fit: contain; }
+.playbook-content.pbr .pbf .pbf-story__logo.is-tall { height: 2.6rem; }
+.pbf-story__plus { font-family: var(--font-display); font-weight: 600; color: rgba(255, 255, 255, 0.75); }
+.pbf-story__name { font-family: var(--font-display); font-size: 1.05rem; color: #fff !important; }
+.pbf-story__words { padding: 0.9rem 1rem 1.05rem; }
+.pbf-story__head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin-bottom: 0.4rem; }
+.pbf-story__t { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text-primary) !important; }
+.pbf-story__words p { font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); }
+
+/* :::cards: a set of things, each with its name */
+.pbf-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); }
+@container (min-width: 560px) { .pbf-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pbf-card {
+  padding: 1rem 1.1rem 1.05rem;
+  border-radius: 12px;
+  background: #15151b;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 2px 0 var(--c);
+}
+.pbf-card__head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin-bottom: 0.35rem; }
+.pbf-card__t { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text-primary) !important; }
+.pbf-card p { font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); }
+
+/* :::numbers: the figure big, what it means under it */
+.pbf-nums { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr)); }
+.pbf-num { padding: 1rem 1.1rem 1.05rem; border-radius: 12px; background: #15151b; border: 1px solid rgba(255, 255, 255, 0.07); }
+.pbf-num__v {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.85rem; line-height: 1.1; letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 40%, #d64cb8));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.pbf-num p { font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); }
+
+/* :::split: one bar, each part as wide as its share */
+.pbf-split { list-style: none; margin: 0; padding: 0; display: flex; gap: 5px; }
+.pbf-split__seg { flex-basis: 0; min-width: 0; }
+.pbf-split__seg::before { content: ""; display: block; height: 0.65rem; margin-bottom: 0.6rem; border-radius: 4px; background: var(--c); }
+.pbf-split__v { display: block; font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; line-height: 1.1; color: var(--text-primary); }
+.pbf-split__l { display: block; margin-top: 0.15rem; font-size: 0.86rem; line-height: 1.35; color: var(--text-secondary); }
+.playbook-content.pbr .pbf--split + .pbf--split { margin-top: -0.4rem; }
+
+/* A table on a time axis: stops on a line */
+.pbf-tl { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 1.05rem; }
+.pbf-tl::before {
+  content: "";
+  position: absolute; left: calc(0.45rem - 1px); top: 0.5rem; bottom: 0.5rem; width: 2px;
+  background: linear-gradient(180deg, #4eaaf1, #a855f7, #d64cb8); opacity: 0.75;
+}
+.pbf-tl__stop { position: relative; padding-left: 1.85rem; }
+.pbf-tl__dot {
+  position: absolute; left: 0; top: 0.2rem;
+  width: 0.9rem; height: 0.9rem; border-radius: 50%;
+  background: var(--c); box-shadow: 0 0 0 4px var(--bg-primary);
+}
+.pbf-tl__when {
+  display: block; margin-bottom: 0.25rem;
+  font-family: var(--font-mono); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--c) 80%, #fff) !important;
+}
+.pbf-tl__stop p { font-size: 0.92rem; line-height: 1.5; color: var(--text-secondary); }
+@container (min-width: 720px) {
+  .pbf--timeline:not(.pbf--down) .pbf-tl { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 1.2rem; }
+  .pbf--timeline:not(.pbf--down) .pbf-tl::before {
+    left: 0.45rem; top: calc(0.45rem - 1px); bottom: auto; height: 2px; width: auto;
+    right: calc((100% - (var(--n) - 1) * 1.2rem) / var(--n) - 0.45rem);
+    background: linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8);
+  }
+  .pbf--timeline:not(.pbf--down) .pbf-tl__stop { padding: 1.6rem 0 0; }
+  .pbf--timeline:not(.pbf--down) .pbf-tl__dot { top: 0; }
+}
+
+/* Paragraphs that open in bold: rules, side by side */
+.pbf-rules { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin: 1.4rem 0 1.5rem; }
+.pbf-rule {
+  position: relative;
+  padding: 1rem 1.1rem 1.05rem 1.3rem;
+  border-radius: 12px;
+  background: #15151b;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.pbf-rule::before { content: ""; position: absolute; left: 0; top: 0.95rem; bottom: 0.95rem; width: 3px; border-radius: 0 3px 3px 0; background: var(--c); }
+.pbf-rule__t { display: block; margin-bottom: 0.3rem; font-family: var(--font-display); font-size: 1rem; font-weight: 600; line-height: 1.35; color: var(--text-primary) !important; }
+.pbf-rule p { font-size: 0.9rem; line-height: 1.55; color: var(--text-secondary); }
+
+/* An image on its own line: a wide photo, its alt text the caption */
+.playbook-content.pbr .pbf-photo { position: relative; aspect-ratio: 3 / 1; border-radius: 14px; overflow: hidden; background: #0c0c10; }
+.pbf-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+.pbf-photo::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(180deg, transparent, rgba(8, 8, 12, 0.85)); }
+.pbf-photo__cap { position: absolute; z-index: 1; left: 1.1rem; right: 1.1rem; bottom: 0.9rem; font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: #fff; }
+@media (max-width: 640px) { .playbook-content.pbr .pbf-photo { aspect-ratio: 16 / 10; } }
+
+/* ## Start here: the three keys as one band, the kits' help bar */
+.playbook-content.pbr .pbf-help {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  background: linear-gradient(#111116, #111116) padding-box, linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8) border-box;
+  overflow: hidden;
+}
+.pbf-help__t {
+  display: flex; flex-direction: column; justify-content: center; gap: 0.15rem;
+  padding: 1rem 1.3rem;
+  background: linear-gradient(135deg, #3f9ae8, #a855f7 62%, #d64cb8);
+}
+.pbf-help__t span { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; line-height: 1.1; color: #fff; }
+.pbf-help__t small { font-size: 0.8rem; color: rgba(255, 255, 255, 0.88); }
+.pbf-help__steps { list-style: none; margin: 0; padding: 1.1rem 1.3rem 1.2rem; display: grid; gap: 1.1rem; }
+.pbf-help__step { position: relative; margin: 0; }
+.pbf-help__k {
+  display: block; margin-bottom: 0.2rem;
+  font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--c);
+}
+.playbook-content.pbr a.pbf-help__go { font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+.playbook-content.pbr a.pbf-help__go::after { content: " \2192"; color: var(--c); }
+.playbook-content.pbr a.pbf-help__go:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--c); }
+.pbf-help__step p { margin-top: 0.35rem !important; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); }
+@media (min-width: 900px) {
+  .playbook-content.pbr .pbf-help { grid-template-columns: 11.5rem minmax(0, 1fr); }
+  .pbf-help__t { clip-path: polygon(0 0, 86% 0, 100% 50%, 86% 100%, 0 100%); padding-right: 2rem; }
+  .pbf-help__steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding: 1.15rem 1.4rem 1.25rem 0.9rem; }
+  .pbf-help__step + .pbf-help__step::before {
+    content: "\203A"; position: absolute; left: -1.35rem; top: 0.95rem;
+    font-size: 1.5rem; line-height: 1; color: var(--c);
+  }
+}
+/* With one key per chapter the band is the way in, so the header's doors step aside */
+.pb-header.pbf-doors-in-band .pb-header__actions,
+.pb-header.pbf-doors-in-band .pb-header__actions-label { display: none; }
+
+/* In the dashboard box, a clip waits as a small picture beside the steps and
+   takes the box's full width once it's playing */
+@media (min-width: 900px) {
+  .pbr-dash:has(> .pbr-clip) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 19rem;
+    column-gap: 1.25rem;
+    align-items: start;
+  }
+  .pbr-dash:has(> .pbr-clip) > * { grid-column: 1; }
+  .pbr-dash:has(> .pbr-clip) > .pbr-dash__head { grid-column: 1 / -1; }
+  .pbr-dash > .pbr-clip { grid-column: 2; grid-row: 2 / span 6; margin-top: 0.15rem; }
+  .pbr-dash > .pbr-clip.is-started { grid-column: 1 / -1; grid-row: auto; }
+  .pbr-dash > .pbr-clip:not(.is-started) .pbr-clip__play { left: 0.55rem; bottom: 0.55rem; padding: 0.32rem 0.75rem 0.32rem 0.32rem; font-size: 0.8rem; }
+}

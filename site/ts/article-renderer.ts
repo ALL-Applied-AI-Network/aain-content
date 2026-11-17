@@ -168,6 +168,30 @@ function preprocessDirectives(md: string): string {
       continue;
     }
 
+    // :::steps[title], :::stories, :::cards, :::numbers, :::split — the playbooks'
+    // pictures. The body stays an ordinary markdown list, so the file still reads as
+    // a list anywhere else (GitHub, a plain reader); playbook-figures.ts draws it.
+    const figMatch = line.match(/^:::(steps|stories|cards|numbers|split)(?:\[(.*?)\])?\s*$/);
+    if (figMatch) {
+      const [, kind, title] = figMatch;
+      const body: string[] = [];
+      i++;
+      while (i < lines.length && lines[i].trim() !== ":::") {
+        body.push(lines[i]);
+        i++;
+      }
+      i++;
+      output.push(
+        `<div class="pbf pbf--${kind}"${title ? ` data-title="${escapeHtml(title).replace(/"/g, "&quot;")}"` : ""}>`,
+        "",
+        ...body,
+        "",
+        `</div>`,
+        ""
+      );
+      continue;
+    }
+
     // :::definition[term]
     const defMatch = line.match(/^:::definition\[(.+?)\]\s*$/);
     if (defMatch) {
