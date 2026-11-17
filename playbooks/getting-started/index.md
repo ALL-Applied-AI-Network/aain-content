@@ -74,7 +74,7 @@ MSOE AI Club (MAIC) was three years old before it grew. The turnaround started w
 4. **Lock in 2–4 co-founders** with different skills. Solo founders burn out, and an operations partner matters more than another coder.
 5. **Say what you're not:** not a math study group, not a lecture series, not only for CS majors.
 
-**In the dashboard:** sign up and create the chapter, fill in **Chapter Profile**, then press **Ask ALL to approve your chapter**. Approval opens your API key, company search, the officer directory and the badge, and for US chapters with the chapter agreement signed, money. Your **Website** is live from the first day.
+**In the dashboard:** sign up and create the chapter, fill in **Website → Chapter Profile**, then press **Ask ALL to approve your chapter**. Approval opens your API key, company search, the officer directory and the badge, and for US chapters with the chapter agreement signed, money. Your **Website** is live from the first day.
 
 ## First semester
 
@@ -123,6 +123,6 @@ Seven months in, the president who rebuilt the club wrote down how everything wo
 4. **Ask every partner back within 30 days**, while the impression is warm.
 5. **Tell the story.** Send winners and papers to your university's news office.
 
-**In the dashboard:** add next year's board under **Your Chapter → Officers & Roles**: that's who can use the dashboard and who appears on your site. Events, the roster and the money history stay with the chapter, not with whoever set them up.
+**In the dashboard:** add next year's board under **Members → Officers & Roles**: that's who can use the dashboard and who appears on your site. Events, the roster and the money history stay with the chapter, not with whoever set them up.
 
 [Show me, 0:07](https://all-ai-network.org/public/film/how/gs-board.mp4)
