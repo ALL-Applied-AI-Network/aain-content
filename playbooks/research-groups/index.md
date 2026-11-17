@@ -27,6 +27,8 @@ Research groups are 6-month projects for teams of 3–8, running alongside every
 
 **In the dashboard:** **Events → New Event → Research Group** sets up one group: its problem (Our Own Question, A Partner's Problem, or Find Us a Problem, which files a request with ALL), one team of 3 to 8, and check-ins every 2 or 4 weeks. A year's groups sit together under one cohort event.
 
+[Show me, 0:11](https://all-ai-network.org/public/film/how/rg-new.mp4)
+
 ## Run experiments
 
 **Read, design, test, write. A deliverable every four weeks keeps a group from drifting.**
@@ -45,6 +47,8 @@ Research groups are 6-month projects for teams of 3–8, running alongside every
 3. **Log every experiment** (config, seed, data, metric, result) and commit to the group's shared repo every week.
 
 **In the dashboard:** the check-ins are the group's deliverables, with reminders before each is due. **Compute → Find Compute** is where a group asks for GPUs: campus hardware, research programs or cloud credits, usually free.
+
+[Show me, 0:06](https://all-ai-network.org/public/film/how/rg-compute.mp4)
 
 ## Publish
 

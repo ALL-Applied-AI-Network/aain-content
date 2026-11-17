@@ -1029,6 +1029,51 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
 .playbook-content.pbr .pbr-dash strong { color: var(--text-primary); font-weight: 600; }
 .playbook-content.pbr .pbr-dash table { margin: 0.2rem 0 0.6rem; }
 
+/* Show me: a silent clip of the clicks the box names, click to play */
+.pbr-clip {
+  position: relative;
+  margin: 0.2rem 0 0.75rem;
+  border-radius: 9px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: #0b0b0d;
+}
+.pbr-clip__video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0b0b0d; }
+.pbr-clip__play {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.95rem 0.45rem 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--pb-accent, #22d3ee) 55%, transparent);
+  border-radius: 999px;
+  background: rgba(8, 10, 12, 0.86);
+  color: #f4f6fa;
+  font: 600 0.85rem/1 var(--font-sans, inherit);
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+}
+.pbr-clip__play small { font-family: var(--font-mono); font-weight: 500; font-size: 0.74rem; color: rgba(244, 246, 250, 0.62); }
+.pbr-clip__btn {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--pb-accent, #22d3ee);
+  color: #0b0b0d;
+}
+.pbr-clip__btn svg { margin-left: 2px; }
+.pbr-clip__play:hover { border-color: var(--pb-accent, #22d3ee); }
+.pbr-clip__play:focus-visible { outline: 2px solid var(--pb-accent, #22d3ee); outline-offset: 3px; }
+@media (max-width: 640px) {
+  .pbr-clip__play { left: 0.5rem; bottom: 0.5rem; gap: 0.4rem; padding: 0.3rem 0.7rem 0.3rem 0.3rem; font-size: 0.78rem; }
+  .pbr-clip__btn { width: 1.3rem; height: 1.3rem; }
+}
+.pbr-clip__failed { position: absolute; inset: auto 0 0 0; padding: 0.6rem 0.9rem; background: rgba(8, 10, 12, 0.9); color: var(--text-secondary); font-size: 0.85rem; }
+
 /* A template to send: quoted, with a copy button */
 .playbook-content.pbr blockquote {
   position: relative;

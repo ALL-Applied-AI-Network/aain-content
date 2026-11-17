@@ -128,6 +128,56 @@ function renderActionHeader(meta: PlaybookMeta): string {
 
 const MONITOR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`;
 
+/**
+ * A paragraph that is only a link to an .mp4 ("[Show me, 0:23](…/film/how/x.mp4)") becomes a
+ * click-to-play clip: a silent walk through the clicks the box above it names. The poster is the
+ * same path as a .jpg. Anywhere else (GitHub, a plain reader) it stays a link to the file.
+ */
+function showMeClip(p: HTMLParagraphElement): HTMLElement | null {
+  const a = p.firstElementChild;
+  if (!(a instanceof HTMLAnchorElement) || p.children.length !== 1 || p.textContent?.trim() !== a.textContent?.trim()) return null;
+  const href = a.getAttribute("href") ?? "";
+  if (!/\.mp4$/i.test(href)) return null;
+  // The site is all-ai-network.org, so its own files load from here (and from a dev server).
+  const src = href.replace(/^https:\/\/all-ai-network\.org\//, "./");
+  const label = a.textContent?.trim() ?? "Show me";
+  const runtime = label.match(/\d+:\d{2}/)?.[0] ?? "";
+  const fig = document.createElement("figure");
+  fig.className = "pbr-clip";
+  const video = document.createElement("video");
+  video.className = "pbr-clip__video";
+  video.preload = "none";
+  video.muted = true;
+  video.playsInline = true;
+  video.poster = src.replace(/\.mp4$/i, ".jpg");
+  video.src = src;
+  video.setAttribute("aria-label", `A silent clip of these steps in the dashboard${runtime ? `, ${runtime}` : ""}`);
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "pbr-clip__play";
+  btn.innerHTML = `<span class="pbr-clip__btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>Show me${runtime ? `<small>${runtime}</small>` : ""}`;
+  btn.setAttribute("aria-label", `Show me these steps in the dashboard${runtime ? `, a ${runtime} clip` : ""}`);
+  btn.addEventListener("click", () => {
+    fig.classList.add("is-started");
+    btn.remove();
+    video.controls = true;
+    video.focus();
+    void video.play().catch(() => {});
+  });
+  video.addEventListener("error", () => {
+    if (fig.querySelector(".pbr-clip__failed")) return;
+    const f = document.createElement("a");
+    f.className = "pbr-clip__failed";
+    f.href = href;
+    f.target = "_blank";
+    f.rel = "noopener";
+    f.textContent = "The clip didn't load here. Open it in a new tab";
+    fig.appendChild(f);
+  });
+  fig.append(video, btn);
+  return fig;
+}
+
 function dressPlaybook(root: HTMLElement): void {
   root.classList.add("pbr");
 
@@ -166,7 +216,8 @@ function dressPlaybook(root: HTMLElement): void {
     }
     const next = box.nextElementSibling;
     if (p.textContent?.trim()) box.appendChild(p);
-    if (!p.textContent?.trim() && next?.tagName === "TABLE") box.appendChild(next);
+    // A bare label owns the table or numbered steps under it
+    if (!p.textContent?.trim() && (next?.tagName === "TABLE" || next?.tagName === "OL" || next?.tagName === "UL")) box.appendChild(next);
   });
   root.querySelectorAll<HTMLElement>("h3").forEach((h3) => {
     const next = h3.nextElementSibling;
@@ -176,6 +227,12 @@ function dressPlaybook(root: HTMLElement): void {
     box.innerHTML = `<div class="pbr-dash__head">${MONITOR}<span>In the dashboard</span></div>`;
     next.replaceWith(box);
     box.appendChild(next);
+  });
+  // A "Show me" clip right after a box joins it, as a player (see showMeClip)
+  root.querySelectorAll<HTMLElement>(".pbr-dash").forEach((box) => {
+    const next = box.nextElementSibling;
+    const clip = next instanceof HTMLParagraphElement ? showMeClip(next) : null;
+    if (clip) { next!.remove(); box.appendChild(clip); }
   });
 
   // A table whose first column is a time axis (weeks, months, times of day)

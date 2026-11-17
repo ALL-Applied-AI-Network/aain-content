@@ -53,6 +53,8 @@ Your chapter is a sponsored project of the ALL Applied AI Network Foundation, a 
 | Ask ALL's team for a sponsor, speaker, judges, a venue or money | **Sponsors → Requests** |
 | Find companies where your alumni work, or check a career-fair list | **Sponsors → Find Sponsors**, once approved (US chapters only) |
 
+[Show me, 0:09](https://all-ai-network.org/public/film/how/spons-setup.mp4)
+
 ## What we'd do differently
 
 **Two weeks of September legal back-and-forth cost the first Innovation Lab real build time. IP belongs in meeting one.**

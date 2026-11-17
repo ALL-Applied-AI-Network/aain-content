@@ -25,6 +25,8 @@ Innovation Labs are 4- to 8-week industry-sponsored competitions, eight by defau
 
 **In the dashboard:** **Sponsors → Requests → A Problem to Work On** asks ALL's team to find a company with one. **Sponsors → Find Sponsors** finds companies where your school's alumni work, or checks a list you paste, such as a career-fair list. It opens once ALL approves your chapter (US chapters only).
 
+[Show me, 0:11](https://all-ai-network.org/public/film/how/labs-pitch.mp4)
+
 ## Run the lab
 
 **One clear problem, a baseline, four to eight weeks, and the sponsor's engineer every week.**
@@ -44,7 +46,14 @@ Eight weeks is the default, and New Event also offers six or four. A shorter Lab
 3. **The mentor** holds weekly office hours, answers async, and never writes the code.
 4. **A quiet team gets a nudge.** No commits in a week, and an officer messages the team lead.
 
-**In the dashboard:** **Events → New Event → Innovation Lab** puts the run sheet at the top of Project Work: Sign-Up, Teams (**Import Teams** takes a CSV), GitHub (a repo per team), Deliverables (a one-pager or progress update with a due date and reminders), Finished projects. Under **Add to This Event → Stages**, the kick-off, the mid-point and the showcase each get a date and their own QR. If the event has a survey, its answers sit in the event's **Surveys** block, with a button that emails everyone who hasn't replied.
+**In the dashboard:**
+
+1. **Events → New Event → Innovation Lab** asks a few questions: when, where, whose problem, teams, sign-up, stages and submissions.
+2. On the event, **Stages** gives the kick-off, the mid-point and the showcase each a date and their own QR.
+3. **Project Work** opens with the run sheet: Sign-Up, Teams (**Import Teams** takes a CSV), GitHub (a repo per team), Deliverables (a one-pager or progress update with a due date and reminders) and Finished projects.
+4. If the event has a survey, its answers sit in the event's **Surveys** block, with a button that emails everyone who hasn't replied.
+
+[Show me, 0:23](https://all-ai-network.org/public/film/how/labs-run.mp4)
 
 ## Showcase and handoff
 
@@ -59,3 +68,5 @@ Eight weeks is the default, and New Event also offers six or four. A shorter Lab
 7. **30 days after showcase**, email the sponsor about running another.
 
 **In the dashboard:** the **Final** row in Deliverables owns the submission link. Under **Your Chapter → Badges**, **New Certificate** makes one for finishers to add to LinkedIn.
+
+[Show me, 0:11](https://all-ai-network.org/public/film/how/labs-handoff.mp4)

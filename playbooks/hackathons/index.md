@@ -32,6 +32,8 @@ Hacksgiving has run every year since 2023, with Next Step Clinic (2023), Discove
 
 **In the dashboard:** **Events → New Event → Hackathon** sets it up as a project event with a run sheet: Sign-Up, Teams, GitHub, Deliverables, Finished projects. **Request From the ALL Network** in the same flow asks for judges, mentors, food or money.
 
+[Show me, 0:13](https://all-ai-network.org/public/film/how/hack-new.mp4)
+
 ## Run it
 
 **Friday night kickoff to Sunday afternoon demos. Feed them all weekend and keep every team moving.**
@@ -64,3 +66,5 @@ Hacksgiving has run every year since 2023, with Next Step Clinic (2023), Discove
 **Delivered isn't deployed.** Ask the nonprofit before you call a project "in use". Only they know.
 
 **In the dashboard:** winners file under **Funding → Money → Reimbursement Requests**, and a chapter admin approves and marks it paid. A prize needs the winner's W-9 on file first.
+
+[Show me, 0:05](https://all-ai-network.org/public/film/how/hack-pay.mp4)

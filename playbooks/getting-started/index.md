@@ -50,7 +50,7 @@ They aren't a ladder. MSOE has had research groups, Innovation Labs and a hackat
 - **A serious portfolio piece before Christmas break.**
 - **You do not need experience.** Say it every time; most students assume the opposite.
 
-**Don't scope it to CS.** MSOE graduates fewer than 100 CS students a year, and its club passed 500 members. The growth came from software and computer engineering, then UX, business and mechanical engineering.
+**Don't scope it to CS.** MSOE graduates fewer than 100 CS students a year, and its club passed 600 members. The growth came from software and computer engineering, then UX, business and mechanical engineering.
 
 **Food fills a room** and empties a budget. Find a deal or get pizza. Overlap dinner if you can feed people; if you can't, start at 6:00 or 6:30.
 
@@ -101,6 +101,8 @@ Every other Thursday, 6:30 to 7:30, the same room all year, with free food every
 | Ask for a speaker, judges, a venue or money | **Sponsors → Requests**, or **Request From the ALL Network** inside New Event |
 | Show it publicly | Your **Website** lists every published event, your officers and the leaderboard |
 
+[Show me, 0:09](https://all-ai-network.org/public/film/how/gs-first.mp4)
+
 ## Year two
 
 **Year one is founding. Year two is whether the chapter survives its first handoff.**
@@ -122,3 +124,5 @@ Seven months in, the president who rebuilt the club wrote down how everything wo
 5. **Tell the story.** Send winners and papers to your university's news office.
 
 **In the dashboard:** add next year's board under **Your Chapter → Officers & Roles**: that's who can use the dashboard and who appears on your site. Events, the roster and the money history stay with the chapter, not with whoever set them up.
+
+[Show me, 0:07](https://all-ai-network.org/public/film/how/gs-board.mp4)

@@ -24,6 +24,8 @@ The pulse of the chapter: a speaker or a workshop every other week, in the same 
 
 **In the dashboard:** **Events → New Event → Speaker** (or Workshop). Short of a name? **Request From the ALL Network** inside New Event asks ALL's team for a speaker.
 
+[Show me, 0:09](https://all-ai-network.org/public/film/how/speaker-new.mp4)
+
 ## Run the event
 
 **Same room, same time, food out first, and a hard stop at 60 minutes.**
@@ -44,6 +46,8 @@ The pulse of the chapter: a speaker or a workshop every other week, in the same 
 
 **In the dashboard:** the event's **QR** tile has **Enlarge** for the projector. Scans feed attendance, points and the leaderboard, and the **thank-you email** in Check-in settings reaches everyone who scanned.
 
+[Show me, 0:09](https://all-ai-network.org/public/film/how/speaker-qr.mp4)
+
 ## Build the series
 
 **One-off talks fade. A series on a fixed beat becomes part of the chapter, and its speakers become its sponsors.**
@@ -55,3 +59,5 @@ The pulse of the chapter: a speaker or a workshop every other week, in the same 
 5. **Record talks** with the speaker's permission. Next year you'll want them.
 
 **In the dashboard:** **Sponsors → Connections** keeps every speaker and company in one place that outlasts the board. The event's **Share** menu makes the posts and calendar invites for the next one.
+
+[Show me, 0:11](https://all-ai-network.org/public/film/how/speaker-share.mp4)
