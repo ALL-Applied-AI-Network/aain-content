@@ -205,7 +205,7 @@ body.story { background: #0c0c0e; }
    own baked end card. The whole frame is one link to the full 1:27
    walkthrough, which does get controls and sound. Exactly as wide as the
    doors above it (same max-width, same centring), at every breakpoint. */
-.tour { max-width: 62rem; margin: 1.7rem auto 0; }
+.tour { max-width: 62rem; margin: 1.7rem auto 0; scroll-margin-top: calc(var(--nav-height, 56px) + 14px); }
 .tour__frame { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.10); background: #0b0b0d; box-shadow: 0 20px 46px rgba(0,0,0,.45); }
 .tour__video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0b0b0d; }
 /* The cue sits in the middle of the frame and only while the picture is
@@ -220,6 +220,9 @@ body.story { background: #0c0c0e; }
 .tour__hit:focus-visible { outline: 2px solid #f4f4f6; outline-offset: 3px; }
 .tour__hitlabel { font: 500 .74rem/1 "JetBrains Mono", monospace; color: #e9fbff; background: rgba(8,10,12,.78); border: 1px solid rgba(34,211,238,.45); border-radius: 999px; padding: .52rem .85rem; transition: opacity .35s ease; }
 .tour__hitlabel::before { content: "\25B6"; margin-right: .45rem; font-size: .85em; color: #22d3ee; }
+/* The poster is the film's title card: its words fill the middle third from
+   8.33% in. The cue sits under them on the same left edge, never across them. */
+.tour__hitlabel { position: absolute; left: 8.33%; top: 71%; }
 /* moving picture, or the film's own end card: stand down either way. */
 .tour.is-playing .tour__hitlabel,
 .tour.is-resting .tour__hitlabel { opacity: 0; }

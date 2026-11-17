@@ -1,16 +1,17 @@
 /**
  * tour.ts — the dashboard tour that sits under the doors in the close band.
  *
- * One <video>, two films, no control bar on the first one:
+ * One <video>, no control bar until someone asks for it:
  *
- *   • The 33-second cut is silent and chromeless, so it reads as a moving
+ *   • The preview is silent and chromeless, so it reads as a moving
  *     screenshot rather than a media player. Its source is attached only when
  *     the frame scrolls into view (preload="none" + poster in the markup), so
  *     a visitor who never reaches the bottom of the page downloads no video.
  *   • It plays once and stops on the film's own baked end card. No loop.
- *   • The whole frame is a link to the mp4. Clicking or keying it swaps the
- *     same element to the full 1:27 walkthrough instead — from 0:00, unmuted,
- *     with the browser's controls, because that one is watched deliberately.
+ *   • The whole frame is a link to the mp4. Clicking or keying it gives the
+ *     same element the browser's controls (unmuted). If data-full-src names a
+ *     different file it swaps to that one from 0:00; since 2026-11 both are
+ *     the one captioned 1:25 film, so the viewer keeps their place.
  *   • prefers-reduced-motion: reduce never autoplays; the poster and the
  *     cue over it stay, so there is still a way in.
  *
@@ -59,41 +60,49 @@ export function mountTour(): void {
     }
   }
 
-  /** Swap to the full walkthrough and play it from the top, with sound and
-   *  controls. Only ever off a real click or keypress, so autoplay policy
-   *  allows the unmuted start. */
-  const playFull = (ev: Event): void => {
+  // When the preview and the full film are one file (a silent, captioned film
+  // since 2026-11), "full" only means "with controls": a click mid-film keeps
+  // the viewer's place instead of reloading the same file from 0:00.
+  const sameFilm = previewSrc === fullSrc;
+
+  /** Switch to the full walkthrough, with sound and controls. Only ever off a
+   *  real click or keypress, so autoplay policy allows the unmuted start.
+   *  fromStart rewinds; a finished film always starts again from 0:00. */
+  const playFull = (ev: Event, fromStart: boolean): void => {
     ev.preventDefault();
     if (!isFull) {
       isFull = true;
-      previewStarted = true;
       root.classList.remove("is-resting", "is-playing");
       root.classList.add("is-full");
       hit?.setAttribute("hidden", "");
-      video.src = fullSrc; // an explicit src replaces whatever is playing
-      if (video.dataset.fullPoster) video.poster = video.dataset.fullPoster;
+      if (!sameFilm || !previewStarted) {
+        video.src = fullSrc; // an explicit src replaces whatever is playing
+        if (video.dataset.fullPoster) video.poster = video.dataset.fullPoster;
+        video.load(); // a fresh load starts at 0:00
+      }
+      previewStarted = true;
       if (video.dataset.fullLabel) video.setAttribute("aria-label", video.dataset.fullLabel);
       video.removeAttribute("aria-hidden");
       video.muted = false;
       video.removeAttribute("muted");
       video.controls = true;
-      video.load(); // a fresh load starts at 0:00
       // The element that was focused is the one just hidden; without this the
-      // keyboard lands on <body> and the control bar of an 87-second film is
-      // behind the user.
+      // keyboard lands on <body> and the film's control bar is behind the user.
       video.focus();
-    } else {
-      video.currentTime = 0;
     }
+    if (fromStart || video.ended) video.currentTime = 0;
     void video.play().catch(() => { video.controls = true; });
   };
 
-  root.querySelectorAll<HTMLElement>("[data-tour-full]").forEach((el) => el.addEventListener("click", playFull));
+  // The frame keeps the viewer's place; the text link under it ("Watch from
+  // the start") rewinds.
+  root.querySelectorAll<HTMLElement>("[data-tour-full]").forEach((el) =>
+    el.addEventListener("click", (ev) => playFull(ev, el.hasAttribute("data-tour-restart"))));
   // The frame is a link, so Enter is free; Space scrolls a link, and this one
   // behaves like a button, so take Space on the frame only — the quiet text
   // link under it stays an ordinary link.
   hit?.addEventListener("keydown", (ev) => {
-    if (ev.key === " " || ev.key === "Spacebar") playFull(ev);
+    if (ev.key === " " || ev.key === "Spacebar") playFull(ev, false);
   });
 
   video.addEventListener("ended", () => {
