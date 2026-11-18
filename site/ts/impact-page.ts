@@ -503,6 +503,9 @@ function renderStories(): void {
   }
 }
 
+/** "WI" stays WI; a state typed out in capitals ("MINNESOTA") reads as Minnesota. */
+const placeName = (s: string): string => (s.length > 2 && s === s.toUpperCase() ? s.toLowerCase().replace(/\b\w/g, (ch) => ch.toUpperCase()) : s);
+
 /** What a search matches a chapter on: its name, school, city and state. */
 const searchText = (c: NetworkChapter): string =>
   [c.name, c.university, c.city, c.state, c.stateName].filter(Boolean).join(" ").toLowerCase();
@@ -528,7 +531,7 @@ function renderChapterCards(chapters: NetworkChapter[]): void {
           <header class="impact-chapter-card__head">
             <div>
               <h3 class="impact-chapter-card__name">${escapeHtml(c.name)}</h3>
-              <p class="impact-chapter-card__sub">${escapeHtml(c.university)}${c.city && c.state ? ` &middot; ${escapeHtml(c.city)}, ${escapeHtml(c.state)}` : ""}</p>
+              <p class="impact-chapter-card__sub">${escapeHtml(c.university)}${c.city && c.state ? ` &middot; ${escapeHtml(c.city)}, ${escapeHtml(placeName(c.state))}` : ""}</p>
             </div>
             ${i === 0 && c.events_90d > 0 ? `<span class="impact-chapter-card__pill impact-chapter-card__pill--top">Most active</span>` : c.events_90d > 0 ? `<span class="impact-chapter-card__pill">Active</span>` : ""}
           </header>

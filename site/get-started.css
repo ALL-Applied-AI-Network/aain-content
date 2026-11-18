@@ -452,8 +452,8 @@
   background: linear-gradient(#0f0f13, #0f0f13) padding-box, linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8) border-box;
   font: 600 0.72rem/1 "JetBrains Mono", monospace; letter-spacing: 0.16em; text-transform: uppercase; color: #e9e9ee;
 }
-.gs-hero__title { margin: 0; font: 700 clamp(2.2rem, 1.3rem + 3vw, 3.4rem)/1.06 "Space Grotesk", sans-serif; letter-spacing: -0.03em; color: #fff; }
-.gs-hero__title em { font-style: normal; background: linear-gradient(90deg, #22d3ee, #a855f7 55%, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gs-hero__title { margin: 0; font: 700 clamp(2.2rem, 1.3rem + 3vw, 3.4rem)/1.06 "Space Grotesk", sans-serif; letter-spacing: -0.03em; color: #fff; background: none; -webkit-text-fill-color: currentColor; }
+.gs-hero__title em { font-style: normal; background: linear-gradient(90deg, #22d3ee, #a855f7 55%, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
 .gs-hero__sub { margin: 0.9rem auto 0; max-width: 34rem; font-size: 1.08rem; line-height: 1.6; color: var(--text-secondary); }
 .gs-hero + .gs-roles { padding-top: 1.75rem; }
 .gs-role-card--officer .gs-role-card__kicker { letter-spacing: 0.1em; }

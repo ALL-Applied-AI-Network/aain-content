@@ -109,7 +109,7 @@ section[id] { scroll-margin-top: calc(var(--nav-height, 56px) + 16px); }
 .about-hero__photo { margin: 0; border-radius: 18px; overflow: hidden; border: 1.5px solid transparent;
   background: linear-gradient(#111116, #111116) padding-box, linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8) border-box;
   box-shadow: 0 30px 70px -34px rgba(168, 85, 247, 0.6); }
-.about-hero__photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.about-hero__photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .about-hero__photo figcaption { padding: 0.75rem 1rem 0.85rem; font-size: 0.86rem; line-height: 1.45; color: var(--lp-ink-2, #a0a0ad); }
 @media (max-width: 900px) { .about-hero { grid-template-columns: minmax(0, 1fr); } }
 .about-close .doors { margin-top: 1.25rem; }
