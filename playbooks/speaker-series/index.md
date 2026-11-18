@@ -58,6 +58,6 @@ The pulse of the chapter: a speaker or a workshop every other week, in the same 
 4. **Same-week thank-you**, then a **30-day follow-up**: would their company want to do more, from a workshop to an Innovation Lab?
 5. **Record talks** with the speaker's permission. Next year you'll want them.
 
-**In the dashboard:** **Sponsors → Connections** keeps every speaker and company in one place that outlasts the board. The event's **Share** menu makes the posts and calendar invites for the next one.
+**In the dashboard:** **Sponsors → Engagements** keeps every speaker, company and conversation in one place that outlasts the board. The event's **Share** menu makes the posts and calendar invites for the next one.
 
 [Show me, 0:11](https://all-ai-network.org/public/film/how/speaker-share.mp4)

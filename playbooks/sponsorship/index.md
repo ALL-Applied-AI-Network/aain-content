@@ -47,11 +47,11 @@ Your chapter is a sponsored project of the ALL Applied AI Network Foundation, a 
 
 | Job | Where |
 |---|---|
-| Turn gifts on | **Website → Chapter Profile → Ask ALL to approve your chapter**. Gifts also need the chapter agreement, and US chapters only for now |
+| Turn gifts on | **Getting Started → Verified Chapter**: finish its steps and ALL's team reviews your chapter. Gifts also need the chapter agreement, and US chapters only for now |
 | Your tiers and the sponsors you already have | **Funding → Involvement Page** |
 | Every dollar in and out, and spending approvals | **Funding → Money** |
 | Ask ALL's team for a sponsor, speaker, judges, a venue or money | **Sponsors → Requests** |
-| Find companies where your alumni work, or check a career-fair list, and have ALL introduce you | **Sponsors → Find Sponsors**, once approved (US chapters only) |
+| Find companies near you and where your alumni work, or check a career-fair list, and have ALL introduce you | **Sponsors → Companies**, once your chapter is verified (US chapters only) |
 
 [Show me, 0:09](https://all-ai-network.org/public/film/how/spons-setup.mp4)
 

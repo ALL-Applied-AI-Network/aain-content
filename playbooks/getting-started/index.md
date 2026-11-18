@@ -74,7 +74,7 @@ MSOE AI Club (MAIC) was three years old before it grew. The turnaround started w
 4. **Lock in 2–4 co-founders** with different skills. Solo founders burn out, and an operations partner matters more than another coder.
 5. **Say what you're not:** not a math study group, not a lecture series, not only for CS majors.
 
-**In the dashboard:** sign up and create the chapter, fill in **Website → Chapter Profile**, then press **Ask ALL to approve your chapter**. Approval opens your API key, company search, the officer directory and the badge, and for US chapters with the chapter agreement signed, money. Your **Website** is live from the first day.
+**In the dashboard:** sign up and create the chapter, then work through **Getting Started → Verified Chapter**: your Chapter Profile, officers, members, your site, a first event, a first check-in and a first request to ALL. Each step checks itself off, and when they're all done ALL's team reviews your chapter. Verification opens your API key, company search, the officer directory and the badge, and for US chapters with the chapter agreement signed, money. Your **Website** is live from the first day.
 
 ## First semester
 
