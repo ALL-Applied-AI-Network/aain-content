@@ -70,6 +70,13 @@ export interface PlaybookMeta {
   minutes: number;
   /** Optional: the film that covers this playbook. Not every playbook has one. */
   film?: PlaybookFilm;
+  /** What the reader gets out of doing this, in Title Case: the line Start a Chapter
+   *  shows for the playbook. */
+  headline?: string;
+  /** Why it's worth the read: real outcomes, each scoped to where it's true. */
+  why?: PlaybookStat[];
+  /** A real photo of this kind of event, site-relative, for cards that show the playbook. */
+  photo?: string;
 }
 
 const BUILD_FILM: PlaybookFilm = {
@@ -116,6 +123,8 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       title: "Your First Five Weeks",
       blurb: "The five weeks that decide the year, week by week, with the calendar the arc runs on.",
     },
+    headline: "Open the Year So Students Stay, and Hand On a Chapter That Outlives You",
+    photo: "./public/web/officer-org-fair.jpg",
   },
   {
     slug: "speaker-series",
@@ -151,6 +160,8 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       title: "How to Run Speaker Events",
       blurb: "The slot, the ask, the two weeks of promotion, and the hour itself drawn to scale.",
     },
+    headline: "Fill a Room Every Other Week, and Turn Your Speakers into Sponsors",
+    photo: "./public/web/hiring-panel.jpg",
   },
   {
     slug: "sponsorship",
@@ -177,6 +188,8 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "The Sequence", sub: "Slot, thanks, follow-up", anchor: "#the-sequence" },
       { label: "First Meeting", sub: "NDA on day one", anchor: "#the-first-real-meeting" },
     ],
+    headline: "Turn the Companies Already in Your Room into Sponsors Who Come Back",
+    photo: "./public/web/gpu-winners.jpg",
   },
   {
     slug: "innovation-labs",
@@ -206,6 +219,8 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "Showcase and Handoff", sub: "Judge and deliver", anchor: "#showcase-and-handoff" },
     ],
     film: BUILD_FILM,
+    headline: "Give Your Members a Company's Real Problem, and a Shot at the Job Behind It",
+    photo: "./public/playbooks/innovation-labs/lab-brady.jpg",
   },
   {
     slug: "hackathons",
@@ -238,6 +253,8 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "Wrap It", sub: "Handoff and payout", anchor: "#wrap-it" },
     ],
     film: BUILD_FILM,
+    headline: "Build Something a Nonprofit Keeps, in One Weekend",
+    photo: "./public/web/student-collaboration.jpg",
   },
   {
     slug: "research-groups",
@@ -267,6 +284,8 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "Run Experiments", sub: "A deliverable every 4 weeks", anchor: "#run-experiments" },
       { label: "Publish", sub: "Pick the target early", anchor: "#publish" },
     ],
+    headline: "Take Students from a First Experiment to a Published Paper",
+    photo: "./public/web/research-presentation.jpg",
   },
 ];
 

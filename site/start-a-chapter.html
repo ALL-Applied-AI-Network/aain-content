@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Start a Chapter &middot; ALL Applied AI Network</title>
-  <meta name="description" content="Start or claim an applied AI chapter at your university. Thirty minutes of onboarding, no call and no dues, leaves you with a roster, a live chapter site, your first event published and a sponsor invited. Free, open-source, no cut." />
+  <meta name="description" content="Start or claim an applied AI chapter at your university. Six playbooks from a club that grew from 20 members to 600+, and the dashboard, chapter site and sponsor connections that run it. Thirty minutes to set up, no call, no dues, no cut." />
   <meta property="og:title" content="Start a Chapter · ALL Applied AI Network" />
-  <meta property="og:description" content="A dashboard, a chapter website, six playbooks and a sponsor portal, set up in thirty minutes. No call, no dues." />
+  <meta property="og:description" content="Six playbooks, a dashboard, a chapter website and the ALL network behind them, set up in thirty minutes. No call, no dues." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://all-ai-network.org/public/web/maic-first-event.jpg" />
   <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
@@ -19,8 +19,10 @@
   <link rel="stylesheet" href="./fx.css" />
   <link rel="stylesheet" href="./product.css" />
   <link rel="stylesheet" href="./mocks.css" />
+  <link rel="stylesheet" href="./playbooks.css" />
+  <link rel="stylesheet" href="./start.css" />
 </head>
-<body>
+<body class="sac">
 
   <nav class="nav">
     <div class="nav__inner">
@@ -43,76 +45,210 @@
     </div>
   </nav>
 
-  <!-- ═══════════ HERO (the page mark stays) ═══════════ -->
-  <section class="toolkit-hero">
+  <nav class="rail" data-rail aria-label="Sections of this page"></nav>
+
+  <!-- ═══════════ HERO: the payoff, the two doors, the mark ═══════════ -->
+  <header class="sac-hero" id="top" data-rail="Start">
     <canvas id="hero-particles"></canvas>
-    <div id="hero-3d" class="hero-3d--page"></div>
-    <div class="container toolkit-hero__inner">
-      <span class="toolkit-hero__badge">Start a Chapter</span>
-      <h1 class="toolkit-hero__title">Run a chapter without rebuilding the wheel.</h1>
-      <p class="toolkit-hero__subtitle">
-        A <strong>dashboard</strong>, a <strong>chapter website</strong>, <strong>six playbooks</strong> and a
-        <strong>sponsor portal</strong>, set up in about thirty minutes, on your own. Free: no dues, no fees, and we take no cut.
-      </p>
-      <p class="toolkit-hero__press rv">Covered by <b>MSOE News</b>, <b>Spectrum News 1</b> and <b>Racine County Eye</b>. <a href="./impact.html#stories">Read the stories &rarr;</a></p>
-      <div class="path-tiles">
-        <div class="path-tile path-tile--scratch">
-          <div class="path-tile__top">
-            <span class="path-tile__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
-            </span>
-            <div class="path-tile__heading"><span class="path-tile__kicker">No club yet?</span><h2 class="path-tile__title">Start from scratch</h2></div>
-          </div>
-          <p class="path-tile__desc">Sign up, onboard in thirty minutes, and your first event is on the calendar this week.</p>
-          <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="path-tile__button"><span>Create a Chapter</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <div class="sac-hero__glow" aria-hidden="true"></div>
+    <div class="sac-hero__inner">
+      <div class="sac-hero__copy">
+        <span class="sac-chip">Start a Chapter</span>
+        <h1 class="sac-hero__title">Run an AI chapter students show up for, <em>without rebuilding the wheel.</em></h1>
+        <p class="sac-hero__sub">The playbooks from a club that grew from 20 members to 600+, and the dashboard, chapter site and sponsor connections that run it. Set up in about thirty minutes. Free: no dues, no fees, and we take no cut.</p>
+        <div class="sac-doors">
+          <a class="sac-door sac-door--scratch" href="https://dashboard.all-ai-network.org/sign-up" rel="noopener">
+            <span class="sac-door__k">No club yet?</span>
+            <span class="sac-door__d">Sign up, onboard in thirty minutes, and your first event is on the calendar this week.</span>
+            <span class="sac-door__btn">Start from Scratch <span class="sac-door__arrow" aria-hidden="true">&rarr;</span></span>
+          </a>
+          <a class="sac-door sac-door--claim" href="https://dashboard.all-ai-network.org/sign-up?role=officer" rel="noopener">
+            <span class="sac-door__k">Already running a club?</span>
+            <span class="sac-door__d">Keep your name, your site and everything else. Add the dashboard and the network.</span>
+            <span class="sac-door__btn">Claim Your Chapter <span class="sac-door__arrow" aria-hidden="true">&rarr;</span></span>
+          </a>
         </div>
-        <div class="path-tile path-tile--connect">
-          <div class="path-tile__top">
-            <span class="path-tile__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-            </span>
-            <div class="path-tile__heading"><span class="path-tile__kicker">Already running a club?</span><h2 class="path-tile__title">Claim your chapter</h2></div>
+        <p class="sac-hero__alt"><a href="#playbooks">Not ready to sign up? Read the six playbooks first <span aria-hidden="true">&darr;</span></a></p>
+      </div>
+      <div class="sac-hero__stage">
+        <label class="sl-try" for="sl-school">
+          <span class="sl-try__k">See yours</span>
+          <input id="sl-school" type="text" placeholder="Type your school" maxlength="32" autocomplete="off" spellcheck="false" />
+        </label>
+        <div class="sl-fit">
+          <!-- A chapter, assembling: drawn, not a screenshot, and decorative (the words are all above). -->
+          <div class="sl" id="sl" aria-hidden="true">
+            <svg class="sl__wire" viewBox="0 0 540 470"><defs><linearGradient id="sl-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4eaaf1"/><stop offset=".55" stop-color="#a855f7"/><stop offset="1" stop-color="#d64cb8"/></linearGradient></defs><path class="sl__w sl__w--roster" d="M 150 322 C 150 334, 112 334, 112 346" /><path class="sl__w sl__w--qr" d="M 400 322 C 400 334, 444 334, 444 346" /><path class="sl__w sl__w--sponsor" d="M 470 44 C 470 52, 456 52, 456 60" /></svg>
+            <div class="sl__site">
+              <div class="sl__chrome"><i></i><i></i><i></i><span class="sl__url"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span data-sl-url></span><span class="sl__caret"></span></span></div>
+              <div class="sl__body">
+                <div class="sl__nav"><img src="./public/all-logo-transparent.png" alt="" /><b data-sl-name>Your School AI Club</b><span class="sl__nav-links"><i></i><i></i><i></i></span><span class="sl__join">Join</span></div>
+                <div class="sl__hero">
+                  <span class="sl__eyebrow">Student AI chapter &middot; ALL Network</span>
+                  <span class="sl__title" data-sl-title>Your School AI Club</span>
+                  <span class="sl__sub">Real projects with real companies. No experience needed.</span>
+                </div>
+                <div class="sl__row">
+                  <div class="sl__ev"><span class="sl__k">Next event</span><b>Speaker Night</b><small>Thursday &middot; 6:30</small></div>
+                  <div class="sl__lb"><span class="sl__k">Leaderboard</span><i style="--w:94%"></i><i style="--w:71%"></i><i style="--w:52%"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="sl__card sl__roster">
+              <span class="sl__k">Members</span>
+              <span class="sl__avs"><i style="--h:190"></i><i style="--h:265"></i><i style="--h:320"></i><i style="--h:160"></i><i style="--h:40"></i><i style="--h:210"></i><i style="--h:290"></i><i style="--h:345"></i></span>
+              <span class="sl__ok"><b></b>Roster imported</span>
+            </div>
+            <div class="sl__card sl__qr">
+              <span class="sl__k">Speaker Night</span>
+              <span class="sl__qrbox"><i></i><i></i><i></i><i></i><span class="sl__scan"></span></span>
+              <span class="sl__qrcap">Scan to check in</span>
+            </div>
+            <div class="sl__card sl__sponsor"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg><span>Sponsor invited</span><b class="sl__tick"></b></div>
+            <div class="sl__clock"><span class="sl__clock-k">Setup</span><span class="sl__t" data-sl-clock>00:00</span><span class="sl__live"><i></i>Live</span></div>
           </div>
-          <p class="path-tile__desc">Keep your name, your site and everything else. Add the dashboard and the sponsor portal.</p>
-          <a href="https://dashboard.all-ai-network.org/sign-up?role=officer" target="_blank" rel="noopener" class="path-tile__button"><span>Claim Your Chapter</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
     </div>
+    <div class="sac-proof" aria-label="What the founding chapter built">
+      <span class="sac-proof__label">What the Founding Chapter Built This Way</span>
+      <div class="sac-proof__nums">
+        <div class="sac-proof__num"><b data-count="600" data-suffix="+">600+</b><span>members, from 20</span></div>
+        <div class="sac-proof__num"><b data-count="50" data-suffix="+">50+</b><span>papers from its research groups</span></div>
+        <div class="sac-proof__num"><b>5&ndash;10</b><span>students a sponsor usually hires from each Innovation Lab</span></div>
+      </div>
+      <p class="sac-proof__press">Covered by <b>MSOE News</b>, <b>Spectrum News 1</b> and <b>Racine County Eye</b>. <a href="./impact.html#stories">Read the stories &rarr;</a></p>
+    </div>
+  </header>
+
+  <!-- ═══════════ 1 · WHAT CHAPTERS BUILD: each story leads to its playbook ═══════════ -->
+  <section class="lp" id="stories" data-rail="What chapters build">
+    <div class="lp__inner">
+      <div class="lp__head sac-head rv">
+        <p class="lp-eyebrow">What chapters build</p>
+        <h2 class="lp-h2">What the playbooks were written from.</h2>
+        <p class="lp-lede">The founding chapter ran each of these before it wrote down how. Every card leads to the playbook for running your own.</p>
+      </div>
+      <ol class="sac-stories rv-group">
+        <li class="sac-story" style="--c:#4eaaf1">
+          <div class="sac-story__ph">
+            <img src="./public/playbooks/innovation-labs/lab-rockwell.jpg" alt="Students at the kick-off of the Rockwell Automation and NVIDIA Lab" loading="lazy" />
+            <span class="sac-story__tag">Innovation Lab</span>
+            <span class="sac-story__logos"><img src="./public/playbooks/innovation-labs/logo-rockwell.svg" alt="Rockwell Automation" /><span aria-hidden="true">+</span><img src="./public/playbooks/innovation-labs/logo-nvidia.svg" alt="NVIDIA" /></span>
+          </div>
+          <div class="sac-story__words">
+            <h3>Training factory robots</h3>
+            <p>400+ students signed up for a four-week Lab with Rockwell Automation and NVIDIA, run with UW-Milwaukee.</p>
+          </div>
+          <a class="sac-story__go" href="./playbook.html?path=playbooks/innovation-labs/index.md"><span>Innovation Labs Playbook</span><span aria-hidden="true">&rarr;</span></a>
+        </li>
+        <li class="sac-story" style="--c:#a855f7">
+          <div class="sac-story__ph">
+            <img src="./public/start/story-discovery-world.jpg" alt="A student demonstrating a talking guide built for Discovery World" loading="lazy" />
+            <span class="sac-story__tag">Hackathon</span>
+            <span class="sac-story__logos"><img src="./public/start/logo-discovery-world.png" alt="Discovery World" /></span>
+          </div>
+          <div class="sac-story__words">
+            <h3>Giving museum exhibits a voice</h3>
+            <p>70+ students took on Discovery World&rsquo;s visitor experience. The winning talking guide went to the museum.</p>
+          </div>
+          <a class="sac-story__go" href="./playbook.html?path=playbooks/hackathons/index.md"><span>Hackathons Playbook</span><span aria-hidden="true">&rarr;</span></a>
+        </li>
+        <li class="sac-story" style="--c:#d64cb8">
+          <div class="sac-story__ph">
+            <img src="./public/start/story-nilus.jpg" alt="A student researcher at an ice stupa built with Nilus" loading="lazy" />
+            <span class="sac-story__tag">Research Group</span>
+            <span class="sac-story__logos"><img src="./public/start/logo-nilus.png" alt="Nilus" class="is-tall" /></span>
+          </div>
+          <div class="sac-story__words">
+            <h3>Helping grow glaciers in Chile</h3>
+            <p>Students modeled where and when to grow glaciers that store fresh water. Two then helped Nilus build a real-time glacier dashboard.</p>
+          </div>
+          <a class="sac-story__go" href="./playbook.html?path=playbooks/research-groups/index.md"><span>Research Groups Playbook</span><span aria-hidden="true">&rarr;</span></a>
+        </li>
+      </ol>
+    </div>
   </section>
 
-  <!-- ═══════════ 1 · ONBOARDING ═══════════ -->
-  <section class="lp" id="call">
-    <div class="lp__inner problem">
-      <div class="rv">
+  <!-- ═══════════ 2 · THIRTY MINUTES: four stops on one line ═══════════ -->
+  <section class="lp lp--line" id="start" data-rail="Set up">
+    <div class="lp__inner">
+      <div class="lp__head sac-head rv">
         <p class="lp-eyebrow">How it starts</p>
         <h2 class="lp-h2">Thirty minutes and your chapter is live.</h2>
-        <p class="lp-lede">
-          No call required. Sign up, import your roster, and your site is live at <b>yourschool.all-ai-network.org</b> with your first event published and one sponsor invited. Free: no dues for members, no fees for chapters, and we take no cut. We handle payments and hosting. <a href="https://all-applied-ai-network.github.io/aain-hub-template/" target="_blank" rel="noopener">See a demo chapter site &rarr;</a>
-        </p>
+        <p class="lp-lede">No call required. Four steps, on your own, before your first meeting.</p>
+      </div>
+      <ol class="sac-steps rv">
+        <li class="sac-step" style="--c:#4eaaf1">
+          <div class="sac-step__shot" aria-hidden="true">
+            <div class="sm-form"><span class="sm-label">Chapter name</span><span class="sm-input">Your AI Club</span><span class="sm-label">School</span><span class="sm-input sm-input--dim">Your university</span><span class="sm-btn">Create Chapter</span></div>
+          </div>
+          <span class="sac-step__n">1</span>
+          <h3>Sign up</h3>
+          <p>Create your chapter, or claim the club you already run.</p>
+        </li>
+        <li class="sac-step" style="--c:#7f74f4">
+          <div class="sac-step__shot" aria-hidden="true">
+            <div class="sm-roster"><span class="sm-chip">Spreadsheet imported</span><span class="sm-row"><i style="--h:190"></i><b></b></span><span class="sm-row"><i style="--h:270"></i><b></b></span><span class="sm-row"><i style="--h:320"></i><b></b></span><span class="sm-row"><i style="--h:160"></i><b></b></span></div>
+          </div>
+          <span class="sac-step__n">2</span>
+          <h3>Bring your roster</h3>
+          <p>A sign-up QR, a spreadsheet, or the platform you use now.</p>
+        </li>
+        <li class="sac-step" style="--c:#b45ef0">
+          <div class="sac-step__shot" aria-hidden="true">
+            <div class="sm-site"><span class="sm-chrome"><i></i><i></i><i></i><code>yourschool.all-ai-network.org</code></span><span class="sm-site__h"></span><span class="sm-site__p"></span><span class="sm-site__cards"><i></i><i></i><i></i></span></div>
+          </div>
+          <span class="sac-step__n">3</span>
+          <h3>Your site goes live</h3>
+          <p>Your own subdomain, with your events, officers and leaderboard.</p>
+        </li>
+        <li class="sac-step" style="--c:#d64cb8">
+          <div class="sac-step__shot" aria-hidden="true">
+            <div class="sm-event"><span class="sm-event__k">Speaker Night</span><span class="sm-event__t">Thursday, 6:30</span><span class="sm-qr"><i></i><i></i><i></i><i></i></span><span class="sm-chip sm-chip--pink">Sponsor invited</span></div>
+          </div>
+          <span class="sac-step__n">4</span>
+          <h3>Publish your first event</h3>
+          <p>It gets its own check-in QR, and you can invite a sponsor to it.</p>
+        </li>
+      </ol>
+      <div class="sac-after rv">
+        <p>Then work through <b>Getting Started &rarr; Verified Chapter</b>. Each step checks itself off, ALL&rsquo;s team reviews your chapter, and verification opens company search, the officer directory and the badge, and for US chapters with the chapter agreement signed, money.</p>
         <div class="lp-actions">
           <a href="https://dashboard.all-ai-network.org/sign-up" class="btn btn--primary btn--lg" rel="noopener">Sign Up and Start Onboarding &rarr;</a>
-          <a href="mailto:hello@all-ai-network.org?subject=Chapter%20setup%20call" class="btn btn--outline btn--lg">Email Us First</a>
+          <a href="https://all-applied-ai-network.github.io/aain-hub-template/" class="btn btn--outline btn--lg" target="_blank" rel="noopener">See a Demo Chapter Site</a>
         </div>
-      </div>
-      <div class="problem__figure fx-frame rv">
-        <img data-liquid src="./public/web/maic-first-event.jpg" alt="A packed room at MAIC's first event of the season" width="1400" height="933" loading="lazy" />
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ 2 · THE FIRST FIVE WEEKS ═══════════ -->
-  <section class="lp lp--line" id="weeks">
+  <!-- ═══════════ 3 · THE PLAYBOOKS: the year map, each row opens its playbook ═══════════ -->
+  <section class="lp lp--line sac-books" id="playbooks" data-rail="The playbooks">
     <div class="lp__inner">
-      <div class="lp__head rv">
-        <p class="lp-eyebrow">The playbook, in one screen</p>
-        <h2 class="lp-h2">Your first five weeks decide your year.</h2>
-        <p class="lp-lede">Miss that window and you spend the rest of the year recruiting instead of building. Here is the timeline from the chapter that grew from 20 members to 500.</p>
+      <div class="lp__head sac-head rv">
+        <p class="lp-eyebrow">The playbooks</p>
+        <h2 class="lp-h2">Your whole year, <em>already written.</em></h2>
+        <p class="lp-lede">Six short playbooks from the founding chapter, one for each part of the year: an event every other week, a hands-on project from week 5, and the money under both. Pick a row to see what&rsquo;s inside.</p>
       </div>
-      <!-- The six cards are chapters of the film below: times are the film's own
-           section starts (collateral/first-five-weeks/build.py, 104 BPM, 1 bar =
-           2.3077s). ts/weeks-film.ts lights whichever week is playing and jumps the
-           film when a card is clicked. data-arc-* is the closing "every week at once"
-           table, when all six light together. -->
+      <div class="yx rv" id="yx">
+        <!-- the map and its six playbooks, drawn by chapter.ts from playbook-metadata.ts -->
+      </div>
+      <div class="sac-books__foot rv">
+        <span class="sac-books__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8M12 18v3"/></svg></span>
+        <p>Every playbook also opens inside your dashboard, under <b>Getting Started</b>, with short clips of the clicks.</p>
+        <a href="./playbooks.html">All six on one page &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 4 · THE FIRST FIVE WEEKS, as a film ═══════════ -->
+  <section class="lp lp--line" id="weeks" data-rail="First five weeks">
+    <div class="lp__inner">
+      <div class="lp__head sac-head rv">
+        <p class="lp-eyebrow">Rather watch?</p>
+        <h2 class="lp-h2">Your first five weeks decide your year.</h2>
+        <p class="lp-lede">Miss that window and you spend the rest of the year recruiting instead of building. The opening of the Getting Started playbook, as a silent film. Pick a week to jump to it.</p>
+      </div>
       <div class="weeks-film" data-weeks-film data-arc-from="191.88" data-arc-to="204.69">
         <ol class="weeks weeks--six rv-group" aria-label="Jump to a week in the film">
           <li><a class="week week--chap" href="./public/film/your-first-five-weeks.mp4#t=21.23" data-from="21.23" aria-controls="weeks-film-video">
@@ -147,17 +283,16 @@
         </div>
         <p class="weeks-film__cap"><a href="https://www.youtube.com/watch?v=YIgqUnlt0a0" target="_blank" rel="noopener">Watch on YouTube</a></p>
       </div>
-      <p class="lp-src rv">The whole year in a six-minute read: the <a href="./playbook.html?path=playbooks/getting-started/index.md">Getting Started playbook</a>. Speakers, Innovation Labs, hackathons, research groups and sponsors each have <a href="./playbooks.html">their own</a>.</p>
     </div>
   </section>
 
-  <!-- ═══════════ 3 · WHAT YOU GET: six things we got tired of doing by hand ═══════════ -->
-  <section class="lp lp--line product-features" id="kit">
+  <!-- ═══════════ 5 · THE TOOLS ═══════════ -->
+  <section class="lp lp--line product-features" id="kit" data-rail="The tools">
     <div class="lp__inner">
-      <div class="lp__head rv">
+      <div class="lp__head sac-head rv">
         <p class="lp-eyebrow">What you get</p>
         <h2 class="lp-h2">Six things we got tired of doing by hand.</h2>
-        <p class="lp-lede">We ran a club before we built any of this. Everything here started as a spreadsheet somebody hated.</p>
+        <p class="lp-lede">We ran a club before we built any of this. Everything here started as a spreadsheet somebody hated. <a class="sac-inline" href="./#tour">Watch the 1:25 dashboard tour &rarr;</a></p>
       </div>
       <div class="kit" id="kit-seq">
         <div class="kit__tabs" role="tablist" aria-label="What you get">
@@ -259,36 +394,78 @@
     </div>
   </section>
 
-  <!-- ═══════════ 4 · GET SPONSORED ═══════════ -->
-  <section class="lp lp--line" id="sponsors">
-    <div class="lp__inner problem">
-      <div class="problem__figure fx-frame rv">
-        <img src="./public/web/maic-rosie-awards-check.jpg" alt="An MSOE student receiving the $5,000 first-place check at the Rosie Super Challenge" width="1400" height="1120" loading="lazy" />
-      </div>
-      <div class="rv">
+  <!-- ═══════════ 6 · SPONSORS: three ways help reaches you, one network ═══════════ -->
+  <section class="lp lp--line" id="sponsors" data-rail="Sponsors">
+    <div class="lp__inner">
+      <div class="lp__head sac-head rv">
         <p class="lp-eyebrow">Get sponsored</p>
-        <h2 class="lp-h2">How sponsors find you.</h2>
-        <p class="lp-lede">
-          Sponsors find your chapter&rsquo;s page in the sponsor portal. They take one of your tiers, fund an
-          event you&rsquo;ve asked for help with, or give directly. <b>You set the tiers and their prices.</b>
-        </p>
-        <div class="weeks" style="grid-template-columns:1fr;gap:.6rem;margin-top:1.4rem">
-          <div class="week" style="padding:.9rem 1.1rem"><div class="week__d"><b style="color:var(--lp-ink)">We take no cut.</b> Sponsorships are gifts to a 501(c)(3), restricted to your chapter, and the receipt states what is tax-deductible. The Foundation holds the money; your chapter directs the spend.</div></div>
-          <div class="week" style="padding:.9rem 1.1rem"><div class="week__d"><b style="color:var(--lp-ink)">Ask for a speaker slot first, not money.</b> Most of our sponsors were speakers first. The <a href="./playbook.html?path=playbooks/sponsorship/index.md" style="color:var(--lp-cyan);text-decoration:none">Sponsorship playbook</a> has the sequence and the first-meeting script.</div></div>
+        <h2 class="lp-h2">Help reaches you through the network.</h2>
+        <p class="lp-lede">You don&rsquo;t cold-email companies alone. Three ways help gets to your chapter, and one rule for asking.</p>
+      </div>
+      <div class="sac-net rv">
+        <span class="sac-net__hub"><img src="./public/all-logo-transparent.png" alt="" /> The ALL Network</span>
+        <ol class="sac-net__ways">
+          <li style="--c:#4eaaf1">
+            <span class="sac-net__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <h3>Ask the network</h3>
+            <p>File a request for a speaker, judges, food, prize money or a problem to work on. ALL&rsquo;s team looks for the right company, and you see where each one stands.</p>
+          </li>
+          <li style="--c:#a855f7">
+            <span class="sac-net__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+            <h3>Find sponsors near you</h3>
+            <p>See companies near your school and where its alumni work, or check a list you paste. Request an intro, and ALL&rsquo;s team reaches out for you. US chapters, once verified.</p>
+          </li>
+          <li style="--c:#d64cb8">
+            <span class="sac-net__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
+            <h3>Money, held the right way</h3>
+            <p>Gifts go to the ALL Applied AI Network Foundation, a 501(c)(3), restricted to your chapter. We take no cut, your chapter directs the spend, and the receipt states what&rsquo;s tax-deductible.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="sac-rule rv">
+        <img src="./public/web/maic-rosie-awards-check.jpg" alt="The $5,000 first-place check at the Rosie Super Challenge" loading="lazy" />
+        <div>
+          <span class="sac-rule__k">The one rule</span>
+          <h3>Ask for a speaker slot first, not money.</h3>
+          <p>Most of the founding chapter&rsquo;s sponsors were speakers first. It&rsquo;s a smaller ask, and it gets them into the room. The Sponsorship playbook has the sequence and what to say in the first real meeting.</p>
+          <a class="sac-inline" href="./playbook.html?path=playbooks/sponsorship/index.md">Read the Sponsorship Playbook &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ CLOSE ═══════════ -->
-  <section class="toolkit-cta">
-    <div class="container toolkit-cta__inner">
-      <h2 class="toolkit-cta__title">Start your chapter.</h2>
-      <p class="toolkit-cta__desc">Sign up and the events, roster and leaderboard tools are ready before your first meeting. Your chapter site goes live the same week.</p>
-      <div class="toolkit-cta__actions">
-        <a href="https://dashboard.all-ai-network.org/sign-up" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Create Your Chapter <span aria-hidden="true">&rarr;</span></a>
-        <a href="mailto:hello@all-ai-network.org?subject=Starting%20a%20chapter" class="btn btn--outline btn--lg">Email Us a Question</a>
+  <!-- ═══════════ 7 · QUESTIONS ═══════════ -->
+  <section class="lp lp--line" id="faq" data-rail="Questions">
+    <div class="lp__inner">
+      <div class="lp__head sac-head rv">
+        <p class="lp-eyebrow">Questions</p>
+        <h2 class="lp-h2">What officers ask first.</h2>
       </div>
+      <div class="sac-faq rv-group">
+        <details><summary>What does it cost?</summary><p>Nothing. No dues for members, no fees for chapters, and ALL takes no cut of what sponsors give. Card processing on a gift is the only cost.</p></details>
+        <details><summary>We already run a club. Do we start over?</summary><p>No. Claim your chapter and keep your name. Bring your members in with <b>Invite/Import Members</b>: a sign-up QR, a spreadsheet, or another platform.</p></details>
+        <details><summary>Do our members need AI experience?</summary><p>No, and say so every time, because most students assume they do. Project teams mix newer students with one or two experienced ones.</p></details>
+        <details><summary>Who holds sponsor money?</summary><p>The ALL Applied AI Network Foundation, a 501(c)(3). Your chapter directs how it&rsquo;s spent and no officer fronts or holds it. Money your university holds stays with the university and follows its rules.</p></details>
+        <details><summary>What happens when we graduate?</summary><p>Add next year&rsquo;s board under <b>Members &rarr; Officers &amp; Roles</b>. Events, the roster and the money history stay with the chapter, not with whoever set them up. Getting Started&rsquo;s last chapter covers the handoff.</p></details>
+        <details><summary>Is this only for US schools?</summary><p>The dashboard, chapter site and playbooks work anywhere. Money, and finding sponsors through ALL, are for US chapters.</p></details>
+      </div>
+      <p class="sac-faq__more rv">Something else? <a href="mailto:hello@all-ai-network.org?subject=Starting%20a%20chapter">hello@all-ai-network.org</a></p>
+    </div>
+  </section>
+
+  <!-- ═══════════ CLOSE: three steps, easiest first ═══════════ -->
+  <section class="lp lp--line sac-close" id="go" data-rail="Start yours">
+    <div class="lp__inner">
+      <h2 class="sac-close__t rv">Start yours this week.</h2>
+      <div class="sac-band rv">
+        <div class="sac-band__t"><span>How to Start</span><small>Easiest first</small></div>
+        <ol class="sac-band__steps">
+          <li style="--c:#4eaaf1"><span class="sac-band__k">Start here &middot; 6 min</span><a href="./playbook.html?path=playbooks/getting-started/index.md">Read Getting Started</a><p>The whole year in one playbook: the first three weeks, the two tracks, the handoff.</p></li>
+          <li style="--c:#a855f7"><span class="sac-band__k">Next step &middot; 30 min</span><a href="https://dashboard.all-ai-network.org/sign-up" rel="noopener">Create or Claim Your Chapter</a><p>Your roster, your site and your first event, before the first meeting.</p></li>
+          <li style="--c:#d64cb8"><span class="sac-band__k">Biggest step &middot; week 5</span><a href="./playbook.html?path=playbooks/innovation-labs/index.md">Kick Off a Hands-On Project</a><p>An Innovation Lab or a hackathon, with a real problem and a sponsor in the room.</p></li>
+        </ol>
+      </div>
+      <p class="sac-close__alt rv">Rather talk first? <a href="mailto:hello@all-ai-network.org?subject=Starting%20a%20chapter">hello@all-ai-network.org</a></p>
     </div>
   </section>
 
