@@ -11,7 +11,7 @@
 import { renderArticle } from "./article-renderer";
 import { escapeHtml } from "./main";
 import { PLAYBOOKS, getPlaybook, type PlaybookMeta } from "./playbook-metadata";
-import { drawFigures } from "./playbook-figures";
+import { drawFigures, tone } from "./playbook-figures";
 
 // ---------------------------------------------------------------------------
 // Pretty names for sections
@@ -40,7 +40,90 @@ const SECTION_NAMES: Record<string, string> = {
 const CLOCK = `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.6V8l2.3 1.5"/></svg>`;
 const PLAY = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor"/></svg>`;
 
+// The story header, in the look of the audience kits. It answers the two things a
+// reader decides on before reading: what they'll walk away with, and why it's worth
+// the time. The headline is the payoff; the panel under it is the proof; the band is
+// the three keys, each the way into its chapter. The film waits beside the headline
+// for anyone who would rather watch.
+function renderStoryHeader(meta: PlaybookMeta): string {
+  const film = meta.film
+    ? `
+      <figure class="pbh__film">
+        <div class="pbh__film-frame">
+          <video class="pbh__film-video" preload="none" playsinline poster="${meta.film.poster}"
+            aria-label="${escapeHtml(meta.film.title)}, ${meta.film.runtime}, silent">
+            <source src="${meta.film.src}" type="video/mp4" />
+          </video>
+          <button type="button" class="pbh__film-play" data-pbh-play>
+            <span class="pbh__film-btn" aria-hidden="true">${PLAY}</span>
+            <span>Watch Instead<small>${meta.film.runtime}</small></span>
+          </button>
+        </div>
+        <figcaption><b>${escapeHtml(meta.film.title)}</b>${escapeHtml(meta.film.blurb)} Silent, so it reads with the sound off.</figcaption>
+      </figure>`
+    : "";
+  const why = (meta.why ?? meta.stats)
+    .map(
+      (s) => `
+        <div class="pbh__num">
+          <span class="pbh__num-v">${escapeHtml(s.value)}</span>
+          <span class="pbh__num-l">${escapeHtml(s.label)}</span>
+        </div>`,
+    )
+    .join("");
+  const paired = meta.actions.length === meta.keys.length;
+  const keys = meta.keys
+    .map((k, i) => {
+      const a = paired ? meta.actions[i] : null;
+      return `
+        <li class="pbf-help__step" style="--c:${tone(i, meta.keys.length)}">
+          <span class="pbf-help__k">${a ? `Chapter ${String(i + 1).padStart(2, "0")}` : `Key ${i + 1}`}</span>
+          ${a ? `<a class="pbf-help__go" href="${a.anchor}">${escapeHtml(a.label)}</a>` : ""}
+          <p>${escapeHtml(k)}</p>
+        </li>`;
+    })
+    .join("");
+  return `
+    <section class="pbh" style="--pb-accent: ${meta.accent};">
+      <div class="pbh__top">
+        <span class="pbh__name"><span class="pbh__icon" aria-hidden="true">${meta.icon}</span>${escapeHtml(meta.title)}<em>Playbook &middot; ${escapeHtml(meta.track)}</em></span>
+        <span class="pbh__meta">${CLOCK}${meta.minutes} min read${meta.film ? ` &middot; ${meta.film.runtime} film` : ""}</span>
+      </div>
+      <div class="pbh__main${meta.film ? " has-film" : ""}">
+        <div class="pbh__words">
+          <h1 class="pbh__t">${escapeHtml(meta.headline ?? meta.title)}</h1>
+          <p class="pbh__sub">${escapeHtml(meta.tagline)}</p>
+        </div>
+        ${film}
+      </div>
+      <div class="pbh__why">
+        <span class="pbh__label">Why It's Worth Your Time</span>
+        <div class="pbh__nums">${why}</div>
+      </div>
+      <section class="pbf-help pbh__band" id="start-here" aria-label="What you'll take away">
+        <div class="pbf-help__t"><span>What You'll Take Away</span><small>If you read nothing else</small></div>
+        <ol class="pbf-help__steps">${keys}</ol>
+      </section>
+    </section>
+  `;
+}
+
+/** The story header's film plays where it is, with its own controls, once asked. */
+function wireStoryHeader(root: ParentNode): void {
+  const btn = root.querySelector<HTMLButtonElement>("[data-pbh-play]");
+  const video = root.querySelector<HTMLVideoElement>(".pbh__film-video");
+  if (!btn || !video) return;
+  btn.addEventListener("click", () => {
+    btn.closest(".pbh__film")?.classList.add("is-started");
+    btn.remove();
+    video.controls = true;
+    video.focus();
+    void video.play().catch(() => {});
+  });
+}
+
 function renderActionHeader(meta: PlaybookMeta): string {
+  if (meta.headline) return renderStoryHeader(meta);
   const stats = meta.stats
     .map(
       (s) => `
@@ -353,7 +436,9 @@ async function init(): Promise<void> {
   if (meta) {
     const header = document.createElement("div");
     header.innerHTML = renderActionHeader(meta);
-    contentEl.parentElement?.insertBefore(header.firstElementChild!, contentEl);
+    const head = header.firstElementChild!;
+    contentEl.parentElement?.insertBefore(head, contentEl);
+    wireStoryHeader(head);
   }
 
   await renderArticle(contentPath, contentEl);

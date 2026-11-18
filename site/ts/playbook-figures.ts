@@ -363,6 +363,12 @@ function drawStartHere(root: HTMLElement, meta: PlaybookMeta): void {
   const h2 = root.querySelector<HTMLElement>("h2#start-here");
   const list = h2?.nextElementSibling;
   if (!h2 || list?.tagName !== "OL") return;
+  // The story header already carries the keys (from the same lines), with the anchor.
+  if (document.querySelector(".pbh .pbf-help")) {
+    list.remove();
+    h2.remove();
+    return;
+  }
   const keys = Array.from(list.children) as HTMLElement[];
   // Each key is its chapter's point when there's one of each; then the band is also
   // the way into the chapters, and the header's own doors step aside.

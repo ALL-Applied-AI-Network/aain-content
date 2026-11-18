@@ -1379,7 +1379,7 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
 @media (max-width: 640px) { .playbook-content.pbr .pbf-photo { aspect-ratio: 16 / 10; } }
 
 /* ## Start here: the three keys as one band, the kits' help bar */
-.playbook-content.pbr .pbf-help {
+:is(.playbook-content.pbr, .pbh) .pbf-help {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   margin-top: 2rem;
@@ -1403,12 +1403,12 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
   font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--c);
 }
-.playbook-content.pbr a.pbf-help__go { font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
-.playbook-content.pbr a.pbf-help__go::after { content: " \2192"; color: var(--c); }
-.playbook-content.pbr a.pbf-help__go:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--c); }
+:is(.playbook-content.pbr, .pbh) a.pbf-help__go { font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+:is(.playbook-content.pbr, .pbh) a.pbf-help__go::after { content: " \2192"; color: var(--c); }
+:is(.playbook-content.pbr, .pbh) a.pbf-help__go:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--c); }
 .pbf-help__step p { margin-top: 0.35rem !important; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); }
 @media (min-width: 900px) {
-  .playbook-content.pbr .pbf-help { grid-template-columns: 11.5rem minmax(0, 1fr); }
+  :is(.playbook-content.pbr, .pbh) .pbf-help { grid-template-columns: 11.5rem minmax(0, 1fr); }
   .pbf-help__t { clip-path: polygon(0 0, 86% 0, 100% 50%, 86% 100%, 0 100%); padding-right: 2rem; }
   .pbf-help__steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding: 1.15rem 1.4rem 1.25rem 0.9rem; }
   .pbf-help__step + .pbf-help__step::before {
@@ -1434,4 +1434,103 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
   .pbr-dash > .pbr-clip { grid-column: 2; grid-row: 2 / span 6; margin-top: 0.15rem; }
   .pbr-dash > .pbr-clip.is-started { grid-column: 1 / -1; grid-row: auto; }
   .pbr-dash > .pbr-clip:not(.is-started) .pbr-clip__play { left: 0.55rem; bottom: 0.55rem; padding: 0.32rem 0.75rem 0.32rem 0.32rem; font-size: 0.8rem; }
+}
+
+/* ========================================================================
+   The story header (renderStoryHeader): what you'll walk away with and why
+   it's worth the read, in the kits' order: name, rule, the payoff as the
+   headline, the proof in one panel, the keys as one band.
+   ======================================================================== */
+.pbh {
+  --line: linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8);
+  width: min(60rem, calc(100vw - 2rem));
+  margin: 0 0 2.75rem calc(50% - min(30rem, 50vw - 1rem));
+}
+.pbh__top {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 2px solid transparent;
+  border-image: var(--line) 1;
+}
+.pbh__name { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; color: var(--text-primary); }
+.pbh__name em { font-style: normal; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pb-accent); }
+.pbh__icon { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 9px; color: var(--pb-accent); background: color-mix(in srgb, var(--pb-accent) 14%, transparent); }
+.pbh__icon svg { width: 18px; height: 18px; }
+.pbh__meta {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.3rem 0.8rem; border-radius: 999px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box, var(--line) border-box;
+  font-size: 0.8rem; font-weight: 500; color: var(--text-primary);
+}
+.pbh__meta svg { width: 14px; height: 14px; opacity: 0.8; }
+
+.pbh__main { display: grid; gap: 1.5rem; padding: 1.6rem 0 1.7rem; }
+@media (min-width: 900px) { .pbh__main.has-film { grid-template-columns: minmax(0, 1fr) 21rem; align-items: center; gap: 2.25rem; } }
+.pbh__t {
+  margin: 0;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.85rem, 1.2rem + 2.2vw, 2.55rem); line-height: 1.08; letter-spacing: -0.025em;
+  color: #fff;
+  text-wrap: balance;
+}
+.pbh__sub { margin: 0.95rem 0 0; max-width: 40rem; font-size: 1.06rem; line-height: 1.6; color: var(--text-secondary); }
+
+.pbh__film { margin: 0; }
+.pbh__film-frame { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); background: #0b0b0d; }
+.pbh__film-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.pbh__film-play {
+  position: absolute; left: 0.7rem; bottom: 0.7rem;
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.38rem 0.95rem 0.38rem 0.38rem;
+  border: 1px solid color-mix(in srgb, var(--pb-accent) 60%, transparent); border-radius: 999px;
+  background: rgba(8, 10, 12, 0.86); color: #f4f6fa;
+  font: 600 0.85rem/1 var(--font-body); cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+}
+.pbh__film-play small { margin-left: 0.45rem; font-family: var(--font-mono); font-weight: 500; font-size: 0.74rem; color: rgba(244, 246, 250, 0.62); }
+.pbh__film-btn { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--pb-accent); color: #0b0b0d; }
+.pbh__film-btn svg { width: 12px; height: 12px; margin-left: 2px; }
+.pbh__film-play:hover { border-color: var(--pb-accent); }
+.pbh__film-play:focus-visible { outline: 2px solid var(--pb-accent); outline-offset: 3px; }
+.pbh__film figcaption { margin-top: 0.6rem; font-size: 0.8rem; line-height: 1.45; color: var(--text-muted); }
+.pbh__film figcaption b { display: block; margin-bottom: 0.1rem; font-weight: 600; color: var(--text-secondary); }
+
+/* Why: the kits' "Where It Leads" panel, a label riding its top edge */
+.pbh__why {
+  position: relative;
+  margin-top: 0.6rem;
+  padding: 1.75rem 1.4rem 1.35rem;
+  border: 1.5px solid transparent; border-radius: 16px;
+  background: linear-gradient(#111116, #111116) padding-box, var(--line) border-box;
+}
+.pbh__label {
+  position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%);
+  padding: 0.3rem 0.95rem; border-radius: 999px; white-space: nowrap;
+  border: 1.5px solid transparent;
+  background: linear-gradient(#111116, #111116) padding-box, var(--line) border-box;
+  font-family: var(--font-display); font-size: 0.86rem; font-weight: 600; color: #fff;
+}
+.pbh__nums { display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .pbh__nums { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; } }
+.pbh__num { display: grid; grid-template-columns: 6.4rem minmax(0, 1fr); align-items: center; gap: 0.9rem; }
+@media (min-width: 720px) {
+  .pbh__num { display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; padding: 0 1.25rem; }
+  .pbh__num + .pbh__num { border-left: 1px solid rgba(255, 255, 255, 0.08); }
+}
+.pbh__num-v {
+  flex: none;
+  font-family: var(--font-display); font-weight: 700; font-size: 2.5rem; line-height: 1; letter-spacing: -0.03em;
+  background: linear-gradient(90deg, #4eaaf1, #a855f7 60%, #d64cb8);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.pbh__num-l { font-size: 0.9rem; line-height: 1.45; color: var(--text-secondary); }
+
+.pbh .pbh__band { margin-top: 1.5rem; }
+.pbh .pbf-help__step p { margin: 0.35rem 0 0; }
+
+/* The breadcrumb lines up with the story header's wider edge */
+.playbook-layout:has(.pbh) .playbook-breadcrumb {
+  width: min(60rem, calc(100vw - 2rem));
+  margin-left: calc(50% - min(30rem, 50vw - 1rem));
 }

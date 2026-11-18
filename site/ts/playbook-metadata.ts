@@ -221,6 +221,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     film: BUILD_FILM,
     headline: "Give Your Members a Company's Real Problem, and a Shot at the Job Behind It",
     photo: "./public/playbooks/innovation-labs/lab-brady.jpg",
+    why: [
+      { value: "5–10", label: "students a sponsor usually hires from each Lab, at the founding chapter" },
+      { value: "400+", label: "students signed up for the founding chapter's fall 2026 Lab" },
+      { value: "$5K", label: "the default prize pool, from the sponsor's budget" },
+    ],
   },
   {
     slug: "hackathons",
