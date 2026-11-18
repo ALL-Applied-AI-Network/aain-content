@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./landing.css" />
   <link rel="stylesheet" href="./fx.css" />
   <link rel="stylesheet" href="./about.css" />
+  <link rel="stylesheet" href="./doors.css" />
   <!-- Structured data for search and AI answer engines. Mirrors the visible Key facts and FAQ below;
        if you edit one, edit the other to match (the FAQ text must match exactly). -->
   <script type="application/ld+json">
@@ -139,8 +140,9 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./">Home</a></li>
-        <li><a href="./impact.html">The Network</a></li>
+        <li><a href="./impact.html">Find a Chapter</a></li>
         <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
+        <li><a href="https://sponsors.all-ai-network.org" rel="noopener">For Companies</a></li>
         <li><a href="./tree.html">Learn</a></li>
         <li><a href="./about.html" class="active">About</a></li>
       </ul>
@@ -151,9 +153,10 @@
     </div>
   </nav>
 
-  <header class="pagehead">
+  <header class="pagehead pagehead--split">
     <div class="pagehead__art" aria-hidden="true"><img src="./public/art/field.webp" alt="" /></div>
-    <div class="lp__inner">
+    <div class="lp__inner about-hero">
+      <div class="about-hero__copy">
       <p class="lp-eyebrow">ALL Applied AI Network Foundation</p>
       <h1 class="lp-h2">Students who build real AI before they graduate.</h1>
       <p class="lp-lede">ALL Applied AI Network Foundation is a 501(c)(3) nonprofit that gives university students the playbooks, software and fiscal sponsorship to start and run applied AI clubs.</p>
@@ -166,6 +169,11 @@
         <a href="#facts">Key facts</a>
         <a href="#faq">FAQ</a>
       </nav>
+      </div>
+      <figure class="about-hero__photo">
+        <img src="./public/web/maic-projects-kickoff.jpg" alt="A full room at the founding chapter's project kick-off" width="1400" height="933" loading="eager" decoding="async" />
+        <figcaption>A project kick-off at the founding chapter, the MSOE AI Club, where the playbooks were written.</figcaption>
+      </figure>
     </div>
   </header>
 
@@ -298,7 +306,7 @@
           <dt>Cost</dt><dd>Free to chapters and members: no dues and no fees. The Foundation takes $0 from sponsorships and gifts; card processing is the only cost.</dd>
           <dt>Terms</dt><dd>No dues and no fees. Chapters operate as projects of the Foundation.</dd>
           <dt>Onboarding</dt><dd>About 30 minutes, self-serve, no call</dd>
-          <dt>Chapters</dt><dd>From UC Berkeley to NC State, most in their first term. The live list is on <a href="./impact.html">The Network</a>.</dd>
+          <dt>Chapters</dt><dd>From UC Berkeley to NC State, most in their first term. The live list is on <a href="./impact.html">Find a Chapter</a>.</dd>
           <dt>Members</dt><dd>764 across the network as of October 2026, most of them at the founding chapter</dd>
           <dt>Founding chapter</dt><dd>MSOE AI Club, Milwaukee School of Engineering: 600+ members, up from 20</dd>
           <dt>Founding chapter sponsor</dt><dd>Direct Supply, primary sponsor of the MSOE AI Club; 70% of its AI department&rsquo;s hires came from the club</dd>
@@ -350,6 +358,18 @@
     </div>
   </section>
 
+  <!-- ═══════════ CLOSE: a door for everyone ═══════════ -->
+  <section class="lp lp--tight lp--line about-close">
+    <div class="lp__inner">
+      <h2 class="about-h2 rv">Where to go from here</h2>
+      <div class="doors rv-group">
+        <a class="door door--student" href="./impact.html#find"><span class="door__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span><span class="door__k">Students</span><span class="door__t">Find Your Chapter &rarr;</span><span class="door__d">Every event and project you join builds your portfolio. Free to join, no sign-up to attend, no experience needed.</span></a>
+        <a class="door door--leader" href="./start-a-chapter.html"><span class="door__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg></span><span class="door__k">Student Leaders &amp; Educators</span><span class="door__t">Start a Chapter &rarr;</span><span class="door__d">The playbooks, the dashboard and a chapter site, set up in thirty minutes. Free: no dues, no fees, no cut.</span></a>
+        <a class="door door--company" href="https://sponsors.all-ai-network.org" rel="noopener"><span class="door__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span><span class="door__k">Companies</span><span class="door__t">Sponsor a Lab &rarr;</span><span class="door__d">Bring a real problem to the campuses you hire from, and meet the students who solve it.</span></a>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="footer__inner">
       <div>
@@ -365,9 +385,9 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./impact.html">The Network</a></li>
+          <li><a href="./impact.html">Find a Chapter</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
+          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">For Companies</a></li>
           <li><a href="./playbooks.html">Playbooks</a></li>
           <li><a href="./tree.html">Learning Tree</a></li>
           <li><a href="./about.html">About</a></li>

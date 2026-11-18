@@ -23,8 +23,12 @@ function renderCard(p: PlaybookMeta): string {
     .map((a) => `<a class="pbc__jump" href="${href(p.slug, a.anchor)}">${esc(a.label)}</a>`)
     .join("");
   const film = p.film ? `<span class="pbc__film" title="${esc(p.film.title)}"><svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M5 3.5v9l7-4.5z" fill="currentColor"/></svg>Film ${esc(p.film.runtime)}</span>` : "";
+  const photo = p.photo
+    ? `<a class="pbc__photo" href="${href(p.slug)}" tabindex="-1" aria-hidden="true"><img src="${p.photo}" alt="" loading="lazy" decoding="async" /><span class="pbc__phtrack">${esc(p.track)}</span></a>`
+    : "";
   return `
-    <article class="pbc" style="--pb-accent:${p.accent}">
+    <article class="pbc${p.photo ? " pbc--photo" : ""}" style="--pb-accent:${p.accent}">
+      ${photo}
       <div class="pbc__top">
         <span class="pbc__track">${esc(p.track)}</span>
         <span class="pbc__meta">${p.minutes} min read${film}</span>
@@ -33,6 +37,7 @@ function renderCard(p: PlaybookMeta): string {
         <span class="pbc__icon" aria-hidden="true">${p.icon}</span>
         <a class="pbc__link" href="${href(p.slug)}">${esc(p.title)}</a>
       </h3>
+      ${p.headline ? `<p class="pbc__headline">${esc(p.headline)}</p>` : ""}
       <p class="pbc__tagline">${esc(p.tagline)}</p>
       <dl class="pbc__facts">${facts}</dl>
       <div class="pbc__jumps" aria-label="Jump to a chapter of ${esc(p.title)}">${jumps}</div>

@@ -1,0 +1,105 @@
+/* network.css — Find a Chapter (impact.html), told the way Start a Chapter is: the
+   payoff and one action in the hero (find your school), the proof beside it (the
+   live globe), then the chapters, the press, companies, and a door for everyone. */
+
+.fc { --line: linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8); }
+.fc .lp-h2 em, .fc-hero__title em, .fc-close__t em {
+  font-style: normal;
+  background: linear-gradient(90deg, #22d3ee, #a855f7 55%, #ec4899);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* ── hero ── */
+.fc-hero {
+  position: relative; overflow: hidden;
+  padding: calc(var(--nav-height, 56px) + clamp(2rem, 5vw, 3.5rem)) 0 clamp(2rem, 4vw, 3rem);
+  background:
+    radial-gradient(55% 70% at 10% 25%, rgba(34, 211, 238, 0.10), transparent 70%),
+    radial-gradient(50% 70% at 85% 40%, rgba(168, 85, 247, 0.14), transparent 70%),
+    #0c0c0f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.fc-hero__inner {
+  width: min(var(--lp-max), calc(100% - 3rem)); margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: center;
+}
+.fc-chip {
+  display: inline-block; margin-bottom: 1.2rem; padding: 0.38rem 0.9rem; border-radius: 999px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(#0f0f13, #0f0f13) padding-box, var(--line) border-box;
+  font: 600 0.72rem/1 var(--lp-mono); letter-spacing: 0.16em; text-transform: uppercase; color: #e9e9ee;
+}
+.fc-hero__title { margin: 0; font: 700 clamp(2.4rem, 1.4rem + 3.2vw, 3.9rem)/1.04 var(--lp-display); letter-spacing: -0.032em; color: #fff; text-wrap: balance; }
+.fc-hero__sub { margin: 1.15rem 0 0; max-width: 36rem; font: 400 clamp(1.05rem, 1.3vw, 1.16rem)/1.6 "Work Sans", system-ui, sans-serif; color: var(--lp-ink-2); }
+
+.fc-search { margin-top: 1.8rem; max-width: 34rem; }
+.fc-search__box {
+  display: flex; align-items: center; gap: 0.7rem; padding: 0.35rem 0.4rem 0.35rem 1.1rem; border-radius: 16px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(#121218, #121218) padding-box, var(--line) border-box;
+  box-shadow: 0 18px 44px -20px rgba(168, 85, 247, 0.6);
+  color: #c4b5fd; cursor: text;
+}
+.fc-search__box:focus-within { box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.32), 0 18px 44px -20px rgba(168, 85, 247, 0.7); }
+.fc-search__box input {
+  flex: 1; min-width: 0; padding: 0.85rem 0.2rem; border: 0; outline: 0; background: transparent;
+  color: #fff; font: 500 1.12rem var(--lp-display);
+}
+.fc-search__box input::placeholder { color: rgba(255, 255, 255, 0.45); }
+.fc-search__box input::-webkit-search-cancel-button { filter: invert(1) opacity(0.6); }
+.fc-search__result { min-height: 1.5em; margin: 0.7rem 0 0 0.3rem; font-size: 0.95rem; color: var(--lp-ink-2); }
+.fc-search__result a { color: #67e8f9; text-decoration: none; font-weight: 600; white-space: nowrap; }
+.fc-search__result a:hover { color: #fff; }
+.fc-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.25rem; margin: 1.3rem 0 0; font-size: 0.92rem; color: var(--lp-ink-2); }
+.fc-proof b { color: #fff; font: 700 1.05rem var(--lp-display); }
+.fc-proof__live { flex-basis: 100%; display: inline-flex; align-items: center; gap: 0.45rem; font: 600 0.66rem/1 var(--lp-mono); letter-spacing: 0.14em; text-transform: uppercase; color: #9ae6b4; }
+.fc-proof__live i { width: 7px; height: 7px; border-radius: 50%; background: #10b981; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); animation: fc-pulse 1.8s ease-out infinite; }
+@keyframes fc-pulse { to { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); } }
+
+.fc-hero__globe { position: relative; }
+.fc .fc-globe { position: relative; width: 100%; aspect-ratio: 1 / 1; max-height: 34rem; margin: 0 auto; background: radial-gradient(closest-side, rgba(99, 102, 241, 0.10), transparent); }
+.fc-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.4rem; margin-top: 0.4rem; font-size: 0.82rem; color: var(--lp-ink-2); }
+.fc-legend a { color: #67e8f9; text-decoration: none; }
+.fc-legend__dot { display: inline-block; width: 9px; height: 9px; margin-right: 0.45rem; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.35); vertical-align: -1px; }
+.fc-legend__dot--on { border: 0; background: #22d3ee; box-shadow: 0 0 10px #22d3ee; }
+
+@media (max-width: 900px) {
+  .fc-hero__inner { grid-template-columns: minmax(0, 1fr); }
+  .fc .fc-globe { max-height: 22rem; }
+}
+
+/* ── chapters ── */
+.fc .fc-chapters { margin-top: 0.5rem; }
+.fc .impact-chapter-card[hidden] { display: none; }
+.fc-start {
+  display: flex; flex-direction: column; gap: 0.45rem; justify-content: center;
+  border: 1.5px dashed rgba(168, 85, 247, 0.5) !important; background: rgba(168, 85, 247, 0.06) !important;
+  text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.25s;
+}
+.fc-start:hover { border-color: #a855f7 !important; transform: translateY(-3px); }
+.fc-start__k { font: 600 0.66rem/1 var(--lp-mono); letter-spacing: 0.16em; text-transform: uppercase; color: #c4b5fd; }
+.fc-start__t { font: 700 1.2rem/1.25 var(--lp-display); color: #fff; }
+.fc-start__d { font-size: 0.9rem; line-height: 1.5; color: var(--lp-ink-2); }
+.fc-start__go { margin-top: 0.3rem; font: 700 0.95rem var(--lp-display); color: #c4b5fd; }
+.fc-soon { margin: 1.25rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; font-size: 0.92rem; color: var(--lp-ink-2); }
+.fc-soon b { color: #fff; font-weight: 600; margin-right: 0.2rem; }
+.fc-soon span { padding: 0.28rem 0.65rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.03); color: #e2e2e8; font-size: 0.85rem; }
+.fc-soon span.is-hit { border-color: #a855f7; background: rgba(168, 85, 247, 0.16); color: #fff; }
+
+/* ── stories ── */
+.fc .press[hidden] { display: none; }
+.fc-more { display: block; margin: 1.5rem auto 0; }
+
+/* ── companies ── */
+.fc-back { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.fc-back__card { padding: 1.3rem 1.35rem 1.35rem; border-radius: 16px; background: #141419; border: 1.5px solid color-mix(in srgb, var(--c) 55%, transparent); }
+.fc-back__k { display: block; margin-bottom: 0.45rem; font: 600 0.66rem/1 var(--lp-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--c); }
+.fc-back__card h3 { margin: 0 0 0.4rem; font: 700 1.2rem/1.25 var(--lp-display); color: #fff; }
+.fc-back__card p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--lp-ink-2); }
+.fc-back__card .impact-chapter-sponsors:not(:empty), .fc-back__card .impact-partners:not(:empty) { margin-top: 1rem; }
+@media (max-width: 760px) { .fc-back { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── close ── */
+.fc-close { text-align: center; }
+.fc-close__t { margin: 0 0 0.6rem; font: 700 clamp(2rem, 4vw, 3rem)/1.08 var(--lp-display); letter-spacing: -0.028em; color: #fff; }
+.fc-close__d { margin: 0 auto 1.8rem; max-width: 34rem; font-size: 1.05rem; color: var(--lp-ink-2); }

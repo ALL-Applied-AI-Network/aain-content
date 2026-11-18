@@ -178,6 +178,7 @@ async function init(): Promise<void> {
   renderChapterCards(stats.chapters);
   renderToolStrip(stats);
   renderPartnerships(stats.partnerships);
+  renderChapterSponsorships(stats.chapter_sponsorships ?? []);
 }
 
 async function loadStats(): Promise<NetworkStats> {
@@ -196,22 +197,10 @@ async function loadStats(): Promise<NetworkStats> {
 function renderStatsStrip(stats: NetworkStats): void {
   const el = document.getElementById("impact-stats-strip");
   if (!el) return;
-  // No chapter count: the network never prints one (claims rule).
-  const items = [
-    { label: "Members reached", value: stats.stats.members_total.toLocaleString() },
-    { label: "States", value: stats.stats.states_active },
-    { label: "Events, last 90 days", value: stats.stats.events_90d },
-  ];
-  el.innerHTML = items
-    .map(
-      (i) => `
-        <div class="impact-stats__item">
-          <div class="impact-stats__value">${i.value}</div>
-          <div class="impact-stats__label">${i.label}</div>
-        </div>
-      `,
-    )
-    .join("");
+  // No chapter count (claims rule), and no state count: three states reads small
+  // beside chapters from UC Berkeley to NC State and abroad.
+  const n = (v: number) => v.toLocaleString();
+  el.innerHTML = `<span class="fc-proof__live"><i></i>Live from the dashboard</span><span><b>${n(stats.stats.members_total)}</b> members reached</span><span><b>${n(stats.stats.events_90d)}</b> events in the last 90 days</span>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -502,30 +491,46 @@ function hideTooltip(el: HTMLElement): void {
 
 function renderStories(): void {
   const el = document.getElementById("stories-grid"); if (!el) return;
-  el.innerHTML = storiesByDate().map((s) => `<a class="press" href="${s.url}" target="_blank" rel="noopener" data-tilt="4">
+  const all = storiesByDate();
+  el.innerHTML = all.map((s, i) => `<a class="press" href="${s.url}" target="_blank" rel="noopener" data-tilt="4"${i >= 6 ? " hidden" : ""}>
     <div class="press__media"><img src="${s.image}" alt="" loading="lazy"${s.pos ? ` style="object-position:${s.pos}"` : ""} />${s.kind === "video" ? '<span class="chip chip--violet">Video</span>' : ""}</div>
     <div class="press__body"><div class="press__k">${s.outlet} &middot; ${fmtDate(s.date)}</div><h3 class="press__t">${s.title}</h3><p class="press__d">${s.blurb}</p><span class="press__more">${s.kind === "video" ? "Watch" : "Read"} &rarr;</span></div></a>`).join("");
+  const more = document.getElementById("fc-more");
+  if (more && all.length > 6) {
+    more.hidden = false;
+    more.textContent = `Show All ${all.length} Stories`;
+    more.addEventListener("click", () => { el.querySelectorAll<HTMLElement>(".press[hidden]").forEach((a) => { a.hidden = false; }); more.remove(); });
+  }
 }
+
+/** What a search matches a chapter on: its name, school, city and state. */
+const searchText = (c: NetworkChapter): string =>
+  [c.name, c.university, c.city, c.state, c.stateName].filter(Boolean).join(" ").toLowerCase();
 
 function renderChapterCards(chapters: NetworkChapter[]): void {
   const el = document.getElementById("impact-chapters");
-  // chapters with members rank first; a test entry with events but nobody in it never leads
-  const real = (c: NetworkChapter) => (c.members_count > 0 ? 1 : 0);
-  const sorted = [...chapters].sort((a, b) => real(b) - real(a) || b.events_90d - a.events_90d || b.members_count - a.members_count);
-  const maxEv = Math.max(1, ...sorted.map((c) => c.events_90d));
   if (!el) return;
-  if (chapters.length === 0) {
-    el.innerHTML = `<p class="impact-chapters__empty">No chapters live yet.</p>`;
-    return;
-  }
+  // A chapter with members gets a card. One still setting up (no members yet) is named
+  // in a single line under the cards, so the page never shows a row of zeros.
+  const live = chapters.filter((c) => c.members_count > 0);
+  const soon = chapters.filter((c) => c.members_count === 0);
+  const sorted = [...live].sort((a, b) => b.events_90d - a.events_90d || b.members_count - a.members_count);
+  const maxEv = Math.max(1, ...sorted.map((c) => c.events_90d));
+  const start = `
+        <a class="impact-chapter-card fc-start" href="./start-a-chapter.html" data-start>
+          <span class="fc-start__k">Your school</span>
+          <span class="fc-start__t">No chapter here yet?</span>
+          <span class="fc-start__d">Start one in about thirty minutes, with the playbooks, the dashboard and a chapter site. Free.</span>
+          <span class="fc-start__go">Start a Chapter &rarr;</span>
+        </a>`;
   el.innerHTML = sorted.map((c, i) => `
-        <article class="impact-chapter-card">
+        <article class="impact-chapter-card" data-q="${escapeAttr(searchText(c))}">
           <header class="impact-chapter-card__head">
             <div>
               <h3 class="impact-chapter-card__name">${escapeHtml(c.name)}</h3>
               <p class="impact-chapter-card__sub">${escapeHtml(c.university)}${c.city && c.state ? ` &middot; ${escapeHtml(c.city)}, ${escapeHtml(c.state)}` : ""}</p>
             </div>
-            ${i === 0 && c.events_90d > 0 && c.members_count > 0 ? `<span class="impact-chapter-card__pill impact-chapter-card__pill--top">Most active</span>` : c.events_90d > 0 ? `<span class="impact-chapter-card__pill">Active</span>` : ""}
+            ${i === 0 && c.events_90d > 0 ? `<span class="impact-chapter-card__pill impact-chapter-card__pill--top">Most active</span>` : c.events_90d > 0 ? `<span class="impact-chapter-card__pill">Active</span>` : ""}
           </header>
           <dl class="impact-chapter-card__stats">
             <div>
@@ -538,7 +543,7 @@ function renderChapterCards(chapters: NetworkChapter[]): void {
             </div>
             ${c.founded ? `<div><dt>Founded</dt><dd>${escapeHtml(c.founded)}</dd></div>` : ""}
           </dl>
-          <div class="impact-chapter-card__pulse"><span class="pulse__dot${c.events_90d > 0 ? " is-on" : ""}"></span><span class="pulse__t">${c.events_90d > 0 ? `${c.events_90d} event${c.events_90d === 1 ? "" : "s"} in the last 90 days` : "Quiet this term"}</span><span class="pulse__bar"><i style="width:${Math.round((100 * c.events_90d) / maxEv)}%"></i></span></div>
+          <div class="impact-chapter-card__pulse"><span class="pulse__dot${c.events_90d > 0 ? " is-on" : ""}"></span><span class="pulse__t">${c.events_90d > 0 ? `${c.events_90d} event${c.events_90d === 1 ? "" : "s"} in the last 90 days` : "Between events"}</span><span class="pulse__bar"><i style="width:${Math.round((100 * c.events_90d) / maxEv)}%"></i></span></div>
           ${
             c.tools.length > 0
               ? `<div class="impact-chapter-card__tools">
@@ -548,13 +553,57 @@ function renderChapterCards(chapters: NetworkChapter[]): void {
           }
           ${
             c.url
-              ? `<a class="impact-chapter-card__link" href="${escapeAttr(c.url)}" target="_blank" rel="noopener">Visit hub site &rarr;</a>`
+              ? `<a class="impact-chapter-card__link" href="${escapeAttr(c.url)}" target="_blank" rel="noopener">Visit the chapter&rsquo;s site &rarr;</a>`
               : ""
           }
         </article>
       `,
     )
-    .join("");
+    .join("") + start;
+
+  const soonEl = document.getElementById("fc-soon");
+  if (soonEl && soon.length) {
+    soonEl.hidden = false;
+    soonEl.innerHTML = `<b>Setting up now:</b> ${soon.map((c) => `<span data-q="${escapeAttr(searchText(c))}">${escapeHtml(c.university)}</span>`).join("")}`;
+  }
+  mountSearch();
+}
+
+/** The hero's search: narrows the cards as you type, and if your school has no
+ *  chapter yet, hands you to Start a Chapter with the school already typed in. */
+function mountSearch(): void {
+  const input = document.getElementById("fc-q") as HTMLInputElement | null;
+  const out = document.getElementById("fc-result");
+  const grid = document.getElementById("impact-chapters");
+  if (!input || !out || !grid) return;
+  const startCard = grid.querySelector<HTMLAnchorElement>("[data-start]");
+  const run = () => {
+    const raw = input.value.trim();
+    const q = raw.toLowerCase();
+    const words = q.split(/\s+/).filter(Boolean);
+    const hit = (t: string) => words.every((w) => t.includes(w));
+    let shown = 0;
+    grid.querySelectorAll<HTMLElement>("[data-q]").forEach((card) => {
+      const on = !words.length || hit(card.dataset.q ?? "");
+      card.hidden = !on;
+      if (on) shown++;
+    });
+    const soonHits = Array.from(document.querySelectorAll<HTMLElement>("#fc-soon [data-q]")).filter((x) => words.length && hit(x.dataset.q ?? ""));
+    document.querySelectorAll<HTMLElement>("#fc-soon [data-q]").forEach((x) => x.classList.toggle("is-hit", soonHits.includes(x)));
+    const startHref = `./start-a-chapter.html${raw ? `?school=${encodeURIComponent(raw)}` : ""}`;
+    if (startCard) startCard.href = startHref;
+    if (!words.length) { out.innerHTML = ""; return; }
+    const safe = escapeHtml(raw);
+    if (shown) {
+      out.innerHTML = `${shown} chapter${shown === 1 ? "" : "s"} for &ldquo;${safe}&rdquo;. <a href="#chapters">See ${shown === 1 ? "it" : "them"} &darr;</a>`;
+    } else if (soonHits.length) {
+      out.innerHTML = `A chapter at &ldquo;${safe}&rdquo; is setting up now. <a href="mailto:hello@all-ai-network.org?subject=${encodeURIComponent(`Joining the chapter at ${raw}`)}">Ask us to connect you &rarr;</a>`;
+    } else {
+      out.innerHTML = `No chapter at &ldquo;${safe}&rdquo; yet. <a href="${escapeAttr(startHref)}">Start one in about thirty minutes &rarr;</a>`;
+    }
+  };
+  input.addEventListener("input", run);
+  input.form?.addEventListener("submit", () => document.getElementById("chapters")?.scrollIntoView({ behavior: "smooth" }));
 }
 
 // ---------------------------------------------------------------------------
@@ -598,11 +647,7 @@ function renderPartnerships(parts: NetworkPartnership[]): void {
       (p.chapters_scope === "all" || !p.chapters_scope),
   );
   if (orgWide.length === 0) {
-    el.innerHTML = `
-      <div class="impact-empty-note">
-        No network-wide partner yet.
-      </div>
-    `;
+    el.innerHTML = "";
     return;
   }
   el.innerHTML = orgWide
@@ -636,12 +681,7 @@ function renderChapterSponsorships(sponsors: ChapterSponsorship[]): void {
   const el = document.getElementById("impact-chapter-sponsors");
   if (!el) return;
   if (sponsors.length === 0) {
-    el.innerHTML = `
-      <div class="impact-empty-note">
-        Be the first to back a chapter directly. Visit the sponsor
-        portal to find a chapter and sponsor it.
-      </div>
-    `;
+    el.innerHTML = "";
     return;
   }
   el.innerHTML = sponsors

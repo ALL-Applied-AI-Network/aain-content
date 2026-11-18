@@ -3049,3 +3049,15 @@ body:has(.tree-page) {
 .nav__links { gap: 1.05rem; }
 .nav__links a, .nav__cta-link, .nav__cta-btn { white-space: nowrap; }
 .nav__links a { font-size: .92rem; }
+
+/* Six menu links (Find a Chapter, For Companies) plus Sign in and Get Started: between the
+   hamburger (768px) and a wide window, tighten the gaps and let the logo carry the brand,
+   so nothing touches. */
+@media (max-width: 1180px) and (min-width: 769px) {
+  .nav__links { gap: 1.1rem; }
+  .nav__inner { gap: 1rem; }
+}
+@media (max-width: 1060px) and (min-width: 769px) {
+  .nav__brand span { display: none; }
+  .nav__links a { font-size: 0.84rem; }
+}

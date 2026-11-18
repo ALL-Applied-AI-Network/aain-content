@@ -74,6 +74,9 @@ function initLiveChapter(): void {
   const fit = stage?.parentElement;
   if (!stage || !fit) return;
   const input = document.getElementById("sl-school") as HTMLInputElement | null;
+  // Arriving from Find a Chapter with a school that has no chapter yet: build that one.
+  const from = new URLSearchParams(location.search).get("school");
+  if (input && from) input.value = from.slice(0, 32);
   const url = stage.querySelector<HTMLElement>("[data-sl-url]");
   const clock = stage.querySelector<HTMLElement>("[data-sl-clock]");
   const names = stage.querySelectorAll<HTMLElement>("[data-sl-name], [data-sl-title]");

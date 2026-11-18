@@ -1156,3 +1156,33 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
   html.js-rv .pbm__frame.in .pbm__blocktext { animation: none; }
   .pbc, .pbc:hover, .pb-header__action, .pb-header__action:hover, .pbm__go { transition: none; transform: none; }
 }
+
+/* ── The library's hero and photo cards: what these are, then the six, each with
+      a real photo and the payoff it teaches. The year map lives on Start a Chapter. ── */
+.pbx-hero { padding: 5.5rem 0 0.5rem; }
+.pbx-hero__chip {
+  display: inline-block; margin-bottom: 1rem; padding: 0.38rem 0.9rem; border-radius: 999px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(#0f0f13, #0f0f13) padding-box, linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8) border-box;
+  font: 600 0.72rem/1 var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; color: #e9e9ee;
+}
+.pbx-hero__title { margin: 0; max-width: 46rem; font: 700 clamp(2.2rem, 1.3rem + 3vw, 3.5rem)/1.05 var(--font-display); letter-spacing: -0.03em; color: #fff; text-wrap: balance; }
+.pbx-hero__title em { font-style: normal; background: linear-gradient(90deg, #22d3ee, #a855f7 55%, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pbx-hero__sub { margin: 1rem 0 0; max-width: 40rem; font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary); }
+.pbx-hero__map { margin: 1rem 0 0; }
+.pbx-hero__map a { color: #67e8f9; text-decoration: none; font-weight: 600; }
+.pbx-hero__map a:hover { color: #fff; }
+.pbx-hero + .pb-grid-section { padding-top: 2rem; }
+
+.pbc--photo { padding-top: 0; }
+.pbc__photo {
+  position: relative; display: block; margin: 0 -1.35rem 1rem; aspect-ratio: 16 / 9; overflow: hidden; background: #0c0c10;
+  border-bottom: 2px solid var(--pb-accent);
+}
+.pbc__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.pbc--photo:hover .pbc__photo img { transform: scale(1.04); }
+.pbc__phtrack {
+  position: absolute; left: 0.8rem; top: 0.8rem; padding: 0.28rem 0.55rem; border-radius: 6px;
+  background: var(--pb-accent); color: #0a0a0d; font: 700 0.62rem/1 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase;
+}
+.pbc__headline { margin: 0.1rem 0 0.5rem; font: 700 1.08rem/1.3 var(--font-display); color: #fff; text-wrap: balance; }

@@ -31,8 +31,9 @@
       <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">&#9776;</button>
       <ul class="nav__links" id="nav-links">
         <li><a href="./">Home</a></li>
-        <li><a href="./impact.html">The Network</a></li>
+        <li><a href="./impact.html">Find a Chapter</a></li>
         <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
+        <li><a href="https://sponsors.all-ai-network.org" rel="noopener">For Companies</a></li>
         <li><a href="./tree.html">Learn</a></li>
         <li><a href="./about.html">About</a></li>
       </ul>
@@ -42,19 +43,18 @@
     </div>
   </nav>
 
-  <!-- Hero removed (matches /sign-in.html). The tile grid is the page —
-       any intro paragraph just added vertical padding above the
-       decision the visitor came here to make. -->
+  <!-- ═══════════ HERO: one question, three doors (the same three as the home page) ═══════════ -->
+  <header class="gs-hero">
+    <div class="container">
+      <span class="gs-hero__chip">Get Started</span>
+      <h1 class="gs-hero__title">Where do you <em>want to start?</em></h1>
+      <p class="gs-hero__sub">Pick the one that fits you. Each takes you straight to the right place.</p>
+    </div>
+  </header>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       ROLE CARDS — "Who are you?" disambiguation for new users.
-       2 × 2 on desktop, 1-col on narrow screens. Compact density so all
-       four fit in one viewport on a typical laptop.
-       ═══════════════════════════════════════════════════════════════════════ -->
   <section class="gs-roles gs-roles--photo">
     <div class="container">
-      <div class="gs-role-grid">
-
+      <div class="gs-role-grid gs-role-grid--three">
         <!-- Student -->
         <article class="gs-role-card gs-role-card--student">
           <div class="gs-role-card__photo">
@@ -68,7 +68,7 @@
               <path d="M29 11v8"/>
             </svg>
           </div>
-          <span class="gs-role-card__kicker">Student</span>
+          <span class="gs-role-card__kicker">Students</span>
           <h2 class="gs-role-card__title">I&rsquo;m a student</h2>
           <p class="gs-role-card__body">
             I want to build my AI career: ship real projects with people
@@ -76,40 +76,37 @@
             profile I choose to share.
           </p>
           <a
-            href="./impact.html#chapters"
+            href="./impact.html#find"
             class="btn btn--primary btn--lg gs-role-card__cta"
           >
             Find Your Chapter &rarr;
           </a>
         </article>
 
-        <!-- Officer -->
+        <!-- Student leaders and educators -->
         <article class="gs-role-card gs-role-card--officer">
           <div class="gs-role-card__photo">
             <img src="./public/web/officer-org-fair.jpg" alt="A packed room of students at an MSOE tech org fair run with other clubs" loading="lazy" width="1400" height="788" />
           </div>
           <div class="gs-role-card__icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Wrench -->
               <path d="M22.7 9.3a4 4 0 0 0-5.4 5.4l-9.8 9.8a2.12 2.12 0 1 0 3 3l9.8-9.8a4 4 0 0 0 5.4-5.4l-3.1 3.1-2.7-.3-.3-2.7 3.1-3.1z"/>
             </svg>
           </div>
-          <span class="gs-role-card__kicker">Officer</span>
-          <h2 class="gs-role-card__title">I run an AI club</h2>
+          <span class="gs-role-card__kicker">Student Leaders &amp; Educators</span>
+          <h2 class="gs-role-card__title">I run a club, or want to</h2>
           <p class="gs-role-card__body">
-            I want to bring this dashboard to my club: QR check-in, a site
-            that updates itself, requests to the whole network, and six
-            short playbooks. Or I want to start a chapter on a new campus.
+            Start a chapter or claim the club you run: the playbooks, the
+            dashboard and a chapter site, set up in thirty minutes. Faculty
+            advising one? <a href="mailto:hello@all-ai-network.org?subject=Bringing%20ALL%20to%20our%20university">Email us</a>.
           </p>
           <a
-            href="https://dashboard.all-ai-network.org/?role=officer"
+            href="./start-a-chapter.html"
             class="btn btn--primary btn--lg gs-role-card__cta"
-            rel="noopener"
           >
-            Continue as an Officer &rarr;
+            Start a Chapter &rarr;
           </a>
         </article>
-
         <!-- Sponsor -->
         <article class="gs-role-card gs-role-card--sponsor">
           <div class="gs-role-card__photo">
@@ -123,50 +120,22 @@
               <path d="M4 17h24"/>
             </svg>
           </div>
-          <span class="gs-role-card__kicker">Sponsor</span>
-          <h2 class="gs-role-card__title">I&rsquo;m a sponsor</h2>
+          <span class="gs-role-card__kicker">Companies</span>
+          <h2 class="gs-role-card__title">We hire, or want to</h2>
           <p class="gs-role-card__body">
-            Our company is hiring AI engineers. We want to fund chapter
-            activity, run challenges with real students, and see
-            who&rsquo;s actually shipping work.
+            Bring a real problem to the campuses you hire from, fund a
+            chapter or a Lab, and meet the students who do the work.
           </p>
           <a
             href="https://sponsors.all-ai-network.org/"
             class="btn btn--primary btn--lg gs-role-card__cta"
             rel="noopener"
           >
-            Continue as a Sponsor &rarr;
+            Sponsor a Lab &rarr;
           </a>
         </article>
 
-        <!-- School -->
-        <article class="gs-role-card gs-role-card--school">
-          <div class="gs-role-card__photo">
-            <img src="./public/web/educator-hackathon.jpg" alt="A student working at Hacksgiving, with the MSOE AI-Club, MSOE and Next Step logos on screen" loading="lazy" width="1400" height="788" />
-          </div>
-          <div class="gs-role-card__icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Academic / institution -->
-              <path d="M3 27h26"/>
-              <path d="M6 27V14l10-5 10 5v13"/>
-              <path d="M12 27v-8h8v8"/>
-              <path d="M16 14v0"/>
-            </svg>
-          </div>
-          <span class="gs-role-card__kicker">Educator</span>
-          <h2 class="gs-role-card__title">I&rsquo;m an educator</h2>
-          <p class="gs-role-card__body">
-            I want to back an AI chapter at my school: advising it,
-            helping it find funding, or starting one from scratch.
-            Let&rsquo;s talk.
-          </p>
-          <a
-            href="mailto:hello@all-ai-network.org?subject=Bringing%20ALL%20to%20our%20university"
-            class="btn btn--primary btn--lg gs-role-card__cta"
-          >
-            Talk to Us &rarr;
-          </a>
-        </article>
+
 
       </div>
 
@@ -262,9 +231,9 @@
       </div>
       <div class="footer__links">
         <ul class="footer__link-col">
-          <li><a href="./impact.html">The Network</a></li>
+          <li><a href="./impact.html">Find a Chapter</a></li>
           <li><a href="./start-a-chapter.html">Start a Chapter</a></li>
-          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">Sponsors</a></li>
+          <li><a href="https://sponsors.all-ai-network.org" target="_blank" rel="noopener">For Companies</a></li>
           <li><a href="./playbooks.html">Playbooks</a></li>
           <li><a href="./tree.html">Learning Tree</a></li>
           <li><a href="./about.html">About</a></li>

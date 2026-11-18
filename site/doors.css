@@ -1,0 +1,33 @@
+/* doors.css — the three audience doors (Students / Student Leaders & Educators / Companies),
+   shared by every page that ends on them. The home page carries the same rules in story.css. */
+/* the doors: one for each audience, all three equal, each in its own persona colour.
+   --persona / --persona-rgb are set once per door; every rule below reads them. */
+.doors { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; max-width: 62rem; margin: .4rem auto 0; text-align: left; align-items: stretch; }
+.door { --persona: #22d3ee; --persona-rgb: 34,211,238; display: flex; flex-direction: column; gap: .35rem; padding: 1.2rem 1.3rem 1.25rem; border-radius: 16px; border: 1px solid rgba(var(--persona-rgb), .26); background: rgba(255,255,255,.04); color: inherit; text-decoration: none; transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s, background .3s; }
+.door--student { --persona: #22d3ee; --persona-rgb: 34,211,238; }
+.door--leader { --persona: #a855f7; --persona-rgb: 168,85,247; }
+.door--company { --persona: #ec4899; --persona-rgb: 236,72,153; }
+.door:hover, .door:focus-visible { transform: translateY(-4px); border-color: var(--persona); background: rgba(var(--persona-rgb), .06); }
+.door:focus-visible { outline: 2px solid var(--persona); outline-offset: 3px; }
+/* the four parts of each door (icon, label, title, description) share row tracks across the three doors,
+   so a label that wraps to two lines ("Student Leaders & Educators" at ~900-930px) moves every door's
+   title down together instead of dropping only its own. Browsers without subgrid keep the flex column. */
+@supports (grid-template-rows: subgrid) {
+  .door { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: .35rem; align-content: start; }
+}
+/* the reveal (landing.css: html.js-rv .rv-group.in > *, 0,3,1) sets transform:none and a reveal-only
+   transition, which beat .door:hover. Re-state both at higher specificity: opacity keeps the stagger,
+   the lift and the persona colour ease in with no delay. Reduced motion keeps the reveal's own rule. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js-rv .doors.rv-group.in > .door { transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s, background .3s; }
+  html.js-rv .doors.rv-group.in > .door:nth-child(2) { transition-delay: .08s, 0s, 0s, 0s; }
+  html.js-rv .doors.rv-group.in > .door:nth-child(3) { transition-delay: .16s, 0s, 0s, 0s; }
+  html.js-rv .doors.rv-group.in > .door:is(:hover, :focus-visible) { transform: translateY(-4px); }
+}
+.door__icon { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; margin-bottom: .55rem; border-radius: 11px; background: rgba(var(--persona-rgb), .13); color: var(--persona); }
+.door__icon svg { display: block; width: 22px; height: 22px; }
+.door__k { font: 600 .68rem/1.35 "JetBrains Mono", monospace; letter-spacing: .22em; text-transform: uppercase; color: var(--persona); }
+.door__t { font: 700 1.15rem/1.2 "Space Grotesk", sans-serif; letter-spacing: -.02em; color: #f4f4f6; }
+.door__d { font-size: .88rem; color: #a0a0ad; }
+@media (prefers-reduced-motion: reduce) { .door { transition: border-color .3s, background .3s; } .door:hover, .door:focus-visible { transform: none; } }
+@media (max-width: 900px) { .doors { grid-template-columns: 1fr; } }

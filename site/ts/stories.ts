@@ -1,5 +1,5 @@
 /** stories.ts — press and video coverage of the network's chapters and projects.
- *  The home page's photo strip and The Network's Stories section both render from this list.
+ *  The home page's photo strip and Find a Chapter's Stories section both render from this list.
  *  Every url was opened and checked before it went in; images are our own photos, never hotlinked. */
 export type Story = {
   title: string;      // the piece's real headline

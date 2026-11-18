@@ -1,5 +1,5 @@
 /** sequence.ts — one thing open at a time, advancing on its own until someone touches it.
- *  Drives the home pipeline, Start a Chapter's kit and The Network's stories.
+ *  Drives the home pipeline, Start a Chapter's kit and Find a Chapter's stories.
  *
  *  Two rules learned the hard way:
  *   · The clock is a rAF loop over a single `running()` predicate, so there is no paused state to get stuck in.

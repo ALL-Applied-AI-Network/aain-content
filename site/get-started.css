@@ -443,3 +443,18 @@
 .gs-film-card__title { margin: 0.35rem 0 0; font-size: 1.05rem; }
 .gs-film-card__body  { margin: 0; font-size: 0.92rem; line-height: 1.45; opacity: 0.84; }
 .gs-film-card__meta  { margin: 0; font-size: 0.8rem; opacity: 0.7; }
+
+/* ── The hero: one question above the three doors (the home page's three audiences) ── */
+.gs-hero { padding: calc(var(--nav-height, 56px) + clamp(2rem, 5vw, 3.25rem)) 0 0.5rem; text-align: center; }
+.gs-hero__chip {
+  display: inline-block; margin-bottom: 1rem; padding: 0.38rem 0.9rem; border-radius: 999px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(#0f0f13, #0f0f13) padding-box, linear-gradient(90deg, #4eaaf1, #a855f7, #d64cb8) border-box;
+  font: 600 0.72rem/1 "JetBrains Mono", monospace; letter-spacing: 0.16em; text-transform: uppercase; color: #e9e9ee;
+}
+.gs-hero__title { margin: 0; font: 700 clamp(2.2rem, 1.3rem + 3vw, 3.4rem)/1.06 "Space Grotesk", sans-serif; letter-spacing: -0.03em; color: #fff; }
+.gs-hero__title em { font-style: normal; background: linear-gradient(90deg, #22d3ee, #a855f7 55%, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gs-hero__sub { margin: 0.9rem auto 0; max-width: 34rem; font-size: 1.08rem; line-height: 1.6; color: var(--text-secondary); }
+.gs-hero + .gs-roles { padding-top: 1.75rem; }
+.gs-role-card--officer .gs-role-card__kicker { letter-spacing: 0.1em; }
+.gs-role-card__body a { color: #c4b5fd; }
