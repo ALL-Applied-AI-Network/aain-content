@@ -46,7 +46,7 @@ A numbered checklist or a short table.
 - **First person plural** for the founding chapter's own experience ("we ran three"), plain instructions for everything else.
 - **Roles, not names.** "The president", "a faculty member's endowed chair", "an alum in the company's engineering leadership". Never a third party's email, phone number, login, or a meeting's attendee list.
 - **Real numbers only, scoped to where they're true.** A founding-chapter number says so. If you don't have the number, leave it out.
-- **No em dashes.** No "verified", "proven", "celebration", "seamless" or "powerful". Never print a chapter count.
+- **No em dashes.** No "proven", "seamless" or "powerful", and no "verified" as a claim about people or records (the dashboard's **Verified Chapter** is a name; use it). Never print a chapter count.
 - **Don't confess for others.** Say what we'd do differently about our own work, never imply a partner or a sponsor mishandled anything.
 
 ## What the dashboard depends on
@@ -56,6 +56,7 @@ The dashboard's Getting Started reader parses these files live from all-ai-netwo
 - **Keep every `##` heading.** Getting Started: Start here, Quick guide, Week 1, First semester, Year two (with its three "How we did it at MAIC" and three "The repeatable version" `###` headings). Speaker Series: Find a speaker, Run the event, Build the series. Innovation Labs: Pitch a sponsor, Run the lab, Showcase and handoff. Hackathons: Plan it, Run it, Wrap it. Research Groups: Form the group, Run experiments, Publish. Sponsorship: How we did it at MAIC (with "Where sponsors actually come from"), The repeatable version (with "The sequence" and "The first real meeting"), What we'd do differently. Innovation Labs and Sponsorship also need background text before Start here.
 - **Keep the week-by-week table in Getting Started word for word.** The dashboard's semester map is drawn from it.
 - **Before you push**, run the dashboard's own check against your copy. From a network-api checkout, with each file copied to `<dir>/<slug>.md`: `PLAYBOOK_DIR=<dir> node scripts/test-learn.cjs`. It names any phrase a picture still needs.
+- **What stops a publish, and what doesn't.** `npm run validate` runs before every publish. It stops it only for real breakage: a heading the dashboard needs is gone, a chapter link in the header points at nothing, or a playbook prints an email address, a phone number or a code-like number. Style (the rules above), the stored reading time and wording the dashboard's pictures mention print as warnings, and the site still publishes. Fix the warnings when you can.
 - **Update `site/ts/playbook-metadata.ts`** when a key, a heading or the length changes. `npm run validate` checks that the keys, anchors and reading times still match, that the week table is unchanged, and that every phrase the dashboard's pictures stand on is still there (a copy of the dashboard's list, in `scripts/validate-playbooks.ts`).
 
 ## Linking

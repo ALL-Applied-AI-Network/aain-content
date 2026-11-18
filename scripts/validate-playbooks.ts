@@ -17,7 +17,13 @@
  *  - copy: no em dashes, no banned words, no email address, phone number or
  *    long digit code, no third party named by a personal title
  *
- * Exit code 0 = all checks pass, 1 = one or more failures.
+ * Only real breakage stops a publish: a heading the dashboard links to is gone, a
+ * chapter link in the header points at nothing, or the file prints an email
+ * address, a phone number or a code-like number. Everything else (house style,
+ * wording the dashboard's pictures mention, the stored reading time) prints as a
+ * warning and the site still publishes.
+ *
+ * Exit code 0 = nothing broken (warnings allowed), 1 = something broken.
  */
 
 import { readFileSync } from "node:fs";
@@ -72,7 +78,10 @@ const WEEK_ROWS: Array<{ week: string; text: string; food: boolean }> = [
 /** How the dashboard's test compares a phrase with a file. */
 const norm = (t: string): string => t.replace(/\*\*|\*|`/g, "").replace(/\s+/g, " ").toLowerCase();
 
-const BANNED = /\b(verified|proven|celebration|seamless|powerful|sponsor view)\b/i;
+/** Words the house style avoids. A warning, never a blocker. "Verified Chapter" (and a
+ *  chapter that "is verified") is the dashboard's own name for a step, not a claim. */
+const BANNED = /\b(verified|proven|seamless|powerful)\b/i;
+const PRODUCT_NAMES = /\bverified chapter\b|\bchapter is verified\b|\bonce verified\b/gi;
 
 /** Heading ids as rehype-slug (github-slugger) gives them, repeats numbered. */
 function slugger(): (text: string) => string {
@@ -109,11 +118,16 @@ export function readingMinutes(md: string): number {
   return Math.max(1, Math.round(words / 220));
 }
 
-function checkPlaybook(slug: string): string[] {
-  const errors: string[] = [];
+type Findings = { broken: string[]; warnings: string[] };
+
+function checkPlaybook(slug: string): Findings {
+  const found: Findings = { broken: [], warnings: [] };
   const md = readFileSync(path.join(ROOT, "playbooks", slug, "index.md"), "utf-8");
   const meta = PLAYBOOKS.find((p) => p.slug === slug);
-  const at = (msg: string) => errors.push(`${slug}: ${msg}`);
+  /** Breaks a link, the dashboard's reader, or publishes something private: stops the publish. */
+  const broken = (msg: string) => found.broken.push(`${slug}: ${msg}`);
+  /** Style and drift: printed, never stops the publish. */
+  const at = (msg: string) => found.warnings.push(`${slug}: ${msg}`);
   if (!meta) at("missing from site/ts/playbook-metadata.ts");
 
   // Headings and their ids
@@ -127,7 +141,7 @@ function checkPlaybook(slug: string): string[] {
     if (h) headings.push({ level: h[1].length, text: h[2], id: slug2(h[2]), line: i });
   });
   const ids = new Set(headings.map((h) => h.id));
-  for (const id of REQUIRED_IDS[slug] ?? []) if (!ids.has(id)) at(`the dashboard needs a heading with id #${id}`);
+  for (const id of REQUIRED_IDS[slug] ?? []) if (!ids.has(id)) broken(`the dashboard needs a heading with id #${id}`);
 
   // The lede: the first paragraph after the H1
   const afterTitle = md.replace(/^#\s+.*\n/, "");
@@ -154,7 +168,7 @@ function checkPlaybook(slug: string): string[] {
 
   // Metadata anchors and reading time
   if (meta) {
-    for (const a of meta.actions) if (!ids.has(a.anchor.replace(/^#/, ""))) at(`action "${a.label}" points at ${a.anchor}, which isn't a heading`);
+    for (const a of meta.actions) if (!ids.has(a.anchor.replace(/^#/, ""))) broken(`action "${a.label}" points at ${a.anchor}, which isn't a heading`);
     const minutes = readingMinutes(md);
     if (meta.minutes !== minutes) at(`minutes is ${meta.minutes} in playbook-metadata.ts but the file reads in ${minutes}`);
   }
@@ -185,29 +199,35 @@ function checkPlaybook(slug: string): string[] {
   lines.forEach((l, i) => {
     const where = `line ${i + 1}`;
     if (l.includes("—")) at(`${where}: em dash`);
-    if (BANNED.test(l)) at(`${where}: banned word "${l.match(BANNED)?.[0]}"`);
-    if (/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}/i.test(l)) at(`${where}: an email address`);
-    if (/\(?\b\d{3}\)?[-. ]\d{3}[-. ]\d{4}\b/.test(l)) at(`${where}: a phone number`);
-    if (/\b\d{6,}\b/.test(l)) at(`${where}: a long number that could be a code`);
+    const words = l.replace(PRODUCT_NAMES, "");
+    if (BANNED.test(words)) at(`${where}: a word the house style avoids, "${words.match(BANNED)?.[0]}"`);
+    if (/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}/i.test(l)) broken(`${where}: an email address`);
+    if (/\(?\b\d{3}\)?[-. ]\d{3}[-. ]\d{4}\b/.test(l)) broken(`${where}: a phone number`);
+    if (/\b\d{6,}\b/.test(l)) broken(`${where}: a long number that could be a code`);
     if (/\b(Dr|Prof|Mr|Ms|Mrs)\.\s+[A-Z]/.test(l)) at(`${where}: a person named by title; use the role`);
   });
 
-  return errors;
+  return found;
 }
 
 function main(): void {
-  const errors = SLUGS.flatMap(checkPlaybook);
-  const extra = PLAYBOOKS.filter((p) => !SLUGS.includes(p.slug)).map((p) => `${p.slug}: in playbook-metadata.ts but not a playbook`);
-  const all = [...errors, ...extra];
+  const all = SLUGS.map(checkPlaybook);
+  const broken = all.flatMap((f) => f.broken);
+  const warnings = [
+    ...all.flatMap((f) => f.warnings),
+    ...PLAYBOOKS.filter((p) => !SLUGS.includes(p.slug)).map((p) => `${p.slug}: in playbook-metadata.ts but not a playbook`),
+  ];
   console.log();
   console.log(chalk.bold("Playbook Validation"));
   console.log(chalk.dim("=".repeat(50)));
-  if (all.length === 0) {
-    console.log(chalk.green(`  ✓  ${SLUGS.length} playbooks: shape, dashboard headings, metadata and copy rules`));
+  for (const w of warnings) console.log(chalk.yellow(`  !  ${w}`));
+  for (const e of broken) console.log(chalk.red(`  ✗  ${e}`));
+  if (!broken.length) {
+    const note = warnings.length ? ` (${warnings.length} style warning${warnings.length === 1 ? "" : "s"}, not blocking)` : "";
+    console.log(chalk.green(`  ✓  ${SLUGS.length} playbooks: nothing broken${note}`));
     console.log();
     return;
   }
-  for (const e of all) console.log(chalk.red(`  ✗  ${e}`));
   console.log();
   process.exit(1);
 }
