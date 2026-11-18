@@ -13,6 +13,9 @@ export type Story = {
 };
 
 export const STORIES: Story[] = [
+  { title: "Build, Pitch, Repeat: An Evening With Lead Engineer and Technologist Victor Jackson", outlet: "Illinois Tech Elevate", date: "2026-11-05",
+    url: "https://elevate.iit.edu/blog/2026/11/05/415111/",
+    image: "./public/web/ml-iit-beyond-the-full-stack.jpg", pos: "50% 85%", blurb: "ML@IIT, Elevate and ACM host AWS's Victor Jackson for a talk, Q&A and a student build challenge.", kind: "article" },
   { title: "Third annual Hacksgiving hackathon supports Milwaukee Domes Alliance", outlet: "MSOE News", date: "2025-11-25",
     url: "https://www.msoe.edu/about-msoe/news/details/third-annual-hacksgiving-hackathon-supports-milwaukee-domes-alliance/",
     image: "./public/web/group-photo.jpg", blurb: "Over 50 students in 12 teams built AI tools for the Domes. First place took $3,000.", kind: "article" },
