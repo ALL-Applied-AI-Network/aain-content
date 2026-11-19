@@ -3061,3 +3061,13 @@ body:has(.tree-page) {
   .nav__brand span { display: none; }
   .nav__links a { font-size: 0.84rem; }
 }
+
+/* A film over the page (film-loop.ts openFilm): native <dialog>, so it sits in the top layer */
+.film-dlg { position: fixed; inset: 0; margin: auto; width: min(72rem, calc(100vw - 2rem)); max-width: none; height: fit-content; max-height: calc(100vh - 2rem); padding: 0; border: 0; background: transparent; color: #fff; }
+.film-dlg::backdrop { background: rgba(4, 4, 8, 0.82); backdrop-filter: blur(4px); }
+.film-dlg__box { border-radius: 14px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.12); background: #0b0b0e; }
+.film-dlg__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.6rem 0.6rem 0.6rem 1rem; }
+.film-dlg__t { font-family: var(--font-display, inherit); font-size: 0.95rem; font-weight: 600; }
+.film-dlg__x { width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.18); background: transparent; color: #fff; font-size: 1.35rem; line-height: 1; cursor: pointer; }
+.film-dlg__x:hover, .film-dlg__x:focus-visible { border-color: #fff; }
+.film-dlg__v { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }

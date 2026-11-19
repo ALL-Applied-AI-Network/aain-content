@@ -47,6 +47,14 @@ export interface PlaybookFilm {
   title: string;
   /** One line on what watching it gets you, in the playbook's own voice. */
   blurb: string;
+  /** Has a soundtrack worth hearing (the how-to films are silent and captioned). */
+  sound?: boolean;
+  /** A few silent seconds of it that play on repeat in the film's frame until someone presses play. */
+  loop?: string;
+  /** The loop's first frame, shown before it starts and to reduced-motion readers. */
+  loopPoster?: string;
+  /** The play button's words. Default "Watch Instead". */
+  cta?: string;
 }
 
 export interface PlaybookMeta {
@@ -85,6 +93,19 @@ const BUILD_FILM: PlaybookFilm = {
   runtime: "3:02",
   title: "How to Run a Build Event",
   blurb: "Nine decisions behind an Innovation Lab or a hackathon, answered side by side.",
+};
+
+/** A film of the founding chapter's fall 2026 Lab, with sound. */
+export const LAB_FILM: PlaybookFilm = {
+  src: "./public/film/physical-ai-lab.mp4",
+  poster: "./public/film/physical-ai-lab.jpg",
+  runtime: "2:16",
+  title: "Physical AI for the Factory Floor",
+  blurb: "The fall 2026 Lab with Rockwell Automation and NVIDIA: the factory cell, the teams, and the finals.",
+  sound: true,
+  loop: "./public/playbooks/innovation-labs/loop-robot-arm.mp4",
+  loopPoster: "./public/playbooks/innovation-labs/loop-robot-arm.jpg",
+  cta: "Watch the Lab",
 };
 
 export const PLAYBOOKS: PlaybookMeta[] = [
@@ -233,7 +254,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       { label: "Run the Lab", sub: "Four to eight weeks", anchor: "#run-the-lab" },
       { label: "Showcase and Handoff", sub: "Judge and deliver", anchor: "#showcase-and-handoff" },
     ],
-    film: BUILD_FILM,
+    film: LAB_FILM,
     headline: "Give Your Members a Company's Real Problem, and a Shot at the Job Behind It",
     photo: "./public/playbooks/innovation-labs/lab-brady.jpg",
     why: [

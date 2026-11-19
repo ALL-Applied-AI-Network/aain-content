@@ -163,8 +163,21 @@
 }
 .sac-story:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -28px color-mix(in srgb, var(--c) 60%, transparent); }
 .sac-story__ph { position: relative; aspect-ratio: 16 / 10; background: #0b0b0e; overflow: hidden; }
-.sac-story__ph > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
-.sac-story:hover .sac-story__ph > img { transform: scale(1.04); }
+.sac-story__ph > img, .sac-story__ph > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.sac-story:hover .sac-story__ph > img, .sac-story__ph > video { transform: scale(1.04); }
+/* The Lab card's loop: a few silent seconds of the film, and the button that plays all of it */
+.sac-story__watch {
+  position: absolute; z-index: 2; right: 0.8rem; top: 0.75rem;
+  display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.32rem 0.75rem 0.32rem 0.32rem;
+  border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 999px; cursor: pointer;
+  background: rgba(10, 10, 14, 0.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  color: #fff; font: 600 0.82rem/1 var(--lp-display);
+}
+.sac-story__watch small { font: 500 0.7rem var(--font-mono, monospace); color: rgba(244, 246, 250, 0.62); }
+.sac-story__watch-btn { display: grid; place-items: center; width: 1.45rem; height: 1.45rem; border-radius: 50%; background: var(--c, #4eaaf1); color: #0b0b0d; }
+.sac-story__watch-btn svg { width: 11px; height: 11px; margin-left: 2px; }
+.sac-story__watch:hover { border-color: var(--c, #4eaaf1); }
+.sac-story__watch:focus-visible { outline: 2px solid var(--c, #4eaaf1); outline-offset: 3px; }
 .sac-story__ph::after { content: ""; position: absolute; inset: 42% 0 0; background: linear-gradient(180deg, transparent, rgba(8, 8, 12, 0.94)); }
 .sac-story__tag {
   position: absolute; z-index: 1; top: 0.8rem; left: 0.8rem;
@@ -400,7 +413,7 @@ html.js-rv .sac-steps.in .sac-step:nth-child(4) { transition-delay: 0.45s; }
 .sac-close__alt a { color: #67e8f9; text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .sac-door, .sac-story, .sac-story__ph > img, .yx__pane { transition: none; animation: none; }
+  .sac-door, .sac-story, .sac-story__ph > img, .sac-story__ph > video, .yx__pane { transition: none; animation: none; }
   .sac-steps::before { transform: none; transition: none; }
 }
 

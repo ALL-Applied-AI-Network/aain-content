@@ -4,6 +4,7 @@ import { mountFx } from "./fx";
 import { getPlaybook, type PlaybookMeta } from "./playbook-metadata";
 import { mountSequencer } from "./sequence";
 import { mountWeeksFilm } from "./weeks-film";
+import { mountFilmButtons, mountLoops } from "./film-loop";
 import { MAP_ROWS, esc, playbookHref, renderYearMap } from "./year-map";
 
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -234,4 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initKit();
   mountWeeksFilm();
   mountFx();
+  mountLoops();
+  mountFilmButtons();
 });

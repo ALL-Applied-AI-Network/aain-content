@@ -12,6 +12,7 @@ import { renderArticle } from "./article-renderer";
 import { escapeHtml } from "./main";
 import { PLAYBOOKS, getPlaybook, type PlaybookMeta } from "./playbook-metadata";
 import { drawFigures, tone } from "./playbook-figures";
+import { mountLoops, playInPlace } from "./film-loop";
 
 // ---------------------------------------------------------------------------
 // Pretty names for sections
@@ -46,20 +47,23 @@ const PLAY = `<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.
 // the three keys, each the way into its chapter. The film waits beside the headline
 // for anyone who would rather watch.
 function renderStoryHeader(meta: PlaybookMeta): string {
-  const film = meta.film
+  const f = meta.film;
+  // A film with a loop shows a few silent seconds of itself on repeat until asked.
+  const film = f
     ? `
-      <figure class="pbh__film">
+      <figure class="pbh__film${f.loop ? " has-loop" : ""}">
         <div class="pbh__film-frame">
-          <video class="pbh__film-video" preload="none" playsinline poster="${meta.film.poster}"
-            aria-label="${escapeHtml(meta.film.title)}, ${meta.film.runtime}, silent">
-            <source src="${meta.film.src}" type="video/mp4" />
+          <video class="pbh__film-video" playsinline ${f.loop ? `muted loop preload="metadata" data-loop` : `preload="none"`}
+            poster="${f.loop ? (f.loopPoster ?? f.poster) : f.poster}" data-film="${f.src}" data-film-poster="${f.poster}"
+            aria-label="${escapeHtml(f.title)}, ${f.runtime}${f.sound ? "" : ", silent"}">
+            <source src="${f.loop ?? f.src}" type="video/mp4" />
           </video>
           <button type="button" class="pbh__film-play" data-pbh-play>
             <span class="pbh__film-btn" aria-hidden="true">${PLAY}</span>
-            <span>Watch Instead<small>${meta.film.runtime}</small></span>
+            <span>${escapeHtml(f.cta ?? "Watch Instead")}<small>${f.runtime}${f.sound ? " &middot; sound on" : ""}</small></span>
           </button>
         </div>
-        <figcaption><b>${escapeHtml(meta.film.title)}</b>${escapeHtml(meta.film.blurb)} Silent, so it reads with the sound off.</figcaption>
+        <figcaption><b>${escapeHtml(f.title)}</b>${escapeHtml(f.blurb)}${f.sound ? "" : " Silent, so it reads with the sound off."}</figcaption>
       </figure>`
     : "";
   const why = (meta.why ?? meta.stats)
@@ -113,9 +117,14 @@ function wireStoryHeader(root: ParentNode): void {
   const btn = root.querySelector<HTMLButtonElement>("[data-pbh-play]");
   const video = root.querySelector<HTMLVideoElement>(".pbh__film-video");
   if (!btn || !video) return;
+  mountLoops(root);
   btn.addEventListener("click", () => {
     btn.closest(".pbh__film")?.classList.add("is-started");
     btn.remove();
+    if ("loop" in video.dataset) {
+      playInPlace(video, video.dataset.film!, video.dataset.filmPoster);
+      return;
+    }
     video.controls = true;
     video.focus();
     void video.play().catch(() => {});
