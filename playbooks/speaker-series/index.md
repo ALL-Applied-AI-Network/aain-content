@@ -2,6 +2,11 @@
 
 The pulse of the chapter: a speaker or a workshop every other week, in the same slot, with food. It's the front door most people walk through.
 
+:::stories[Rooms that filled]
+- ![Industry guests take a question at the founding chapter's hiring panel](https://all-ai-network.org/public/playbooks/speaker-series/hiring-panel.jpg) **The founding chapter.** A hiring panel: industry guests answered the question on the screen, how AI and automation have changed hiring in their field.
+- ![A speaker and a host on stage at ML@IIT's Beyond the Full Stack](https://all-ai-network.org/public/playbooks/speaker-series/ml-iit.jpg) **ML@IIT, Fall 2026.** With Elevate and ACM, ML@IIT hosted an AWS lead engineer for a talk, Q&A and a student build challenge.
+:::
+
 ## Start here
 
 1. Ask your own faculty first, then your sponsors' networks and alumni. Warm introductions beat cold outreach. Confirm each speaker four or more weeks out.
@@ -12,11 +17,13 @@ The pulse of the chapter: a speaker or a workshop every other week, in the same 
 
 **The best speakers are one warm introduction away. Ask the faculty first.**
 
+:::steps[Ask in this order]
 1. **Your own faculty.** The fastest yes, with no logistics risk.
 2. **Sponsor networks.** A company that already backs you will usually send someone.
 3. **Alumni at tech companies.** Your alumni office or LinkedIn finds them.
-4. **Local industry cold outreach.** AI and ML titles at companies nearby. It works, just slower.
-5. **Conference speakers passing through** town, who often have a free evening.
+4. **Local industry cold outreach.** AI and ML titles at companies nearby. Slower, but it works.
+5. **Conference speakers passing through.** They often have a free evening in town.
+:::
 
 **Always confirm 4 weeks out.** A late yes means rushed promotion and a half-empty room. Keep the next 3 speakers confirmed at all times.
 
@@ -40,7 +47,7 @@ The pulse of the chapter: a speaker or a workshop every other week, in the same 
 
 **Take attendance at the end, not at the door.** At the door half the room hasn't arrived. Put the code up when the talk ends, while everyone is still sitting down.
 
-**The day of:** room confirmed, A/V tested (their laptop, the mic, the slide advance), food pickup confirmed, the speaker texted that morning, the intro slide ready.
+**The day of.** Room confirmed, A/V tested (their laptop, the mic, the slide advance), food pickup confirmed, the speaker texted that morning, the intro slide ready.
 
 **Skip midterm and finals weeks.** A thin room on a bad week feels like failure and isn't one.
 
@@ -52,11 +59,18 @@ The pulse of the chapter: a speaker or a workshop every other week, in the same 
 
 **One-off talks fade. A series on a fixed beat becomes part of the chapter, and its speakers become its sponsors.**
 
-1. **Speakers and workshops share the one slot.** Project work runs outside it.
-2. **Advertise the reason to belong, not the talk.** The pitch is in [Getting Started](https://all-ai-network.org/playbook.html?path=playbooks/getting-started/index.md#quick-guide).
-3. **One list of every speaker**, past and prospective: company, topic, date, and whether they'd come back. Keep it where the whole board can open it: Connections, or a single spreadsheet everyone shares.
-4. **Same-week thank-you**, then a **30-day follow-up**: would their company want to do more, from a workshop to an Innovation Lab?
-5. **Record talks** with the speaker's permission. Next year you'll want them.
+:::cards[What makes it a series]
+- **One slot.** Speakers and workshops share it. Project work runs outside it.
+- **The reason to belong.** Advertise that, not the talk. The pitch is in [Getting Started](https://all-ai-network.org/playbook.html?path=playbooks/getting-started/index.md#quick-guide).
+- **One list of every speaker.** Past and prospective, where the whole board can open it: Connections, or a single spreadsheet everyone shares.
+- **Recordings.** Record talks with the speaker's permission. Next year you'll want them.
+:::
+
+:::steps[After every talk]
+1. **Same-week thank-you.** With photos and the attendance.
+2. **30-day follow-up.** Would their company want to do more, from a workshop to an Innovation Lab?
+3. **Onto the list.** Company, topic, date, and whether they'd come back.
+:::
 
 **In the dashboard:** **Sponsors → Engagements** keeps every speaker, company and conversation in one place that outlasts the board. The event's **Share** menu makes the posts and calendar invites for the next one.
 

@@ -14,16 +14,22 @@ Your chapter is a sponsored project of the ALL Applied AI Network Foundation, a 
 
 **Every sponsor we landed at MAIC, the founding chapter at MSOE, had already been in our room.**
 
-1. **Direct Supply speaks and funds.** Its engineers give talks and it covers food, and the talks keep the funding warm.
-2. **Brady Corporation came through an alum and a talk.** An MSOE alum in its engineering leadership heard about the hackathon, the company spoke, and then it funded the first Innovation Lab.
-3. **Not every sponsor is a company.** The hackathon's prize pool comes from a faculty member's endowed chair.
+:::cards[Three sponsors, three ways in]
+- **Direct Supply speaks and funds.** Its engineers give talks and it covers food, and the talks keep the funding warm.
+- **Brady came through an alum and a talk.** An MSOE alum in its engineering leadership heard about the hackathon, the company spoke, and then it funded the first Innovation Lab.
+- **Not every sponsor is a company.** The hackathon's prize pool comes from a faculty member's endowed chair.
+:::
+
+![A Brady engineer sets out the problem at the first Innovation Lab's kick-off](https://all-ai-network.org/public/playbooks/sponsorship/brady-kickoff.jpg)
 
 ### Where sponsors actually come from
 
+:::steps[Warmest first]
 1. **Speakers you already hosted.** They've seen the students. Every conversation that started this way was warmer than a cold one.
 2. **Alumni at the company.** A warm introduction from someone who went to your school.
 3. **Faculty with endowed or discretionary funds.** Faster than a corporate budget, with less paperwork.
 4. **The network.** A company can back the whole network instead of one club at one school, a much lower bar, and ALL's team works your requests.
+:::
 
 ## The repeatable version
 
@@ -31,17 +37,21 @@ Your chapter is a sponsored project of the ALL Applied AI Network Foundation, a 
 
 ### The sequence
 
+:::steps[From a speaker slot to a sponsor]
 1. **Ask for a speaker slot first, not money.** It's a smaller ask, and it gets them into the room.
-2. **Thank them within 48 hours**, with photos and the attendance.
-3. **Follow up within 30 days:** would their team want to do this again, or more?
+2. **Thank them within 48 hours.** With photos and the attendance.
+3. **Follow up within 30 days.** Would their team want to do this again, or more?
 4. **Open the money conversation from what they saw.** The tiers are how you close, not how you open.
+:::
 
 ### The first real meeting
 
-1. Put the NDA question on the table in **meeting one**.
-2. Recap the chapter before you pitch anything. Assume they know nothing.
-3. Offer pathways, not a price: a talk, an [Innovation Lab](https://all-ai-network.org/playbook.html?path=playbooks/innovation-labs/index.md), a [hackathon](https://all-ai-network.org/playbook.html?path=playbooks/hackathons/index.md), a research problem.
-4. Bring one concrete thing to fund, and one story of what students built.
+:::cards
+- **The NDA.** Put the NDA question on the table in **meeting one**.
+- **A recap.** Recap the chapter before you pitch anything. Assume they know nothing.
+- **Pathways, not a price.** A talk, an [Innovation Lab](https://all-ai-network.org/playbook.html?path=playbooks/innovation-labs/index.md), a [hackathon](https://all-ai-network.org/playbook.html?path=playbooks/hackathons/index.md), a research problem.
+- **Something to fund.** One concrete thing to fund, and one story of what students built.
+:::
 
 ### Setting it up in the dashboard
 
@@ -59,4 +69,6 @@ Your chapter is a sponsored project of the ALL Applied AI Network Foundation, a 
 
 **Two weeks of September legal back-and-forth cost the first Innovation Lab real build time. IP belongs in meeting one.**
 
-We also under-asked: Brady wanted to hear all three pathways and we'd prepared one. And we treated sponsorship as fundraising for too long. The clubs that struggle open with a tier sheet to a stranger.
+**We under-asked.** Brady wanted to hear all three pathways and we'd prepared one.
+
+**We treated sponsorship as fundraising for too long.** The clubs that struggle open with a tier sheet to a stranger.

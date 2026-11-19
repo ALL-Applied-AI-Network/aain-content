@@ -1276,6 +1276,7 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
 .pbf-stories { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: minmax(0, 1fr); }
 @container (min-width: 560px) { .pbf-stories { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @container (min-width: 840px) { .pbf-stories { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@container (min-width: 840px) { .pbf-stories:not(:has(> :nth-child(3))) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .pbf-story {
   display: flex; flex-direction: column;
   border: 1.5px solid var(--c); border-radius: 14px; overflow: hidden;
@@ -1297,6 +1298,7 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
 /* :::cards: a set of things, each with its name */
 .pbf-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; grid-template-columns: minmax(0, 1fr); }
 @container (min-width: 560px) { .pbf-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (min-width: 560px) { .pbf-cards:has(> :nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .pbf-card {
   padding: 1rem 1.1rem 1.05rem;
   border-radius: 12px;
@@ -1514,6 +1516,8 @@ html.js-rv .pbm__frame.in .pbm__blocktext { animation: pbm-pop 0.36s cubic-bezie
 .pbh__nums { display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 720px) { .pbh__nums { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; } }
 .pbh__num { display: grid; grid-template-columns: 6.4rem minmax(0, 1fr); align-items: center; gap: 0.9rem; }
+/* A worded value ("Under 100", "MICS 2024") sits over its label on a phone instead of beside it */
+@media (max-width: 719px) { .pbh__num.is-long { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; } }
 @media (min-width: 720px) {
   .pbh__num { display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; padding: 0 1.25rem; }
   .pbh__num + .pbh__num { border-left: 1px solid rgba(255, 255, 255, 0.08); }

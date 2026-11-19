@@ -65,7 +65,7 @@ function renderStoryHeader(meta: PlaybookMeta): string {
   const why = (meta.why ?? meta.stats)
     .map(
       (s) => `
-        <div class="pbh__num">
+        <div class="pbh__num${s.value.length > 5 ? " is-long" : ""}">
           <span class="pbh__num-v">${escapeHtml(s.value)}</span>
           <span class="pbh__num-l">${escapeHtml(s.label)}</span>
         </div>`,
@@ -123,7 +123,7 @@ function wireStoryHeader(root: ParentNode): void {
 }
 
 function renderActionHeader(meta: PlaybookMeta): string {
-  if (meta.headline) return renderStoryHeader(meta);
+  if (meta.headline && meta.why) return renderStoryHeader(meta);
   const stats = meta.stats
     .map(
       (s) => `

@@ -125,6 +125,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     },
     headline: "Open the Year So Students Stay, and Hand On a Chapter That Outlives You",
     photo: "./public/web/officer-org-fair.jpg",
+    why: [
+      { value: "600+", label: "members at the founding chapter, from 20" },
+      { value: "Under 100", label: "CS graduates a year at its school. The growth came from other majors" },
+      { value: "50+", label: "papers from its research groups" },
+    ],
   },
   {
     slug: "speaker-series",
@@ -162,6 +167,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     },
     headline: "Fill a Room Every Other Week, and Turn Your Speakers into Sponsors",
     photo: "./public/web/hiring-panel.jpg",
+    why: [
+      { value: "600+", label: "members at the founding chapter, where the talk every other week is the front door" },
+      { value: "70%", label: "of Direct Supply's AI department hires came from the founding chapter, where its engineers give talks" },
+      { value: "1st Lab", label: "Brady funded at the founding chapter, after the company came to speak" },
+    ],
   },
   {
     slug: "sponsorship",
@@ -190,6 +200,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     ],
     headline: "Turn the Companies Already in Your Room into Sponsors Who Come Back",
     photo: "./public/web/gpu-winners.jpg",
+    why: [
+      { value: "Every", label: "sponsor the founding chapter landed had already been in its room" },
+      { value: "5–10", label: "students a sponsor usually hires from each Innovation Lab, at the founding chapter" },
+      { value: "No cut", label: "taken from a gift: card processing is the only cost" },
+    ],
   },
   {
     slug: "innovation-labs",
@@ -251,7 +266,7 @@ export const PLAYBOOKS: PlaybookMeta[] = [
       "Announce it on the first slide of the semester, though registration opens at week minus four. A new chapter runs a hackathon or an Innovation Lab first, not both.",
       "Prize money never passes through a chapter account or a Venmo: the Foundation or your university pays it out. Sort that before you announce a figure.",
     ],
-    minutes: 3,
+    minutes: 4,
     actions: [
       { label: "Plan It", sub: "Ten-week countdown", anchor: "#plan-it" },
       { label: "Run It", sub: "48 hours on the clock", anchor: "#run-it" },
@@ -260,6 +275,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     film: BUILD_FILM,
     headline: "Build Something a Nonprofit Keeps, in One Weekend",
     photo: "./public/web/student-collaboration.jpg",
+    why: [
+      { value: "3", label: "Hacksgivings since 2023, each for one nonprofit" },
+      { value: "70", label: "students in ten teams built for Discovery World in one weekend" },
+      { value: "$6K", label: "the founding chapter's pool, split 3/2/1, from a faculty endowed chair" },
+    ],
   },
   {
     slug: "research-groups",
@@ -291,6 +311,11 @@ export const PLAYBOOKS: PlaybookMeta[] = [
     ],
     headline: "Take Students from a First Experiment to a Published Paper",
     photo: "./public/web/research-presentation.jpg",
+    why: [
+      { value: "50+", label: "papers from the founding chapter's research groups" },
+      { value: "MICS 2024", label: "Best Student Paper, for NourishNet, written with the UN's Food and Agriculture Organization" },
+      { value: "6 months", label: "from the week 5 kick-off to a paper, a poster or a release" },
+    ],
   },
 ];
 

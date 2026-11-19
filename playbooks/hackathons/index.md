@@ -2,7 +2,12 @@
 
 A 48-hour build around one nonprofit's real problem, ending in code the nonprofit can keep. The founding chapter calls its version Hacksgiving.
 
-Hacksgiving has run every year since 2023, with Next Step Clinic (2023), Discovery World (2024) and the Milwaukee Domes Alliance (2025). One nonprofit, one challenge statement, in person, and a real handoff at the end are the parts that matter. The $6K pool split 3/2/1 is the founding chapter's, paid from a faculty endowed chair, not a bar you have to clear.
+:::stories[Hacksgiving, every fall since 2023]
+- ![The first Hacksgiving's participants on stage](https://all-ai-network.org/public/playbooks/hackathons/hacksgiving-2023.jpg) **Next Step Clinic, Fall 2023.** The first Hacksgiving built patient-screening tools for the clinic. Team Skippy's chatbot won $3,000.
+- ![A student demonstrates the talking guide built for Discovery World](https://all-ai-network.org/public/start/story-discovery-world.jpg) ![Discovery World](https://all-ai-network.org/public/start/logo-discovery-world.png) **Discovery World, Fall 2024.** Seventy students in ten teams built AI tools for the museum's visitors over one weekend.
+:::
+
+The third, in 2025, built AI tools for the Milwaukee Domes Alliance: over 50 students in 12 teams. One nonprofit, one challenge statement, in person, and a real handoff at the end are the parts that matter. The founding chapter's $6K pool, split 3/2/1, comes from a faculty endowed chair. It's not a bar you have to clear.
 
 ## Start here
 
@@ -23,10 +28,12 @@ Hacksgiving has run every year since 2023, with Next Step Clinic (2023), Discove
 | -2 | Food + catering locked. A/V checked. Judges briefed. |
 | -1 | A short Q&A for registered teams. |
 
-1. **A good problem** is specific enough to build in 48 hours and open enough that several approaches can win.
-2. **Registration asks** for school, year, a skill self-rating, dietary needs, and whether they have a team.
-3. **Teams:** we cap teams at 7, minimum 2. Match solo registrants at kickoff by their rating, with an upperclassman on every team of first-timers.
-4. **Say the pitch:** no experience needed, a real problem, a team with upperclassmen, a portfolio piece by Sunday.
+:::cards[Settle these before registration opens]
+- **A good problem.** Specific enough to build in 48 hours, open enough that several approaches can win.
+- **What registration asks.** School, year, a skill self-rating, dietary needs, and whether they have a team.
+- **Teams.** We cap teams at 7, minimum 2. Match solo registrants at kickoff by their rating, with an upperclassman on every team of first-timers.
+- **The pitch.** No experience needed, a real problem, a team with upperclassmen, a portfolio piece by Sunday.
+:::
 
 **No partner this semester?** ALL AI Network runs a network-wide event each semester, so your members still have something real to join.
 
@@ -38,15 +45,25 @@ Hacksgiving has run every year since 2023, with Next Step Clinic (2023), Discove
 
 **Friday night kickoff to Sunday afternoon demos. Feed them all weekend and keep every team moving.**
 
+![Teams building through the weekend at Hacksgiving 2024](https://all-ai-network.org/public/playbooks/hackathons/building.jpg)
+
 | When | What happens |
 |---|---|
 | Friday, 7pm | Kickoff, 90 minutes at most: the nonprofit explains the problem, you walk through the repo, rules and judging, solo registrants get matched, building starts. |
 | Saturday | Officers in shifts. A team that hasn't pushed code in 4 hours gets a check-in. Mentors unblock thinking and never write the code. |
 | Sunday afternoon | 3-minute demos and 2-minute Q&A per team. Results within 30 minutes of the last demo. |
 
-**Food rotation:** dinner Friday, three meals Saturday, brunch Sunday, snacks throughout. Budget about $15 a person a day.
+:::numbers
+- **$15.** A person a day for food. Food rotation: dinner Friday, three meals Saturday, brunch Sunday, snacks throughout.
+- **3 judges.** An officer, someone from the nonprofit's leadership, and a third seat that flexes to a professor if they'd add something.
+- **30 min.** From the last demo to the results.
+:::
 
-**Judging:** three judges (an officer, someone from the nonprofit's leadership, and a third seat that flexes to a professor if they'd add something). Rubric: technical quality 40%, applicability 40%, presentation 20%.
+:::split[Rubric]
+- **40%** Technical quality
+- **40%** Applicability
+- **20%** Presentation
+:::
 
 **In the dashboard:** check people in with the event's **QR** at kickoff. Teams hand in through their submission link, and the **Accepting submissions** switch closes it.
 
@@ -54,14 +71,14 @@ Hacksgiving has run every year since 2023, with Next Step Clinic (2023), Discove
 
 **The code handoff to the nonprofit is the real deliverable. Close the loop on a clock.**
 
-| When | Do this |
-|---|---|
-| Within 2 hours of demos ending | Announce winners and submit the winner list for payout. Group photo. Give the top 3 teams the nonprofit's contact and a two-week clean-up timeline. |
-| Within 48 hours | Thank every judge, sponsor and nonprofit leader, with photos and the attendance. |
-| Within 2 weeks | Top-3 teams deliver cleaned-up code. Recommendation letters for the teams that delivered. A written 30-minute retro. |
-| Within 30 days | Ask the nonprofit and sponsors about next year. Pitch your university's news office. |
+:::steps[Close the loop on a clock]
+1. **Within 2 hours of demos ending.** Announce winners and submit the winner list for payout. Group photo. Give the top 3 teams the nonprofit's contact and a two-week clean-up timeline.
+2. **Within 48 hours.** Thank every judge, sponsor and nonprofit leader, with photos and the attendance.
+3. **Within 2 weeks.** Top-3 teams deliver cleaned-up code. Recommendation letters for the teams that delivered. A written 30-minute retro.
+4. **Within 30 days.** Ask the nonprofit and sponsors about next year. Pitch your university's news office.
+:::
 
-**Prize money never passes through a chapter account** or an officer's Venmo. Money the Foundation holds for your chapter is disbursed by the Foundation; money your university holds pays out through the university's own process.
+**Prize money never passes through a chapter account.** Nor an officer's Venmo. Money the Foundation holds for your chapter is disbursed by the Foundation; money your university holds pays out through the university's own process.
 
 **Delivered isn't deployed.** Ask the nonprofit before you call a project "in use". Only they know.
 
